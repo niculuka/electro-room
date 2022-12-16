@@ -1,0 +1,76 @@
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container">
+    <div class="content">
+
+        <div class="title">
+            <h1><strong>TOKENS</strong></h1>
+            <h3>Tokens number: {{tokens.length}}</h3>
+        </div>
+
+        <table class="table-row">
+            <thead>
+                <tr>
+                    <th>Id</th>   
+                    <th>User Id</th>                 
+                    <th>Created At</th>
+                    <th>Expires At</th>
+                    <th>Confirmed At</th>
+                    <th>Token</th>                    
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let token of tokens">
+                    <th>{{token.tokenId}}</th>  
+                    <td>{{token.userIdFk}}</td>                  
+                    <td>{{token.createdAt}}</td>
+                    <td>{{token.expiresAt}}</td>
+                    <td>{{token.confirmedAt}}</td>
+                    <td>{{token.token}}</td>                    
+                    <td>
+                        <button class="btn-delete" (click)="deleteTokenDialog(token)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table-col" *ngFor="let token of tokens">
+            <tbody>
+                <tr>
+                    <th colspan="2">{{token.tokenId}}</th>
+                </tr>  
+                <tr>
+                    <th>User Id</th>
+                    <td>{{token.userIdFk}}</td>
+                </tr>              
+                <tr>
+                    <th>Created At</th>
+                    <td>{{token.createdAt}}</td>
+                </tr>
+                <tr>
+                    <th>Expires At</th>
+                    <td>{{token.expiresAt}}</td>
+                </tr>
+                <tr>
+                    <th>Confirmed At</th>
+                    <td>{{token.confirmedAt}}</td>
+                </tr>
+                <tr>
+                    <th>Token</th>
+                    <td>{{token.token}}</td>
+                </tr>                
+                <tr>
+                    <th>Action</th>
+                    <td>
+                        <button class="btn-delete" (click)="deleteTokenDialog(token)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

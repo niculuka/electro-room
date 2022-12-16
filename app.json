@@ -1,0 +1,8 @@
+{
+  "name": "electro-room",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

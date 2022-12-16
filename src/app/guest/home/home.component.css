@@ -1,0 +1,30 @@
+.delimiter {
+  width: 100%;
+  height: 550px;
+  /* background: rgba(0, 0, 0, 0.3); */
+}
+
+.slider {
+  margin-top: 20px;
+}
+
+@media (max-width: 1600px) {
+  .delimiter {
+    height: 408px;
+  }
+}
+
+@media (max-width: 1040px) {
+  .delimiter {
+    height: 418px;
+  }
+}
+
+@media (max-width: 920px) {
+  .delimiter {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-top: 45.3%;
+  }
+}

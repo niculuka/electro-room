@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    background: rgb(242, 242, 247);
+}
+
+body {
+    margin: 0;
+    /* font-family: Roboto, "Helvetica Neue", sans-serif;  */
+}
+
+
+/*
+   Error: C:/Users/ACASA/ANGULAR/ng-projects/electro-room/src/app/navbar/navbar-main/navbar-main.component.css exceeded maximum budget.
+   Budget 4.00 kB was not met by 1.22 kB with a total of 5.22 kB.
+
+   angular.json:
+
+  "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                }
+              ],
+*/

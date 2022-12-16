@@ -1,0 +1,138 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* margin: 10px; */
+    /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 1500px;
+    /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.title {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+    background: #eeeeee;    
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* border: 2px solid rgb(186, 184, 184); */
+}
+
+td,
+th {
+    text-align: left;
+    word-wrap: break-word;
+    padding: 4px 10px;
+    border: 1px solid rgb(205, 205, 205);
+}
+
+.items {
+    background: white;
+}
+
+.column {
+    display: none;
+}
+
+tr:hover {
+    background-color: rgb(174, 174, 174);
+}
+
+.btn-reOrder {
+    font-size: 16px;
+    margin: 2px;
+    font-weight: 600;
+    color: rgb(79, 190, 4);
+    background: white;
+    cursor: pointer;
+    border: 2px solid rgb(182, 181, 181);
+    position: static;
+    z-index: -1;
+}
+
+.btn-reOrder:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(79, 190, 4);
+}
+
+@media (max-width: 1600px) {
+    .content {
+        width: 1200px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .content {
+        width: 980px;
+    }
+}
+
+@media (max-width: 1040px) {
+    .content {
+        width: 100%;
+        margin: 0 16px;
+    }
+
+    .row {
+        display: none;
+    }
+
+    .column {
+        display: table;
+    }
+}
+
+@media (max-width: 850px) {
+    .title h1 {
+        font-size: 20px;
+    }
+
+    td,
+    th {
+       font-size: 15px;
+    }
+}
+
+@media (max-width: 550px) {
+    .title h1 {
+        font-size: 18px;
+    }
+
+    .title h3 {
+        font-size: 14px;
+    }
+
+    td,
+    th {
+       font-size: 14px;
+    }
+
+    .btn-reOrder {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 380px) {
+    td,
+    th {
+       font-size: 13px;
+    }
+}

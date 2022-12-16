@@ -1,0 +1,311 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* margin: 10px; */
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 1500px;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.empty {
+  margin-top: 10px;
+  font-size: 22px;
+  color: red;
+  text-align: center;
+}
+
+.row {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.livration {
+  color: rgb(176, 175, 103);
+}
+
+h3 {
+  font-size: 26px;
+  margin: 16px 0;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+img:hover {
+  background: white;
+}
+
+.name {
+  font-size: 20px;
+  line-height: 22px;
+}
+
+select {
+  width: 50px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid rgb(137, 137, 137);
+  background: white;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.btn-remove {
+  color: white;
+  margin: 2px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: rgb(223, 33, 119);
+}
+
+.btn-remove:hover {
+  color: black;
+  box-shadow: 1px 1px 10px;
+}
+
+.column {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.column tbody td {
+  border: 1px solid rgb(195, 195, 195);
+}
+
+.checkout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  /* border: 1px solid rgb(0, 0, 0); */
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  font-size: 18px;
+  text-align: left;
+  border-bottom: 1px solid rgb(164, 164, 164);
+  /* table{border-collapse: collapse;} */
+}
+
+tbody tr:last-child,
+.last {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.checkout tr {
+  background-color: transparent;
+}
+
+td,
+th {
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.total {
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.total td,
+.total th {
+  font-size: 16px;
+  width: 200px;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.index {
+  background: rgb(236, 236, 236);
+}
+
+.checkout a {
+  margin: 10px;
+  padding: 16px;
+  color: white;
+  background: #2ebc4b;
+  display: block;
+  width: 300px;
+  border-radius: 4px;
+  border: 2px solid grey;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.last {
+  width: 100%;
+  /* border: 2px solid black; */
+}
+
+.btn-proceed {
+  width: 100%;
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: rgb(79, 190, 4);
+}
+
+.btn-proceed:hover {
+  color: black;
+  box-shadow: 1px 1px 4px;
+}
+
+.radio {
+  display: flex;
+  flex-direction: row;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.radio input {
+  margin: 0px;
+}
+
+.radio label {
+  margin-left: 10px;
+}
+
+@media (max-width: 1600px) {
+  .content {
+    width: 1200px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .content {
+    width: 980px;
+  }
+
+  .row th {
+    font-size: 16px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  .name {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 1040px) {  
+  .row {
+    display: none;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  .column {
+    display: block;
+    max-width: 480px;
+    margin: auto;
+  } 
+  
+  .column tr {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .checkout {
+    margin: 20px auto;
+    max-width: 480px;
+  }
+
+}
+
+@media (max-width: 550px) {
+  h3 {
+    font-size: 18px;
+    margin: 6px 0;
+  }
+
+  td,
+  th {
+    padding: 10px;
+  }
+
+  .total td,
+  .total th {
+    font-size: 14px;
+    width: 20px;
+  }
+
+  .column tr {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .column {
+    max-width: 300px;
+    margin: auto;
+  }
+
+  select {
+    width: 40px;
+    font-size: 12px;
+  }
+
+  .btn-remove{
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+
+  .total {
+    margin: auto;
+    width: 300px;
+  }
+
+  .btn-proceed {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}

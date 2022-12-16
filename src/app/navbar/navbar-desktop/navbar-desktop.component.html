@@ -1,0 +1,92 @@
+<div class="container">
+
+  <div class="row">
+
+    <!-- LEFT SIDE ======================================================================================= -->
+    <ul class="left-side">
+
+      <!-- PRODUCTS ----------------------------------------------------------------- -->
+      <li class="product">
+        <div class="dropdown">
+
+          <button (click)="toggleDesktopMenu()">
+            <mat-icon>menu</mat-icon>
+            <span>Produse</span>
+          </button>
+
+          <!-- MEGA MENU ------------------------------------------------------------ -->
+          <div class="dropdown-menu" *ngIf="handleDesktopMenu">
+            <div class="left-menu">
+              <ul class="d-dropdown">
+                <li *ngFor="let departament of departaments">
+                  <a>
+                    <span class="d-item">
+                      <img class="departament-icon" src="{{departament.icon}}" alt="icon">
+                      <span>{{departament.name}}</span>
+                    </span>
+                    <span class="d-item">
+                      <img class="chevron-icon" src="{{departament.chevron}}" alt="chevron-right">
+                    </span>
+                  </a>
+                  <div class="d-dropdown-menu">
+                    <div class="col">
+                      <div class="departament" *ngFor="let title of departament.titles">
+                        <a class="title" routerLink={{title.link}} (click)="closeFromSubtitles()">{{title.name}}</a>
+                        <ul *ngFor="let subtitle of title.subtitles">
+                          <li>
+                            <a class="subtitle" routerLink={{subtitle.link}}
+                              (click)="closeFromSubtitles()">{{subtitle.name}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CAROUSEL ---------------------------------------------------------- -->
+            <div class="carousel">
+              <carousel *ngIf="isCarouselOpen"></carousel>
+            </div>
+
+          </div>
+        </div>
+      </li>
+
+      <!-- ITEMS ------------------------------------------------------------------- -->
+      <li class="item">
+        <a routerLink="/oferta-speciala" routerLinkActive="active">
+          <span>Oferte speciale</span>
+        </a>
+      </li>
+
+      <li class="item">
+        <a routerLink="/magazine" routerLinkActive="active">
+          <span>Magazine</span>
+        </a>
+      </li>
+
+      <!-- <li class="item">
+        <a routerLink="/card-electro" routerLinkActive="active">
+          <span>Card Electro</span>
+        </a>
+      </li> -->
+
+    </ul>
+
+    <!-- RIGHT SIDE ====================================================================================== -->
+    <ul class="right-side">
+
+      <!-- HELP ------------------------------------------------------------------- -->
+      <li class="item">
+        <a routerLink="/ajutor-clienti" routerLinkActive="active">
+          <mat-icon>headset_mic</mat-icon>
+          <span>Ajutor</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+.container {
+    width: 100vw;
+    height: 100vh;    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: white;
+}
+
+.content {
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+@media(max-width: 1040px) {
+    h1 {
+        font-size: 30px;
+    }
+}
+
+@media(max-width: 550px) {
+    h1 {
+        font-size: 20px;
+    }
+}

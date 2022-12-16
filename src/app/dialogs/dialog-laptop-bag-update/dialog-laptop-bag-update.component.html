@@ -1,0 +1,97 @@
+<form #f="ngForm" (ngSubmit)="f.form.valid && updateLaptopBag()">
+
+    <div class="form-group">
+        <label for="id">Id: {{laptopBag.laptopId}}</label>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Nume</label>
+        <input type="text" name="name" [(ngModel)]="laptopBag.name" #name="ngModel" minlength="1" maxlength="100" required>
+        <div class="alert-container">
+            <div class="alert" *ngIf="!name.valid && f.submitted">Camp gol!</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description" [(ngModel)]="laptopBag.description" #description="ngModel" minlength="1" maxlength="200"
+            required>
+        <div class="alert-container">
+            <div class="alert" *ngIf="!description.valid && f.submitted">Camp gol!</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="brand">Brand</label>
+        <select name="brand" #brandSelect [(ngModel)]="laptopBag.brand">
+            <option value="HAMA">HAMA</option>
+            <option value="PROMATE">PROMATE</option>
+            <option value="RIVACASE">RIVACASE</option>
+            <option value="SAMSONITE">SAMSONITE</option>
+        </select>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="select-box" name="category" #categorySelect [(ngModel)]="laptopBag.category">
+            <option value="BAG">BAG</option>
+            <option value="SLEEVE">SLEEVE</option>
+            <option value="BACKPACK">BACKPACK</option>
+        </select>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <li class="dropdown">
+            <label for="image">Image: </label>
+            <div class="select-line" (click)="toggleDropdownMenu()">
+                <input type="text" name="src" [(ngModel)]="laptopBag.src1">
+                <mat-icon>expand_more</mat-icon>
+            </div>
+            <div class="dropdown-menu" [style]="isDropdownMenuOpen">
+                <div class="list-option" *ngFor="let image of laptopBagImages;" (click)="getImage(image)">
+                    <img [src]="image.src1" [alt]="image.alt">
+                    <span>{{image.alt}}</span>
+                </div>
+            </div>
+        </li>
+        <div class="image-display">
+            <img class="image" [src]="laptopBag.src1" [alt]="laptopBag.alt">
+        </div>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="available">Available</label>
+        <select name="available" #availableSelect [(ngModel)]="laptopBag.available">
+            <option value="STOCK">STOCK</option>
+            <option value="DEPOSIT">DEPOSIT</option>
+        </select>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Pret</label>
+        <input type="number" name="price" [(ngModel)]="laptopBag.price" #price="ngModel" min="0.1" max="1000000" required>
+        <div class="alert-container">
+            <div class="alert" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn-submit" type="submit">Submit</button>
+    </div>
+
+</form>

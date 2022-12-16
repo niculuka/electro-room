@@ -1,0 +1,112 @@
+<form #f="ngForm" (ngSubmit)="f.form.valid && updateLaptopCharger()">
+
+    <div class="form-group">
+        <label for="id">Id: {{laptopCharger.laptopId}}</label>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Nume</label>
+        <input type="text" name="name" [(ngModel)]="laptopCharger.name" #name="ngModel" minlength="1" maxlength="100" required>
+        <div class="alert-container">
+            <div class="alert" *ngIf="!name.valid && f.submitted">Camp gol!</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description" [(ngModel)]="laptopCharger.description" #description="ngModel" minlength="1" maxlength="200"
+            required>
+        <div class="alert-container">
+            <div class="alert" *ngIf="!description.valid && f.submitted">Camp gol!</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="brand">Brand</label>
+        <select name="brand" #brandSelect [(ngModel)]="laptopCharger.brand">
+            <option value="HAMA">HAMA</option>
+            <option value="LENOVO">LENOVO</option>
+            <option value="IPHONE">IPHONE</option>
+        </select>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="select-box" name="category" #categorySelect [(ngModel)]="laptopCharger.category">
+            <option value="CHARGER_PLUG_IN">CHARGER_PLUG_IN</option>
+            <option value="CHARGER_CAR">CHARGER_CAR</option>
+        </select>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <li class="dropdown">
+            <label for="image">Image: </label>
+            <div class="select-line" (click)="toggleDropdownMenu()">
+                <input type="text" name="src" [(ngModel)]="laptopCharger.src1">
+                <mat-icon>expand_more</mat-icon>
+            </div>
+            <div class="dropdown-menu" [style]="isDropdownMenuOpen">
+                <div class="list-option" *ngFor="let image of laptopChargerImages;" (click)="getImage(image)">
+                    <img [src]="image.src1" [alt]="image.alt">
+                    <span>{{image.alt}}</span>
+                </div>
+            </div>
+        </li>
+        <div class="image-display">
+            <img class="image" [src]="laptopCharger.src1" [alt]="laptopCharger.alt">
+        </div>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="available">Available</label>
+        <select name="available" #availableSelect [(ngModel)]="laptopCharger.available">
+            <option value="STOCK">STOCK</option>
+            <option value="DEPOSIT">DEPOSIT</option>
+        </select>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="power">Power</label>
+        <select name="power" #powerSelect [(ngModel)]="laptopCharger.power">
+            <option value="W45">W45</option>
+            <option value="W60">W60</option>
+            <option value="W65">W65</option>
+            <option value="W70">W70</option>
+            <option value="W85">W85</option>
+            <option value="W90">W90</option>
+            <option value="W120">W120</option>
+        </select>
+        <div class="alert-container">
+            <div class="alert"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" name="price" [(ngModel)]="laptopCharger.price" #price="ngModel" min="0.1" max="1000000" required>
+        <div class="alert-container">
+            <div class="alert" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn-submit" type="submit">Submit</button>
+    </div>
+
+</form>
+

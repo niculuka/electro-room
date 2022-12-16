@@ -1,0 +1,213 @@
+<div class="container">
+
+  <div class="row1">
+
+    <!-- LEFT SIDE ====================================================================================== -->
+    <ul>
+      <!-- BURGER ------------------------------------------------------------------ -->
+      <li #txt class="burger">
+        <label for="check" class="checkbtn" (click)="displayMobileMenu()">
+          <mat-icon>{{isMobileMenuOpen ? "close": "menu" }}</mat-icon>
+        </label>
+
+        <!-- MEGA MENU ------------------------------------------------------------ -->
+        <div class="mega-menu" *ngIf="isMobileMenuOpen">
+          <div class="menu">
+
+            <ul class="dropdown">
+              <li *ngFor="let departament of departaments;">
+
+                <a (click)="openCloseDepartament(departament)">
+                  <span class="icon">
+                    <img class="departament-icon" src="{{departament.icon}}" alt="icon">
+                    <span>{{departament.name}}</span>
+                  </span>
+                  <span class="icon">
+                    <img class="chevron-icon" src="{{departament.chevron}}" alt="chevron-right">
+                  </span>
+                </a>
+
+                <div class="dropdown-menu" *ngFor="let title of departament.titles">
+                  <div class="departament" *ngIf="departament.showTitle">
+
+                    <a class="title" (click)="openCloseTitle(title)">{{title.name}}</a>
+                    <a class="subtitle" *ngIf="title.showSubtitle" routerLink={{title.link}}
+                      (click)="closeFromSubtitles()"><strong>{{title.name}}</strong>
+                    </a>
+
+                    <ul *ngFor="let subtitle of title.subtitles">
+                      <li *ngIf="title.showSubtitle">
+                        <a class="subtitle" routerLink={{subtitle.link}}
+                          (click)="closeFromSubtitles()">{{subtitle.name}}
+                        </a>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+      </li>
+
+      <!-- LOGO -------------------------------------------------------------------- -->
+      <li class="logo">
+        <a routerLink="/">
+          <img src="assets/logo/electro-room-red-small.png" alt="logo">
+        </a>
+      </li>
+
+      <!-- SEARCH BAR -------------------------------------------------------------- -->
+      <li class="search-bar">
+        <form>
+          <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)" name="searchTerm"
+            [(ngModel)]="searchTerm">
+          <button (click)="getProduct(s.value)">
+            <mat-icon class="search-icon">search</mat-icon>
+          </button>
+        </form>
+      </li>
+
+    </ul>
+    <hr>
+
+    <!-- RIGHT SIDE -->
+    <ul>
+
+      <!-- ADMIN ------------------------------------------------------------------- -->
+      <li class="drop" *ngIf="isAdmin()">
+        <a>
+          <mat-icon class="admin">build</mat-icon>
+          <span class="hide"><strong>Admin</strong></span>
+        </a>
+        <div class="drop-menu">
+          <a routerLink="/admin/laptops" routerLinkActive="active">Laptops</a>
+          <a routerLink="/admin/laptop-bags" routerLinkActive="active">Bags</a>
+          <a routerLink="/admin/laptop-chargers" routerLinkActive="active">Chargers</a>
+          <a routerLink="/admin/laptop-ssds" routerLinkActive="active">Ssds</a>
+          <a routerLink="/admin/orders" routerLinkActive="active">Orders</a>
+          <a routerLink="/admin/items" routerLinkActive="active">Items</a>
+          <a routerLink="/admin/users" routerLinkActive="active">Users</a>
+          <a routerLink="/admin/tokens" routerLinkActive="active">Tokens</a>
+        </div>
+      </li>
+
+      <!-- ADMIN ------------------------------------------------------------------- -->
+      <li class="drop" *ngIf="!isAdmin()">
+        <a>
+          <mat-icon class="admin">build</mat-icon>
+          <span class="hide"><strong>DEMO</strong></span>
+        </a>
+        <div class="drop-menu">
+          <a routerLink="/admin-demo/laptops" routerLinkActive="active">Laptops</a>
+          <a routerLink="/admin-demo/bags" routerLinkActive="active">Bags</a>
+          <a routerLink="/admin-demo/chargers" routerLinkActive="active">Chargers</a>
+          <a routerLink="/admin-demo/ssds" routerLinkActive="active">Ssds</a>
+          <a routerLink="/admin-demo/users" routerLinkActive="active">Users</a>
+        </div>
+      </li>
+
+      <!-- CART -------------------------------------------------------------------- -->
+      <li class="drop">
+        <a>
+          <mat-icon matBadge="{{cartQuantity}}" matBadgeColor="warn" matBadgeSize="medium">shopping_cart</mat-icon>
+          <span class="hide">&nbsp; Cosul meu</span>
+          <mat-icon class="hide">expand_more</mat-icon>
+        </a>
+        <div class="drop-menu">
+          <a *ngIf="isEmpty()">Cosul este gol</a>
+          <table class="item" *ngIf="!isEmpty()">
+            <tr *ngFor="let item of cart.items">
+              <td>
+                <img src={{item.product.src1}} alt={{item.product.alt}} (click)="getProductLinkName(item)">
+              </td>
+              <td>
+                <span (click)="getProductLinkName(item)">{{item.productName}}</span>
+              </td>
+              <td class="quantity">x{{item.quantity}}</td>
+              <td class="price">{{item.price}}.lei</td>
+              <td>
+                <mat-icon (click)="removeFromCart(item)">close</mat-icon>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="2"><strong>Subtotal: </strong></td>
+              <td colspan="2" class="price total">{{cart.subtotal | number: '1.2-2'}}.lei</td>
+            </tr>
+            <tr>
+              <td colspan="6">
+                <button routerLink="/cart" *ngIf="!isCartPage()">Vezi detalii cos!</button>
+              </td>
+            </tr>
+          </table>
+
+
+        </div>
+      </li>
+
+      <!-- FAVORITE ---------------------------------------------------------------- -->
+      <li class="drop">
+        <a>
+          <mat-icon matBadge="0" matBadgeColor="primary" matBadgeSize="medium">favorite_border</mat-icon>
+          <span class="hide">&nbsp; Favorite</span>
+          <mat-icon class="hide">expand_more</mat-icon>
+        </a>
+        <div class="drop-menu">
+          <a>under construction</a>
+          <button (click)="goToFavorites()">Vezi aici!</button>
+        </div>
+      </li>
+
+      <!-- USER (login, register) -------------------------------------------------- -->
+      <li class="drop" *ngIf="!currentUser?.userId">
+        <a>
+          <mat-icon>perm_identity</mat-icon>
+          <span class="hide">Cont</span>
+          <mat-icon class="hide">expand_more</mat-icon>
+        </a>
+        <div class="drop-menu">
+          <a routerLink="/auth/login">Intra in cont!</a>
+          <a routerLink="/auth/register">Inregistrare!</a>
+        </div>
+      </li>
+
+      <!-- CART (profile, order, logout) ------------------------------------------- -->
+      <li class="drop" *ngIf="currentUser?.userId">
+        <a>
+          <span id="username">{{userFirstChar}}</span>
+          <mat-icon class="hide">expand_more</mat-icon>
+        </a>
+        <div class="drop-menu">
+          <a routerLink="/profile" routerLinkActive="active">Profile</a>
+          <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
+          <a routerLink="/" (click)="logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="row2">
+
+    <!-- ROW2 ========================================================================================== -->
+    <ul>
+
+      <!-- ROW2  SEARCH BAR -------------------------------------------------------- -->
+      <li class="search-bar">
+        <form>
+          <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)" name="searchTerm"
+            [(ngModel)]="searchTerm">
+          <button (click)="getProduct(s.value)">
+            <mat-icon class="search-icon">search</mat-icon>
+          </button>
+        </form>
+      </li>
+
+    </ul>
+  </div>
+
+</div>

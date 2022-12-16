@@ -1,0 +1,97 @@
+<div class="container">
+
+  <div class="logo">
+    <img routerLink="/" src="assets/logo/electro-room-red-small.png" alt="logo">
+  </div>
+
+  <div class="content">
+
+    <div class="header">
+      <h1>Salut!</h1>
+      <h3>Bine ai venit la Electro Room!</h3>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+      <div class="input-container">
+        <input type="text" placeholder="utilizator" formControlName="username">
+      </div>
+      <div class="alert-container">
+        <div class="alert" *ngIf="fc['username'].errors && isSubmitted">
+          <div *ngIf="fc['username'].errors['required']">Camp gol!</div>
+          <div *ngIf="fc['username'].errors['minlength']">Minim 4 caractere!</div>
+          <div *ngIf="fc['username'].errors['maxlength']">Maxim 30 de caractere!</div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input type="password" placeholder="parola" formControlName="password">
+      </div>
+      <div class="alert-container">
+        <div class="alert" *ngIf="fc['password'].errors && isSubmitted">
+          <div *ngIf="fc['password'].errors['required']">Camp gol!</div>
+          <div *ngIf="fc['password'].errors['minlength']">Minim 4 caractere!</div>
+          <div *ngIf="fc['password'].errors['maxlength']">Maxim 30 de caractere!</div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input type="text" placeholder="nume" formControlName="name">
+      </div>
+      <div class="alert-container">
+        <div class="alert" *ngIf="fc['name'].errors && isSubmitted">
+          <div *ngIf="fc['name'].errors['required']">Camp gol!</div>
+          <div *ngIf="fc['name'].errors['minlength']">Minim 4 caractere!</div>
+          <div *ngIf="fc['name'].errors['maxlength']">Maxim 30 de caractere!</div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input type="email" placeholder="email" formControlName="email">
+      </div>
+      <div class="alert-container">
+        <div class="alert" *ngIf="fc['email'].errors && isSubmitted">
+          <div *ngIf="fc['email'].errors['required']">Camp gol!</div>
+          <div *ngIf="fc['email'].errors['email']">Email-ul nu este valid!</div>
+          <div *ngIf="fc['email'].errors['minlength']">Email-ul nu este valid!</div>
+          <div *ngIf="fc['email'].errors['maxlength']">Email-ul nu este valid!</div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input type="text" placeholder="telefon" formControlName="phone">
+      </div>
+      <div class="alert-container">
+        <div class="alert" *ngIf="fc['phone'].errors && isSubmitted">
+          <div *ngIf="fc['phone'].errors['required']">Camp gol!</div>
+          <div *ngIf="fc['phone'].errors['pattern']">Sunt permise doar cifre!</div>
+          <div *ngIf="fc['phone'].errors['minlength']">Minim 9 cifre!</div>
+          <div *ngIf="fc['phone'].errors['maxlength']">Maxim 13 cifre!</div>
+        </div>
+      </div>
+
+      <div class="textarea-container">
+        <textarea type="text" placeholder="adresa" formControlName="address"></textarea>
+      </div>
+      <div class="alert-container">
+        <div class="alert" *ngIf="fc['address'].errors && isSubmitted">
+          <div *ngIf="fc['address'].errors['required']">Camp gol!</div>
+          <div *ngIf="fc['address'].errors['minlength']">Minim 10 caractere!</div>
+          <div *ngIf="fc['address'].errors['maxlength']">Maxim 100 de caractere!</div>
+        </div>
+      </div>
+
+      <div class="alert-container">
+        <div class="alert" *ngIf="message">{{message}}</div>
+      </div>
+
+      <button type="submit">INREGISTRARE</button>
+
+    </form>
+
+    <div class="footer">
+      <a routerLink="/auth/login">Intra in cont!</a>
+    </div>
+
+  </div>
+</div>

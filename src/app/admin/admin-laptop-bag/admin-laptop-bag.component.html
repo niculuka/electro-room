@@ -1,0 +1,110 @@
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container">
+    <div class="content">
+  
+      <div class="title">
+        <h1><strong>LAPTOP BAGS</strong></h1>
+        <h3>Products: {{bags.length}}</h3>
+        <button class="btn-new" type="button" (click)="createBagDialog()">NEW</button>
+      </div>
+  
+      <table class="table-row">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Image</th>
+            <th>Brand</th>
+            <th>Name</th>  
+            <th>Description</th>           
+            <th>Available</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let bag of bags;">
+            <td><strong>{{bag.bagId}}</strong></td>
+            <td>
+              <a routerLink="/bag/{{bag.linkName}}">
+                <img [src]="bag.src1" [alt]="bag.alt">
+              </a>
+            </td>
+            <td><strong>{{bag.brand}}</strong></td>
+            <td>
+              <strong>{{bag.name}}</strong>
+            </td>            
+            <td>{{bag.description}}</td>
+            <td>{{bag.available}}</td>
+            <td>{{bag.category}}</td>
+            <td><strong>{{bag.price}} Lei</strong></td>
+            <td>{{bag.createTime}}</td>
+            <td>
+              <button class="btn-edit" (click)="updateBagDialog(bag)">Edit</button>
+            </td>
+            <td>
+              <button class="btn-delete" (click)="deleteBagDialog(bag)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <table class="table-col" *ngFor="let bag of bags;">
+        <tbody>
+          <tr>
+            <th colspan="2">{{bag.bagId}}</th>
+          </tr>
+          <tr>
+            <th>Image</th>
+            <td>
+              <a routerLink="/bag/{{bag.linkName}}">
+                <img [src]="bag.src1" [alt]="bag.alt">
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <th>Brand</th>
+            <td><strong>{{bag.brand}}</strong></td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td><strong>{{bag.name}}</strong></td>
+          </tr>          
+          <tr>
+            <th>Description</th>
+            <td>{{bag.description}}</td>
+          </tr>
+          <tr>
+            <th>Available</th>
+            <td>{{bag.available}}</td>
+          </tr>
+          <tr>
+            <th>Category</th>
+            <td>{{bag.category}}</td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td><strong>{{bag.price}} Lei</strong></td>
+          </tr>          
+          <tr>
+            <th>Date</th>
+            <td>{{bag.createTime}}</td>
+          </tr>
+          <tr class="action">
+            <th>Action</th>
+            <td>
+              <button class="btn-edit" (click)="updateBagDialog(bag)">Edit</button>
+              <button class="btn-delete" (click)="deleteBagDialog(bag)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+  </div>

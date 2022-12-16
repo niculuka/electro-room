@@ -1,0 +1,369 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  background: rgb(220, 20, 110);
+}
+
+/* ITEMS ===================================================================== */
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1500px;
+  height: 100%;
+  align-items: center;
+  /* border: 2px solid blue; */
+}
+
+.left-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  /* border: 2px solid rgb(4, 167, 1); */
+}
+
+.right-side {
+  height: 100%;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  height: 42px;
+  margin-top: 8px;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+button {
+  display: flex;
+  flex-direction: row;
+  font-size: 17px;
+  width: 100%;
+  height: 100%;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  background: rgb(251, 245, 245);
+  border: none;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+button mat-icon {
+  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgb(251, 245, 245);
+}
+
+button span {
+  height: 30px;
+  line-height: 30px;
+  padding-right: 4px;
+  border: 2px solid rgb(251, 245, 245);
+}
+
+.item span {
+  margin: 0;
+  padding: 0;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  /* border: 2px solid black;   */
+}
+
+.item a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0 14px;
+  color: white;
+  text-decoration: none;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.item a.active {
+  color: white;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.item a:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.item a mat-icon {
+  padding-right: 4px;
+}
+
+/* MEGA-MENU ===================================================================== */
+/* MEGA-MENU ===================================================================== */
+.dropdown-menu {
+  display: flex;
+  flex-direction: row;
+  position: absolute;  
+  margin: auto;
+  z-index: 2;
+  /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.left-menu {
+  width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.d-dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-right: 1px solid rgb(231, 231, 231);
+  background: rgb(251, 245, 245);
+  /* border: 1px solid rgb(0, 102, 255); */
+}
+
+.d-dropdown>li {
+  margin: 0;
+  /* border: 3px solid orange; */
+}
+
+.d-dropdown>li>a {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 14px;
+  /* border: 1px solid red; */
+}
+
+.d-dropdown>li>a:hover {
+  background: rgb(239, 240, 254);
+  cursor: pointer;
+}
+
+.d-dropdown-menu {
+  display: none;
+  flex-direction: row;
+  position: absolute;
+  text-align: left;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: rgb(255, 255, 255);
+  /* overflow: hidden; */
+  /* overflow: scroll; */
+  top: 0px;
+  left: 298px;
+  width: 1202px;
+  padding: 0;
+  height: 100%;
+  z-index: 2;
+  /* border: 1px solid rgb(1, 62, 159); */
+}
+
+.d-dropdown>li:hover .d-dropdown-menu {
+  display: flex;
+  margin-top: 0px;
+}
+
+.d-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* border: 2px solid rgb(255, 136, 0); */
+}
+
+.departament-icon {
+  width: 18px;
+  margin-right: 14px;
+  /* border: 2px solid rgb(255, 136, 0); */
+}
+
+.chevron-icon {
+  /* visibility: hidden; */
+  width: 12px;
+  margin-right: 0;
+  /* border: 2px solid rgb(255, 136, 0); */
+}
+
+/* DEPARTAMENTS ============================================================== */
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  float: left;
+  margin: 0;
+  width: 24.7%;
+  /* border: 1px solid rgb(54, 159, 1); */
+}
+
+.departament {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 100%;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.departament ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  /* border: 2px solid rgb(10, 10, 10); */
+}
+
+.title {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 14px;
+  text-decoration: none;
+  color: rgb(58, 58, 58);
+  line-height: 14px;
+  font-weight: bold;
+  /* border: 1px solid red; */
+}
+
+.title:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgb(0, 50, 157);
+}
+
+.subtitle {
+  display: block;
+  margin: 0;
+  padding: 4px 14px;
+  font-size: 14px;
+  line-height: 14px;
+  color: rgb(79, 79, 79);
+  text-decoration: none;
+  /* border: 1px solid red; */
+}
+
+.subtitle:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgb(0, 50, 157);
+}
+
+/*  M E D I A  ============================================================== */
+@media (max-width: 1600px) {
+  .row {
+    width: 1200px;
+  }
+
+  .left-menu {
+    width: 300px;
+    height: 100%;
+    /* border: 1px solid rgb(0, 0, 0); */
+  }
+
+  .d-dropdown-menu {
+    left: 298px;
+    width: 902px;
+  }
+
+  .d-dropdown>li>a {
+    padding: 8px;
+  }
+
+  .title {
+    padding: 4px 12px;
+  }
+
+  .subtitle {
+    padding: 2px 12px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .row {
+    width: 980px;
+  }
+
+  .left-menu {
+    width: 300px;
+  }
+
+  .d-dropdown-menu {
+    left: 298px;
+    width: 682px;
+  }
+
+  .title {
+    font-size: 13px;
+    padding: 4px 12px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    padding: 2px 12px;
+  }
+}
+
+@media (max-width: 1040px) {
+
+  .container,
+  .product {
+    height: 0;
+    width: 100%;
+  }
+
+  .dropdown {
+    margin: 0;
+  }
+
+  .row,
+  .dropdown-menu {
+    position: relative;
+    display: block;
+    height: 0;
+    width: 100%;
+  }
+
+  .dropdown button,
+  .item,
+  .left-menu {
+    display: none;
+  }
+
+  .carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 16px;
+  }
+
+}

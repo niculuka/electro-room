@@ -1,0 +1,26 @@
+<div id="slider" (mouseover)="stop()" (mouseout)="start()">
+
+    <div class="slide" [style]="slide">
+        <div class="back" *ngFor="let item of images">
+            <img class="display" [src]="item.src" [alt]="item.alt" (click)="goTo(item)">
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="previous" (click)="previous()">
+            <img class="svg" src="assets/svgs/chevron-l.svg" alt="chevron-right">
+        </button>
+
+        <div class="dots">
+            <label *ngFor="let image of images;">
+                <input type="radio" name="frame" [checked]="image.isChecked" (click)="getDot(image)">
+                <span></span>
+            </label>
+        </div>
+
+        <button class="next" (click)="next()">
+            <img class="svg" src="assets/svgs/chevron-r.svg" alt="chevron-right">
+        </button>
+    </div>    
+
+</div>

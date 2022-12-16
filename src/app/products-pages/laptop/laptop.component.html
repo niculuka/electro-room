@@ -1,0 +1,161 @@
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container">
+    <div class="column">
+
+        <!-- <div class="link">
+            <h3>Acasa / Laptop, Telefoane, Tablete / Laptopuri / Gaming</h3>
+        </div> -->
+
+        <div class="row">
+            <!-- f i l t e r s ==================================================================================== -->
+            <div class="filters">
+                <!-- available filter ----------------------------------------------------------- -->
+                <div class="available">
+                    <h3><strong>Disponibilitate</strong></h3>
+                    <div class="filter-group" *ngIf="stock_out.length!==0">
+                        <input type="checkbox" id="stock" name="stock" [(ngModel)]="stock_chk"
+                            (change)="filter_stock()">
+                        <label for="stock"> In Stoc ({{stock_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="deposit_out.length!==0">
+                        <input type="checkbox" id="deposit" name="deposit" [(ngModel)]="deposit_chk"
+                            (change)="filter_deposit()">
+                        <label for="deposit"> In Depozit ({{deposit_out.length}})</label>
+                    </div>
+                </div>
+
+                <!-- price filter ---------------------------------------------------------------- -->
+                <div class="price">
+                    <h3><strong>Pret</strong></h3>
+                    <div class="filter-group" *ngIf="under1000_out.length!==0">
+                        <input type="checkbox" id="under1000" name="under1000" [(ngModel)]="under1000_chk"
+                            (change)="filter_under1000()">
+                        <label for="under1000"> Sub 1000 ({{under1000_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="under2000_out.length!==0">
+                        <input type="checkbox" id="under2000" name="under2000" [(ngModel)]="under2000_chk"
+                            (change)="filter_under2000()">
+                        <label for="under2000"> 1000 - 2000 ({{under2000_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="under3000_out.length!==0">
+                        <input type="checkbox" id="under3000" name="under3000" [(ngModel)]="under3000_chk"
+                            (change)="filter_under3000()">
+                        <label for="under3000"> 2000 - 3000 ({{under3000_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="under4000_out.length!==0">
+                        <input type="checkbox" id="under4000" name="under4000" [(ngModel)]="under4000_chk"
+                            (change)="filter_under4000()">
+                        <label for="under4000"> 3000 - 4000 ({{under4000_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="over4000_out.length!==0">
+                        <input type="checkbox" id="over4000" name="over4000" [(ngModel)]="over4000_chk"
+                            (change)="filter_over4000()">
+                        <label for="over4000"> Peste 4000 ({{over4000_out.length}})</label>
+                    </div>
+                </div>
+
+                <!-- brand filter --------------------------------------------------------------- -->
+                <div class="brand">
+                    <h3><strong>Brand</strong></h3>
+                    <div class="filter-group" *ngIf="asus_out.length!==0">
+                        <input type="checkbox" id="asus" name="asus" [(ngModel)]="asus_chk" (change)="filter_asus()">
+                        <label for="asus"> ASUS ({{asus_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="hp_out.length!==0">
+                        <input type="checkbox" id="hp" name="hp" [(ngModel)]="hp_chk" (change)="filter_hp()">
+                        <label for="hp"> HP ({{hp_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="acer_out.length!==0">
+                        <input type="checkbox" id="acer" name="acer" [(ngModel)]="acer_chk" (change)="filter_acer()">
+                        <label for="acer"> ACER ({{acer_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="lenovo_out.length!==0">
+                        <input type="checkbox" id="lenovo" name="lenovo" [(ngModel)]="lenovo_chk"
+                            (change)="filter_lenovo()">
+                        <label for="lenovo"> LENOVO ({{lenovo_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="apple_out.length!==0">
+                        <input type="checkbox" id="apple" name="apple" [(ngModel)]="apple_chk"
+                            (change)="filter_apple()">
+                        <label for="apple"> APPLE ({{apple_out.length}})</label>
+                    </div>
+
+
+                </div>
+
+                <!-- category filter ----------------------------------------------------------- -->
+                <div class="category">
+                    <h3><strong>Categorie</strong></h3>
+                    <div class="filter-group" *ngIf="business_out.length!==0">
+                        <input type="checkbox" id="business" name="business" [(ngModel)]="business_chk"
+                            (change)="filter_business()">
+                        <label for="business"> Business ({{business_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="gaming_out.length!==0">
+                        <input type="checkbox" id="gaming" name="gaming" [(ngModel)]="gaming_chk"
+                            (change)="filter_gaming()">
+                        <label for="gaming"> Gaming ({{gaming_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="home_out.length!==0">
+                        <input type="checkbox" id="home" name="home" [(ngModel)]="home_chk" (change)="filter_home()">
+                        <label for="home"> Home ({{home_out.length}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="ultra_out.length!==0">
+                        <input type="checkbox" id="ultra" name="ultra" [(ngModel)]="ultra_chk"
+                            (change)="filter_ultra()">
+                        <label for="ultra"> Ultraportabil ({{ultra_out.length}})</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- p r o d u c t s ==================================================================================== -->
+            <div class="products">
+
+                <div class="products-header">
+                    <h1>Laptopuri</h1>
+
+                    <div class="categorySelect">
+                        <label for="categorySelect">Sorteaza dupa: </label>
+                        <select name="categorySelect" [(ngModel)]="laptops_sorting">
+                            <option value="name" (click)="name_alphabetic()">Nume</option>
+                            <option value="lowToHigh" (click)="price_ascending()">Pret crescator</option>
+                            <option value="highToLow" (click)="price_descending()">Pret descrescator</option>
+                            <option value="bestSold" (click)="sold()">Cele mai vandute</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="cards-container">
+                    <div class="card" *ngFor="let item of laptops;">
+
+                        <mat-icon class="favorite_boder" *ngIf="!item.favorite" (click)="addToFavorite(item)">
+                            favorite_border</mat-icon>
+                        <mat-icon class="favorite" *ngIf="item.favorite" (click)="addToFavorite(item)">favorite
+                        </mat-icon>
+
+                        <a [routerLink]="'/lap/' + item.linkName">
+                            <img [src]="item.src1" [alt]="item.alt" />
+                            <span style="background: rgb(0, 154, 230)">
+                                {{item.alert === "TOP_FAVORITE" ? "Top Favorit" : ""}}
+                            </span>
+                            <span style="background: rgb(220, 20, 110)">
+                                {{item.alert === "SUPER_PRICE" ? "Super Pret" : ""}}
+                            </span>
+                            <h4><strong>{{item.description}}</strong></h4>
+                        </a>
+                        <p class="avail stock" *ngIf="item.available==='STOCK'">in stoc</p>
+                        <p class="avail deposit" *ngIf="item.available==='DEPOSIT'">in depozitul central</p>
+                        <p class="val"><strong>{{item.price}} Lei</strong></p>
+                        <button (click)="addToCart(item)">Adauga in cos</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

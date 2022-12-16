@@ -1,0 +1,149 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* margin: 10px; */
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 1500px;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.title {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.table-row {
+  width: 100%;
+}
+
+table {
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid rgb(205, 205, 205);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+td,
+th {
+  text-align: left;
+  padding: 10px;
+}
+
+tr {
+  border-bottom: 2px solid rgb(186, 184, 184);
+}
+
+tr:hover {
+  background-color: rgb(255, 228, 240);
+}
+
+.action {
+  background: rgb(242, 242, 247);
+}
+
+.btn-delete {
+  color: white;
+  margin: 2px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: rgb(223, 33, 119);
+}
+
+.btn-delete:hover {
+  color: black;
+}
+
+.table-col {
+  display: none;
+}
+
+@media (max-width: 1600px) {
+  .content {
+    width: 1200px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .content {
+    margin: 0 18px;
+    width: 980px;
+  }
+
+  .title {
+    width: 100%;
+  }
+
+  .table-row {
+    display: none;
+  }
+
+  .table-col {
+    display: block;
+    border: none;
+    margin-bottom: 10px;
+  }
+
+  tbody {
+    border: 1px solid rgb(205, 205, 205);
+  }
+
+  th,
+  td {
+    border: 2px solid #dddddd;
+  }
+
+  th {
+    width: 280px;
+  }
+
+  td {
+    width: 700px;
+  }
+
+  tr {
+    border: none;
+  }
+}
+
+@media (max-width: 550px) {
+
+  .title h1 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .title h3 {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  th,
+  td {
+    font-size: 14px;
+  }
+
+  .btn-delete {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+}

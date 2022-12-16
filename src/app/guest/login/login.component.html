@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="logo">
+    <img routerLink="/" src="assets/logo/electro-room-red-small.png" alt="logo">
+  </div>
+
+  <div class="content">
+
+    <div class="header">
+      <h1>Salut!</h1>
+      <h3>Bine ai venit la Electro Room!</h3>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="login()">
+
+      <div class="input-container" [style]="emptyUsername" (keyup)="getUsername(username.value)">
+        <input type="text" name="username" [(ngModel)]="user.username" #username="ngModel" placeholder="utilizator">
+      </div>
+
+      <div class="input-container" [style]="emptyPassword" (keyup)="getPassword(password.value)">
+        <input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" placeholder="parola">
+      </div>
+
+      <div class="alert-container">
+        <div class="alert" *ngIf="message">{{message}}</div>
+      </div>
+
+      <button type="submit">LOGIN</button>
+
+    </form>
+
+    <div class="footer">
+      <a routerLink="/auth/register">Inregistrare!</a>
+    </div>
+
+  </div>
+</div>

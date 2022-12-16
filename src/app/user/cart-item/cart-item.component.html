@@ -1,0 +1,111 @@
+<table class="row">
+  <thead>
+    <tr>
+      <th colspan="6">Produse:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of order.items; index as ind">
+      <td>
+        {{ind+1}}
+      </td>
+      <td>
+        <img [src]="item.product.src1">
+      </td>
+      <td style="width: 60%;"><strong>{{item.product.description}}</strong></td>
+      <td>{{item.product.price}} Lei</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.price | number: '1.2-2'}} Lei</td>
+    </tr>
+
+    <tr>
+      <td colspan="4"></td>
+      <td>
+        <strong>
+          Subtotal:
+        </strong>
+      </td>
+      <td>
+        <strong>
+          {{order.subtotal}} Lei
+        </strong>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="4"></td>
+      <td>
+        <strong>
+          Delivery:
+        </strong>
+      </td>
+      <td>
+        <strong>
+          {{order.favoriteDelivery}} Lei
+        </strong>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="4"></td>
+      <td>
+        <strong>
+          TOTAL:
+        </strong>
+      </td>
+      <td>
+        <strong>
+          {{order.totalPrice | number: '1.2-2'}} Lei
+        </strong>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+<table class="column">
+
+  <thead>
+    <tr>
+      <th colspan="6">Produse:</th>
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let item of order.items; index as ind">
+    <tr class="index">
+      <td colspan="2"><strong>{{ind+1}}</strong></td>
+    </tr>
+    <tr>
+      <td><img [src]="item.product.src1"></td>
+      <td>{{item.product.description}}</td>
+    </tr>
+    <tr>
+      <td>{{item.quantity}} buc</td>
+      <td>{{item.price | number: '1.2-2'}} Lei</td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr class="footer">
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td><strong>Subtotal: </strong></td>
+      <td><strong>{{order.subtotal}} Lei</strong>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Delivery: </strong></td>
+      <td><strong>{{order.favoriteDelivery}} Lei</strong>
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>TOTAL: </strong></td>
+      <td><strong>{{order.totalPrice | number: '1.2-2'}} Lei</strong></td>
+    </tr>
+  </tfoot>
+
+</table>

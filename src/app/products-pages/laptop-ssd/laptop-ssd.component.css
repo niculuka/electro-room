@@ -1,0 +1,424 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* border: 2px solid black; */
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 1500px;
+    /* border: 2px solid black; */
+}
+
+/*  link  ------------------------------------------- */
+.link {
+    width: 100%;
+    box-sizing: border-box;
+    /* border: 2px solid rgb(2, 35, 250); */
+}
+
+.link h3 {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 16px 0 40px 4px;
+    color: red;
+    /* border: 2px solid red; */
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 50px;
+    /* border: 2px solid rgb(2, 35, 250); */
+}
+
+/*  filters -------------------------------------------- */
+.filters {
+    width: 290px;
+    height: 100%;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
+    /* border: 1px solid black; */
+}
+
+.available,
+.price,
+.brand,
+.category {
+    margin-bottom: 24px;
+}
+
+.filters h3 {
+    margin: 0 4px;
+    font-size: 16px;
+    line-height: 16px;
+    padding-top: 16px;
+    padding-left: 16px;
+}
+
+.filter-group {
+    margin: 6px 0;
+    padding-left: 16px;
+    /* border: 1px solid black; */
+}
+
+.filter-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: rgb(220, 20, 110);
+}
+
+.filter-group label {
+    font-size: 14px;
+}
+
+/* select --------------------------------------------- */
+.products {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    /* border: 2px solid green; */
+}
+
+.products-header {
+    margin-left: 12px;
+    margin-bottom: 12px;
+    padding: 16px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
+    /* border: 1px solid black; */
+}
+
+.products h1 {
+    font-size: 36px;
+    /* border: 1px solid black; */
+}
+
+.categorySelect {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.categorySelect label {
+    font-size: 14px;
+}
+
+.categorySelect select {
+    font-size: 14px;
+    margin-left: 10px;
+    background: white;
+    width: 160px;
+    height: 30px;
+}
+
+/* cards ---------------------------------------------- */
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* border: 1px solid black; */
+}
+
+.card {
+    position: relative;
+    width: 302px;
+    margin: 0 0 12px 12px;
+    padding: 14px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    text-align: center;
+    background: white;
+    box-sizing: border-box;
+    /* border: 1px solid black;*/
+}
+
+.card:hover {
+    box-shadow: 0 18px 26px 0 rgba(0, 0, 0, 0.564);
+}
+
+.card mat-icon {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    /* border: 2px solid black; */
+}
+
+.card mat-icon:hover {
+    color: red;
+    font-size: 26px;
+}
+
+img {
+    width: 100%;
+}
+
+.card h4 {
+    font-size: 15px;
+    line-height: 20px;
+    height: 60px;
+    text-align: left;
+    overflow-y: hidden;
+    /* border: 1px solid black; */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.avail {
+    font-size: 14px;
+    line-height: 14px;
+    text-align: left;
+}
+
+.avail.stock {
+    color: rgb(0, 184, 0);
+}
+
+.avail.deposit {
+    color: grey;
+}
+
+.val {
+    color: rgb(223, 33, 119);
+    font-size: 24px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.card button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(223, 33, 119);
+}
+
+.card button:hover {
+    background: rgb(182, 27, 97);
+}
+
+@media(max-width: 1600px) {
+    .column {
+        width: 1200px;
+    }
+
+    .filters {
+        width: 286px;
+    }
+
+    .card {
+        width: 230px;
+    }
+
+    .card h4 {
+        font-size: 14px;
+        line-height: 18px;
+        height: 56px;
+    }
+
+    .avail {
+        font-size: 13px;
+        line-height: 13px;
+    }
+
+    .val {
+        font-size: 22px;
+        margin: 14px 0;
+    }
+}
+
+@media(max-width: 1280px) {
+    .column {
+        width: 980px;
+    }
+
+    .filters {
+        width: 288px;
+    }
+
+    .card {
+        width: 240px;
+    }
+
+    .card h4 {
+        font-size: 14px;
+        line-height: 18px;
+        height: 56px;
+    }
+}
+
+@media(max-width: 1040px) {
+    .column {
+        width: 740px;
+    }
+
+    .row {
+        margin: 0;
+    }
+
+    .filters {
+        width: 280px;
+    }
+
+    .filters h3 {
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .filter-group label {
+        font-size: 13px;
+    }
+
+    .filter-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
+
+    .products h1 {
+        font-size: 30px;
+    }
+
+    .categorySelect label {
+        font-size: 13px;
+        line-height: 13px;
+    }
+    
+    .categorySelect select {
+        font-size: 13px;
+    }
+
+    .card {
+        width: 256px;
+    }
+
+    .card h4 {
+        font-size: 14px;
+        line-height: 18px;
+        height: 56px;
+    }
+
+    .avail {
+        font-size: 13px;
+        line-height: 13px;
+    }
+
+    .val {
+        font-size: 22px;
+        margin: 14px 0;
+    }
+
+    .card button {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 760px) {
+    .column {
+        width: 440px;
+    }
+
+    .products h1 {
+        font-size: 24px;
+    }
+}
+
+@media(max-width: 550px) {
+    .column {
+        width: 370px;
+    }
+
+    .filters {
+        width: 116px;
+    }
+
+    .filters h3 {
+        margin: 4px 0 4px 2px;
+        font-size: 13px;
+        line-height: 13px;
+        padding-top: 2px;
+        padding-left: 2px;
+    }
+
+    .filter-group {
+        margin: 2px 0;
+        padding-left: 2px;
+    }
+
+    .filter-group label {
+        font-size: 12px;
+    }
+
+    .filter-group input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+    }
+
+    .products {
+        width: 234px;
+    }
+
+    .products h1 {
+        font-size: 22px;
+    }
+
+    .categorySelect label {
+        font-size: 12px;
+        line-height: 12px;
+    }
+    
+    .categorySelect select {
+        font-size: 12px;
+    }
+
+    .card {
+        width: 234px;
+    }
+
+    .card h4 {
+        font-size: 12px;
+        line-height: 14px;
+        height: 44px;
+    }
+
+    .avail {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .val {
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    .card button {
+        font-size: 12px;
+        padding: 6px;
+    }
+}

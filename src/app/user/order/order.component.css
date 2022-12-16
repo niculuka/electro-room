@@ -1,0 +1,255 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* margin: 10px; */
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 1500px;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.title,
+.order,
+.payment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.title {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.title h1 {
+  font-size: 24px;
+}
+
+.payment h3 {
+  font-size: 24px;
+  margin: 16px;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.title a {
+  color: rgb(247, 153, 31);
+  text-decoration: none;
+}
+
+.title a:hover {
+  color: rgb(247, 153, 31);
+  text-decoration: underline;
+}
+
+.title span {
+  margin-top: 16px;
+}
+
+.line h3 {
+  margin: 0;
+  margin-right: 10px;
+  /* border: 1px solid black; */
+}
+
+.line label {
+  font-size: 16px;
+  margin: 0;
+  /* border: 1px solid black; */
+}
+
+
+/* ------------------------------------------------------------------ */
+.bank {
+  max-width: 100%;
+}
+
+.buttons-container {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.money {
+  width: 100%;
+  font-size: 18px;
+  /* border: 1px solid grey; */
+}
+
+.radio {
+  padding: 6px;
+  border-top: 1px solid grey;
+}
+
+.radio input {
+  margin: 10px 16px;
+}
+
+.bank {
+  margin-left: 34px;
+}
+
+.conditions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.conditions-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.conditions input {
+  margin: 10px;
+}
+
+.conditions a {
+  color: rgb(223, 33, 119);
+  font-size: 18px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.buttons {
+  margin: 32px;
+  width: 300px;
+}
+
+button {
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  font-size: 22px;
+  padding: 16px;
+  font-weight: 600;  
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: rgb(79, 190, 4);
+}
+
+button:hover {
+  color: black;
+  box-shadow: 1px 1px 4px;
+}
+
+@media (max-width: 1600px) {
+  .content {
+    width: 1200px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .content {
+    width: 980px;
+  }
+}
+
+@media (max-width: 1040px) {
+  .content {
+    width: 100%;
+    margin: 16px;
+  }
+
+  .title h1 {
+    font-size: 22px;
+  }
+
+  .payment h3 {
+    font-size: 20px;
+  }
+
+  .radio label {
+    font-size: 16px;
+  }
+
+  .conditions label {
+    font-size: 16px;
+  }
+
+  .conditions a {
+    font-size: 16px;
+  }
+
+  .buttons {
+    margin: 24px;
+    width: 250px;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 550px) {
+  .title h1 {
+    font-size: 20px;
+  }
+
+  .line h3 {
+    font-size: 14px;
+  }
+  
+  .line label {
+    font-size: 14px;
+  }
+
+  .payment h3 {
+    font-size: 18px;
+  }
+
+  .radio label {
+    font-size: 14px;
+  }
+
+  .conditions label {
+    font-size: 14px;
+  }
+
+  .conditions a {
+    font-size: 14px;
+  }
+
+  .error {
+    font-size: 12px;
+  }
+}

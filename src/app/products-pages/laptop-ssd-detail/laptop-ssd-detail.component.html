@@ -1,0 +1,101 @@
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container">
+    <div class="column">
+
+        <div class="product">
+
+            <div class="title">
+                <h1>{{laptopSsd.description}}</h1>
+            </div>
+
+            <div class="row">
+                <div class="slider">
+                    <span><strong>electro-ssd</strong></span>
+                    <div class="slide" [style]="slide">
+                        <img [src]="laptopSsd.src1" [alt]="laptopSsd.src1">
+                        <img [src]="laptopSsd.src2" [alt]="laptopSsd.src2">
+                        <img [src]="laptopSsd.src3" [alt]="laptopSsd.src3">
+                        <img [src]="laptopSsd.src4" [alt]="laptopSsd.src4">
+                    </div>
+                    <div class="small-images">
+                        <a (click)="slide1()">
+                            <img [src]="laptopSsd.src1" [alt]="laptopSsd.src1">
+                        </a>
+                        <a (click)="slide2()">
+                            <img [src]="laptopSsd.src2" [alt]="laptopSsd.src2">
+                        </a>
+                        <a (click)="slide3()">
+                            <img [src]="laptopSsd.src3" [alt]="laptopSsd.src3">
+                        </a>
+                        <a (click)="slide4()">
+                            <img [src]="laptopSsd.src4" [alt]="laptopSsd.src4">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="order">
+                    <h1><strong>{{laptopSsd.price}} Lei</strong></h1>
+                    <p class="avail tax">Include taxa verde.</p>
+                    <p class="avail stock" *ngIf="laptopSsd.available==='STOCK'">- in stoc</p>
+                    <p class="avail deposit" *ngIf="laptopSsd.available==='DEPOSIT'">- in depozitul central</p>
+
+                    <p class="avail guaranty">
+                        <mat-icon> star_border</mat-icon>
+                        Garantie comerciala (persoane juridice): 24 luni.
+                    </p>
+                    <p class="avail guaranty">
+                        <mat-icon> star_border</mat-icon>
+                        Garantie de conformitate (persoane fizice): 24 luni.
+                    </p>
+                    <button (click)="addToCart()">Adauga in cos</button>
+                </div>
+
+                <div class="loan">
+                    <h1><strong>Finantare:</strong></h1>
+                    <div>
+                        <strong>PROMO: </strong>
+                        <p>Ai dobanda de la 1% / luna prin CREDIT ONLINE incepand cu 100 lei/luna.</p>
+                    </div>
+
+                    <a routerLink="/card-electro"><strong>Card Electro: </strong></a>
+                    <p> - deschiderea coletului la livrare</p>
+                    <p> - 14 zile drept de retur</p>
+                    <p> - garantie inclusa</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =================================================================================== DETAILS -->
+        <div class="details">
+
+            <input type="radio" name="box" id="box1" checked="checked">
+            <label for="box1">Descriere</label>
+            <div class="box">
+                <h1>Descriere</h1>
+            </div>
+
+            <input type="radio" name="box" id="box2">
+            <label for="box2">Specificatii</label>
+            <div class="box">
+                <h1>Specificatii</h1>
+            </div>
+
+            <input type="radio" name="box" id="box3">
+            <label for="box3">Recenzii</label>
+            <div class="box">
+                <h1>Recenzii</h1>
+            </div>
+
+            <input type="radio" name="box" id="box4">
+            <label for="box4">Intrebari</label>
+            <div class="box">
+                <h1>Intrebari</h1>
+            </div>
+
+        </div>
+    </div>

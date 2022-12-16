@@ -1,0 +1,23 @@
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container">
+    <div class="row">
+
+        <div class="card" *ngFor="let store of stores">
+
+            <h1><strong>{{store.name}}</strong></h1>
+            <p>{{store.address}}</p>
+
+            <h3><strong>{{store.day1}}</strong> {{store.hour1}}</h3>
+
+            <h3><strong>{{store.day2}}</strong> {{store.hour2}}</h3>
+
+            <h3><strong>{{store.day3}}</strong> {{store.hour3}}</h3>
+
+            <button (click)="noRoute()">Vezi detalii!</button>
+        </div>
+
+    </div>
+</div>
