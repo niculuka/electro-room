@@ -36,7 +36,7 @@
             <strong>{{cartItem.product.description}}</strong>
           </td>
           <td>
-            <select #quantitySelect [value]="cartItem.quantity"
+            <select #quantitySelect name="quantity" [ngModel]="cartItem.quantity"
               (change)="changeQuantity(cartItem, quantitySelect.value)">
               <option>1</option>
               <option>2</option>
@@ -99,7 +99,7 @@
         <tr>
           <td><strong>Cantitate</strong></td>
           <td>
-            <select #quantitySelect [value]="cartItem.quantity"
+            <select #quantitySelect name="quantity" [ngModel]="cartItem.quantity"
               (change)="changeQuantity(cartItem, quantitySelect.value)">
               <option>1</option>
               <option>2</option>

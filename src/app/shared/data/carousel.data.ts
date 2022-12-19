@@ -10,9 +10,9 @@ export class Carousel {
 export const CAROUSEL: Carousel[] = [
     {
         id: 0,
-        src: "assets/carousel/ssds.png",
-        alt: "ssdss.png",
-        link: "/laptop-auxs/ssds",        
+        src: "assets/carousel/stock_busters.png",
+        alt: "laptops.png",
+        link: "/laptops",        
         isChecked: true,
         slide: "left: 0",
     },
@@ -26,9 +26,9 @@ export const CAROUSEL: Carousel[] = [
     },
     {
         id: 2,
-        src: "assets/carousel/laptops.png",
-        alt: "laptops.png",
-        link: "/laptops",
+        src: "assets/carousel/ssds.png",
+        alt: "ssdss.png",
+        link: "/laptop-auxs/ssds",        
         isChecked: false,
         slide: "left: -200%",
     },
