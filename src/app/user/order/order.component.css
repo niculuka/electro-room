@@ -19,7 +19,8 @@
 
 .title,
 .order,
-.payment {
+.payment,
+.billing {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
