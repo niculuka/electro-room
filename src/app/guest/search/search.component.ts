@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
@@ -18,6 +18,9 @@ export class SearchComponent implements OnInit {
 
   laptops_sorting: string = "bestSold";
   link: string = "";
+
+  searchResult: string = "";
+  noResult: string = "Nu s-a gasit nimic!";
 
   // L A P T O P S - Vars ---------------------------------------------------
   protected products: Array<Product> = [];
@@ -70,6 +73,7 @@ export class SearchComponent implements OnInit {
     private cartService: CartService,
     private router: Router,
     private toastrService: ToastrService,
+    private activatedRoute: ActivatedRoute,
   ) {
 
   }
@@ -82,6 +86,15 @@ export class SearchComponent implements OnInit {
       this.filters_available();
       this.filters_price();
     });
+
+    this.activatedRoute.params.subscribe((params) => {
+      this.searchResult = params['searchTerm'];
+      // console.log(this.searchResult)
+    });       
+  }
+
+  isProductsEmpty() {    
+    return this.products.length === 0;
   }
 
   goToProduct(product: Product) {

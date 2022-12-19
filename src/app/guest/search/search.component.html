@@ -5,7 +5,12 @@
 <div class="container">
     <div class="column">
 
-        <div class="row">
+        <div class="noResult" *ngIf="isProductsEmpty()">
+            <h1>{{noResult}}</h1>
+        </div>
+
+        <div class="row" *ngIf="!isProductsEmpty()">            
+
             <!-- f i l t e r s ==================================================================================== -->
             <div class="filters">
                 <!-- available filter ----------------------------------------------------------- -->
@@ -59,7 +64,7 @@
             <div class="products">
 
                 <div class="products-header">
-                    <h1>Rezultate cautare: </h1>
+                    <h1>Rezultate cautare: {{searchResult}}</h1>
 
                     <div class="categorySelect">
                         <label for="categorySelect">Sorteaza dupa: </label>

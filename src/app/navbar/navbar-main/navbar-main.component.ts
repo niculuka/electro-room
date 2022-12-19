@@ -107,15 +107,15 @@ export class NavbarMainComponent implements OnInit {
     }
   }
 
+  isEmpty() {
+    return this.cart.items.length === 0;
+  }
+
   getProduct(term: string): void {
     if (term) {
       this.router.navigate(["/search/" + term]);
     };
-  }
-
-  isEmpty() {
-    return this.cart.items.length === 0;
-  }
+  }  
 
   getProductLinkName(cartItem: CartItem) {
     if (cartItem.product.category.startsWith("LAPTOP")) {
