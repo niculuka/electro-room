@@ -23,7 +23,7 @@ thead th {
 .row tbody th,
 .row tbody td {
   font-size: 18px;
-  padding: 0 30px;
+  padding: 0 16px;
   text-align: left;
 }
 
@@ -36,13 +36,19 @@ img {
   height: 46px;
   margin: 4px;
   border-radius: 4px;
+  /* border: 1px solid rgb(255, 0, 0); */
 }
 
 .column {
   display: none;
   margin: 0;
   padding: 0;
-  /* border: 1px solid grey; */
+  /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.column tbody {
+  width: 100%;
+  /* border: 1px solid rgb(255, 0, 0); */
 }
 
 .column tr {
@@ -57,8 +63,17 @@ img {
 
 .column tbody th,
 .column tbody td {
-  padding: 0 16px;
-  font-size: 16px;
+  padding: 0 10px;
+  font-size: 16px;  
+  border: 1px solid rgb(206, 206, 206);
+}
+
+.column tbody th {
+  text-align: center;
+}
+
+.column tbody td {
+  width: 100%;
   text-align: left;
 }
 
@@ -69,22 +84,16 @@ img {
 
 .column tfoot th,
 .column tfoot td {
-  padding: 0 18px;
+  padding: 0 16px;
   font-size: 16px;
 }
 
 @media (max-width: 1280px) {
-  .row tbody th,
-  .row tbody td {
-    padding: 0 22px;
-  }
+  
 }
 
 @media (max-width: 1040px) {
-  .row tbody th,
-  .row tbody td {
-    padding: 0 14px;
-  }
+  
 }
 
 @media (max-width: 760px) {
@@ -94,6 +103,12 @@ img {
 
   thead th {
     font-size: 22px;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    margin: 2px;
   }
 
   .column {
@@ -114,6 +129,11 @@ img {
   .column tbody th,
   .column tbody td {
     font-size: 13px;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
   }
 
   .column tfoot th,

@@ -94,8 +94,13 @@ select {
   background: white;
 }
 
+.column tbody th,
 .column tbody td {
   border: 1px solid rgb(195, 195, 195);
+}
+
+.column tbody td {
+  width: 100%;
 }
 
 .checkout {

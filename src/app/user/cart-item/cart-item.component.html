@@ -64,8 +64,8 @@
 
 </table>
 
-<table class="column">
 
+<table class="column">
   <thead>
     <tr>
       <th colspan="6">Produse:</th>
@@ -77,12 +77,12 @@
       <td colspan="2"><strong>{{ind+1}}</strong></td>
     </tr>
     <tr>
-      <td><img [src]="item.product.src1"></td>
+      <th><img [src]="item.product.src1"></th>
       <td>{{item.product.description}}</td>
     </tr>
     <tr>
-      <td>{{item.quantity}} buc</td>
-      <td>{{item.price | number: '1.2-2'}} Lei</td>
+      <th>{{item.quantity}} buc</th>
+      <td><strong>{{item.price | number: '1.2-2'}} Lei</strong></td>
     </tr>
   </tbody>
 
@@ -107,5 +107,4 @@
       <td><strong>{{order.totalPrice | number: '1.2-2'}} Lei</strong></td>
     </tr>
   </tfoot>
-
 </table>

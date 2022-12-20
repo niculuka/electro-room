@@ -76,12 +76,10 @@
 
       <tbody *ngFor="let cartItem of cart.items; index as ind">
         <tr class="index">
-          <td colspan="2">
-            <strong>{{ind+1}}</strong>
-          </td>
+          <th colspan="2">{{ind+1}}</th>
         </tr>
         <tr>
-          <td><strong>Imagine</strong></td>
+          <th>Imagine</th>
           <td>
             <a (click)="getProductLinkName(cartItem)">
               <img [src]="cartItem.product.src1" [alt]="cartItem.product.name">
@@ -89,15 +87,15 @@
           </td>
         </tr>
         <tr>
-          <td><strong>Nume</strong></td>
+          <th>Nume</th>
           <td><strong>{{cartItem.product.name}}</strong></td>
         </tr>
         <tr>
-          <td><strong>Descriere</strong></td>
+          <th>Descriere</th>
           <td>{{cartItem.product.description}}</td>
         </tr>
         <tr>
-          <td><strong>Cantitate</strong></td>
+          <th>Cantitate</th>
           <td>
             <select #quantitySelect name="quantity" [ngModel]="cartItem.quantity"
               (change)="changeQuantity(cartItem, quantitySelect.value)">
@@ -110,13 +108,13 @@
           </td>
         </tr>
         <tr>
-          <td><strong>Pret</strong></td>
+          <th>Pret</th>
           <td>
             {{cartItem.price | number: '1.2-2'}} Lei
           </td>
         </tr>
         <tr>
-          <td><strong>Sterge</strong></td>
+          <th>Sterge</th>
           <td>
             <button class="btn-remove" (click)="removeFromCart(cartItem)">
               Sterge
