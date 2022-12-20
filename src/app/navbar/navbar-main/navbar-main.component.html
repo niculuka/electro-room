@@ -119,7 +119,7 @@
         </a>
         <div class="drop-menu">
           <a *ngIf="isEmpty()">Cosul este gol</a>
-          <table class="item" *ngIf="!isEmpty()">
+          <table *ngIf="!isEmpty()">
             <tr *ngFor="let item of cart.items">
               <td>
                 <img src={{item.product.src1}} alt={{item.product.alt}} (click)="getProductLinkName(item)">

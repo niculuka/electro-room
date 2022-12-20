@@ -335,16 +335,16 @@ mat-icon {
   display: block;
 }
 
-.item {
+table {
   border-collapse: collapse;
-  width: 380px;
+  width: 420px;
 }
 
-.item tr {
+table tr {
   border-bottom: 1px solid lightgray;
 }
 
-.item tr:hover {
+.table tr:hover {
   background: rgb(232, 232, 232);
 }
 
@@ -358,7 +358,7 @@ td {
   padding: 6px;
 }
 
-.item span {
+table span {
   cursor: pointer;
 }
 
@@ -398,7 +398,7 @@ td {
   font-weight: 600;
 }
 
-.item mat-icon {
+table mat-icon {
   color: gray;
   height: 100%;
   /* border: 1px solid black; */
