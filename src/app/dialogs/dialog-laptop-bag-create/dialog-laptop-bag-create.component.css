@@ -160,6 +160,7 @@ form {
   
   .btn-create {
     color: white;
+    cursor: pointer;
     font-size: 20px;
     width: 100%;
     margin: 30px 0;
