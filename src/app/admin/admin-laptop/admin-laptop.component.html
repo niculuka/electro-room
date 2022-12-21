@@ -43,9 +43,9 @@
             </td>
             <td>{{laptop.description}}</td> 
             <td>{{laptop.available}}</td>
-            <td>{{laptop.category}}</td>            
+            <td><strong>{{laptop.category.substring(7)}}</strong></td>            
             <td>{{laptop.alert}}</td>
-            <td><strong>{{laptop.price}} Lei</strong></td>
+            <td><strong>{{laptop.price}}.Lei</strong></td>
             <td>{{laptop.createTime}}</td>
             <td>
               <button class="btn-edit" (click)="updateLaptopDialog(laptop)">Edit</button>
@@ -88,7 +88,7 @@
           </tr>
           <tr>
             <th>Category</th>
-            <td>{{laptop.category}}</td>
+            <td><strong>{{laptop.category.substring(7)}}</strong></td>
           </tr>          
           <tr>
             <th>Alert</th>

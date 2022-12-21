@@ -50,7 +50,7 @@ export enum CATEGORY {
     LAPTOP_HOME = "LAPTOP_HOME",
     LAPTOP_L2IN1 = "LAPTOP_L2IN1",
 
-    BAG = "BAG",
+    BAG_BAG = "BAG_BAG",
     BAG_SLEEVE = "BAG_SLEEVE",
     BAG_BACKPACK = "BAG_BACKPACK",       
 

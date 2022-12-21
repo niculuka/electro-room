@@ -541,7 +541,7 @@ export class LaptopBagComponent implements OnInit {
     this.category = this.brand;
     this.bag_out = new Array<LaptopBag>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.BAG) {
+      if (res.category == CATEGORY.BAG_BAG) {
         this.bag_out.push(res);
       }
     });

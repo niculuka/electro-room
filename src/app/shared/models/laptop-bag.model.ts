@@ -23,7 +23,7 @@ export class LaptopBag {
         linkName: string = "",
         description: string = "",
         brand: CATEGORY = CATEGORY.HAMA,        
-        category: CATEGORY = CATEGORY.BAG,
+        category: CATEGORY = CATEGORY.BAG_BAG,
         src1: string = "",
         src2: string = "",
         src3: string = "",

@@ -42,8 +42,8 @@
             </td>            
             <td>{{bag.description}}</td>
             <td>{{bag.available}}</td>
-            <td>{{bag.category}}</td>
-            <td><strong>{{bag.price}} Lei</strong></td>
+            <td>{{bag.category.substring(4)}}</td>
+            <td><strong>{{bag.price}}.Lei</strong></td>
             <td>{{bag.createTime}}</td>
             <td>
               <button class="btn-edit" (click)="updateBagDialog(bag)">Edit</button>
@@ -86,7 +86,7 @@
           </tr>
           <tr>
             <th>Category</th>
-            <td>{{bag.category}}</td>
+            <td>{{bag.category.substring(4)}}</td>
           </tr>
           <tr>
             <th>Price</th>
