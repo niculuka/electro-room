@@ -43,9 +43,9 @@
             </td>            
             <td>{{charger.description}}</td>
             <td>{{charger.available}}</td>
-            <td>{{charger.category}}</td>
+            <td><strong>{{charger.category.substring(8)}}</strong></td>
             <td>{{charger.power}}</td>
-            <td><strong>{{charger.price}} Lei</strong></td>
+            <td><strong>{{charger.price}}.Lei</strong></td>
             <td>{{charger.createTime}}</td>
             <td>
               <button class="btn-edit" (click)="noAction()">Edit</button>
@@ -88,7 +88,7 @@
           </tr>
           <tr>
             <th>Category</th>
-            <td>{{charger.category}}</td>
+            <td><strong>{{charger.category.substring(8)}}</strong></td>
           </tr>
           <tr>
             <th>Power</th>
