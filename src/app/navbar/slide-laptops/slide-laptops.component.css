@@ -126,6 +126,9 @@
 
 .previous,
 .next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: white;
     border: none;
     cursor: pointer; 
@@ -136,9 +139,11 @@
     /* border: 2px solid red; */
 }
 
-/* .svg {
-    border: 2px solid red;
-} */
+.svg {
+    width: 22px;
+    height: 22px;
+    /* border: 2px solid red; */
+}
 
 .dot {
     display: inline-block;
@@ -210,10 +215,57 @@ input {
 
 @media (max-width: 560px) {
     .content {
-        width: 306px;
+        width: 288px;
     }
 
     #slider {
         width: 242px;
+    }
+
+    .btn-container {
+        width: 22px;
+        height: 60px;
+    }
+
+    .svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+    .content {
+        width: 256px;
+    }
+
+    #slider {
+        width: 212px;
+    }
+
+    .card {
+        width: 200px;
+        height: 300px;
+    } 
+
+    .card span {
+        left: 0;
+        top: 58%;    
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .card > a > h3 {
+        font-size: 14px;
+        line-height: 18px;
+        height: 36px;
+        margin: 14px 4px;
+        /* border: 2px solid red; */
+    }
+    
+    .card > a > p {
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(220, 20, 110);
+        margin: 4px;
     }
 }

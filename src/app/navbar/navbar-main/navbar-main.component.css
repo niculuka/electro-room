@@ -209,14 +209,19 @@
 /* ==================================================================== */
 /* ==================================================================== */
 
+.logo {
+  margin-right: 14px;
+}
 
 .logo a {
-  padding: 0 14px 0 0;
-  /* border: 2px solid rgb(3, 119, 253); */
+  display: flex;
+  align-items: center;
+  /* border: 2px solid rgb(0, 0, 0); */
 }
 
 .logo img {
   width: 210px;
+  margin: auto;
   /* border: 2px solid rgb(3, 119, 253); */
 }
 
@@ -481,10 +486,6 @@ table mat-icon {
     display: block;
   }
 
-  .logo a {
-    padding: 0 14px;
-  }
-
   .logo img {
     width: 160px;
   }
@@ -605,8 +606,8 @@ table mat-icon {
 }
 
 @media (max-width: 380px) {
-  .logo {
-    display: none;
+  .logo img {
+    width: 100px;
   }
 
   table {
