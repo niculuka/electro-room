@@ -96,7 +96,7 @@
     </div>
 
     <div class="form-group">
-        <label for="price">Pret</label>
+        <label for="price">Price</label>
         <input type="number" name="price" [(ngModel)]="laptop.price" #price="ngModel" min="0.1" max="1000000" required>
         <div class="alert-container">
             <div class="alert" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
