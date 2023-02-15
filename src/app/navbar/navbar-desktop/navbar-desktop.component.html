@@ -31,11 +31,15 @@
                   <div class="d-dropdown-menu">
                     <div class="col">
                       <div class="departament" *ngFor="let title of departament.titles">
-                        <a class="title" routerLink={{title.link}} (click)="closeFromSubtitles()">{{title.name}}</a>
+                        <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.isReady}"
+                          (click)="closeFromSubtitles()">{{title.name}}
+                        </a>
                         <ul *ngFor="let subtitle of title.subtitles">
                           <li>
-                            <a class="subtitle" routerLink={{subtitle.link}}
-                              (click)="closeFromSubtitles()">{{subtitle.name}}</a>
+                            <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.isReady}"
+                              (click)="closeFromSubtitles()">
+                              {{subtitle.name}}
+                            </a>
                           </li>
                         </ul>
                       </div>

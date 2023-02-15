@@ -248,7 +248,7 @@ button span {
   padding: 8px 14px;
   font-size: 14px;
   text-decoration: none;
-  color: rgb(58, 58, 58);
+  /* color: #747474; */
   line-height: 14px;
   font-weight: bold;
   /* border: 1px solid red; */
@@ -257,7 +257,7 @@ button span {
 .title:hover {
   cursor: pointer;
   text-decoration: underline;
-  color: rgb(0, 50, 157);
+  /* color: rgb(0, 50, 157); */
 }
 
 .subtitle {
@@ -266,7 +266,7 @@ button span {
   padding: 4px 14px;
   font-size: 14px;
   line-height: 14px;
-  color: rgb(79, 79, 79);
+  /* color: #9c9c9c; */
   text-decoration: none;
   /* border: 1px solid red; */
 }

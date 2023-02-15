@@ -30,14 +30,18 @@
                 <div class="dropdown-menu" *ngFor="let title of departament.titles">
                   <div class="departament" *ngIf="departament.showTitle">
 
-                    <a class="title" (click)="openCloseTitle(title)">{{title.name}}</a>
+                    <a class="title" [ngStyle]="{'color': title.isReady}" (click)="openCloseTitle(title)">
+                      {{title.name}}
+                        <img class="chevron-icon" src="{{departament.chevron}}" alt="chevron-right">
+                    </a>
                     <a class="subtitle" *ngIf="title.showSubtitle" routerLink={{title.link}}
+                      [ngStyle]="{'color': title.isReady}"
                       (click)="closeFromSubtitles()"><strong>{{title.name}}</strong>
                     </a>
 
                     <ul *ngFor="let subtitle of title.subtitles">
                       <li *ngIf="title.showSubtitle">
-                        <a class="subtitle" routerLink={{subtitle.link}}
+                        <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.isReady}"
                           (click)="closeFromSubtitles()">{{subtitle.name}}
                         </a>
                       </li>

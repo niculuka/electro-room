@@ -92,6 +92,7 @@ import { LaptopChargerComponent } from './products-pages/laptop-charger/laptop-c
 import { LaptopChargerDetailComponent } from './products-pages/laptop-charger-detail/laptop-charger-detail.component';
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 import { SearchComponent } from './guest/search/search.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -151,7 +152,7 @@ import { SearchComponent } from './guest/search/search.component';
     AdminDemoBagComponent,
     AdminDemoChargerComponent,
     AdminDemoSsdComponent,
-    AdminDemoUserComponent,  
+    AdminDemoUserComponent,
 
     LaptopComponent,
     LaptopCategoryComponent,
@@ -164,7 +165,7 @@ import { SearchComponent } from './guest/search/search.component';
     LaptopSsdComponent,
     LaptopSsdDetailComponent,
     UnderConstructionComponent,
-    SearchComponent,      
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -189,7 +190,9 @@ import { SearchComponent } from './guest/search/search.component';
     MatIconModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
