@@ -77,6 +77,7 @@ import { AdminDemoLaptopComponent } from './admin-demo/admin-demo-laptop/admin-d
 import { AdminDemoBagComponent } from './admin-demo/admin-demo-bag/admin-demo-bag.component';
 import { AdminDemoChargerComponent } from './admin-demo/admin-demo-charger/admin-demo-charger.component';
 import { AdminDemoSsdComponent } from './admin-demo/admin-demo-ssd/admin-demo-ssd.component';
+import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
@@ -152,6 +153,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     AdminDemoBagComponent,
     AdminDemoChargerComponent,
     AdminDemoSsdComponent,
+    AdminDemoOrderComponent,
     AdminDemoUserComponent,
 
     LaptopComponent,
@@ -165,7 +167,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     LaptopSsdComponent,
     LaptopSsdDetailComponent,
     UnderConstructionComponent,
-    SearchComponent,
+    SearchComponent,    
   ],
   imports: [
     BrowserModule,

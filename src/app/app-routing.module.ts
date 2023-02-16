@@ -36,6 +36,7 @@ import { AdminDemoLaptopComponent } from './admin-demo/admin-demo-laptop/admin-d
 import { AdminDemoBagComponent } from './admin-demo/admin-demo-bag/admin-demo-bag.component';
 import { AdminDemoChargerComponent } from './admin-demo/admin-demo-charger/admin-demo-charger.component';
 import { AdminDemoSsdComponent } from './admin-demo/admin-demo-ssd/admin-demo-ssd.component';
+import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
@@ -88,17 +89,18 @@ const routes: Routes = [
   { path: "admin/laptop-chargers", component: AdminLaptopChargerComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/laptop-ssds", component: AdminLaptopSsdComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },  
 
-  { path: "admin/orders", component: AdminOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/items", component: AdminItemComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/electro-orders", component: AdminOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/electro-items", component: AdminItemComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/users", component: AdminUserComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/tokens", component: AdminTokenComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
 
   // admin - D E M O
-  { path: "admin-demo/laptops", component: AdminDemoLaptopComponent },
-  { path: "admin-demo/bags", component: AdminDemoBagComponent },
-  { path: "admin-demo/chargers", component: AdminDemoChargerComponent },
-  { path: "admin-demo/ssds", component: AdminDemoSsdComponent },
-  { path: "admin-demo/users", component: AdminDemoUserComponent },
+  { path: "admin/demo/laptops", component: AdminDemoLaptopComponent },
+  { path: "admin/demo/bags", component: AdminDemoBagComponent },
+  { path: "admin/demo/chargers", component: AdminDemoChargerComponent },
+  { path: "admin/demo/ssds", component: AdminDemoSsdComponent },
+  { path: "admin/demo/electro-orders", component: AdminDemoOrderComponent },
+  { path: "admin/demo/users", component: AdminDemoUserComponent },
 
   // current user
   { path: "cart", component: CartComponent },

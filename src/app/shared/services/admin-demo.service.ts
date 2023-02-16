@@ -30,7 +30,11 @@ export class AdminDemoService {
         return this.http.get(API_URL + "/laptop-ssds");
     }
 
+    getAllDemoOrdersService(): Observable<any> {
+        return this.http.get(API_URL + "/admin/demo/electro-orders");
+    }
+
     getAllDemoUsersService(): Observable<any> {
-        return this.http.get(API_URL + "/admin/admin-demo/users");
+        return this.http.get(API_URL + "/admin/demo/users");
     }
 }
