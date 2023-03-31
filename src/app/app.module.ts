@@ -174,7 +174,7 @@ import { InfoBlockComponent } from './guest/info-block/info-block.component';
     LaptopSsdDetailComponent,
     UnderConstructionComponent,
     SearchComponent,
-    InfoBlockComponent,    
+    InfoBlockComponent,  
   ],
   imports: [
     BrowserModule,

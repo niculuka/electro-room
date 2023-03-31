@@ -40,6 +40,7 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
+import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet.component';
 import { LaptopComponent } from './products-pages/laptop/laptop.component';
 import { LaptopCategoryComponent } from './products-pages/laptop-category/laptop-category.component';
 import { LaptopDetailComponent } from './products-pages/laptop-detail/laptop-detail.component';
@@ -50,8 +51,6 @@ import { LaptopSsdComponent } from './products-pages/laptop-ssd/laptop-ssd.compo
 import { LaptopSsdDetailComponent } from './products-pages/laptop-ssd-detail/laptop-ssd-detail.component';
 import { LaptopChargerComponent } from './products-pages/laptop-charger/laptop-charger.component';
 import { LaptopChargerDetailComponent } from './products-pages/laptop-charger-detail/laptop-charger-detail.component';
-import { InfoBlockComponent } from './guest/info-block/info-block.component';
-import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet.component';
 
 
 const routes: Routes = [
@@ -59,7 +58,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   // { path: "**", component: HomeComponent },
 
-  { path: "test", component: InfoBlockComponent },
+  { path: "test", component: LaptopPhoneTabletComponent },
 
   { path: "search/:searchTerm", component: SearchComponent },
 

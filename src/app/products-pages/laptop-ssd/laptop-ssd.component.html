@@ -5,7 +5,9 @@
 <div class="container-ssd">
     <div class="column-ssd">
 
-        <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+        <app-ng-dynamic-breadcrumb [bgColor]="'#00000000'" [fontSize]="'16px'" [fontColor]="'#ff4196'"
+            [lastLinkColor]="'#000'" [symbol]="' / '">
+        </app-ng-dynamic-breadcrumb>
 
         <div class="row-ssd">
             <!-- f i l t e r s ==================================================================================== -->
@@ -59,12 +61,12 @@
                 <div class="brand">
                     <h3><strong>Brand</strong></h3>
                     <div class="filter-group" *ngIf="adata_out.length!==0">
-                        <input type="checkbox" id="adata" name="adata" [(ngModel)]="adata_chk" (change)="filter_adata()">
+                        <input type="checkbox" id="adata" name="adata" [(ngModel)]="adata_chk"
+                            (change)="filter_adata()">
                         <label for="adata"> ADATA ({{adata_out.length}})</label>
                     </div>
                     <div class="filter-group" *ngIf="wd_out.length!==0">
-                        <input type="checkbox" id="wd" name="wd" [(ngModel)]="wd_chk"
-                            (change)="filter_wd()">
+                        <input type="checkbox" id="wd" name="wd" [(ngModel)]="wd_chk" (change)="filter_wd()">
                         <label for="wd"> WD ({{wd_out.length}})</label>
                     </div>
                     <div class="filter-group" *ngIf="sandisk_out.length!==0">
@@ -92,8 +94,7 @@
                         <label for="ssd"> SSD ({{ssd_out.length}})</label>
                     </div>
                     <div class="filter-group" *ngIf="hdd_out.length!==0">
-                        <input type="checkbox" id="hdd" name="hdd" [(ngModel)]="hdd_chk"
-                            (change)="filter_hdd()">
+                        <input type="checkbox" id="hdd" name="hdd" [(ngModel)]="hdd_chk" (change)="filter_hdd()">
                         <label for="hdd"> HDD ({{hdd_out.length}})</label>
                     </div>
                 </div>

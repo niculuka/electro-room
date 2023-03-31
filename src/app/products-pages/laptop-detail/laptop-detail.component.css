@@ -13,6 +13,13 @@
     /* border: 2px solid black; */
 }
 
+app-ng-dynamic-breadcrumb {
+    width: 100%;
+    margin-bottom: 12px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
 .product {
     box-sizing: border-box;
     background: white;
@@ -127,7 +134,7 @@
 
 .guaranty {
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
     align-items: center;
     color: rgb(104, 104, 104);
     /* border: 1px solid black; */
@@ -141,7 +148,7 @@
     /* border: 1px solid black; */
 }
 
-.guaranty p{
+.guaranty p {
     font-size: 14px;
     line-height: 14px;
     margin: 0;
@@ -324,6 +331,7 @@
         align-items: center;
         width: 100%;
     }
+
     .product {
         margin: 0 16px;
     }

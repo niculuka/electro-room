@@ -34,27 +34,27 @@ export const DEPARTAMENTS: Departament[] = [
                 name: "Laptopuri",
                 link: "/laptops-phones-tablets/laptops",             
                 showSubtitle: false,
-                isReady: "#029802",
+                isReady: "#df0265",
                 subtitles: [
                     {
                         name: "Gaming",
                         link: "/laptops-phones-tablets/laptops/gaming",
-                        isReady: "#07c937",
+                        isReady: "#ff4196",
                     },
                     {
                         name: "Business",
                         link: "/laptops-phones-tablets/laptops/business",
-                        isReady: "#07c937",
+                        isReady: "#ff4196",
                     },
                     {
                         name: "Ultraportabile",
                         link: "/laptops-phones-tablets/laptops/ultra",
-                        isReady: "#07c937",
+                        isReady: "#ff4196",
                     },                    
                     {
                         name: "Home",
                         link: "/laptops-phones-tablets/laptops/home",
-                        isReady:  "#07c937",
+                        isReady:  "#ff4196",
                     },
                 ]
             },
@@ -62,22 +62,22 @@ export const DEPARTAMENTS: Departament[] = [
                 name: "Accesorii Laptop",
                 link: "/laptops-phones-tablets/laptop-auxs",
                 showSubtitle: false,
-                isReady: "#029802",
+                isReady: "#df0265",
                 subtitles: [
                     {
                         name: "Genti laptop",
                         link: "/laptops-phones-tablets/laptop-auxs/bags",
-                        isReady: "#07c937",
+                        isReady: "#ff4196",
                     },
                     {
                         name: "Incarcatoare priza/auto",
                         link: "/laptops-phones-tablets/laptop-auxs/chargers",
-                        isReady: "#07c937",
+                        isReady: "#ff4196",
                     },
                     {
                         name: "SSD externe",
                         link: "/laptops-phones-tablets/laptop-auxs/ssds",
-                        isReady: "#07c937",
+                        isReady: "#ff4196",
                     },                    
                     {
                         name: "Baterii externe",

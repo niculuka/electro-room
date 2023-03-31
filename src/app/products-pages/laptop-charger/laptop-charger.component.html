@@ -5,7 +5,9 @@
 <div class="container-chg">
     <div class="column-chg">
 
-        <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+        <app-ng-dynamic-breadcrumb [bgColor]="'#00000000'" [fontSize]="'16px'" [fontColor]="'#ff4196'"
+            [lastLinkColor]="'#000'" [symbol]="' / '">
+        </app-ng-dynamic-breadcrumb>
 
         <div class="row-chg">
             <!-- f i l t e r s ==================================================================================== -->
@@ -37,7 +39,7 @@
                         <input type="checkbox" id="under200" name="under200" [(ngModel)]="under200_chk"
                             (change)="filter_under200()">
                         <label for="under200"> 100 - 200 ({{under200_out.length}})</label>
-                    </div>                   
+                    </div>
                     <div class="filter-group" *ngIf="over200_out.length!==0">
                         <input type="checkbox" id="over200" name="over200" [(ngModel)]="over200_chk"
                             (change)="filter_over200()">
@@ -68,12 +70,12 @@
                 <div class="category">
                     <h3><strong>Categorie</strong></h3>
                     <div class="filter-group" *ngIf="plugIn_out.length!==0">
-                        <input type="checkbox" id="plugIn" name="plugIn" [(ngModel)]="plugIn_chk" (change)="filter_plugIn()">
+                        <input type="checkbox" id="plugIn" name="plugIn" [(ngModel)]="plugIn_chk"
+                            (change)="filter_plugIn()">
                         <label for="plugIn"> Retea ({{plugIn_out.length}})</label>
                     </div>
                     <div class="filter-group" *ngIf="car_out.length!==0">
-                        <input type="checkbox" id="car" name="car" [(ngModel)]="car_chk"
-                            (change)="filter_car()">
+                        <input type="checkbox" id="car" name="car" [(ngModel)]="car_chk" (change)="filter_car()">
                         <label for="car"> Auto ({{car_out.length}})</label>
                     </div>
                 </div>

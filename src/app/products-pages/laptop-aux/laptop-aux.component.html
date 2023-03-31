@@ -4,22 +4,26 @@
 
 <div class="container-aux">
 
-    <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+    <div class="row-aux">
+        <app-ng-dynamic-breadcrumb [bgColor]="'#00000000'" [fontSize]="'16px'" [fontColor]="'#ff4196'"
+            [lastLinkColor]="'#000'" [symbol]="' / '">
+        </app-ng-dynamic-breadcrumb>
+    </div>
 
-    <div class="row-aux">       
+    <div class="row-aux">
 
         <div class="column-aux">
-            <div class="card"> 
+            <div class="card">
                 <a routerLink="/laptops-phones-tablets/laptop-auxs/bags">
                     <img src="assets/bags/bags.png" alt="bags.png" />
                     <h1>Genti si huse</h1>
-                </a>                
+                </a>
             </div>
             <div class="card">
                 <a routerLink="/laptops-phones-tablets/laptop-auxs/chargers">
                     <img src="assets/chargers/chargers.png" alt="chargers.png" />
                     <h1>Incarcatoare</h1>
-                </a>                
+                </a>
             </div>
         </div>
 
@@ -28,7 +32,7 @@
                 <a routerLink="/laptops-phones-tablets/laptop-auxs/ssds">
                     <img src="assets/ssds/ssds.png" alt="ssds.png" />
                     <h1>Solid State Drive (SSD)</h1>
-                </a>                
+                </a>
             </div>
         </div>
 
@@ -37,13 +41,13 @@
                 <a (click)="noRoute()">
                     <img src="assets/batteries/external_batteries.png" alt="external_batteries.png" />
                     <h1>Baterii externe</h1>
-                </a>                
+                </a>
             </div>
             <div class="card">
                 <a (click)="noRoute()">
                     <img src="assets/rams/rams.png" alt="rams.png" />
                     <h1>Memorii Ram</h1>
-                </a>                
+                </a>
             </div>
         </div>
 
