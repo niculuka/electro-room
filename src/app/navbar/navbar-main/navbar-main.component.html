@@ -1,20 +1,20 @@
-<div class="container">
+<div class="container-nav">
 
-  <div class="row1">
+  <div class="row1-nav">
 
     <!-- LEFT SIDE ====================================================================================== -->
     <ul>
       <!-- BURGER ------------------------------------------------------------------ -->
-      <li #txt class="burger">
+      <li #txt class="burger-nav">
         <label for="check" class="checkbtn" (click)="displayMobileMenu()">
           <mat-icon>{{isMobileMenuOpen ? "close": "menu" }}</mat-icon>
         </label>
 
         <!-- MEGA MENU ------------------------------------------------------------ -->
-        <div class="mega-menu" *ngIf="isMobileMenuOpen">
-          <div class="menu">
+        <div class="mega-menu-nav" *ngIf="isMobileMenuOpen">
+          <div class="menu-nav">
 
-            <ul class="dropdown">
+            <ul class="dropdown-nav">
               <li *ngFor="let departament of departaments;">
 
                 <a (click)="openCloseDepartament(departament)">
@@ -27,7 +27,7 @@
                   </span>
                 </a>
 
-                <div class="dropdown-menu" *ngFor="let title of departament.titles">
+                <div class="dropdown-menu-nav" *ngFor="let title of departament.titles">
                   <div class="departament" *ngIf="departament.showTitle">
 
                     <a class="title" [ngStyle]="{'color': title.isReady}" (click)="openCloseTitle(title)">
@@ -59,7 +59,7 @@
       </li>
 
       <!-- LOGO -------------------------------------------------------------------- -->
-      <li class="logo">
+      <li class="logo-nav">
         <a routerLink="/">
           <img src="assets/logo/electro-room-red-small.png" alt="logo">
         </a>
@@ -82,12 +82,12 @@
     <ul>
 
       <!-- ADMIN ------------------------------------------------------------------- -->
-      <li class="drop" *ngIf="isAdmin()">
+      <li class="drop-nav" *ngIf="isAdmin()">
         <a>
           <mat-icon class="admin">build</mat-icon>
           <span class="hide"><strong>Admin</strong></span>
         </a>
-        <div class="drop-menu">
+        <div class="drop-menu-nav">
           <a routerLink="/admin/laptops" routerLinkActive="active">Laptops</a>
           <a routerLink="/admin/laptop-bags" routerLinkActive="active">Bags</a>
           <a routerLink="/admin/laptop-chargers" routerLinkActive="active">Chargers</a>
@@ -100,12 +100,12 @@
       </li>
 
       <!-- ADMIN ------------------------------------------------------------------- -->
-      <li class="drop" *ngIf="!isAdmin()">
+      <li class="drop-nav" *ngIf="!isAdmin()">
         <a>
           <mat-icon class="admin">build</mat-icon>
           <span class="hide"><strong>DEMO</strong></span>
         </a>
-        <div class="drop-menu">
+        <div class="drop-menu-nav">
           <a routerLink="/admin/demo/laptops" routerLinkActive="active">Laptops</a>
           <a routerLink="/admin/demo/bags" routerLinkActive="active">Bags</a>
           <a routerLink="/admin/demo/chargers" routerLinkActive="active">Chargers</a>
@@ -116,13 +116,13 @@
       </li>
 
       <!-- CART -------------------------------------------------------------------- -->
-      <li class="drop">
+      <li class="drop-nav">
         <a>
           <mat-icon matBadge="{{cartQuantity}}" matBadgeColor="warn" matBadgeSize="medium">shopping_cart</mat-icon>
           <span class="hide">&nbsp; Cosul meu</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="drop-menu">
+        <div class="drop-menu-nav">
           <a *ngIf="isEmpty()">Cosul este gol</a>
           <table *ngIf="!isEmpty()">
             <tr *ngFor="let item of cart.items">
@@ -153,38 +153,38 @@
       </li>
 
       <!-- FAVORITE ---------------------------------------------------------------- -->
-      <li class="drop">
+      <li class="drop-nav">
         <a>
           <mat-icon matBadge="0" matBadgeColor="primary" matBadgeSize="medium">favorite_border</mat-icon>
           <span class="hide">&nbsp; Favorite</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="drop-menu">
+        <div class="drop-menu-nav">
           <a>under construction</a>
           <button (click)="goToFavorites()">Vezi aici!</button>
         </div>
       </li>
 
       <!-- USER (login, register) -------------------------------------------------- -->
-      <li class="drop" *ngIf="!currentUser?.userId">
+      <li class="drop-nav" *ngIf="!currentUser?.userId">
         <a>
           <mat-icon>perm_identity</mat-icon>
           <span class="hide">Cont</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="drop-menu">
+        <div class="drop-menu-nav">
           <a routerLink="/auth/login">Intra in cont!</a>
           <a routerLink="/auth/register">Inregistrare!</a>
         </div>
       </li>
 
       <!-- CART (profile, order, logout) ------------------------------------------- -->
-      <li class="drop" *ngIf="currentUser?.userId">
+      <li class="drop-nav" *ngIf="currentUser?.userId">
         <a>
           <span id="username">{{userFirstChar}}</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="drop-menu">
+        <div class="drop-menu-nav">
           <a routerLink="/profile" routerLinkActive="active">Profile</a>
           <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
           <a routerLink="/" (click)="logout()">Logout</a>
@@ -193,7 +193,7 @@
     </ul>
   </div>
 
-  <div class="row2">
+  <div class="row2-nav">
 
     <!-- ROW2 ========================================================================================== -->
     <ul>

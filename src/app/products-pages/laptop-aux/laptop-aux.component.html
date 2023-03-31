@@ -2,34 +2,37 @@
 
 <navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
 
-<div class="container">
-    <div class="row">
+<div class="container-aux">
 
-        <div class="column">
+    <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+
+    <div class="row-aux">       
+
+        <div class="column-aux">
             <div class="card"> 
-                <a routerLink="/laptop-auxs/bags">
+                <a routerLink="/laptops-phones-tablets/laptop-auxs/bags">
                     <img src="assets/bags/bags.png" alt="bags.png" />
                     <h1>Genti si huse</h1>
                 </a>                
             </div>
             <div class="card">
-                <a routerLink="/laptop-auxs/chargers">
+                <a routerLink="/laptops-phones-tablets/laptop-auxs/chargers">
                     <img src="assets/chargers/chargers.png" alt="chargers.png" />
                     <h1>Incarcatoare</h1>
                 </a>                
             </div>
         </div>
 
-        <div class="column">
+        <div class="column-aux">
             <div class="card">
-                <a routerLink="/laptop-auxs/ssds">
+                <a routerLink="/laptops-phones-tablets/laptop-auxs/ssds">
                     <img src="assets/ssds/ssds.png" alt="ssds.png" />
                     <h1>Solid State Drive (SSD)</h1>
                 </a>                
             </div>
         </div>
 
-        <div class="column">
+        <div class="column-aux">
             <div class="card">
                 <a (click)="noRoute()">
                     <img src="assets/batteries/external_batteries.png" alt="external_batteries.png" />

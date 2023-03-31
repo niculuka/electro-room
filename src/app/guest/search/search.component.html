@@ -2,17 +2,17 @@
 
 <navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
 
-<div class="container">
-    <div class="column">
+<div class="container-search">
+    <div class="column-search">
 
         <div class="noResult" *ngIf="isProductsEmpty()">
             <h1>{{noResult}}</h1>
         </div>
 
-        <div class="row" *ngIf="!isProductsEmpty()">            
+        <div class="row-search" *ngIf="!isProductsEmpty()">            
 
             <!-- f i l t e r s ==================================================================================== -->
-            <div class="filters">
+            <div class="filters-search">
                 <!-- available filter ----------------------------------------------------------- -->
                 <div class="available">
                     <h3><strong>Disponibilitate</strong></h3>

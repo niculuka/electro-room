@@ -1,0 +1,30 @@
+<owl-carousel-o [options]="customOptions" (dragging)="isDragging = $event.dragging">
+
+    <ng-container *ngFor="let auxCard of auxCards">
+
+        <ng-template carouselSlide>
+            
+            <div class="card">
+
+                <a [owlRouterLink]="auxCard.link" [stopLink]="isDragging">
+                    <img class="image" [src]="auxCard.src" [alt]="auxCard.alt">
+
+                    <span style="background: rgb(0, 154, 230)">
+                        {{auxCard.alert === "Top Favorite" ? auxCard.alert : ""}}
+                    </span>
+
+                    <span style="background: rgb(220, 20, 110)">
+                        {{auxCard.alert === "Super Pret" ? auxCard.alert : ""}}
+                    </span>
+
+                    <h3>{{auxCard.name}}</h3>
+
+                    <p>{{auxCard.price}} Lei</p>
+                </a>
+            </div>
+
+        </ng-template>
+
+    </ng-container>
+
+</owl-carousel-o>

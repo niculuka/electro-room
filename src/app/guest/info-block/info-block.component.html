@@ -1,0 +1,27 @@
+<div class="content-info">
+
+    <div class="left-side">
+        <div class="card" *ngFor="let card of leftCards">
+            <div class="card-icon">
+                <mat-icon>{{card.icon}}</mat-icon>
+            </div>
+            <div class="card-info">
+                <div class="row1">{{card.title}}</div>
+                <div class="row2">{{card.subtitle}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="card" *ngFor="let card of rightCards">
+            <div class="card-icon">
+                <mat-icon>{{card.icon}}</mat-icon>
+            </div>
+            <div class="card-info">
+                <div class="row1">{{card.title}}</div>
+                <div class="row2">{{card.subtitle}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>

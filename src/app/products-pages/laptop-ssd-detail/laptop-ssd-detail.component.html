@@ -2,8 +2,10 @@
 
 <navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
 
-<div class="container">
-    <div class="column">
+<div class="container-ssd">
+    <div class="column-ssd">
+
+        <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
 
         <div class="product">
 
@@ -11,7 +13,7 @@
                 <h1>{{laptopSsd.description}}</h1>
             </div>
 
-            <div class="row">
+            <div class="row-ssd">
                 <div class="slider">
                     <span><strong>electro-ssd</strong></span>
                     <div class="slide" [style]="slide">

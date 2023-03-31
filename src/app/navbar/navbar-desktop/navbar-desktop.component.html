@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container-nav">
 
-  <div class="row">
+  <div class="row-nav">
 
     <!-- LEFT SIDE ======================================================================================= -->
     <ul class="left-side">
 
       <!-- PRODUCTS ----------------------------------------------------------------- -->
       <li class="product">
-        <div class="dropdown">
+        <div class="dropdown-nav">
 
           <button (click)="toggleDesktopMenu()">
             <mat-icon>menu</mat-icon>
@@ -15,7 +15,7 @@
           </button>
 
           <!-- MEGA MENU ------------------------------------------------------------ -->
-          <div class="dropdown-menu" *ngIf="handleDesktopMenu">
+          <div class="dropdown-menu-nav" *ngIf="handleDesktopMenu">
             <div class="left-menu">
               <ul class="d-dropdown">
                 <li *ngFor="let departament of departaments">
@@ -29,7 +29,7 @@
                     </span>
                   </a>
                   <div class="d-dropdown-menu">
-                    <div class="col">
+                    <div class="col-nav">
                       <div class="departament" *ngFor="let title of departament.titles">
                         <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.isReady}"
                           (click)="closeFromSubtitles()">{{title.name}}
@@ -50,8 +50,10 @@
             </div>
 
             <!-- CAROUSEL ---------------------------------------------------------- -->
-            <div class="carousel">
-              <carousel *ngIf="isCarouselOpen"></carousel>
+            <div class="carousel-display">
+              <div class="carousel-nav">
+                <carousel *ngIf="isCarouselOpen"></carousel>
+              </div>
             </div>
 
           </div>
@@ -59,19 +61,19 @@
       </li>
 
       <!-- ITEMS ------------------------------------------------------------------- -->
-      <li class="item">
+      <li class="item-nav">
         <a routerLink="/oferta-speciala" routerLinkActive="active">
           <span>Oferte speciale</span>
         </a>
       </li>
 
-      <li class="item">
+      <li class="item-nav">
         <a routerLink="/magazine" routerLinkActive="active">
           <span>Magazine</span>
         </a>
       </li>
 
-      <!-- <li class="item">
+      <!-- <li class="item-nav">
         <a routerLink="/card-electro" routerLinkActive="active">
           <span>Card Electro</span>
         </a>
@@ -83,7 +85,7 @@
     <ul class="right-side">
 
       <!-- HELP ------------------------------------------------------------------- -->
-      <li class="item">
+      <li class="item-nav">
         <a routerLink="/ajutor-clienti" routerLinkActive="active">
           <mat-icon>headset_mic</mat-icon>
           <span>Ajutor</span>

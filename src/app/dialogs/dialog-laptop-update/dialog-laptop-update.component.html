@@ -1,30 +1,30 @@
 <form #f="ngForm" (ngSubmit)="f.form.valid && updateLaptop()">
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="id">Id: {{laptop.laptopId}}</label>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="name">Nume</label>
         <input type="text" name="name" [(ngModel)]="laptop.name" #name="ngModel" minlength="1" maxlength="100" required>
-        <div class="alert-container">
-            <div class="alert" *ngIf="!name.valid && f.submitted">Camp gol!</div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!name.valid && f.submitted">Camp gol!</div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="description">Description</label>
         <input type="text" name="description" [(ngModel)]="laptop.description" #description="ngModel" minlength="1" maxlength="200"
             required>
-        <div class="alert-container">
-            <div class="alert" *ngIf="!description.valid && f.submitted">Camp gol!</div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!description.valid && f.submitted">Camp gol!</div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="brand">Brand</label>
         <select name="brand" #brandSelect [(ngModel)]="laptop.brand">
             <option value="ACER">ACER</option>
@@ -33,12 +33,12 @@
             <option value="LENOVO">LENOVO</option>
             <option value="HP">HP</option>
         </select>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="category">Category</label>
         <select class="select-box" name="category" #categorySelect [(ngModel)]="laptop.category">
             <option value="LAPTOP_BUSINESS">BUSINESS</option>
@@ -46,12 +46,12 @@
             <option value="LAPTOP_HOME">HOME</option>
             <option value="LAPTOP_ULTRA">ULTRA</option>
         </select>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <li class="dropdown">
             <label for="image">Image: </label>
             <div class="select-line" (click)="toggleDropdownMenu()">
@@ -68,42 +68,42 @@
         <div class="image-display">
             <img class="image" [src]="laptop.src1" [alt]="laptop.alt">
         </div>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="available">Available</label>
         <select name="available" #availableSelect [(ngModel)]="laptop.available">
             <option value="STOCK">STOCK</option>
             <option value="DEPOSIT">DEPOSIT</option>
         </select>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="alert">Alert</label>
         <select name="alert" #alertSelect [(ngModel)]="laptop.alert">
             <option value="TOP_FAVORITE">TOP_FAVORITE</option>
             <option value="SUPER_PRICE">SUPER_PRICE</option>
         </select>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="price">Price</label>
         <input type="number" name="price" [(ngModel)]="laptop.price" #price="ngModel" min="0.1" max="1000000" required>
-        <div class="alert-container">
-            <div class="alert" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <button class="btn-submit" type="submit">Submit</button>
     </div>
 

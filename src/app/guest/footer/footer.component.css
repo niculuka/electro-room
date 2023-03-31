@@ -8,7 +8,7 @@ footer {
     background: rgb(40, 40, 40);
 }
 
-.content {
+.content-footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,8 +28,8 @@ footer {
 }
 
 .title>h3 {
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 17px;
+    line-height: 17px;
     color: rgb(232, 232, 232);
     margin: 10px 0 0 0;
     padding: 10px;
@@ -55,8 +55,8 @@ footer {
     display: block;
     text-decoration: none;
     cursor: pointer;
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 15px;
+    line-height: 15px;
     color: rgb(179, 179, 179);
     padding: 4px 6px;
     transition: 200ms;    
@@ -64,13 +64,13 @@ footer {
 }
 
 @media (max-width: 1600px) {
-    .content {
+    .content-footer {
         width: 1200px;
     }
 }
 
 @media (max-width: 1280px) {
-    .content {
+    .content-footer {
         width: 980px;
     }
 }
@@ -88,7 +88,7 @@ footer {
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 760px) {
     .title>h3 {
         font-size: 14px;
         line-height: 14px;
@@ -97,5 +97,20 @@ footer {
     .subtitle>li>a {
         font-size: 12px;
         line-height: 12px;
+    }
+}
+
+@media (max-width: 550px) {
+    .title {
+        width: 48%;
+        border-bottom: 1px solid grey;
+    }
+
+    .title:nth-child(3) {
+        border-bottom: none;
+    }
+
+    .title:nth-child(4) {
+        border-bottom: none;
     }
 }

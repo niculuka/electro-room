@@ -1,84 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Carousel, CAROUSEL, } from 'src/app/shared/data/carousel.data';
+import { Component, ViewChild } from '@angular/core';
+import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { CAROUSEL, Carousel } from 'src/app/shared/data/carousel.data';
 
 @Component({
   selector: 'carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css']
 })
-export class CarouselComponent implements OnInit {
+export class CarouselComponent {
+
+  // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+
+  // images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   images: Array<Carousel> = CAROUSEL;
-  counter: number = 0;
-  image: Carousel = this.images[this.counter];
-  slide: string = this.image.slide;
-  
-  startTimer: any;
-  running = false;
 
-  constructor(
-    private router: Router
-  ) { }
+  images2 = [
+    '/assets/carousel/romb1.png',
+    '/assets/carousel/romb2.png',
+    '/assets/carousel/romb3.png'
+  ];
 
-  ngOnInit(): void {
-    this.start();
-  }
+  paused = false;
+  unpauseOnArrow = false;
+  pauseOnIndicator = false;
+  pauseOnHover = true;
+  pauseOnFocus = true;
 
-  goTo(item: Carousel) {
-    this.router.navigate([item.link])
-  }
+  @ViewChild('carousel', { static: true }) carousel: NgbCarousel | any;
 
-  start() {
-    if (!this.running) {
-      this.startTimer = setInterval(() => {
-        this.image.isChecked = false;
-        this.counter++;
-        if (this.counter > this.images.length - 1) {
-          this.counter = 0;
-        }
-        this.image = this.images[this.counter];
-        this.slide = this.image.slide;
-        this.image.isChecked = true;
-      }, 4000);
-    }
-  }
-
-  stop() {
-    clearInterval(this.startTimer);
-    this.running = false;
-  }
-
-  previous() {
-    this.image.isChecked = false;
-    if (this.counter === 0) {
-      this.counter = this.images.length - 1;
-    }
-    else {
-      this.counter--;
-    }
-    this.image = this.images[this.counter];
-    this.slide = this.image.slide;
-    this.image.isChecked = true;
-  }
-
-  next() {
-    this.image.isChecked = false;
-    if (this.counter === this.images.length - 1) {
-      this.counter = 0;
-    }
-    else {
-      this.counter++;
-    }
-    this.image = this.images[this.counter];
-    this.slide = this.image.slide;
-    this.image.isChecked = true;
-  }
-
-  getDot(image: Carousel) {
-    this.image.isChecked = false;
-    this.image = image;
-    this.counter = this.image.id;
-    this.slide = this.image.slide;
-  }
 }

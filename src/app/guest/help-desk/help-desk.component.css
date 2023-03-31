@@ -1,11 +1,11 @@
-.container {
+.container-help {
     display: flex;
     justify-content: center;
     width: 100%;
     /* border: 2px solid black; */
 }
 
-.content {
+.content-help {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@
     /* border: 2px solid black; */
 }
 
-.content img {
+.content-help img {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -31,7 +31,7 @@
     color: black;
 }
 
-.help {
+.help-desk {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -66,7 +66,7 @@
 }
 
 
-.help>label {
+.help-desk>label {
     display: block;
     color: white;
     text-align: center;
@@ -81,25 +81,25 @@
     /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.help>label:hover {
+.help-desk>label:hover {
     color: black;
 }
 
-.help>input {
+.help-desk>input {
     display: none;
 }
 
-.help>input:checked+label {
+.help-desk>input:checked+label {
     color: black;
     background: #fff;
 }
 
-.help>input:checked+label+.box {
+.help-desk>input:checked+label+.box {
     display: flex;
 }
 
 @media(max-width: 1600px) {
-    .content {
+    .content-help {
         width: 1200px;
         margin-top: 40px;
     }
@@ -111,13 +111,13 @@
 }
 
 @media(max-width: 1280px) {
-    .content {
+    .content-help {
         width: 980px;
     }    
 }
 
 @media(max-width: 1040px) {
-    .content {
+    .content-help {
         width: 100%;
         margin: 16px;
     }
@@ -126,13 +126,13 @@
         font-size: 36px;
     }
 
-    .help label {
+    .help-desk label {
         font-size: 14px;
     }
 }
 
 @media(max-width: 760px) {
-    .content {
+    .content-help {
         justify-content: center;
         width: 100%;
     }
@@ -142,16 +142,16 @@
         margin-bottom: 20px;
     }
 
-    .help {
+    .help-desk {
         flex-direction: column;
     }
 
-    .help>label {
+    .help-desk>label {
         margin: 0;
         margin-bottom: 4px;
     }
 
-    .help input {
+    .help-desk input {
         font-size: 14px;
         padding: 8px;
     }
@@ -163,11 +163,11 @@
         font-size: 28px;
     }
 
-    .help label {
+    .help-desk label {
         font-size: 14px;
     }
 
-    .help input {
+    .help-desk input {
         font-size: 14px;
         padding: 8px;
     }

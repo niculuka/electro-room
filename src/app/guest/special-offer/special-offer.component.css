@@ -1,11 +1,11 @@
-.container {
+.container-offer {
     display: flex;
     justify-content: center;
     width: 100%;
     /* border: 2px solid black; */
 }
 
-.row {
+.row-offer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -13,7 +13,7 @@
     /* border: 2px solid black; */
 }
 
-.card {
+.card-offer {
     width: 100%;    
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     transition: 0.3s;
@@ -28,44 +28,44 @@ h1 {
 }
 
 @media(max-width: 1600px) {
-    .row {
+    .row-offer {
         width: 1200px;
     }
     
-    .card h1 {
+    .card-offer h1 {
         font-size: 22px;
     }
 }
 
 @media(max-width: 1280px) {
-    .row {
+    .row-offer {
         width: 980px;
     }
     
-    .card h1 {
+    .card-offer h1 {
         font-size: 20px;
     }
 }
 
 @media(max-width: 1040px) {
-    .row {
+    .row-offer {
         flex-direction: column;
         align-items: center;
         width: 100%;
         margin: 16px;
     }
 
-    .card {
+    .card-offer {
         width: 100%;
     } 
     
-    .card h1 {
+    .card-offer h1 {
         font-size: 22px;
     }
 }
 
 @media(max-width: 550px) {
-    .card h1 {
+    .card-offer h1 {
         font-size: 18px;
     }
 }

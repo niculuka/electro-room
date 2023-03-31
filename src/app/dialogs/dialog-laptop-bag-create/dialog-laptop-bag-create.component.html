@@ -1,24 +1,24 @@
 <form #f="ngForm" (ngSubmit)="f.form.valid && createLaptopBag()">
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="name">Nume</label>
         <input type="text" name="name" [(ngModel)]="newLaptopBag.name" #name="ngModel" minlength="1" maxlength="100"
             required>
-        <div class="alert-container">
-            <div class="alert" *ngIf="!name.valid && f.submitted">Camp gol!</div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!name.valid && f.submitted">Camp gol!</div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="description">Description</label>
         <input type="text" name="description" [(ngModel)]="newLaptopBag.description" #description="ngModel" minlength="1" maxlength="200"
             required>
-        <div class="alert-container">
-            <div class="alert" *ngIf="!description.valid && f.submitted">Camp gol!</div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!description.valid && f.submitted">Camp gol!</div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="brand">Brand</label>
         <select name="brand" #brandSelect [(ngModel)]="newLaptopBag.brand">
             <option value="HAMA">HAMA</option>
@@ -26,24 +26,24 @@
             <option value="RIVACASE">RIVACASE</option>
             <option value="SAMSONITE">SAMSONITE</option>
         </select>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="category">Category</label>
         <select name="category" #categorySelect [(ngModel)]="newLaptopBag.category">            
             <option value="BAG_BAG">BAG</option>
             <option value="BAG_SLEEVE">SLEEVE</option>
             <option value="BAG_BACKPACK">BACKPACK</option>
         </select>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <li class="dropdown">
             <label for="image">Image: </label>
             <div class="select-line" (click)="toggleDropdownMenu()">
@@ -60,31 +60,31 @@
         <div class="image-display">
             <img class="image" [src]="newLaptopBag.src1" [alt]="newLaptopBag.alt">
         </div>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="available">Available</label>
         <select name="available" #availableSelect [(ngModel)]="newLaptopBag.available">
             <option value="STOCK">STOCK</option>
             <option value="DEPOSIT">DEPOSIT</option>
         </select>
-        <div class="alert-container">
-            <div class="alert"></div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <label for="price">Price</label>
         <input type="number" name="price" [(ngModel)]="newLaptopBag.price" #price="ngModel" min="1" max="1000000" required>
-        <div class="alert-container">
-            <div class="alert" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-dialog">
         <button type="submit" class="btn-create">Create</button>
     </div>
 

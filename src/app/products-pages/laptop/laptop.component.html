@@ -2,16 +2,18 @@
 
 <navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
 
-<div class="container">
-    <div class="column">
+<div class="container-lap">
+    <div class="column-lap">
+
+        <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
 
         <!-- <div class="link">
             <h3>Acasa / Laptop, Telefoane, Tablete / Laptopuri / Gaming</h3>
         </div> -->
 
-        <div class="row">
+        <div class="row-lap">
             <!-- f i l t e r s ==================================================================================== -->
-            <div class="filters">
+            <div class="filters-lap">
                 <!-- available filter ----------------------------------------------------------- -->
                 <div class="available">
                     <h3><strong>Disponibilitate</strong></h3>
@@ -136,7 +138,7 @@
                         <mat-icon class="favorite" *ngIf="item.favorite" (click)="addToFavorite(item)">favorite
                         </mat-icon>
 
-                        <a [routerLink]="'/lap/' + item.linkName">
+                        <a [routerLink]="item.linkName">
                             <img [src]="item.src1" [alt]="item.alt" />
                             <span style="background: rgb(0, 154, 230)">
                                 {{item.alert === "TOP_FAVORITE" ? "Top Favorit" : ""}}

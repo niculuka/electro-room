@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container-log">
 
   <div class="logo">
     <img routerLink="/" src="assets/logo/electro-room-red-small.png" alt="logo">
   </div>
 
-  <div class="content">
+  <div class="content-log">
 
     <div class="header">
       <h1>Salut!</h1>
@@ -16,8 +16,8 @@
       <div class="input-container">
         <input type="text" placeholder="utilizator" formControlName="username">
       </div>
-      <div class="alert-container">
-        <div class="alert" *ngIf="fc['username'].errors && isSubmitted">
+      <div class="alert-container-log">
+        <div class="alert-log" *ngIf="fc['username'].errors && isSubmitted">
           <div *ngIf="fc['username'].errors['required']">Camp gol!</div>
           <div *ngIf="fc['username'].errors['minlength']">Minim 4 caractere!</div>
           <div *ngIf="fc['username'].errors['maxlength']">Maxim 30 de caractere!</div>
@@ -27,8 +27,8 @@
       <div class="input-container">
         <input type="password" placeholder="parola" formControlName="password">
       </div>
-      <div class="alert-container">
-        <div class="alert" *ngIf="fc['password'].errors && isSubmitted">
+      <div class="alert-container-log">
+        <div class="alert-log" *ngIf="fc['password'].errors && isSubmitted">
           <div *ngIf="fc['password'].errors['required']">Camp gol!</div>
           <div *ngIf="fc['password'].errors['minlength']">Minim 4 caractere!</div>
           <div *ngIf="fc['password'].errors['maxlength']">Maxim 30 de caractere!</div>
@@ -38,8 +38,8 @@
       <div class="input-container">
         <input type="text" placeholder="nume" formControlName="name">
       </div>
-      <div class="alert-container">
-        <div class="alert" *ngIf="fc['name'].errors && isSubmitted">
+      <div class="alert-container-log">
+        <div class="alert-log" *ngIf="fc['name'].errors && isSubmitted">
           <div *ngIf="fc['name'].errors['required']">Camp gol!</div>
           <div *ngIf="fc['name'].errors['minlength']">Minim 4 caractere!</div>
           <div *ngIf="fc['name'].errors['maxlength']">Maxim 30 de caractere!</div>
@@ -49,8 +49,8 @@
       <div class="input-container">
         <input type="email" placeholder="email" formControlName="email">
       </div>
-      <div class="alert-container">
-        <div class="alert" *ngIf="fc['email'].errors && isSubmitted">
+      <div class="alert-container-log">
+        <div class="alert-log" *ngIf="fc['email'].errors && isSubmitted">
           <div *ngIf="fc['email'].errors['required']">Camp gol!</div>
           <div *ngIf="fc['email'].errors['email']">Email-ul nu este valid!</div>
           <div *ngIf="fc['email'].errors['minlength']">Email-ul nu este valid!</div>
@@ -61,8 +61,8 @@
       <div class="input-container">
         <input type="text" placeholder="telefon" formControlName="phone">
       </div>
-      <div class="alert-container">
-        <div class="alert" *ngIf="fc['phone'].errors && isSubmitted">
+      <div class="alert-container-log">
+        <div class="alert-log" *ngIf="fc['phone'].errors && isSubmitted">
           <div *ngIf="fc['phone'].errors['required']">Camp gol!</div>
           <div *ngIf="fc['phone'].errors['pattern']">Sunt permise doar cifre!</div>
           <div *ngIf="fc['phone'].errors['minlength']">Minim 9 cifre!</div>
@@ -73,16 +73,16 @@
       <div class="textarea-container">
         <textarea type="text" placeholder="adresa" formControlName="address"></textarea>
       </div>
-      <div class="alert-container">
-        <div class="alert" *ngIf="fc['address'].errors && isSubmitted">
+      <div class="alert-container-log">
+        <div class="alert-log" *ngIf="fc['address'].errors && isSubmitted">
           <div *ngIf="fc['address'].errors['required']">Camp gol!</div>
           <div *ngIf="fc['address'].errors['minlength']">Minim 10 caractere!</div>
           <div *ngIf="fc['address'].errors['maxlength']">Maxim 100 de caractere!</div>
         </div>
       </div>
 
-      <div class="alert-container">
-        <div class="alert" *ngIf="message">{{message}}</div>
+      <div class="alert-container-log">
+        <div class="alert-log" *ngIf="message">{{message}}</div>
       </div>
 
       <button type="submit">INREGISTRARE</button>

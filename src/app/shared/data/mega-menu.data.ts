@@ -26,57 +26,57 @@ export const DEPARTAMENTS: Departament[] = [
     {   // ================================================================= Laptop, Telefoane, Tablete
         id: 1,
         icon: "assets/svgs/phone.svg",
-        name: "Laptop, Telefoane, Tablete",
+        name: "Laptopuri, Telefoane, Tablete",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
             {
                 name: "Laptopuri",
-                link: "/laptops",             
+                link: "/laptops-phones-tablets/laptops",             
                 showSubtitle: false,
                 isReady: "#029802",
                 subtitles: [
                     {
                         name: "Gaming",
-                        link: "/laptops/gaming",
+                        link: "/laptops-phones-tablets/laptops/gaming",
                         isReady: "#07c937",
                     },
                     {
                         name: "Business",
-                        link: "/laptops/business",
+                        link: "/laptops-phones-tablets/laptops/business",
                         isReady: "#07c937",
                     },
                     {
                         name: "Ultraportabile",
-                        link: "/laptops/ultra",
+                        link: "/laptops-phones-tablets/laptops/ultra",
                         isReady: "#07c937",
                     },                    
                     {
                         name: "Home",
-                        link: "/laptops/home",
+                        link: "/laptops-phones-tablets/laptops/home",
                         isReady:  "#07c937",
                     },
                 ]
             },
             {
                 name: "Accesorii Laptop",
-                link: "/laptop-auxs",
+                link: "/laptops-phones-tablets/laptop-auxs",
                 showSubtitle: false,
                 isReady: "#029802",
                 subtitles: [
                     {
                         name: "Genti laptop",
-                        link: "/laptop-auxs/bags",
+                        link: "/laptops-phones-tablets/laptop-auxs/bags",
                         isReady: "#07c937",
                     },
                     {
                         name: "Incarcatoare priza/auto",
-                        link: "/laptop-auxs/chargers",
+                        link: "/laptops-phones-tablets/laptop-auxs/chargers",
                         isReady: "#07c937",
                     },
                     {
                         name: "SSD externe",
-                        link: "/laptop-auxs/ssds",
+                        link: "/laptops-phones-tablets/laptop-auxs/ssds",
                         isReady: "#07c937",
                     },                    
                     {

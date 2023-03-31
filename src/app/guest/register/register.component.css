@@ -1,4 +1,4 @@
-.container {
+.container-log {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
   width: 200px;
 }
 
-.content {
+.content-log {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,7 +96,7 @@ textarea:focus {
   outline: none;
 }
 
-.alert-container {
+.alert-container-log {
   display: block;
   width: 100%;
   min-height: 24px;
@@ -105,7 +105,7 @@ textarea:focus {
   /* border: 1px solid rgb(151, 150, 150); */
 }
 
-.alert {
+.alert-log {
   display: block;
   text-align: center;
   color: red;
@@ -155,7 +155,7 @@ a:hover {
 }
 
 @media (max-width: 550px) {
-  .container {
+  .container-log {
     margin-top: 20px;
   }
 
@@ -163,7 +163,7 @@ a:hover {
     width: 150px;
   }
 
-  .content {
+  .content-log {
     width: 300px;
   }
 
@@ -197,7 +197,7 @@ a:hover {
     max-height: 70px;
   }
 
-  .alert {
+  .alert-log {
     font-size: 12px;
   }
 

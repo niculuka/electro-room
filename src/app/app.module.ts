@@ -17,6 +17,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 
 // dialog interogation
 import { DialogOrderDeleteComponent } from './dialogs/dialog-order-delete/dialog-order-delete.component';
@@ -57,9 +58,10 @@ import { SpecialOfferComponent } from './guest/special-offer/special-offer.compo
 import { ElectroCardComponent } from './guest/electro-card/electro-card.component';
 import { StoreComponent } from './guest/store/store.component';
 import { HelpDeskComponent } from './guest/help-desk/help-desk.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselComponent } from './navbar/carousel/carousel.component';
-import { SlidePhonesComponent } from './navbar/slide-phones/slide-phones.component';
-import { SlideLaptopsComponent } from './navbar/slide-laptops/slide-laptops.component';
+import { CarouselLaptopComponent } from './navbar/carousel-laptop/carousel-laptop.component';
+import { CarouselAuxComponent } from './navbar/carousel-aux/carousel-aux.component';
 import { FooterComponent } from './guest/footer/footer.component';
 
 // a d m i n
@@ -81,6 +83,7 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
+import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet.component';
 import { LaptopComponent } from './products-pages/laptop/laptop.component';
 import { LaptopCategoryComponent } from './products-pages/laptop-category/laptop-category.component';
 import { LaptopDetailComponent } from './products-pages/laptop-detail/laptop-detail.component';
@@ -94,6 +97,8 @@ import { LaptopChargerDetailComponent } from './products-pages/laptop-charger-de
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 import { SearchComponent } from './guest/search/search.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfoBlockComponent } from './guest/info-block/info-block.component';
 
 
 @NgModule({
@@ -136,8 +141,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     StoreComponent,
     HelpDeskComponent,
     CarouselComponent,
-    SlidePhonesComponent,
-    SlideLaptopsComponent,
+    CarouselLaptopComponent,
+    CarouselAuxComponent,
     FooterComponent,
 
     AdminLaptopComponent,
@@ -156,6 +161,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
 
+    LaptopPhoneTabletComponent,
     LaptopComponent,
     LaptopCategoryComponent,
     LaptopDetailComponent,
@@ -167,7 +173,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     LaptopSsdComponent,
     LaptopSsdDetailComponent,
     UnderConstructionComponent,
-    SearchComponent,    
+    SearchComponent,
+    InfoBlockComponent,    
   ],
   imports: [
     BrowserModule,
@@ -191,6 +198,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MatBadgeModule,
     MatIconModule,
     MatDialogModule,
+    NgbModule,
+    NgbCarouselModule,
+    CarouselModule,
+    NgDynamicBreadcrumbModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

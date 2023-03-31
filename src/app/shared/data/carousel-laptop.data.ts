@@ -1,5 +1,5 @@
-export interface LaptopCards {
-    id: number;
+export interface CarouselLaptopData {
+    id: string;
     link: string;
     src: string;
     alt: string;
@@ -8,9 +8,9 @@ export interface LaptopCards {
     price: number;
 }
 
-export const LAPTOP_SLIDE: LaptopCards[] = [
+export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [    
     {
-        id: 1,
+        id: "1",
         link: "/lap/laptop-gaming-asus-rog-strix-g15-g513ic",
         src: "assets/laptops/asus-g15_1.png",
         alt: "laptop1",
@@ -19,7 +19,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 4199,
     },
     {
-        id: 2,
+        id: "2",
         link: "/lap/laptop-gaming-acer-nitro-an515-57-52f5",
         src: "assets/laptops/acer-nitro-an515_1.png",
         alt: "acer-nitro-an515_1.png",
@@ -28,7 +28,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 2999,
     },
     {
-        id: 3,
+        id: "3",
         link: "/lap/laptop-apple-macbook-pro-mneh3ze",
         src: "assets/laptops/macbook-pro-13_1.png",
         alt: "macbook-pro-13_1.png",
@@ -37,7 +37,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 6899,
     },
     {
-        id: 4,
+        id: "4",
         link: "/lap/laptop-lenovo-ideapad-15IGL05",
         src: "assets/laptops/intel-n4020_1.png",
         alt: "intel-n4020_1.png",
@@ -46,7 +46,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 892,
     },
     {
-        id: 5,
+        id: "5",
         link: "/lap/laptop-gaming-lenovo-legion-5-15imh6",
         src: "assets/laptops/legion-5-15imh6_1.png",
         alt: "legion-5-15imh6_1.png",
@@ -55,7 +55,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 3899,
     },
     {
-        id: 6,
+        id: "6",
         link: "/lap/laptop-apple-macbook-air-13-mlxy3ze",
         src: "assets/laptops/mac-mlxy3ze_1.png",
         alt: "mac-mlxy3ze_1.png",
@@ -64,7 +64,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 5999,
     },
     {
-        id: 7,
+        id: "7",
         link: "/lap/laptop-acer-aspire5-a515-36tc",
         src: "assets/laptops/acer57_1.png",
         alt: "acer57_1.png",
@@ -73,7 +73,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 2049,
     },
     {
-        id: 8,
+        id: "8",
         link: "/lap/laptop-asus-vivobook-16x-m1603qa",
         src: "assets/laptops/asus-mb103_1.png",
         alt: "asus-mb103_1.png",
@@ -82,7 +82,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 3339,
     },
     {
-        id: 9,
+        id: "9",
         link: "/lap/laptop-lenovo-ideapad3-15ttl6",
         src: "assets/laptops/lenovo6305_1.png",
         alt: "lenovo6305_1.png",
@@ -91,7 +91,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 1019,
     },
     {
-        id: 10,
+        id: "10",
         link: "/lap/laptop-hp-intel-core-i3-1005g1",
         src: "assets/laptops/hp1005_1.png",
         alt: "hp1005_1.png",
@@ -100,7 +100,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 2379,
     },
     {
-        id: 11,
+        id: "11",
         link: "/lap/laptop-hp-victus-16-e1015nq",
         src: "assets/laptops/hp16_1.png",
         alt: "hp16_1.png",
@@ -109,7 +109,7 @@ export const LAPTOP_SLIDE: LaptopCards[] = [
         price: 4269,
     },
     {
-        id: 12,
+        id: "12",
         link: "/lap/laptop-gaming-asus-tuf-dash-f15-fx517zc",
         src: "assets/laptops/asus-f15_1.png",
         alt: "asus-f15_1.png",

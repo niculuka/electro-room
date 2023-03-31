@@ -1,4 +1,4 @@
-.container {
+.container-nav {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
 }
 
 /* LEFT SIDE ========================================================================== */
-.row1 {
+.row1-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -19,7 +19,7 @@
   /* border: 2px solid blue; */
 }
 
-.row1>ul {
+.row1-nav>ul {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,7 +29,7 @@
   /* border: 2px solid rgb(148, 246, 2); */
 }
 
-.row2 {
+.row2-nav {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -37,7 +37,7 @@
   /* border: 2px solid blue; */
 }
 
-.row2>ul {
+.row2-nav>ul {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,20 +48,20 @@
   /* border: 2px solid rgb(3, 119, 253); */
 }
 
-.row2 .search-bar {
+.row2-nav .search-bar {
   display: none;
 }
 
-.burger {
+.burger-nav {
   display: none;
   /* border: 2px solid rgb(3, 119, 253); */
 }
 
-.burger label {
+.burger-nav label {
   margin: 0;
 }
 
-.burger mat-icon {
+.burger-nav mat-icon {
   font-size: 30px;
   padding: 14px;
   /* border: 2px solid rgb(3, 119, 253); */
@@ -70,7 +70,7 @@
 /* MEGA MENU ========================================================= */
 /* MEGA MENU ========================================================= */
 
-.mega-menu {
+.mega-menu-nav {
   position: absolute;
   float: left;
   display: none;
@@ -83,13 +83,13 @@
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.menu {
+.menu-nav {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border-top: 2px solid rgb(199, 199, 199);
   /* border: 2px solid rgb(255, 0, 0); */
 }
 
-.dropdown {
+.dropdown-nav {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -101,12 +101,12 @@
   /* border: 1px solid rgb(0, 102, 255); */
 }
 
-.dropdown>li {
+.dropdown-nav>li {
   margin: 0;
   /* border: 2px solid orange; */
 }
 
-.dropdown>li>a {
+.dropdown-nav>li>a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -119,12 +119,12 @@
   /* border: 1px solid red; */
 }
 
-.dropdown>li>a:hover {
+.dropdown-nav>li>a:hover {
   background: rgb(239, 240, 254);
   cursor: pointer;
 }
 
-.dropdown-menu {
+.dropdown-menu-nav {
   display: flex;
   flex-direction: row;
   text-align: left;
@@ -209,17 +209,17 @@
 /* ==================================================================== */
 /* ==================================================================== */
 
-.logo {
+.logo-nav {
   margin-right: 14px;
 }
 
-.logo a {
+.logo-nav a {
   display: flex;
   align-items: center;
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.logo img {
+.logo-nav img {
   width: 210px;
   margin: auto;
   /* border: 2px solid rgb(3, 119, 253); */
@@ -233,7 +233,7 @@
   color: rgb(208, 208, 208);
 }
 
-.drop a {
+.drop-nav a {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -247,12 +247,12 @@
   /* border: 2px solid red; */
 }
 
-.drop a.active {
+.drop-nav a.active {
   color: white;
   background: rgb(79, 190, 4);
 }
 
-.drop a:hover {
+.drop-nav a:hover {
   color: black;
   cursor: pointer;
 }
@@ -310,8 +310,8 @@ mat-icon {
 }
 
 #username {
-  width: 14px;
-  height: 14px;
+  width: 24px;
+  height: 24px;
   line-height: 14px;
   padding: 4px;
   text-align: center;
@@ -320,12 +320,12 @@ mat-icon {
   border-radius: 50%;
 }
 
-.drop {
+.drop-nav {
   display: inline-block;
   position: relative;
 }
 
-.drop-menu {
+.drop-menu-nav {
   display: none;
   position: absolute;
   min-width: 120px;
@@ -336,7 +336,7 @@ mat-icon {
   z-index: 3;
 }
 
-.drop:hover .drop-menu {
+.drop-nav:hover .drop-menu-nav {
   display: block;
 }
 
@@ -367,23 +367,23 @@ table span {
   cursor: pointer;
 }
 
-.drop-menu img {
+.drop-menu-nav img {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
 
-.drop-menu a {
+.drop-menu-nav a {
   display: block;
   text-align: left;
   border-bottom: 1px solid lightgray;
 }
 
-.drop-menu a:last-child {
+.drop-menu-nav a:last-child {
   border-bottom: none;
 }
 
-.drop-menu a:hover {
+.drop-menu-nav a:hover {
   background: rgb(232, 232, 232);
 }
 
@@ -409,7 +409,7 @@ table mat-icon {
   /* border: 1px solid black; */
 }
 
-.drop-menu button {
+.drop-menu-nav button {
   color: white;
   font-size: 16px;
   width: 100%;
@@ -420,7 +420,7 @@ table mat-icon {
   background: rgb(79, 190, 4);
 }
 
-.drop-menu button:hover {
+.drop-menu-nav button:hover {
   color: black;
 }
 
@@ -438,13 +438,13 @@ table mat-icon {
 
 /* M E D I A ========================================================================== */
 @media (max-width: 1600px) {
-  .container {
+  .container-nav {
     width: 1200px;
   }
 }
 
 @media (max-width: 1280px) {
-  .container {
+  .container-nav {
     width: 990px;
   }
 
@@ -454,43 +454,47 @@ table mat-icon {
 }
 
 @media (max-width: 1040px) {
-  .container {
+  .container-nav {
     width: auto;
   }
 
-  .drop-menu {
+  .drop-menu-nav {
     right: 0;
   }
 
-  .mega-menu {
+  .mega-menu-nav {
     display: block;
     margin: auto;
     /* border: 2px solid rgb(0, 127, 254); */
   }
 
-  .row1 {
+  .row1-nav {
     height: 60px;
   }
 
-  .row1 .search-bar {
+  .row1-nav .search-bar {
     display: none;
   }
 
-  .row2 .search-bar {
+  .row2-nav .search-bar {
     display: block;
     width: 100%;
     /* border: 3px solid rgb(0, 0, 0); */
   }
 
-  .burger {
-    display: block;
+  .burger-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
   }
 
-  .logo img {
+  .logo-nav img {
     width: 160px;
   }
 
   #username {
+    line-height: 18px;
     padding: 2px;
   }
 
@@ -520,20 +524,24 @@ table mat-icon {
   .admin {
     margin-right: -4px;
   }
+
+  #username {
+    margin-right: 2px;
+  }
 }
 
 @media (max-width: 550px) {
-  .row1>ul {
+  .row1-nav>ul {
     padding: 10px 0;
   }
 
-  .dropdown>li>a {
+  .dropdown-nav>li>a {
     font-size: 13px;
     line-height: 13px;
     padding: 10px;
-  } 
+  }
 
-  .drop a {
+  .drop-nav a {
     font-size: 13px;
     line-height: 13px;
     padding: 10px;
@@ -557,15 +565,15 @@ table mat-icon {
     padding: 1px;
   }
 
-  .logo a {
+  .logo-nav a {
     padding: 0 4px;
   }
 
-  .logo img {
+  .logo-nav img {
     width: 120px;
   }
 
-  .burger mat-icon {
+  .burger-nav mat-icon {
     font-size: 24px;
     padding: 6px;
   }
@@ -580,7 +588,7 @@ table mat-icon {
 
   td {
     font-size: 12px;
-    line-height: 14px;    
+    line-height: 14px;
   }
 
   .quantity,
@@ -594,33 +602,33 @@ table mat-icon {
     height: 18px;
   }
 
-  .drop-menu img {
+  .drop-menu-nav img {
     width: 24px;
     height: 24px;
   }
 
-  .drop-menu button {
+  .drop-menu-nav button {
     font-size: 13px;
     padding: 8px;
   }
 }
 
 @media (max-width: 380px) {
-  .logo img {
+  .logo-nav img {
     width: 100px;
   }
 
   table {
     max-width: 240px;
   }
- 
-  .drop a {
+
+  .drop-nav a {
     font-size: 12px;
     line-height: 12px;
     padding: 8px;
   }
 
-  .dropdown>li>a {
+  .dropdown-nav>li>a {
     font-size: 12px;
     line-height: 12px;
     padding: 8px;

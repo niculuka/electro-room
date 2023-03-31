@@ -2,12 +2,14 @@
 
 <navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
 
-<div class="container">
-    <div class="column">
+<div class="container-categ">
+    <div class="column-categ">
 
-        <div class="row">
+        <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+
+        <div class="row-categ">
             <!-- f i l t e r s ==================================================================================== -->
-            <div class="filters">
+            <div class="filters-categ">
                 <!-- available filter ----------------------------------------------------------- -->
                 <div class="available">
                     <h3><strong>Disponibilitate</strong></h3>
@@ -109,7 +111,7 @@
                         <mat-icon class="favorite" *ngIf="item.favorite" (click)="addToFavorite(item)">favorite
                         </mat-icon>
 
-                        <a [routerLink]="'/lap/' + item.linkName">
+                        <a [routerLink]="item.linkName">
                             <img [src]="item.src1" [alt]="item.src1" />
                             <span style="background: rgb(0, 154, 230)">
                                 {{item.alert === "TOP_FAVORITE" ? "Top Favorit" : ""}}

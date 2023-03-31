@@ -1,14 +1,15 @@
-.container {
+.container-search {
     display: flex;
     justify-content: center;
     width: 100%;
     /* border: 2px solid black; */
 }
 
-.column {
+.column-search {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     width: 1500px;
     /* border: 2px solid black; */
 }
@@ -39,17 +40,16 @@
     /* border: 2px solid red; */
 }
 
-.row {
+.row-search {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
     width: 100%;
-    margin-top: 50px;
     /* border: 2px solid rgb(2, 35, 250); */
 }
 
 /*  filters -------------------------------------------- */
-.filters {
+.filters-search {
     width: 290px;
     height: 100%;
     box-sizing: border-box;
@@ -65,7 +65,7 @@
     margin-bottom: 24px;
 }
 
-.filters h3 {
+.filters-search h3 {
     margin: 0 4px;
     font-size: 16px;
     line-height: 16px;
@@ -74,8 +74,10 @@
 }
 
 .filter-group {
-    margin: 6px 0;
-    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    padding-left: 20px;
     /* border: 1px solid black; */
 }
 
@@ -87,6 +89,7 @@
 
 .filter-group label {
     font-size: 14px;
+    margin-left: 4px;
 }
 
 /* select --------------------------------------------- */
@@ -258,11 +261,11 @@ a {
 }
 
 @media(max-width: 1600px) {
-    .column {
+    .column-search {
         width: 1200px;
     }
 
-    .filters {
+    .filters-search {
         width: 286px;
     }
 
@@ -292,11 +295,11 @@ a {
 }
 
 @media(max-width: 1280px) {
-    .column {
+    .column-search {
         width: 980px;
     }
 
-    .filters {
+    .filters-search {
         width: 288px;
     }
 
@@ -312,21 +315,25 @@ a {
 }
 
 @media(max-width: 1040px) {
-    .column {
+    .column-search {
         width: 740px;
     }
 
-    .row {
+    .row-search {
         margin-top: 0;
     }
 
-    .filters {
+    .filters-search {
         width: 280px;
     }
 
-    .filters h3 {
+    .filters-search h3 {
         font-size: 14px;
         line-height: 14px;
+    }
+
+    .filter-group {
+        margin: 6px 0;
     }
 
     .filter-group label {
@@ -381,7 +388,7 @@ a {
 }
 
 @media(max-width: 760px) {
-    .column {
+    .column-search {
         width: 440px;
     }
 
@@ -392,7 +399,7 @@ a {
 }
 
 @media(max-width: 550px) {
-    .column {
+    .column-search {
         width: 370px;
     }
 
@@ -400,11 +407,11 @@ a {
         font-size: 16px;
     }
 
-    .filters {
+    .filters-search {
         width: 130px;
     }
 
-    .filters h3 {
+    .filters-search h3 {
         margin: 4px 0 4px 2px;
         font-size: 13px;
         line-height: 13px;
