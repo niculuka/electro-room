@@ -67,16 +67,16 @@ export class CartComponent implements OnInit {
 
   getProductLinkName(cartItem: CartItem) {
     if (cartItem.product.category.startsWith("LAPTOP")) {
-      this.link = "/lap/" + cartItem.product.linkName
+      this.link = "/laptops-phones-tablets/laptops/" + cartItem.product.category.substring(7).toLocaleLowerCase() + '/' + cartItem.product.linkName
     }
     if (cartItem.product.category.startsWith("BAG")) {
-      this.link = "/bag/" + cartItem.product.linkName
+      this.link = "/laptops-phones-tablets/laptop-auxs/bags/" + cartItem.product.linkName
     }
     if (cartItem.product.category.startsWith("CHARGER")) {
-      this.link = "/chg/" + cartItem.product.linkName
+      this.link = "/laptops-phones-tablets/laptop-auxs/chargers/" + cartItem.product.linkName
     }
     if (cartItem.product.category.startsWith("HARD")) {
-      this.link = "/ssd/" + cartItem.product.linkName
+      this.link = "/laptops-phones-tablets/laptop-auxs/ssds/" + cartItem.product.linkName
     }
     this.router.navigate([this.link]);
   }

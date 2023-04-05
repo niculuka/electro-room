@@ -144,8 +144,9 @@ export class LaptopComponent implements OnInit {
     this.product.description = item.description;
     this.product.brand = item.brand;
     this.product.category = item.category;
-    this.product.src1 = item.src1;
-    this.product.alt = item.src1;
+    this.product.image = item.image;
+    this.product.image = item.image;
+    this.product.alt = item.image;
     this.product.price = item.price;
     
     this.cartService.addToCartService(this.product);

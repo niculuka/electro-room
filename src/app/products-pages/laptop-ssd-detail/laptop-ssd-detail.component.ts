@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
 import { LaptopSsd } from 'src/app/shared/models/laptop-ssd.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -17,7 +18,10 @@ export class LaptopSsdDetailComponent {
 
   laptopSsd: LaptopSsd = new LaptopSsd();
   product: Product = new Product();
-  slide: string = "left: 0";
+  
+  laptopSsdImages: Array<ImagesGallery> = [];
+  index: number = 0;
+  currentImage: string = "";
 
   constructor(
     activatedRoute: ActivatedRoute,
@@ -28,6 +32,10 @@ export class LaptopSsdDetailComponent {
     let linkName = activatedRoute.snapshot.params["linkName"] as string
     laptopSsdService.getLaptopSsdByNameService(linkName).subscribe(data => {
       this.laptopSsd = data;
+      laptopSsdService.getLaptopSsdsImagesService(data.ssdId).subscribe(result => {
+        this.laptopSsdImages = result;
+        this.currentImage = this.laptopSsdImages[0].image
+      })
     })
   }
 
@@ -38,7 +46,7 @@ export class LaptopSsdDetailComponent {
     this.product.description = this.laptopSsd.description;
     this.product.brand = this.laptopSsd.brand;
     this.product.category = this.laptopSsd.category;
-    this.product.src1 = this.laptopSsd.src1;
+    this.product.image = this.laptopSsd.image;
     this.product.alt = this.laptopSsd.alt;    
     this.product.price = this.laptopSsd.price;
     
@@ -46,19 +54,8 @@ export class LaptopSsdDetailComponent {
     this.router.navigateByUrl('/cart');
   }
 
-  slide1() {
-    this.slide = "left: 0;";
+  receiveIndex($event: any) {
+    this.currentImage = $event;
   }
-
-  slide2() {
-    this.slide = "left: -100%;";
-  }
-
-  slide3() {
-    this.slide = "left: -200%;";
-  }
-
-  slide4() {
-    this.slide = "left: -300%;";
-  }
+  
 }

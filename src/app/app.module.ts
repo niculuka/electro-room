@@ -87,6 +87,7 @@ import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet
 import { LaptopComponent } from './products-pages/laptop/laptop.component';
 import { LaptopCategoryComponent } from './products-pages/laptop-category/laptop-category.component';
 import { LaptopDetailComponent } from './products-pages/laptop-detail/laptop-detail.component';
+import { ProductDetailImageComponent } from './products-pages/product-detail-image/product-detail-image.component';
 import { LaptopBagComponent } from './products-pages/laptop-bag/laptop-bag.component';
 import { LaptopBagDetailComponent } from './products-pages/laptop-bag-detail/laptop-bag-detail.component';
 import { LaptopAuxComponent } from './products-pages/laptop-aux/laptop-aux.component';
@@ -165,6 +166,7 @@ import { InfoBlockComponent } from './guest/info-block/info-block.component';
     LaptopComponent,
     LaptopCategoryComponent,
     LaptopDetailComponent,
+    ProductDetailImageComponent,
     LaptopAuxComponent,
     LaptopBagComponent,
     LaptopBagDetailComponent,
@@ -174,7 +176,7 @@ import { InfoBlockComponent } from './guest/info-block/info-block.component';
     LaptopSsdDetailComponent,
     UnderConstructionComponent,
     SearchComponent,
-    InfoBlockComponent,  
+    InfoBlockComponent,      
   ],
   imports: [
     BrowserModule,

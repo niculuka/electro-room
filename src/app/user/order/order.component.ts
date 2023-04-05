@@ -116,7 +116,7 @@ export class OrderComponent implements OnInit {
     this.orderService.createOrderService(this.order).subscribe({
       next: () => {
         this.cartService.clearCartService();
-        this.router.navigate(["/laptops"]);
+        this.router.navigate(["/"]);
         this.toastrService.success("Order sent")
       },
       error: (err) => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
 import { LaptopBag } from 'src/app/shared/models/laptop-bag.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -17,7 +18,10 @@ export class LaptopBagDetailComponent {
 
   laptopBag: LaptopBag = new LaptopBag();
   product: Product = new Product();
-  slide: string = "left: 0";
+  
+  laptopBagImages: Array<ImagesGallery> = [];
+  index: number = 0;
+  currentImage: string = "";
 
   constructor(
     activatedRoute: ActivatedRoute,
@@ -28,6 +32,10 @@ export class LaptopBagDetailComponent {
     let linkName = activatedRoute.snapshot.params["linkName"] as string
     laptopBagService.getLaptopBagByNameService(linkName).subscribe(data => {
       this.laptopBag = data;
+      laptopBagService.getLaptopBagsImagesService(data.bagId).subscribe(result => {
+        this.laptopBagImages = result;
+        this.currentImage = this.laptopBagImages[0].image
+      })
     })
   }
 
@@ -38,28 +46,16 @@ export class LaptopBagDetailComponent {
     this.product.description = this.laptopBag.description;
     this.product.brand = this.laptopBag.brand;
     this.product.category = this.laptopBag.category;
-    this.product.src1 = this.laptopBag.src1;
-    this.product.alt = this.laptopBag.alt;    
+    this.product.image = this.laptopBag.image;
+    this.product.alt = this.laptopBag.alt;
     this.product.price = this.laptopBag.price;
-    
+
     this.cartService.addToCartService(this.product);
     this.router.navigateByUrl('/cart');
   }
 
-  slide1() {
-    this.slide = "left: 0;";
-  }
-
-  slide2() {
-    this.slide = "left: -100%;";
-  }
-
-  slide3() {
-    this.slide = "left: -200%;";
-  }
-
-  slide4() {
-    this.slide = "left: -300%;";
+  receiveIndex($event: any) {
+    this.currentImage = $event;
   }
 
 }

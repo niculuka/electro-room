@@ -18,25 +18,12 @@
             <div class="row-chg">
                 <div class="slider">
                     <span><strong>electro-charger</strong></span>
-                    <div class="slide" [style]="slide">
-                        <img [src]="laptopCharger.src1" [alt]="laptopCharger.src1">
-                        <img [src]="laptopCharger.src2" [alt]="laptopCharger.src2">
-                        <img [src]="laptopCharger.src3" [alt]="laptopCharger.src3">
-                        <img [src]="laptopCharger.src4" [alt]="laptopCharger.src4">
+                    <div class="slide">
+                        <img [src]="currentImage" [alt]="currentImage">
                     </div>
-                    <div class="small-images">
-                        <a (click)="slide1()">
-                            <img [src]="laptopCharger.src1" [alt]="laptopCharger.src1">
-                        </a>
-                        <a (click)="slide2()">
-                            <img [src]="laptopCharger.src2" [alt]="laptopCharger.src2">
-                        </a>
-                        <a (click)="slide3()">
-                            <img [src]="laptopCharger.src3" [alt]="laptopCharger.src3">
-                        </a>
-                        <a (click)="slide4()">
-                            <img [src]="laptopCharger.src4" [alt]="laptopCharger.src4">
-                        </a>
+                    <div>
+                        <product-detail-image [productImages]="laptopChargerImages" (indexEvent)="receiveIndex($event)">
+                        </product-detail-image>
                     </div>
                 </div>
 

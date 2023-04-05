@@ -48,11 +48,11 @@ export class DialogLaptopSsdUpdateComponent implements OnInit {
   }  
 
   getImage(image: LaptopSsdImages) {
-    this.laptopSsd.src1 = image.src1;
+    this.laptopSsd.image = image.image;
     this.laptopSsd.src2 = image.src2;
     this.laptopSsd.src3 = image.src3;
     this.laptopSsd.src4 = image.src4;
-    this.laptopSsd.alt = image.src1.substring(12);
+    this.laptopSsd.alt = image.image.substring(12);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

@@ -48,11 +48,11 @@ export class DialogLaptopUpdateComponent implements OnInit {
   }  
 
   getImage(image: LaptopImages) {
-    this.laptop.src1 = image.src1;
+    this.laptop.image = image.image;
     this.laptop.src2 = image.src2;
     this.laptop.src3 = image.src3;
     this.laptop.src4 = image.src4;
-    this.laptop.alt = image.src1.substring(15);
+    this.laptop.alt = image.image.substring(15);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

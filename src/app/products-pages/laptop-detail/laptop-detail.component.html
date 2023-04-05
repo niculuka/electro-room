@@ -18,25 +18,12 @@
             <div class="row-lap">
                 <div class="slider">
                     <span><strong>laptop</strong></span>
-                    <div class="slide" [style]="slide">
-                        <img [src]="laptop.src1" [alt]="laptop.src1">
-                        <img [src]="laptop.src2" [alt]="laptop.src2">
-                        <img [src]="laptop.src3" [alt]="laptop.src3">
-                        <img [src]="laptop.src4" [alt]="laptop.src4">
+                    <div class="slide">
+                        <img [src]="currentImage" [alt]="currentImage">
                     </div>
-                    <div class="small-images">
-                        <a (click)="slide1()">
-                            <img [src]="laptop.src1" [alt]="laptop.src1">
-                        </a>
-                        <a (click)="slide2()">
-                            <img [src]="laptop.src2" [alt]="laptop.src2">
-                        </a>
-                        <a (click)="slide3()">
-                            <img [src]="laptop.src3" [alt]="laptop.src3">
-                        </a>
-                        <a (click)="slide4()">
-                            <img [src]="laptop.src4" [alt]="laptop.src4">
-                        </a>
+                    <div>
+                        <product-detail-image [productImages]="laptopImages" (indexEvent)="receiveIndex($event)">
+                        </product-detail-image>
                     </div>
                 </div>
 

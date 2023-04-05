@@ -165,7 +165,7 @@ export class LaptopSsdComponent implements OnInit {
     this.product.description = item.description;
     this.product.brand = item.brand;
     this.product.category = item.category;
-    this.product.src1 = item.src1;
+    this.product.image = item.image;
     this.product.alt = item.alt;
     this.product.price = item.price;
 

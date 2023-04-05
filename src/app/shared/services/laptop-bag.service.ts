@@ -24,6 +24,10 @@ export class LaptopBagService extends BearerService {
     return this.http.get(API_URL + "/laptop-bags");
   }
 
+  getLaptopBagsImagesService(bagId: number): Observable<any> {
+    return this.http.get(API_URL + "/images/laptop-bags/" + bagId);
+  }
+
   getLaptopBagsByCategoryService(category: string): Observable<any> {
     return this.http.get<LaptopBag>(API_URL + "/laptop-bags/" + category);
   }  

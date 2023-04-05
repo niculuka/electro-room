@@ -48,11 +48,11 @@ export class DialogLaptopChargerUpdateComponent implements OnInit {
   }
 
   getImage(image: LaptopChargerImages) {
-    this.laptopCharger.src1 = image.src1;
+    this.laptopCharger.image = image.image;
     this.laptopCharger.src2 = image.src2;
     this.laptopCharger.src3 = image.src3;
     this.laptopCharger.src4 = image.src4;
-    this.laptopCharger.alt = image.src1.substring(16);
+    this.laptopCharger.alt = image.image.substring(16);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

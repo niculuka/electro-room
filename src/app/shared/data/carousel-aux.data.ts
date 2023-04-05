@@ -11,7 +11,7 @@ export interface CarouselAuxData {
 export const CAROUSEL_AUX: CarouselAuxData[] = [
     {
         id: "1",
-        link: "/bag/geanta-laptop-samsonite-network-4",
+        link: "/laptops-phones-tablets/laptop-auxs/bags/geanta-laptop-samsonite-network-4",
         src: "assets/bags/samsonite14_1.png",
         alt: "samsonite14_1.png",
         alert: "Top Favorite",
@@ -20,7 +20,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "2",
-        link: "/bag/husa-laptop-hama-16507",
+        link: "/laptops-phones-tablets/laptop-auxs/bags/husa-laptop-hama-16507",
         src: "assets/bags/hama16507_1.png",
         alt: "hama16507_1.png",
         alert: "Top Favorite",
@@ -29,7 +29,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "3",
-        link: "/bag/rucsac-laptop-hama-vienna-101778",
+        link: "/laptops-phones-tablets/laptop-auxs/bags/rucsac-laptop-hama-vienna-101778",
         src: "assets/bags/hama101778_1.png",
         alt: "hama101778_1.png",
         alert: "Super Pret",
@@ -38,7 +38,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "4",
-        link: "/chg/incarcator-universal-auto-hama-200009",
+        link: "/laptops-phones-tablets/laptop-auxs/chargers/incarcator-universal-auto-hama-200009",
         src: "assets/chargers/hama009_1.png",
         alt: "hama009_1.png",
         alert: "Super Pret",
@@ -47,7 +47,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "5",
-        link: "/chg/incarcator-auto-hama-54177",
+        link: "/laptops-phones-tablets/laptop-auxs/chargers/incarcator-auto-hama-54177",
         src: "assets/chargers/hama177_1.png",
         alt: "hama177_1.png",
         alert: "Top Favorite",
@@ -56,7 +56,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "6",
-        link: "/ssd/solid-state-drive-samsung860-m6e500Bw",
+        link: "/laptops-phones-tablets/laptop-auxs/ssds/solid-state-drive-samsung860-m6e500Bw",
         src: "assets/ssds/samsung860_1.png",
         alt: "samsung860_1.png",
         alert: "Top Favorite",
@@ -65,7 +65,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "7",
-        link: "/ssd/solid-state-drive-adata-swordfish-500g",
+        link: "/laptops-phones-tablets/laptop-auxs/ssds/solid-state-drive-adata-swordfish-500g",
         src: "assets/ssds/swordfish_1.png",
         alt: "swordfish_1.png",
         alert: "Super Pret",
@@ -74,7 +74,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "8",
-        link: "/ssd/solid-state-drive-sandisk-g26",
+        link: "/laptops-phones-tablets/laptop-auxs/ssds/solid-state-drive-sandisk-g26",
         src: "assets/ssds/sandisk26_1.png",
         alt: "sandisk26_1.png",
         alert: "Top Favorite",
@@ -83,7 +83,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "9",
-        link: "/bag/geanta-laptop-samsonite-vectura-evo-005",
+        link: "/laptops-phones-tablets/laptop-auxs/bags/geanta-laptop-samsonite-vectura-evo-005",
         src: "assets/bags/samsonite005_1.png",
         alt: "samsonite005_1.png",
         alert: "Super Pret",
@@ -92,7 +92,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "10",
-        link: "/bag/geanta-laptophama-tortuga",
+        link: "/laptops-phones-tablets/laptop-auxs/bags/geanta-laptophama-tortuga",
         src: "assets/bags/hama156_1.png",
         alt: "hama156_1.png",
         alert: "Top Favorite",
@@ -101,7 +101,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "11",
-        link: "/chg/incarcator-universal-hama-54184",
+        link: "/laptops-phones-tablets/laptop-auxs/chargers/incarcator-universal-hama-54184",
         src: "assets/chargers/hama54184_1.png",
         alt: "hama54184_1.png",
         alert: "Super Pret",
@@ -110,7 +110,7 @@ export const CAROUSEL_AUX: CarouselAuxData[] = [
     },
     {
         id: "12",
-        link: "/ssd/solid-statedrive-wd-green-s240g2g0a",
+        link: "/laptops-phones-tablets/laptop-auxs/ssds/solid-statedrive-wd-green-s240g2g0a",
         src: "assets/ssds/wd240g_1.png",
         alt: "wd240g_1.png",
         alert: "Super Pret",

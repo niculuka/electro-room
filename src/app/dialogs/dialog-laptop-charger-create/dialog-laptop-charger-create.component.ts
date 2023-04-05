@@ -27,7 +27,7 @@ export class DialogLaptopChargerCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.newLaptopCharger.src1 = "assets/chargers/blank600.png";
+    this.newLaptopCharger.image = "assets/chargers/blank600.png";
   }
 
   createLaptopCharger() {
@@ -49,11 +49,11 @@ export class DialogLaptopChargerCreateComponent implements OnInit {
   }
 
   getImage(image: LaptopChargerImages) {
-    this.newLaptopCharger.src1 = image.src1;
+    this.newLaptopCharger.image = image.image;
     this.newLaptopCharger.src2 = image.src2;
     this.newLaptopCharger.src3 = image.src3;
     this.newLaptopCharger.src4 = image.src4;
-    this.newLaptopCharger.alt = image.src1.substring(16);
+    this.newLaptopCharger.alt = image.image.substring(16);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

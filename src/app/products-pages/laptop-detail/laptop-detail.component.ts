@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
 import { Laptop } from 'src/app/shared/models/laptop.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -10,15 +11,18 @@ import { LaptopService } from 'src/app/shared/services/laptop.service';
   templateUrl: './laptop-detail.component.html',
   styleUrls: ['./laptop-detail.component.css']
 })
-export class LaptopDetailComponent{
+export class LaptopDetailComponent {
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;
 
-  laptop: Laptop = new Laptop();
+  laptop: Laptop = new Laptop();  
   product: Product = new Product();
-  slide: string = "left: 0";
 
+  laptopImages: Array<ImagesGallery> = [];
+  index: number = 0;
+  currentImage: string = "";
+  
   constructor(
     activatedRoute: ActivatedRoute,
     laptopService: LaptopService,
@@ -28,6 +32,10 @@ export class LaptopDetailComponent{
     let linkName = activatedRoute.snapshot.params["linkName"] as string
     laptopService.getLaptopByNameService(linkName).subscribe(data => {
       this.laptop = data;
+      laptopService.getLaptopImagesService(data.laptopId).subscribe(result => {
+        this.laptopImages = result;
+        this.currentImage = this.laptopImages[0].image
+      })
     })
   }
 
@@ -38,27 +46,16 @@ export class LaptopDetailComponent{
     this.product.description = this.laptop.description;
     this.product.brand = this.laptop.brand;
     this.product.category = this.laptop.category;
-    this.product.src1 = this.laptop.src1;
-    this.product.alt = this.laptop.alt;    
+    this.product.image = this.laptop.image;
+    this.product.alt = this.laptop.alt;
     this.product.price = this.laptop.price;
-    
+
     this.cartService.addToCartService(this.product);
     this.router.navigateByUrl('/cart');
   }
 
-  slide1() {
-    this.slide = "left: 0;";
+  receiveIndex($event: any) {
+    this.currentImage = $event;
   }
 
-  slide2() {
-    this.slide = "left: -100%;";
-  }
-
-  slide3() {
-    this.slide = "left: -200%;";
-  }
-
-  slide4() {
-    this.slide = "left: -300%;";
-  }
 }

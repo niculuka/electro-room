@@ -26,7 +26,7 @@ export class DialogLaptopCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.newLaptop.src1 = "assets/laptops/blank600.png";
+    this.newLaptop.image = "assets/laptops/blank600.png";
   }
 
   createLaptop() {
@@ -48,11 +48,11 @@ export class DialogLaptopCreateComponent implements OnInit {
   }
 
   getImage(image: LaptopImages) {
-    this.newLaptop.src1 = image.src1;
+    this.newLaptop.image = image.image;
     this.newLaptop.src2 = image.src2;
     this.newLaptop.src3 = image.src3;
     this.newLaptop.src4 = image.src4;
-    this.newLaptop.alt = image.src1.substring(15);
+    this.newLaptop.alt = image.image.substring(15);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

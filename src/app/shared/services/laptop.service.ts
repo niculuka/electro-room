@@ -24,6 +24,10 @@ export class LaptopService extends BearerService {
     return this.http.get(API_URL + "/laptops");
   }
 
+  getLaptopImagesService(laptopId: number): Observable<any> {
+    return this.http.get(API_URL + "/images/laptops/" + laptopId);
+  }
+
   getLaptopsByCategoryService(category: string): Observable<any> {
     return this.http.get<Laptop>(API_URL + "/laptops/" + category);
   }  

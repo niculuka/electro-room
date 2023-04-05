@@ -1,3 +1,22 @@
-<h1>
-    <a routerLink="/laptops-phones-tablets/laptops">laptops-phones-tablets</a>
-</h1>
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container-depart">
+    <div class="content-depart">
+
+        <app-ng-dynamic-breadcrumb [bgColor]="'#00000000'" [fontSize]="'16px'" [fontColor]="'#ff4196'"
+            [lastLinkColor]="'#000'" [symbol]="' / '">
+        </app-ng-dynamic-breadcrumb>
+
+        <div class="cards">
+            <div class="card" *ngFor="let card of cards">
+                <div [routerLink]="card.link">
+                    <img [src]="card.image" [alt]="card.image">
+                    <div class="title">{{card.title}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

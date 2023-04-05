@@ -140,8 +140,8 @@
                         <mat-icon class="favorite" *ngIf="item.favorite" (click)="addToFavorite(item)">favorite
                         </mat-icon>
 
-                        <a [routerLink]="item.linkName">
-                            <img [src]="item.src1" [alt]="item.alt" />
+                        <a [routerLink]="item.category.substring(7).toLocaleLowerCase() + '/' + item.linkName">
+                            <img [src]="item.image" [alt]="item.alt" />
                             <span style="background: rgb(0, 154, 230)">
                                 {{item.alert === "TOP_FAVORITE" ? "Top Favorit" : ""}}
                             </span>

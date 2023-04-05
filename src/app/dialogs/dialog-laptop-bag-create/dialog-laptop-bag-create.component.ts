@@ -27,7 +27,7 @@ export class DialogLaptopBagCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.newLaptopBag.src1 = "assets/bags/blank600.png";
+    this.newLaptopBag.image = "assets/bags/blank600.png";
   }
 
   createLaptopBag() {
@@ -49,11 +49,11 @@ export class DialogLaptopBagCreateComponent implements OnInit {
   }
 
   getImage(image: LaptopBagImages) {
-    this.newLaptopBag.src1 = image.src1;
+    this.newLaptopBag.image = image.image;
     this.newLaptopBag.src2 = image.src2;
     this.newLaptopBag.src3 = image.src3;
     this.newLaptopBag.src4 = image.src4;
-    this.newLaptopBag.alt = image.src1.substring(12);
+    this.newLaptopBag.alt = image.image.substring(12);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

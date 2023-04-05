@@ -1,0 +1,18 @@
+<owl-carousel-o [options]="customOptions" (dragging)="isDragging = $event.dragging">
+
+    <ng-container *ngFor="let productImage of productImages">
+
+        <ng-template carouselSlide>
+
+            <div class="card">
+
+                <a (click)="sendIndex(productImage)">
+                    <img [src]="productImage.image" [alt]="productImage.image">
+                </a>
+            </div>
+
+        </ng-template>
+
+    </ng-container>
+
+</owl-carousel-o>

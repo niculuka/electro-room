@@ -2,15 +2,15 @@
 
 <navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
 
-<div class="container">
-  <div class="content">
+<div class="container-cart">
+  <div class="content-cart">
 
     <div class="empty" *ngIf="isEmpty()">
       "Cosul este gol !!!"
     </div>
 
 
-    <table class="row" style="width: 100%;" *ngIf="!isEmpty()">
+    <table class="row-cart" style="width: 100%;" *ngIf="!isEmpty()">
       <thead>
         <tr>
           <td colspan="7">
@@ -29,7 +29,7 @@
           <td>{{ind+1}}</td>
           <td>
             <a (click)="getProductLinkName(cartItem)">
-              <img [src]="cartItem.product.src1" [alt]="cartItem.product.name">
+              <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
             </a>
           </td>
           <td class="name">
@@ -61,7 +61,7 @@
 
 
 
-    <table class="column" style="width: 100%;" *ngIf="!isEmpty()">
+    <table class="column-cart" style="width: 100%;" *ngIf="!isEmpty()">
 
       <thead>
         <tr>
@@ -82,7 +82,7 @@
           <th>Imagine</th>
           <td>
             <a (click)="getProductLinkName(cartItem)">
-              <img [src]="cartItem.product.src1" [alt]="cartItem.product.name">
+              <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
             </a>
           </td>
         </tr>

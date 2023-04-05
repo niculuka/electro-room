@@ -18,25 +18,12 @@
             <div class="row-ssd">
                 <div class="slider">
                     <span><strong>electro-ssd</strong></span>
-                    <div class="slide" [style]="slide">
-                        <img [src]="laptopSsd.src1" [alt]="laptopSsd.src1">
-                        <img [src]="laptopSsd.src2" [alt]="laptopSsd.src2">
-                        <img [src]="laptopSsd.src3" [alt]="laptopSsd.src3">
-                        <img [src]="laptopSsd.src4" [alt]="laptopSsd.src4">
+                    <div class="slide">
+                        <img [src]="currentImage" [alt]="currentImage">
                     </div>
-                    <div class="small-images">
-                        <a (click)="slide1()">
-                            <img [src]="laptopSsd.src1" [alt]="laptopSsd.src1">
-                        </a>
-                        <a (click)="slide2()">
-                            <img [src]="laptopSsd.src2" [alt]="laptopSsd.src2">
-                        </a>
-                        <a (click)="slide3()">
-                            <img [src]="laptopSsd.src3" [alt]="laptopSsd.src3">
-                        </a>
-                        <a (click)="slide4()">
-                            <img [src]="laptopSsd.src4" [alt]="laptopSsd.src4">
-                        </a>
+                    <div>
+                        <product-detail-image [productImages]="laptopSsdImages" (indexEvent)="receiveIndex($event)">
+                        </product-detail-image>
                     </div>
                 </div>
 

@@ -18,25 +18,12 @@
             <div class="row-bag">
                 <div class="slider">
                     <span><strong>electro-bag</strong></span>
-                    <div class="slide" [style]="slide">
-                        <img [src]="laptopBag.src1" [alt]="laptopBag.src1">
-                        <img [src]="laptopBag.src2" [alt]="laptopBag.src2">
-                        <img [src]="laptopBag.src3" [alt]="laptopBag.src3">
-                        <img [src]="laptopBag.src4" [alt]="laptopBag.src4">
+                    <div class="slide">
+                        <img [src]="currentImage" [alt]="currentImage">
                     </div>
-                    <div class="small-images">
-                        <a (click)="slide1()">
-                            <img [src]="laptopBag.src1" [alt]="laptopBag.src1">
-                        </a>
-                        <a (click)="slide2()">
-                            <img [src]="laptopBag.src2" [alt]="laptopBag.src2">
-                        </a>
-                        <a (click)="slide3()">
-                            <img [src]="laptopBag.src3" [alt]="laptopBag.src3">
-                        </a>
-                        <a (click)="slide4()">
-                            <img [src]="laptopBag.src4" [alt]="laptopBag.src4">
-                        </a>
+                    <div>
+                        <product-detail-image [productImages]="laptopBagImages" (indexEvent)="receiveIndex($event)">
+                        </product-detail-image>
                     </div>
                 </div>
 

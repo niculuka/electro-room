@@ -55,18 +55,18 @@
         <li class="dropdown">
             <label for="image">Image: </label>
             <div class="select-line" (click)="toggleDropdownMenu()">
-                <input type="text" name="src" [(ngModel)]="laptop.src1">
+                <input type="text" name="src" [(ngModel)]="laptop.image">
                 <mat-icon>expand_more</mat-icon>
             </div>
             <div class="dropdown-menu" [style]="isDropdownMenuOpen">
                 <div class="list-option" *ngFor="let image of laptopImages;" (click)="getImage(image)">
-                    <img [src]="image.src1" [alt]="image.alt">
+                    <img [src]="image.image" [alt]="image.alt">
                     <span>{{image.alt}}</span>
                 </div>
             </div>
         </li>
         <div class="image-display">
-            <img class="image" [src]="laptop.src1" [alt]="laptop.alt">
+            <img class="image" [src]="laptop.image" [alt]="laptop.alt">
         </div>
         <div class="alert-container-dialog">
             <div class="alert-dialog"></div>

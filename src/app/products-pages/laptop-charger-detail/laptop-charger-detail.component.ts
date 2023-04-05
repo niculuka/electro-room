@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
 import { LaptopCharger } from 'src/app/shared/models/laptop-charger.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -17,7 +18,10 @@ export class LaptopChargerDetailComponent {
 
   laptopCharger: LaptopCharger = new LaptopCharger();
   product: Product = new Product();
-  slide: string = "left: 0";
+  
+  laptopChargerImages: Array<ImagesGallery> = [];
+  index: number = 0;
+  currentImage: string = "";
 
   constructor(
     activatedRoute: ActivatedRoute,
@@ -28,6 +32,10 @@ export class LaptopChargerDetailComponent {
     let linkName = activatedRoute.snapshot.params["linkName"] as string
     laptopChargerService.getLaptopChargerByNameService(linkName).subscribe(data => {
       this.laptopCharger = data;
+      laptopChargerService.getLaptopChargersImagesService(data.chargerId).subscribe(result => {
+        this.laptopChargerImages = result;
+        this.currentImage = this.laptopChargerImages[0].image
+      })
     })
   }
 
@@ -38,7 +46,7 @@ export class LaptopChargerDetailComponent {
     this.product.description = this.laptopCharger.description;
     this.product.brand = this.laptopCharger.brand;
     this.product.category = this.laptopCharger.category;
-    this.product.src1 = this.laptopCharger.src1;
+    this.product.image = this.laptopCharger.image;
     this.product.alt = this.laptopCharger.alt;    
     this.product.price = this.laptopCharger.price;
     
@@ -46,19 +54,8 @@ export class LaptopChargerDetailComponent {
     this.router.navigateByUrl('/cart');
   }
 
-  slide1() {
-    this.slide = "left: 0;";
+  receiveIndex($event: any) {
+    this.currentImage = $event;
   }
-
-  slide2() {
-    this.slide = "left: -100%;";
-  }
-
-  slide3() {
-    this.slide = "left: -200%;";
-  }
-
-  slide4() {
-    this.slide = "left: -300%;";
-  }
+  
 }

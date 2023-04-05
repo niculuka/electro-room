@@ -141,7 +141,7 @@
                 <div class="cards-container">
                     <div class="card" *ngFor="let item of laptopSsds;">
                         <a [routerLink]="item.linkName">
-                            <img [src]="item.src1" [alt]="item.alt" />
+                            <img [src]="item.image" [alt]="item.alt" />
                             <h4><strong>{{item.description}}</strong></h4>
                         </a>
                         <p class="avail stock" *ngIf="item.available==='STOCK'">in stoc</p>

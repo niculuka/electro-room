@@ -49,11 +49,11 @@ export class DialogLaptopBagUpdateComponent implements OnInit {
   }  
 
   getImage(image: LaptopBagImages) {
-    this.laptopBag.src1 = image.src1;
+    this.laptopBag.image = image.image;
     this.laptopBag.src2 = image.src2;
     this.laptopBag.src3 = image.src3;
     this.laptopBag.src4 = image.src4;
-    this.laptopBag.alt = image.src1.substring(12);
+    this.laptopBag.alt = image.image.substring(12);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

@@ -3,116 +3,114 @@
 <navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
 
 <div class="container-admin">
-    <div class="content-admin">
-  
-      <div class="title">
-        <h1><strong>LAPTOP CHARGERS</strong></h1>
-        <h3>Products: {{chargers.length}}</h3>
-        <button class="btn-new" type="button" (click)="noAction()">NEW</button>
-      </div>
-  
-      <table class="table-row">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Image</th>
-            <th>Brand</th>
-            <th>Name</th>     
-            <th>Description</th>        
-            <th>Available</th>
-            <th>Category</th>
-            <th>Power</th>
-            <th>Price</th>
-            <th>Date</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-  
-        <tbody>
-          <tr *ngFor="let charger of chargers;">
-            <td><strong>{{charger.chargerId}}</strong></td>
-            <td>
-              <a routerLink="/chg/{{charger.linkName}}">
-                <img [src]="charger.src1" [alt]="charger.alt">
-              </a>
-            </td>
-            <td><strong>{{charger.brand}}</strong></td>
-            <td>
-              <strong>{{charger.name}}</strong>
-            </td>            
-            <td>{{charger.description}}</td>
-            <td>{{charger.available}}</td>
-            <td><strong>{{charger.category.substring(8)}}</strong></td>
-            <td>{{charger.power}}</td>
-            <td><strong>{{charger.price}}.Lei</strong></td>
-            <td>{{charger.createTime}}</td>
-            <td>
-              <button class="btn-edit" (click)="noAction()">Edit</button>
-            </td>
-            <td>
-              <button class="btn-delete" (click)="noAction()">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-  
-      <table class="table-col" *ngFor="let charger of chargers;">
-        <tbody>
-          <tr>
-            <th colspan="2">{{charger.chargerId}}</th>
-          </tr>
-          <tr>
-            <th>Image</th>
-            <td>
-              <a routerLink="/chg/{{charger.linkName}}">
-                <img [src]="charger.src1" [alt]="charger.alt">
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <th>Brand</th>
-            <td><strong>{{charger.brand}}</strong></td>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <td><strong>{{charger.name}}</strong></td>
-          </tr>          
-          <tr>
-            <th>Description</th>
-            <td>{{charger.description}}</td>
-          </tr>
-          <tr>
-            <th>Available</th>
-            <td>{{charger.available}}</td>
-          </tr>
-          <tr>
-            <th>Category</th>
-            <td><strong>{{charger.category.substring(8)}}</strong></td>
-          </tr>
-          <tr>
-            <th>Power</th>
-            <td>{{charger.price}}</td>
-          </tr>
-          <tr>
-            <th>Price</th>
-            <td><strong>{{charger.price}} Lei</strong></td>
-          </tr>         
-          <tr>
-            <th>Date</th>
-            <td>{{charger.createTime}}</td>
-          </tr>
-          <tr class="action">
-            <th>Action</th>
-            <td>
-              <button class="btn-edit" (click)="noAction()">Edit</button>
-              <button class="btn-delete" (click)="noAction()">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-  
+  <div class="content-admin">
+
+    <div class="title">
+      <h1><strong>LAPTOP CHARGERS</strong></h1>
+      <h3>Products: {{chargers.length}}</h3>
+      <button class="btn-new" type="button" (click)="noAction()">NEW</button>
     </div>
+
+    <table class="table-row">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Image</th>
+          <th>Brand</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Available</th>
+          <th>Category</th>
+          <th>Power</th>
+          <th>Price</th>
+          <th>Date</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let charger of chargers;">
+          <td><strong>{{charger.chargerId}}</strong></td>
+          <td>
+            <a routerLink="/laptops-phones-tablets/laptop-auxs/chargers/{{charger.linkName}}">
+              <img [src]="charger.image" [alt]="charger.alt">
+            </a>
+          </td>
+          <td><strong>{{charger.brand}}</strong></td>
+          <td>
+            <strong>{{charger.name}}</strong>
+          </td>
+          <td>{{charger.description}}</td>
+          <td>{{charger.available}}</td>
+          <td><strong>{{charger.category.substring(8)}}</strong></td>
+          <td>{{charger.power}}</td>
+          <td><strong>{{charger.price}}.Lei</strong></td>
+          <td>{{charger.createTime}}</td>
+          <td>
+            <button class="btn-edit" (click)="noAction()">Edit</button>
+          </td>
+          <td>
+            <button class="btn-delete" (click)="noAction()">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table-col" *ngFor="let charger of chargers;">
+      <tbody>
+        <tr>
+          <th colspan="2">{{charger.chargerId}}</th>
+        </tr>
+        <tr>
+          <th>Image</th>
+          <td>
+            <a routerLink="/laptops-phones-tablets/laptop-auxs/chargers/{{charger.linkName}}">
+              <img [src]="charger.image" [alt]="charger.alt">
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <th>Brand</th>
+          <td><strong>{{charger.brand}}</strong></td>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <td><strong>{{charger.name}}</strong></td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td>{{charger.description}}</td>
+        </tr>
+        <tr>
+          <th>Available</th>
+          <td>{{charger.available}}</td>
+        </tr>
+        <tr>
+          <th>Category</th>
+          <td><strong>{{charger.category.substring(8)}}</strong></td>
+        </tr>
+        <tr>
+          <th>Power</th>
+          <td>{{charger.price}}</td>
+        </tr>
+        <tr>
+          <th>Price</th>
+          <td><strong>{{charger.price}} Lei</strong></td>
+        </tr>
+        <tr>
+          <th>Date</th>
+          <td>{{charger.createTime}}</td>
+        </tr>
+        <tr class="action">
+          <th>Action</th>
+          <td>
+            <button class="btn-edit" (click)="noAction()">Edit</button>
+            <button class="btn-delete" (click)="noAction()">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
-
-
+</div>

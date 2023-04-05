@@ -8,7 +8,7 @@ export class LaptopCharger {
     description: string = "";
     brand: CATEGORY;    
     category: CATEGORY;
-    src1: string = "";
+    image: string = "";
     src2: string = "";
     src3: string = "";
     src4: string = "";
@@ -25,7 +25,7 @@ export class LaptopCharger {
         description: string = "",
         brand: CATEGORY = CATEGORY.HAMA,        
         category: CATEGORY = CATEGORY.CHARGER_PLUG_IN,
-        src1: string = "",
+        image: string = "",
         src2: string = "",
         src3: string = "",
         src4: string = "",
@@ -40,7 +40,7 @@ export class LaptopCharger {
         this.description = description;
         this.brand = brand;        
         this.category = category;
-        this.src1 = src1;
+        this.image = image;
         this.src2 = src2;
         this.src3 = src3;
         this.src4 = src4;

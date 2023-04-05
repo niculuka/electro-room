@@ -1,4 +1,4 @@
-.container {
+.container-cart {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.content {
+.content-cart {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -23,7 +23,7 @@
   text-align: center;
 }
 
-.row {
+.row-cart {
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -86,7 +86,7 @@ select {
   box-shadow: 1px 1px 10px;
 }
 
-.column {
+.column-cart {
   display: none;
   width: 100%;
   box-sizing: border-box;
@@ -94,12 +94,12 @@ select {
   background: white;
 }
 
-.column tbody th,
-.column tbody td {
+.column-cart tbody th,
+.column-cart tbody td {
   border: 1px solid rgb(195, 195, 195);
 }
 
-.column tbody td {
+.column-cart tbody td {
   width: 100%;
 }
 
@@ -216,17 +216,17 @@ th {
 }
 
 @media (max-width: 1600px) {
-  .content {
+  .content-cart {
     width: 1200px;
   }
 }
 
 @media (max-width: 1280px) {
-  .content {
+  .content-cart {
     width: 980px;
   }
 
-  .row th {
+  .row-cart th {
     font-size: 16px;
   }
 
@@ -241,7 +241,7 @@ th {
 }
 
 @media (max-width: 1040px) {  
-  .row {
+  .row-cart {
     display: none;
   }
 
@@ -249,13 +249,13 @@ th {
     font-size: 22px;
   }
 
-  .column {
+  .column-cart {
     display: block;
     max-width: 480px;
     margin: auto;
   } 
   
-  .column tr {
+  .column-cart tr {
     font-size: 16px;
     line-height: 20px;
   }
@@ -284,12 +284,12 @@ th {
     width: 20px;
   }
 
-  .column tr {
+  .column-cart tr {
     font-size: 14px;
     line-height: 16px;
   }
 
-  .column {
+  .column-cart {
     max-width: 300px;
     margin: auto;
   }

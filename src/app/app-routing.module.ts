@@ -51,6 +51,7 @@ import { LaptopSsdComponent } from './products-pages/laptop-ssd/laptop-ssd.compo
 import { LaptopSsdDetailComponent } from './products-pages/laptop-ssd-detail/laptop-ssd-detail.component';
 import { LaptopChargerComponent } from './products-pages/laptop-charger/laptop-charger.component';
 import { LaptopChargerDetailComponent } from './products-pages/laptop-charger-detail/laptop-charger-detail.component';
+import { ProductDetailImageComponent } from './products-pages/product-detail-image/product-detail-image.component';
 
 
 const routes: Routes = [
@@ -58,7 +59,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   // { path: "**", component: HomeComponent },
 
-  { path: "test", component: LaptopPhoneTabletComponent },
+  { path: "test", component: ProductDetailImageComponent },
 
   { path: "search/:searchTerm", component: SearchComponent },
 
@@ -77,7 +78,7 @@ const routes: Routes = [
       breadcrumb: [
         {
           label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
+          url: ''
         }
       ]
     },

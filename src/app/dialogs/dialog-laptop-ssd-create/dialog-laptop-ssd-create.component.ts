@@ -26,7 +26,7 @@ export class DialogLaptopSsdCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.newLaptopSsd.src1 = "assets/ssds/blank600.png";
+    this.newLaptopSsd.image = "assets/ssds/blank600.png";
   }
 
   createLaptopSsd() {
@@ -48,11 +48,11 @@ export class DialogLaptopSsdCreateComponent implements OnInit {
   }
 
   getImage(image: LaptopSsdImages) {
-    this.newLaptopSsd.src1 = image.src1;
+    this.newLaptopSsd.image = image.image;
     this.newLaptopSsd.src2 = image.src2;
     this.newLaptopSsd.src3 = image.src3;
     this.newLaptopSsd.src4 = image.src4;
-    this.newLaptopSsd.alt = image.src1.substring(12);
+    this.newLaptopSsd.alt = image.image.substring(12);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }
