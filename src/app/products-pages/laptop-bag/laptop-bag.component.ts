@@ -121,7 +121,7 @@ export class LaptopBagComponent implements OnInit {
   }
 
   addToCart(item: LaptopBag) {
-    this.product.productId = item.bagId;
+    this.product.id = item.bagId;
     this.product.name = item.name;
     this.product.linkName = item.linkName;
     this.product.description = item.description;

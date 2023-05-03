@@ -40,18 +40,13 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet.component';
-import { LaptopComponent } from './products-pages/laptop/laptop.component';
-import { LaptopCategoryComponent } from './products-pages/laptop-category/laptop-category.component';
-import { LaptopDetailComponent } from './products-pages/laptop-detail/laptop-detail.component';
-import { LaptopAuxComponent } from './products-pages/laptop-aux/laptop-aux.component';
+import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablets/laptop-phone-tablet/laptop-phone-tablet.component';
+import { LaptopComponent } from './products-pages/laptop-phone-tablets/laptop/laptop/laptop.component';
+import { LaptopCategoryComponent } from './products-pages/laptop-phone-tablets/laptop/laptop-category/laptop-category.component';
+import { LaptopDetailComponent } from './products-pages/laptop-phone-tablets/laptop/laptop-detail/laptop-detail.component';
+import { LaptopAccessoryCategoryComponent } from './products-pages/laptop-phone-tablets/laptop-accessory/laptop-accessory-category/laptop-accessory-category.component';
 import { LaptopBagComponent } from './products-pages/laptop-bag/laptop-bag.component';
 import { LaptopBagDetailComponent } from './products-pages/laptop-bag-detail/laptop-bag-detail.component';
-import { LaptopSsdComponent } from './products-pages/laptop-ssd/laptop-ssd.component';
-import { LaptopSsdDetailComponent } from './products-pages/laptop-ssd-detail/laptop-ssd-detail.component';
-import { LaptopChargerComponent } from './products-pages/laptop-charger/laptop-charger.component';
-import { LaptopChargerDetailComponent } from './products-pages/laptop-charger-detail/laptop-charger-detail.component';
-import { ProductDetailImageComponent } from './products-pages/product-detail-image/product-detail-image.component';
 
 
 const routes: Routes = [
@@ -59,7 +54,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   // { path: "**", component: HomeComponent },
 
-  { path: "test", component: ProductDetailImageComponent },
+  { path: "test", component: HelpDeskComponent },
 
   { path: "search/:searchTerm", component: SearchComponent },
 
@@ -71,30 +66,22 @@ const routes: Routes = [
   { path: "auth/register", component: RegisterComponent },
   { path: "auth/login", component: LoginComponent },
 
-  // menu
+  // LAPTOP-PHONE-TABLET -------------------------------------------------------------------------------------------
   {
     path: "laptops-phones-tablets", component: LaptopPhoneTabletComponent, data: {
       title: 'laptops-phones-tablets',
       breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: ''
-        }
+        { label: 'Laptopuri, Telefoane, Tablete', url: '' }
       ]
     },
   },
+  // Laptops -------------------------------------------------------------------------------------------
   {
     path: "laptops-phones-tablets/laptops", component: LaptopComponent, data: {
       title: 'laptops',
       breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Laptopuri',
-          url: ''
-        }
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Laptopuri', url: '' }
       ]
     },
   },
@@ -102,18 +89,9 @@ const routes: Routes = [
     path: "laptops-phones-tablets/laptops/:category", component: LaptopCategoryComponent, data: {
       title: 'laptops-category',
       breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Laptopuri',
-          url: '/laptops-phones-tablets/laptops'
-        },
-        {
-          label: '{{category}}',
-          url: ''
-        }
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Laptopuri', url: '/laptops-phones-tablets/laptops' },
+        { label: '{{category}}', url: '' }
       ]
     },
   },
@@ -121,165 +99,41 @@ const routes: Routes = [
     path: "laptops-phones-tablets/laptops/:category/:linkName", component: LaptopDetailComponent, data: {
       title: 'laptops-category',
       breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Laptopuri',
-          url: '/laptops-phones-tablets/laptops'
-        },
-        {
-          label: '{{category}}',
-          url: '/laptops-phones-tablets/laptops/:category'
-        },
-        {
-          label: '{{linkName}}',
-          url: ''
-        }
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Laptopuri', url: '/laptops-phones-tablets/laptops' },
+        { label: '{{category}}', url: '/laptops-phones-tablets/laptops/:category' },
+        { label: '{{linkName}}', url: '' }
+      ]
+    },
+  },
+  // Laptop-Accessory --------------------------------------------------------------------------------------
+  {
+    path: "laptops-phones-tablets/accessories", component: LaptopAccessoryCategoryComponent, data: {
+      title: 'laptops-category',
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Accesorii Laptop', url: '' },
       ]
     },
   },
   {
-    path: "laptops-phones-tablets/laptop-auxs", component: LaptopAuxComponent, data: {
+    path: "laptops-phones-tablets/accessories/bags", component: LaptopBagComponent, data: {
       title: 'laptops-category',
       breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Accesorii Laptop',
-          url: ''
-        },
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Accesorii Laptop', url: '/laptops-phones-tablets/accessories' },
+        { label: 'Accesorii Laptop', url: '' },
       ]
     },
   },
   {
-    path: "laptops-phones-tablets/laptop-auxs/bags", component: LaptopBagComponent, data: {
+    path: "laptops-phones-tablets/accessories/bags/:linkName", component: LaptopBagDetailComponent, data: {
       title: 'laptops-category',
       breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Accesorii Laptop',
-          url: '/laptops-phones-tablets/laptop-auxs'
-        },
-        {
-          label: 'Accesorii Laptop',
-          url: ''
-        },
-      ]
-    },
-  },
-  {
-    path: "laptops-phones-tablets/laptop-auxs/bags/:linkName", component: LaptopBagDetailComponent, data: {
-      title: 'laptops-category',
-      breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Accesorii Laptop',
-          url: '/laptops-phones-tablets/laptop-auxs'
-        },
-        {
-          label: 'Genti Laptop',
-          url: '/laptops-phones-tablets/laptop-auxs/bags'
-        },
-        {
-          label: '{{linkName}}',
-          url: ''
-        },
-      ]
-    },
-  },
-
-  {
-    path: "laptops-phones-tablets/laptop-auxs/chargers", component: LaptopChargerComponent, data: {
-      title: 'laptops-category',
-      breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Accesorii Laptop',
-          url: '/laptops-phones-tablets/laptop-auxs'
-        },
-        {
-          label: 'Incarcatoare priza, auto',
-          url: ''
-        },
-      ]
-    },
-  },
-  {
-    path: "laptops-phones-tablets/laptop-auxs/chargers/:linkName", component: LaptopChargerDetailComponent, data: {
-      title: 'laptops-category',
-      breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Accesorii Laptop',
-          url: '/laptops-phones-tablets/laptop-auxs'
-        },
-        {
-          label: 'Incarcatoare priza, auto',
-          url: '/laptops-phones-tablets/laptop-auxs/chargers'
-        },
-        {
-          label: '{{linkName}}',
-          url: ''
-        },
-      ]
-    },
-  },
-
-  {
-    path: "laptops-phones-tablets/laptop-auxs/ssds", component: LaptopSsdComponent, data: {
-      title: 'laptops-category',
-      breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Accesorii Laptop',
-          url: '/laptops-phones-tablets/laptop-auxs'
-        },
-        {
-          label: 'SSD externe',
-          url: ''
-        },
-      ]
-    },
-  },
-  {
-    path: "laptops-phones-tablets/laptop-auxs/ssds/:linkName", component: LaptopSsdDetailComponent, data: {
-      title: 'laptops-category',
-      breadcrumb: [
-        {
-          label: 'Laptopuri, Telefoane, Tablete',
-          url: '/laptops-phones-tablets'
-        },
-        {
-          label: 'Accesorii Laptop',
-          url: '/laptops-phones-tablets/laptop-auxs'
-        },
-        {
-          label: 'SSD externe',
-          url: '/laptops-phones-tablets/laptop-auxs/ssds'
-        },
-        {
-          label: '{{linkName}}',
-          url: ''
-        },
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Accesorii Laptop', url: '/laptops-phones-tablets/accessories' },
+        { label: 'Genti Laptop', url: '/laptops-phones-tablets/accessories/bags' },
+        { label: '{{linkName}}', url: '' },
       ]
     },
   },

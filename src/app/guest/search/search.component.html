@@ -83,10 +83,10 @@
                         <a (click)="goToProduct(product)">
                             <img [src]="product.image" [alt]="product.alt" />
                             <span style="background: rgb(0, 154, 230)">
-                                {{product.alert === "TOP_FAVORITE" ? "Top Favorit" : ""}}
+                                {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : ""}}
                             </span>
                             <span style="background: rgb(220, 20, 110)">
-                                {{product.alert === "SUPER_PRICE" ? "Super Pret" : ""}}
+                                {{product.badge === "SUPER_PRICE" ? "Super Pret" : ""}}
                             </span>
                             <h4><strong>{{product.description}}</strong></h4>
                         </a>

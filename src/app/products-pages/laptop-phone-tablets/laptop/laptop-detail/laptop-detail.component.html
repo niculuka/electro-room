@@ -19,10 +19,10 @@
                 <div class="slider">
                     <span><strong>laptop</strong></span>
                     <div class="slide">
-                        <img [src]="currentImage" [alt]="currentImage">
+                        <img [src]="laptop.image" [alt]="laptop.alt">
                     </div>
                     <div>
-                        <product-detail-image [productImages]="laptopImages" (indexEvent)="receiveIndex($event)">
+                        <product-detail-image [productImages]="laptopImages" (indexEvent)="receiveCurrentImage($event)">
                         </product-detail-image>
                     </div>
                 </div>

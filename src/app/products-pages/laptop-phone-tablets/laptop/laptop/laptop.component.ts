@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Laptop } from 'src/app/shared/models/laptop.model';
 import { Product } from 'src/app/shared/models/product.model';
@@ -7,11 +8,11 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { LaptopService } from 'src/app/shared/services/laptop.service';
 
 @Component({
-  selector: 'app-laptop-category',
-  templateUrl: './laptop-category.component.html',
-  styleUrls: ['./laptop-category.component.css']
+  selector: 'app-laptop',
+  templateUrl: './laptop.component.html',
+  styleUrls: ['./laptop.component.css']
 })
-export class LaptopCategoryComponent implements OnInit {
+export class LaptopComponent implements OnInit {
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;
@@ -86,38 +87,58 @@ export class LaptopCategoryComponent implements OnInit {
   protected apple: Array<Laptop> = [];
   protected apple_out: Array<Laptop> = [];
 
-  laptops_sorting: string = "bestSold";
+  // C A T E G O R Y - Vars --------------------------------------------------
+  category_chk: boolean = false;
+  protected category: Array<Laptop> = [];
+  protected category_out: Array<Laptop> = [];
 
-  category: any = "";
+  business_chk: boolean = false;
+  protected business: Array<Laptop> = [];
+  protected business_out: Array<Laptop> = [];
+
+  gaming_chk: boolean = false;
+  protected gaming: Array<Laptop> = [];
+  protected gaming_out: Array<Laptop> = [];
+
+  home_chk: boolean = false;
+  protected home: Array<Laptop> = [];
+  protected home_out: Array<Laptop> = [];
+
+  ultra_chk: boolean = false;
+  protected ultra: Array<Laptop> = [];
+  protected ultra_out: Array<Laptop> = [];
+
+
+  laptops_sorting: string = "bestSold";
 
   constructor(
     private laptopService: LaptopService,
-    private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private router: Router,
+    private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
-    // this.category = this.activatedRoute.snapshot.params["category"];
-    this.activatedRoute.paramMap.subscribe((params) => {
-      this.category = params.get('category') || "";
-      this.laptopService.getLaptopsByCategoryService(this.category).subscribe(data => {
-        this.laptops = data;
-        this.laptops_copy = data;
+    this.laptopService.getLaptopsByTypeService().subscribe(data => {
+      this.laptops = data;
+      this.laptops_copy = data;
 
-        this.filters_available();
-        this.filters_price();
-        this.filters_brand();
-      });
+      this.filters_available();
+      this.filters_price();
+      this.filters_brand();
+      this.filters_category();
     });
   }
 
   addToFavorite(item: Laptop) {
     item.favorite = !item.favorite;
+    if (item.favorite) {
+      this.toastrService.warning("UNDER COSNSTRUCTION")
+    }
   }
 
   addToCart(item: Laptop) {
-    this.product.productId = item.laptopId;
+    this.product.id = item.laptopId;
     this.product.name = item.name;
     this.product.linkName = item.linkName;
     this.product.description = item.description;
@@ -126,7 +147,7 @@ export class LaptopCategoryComponent implements OnInit {
     this.product.image = item.image;
     this.product.alt = item.image;
     this.product.price = item.price;
-
+    
     this.cartService.addToCartService(this.product);
     this.router.navigateByUrl('/cart');
   }
@@ -504,8 +525,7 @@ export class LaptopCategoryComponent implements OnInit {
     else {
       this.brand = this.price;
     }
-    this.laptops = this.brand;
-    this.sorting();
+    this.filters_category();
   }
 
   // ------------------------------------------------------------------------- B R A N D
@@ -515,6 +535,127 @@ export class LaptopCategoryComponent implements OnInit {
     this.filter_acer();
     this.filter_lenovo();
     this.filter_apple();
+  }
+
+  // ============================================================================= C A T E G O R Y
+  // =============================================================================================
+  // =============================================================================================
+
+  filter_business() {
+    this.get_business();
+    if (this.business_chk) {
+      this.get_business();
+      this.business = this.business_out;
+    }
+    else {
+      this.business = new Array<Laptop>;
+    }
+    this.category_check_and_concat();
+  }
+
+  filter_gaming() {
+    this.get_gaming();
+    if (this.gaming_chk) {
+      this.get_gaming();
+      this.gaming = this.gaming_out;
+    }
+    else {
+      this.gaming = new Array<Laptop>;
+    }
+    this.category_check_and_concat();
+  }
+
+  filter_home() {
+    this.get_home();
+    if (this.home_chk) {
+      this.get_home();
+      this.home = this.home_out;
+    }
+    else {
+      this.home = new Array<Laptop>;
+    }
+    this.category_check_and_concat();
+  }
+
+  filter_ultra() {
+    this.get_ultra();
+    if (this.ultra_chk) {
+      this.get_ultra();
+      this.ultra = this.ultra_out;
+    }
+    else {
+      this.ultra = new Array<Laptop>;
+    }
+    this.category_check_and_concat();
+  }
+
+  // --------------------------------------------------------------- C A T E G O R Y
+  get_business() {
+    this.category = this.brand;
+    this.business_out = new Array<Laptop>;
+    this.category.filter((res: any) => {
+      if (res.category == CATEGORY.LAPTOP_BUSINESS) {
+        this.business_out.push(res);
+      }
+    });
+  }
+
+  get_gaming() {
+    this.category = this.brand;
+    this.gaming_out = new Array<Laptop>;
+    this.category.filter((res: any) => {
+      if (res.category == CATEGORY.LAPTOP_GAMING) {
+        this.gaming_out.push(res);
+      }
+    });
+  }
+
+  get_home() {
+    this.category = this.brand;
+    this.home_out = new Array<Laptop>;
+    this.category.filter((res: any) => {
+      if (res.category == CATEGORY.LAPTOP_HOME) {
+        this.home_out.push(res);
+      }
+    });
+  }
+
+  get_ultra() {
+    this.category = this.brand;
+    this.ultra_out = new Array<Laptop>;
+    this.category.filter((res: any) => {
+      if (res.category == CATEGORY.LAPTOP_ULTRA) {
+        this.ultra_out.push(res);
+      }
+    });
+  }
+
+  // --------------------------------------------------------------- C A T E G O R Y
+  category_check_and_concat() {
+    if (this.business_chk
+      || this.gaming_chk
+      || this.home_chk
+      || this.ultra_chk
+    ) {
+      this.category = this.business
+        .concat(this.gaming
+          .concat(this.home
+            .concat(this.ultra
+            )));
+    }
+    else {
+      this.category = this.brand;
+    }
+    this.laptops = this.category;
+    this.sorting();
+  }
+
+  // --------------------------------------------------------------- C A T E G O R Y
+  filters_category() {
+    this.filter_business();
+    this.filter_gaming();
+    this.filter_home();
+    this.filter_ultra();
   }
 
 }

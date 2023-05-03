@@ -24,9 +24,9 @@ export class LaptopSsdService extends BearerService {
     return this.http.get(API_URL + "/laptop-ssds");
   }
 
-  getLaptopSsdsImagesService(ssdId: number): Observable<any> {
-    return this.http.get(API_URL + "/images/laptop-ssds/" + ssdId);
-  }
+  // getLaptopSsdsImagesService(ssdId: number): Observable<any> {
+  //   return this.http.get(API_URL + "/images/laptop-ssds/" + ssdId);
+  // }
 
   getLaptopSsdsByCategoryService(category: string): Observable<any> {
     return this.http.get<LaptopSsd>(API_URL + "/laptop-ssds/" + category);

@@ -60,23 +60,23 @@ export const DEPARTAMENTS: Departament[] = [
             },
             {
                 name: "Accesorii Laptop",
-                link: "/laptops-phones-tablets/laptop-auxs",
+                link: "/laptops-phones-tablets/accessories",
                 showSubtitle: false,
                 isReady: "#df0265",
                 subtitles: [
                     {
                         name: "Genti laptop",
-                        link: "/laptops-phones-tablets/laptop-auxs/bags",
+                        link: "/laptops-phones-tablets/accessories/bags",
                         isReady: "#ff4196",
                     },
                     {
                         name: "Incarcatoare priza/auto",
-                        link: "/laptops-phones-tablets/laptop-auxs/chargers",
+                        link: "/laptops-phones-tablets/accessories/chargers",
                         isReady: "#ff4196",
                     },
                     {
                         name: "SSD externe",
-                        link: "/laptops-phones-tablets/laptop-auxs/ssds",
+                        link: "/laptops-phones-tablets/accessories/ssds",
                         isReady: "#ff4196",
                     },                    
                     {

@@ -24,9 +24,9 @@ export class LaptopChargerService extends BearerService {
     return this.http.get(API_URL + "/laptop-chargers");
   }
 
-  getLaptopChargersImagesService(chargerId: number): Observable<any> {
-    return this.http.get(API_URL + "/images/laptop-chargers/" + chargerId);
-  }
+  // getLaptopChargersImagesService(chargerId: number): Observable<any> {
+  //   return this.http.get(API_URL + "/images/laptop-chargers/" + chargerId);
+  // }
 
   getLaptopChargersByCategoryService(category: string): Observable<any> {
     return this.http.get<LaptopCharger>(API_URL + "/laptop-chargers/" + category);

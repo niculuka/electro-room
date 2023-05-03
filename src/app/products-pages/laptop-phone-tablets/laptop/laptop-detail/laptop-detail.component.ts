@@ -20,7 +20,6 @@ export class LaptopDetailComponent {
   product: Product = new Product();
 
   laptopImages: Array<ImagesGallery> = [];
-  index: number = 0;
   currentImage: string = "";
   
   constructor(
@@ -32,15 +31,13 @@ export class LaptopDetailComponent {
     let linkName = activatedRoute.snapshot.params["linkName"] as string
     laptopService.getLaptopByNameService(linkName).subscribe(data => {
       this.laptop = data;
-      laptopService.getLaptopImagesService(data.laptopId).subscribe(result => {
-        this.laptopImages = result;
-        this.currentImage = this.laptopImages[0].image
-      })
+      // this.laptopImages = data.gallery;
+      // this.currentImage = data.gallery[0].image;
     })
   }
 
   addToCart() {
-    this.product.productId = this.laptop.laptopId;
+    this.product.id = this.laptop.laptopId;
     this.product.name = this.laptop.name;
     this.product.linkName = this.laptop.linkName;
     this.product.description = this.laptop.description;
@@ -54,7 +51,7 @@ export class LaptopDetailComponent {
     this.router.navigateByUrl('/cart');
   }
 
-  receiveIndex($event: any) {
+  receiveCurrentImage($event: any) {
     this.currentImage = $event;
   }
 

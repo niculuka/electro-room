@@ -1,73 +1,54 @@
 import { CATEGORY } from "../enums/electro.enum";
 
+
 export class Product {
-    productId: number | undefined;
-    laptopId: number | undefined;
-    bagId: number | undefined;
-    chargerId: number | undefined;
-    ssdId: number | undefined;
+    id: number | undefined;
     name: string = "";
     linkName: string = "";
     description: string = "";
-    brand!: CATEGORY;
-    category!: CATEGORY;
-    image: string = "";
+    brand: CATEGORY;
+    category: CATEGORY;
+    subcategory: CATEGORY;
+    image: string = "";   
     alt: string = "";
-    alert!: CATEGORY;
-    available!: CATEGORY;
-    price: number = 0; 
+    badge: CATEGORY;
+    available: CATEGORY;
+    price: number = 0;
+    power: CATEGORY;
+    capacity: CATEGORY;
+    connect: CATEGORY;
+
+    constructor(
+        id?: number,
+        name: string = "",
+        linkName: string = "",
+        description: string = "",
+        brand: CATEGORY = CATEGORY.CATEGORY,
+        category: CATEGORY = CATEGORY.CATEGORY,
+        subcategory: CATEGORY = CATEGORY.CATEGORY,
+        image: string = "",
+        alt: string = "",
+        badge: CATEGORY = CATEGORY.CATEGORY,
+        available: CATEGORY = CATEGORY.CATEGORY,
+        price: number = 0,
+        power: CATEGORY = CATEGORY.CATEGORY,
+        capacity: CATEGORY = CATEGORY.CATEGORY,
+        connect: CATEGORY = CATEGORY.CATEGORY,
+    ) {
+        this.id = id;
+        this.name = name;
+        this.linkName = linkName;
+        this.description = description;
+        this.brand = brand;
+        this.category = category;
+        this.subcategory = subcategory;
+        this.image = image;
+        this.alt = alt;
+        this.badge = badge;
+        this.available = available;
+        this.price = price;
+        this.power = power;
+        this.capacity = capacity;
+        this.connect = connect;
+    }
 }
-
-
-// export class Product {
-//     productId?: number;
-//     name: string = "";
-//     linkName: string = "";
-//     description: string = "";
-//     brand: CATEGORY;
-//     category: CATEGORY;
-//     image: string[] = [];
-//     alt: string = "";
-//     alert: CATEGORY;
-//     available: CATEGORY;
-//     capacity?: CATEGORY;
-//     connect?: CATEGORY;
-//     power?: CATEGORY;
-//     favorite!: boolean;
-//     price: number = 0;
-//     createTime: Date = new Date("dd-MM-yyyy, H:mm");
-
-//     constructor(
-//         productId?: number,
-//         name: string = "",
-//         linkName: string = "",
-//         description: string = "",
-//         brand: CATEGORY = CATEGORY.ACER,
-//         category: CATEGORY = CATEGORY.LAPTOP_BUSINESS,
-//         image: string[] = [],
-//         alt: string = "",
-//         alert: CATEGORY = CATEGORY.TOP_FAVORITE,
-//         available: CATEGORY = CATEGORY.STOCK,
-//         capacity?: CATEGORY,
-//         connect?: CATEGORY,
-//         power?: CATEGORY,
-//         favorite: boolean = false,
-//         price: number = 0
-//     ) {
-//         this.productId = productId;
-//         this.name = name;
-//         this.linkName = linkName;
-//         this.description = description;
-//         this.brand = brand;
-//         this.category = category;
-//         this.image = image;
-//         this.alt = alt;
-//         this.alert = alert;
-//         this.available = available;
-//         this.capacity = capacity;
-//         this.connect = connect;
-//         this.power = power;
-//         this.favorite = favorite;
-//         this.price = price;
-//     }
-// }

@@ -9,6 +9,7 @@ export class LaptopBag {
     brand: CATEGORY;
     category: CATEGORY;
     image: string = "";
+    gallery: Array<string> =[];
     src2: string = "";
     src3: string = "";
     src4: string = "";
@@ -25,6 +26,7 @@ export class LaptopBag {
         brand: CATEGORY = CATEGORY.HAMA,        
         category: CATEGORY = CATEGORY.BAG_BAG,
         image: string = "",
+        gallery: Array<string> =[],
         src2: string = "",
         src3: string = "",
         src4: string = "",
@@ -39,6 +41,7 @@ export class LaptopBag {
         this.brand = brand;        
         this.category = category;
         this.image = image;
+        this.gallery = gallery;
         this.src2 = src2;
         this.src3 = src3;
         this.src4 = src4;

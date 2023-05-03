@@ -18,9 +18,8 @@ export class LaptopBagDetailComponent {
 
   laptopBag: LaptopBag = new LaptopBag();
   product: Product = new Product();
-  
+
   laptopBagImages: Array<ImagesGallery> = [];
-  index: number = 0;
   currentImage: string = "";
 
   constructor(
@@ -32,15 +31,13 @@ export class LaptopBagDetailComponent {
     let linkName = activatedRoute.snapshot.params["linkName"] as string
     laptopBagService.getLaptopBagByNameService(linkName).subscribe(data => {
       this.laptopBag = data;
-      laptopBagService.getLaptopBagsImagesService(data.bagId).subscribe(result => {
-        this.laptopBagImages = result;
-        this.currentImage = this.laptopBagImages[0].image
-      })
+      this.laptopBagImages = data.gallery;
+      this.currentImage = data.gallery[0].image;
     })
   }
 
   addToCart() {
-    this.product.productId = this.laptopBag.bagId;
+    this.product.id = this.laptopBag.bagId;
     this.product.name = this.laptopBag.name;
     this.product.linkName = this.laptopBag.linkName;
     this.product.description = this.laptopBag.description;
@@ -54,7 +51,7 @@ export class LaptopBagDetailComponent {
     this.router.navigateByUrl('/cart');
   }
 
-  receiveIndex($event: any) {
+  receiveCurrentImage($event: any) {
     this.currentImage = $event;
   }
 

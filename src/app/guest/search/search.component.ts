@@ -114,7 +114,7 @@ export class SearchComponent implements OnInit {
   }
 
   addToCart(item: Product) {
-    this.product.productId = item.laptopId || item.bagId || item.chargerId || item.ssdId;
+    this.product.id = item.id || item.id || item.id || item.id;
     this.product.name = item.name;
     this.product.linkName = item.linkName;
     this.product.description = item.description;

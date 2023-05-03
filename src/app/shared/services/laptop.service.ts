@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Laptop } from '../models/laptop.model';
 import { AuthService } from './auth.service';
 import { BearerService } from './bearer.service';
+import { Product } from '../models/product.model';
 
 const API_URL = `${environment.BASE_URL}`;
 
@@ -20,19 +20,15 @@ export class LaptopService extends BearerService {
     super(authService, http);
   }
 
-  getAllLaptopsService(): Observable<any> {
-    return this.http.get(API_URL + "/laptops");
-  }
-
-  getLaptopImagesService(laptopId: number): Observable<any> {
-    return this.http.get(API_URL + "/images/laptops/" + laptopId);
+  getLaptopsByTypeService(): Observable<any> {
+    return this.http.get<Product>(API_URL + "/products/type/laptop");
   }
 
   getLaptopsByCategoryService(category: string): Observable<any> {
-    return this.http.get<Laptop>(API_URL + "/laptops/" + category);
-  }  
+    return this.http.get<Product>(API_URL + "/products/category/" + category);
+  }
 
   getLaptopByNameService(linkName: string): Observable<any> {
-    return this.http.get<Laptop>(API_URL + "/lap/" + linkName);
-  }  
+    return this.http.get<Product>(API_URL + "/prod/" + linkName);
+  }
 }

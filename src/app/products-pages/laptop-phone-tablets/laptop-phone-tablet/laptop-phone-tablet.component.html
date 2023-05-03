@@ -11,10 +11,10 @@
 
         <div class="cards">
             <div class="card" *ngFor="let card of cards">
-                <div [routerLink]="card.link">
+                <a [routerLink]="card.link" (click)="goTo(card)">
                     <img [src]="card.image" [alt]="card.image">
                     <div class="title">{{card.title}}</div>
-                </div>
+                </a>
             </div>
         </div>
 

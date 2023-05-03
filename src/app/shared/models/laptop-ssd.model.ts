@@ -9,6 +9,7 @@ export class LaptopSsd {
     brand: CATEGORY;
     category: CATEGORY;
     image: string = "";
+    gallery: Array<string> =[];
     src2: string = "";
     src3: string = "";
     src4: string = "";
@@ -27,6 +28,7 @@ export class LaptopSsd {
         brand: CATEGORY = CATEGORY.ADATA,
         category: CATEGORY = CATEGORY.HARD_SSD,
         image: string = "",
+        gallery: Array<string> =[],
         src2: string = "",
         src3: string = "",
         src4: string = "",
@@ -43,6 +45,7 @@ export class LaptopSsd {
         this.brand = brand; 
         this.category = category;        
         this.image = image;
+        this.gallery = gallery;
         this.src2 = src2;
         this.src3 = src3;
         this.src4 = src4;

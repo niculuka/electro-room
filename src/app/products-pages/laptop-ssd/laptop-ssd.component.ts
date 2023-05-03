@@ -159,7 +159,7 @@ export class LaptopSsdComponent implements OnInit {
   }
 
   addToCart(item: LaptopSsd) {
-    this.product.productId = item.ssdId;
+    this.product.id = item.ssdId;
     this.product.name = item.name;
     this.product.linkName = item.linkName;
     this.product.description = item.description;

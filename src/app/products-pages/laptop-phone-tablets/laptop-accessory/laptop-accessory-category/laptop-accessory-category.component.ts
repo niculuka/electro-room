@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-laptop-aux',
-  templateUrl: './laptop-aux.component.html',
-  styleUrls: ['./laptop-aux.component.css']
+  selector: 'app-laptop-accessory-category',
+  templateUrl: './laptop-accessory-category.component.html',
+  styleUrls: ['./laptop-accessory-category.component.css']
 })
-export class LaptopAuxComponent {
+export class LaptopAccessoryCategoryComponent {
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;

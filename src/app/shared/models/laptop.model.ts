@@ -9,9 +9,10 @@ export class Laptop {
     brand: CATEGORY;
     category: CATEGORY;
     image: string = "";
+    gallery: Array<string> =[];
     src2: string = "";
     src3: string = "";
-    src4: string = "";
+    src4: string = "";    
     alt: string = "";
     alert: CATEGORY;
     available: CATEGORY;
@@ -27,6 +28,7 @@ export class Laptop {
         brand: CATEGORY = CATEGORY.ACER,
         category: CATEGORY = CATEGORY.LAPTOP_BUSINESS,
         image: string = "",
+        gallery: Array<string> =[],
         src2: string = "",
         src3: string = "",
         src4: string = "",
@@ -43,6 +45,7 @@ export class Laptop {
         this.brand = brand;
         this.category = category;
         this.image = image;
+        this.gallery = gallery;
         this.src2 = src2;
         this.src3 = src3;
         this.src4 = src4;

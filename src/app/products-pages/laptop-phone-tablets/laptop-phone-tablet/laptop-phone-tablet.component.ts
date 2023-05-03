@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-laptop-phone-tablet',
@@ -9,6 +10,8 @@ export class LaptopPhoneTabletComponent {
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;
+
+  constructor(private toastrService: ToastrService) { }
 
   cards = [
     {
@@ -28,4 +31,9 @@ export class LaptopPhoneTabletComponent {
     },
   ]
 
+  goTo(card: any) {
+    if (card.title === "Telefoane" || card.title === "Tablete") {
+      this.toastrService.warning("UNDER CONSTRUCTION")
+    }
+  }
 }

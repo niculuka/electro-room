@@ -138,7 +138,7 @@ export class LaptopChargerComponent implements OnInit {
   }
 
   addToCart(item: LaptopCharger) {
-    this.product.productId = item.chargerId;
+    this.product.id = item.chargerId;
     this.product.name = item.name;
     this.product.linkName = item.linkName;
     this.product.description = item.description;

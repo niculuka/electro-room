@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CAROUSEL_LAPTOP, CarouselLaptopData } from 'src/app/shared/data/carousel-laptop.data';
 import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
 
 @Component({
@@ -34,7 +33,7 @@ export class ProductDetailImageComponent {
     nav: true
   }
 
-  sendIndex(selectedObject: any) {
+  sendCurrentImage(selectedObject: any) {
     this.indexEvent.emit(selectedObject.image);
   }
 

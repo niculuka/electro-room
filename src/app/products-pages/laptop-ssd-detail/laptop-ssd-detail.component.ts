@@ -20,7 +20,6 @@ export class LaptopSsdDetailComponent {
   product: Product = new Product();
   
   laptopSsdImages: Array<ImagesGallery> = [];
-  index: number = 0;
   currentImage: string = "";
 
   constructor(
@@ -32,15 +31,13 @@ export class LaptopSsdDetailComponent {
     let linkName = activatedRoute.snapshot.params["linkName"] as string
     laptopSsdService.getLaptopSsdByNameService(linkName).subscribe(data => {
       this.laptopSsd = data;
-      laptopSsdService.getLaptopSsdsImagesService(data.ssdId).subscribe(result => {
-        this.laptopSsdImages = result;
-        this.currentImage = this.laptopSsdImages[0].image
-      })
+      this.laptopSsdImages = data.gallery;
+      this.currentImage = data.gallery[0].image;
     })
   }
 
   addToCart() {
-    this.product.productId = this.laptopSsd.ssdId;
+    this.product.id = this.laptopSsd.ssdId;
     this.product.name = this.laptopSsd.name;
     this.product.linkName = this.laptopSsd.linkName;
     this.product.description = this.laptopSsd.description;
@@ -54,7 +51,7 @@ export class LaptopSsdDetailComponent {
     this.router.navigateByUrl('/cart');
   }
 
-  receiveIndex($event: any) {
+  receiveCurrentImage($event: any) {
     this.currentImage = $event;
   }
   

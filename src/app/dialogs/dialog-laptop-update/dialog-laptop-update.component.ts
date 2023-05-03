@@ -24,6 +24,7 @@ export class DialogLaptopUpdateComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: AdminLaptopComponent
   ) {
     this.laptop = data;
+    console.log(this.laptop)
   }
 
   ngOnInit(): void {

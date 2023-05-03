@@ -11,7 +11,7 @@ const API_URL = `${environment.BASE_URL}`;
 @Injectable({
   providedIn: 'root'
 })
-export class LaptopBagService extends BearerService {
+export class LaptopAccessoryService extends BearerService {
 
   constructor(
     authService: AuthService,
@@ -20,17 +20,9 @@ export class LaptopBagService extends BearerService {
     super(authService, http);
   }
 
-  getAllLaptopBagsService(): Observable<any> {
-    return this.http.get(API_URL + "/laptop-bags");
+  getLaptopBagsBySubcategoryService(category: string): Observable<any> {
+    return this.http.get<LaptopBag>(API_URL + "/laptop_accessory/" + category);
   }
-
-  // getLaptopBagsImagesService(bagId: number): Observable<any> {
-  //   return this.http.get(API_URL + "/images/laptop-bags/" + bagId);
-  // }
-
-  getLaptopBagsByCategoryService(category: string): Observable<any> {
-    return this.http.get<LaptopBag>(API_URL + "/laptop-bags/" + category);
-  }  
 
   getLaptopBagByNameService(linkName: string): Observable<any> {
     return this.http.get<LaptopBag>(API_URL + "/bag/" + linkName);
