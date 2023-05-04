@@ -26,8 +26,8 @@ export class AdminDemoService {
         return this.http.get(API_URL + "/laptop-chargers");
     }
 
-    getAllDemoSsdsService(): Observable<any> {
-        return this.http.get(API_URL + "/laptop-ssds");
+    getAllDemoHardsService(): Observable<any> {
+        return this.http.get(API_URL + "/laptop-hards");
     }
 
     getAllDemoOrdersService(): Observable<any> {

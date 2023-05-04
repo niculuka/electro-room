@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DialogLaptopChargerCreateComponent } from 'src/app/dialogs/dialog-laptop-charger-create/dialog-laptop-charger-create.component';
 import { DialogLaptopChargerDeleteComponent } from 'src/app/dialogs/dialog-laptop-charger-delete/dialog-laptop-charger-delete.component';
 import { DialogLaptopChargerUpdateComponent } from 'src/app/dialogs/dialog-laptop-charger-update/dialog-laptop-charger-update.component';
-import { LaptopCharger } from 'src/app/shared/models/laptop-charger.model';
+import { Product } from 'src/app/shared/models/product.model';
 import { AdminLaptopChargerService } from 'src/app/shared/services/admin-laptop-charger.service';
 
 @Component({
@@ -18,8 +18,8 @@ export class AdminLaptopChargerComponent implements OnInit {
   isDesktopMenuOpen = false;
   isCarouselOpen = true;
 
-  protected chargers: Array<LaptopCharger> = [];
-  protected charger: LaptopCharger = new LaptopCharger();
+  protected chargers: Array<Product> = [];
+  protected charger: Product = new Product();
 
   errorMessage: string = "";
 
@@ -36,7 +36,7 @@ export class AdminLaptopChargerComponent implements OnInit {
     });
   }
 
-  viewLCharger(charger: LaptopCharger) {
+  viewLCharger(charger: Product) {
     this.router.navigate(['/charger/' + charger.linkName]);
   }
 
@@ -54,7 +54,7 @@ export class AdminLaptopChargerComponent implements OnInit {
     })
   }
 
-  updateChargerDialog(charger: LaptopCharger) {
+  updateChargerDialog(charger: Product) {
     const update = this.matDialog.open(DialogLaptopChargerUpdateComponent, { data: charger });
     update.afterClosed().subscribe(result => {
       if (result !== "true") {
@@ -63,7 +63,7 @@ export class AdminLaptopChargerComponent implements OnInit {
     })
   }
 
-  deleteChargerDialog(charger: LaptopCharger) {
+  deleteChargerDialog(charger: Product) {
     const del = this.matDialog.open(DialogLaptopChargerDeleteComponent, { data: charger });
     del.afterClosed().subscribe({
       next: result => {
@@ -77,7 +77,7 @@ export class AdminLaptopChargerComponent implements OnInit {
     })
   }
 
-  deleteCharger(charger: LaptopCharger) {
+  deleteCharger(charger: Product) {
     this.adminChargerService.deleteLaptopChargerService(charger).subscribe({
       next: () => {
         window.location.reload();

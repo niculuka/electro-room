@@ -108,7 +108,7 @@ export class SearchComponent implements OnInit {
       this.link = "/chg/" + product.linkName
     }
     if (product.category.startsWith("HARD")) {
-      this.link = "/ssd/" + product.linkName
+      this.link = "/hard/" + product.linkName
     }
     this.router.navigate([this.link]);
   }

@@ -33,9 +33,9 @@ import { DialogLaptopBagDeleteComponent } from './dialogs/dialog-laptop-bag-dele
 import { DialogLaptopChargerCreateComponent } from './dialogs/dialog-laptop-charger-create/dialog-laptop-charger-create.component';
 import { DialogLaptopChargerUpdateComponent } from './dialogs/dialog-laptop-charger-update/dialog-laptop-charger-update.component';
 import { DialogLaptopChargerDeleteComponent } from './dialogs/dialog-laptop-charger-delete/dialog-laptop-charger-delete.component';
-import { DialogLaptopSsdCreateComponent } from './dialogs/dialog-laptop-ssd-create/dialog-laptop-ssd-create.component';
-import { DialogLaptopSsdUpdateComponent } from './dialogs/dialog-laptop-ssd-update/dialog-laptop-ssd-update.component';
-import { DialogLaptopSsdDeleteComponent } from './dialogs/dialog-laptop-ssd-delete/dialog-laptop-ssd-delete.component';
+import { DialogLaptopHardCreateComponent } from './dialogs/dialog-laptop-hard-create/dialog-laptop-hard-create.component';
+import { DialogLaptopHardUpdateComponent } from './dialogs/dialog-laptop-hard-update/dialog-laptop-hard-update.component';
+import { DialogLaptopHardDeleteComponent } from './dialogs/dialog-laptop-hard-delete/dialog-laptop-hard-delete.component';
 
 // p a g e s
 import { RegisterComponent } from './guest/register/register.component';
@@ -68,7 +68,7 @@ import { FooterComponent } from './guest/footer/footer.component';
 import { AdminLaptopComponent } from './admin/admin-laptop/admin-laptop.component';
 import { AdminLaptopBagComponent } from './admin/admin-laptop-bag/admin-laptop-bag.component';
 import { AdminLaptopChargerComponent } from './admin/admin-laptop-charger/admin-laptop-charger.component';
-import { AdminLaptopSsdComponent } from './admin/admin-laptop-ssd/admin-laptop-ssd.component';
+import { AdminLaptopHardComponent } from './admin/admin-laptop-hard/admin-laptop-hard.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
 import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
@@ -78,31 +78,31 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminDemoLaptopComponent } from './admin-demo/admin-demo-laptop/admin-demo-laptop.component';
 import { AdminDemoBagComponent } from './admin-demo/admin-demo-bag/admin-demo-bag.component';
 import { AdminDemoChargerComponent } from './admin-demo/admin-demo-charger/admin-demo-charger.component';
-import { AdminDemoSsdComponent } from './admin-demo/admin-demo-ssd/admin-demo-ssd.component';
+import { AdminDemoHardComponent } from './admin-demo/admin-demo-hard/admin-demo-hard.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablets/laptop-phone-tablet/laptop-phone-tablet.component';
-import { LaptopComponent } from './products-pages/laptop-phone-tablets/laptop/laptop/laptop.component';
-import { LaptopCategoryComponent } from './products-pages/laptop-phone-tablets/laptop/laptop-category/laptop-category.component';
-import { LaptopDetailComponent } from './products-pages/laptop-phone-tablets/laptop/laptop-detail/laptop-detail.component';
-import { LaptopBagComponent } from './products-pages/laptop-bag/laptop-bag.component';
-import { LaptopBagDetailComponent } from './products-pages/laptop-bag-detail/laptop-bag-detail.component';
-import { LaptopAccessoryCategoryComponent } from './products-pages/laptop-phone-tablets/laptop-accessory/laptop-accessory-category/laptop-accessory-category.component';
-import { LaptopAccessoryDetailComponent } from './products-pages/laptop-phone-tablets/laptop-accessory/laptop-accessory-detail/laptop-accessory-detail.component';
-import { LaptopSsdComponent } from './products-pages/laptop-ssd/laptop-ssd.component';
-import { LaptopSsdDetailComponent } from './products-pages/laptop-ssd-detail/laptop-ssd-detail.component';
-import { LaptopChargerComponent } from './products-pages/laptop-charger/laptop-charger.component';
-import { LaptopChargerDetailComponent } from './products-pages/laptop-charger-detail/laptop-charger-detail.component';
+import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet/laptop-phone-tablet.component';
+import { LaptopComponent } from './products-pages/laptop-phone-tablet/laptop/laptop/laptop.component';
+import { LaptopCategoryComponent } from './products-pages/laptop-phone-tablet/laptop/laptop-category/laptop-category.component';
+import { LaptopDetailComponent } from './products-pages/laptop-phone-tablet/laptop/laptop-detail/laptop-detail.component';
+import { LaptopBagComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-bag/laptop-bag.component';
+import { LaptopBagDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-bag-detail/laptop-bag-detail.component';
+import { LaptopAccessoryComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-accessory/laptop-accessory.component';
+import { LaptopHardComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-hard/laptop-hard.component';
+import { LaptopHardDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-hard-detail/laptop-hard-detail.component';
+import { LaptopChargerComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-charger/laptop-charger.component';
+import { LaptopChargerDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-charger-detail/laptop-charger-detail.component';
+
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 import { SearchComponent } from './guest/search/search.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
-import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
 import { SystemPcComponent } from './products-pages/desktop-perif-soft/system-pc/system-pc.component';
-import { ProductDetailImageComponent } from './products-pages/product-detail-image/product-detail-image.component';
+import { ProductGalleryComponent } from './products-pages/product-gallery/product-gallery.component';
+import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 
 
 @NgModule({
@@ -121,9 +121,9 @@ import { ProductDetailImageComponent } from './products-pages/product-detail-ima
     DialogLaptopChargerCreateComponent,
     DialogLaptopChargerUpdateComponent,
     DialogLaptopChargerDeleteComponent,
-    DialogLaptopSsdCreateComponent,
-    DialogLaptopSsdUpdateComponent,
-    DialogLaptopSsdDeleteComponent,
+    DialogLaptopHardCreateComponent,
+    DialogLaptopHardUpdateComponent,
+    DialogLaptopHardDeleteComponent,
 
     HomeComponent,
     LoginComponent,
@@ -152,7 +152,7 @@ import { ProductDetailImageComponent } from './products-pages/product-detail-ima
     AdminLaptopComponent,
     AdminLaptopBagComponent,
     AdminLaptopChargerComponent,
-    AdminLaptopSsdComponent,
+    AdminLaptopHardComponent,
     AdminOrderComponent,
     AdminItemComponent,
     AdminTokenComponent,
@@ -161,7 +161,7 @@ import { ProductDetailImageComponent } from './products-pages/product-detail-ima
     AdminDemoLaptopComponent,
     AdminDemoBagComponent,
     AdminDemoChargerComponent,
-    AdminDemoSsdComponent,
+    AdminDemoHardComponent,
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
 
@@ -169,20 +169,19 @@ import { ProductDetailImageComponent } from './products-pages/product-detail-ima
     LaptopComponent,
     LaptopCategoryComponent,
     LaptopDetailComponent,
-    LaptopAccessoryCategoryComponent,
+    LaptopAccessoryComponent,
     LaptopBagComponent,
     LaptopBagDetailComponent,
     LaptopChargerComponent,
     LaptopChargerDetailComponent,
-    LaptopSsdComponent,
-    LaptopSsdDetailComponent,
+    LaptopHardComponent,
+    LaptopHardDetailComponent,
     UnderConstructionComponent,
     SearchComponent,
     InfoBlockComponent,
-    ProductCategoryComponent,
     SystemPcComponent,
-    LaptopAccessoryDetailComponent,
-    ProductDetailImageComponent,
+    ProductGalleryComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,

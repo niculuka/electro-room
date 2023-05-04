@@ -45,6 +45,7 @@ export enum CATEGORY {
     SAMSONITE = "SAMSONITE",
     SAMSUNG = "SAMSUNG",
     SANDISK = "SANDISK",
+    SEAGATE = "SEAGATE",
     TUMI = "HATUMIMA",
     WD = "WD",
     XTORM = "XTORM",
@@ -99,9 +100,13 @@ export enum CATEGORY {
     // CAPACITY -----------------------------------------
     GB0 = "GB0",
     GB120 = "GB120",
-    GB240 = "GB240",
+    GB240 = "GB240",    
+    GB256 = "GB256",
     GB480 = "GB480",
     GB500 = "GB500",
+    GB512 = "GB512",
+    T1 = "T1",
+    T2 = "T2",
 
     // CONNECT -----------------------------------------
     PCI_EXPRESS = "PCI_EXPRESS",

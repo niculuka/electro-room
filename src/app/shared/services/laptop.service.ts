@@ -20,7 +20,7 @@ export class LaptopService extends BearerService {
     super(authService, http);
   }
 
-  getLaptopsByTypeService(): Observable<any> {
+  getAllLaptopsService(): Observable<any> {
     return this.http.get<Product>(API_URL + "/products/type/laptop");
   }
 
@@ -29,6 +29,10 @@ export class LaptopService extends BearerService {
   }
 
   getLaptopByNameService(linkName: string): Observable<any> {
-    return this.http.get<Product>(API_URL + "/prod/" + linkName);
+    return this.http.get<Product>(API_URL + "/product/linkname/" + linkName);
+  }
+
+  getLaptopGalleryService(id: number): Observable<any> {
+    return this.http.get<Product>(API_URL + "/product/gallery/" + id);
   }
 }

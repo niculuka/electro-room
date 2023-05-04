@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminLaptopBagComponent } from 'src/app/admin/admin-laptop-bag/admin-laptop-bag.component';
 import { LaptopBagImages, LAPTOP_BAG_IMAGES } from 'src/app/shared/data/laptop-bag-images.data';
-import { LaptopBag } from 'src/app/shared/models/laptop-bag.model';
 import { AdminLaptopBagService } from 'src/app/shared/services/admin-laptop-bag.service';
 
 @Component({

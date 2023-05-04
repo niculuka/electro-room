@@ -8,8 +8,6 @@ import { Departament, DEPARTAMENTS, Title } from 'src/app/shared/data/mega-menu.
 import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { Cart } from 'src/app/shared/models/cart.model';
 import { SearchProductService } from 'src/app/shared/services/search-product.service';
-import { Laptop } from 'src/app/shared/models/laptop.model';
-import { LaptopBag } from 'src/app/shared/models/laptop-bag.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { ToastrService } from 'ngx-toastr';
 
@@ -29,8 +27,8 @@ export class NavbarMainComponent implements OnInit {
   link: string = "";
   currentLink: string = "";
 
-  findLaptops: Array<Laptop> = [];
-  findBags: Array<LaptopBag> = [];
+  findLaptops: Array<Product> = [];
+  findBags: Array<Product> = [];
   findAll: Array<any> = [];
   searchTerm: any = "";
 

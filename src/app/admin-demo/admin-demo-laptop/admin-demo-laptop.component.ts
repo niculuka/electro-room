@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Laptop } from 'src/app/shared/models/laptop.model';
+import { Product } from 'src/app/shared/models/product.model';
 import { AdminDemoService } from 'src/app/shared/services/admin-demo.service';
 
 @Component({
@@ -12,8 +12,8 @@ export class AdminDemoLaptopComponent implements OnInit {
   isDesktopMenuOpen = false;
   isCarouselOpen = true;
 
-  protected laptops: Array<Laptop> = [];
-  protected laptop: Laptop = new Laptop();
+  protected laptops: Array<Product> = [];
+  protected laptop: Product = new Product();
 
   errorMessage: string = "";
 

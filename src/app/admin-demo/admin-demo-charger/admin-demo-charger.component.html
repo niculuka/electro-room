@@ -23,7 +23,6 @@
           <th>Category</th>
           <th>Power</th>
           <th>Price</th>
-          <th>Date</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -31,7 +30,7 @@
 
       <tbody>
         <tr *ngFor="let charger of chargers;">
-          <td><strong>{{charger.chargerId}}</strong></td>
+          <td><strong>{{charger.id}}</strong></td>
           <td>
             <a routerLink="/laptops-phones-tablets/laptop-auxs/chargers/{{charger.linkName}}">
               <img [src]="charger.image" [alt]="charger.alt">
@@ -46,7 +45,6 @@
           <td><strong>{{charger.category.substring(8)}}</strong></td>
           <td>{{charger.power}}</td>
           <td><strong>{{charger.price}}.Lei</strong></td>
-          <td>{{charger.createTime}}</td>
           <td>
             <button class="btn-edit" (click)="noAction()">Edit</button>
           </td>
@@ -60,7 +58,7 @@
     <table class="table-col" *ngFor="let charger of chargers;">
       <tbody>
         <tr>
-          <th colspan="2">{{charger.chargerId}}</th>
+          <th colspan="2">{{charger.id}}</th>
         </tr>
         <tr>
           <th>Image</th>
@@ -97,10 +95,6 @@
         <tr>
           <th>Price</th>
           <td><strong>{{charger.price}} Lei</strong></td>
-        </tr>
-        <tr>
-          <th>Date</th>
-          <td>{{charger.createTime}}</td>
         </tr>
         <tr class="action">
           <th>Action</th>

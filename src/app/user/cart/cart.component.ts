@@ -76,7 +76,7 @@ export class CartComponent implements OnInit {
       this.link = "/laptops-phones-tablets/laptop-auxs/chargers/" + cartItem.product.linkName
     }
     if (cartItem.product.category.startsWith("HARD")) {
-      this.link = "/laptops-phones-tablets/laptop-auxs/ssds/" + cartItem.product.linkName
+      this.link = "/laptops-phones-tablets/laptop-auxs/hards/" + cartItem.product.linkName
     }
     this.router.navigate([this.link]);
   }

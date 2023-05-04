@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminLaptopChargerComponent } from 'src/app/admin/admin-laptop-charger/admin-laptop-charger.component';
-import { LaptopCharger } from 'src/app/shared/models/laptop-charger.model';
 
 @Component({
   selector: 'app-dialog-laptop-charger-delete',

@@ -22,7 +22,6 @@
           <th>Available</th>
           <th>Category</th>
           <th>Price</th>
-          <th>Date</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -30,7 +29,7 @@
 
       <tbody>
         <tr *ngFor="let bag of bags;">
-          <td><strong>{{bag.bagId}}</strong></td>
+          <td><strong>{{bag.id}}</strong></td>
           <td>
             <a routerLink="/laptops-phones-tablets/laptop-auxs/bags/{{bag.linkName}}">
               <img [src]="bag.image" [alt]="bag.alt">
@@ -44,7 +43,6 @@
           <td>{{bag.available}}</td>
           <td>{{bag.category.substring(4)}}</td>
           <td><strong>{{bag.price}}.Lei</strong></td>
-          <td>{{bag.createTime}}</td>
           <td>
             <button class="btn-edit" (click)="noAction()">Edit</button>
           </td>
@@ -58,7 +56,7 @@
     <table class="table-col" *ngFor="let bag of bags;">
       <tbody>
         <tr>
-          <th colspan="2">{{bag.bagId}}</th>
+          <th colspan="2">{{bag.id}}</th>
         </tr>
         <tr>
           <th>Image</th>
@@ -91,10 +89,6 @@
         <tr>
           <th>Price</th>
           <td><strong>{{bag.price}} Lei</strong></td>
-        </tr>
-        <tr>
-          <th>Date</th>
-          <td>{{bag.createTime}}</td>
         </tr>
         <tr class="action">
           <th>Action</th>

@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LaptopBag } from '../models/laptop-bag.model';
 import { AuthService } from './auth.service';
 import { BearerService } from './bearer.service';
+import { Product } from '../models/product.model';
 
 const ADMIN_URL = `${environment.BASE_URL}/admin/laptop-bags`;
 
@@ -20,7 +20,7 @@ export class AdminLaptopBagService extends BearerService {
     super(authService, http);
   }
 
-  createLaptopBagService(bag: LaptopBag): Observable<any> {
+  createLaptopBagService(bag: Product): Observable<any> {
     return this.http.post(ADMIN_URL, bag, { headers: this.getHeaders });
   }
 
@@ -28,12 +28,12 @@ export class AdminLaptopBagService extends BearerService {
     return this.http.get(ADMIN_URL, { headers: this.getHeaders })
   }  
 
-  updateLaptopBagService(bag: LaptopBag): Observable<any> {
+  updateLaptopBagService(bag: Product): Observable<any> {
     return this.http.put(ADMIN_URL, bag, { headers: this.getHeaders });
   }
 
-  deleteLaptopBagService(bag: LaptopBag): Observable<any> {
-    return this.http.delete(`${ADMIN_URL}/${bag.bagId}`, { headers: this.getHeaders });
+  deleteLaptopBagService(bag: Product): Observable<any> {
+    return this.http.delete(`${ADMIN_URL}/${bag.id}`, { headers: this.getHeaders });
   }
 
 }

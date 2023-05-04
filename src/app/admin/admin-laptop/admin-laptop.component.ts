@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DialogLaptopCreateComponent } from 'src/app/dialogs/dialog-laptop-create/dialog-laptop-create.component';
 import { DialogLaptopDeleteComponent } from 'src/app/dialogs/dialog-laptop-delete/dialog-laptop-delete.component';
 import { DialogLaptopUpdateComponent } from 'src/app/dialogs/dialog-laptop-update/dialog-laptop-update.component';
-import { Laptop } from 'src/app/shared/models/laptop.model';
+import { Product } from 'src/app/shared/models/product.model';
 import { AdminLaptopService } from 'src/app/shared/services/admin-laptop.service';
 
 @Component({
@@ -18,8 +18,8 @@ export class AdminLaptopComponent implements OnInit {
   isDesktopMenuOpen = false;
   isCarouselOpen = true;
 
-  protected laptops: Array<Laptop> = [];
-  protected laptop: Laptop = new Laptop();
+  protected laptops: Array<Product> = [];
+  protected laptop: Product = new Product();
 
   errorMessage: string = "";
 
@@ -36,7 +36,7 @@ export class AdminLaptopComponent implements OnInit {
     });
   }
 
-  viewLaptop(laptop: Laptop) {
+  viewLaptop(laptop: Product) {
     this.router.navigate(['/lap/' + laptop.linkName]);
   }
 
@@ -54,7 +54,7 @@ export class AdminLaptopComponent implements OnInit {
     })
   }
 
-  updateLaptopDialog(laptop: Laptop) {
+  updateLaptopDialog(laptop: Product) {
     const update = this.matDialog.open(DialogLaptopUpdateComponent, { data: laptop });
     update.afterClosed().subscribe(result => {
       if (result !== "true") {
@@ -63,7 +63,7 @@ export class AdminLaptopComponent implements OnInit {
     })
   }
 
-  deleteLaptopDialog(laptop: Laptop) {
+  deleteLaptopDialog(laptop: Product) {
     const dialogRef = this.matDialog.open(DialogLaptopDeleteComponent, { data: laptop });
     dialogRef.afterClosed().subscribe({
       next: result => {
@@ -77,7 +77,7 @@ export class AdminLaptopComponent implements OnInit {
     })
   }
 
-  deleteLaptop(laptop: Laptop) {
+  deleteLaptop(laptop: Product) {
     this.adminLaptopService.deleteLaptopService(laptop).subscribe({
       next: () => {
         window.location.reload();

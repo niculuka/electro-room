@@ -1,0 +1,22 @@
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container-depart">
+    <div class="content-depart">
+
+        <div class="breadcrumb">
+            <breadcrumb></breadcrumb>
+        </div>
+
+        <div class="cards">
+            <div class="card" *ngFor="let card of cards">
+                <a [routerLink]="card.link" (click)="goTo(card)">
+                    <img [src]="card.image" [alt]="card.image">
+                    <div class="title">{{card.title}}</div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

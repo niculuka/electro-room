@@ -2,10 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LaptopBag } from '../models/laptop-bag.model';
-import { LaptopCharger } from '../models/laptop-charger.model';
-import { LaptopSsd } from '../models/laptop-ssd.model';
-import { Laptop } from '../models/laptop.model';
 import { Product } from '../models/product.model';
 import { AuthService } from './auth.service';
 import { BearerService } from './bearer.service';
@@ -35,25 +31,25 @@ export class SearchProductService extends BearerService {
   searchProducts(searchTerm: string): void {
     this.findAll = new Array;
     this.getAllLaptopsService().subscribe(laptop => {
-      laptop.filter((data: Laptop) => {
+      laptop.filter((data: Product) => {
         if (data.name.toLowerCase().includes(searchTerm)) {
           this.findAll.push(data)
         }
       });
       this.getAllBagsService().subscribe(bag => {
-        bag.filter((data: LaptopBag) => {
+        bag.filter((data: Product) => {
           if (data.name.toLowerCase().includes(searchTerm)) {
             this.findAll.push(data)
           }
         });
         this.getAllChargersService().subscribe(charger => {
-          charger.filter((data: LaptopCharger) => {
+          charger.filter((data: Product) => {
             if (data.name.toLowerCase().includes(searchTerm)) {
               this.findAll.push(data)
             }
           });
-          this.getAllSsdsService().subscribe(ssd => {
-            ssd.filter((data: LaptopSsd) => {
+          this.getAllHardsService().subscribe(hard => {
+            hard.filter((data: Product) => {
               if (data.name.toLowerCase().includes(searchTerm)) {
                 this.findAll.push(data)
               }
@@ -79,8 +75,8 @@ export class SearchProductService extends BearerService {
     return this.http.get(API_URL + "/laptop-chargers");
   }
 
-  getAllSsdsService(): Observable<any> {
-    return this.http.get(API_URL + "/laptop-ssds");
+  getAllHardsService(): Observable<any> {
+    return this.http.get(API_URL + "/laptop-hards");
   }
 
   // ****************************************************

@@ -60,23 +60,23 @@ export const DEPARTAMENTS: Departament[] = [
             },
             {
                 name: "Accesorii Laptop",
-                link: "/laptops-phones-tablets/accessories",
+                link: "/laptops-phones-tablets/laptops-accessories",
                 showSubtitle: false,
                 isReady: "#df0265",
                 subtitles: [
                     {
                         name: "Genti laptop",
-                        link: "/laptops-phones-tablets/accessories/bags",
+                        link: "/laptops-phones-tablets/laptops-accessories/bags",
                         isReady: "#ff4196",
                     },
                     {
                         name: "Incarcatoare priza/auto",
-                        link: "/laptops-phones-tablets/accessories/chargers",
+                        link: "/laptops-phones-tablets/laptops-accessories/chargers",
                         isReady: "#ff4196",
                     },
                     {
-                        name: "SSD externe",
-                        link: "/laptops-phones-tablets/accessories/ssds",
+                        name: "HARD externe",
+                        link: "/laptops-phones-tablets/laptops-accessories/hards",
                         isReady: "#ff4196",
                     },                    
                     {
@@ -376,7 +376,7 @@ export const DEPARTAMENTS: Departament[] = [
                         isReady: "#676767",
                     },
                     {
-                        name: "Solid State Drive, SSD",
+                        name: "Solid State Drive, HARD",
                         link: "/under-construction",
                         isReady: "#676767",
                     },
@@ -528,7 +528,7 @@ export const DEPARTAMENTS: Departament[] = [
                 isReady: "#262626",
                 subtitles: [
                     {
-                        name: "HDD si SSD externe",
+                        name: "HDD si HARD externe",
                         link: "/under-construction",
                         isReady: "#676767",
                     },

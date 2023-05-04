@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminLaptopBagComponent } from 'src/app/admin/admin-laptop-bag/admin-laptop-bag.component';
 import { LaptopBagImages, LAPTOP_BAG_IMAGES } from 'src/app/shared/data/laptop-bag-images.data';
-import { LaptopBag } from 'src/app/shared/models/laptop-bag.model';
+import { Product } from 'src/app/shared/models/product.model';
 import { AdminLaptopBagService } from 'src/app/shared/services/admin-laptop-bag.service';
 
 @Component({
@@ -13,8 +13,8 @@ import { AdminLaptopBagService } from 'src/app/shared/services/admin-laptop-bag.
 export class DialogLaptopBagCreateComponent implements OnInit {
 
   protected laptopBagImages: Array<LaptopBagImages> = LAPTOP_BAG_IMAGES;
-  protected laptopBags: Array<LaptopBag> = [];
-  newLaptopBag: LaptopBag = new LaptopBag();
+  protected laptopBags: Array<Product> = [];
+  newLaptopBag: Product = new Product();
 
   errorMessage: string = "";
 
@@ -50,9 +50,6 @@ export class DialogLaptopBagCreateComponent implements OnInit {
 
   getImage(image: LaptopBagImages) {
     this.newLaptopBag.image = image.image;
-    this.newLaptopBag.src2 = image.src2;
-    this.newLaptopBag.src3 = image.src3;
-    this.newLaptopBag.src4 = image.src4;
     this.newLaptopBag.alt = image.image.substring(12);
     this.handleDropdownMenu = false;
     this.checkConditions();

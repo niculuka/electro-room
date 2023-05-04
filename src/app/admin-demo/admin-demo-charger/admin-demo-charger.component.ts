@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LaptopCharger } from 'src/app/shared/models/laptop-charger.model';
+import { Product } from 'src/app/shared/models/product.model';
 import { AdminDemoService } from 'src/app/shared/services/admin-demo.service';
 
 @Component({
@@ -12,8 +12,8 @@ export class AdminDemoChargerComponent implements OnInit {
   isDesktopMenuOpen = false;
   isCarouselOpen = true;
 
-  protected chargers: Array<LaptopCharger> = [];
-  protected charger: LaptopCharger = new LaptopCharger();
+  protected chargers: Array<Product> = [];
+  protected charger: Product = new Product();
 
   errorMessage: string = "";
 

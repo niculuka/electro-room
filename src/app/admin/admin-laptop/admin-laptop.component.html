@@ -23,7 +23,6 @@
           <th>Category</th>
           <th>Alert</th>
           <th>Price</th>
-          <th>Date</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -31,7 +30,7 @@
 
       <tbody>
         <tr *ngFor="let laptop of laptops;">
-          <td><strong>{{laptop.laptopId}}</strong></td>
+          <td><strong>{{laptop.id}}</strong></td>
           <td>
             <a
               routerLink="/laptops-phones-tablets/laptops/{{laptop.category.substring(7).toLocaleLowerCase()}}/{{laptop.linkName}}">
@@ -45,9 +44,8 @@
           <td>{{laptop.description}}</td>
           <td>{{laptop.available}}</td>
           <td><strong>{{laptop.category.substring(7)}}</strong></td>
-          <td>{{laptop.alert}}</td>
+          <td>{{laptop.badge}}</td>
           <td><strong>{{laptop.price}}.Lei</strong></td>
-          <td>{{laptop.createTime}}</td>
           <td>
             <button class="btn-edit" (click)="updateLaptopDialog(laptop)">Edit</button>
           </td>
@@ -61,7 +59,7 @@
     <table class="table-col" *ngFor="let laptop of laptops;">
       <tbody>
         <tr>
-          <th colspan="2">{{laptop.laptopId}}</th>
+          <th colspan="2">{{laptop.id}}</th>
         </tr>
         <tr>
           <th>Image</th>
@@ -94,15 +92,11 @@
         </tr>
         <tr>
           <th>Alert</th>
-          <td>{{laptop.alert}}</td>
+          <td>{{laptop.badge}}</td>
         </tr>
         <tr>
           <th>Price</th>
           <td><strong>{{laptop.price}} Lei</strong></td>
-        </tr>
-        <tr>
-          <th>Date</th>
-          <td>{{laptop.createTime}}</td>
         </tr>
         <tr class="action">
           <th>Action</th>

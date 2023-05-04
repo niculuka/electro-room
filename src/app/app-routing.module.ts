@@ -25,7 +25,7 @@ import { UnderConstructionComponent } from './guest/under-construction/under-con
 import { AdminLaptopComponent } from './admin/admin-laptop/admin-laptop.component';
 import { AdminLaptopBagComponent } from './admin/admin-laptop-bag/admin-laptop-bag.component';
 import { AdminLaptopChargerComponent } from './admin/admin-laptop-charger/admin-laptop-charger.component';
-import { AdminLaptopSsdComponent } from './admin/admin-laptop-ssd/admin-laptop-ssd.component';
+import { AdminLaptopHardComponent } from './admin/admin-laptop-hard/admin-laptop-hard.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
@@ -35,18 +35,22 @@ import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 import { AdminDemoLaptopComponent } from './admin-demo/admin-demo-laptop/admin-demo-laptop.component';
 import { AdminDemoBagComponent } from './admin-demo/admin-demo-bag/admin-demo-bag.component';
 import { AdminDemoChargerComponent } from './admin-demo/admin-demo-charger/admin-demo-charger.component';
-import { AdminDemoSsdComponent } from './admin-demo/admin-demo-ssd/admin-demo-ssd.component';
+import { AdminDemoHardComponent } from './admin-demo/admin-demo-hard/admin-demo-hard.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablets/laptop-phone-tablet/laptop-phone-tablet.component';
-import { LaptopComponent } from './products-pages/laptop-phone-tablets/laptop/laptop/laptop.component';
-import { LaptopCategoryComponent } from './products-pages/laptop-phone-tablets/laptop/laptop-category/laptop-category.component';
-import { LaptopDetailComponent } from './products-pages/laptop-phone-tablets/laptop/laptop-detail/laptop-detail.component';
-import { LaptopAccessoryCategoryComponent } from './products-pages/laptop-phone-tablets/laptop-accessory/laptop-accessory-category/laptop-accessory-category.component';
-import { LaptopBagComponent } from './products-pages/laptop-bag/laptop-bag.component';
-import { LaptopBagDetailComponent } from './products-pages/laptop-bag-detail/laptop-bag-detail.component';
+import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet/laptop-phone-tablet.component';
+import { LaptopComponent } from './products-pages/laptop-phone-tablet/laptop/laptop/laptop.component';
+import { LaptopCategoryComponent } from './products-pages/laptop-phone-tablet/laptop/laptop-category/laptop-category.component';
+import { LaptopDetailComponent } from './products-pages/laptop-phone-tablet/laptop/laptop-detail/laptop-detail.component';
+import { LaptopAccessoryComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-accessory/laptop-accessory.component';
+import { LaptopBagComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-bag/laptop-bag.component';
+import { LaptopBagDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-bag-detail/laptop-bag-detail.component';
+import { LaptopChargerComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-charger/laptop-charger.component';
+import { LaptopChargerDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-charger-detail/laptop-charger-detail.component';
+import { LaptopHardComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-hard/laptop-hard.component';
+import { LaptopHardDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-hard-detail/laptop-hard-detail.component';
 
 
 const routes: Routes = [
@@ -75,7 +79,7 @@ const routes: Routes = [
       ]
     },
   },
-  // Laptops -------------------------------------------------------------------------------------------
+  // LAPTOPS -----------------------------------------------------------------------------------------------
   {
     path: "laptops-phones-tablets/laptops", component: LaptopComponent, data: {
       title: 'laptops',
@@ -87,7 +91,7 @@ const routes: Routes = [
   },
   {
     path: "laptops-phones-tablets/laptops/:category", component: LaptopCategoryComponent, data: {
-      title: 'laptops-category',
+      title: '{{category}}',
       breadcrumb: [
         { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
         { label: 'Laptopuri', url: '/laptops-phones-tablets/laptops' },
@@ -97,7 +101,7 @@ const routes: Routes = [
   },
   {
     path: "laptops-phones-tablets/laptops/:category/:linkName", component: LaptopDetailComponent, data: {
-      title: 'laptops-category',
+      title: '{{linkName}}',
       breadcrumb: [
         { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
         { label: 'Laptopuri', url: '/laptops-phones-tablets/laptops' },
@@ -106,33 +110,78 @@ const routes: Routes = [
       ]
     },
   },
-  // Laptop-Accessory --------------------------------------------------------------------------------------
+  // LAPTOPS-ACCESSORY -------------------------------------------------------------------------------------
   {
-    path: "laptops-phones-tablets/accessories", component: LaptopAccessoryCategoryComponent, data: {
-      title: 'laptops-category',
+    path: "laptops-phones-tablets/laptops-accessories", component: LaptopAccessoryComponent, data: {
+      title: 'accessories',
       breadcrumb: [
         { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii Laptop', url: '' },
+        { label: 'Accesorii laptop', url: '' },
+      ]
+    },
+  },
+  // Bag -------------------------------------------------------------------------------------
+  {
+    path: "laptops-phones-tablets/laptops-accessories/bags", component: LaptopBagComponent, data: {
+      title: 'bags',
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
+        { label: 'Genti si huse laptop', url: '' }
       ]
     },
   },
   {
-    path: "laptops-phones-tablets/accessories/bags", component: LaptopBagComponent, data: {
-      title: 'laptops-category',
+    path: "laptops-phones-tablets/laptops-accessories/bags/:linkName", component: LaptopBagDetailComponent, data: {
+      title: '{{linkName}}',
       breadcrumb: [
         { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii Laptop', url: '/laptops-phones-tablets/accessories' },
-        { label: 'Accesorii Laptop', url: '' },
+        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
+        { label: 'Genti si huse laptop', url: '/laptops-phones-tablets/laptops-accessories/bags' },
+        { label: '{{linkName}}', url: '' },
+      ]
+    },
+  },
+  // Charger ----------------------------------------------------------------------------------
+  {
+    path: "laptops-phones-tablets/laptops-accessories/chargers", component: LaptopChargerComponent, data: {
+      title: 'chargers',
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
+        { label: 'Incarcatoare laptop', url: '' }
       ]
     },
   },
   {
-    path: "laptops-phones-tablets/accessories/bags/:linkName", component: LaptopBagDetailComponent, data: {
-      title: 'laptops-category',
+    path: "laptops-phones-tablets/laptops-accessories/chargers/:linkName", component: LaptopChargerDetailComponent, data: {
+      title: '{{linkName}}',
       breadcrumb: [
         { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii Laptop', url: '/laptops-phones-tablets/accessories' },
-        { label: 'Genti Laptop', url: '/laptops-phones-tablets/accessories/bags' },
+        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
+        { label: 'Incarcatoare laptop', url: '/laptops-phones-tablets/laptops-accessories/chargers' },
+        { label: '{{linkName}}', url: '' },
+      ]
+    },
+  },
+  // Hard --------------------------------------------------------------------------------------
+  {
+    path: "laptops-phones-tablets/laptops-accessories/hards", component: LaptopHardComponent, data: {
+      title: 'harduri',
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
+        { label: 'Harduri', url: '' }
+      ]
+    },
+  },
+  {
+    path: "laptops-phones-tablets/laptops-accessories/hards/:linkName", component: LaptopHardDetailComponent, data: {
+      title: '{{linkName}}',
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
+        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
+        { label: 'Harduri', url: '/laptops-phones-tablets/laptops-accessories/hards' },
         { label: '{{linkName}}', url: '' },
       ]
     },
@@ -142,7 +191,7 @@ const routes: Routes = [
   { path: "admin/laptops", component: AdminLaptopComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/laptop-bags", component: AdminLaptopBagComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/laptop-chargers", component: AdminLaptopChargerComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/laptop-ssds", component: AdminLaptopSsdComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/laptop-hards", component: AdminLaptopHardComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
 
   { path: "admin/electro-orders", component: AdminOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/electro-items", component: AdminItemComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
@@ -153,7 +202,7 @@ const routes: Routes = [
   { path: "admin/demo/laptops", component: AdminDemoLaptopComponent },
   { path: "admin/demo/bags", component: AdminDemoBagComponent },
   { path: "admin/demo/chargers", component: AdminDemoChargerComponent },
-  { path: "admin/demo/ssds", component: AdminDemoSsdComponent },
+  { path: "admin/demo/hards", component: AdminDemoHardComponent },
   { path: "admin/demo/electro-orders", component: AdminDemoOrderComponent },
   { path: "admin/demo/users", component: AdminDemoUserComponent },
 

@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminLaptopChargerComponent } from 'src/app/admin/admin-laptop-charger/admin-laptop-charger.component';
 import { LaptopChargerImages, LAPTOP_CHARGER_IMAGES } from 'src/app/shared/data/laptop-charger-images.data';
-import { LaptopCharger } from 'src/app/shared/models/laptop-charger.model';
+import { Product } from 'src/app/shared/models/product.model';
 import { AdminLaptopChargerService } from 'src/app/shared/services/admin-laptop-charger.service';
 
 @Component({
@@ -13,8 +13,8 @@ import { AdminLaptopChargerService } from 'src/app/shared/services/admin-laptop-
 export class DialogLaptopChargerCreateComponent implements OnInit {
 
   protected laptopChargerImages: Array<LaptopChargerImages> = LAPTOP_CHARGER_IMAGES;
-  protected laptopChargers: Array<LaptopCharger> = [];
-  newLaptopCharger: LaptopCharger = new LaptopCharger();
+  protected laptopChargers: Array<Product> = [];
+  newLaptopCharger: Product = new Product();
 
   errorMessage: string = "";
 
@@ -50,9 +50,6 @@ export class DialogLaptopChargerCreateComponent implements OnInit {
 
   getImage(image: LaptopChargerImages) {
     this.newLaptopCharger.image = image.image;
-    this.newLaptopCharger.src2 = image.src2;
-    this.newLaptopCharger.src3 = image.src3;
-    this.newLaptopCharger.src4 = image.src4;
     this.newLaptopCharger.alt = image.image.substring(16);
     this.handleDropdownMenu = false;
     this.checkConditions();

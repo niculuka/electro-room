@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DialogLaptopBagCreateComponent } from 'src/app/dialogs/dialog-laptop-bag-create/dialog-laptop-bag-create.component';
 import { DialogLaptopBagDeleteComponent } from 'src/app/dialogs/dialog-laptop-bag-delete/dialog-laptop-bag-delete.component';
 import { DialogLaptopBagUpdateComponent } from 'src/app/dialogs/dialog-laptop-bag-update/dialog-laptop-bag-update.component';
-import { LaptopBag } from 'src/app/shared/models/laptop-bag.model';
+import { Product } from 'src/app/shared/models/product.model';
 import { AdminLaptopBagService } from 'src/app/shared/services/admin-laptop-bag.service';
 
 @Component({
@@ -18,8 +18,8 @@ export class AdminLaptopBagComponent implements OnInit {
   isDesktopMenuOpen = false;
   isCarouselOpen = true;
 
-  protected bags: Array<LaptopBag> = [];
-  protected bag: LaptopBag = new LaptopBag();
+  protected bags: Array<Product> = [];
+  protected bag: Product = new Product();
 
   errorMessage: string = "";
 
@@ -36,7 +36,7 @@ export class AdminLaptopBagComponent implements OnInit {
     });
   }
 
-  viewLaptop(laptopBag: LaptopBag) {
+  viewLaptop(laptopBag: Product) {
     this.router.navigate(['/bag/' + laptopBag.linkName]);
   }
 
@@ -54,7 +54,7 @@ export class AdminLaptopBagComponent implements OnInit {
     })
   }
 
-  updateBagDialog(bag: LaptopBag) {
+  updateBagDialog(bag: Product) {
     const update = this.matDialog.open(DialogLaptopBagUpdateComponent, { data: bag });
     update.afterClosed().subscribe(result => {
       if (result !== "true") {
@@ -63,7 +63,7 @@ export class AdminLaptopBagComponent implements OnInit {
     })
   }
 
-  deleteBagDialog(bag: LaptopBag) {
+  deleteBagDialog(bag: Product) {
     const del = this.matDialog.open(DialogLaptopBagDeleteComponent, { data: bag });
     del.afterClosed().subscribe({
       next: result => {
@@ -77,7 +77,7 @@ export class AdminLaptopBagComponent implements OnInit {
     })
   }
 
-  deleteBag(bag: LaptopBag) {
+  deleteBag(bag: Product) {
     this.adminBagService.deleteLaptopBagService(bag).subscribe({
       next: () => {
         window.location.reload();

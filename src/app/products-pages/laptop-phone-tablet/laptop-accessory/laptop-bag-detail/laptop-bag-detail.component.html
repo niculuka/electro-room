@@ -1,0 +1,92 @@
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container-bag">
+    <div class="column-bag">
+
+        <div class="breadcrumb">
+            <breadcrumb></breadcrumb>
+        </div>
+
+        <div class="product">
+
+            <div class="title">
+                <h1>{{laptopBag.description}}</h1>
+            </div>
+
+            <div class="row-bag">
+                <div class="slider">
+                    <span><strong>electro-bag</strong></span>
+                    <div class="slide">
+                        <img [src]="laptopBag.image" [alt]="laptopBag.alt">
+                    </div>
+                    <div>
+                        <product-gallery [productImages]="laptopBagImages" (indexEvent)="receiveCurrentImage($event)">
+                        </product-gallery>
+                    </div>
+                </div>
+
+                <div class="order">
+                    <h1><strong>{{laptopBag.price}} Lei</strong></h1>
+                    <p class="avail tax">Include taxa verde.</p>
+                    <p class="avail stock" *ngIf="laptopBag.available==='STOCK'">- in stoc</p>
+                    <p class="avail deposit" *ngIf="laptopBag.available==='DEPOSIT'">- in depozitul central</p>
+
+                    <p class="avail guaranty">
+                        <mat-icon> star_border</mat-icon>
+                        Garantie comerciala (persoane juridice): 24 luni.
+                    </p>
+                    <p class="avail guaranty">
+                        <mat-icon> star_border</mat-icon>
+                        Garantie de conformitate (persoane fizice): 24 luni.
+                    </p>
+                    <button (click)="addToCart()">Adauga in cos</button>
+                </div>
+
+                <div class="loan">
+                    <h1><strong>Finantare:</strong></h1>
+                    <div>
+                        <strong>PROMO: </strong>
+                        <p>Ai dobanda de la 1% / luna prin CREDIT ONLINE incepand cu 100 lei/luna.</p>
+                    </div>
+
+                    <a routerLink="/card-electro"><strong>Card Electro: </strong></a>
+                    <p> - deschiderea coletului la livrare</p>
+                    <p> - 14 zile drept de retur</p>
+                    <p> - garantie inclusa</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =================================================================================== DETAILS -->
+        <div class="details">
+
+            <input type="radio" name="box" id="box1" checked="checked">
+            <label for="box1">Descriere</label>
+            <div class="box">
+                <h1>Descriere</h1>
+            </div>
+
+            <input type="radio" name="box" id="box2">
+            <label for="box2">Specificatii</label>
+            <div class="box">
+                <h1>Specificatii</h1>
+            </div>
+
+            <input type="radio" name="box" id="box3">
+            <label for="box3">Recenzii</label>
+            <div class="box">
+                <h1>Recenzii</h1>
+            </div>
+
+            <input type="radio" name="box" id="box4">
+            <label for="box4">Intrebari</label>
+            <div class="box">
+                <h1>Intrebari</h1>
+            </div>
+
+        </div>
+    </div>

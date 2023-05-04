@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LaptopCharger } from '../models/laptop-charger.model';
 import { AuthService } from './auth.service';
 import { BearerService } from './bearer.service';
+import { Product } from '../models/product.model';
 
 const ADMIN_URL = `${environment.BASE_URL}/admin/laptop-chargers`;
 
@@ -20,7 +20,7 @@ export class AdminLaptopChargerService extends BearerService {
     super(authService, http);
   }
 
-  createLaptopChargerService(charger: LaptopCharger): Observable<any> {
+  createLaptopChargerService(charger: Product): Observable<any> {
     return this.http.post(ADMIN_URL, charger, { headers: this.getHeaders });
   }
 
@@ -28,12 +28,12 @@ export class AdminLaptopChargerService extends BearerService {
     return this.http.get(ADMIN_URL, { headers: this.getHeaders })
   }  
 
-  updateLaptopChargerService(charger: LaptopCharger): Observable<any> {
+  updateLaptopChargerService(charger: Product): Observable<any> {
     return this.http.put(ADMIN_URL, charger, { headers: this.getHeaders });
   }
 
-  deleteLaptopChargerService(charger: LaptopCharger): Observable<any> {
-    return this.http.delete(`${ADMIN_URL}/${charger.chargerId}`, { headers: this.getHeaders });
+  deleteLaptopChargerService(charger: Product): Observable<any> {
+    return this.http.delete(`${ADMIN_URL}/${charger.id}`, { headers: this.getHeaders });
   }
 
 }
