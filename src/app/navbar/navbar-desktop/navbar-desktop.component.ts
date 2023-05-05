@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Departament, DEPARTAMENTS } from 'src/app/shared/data/mega-menu.data';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'navbar-desktop',
@@ -15,7 +16,9 @@ export class NavbarDesktopComponent implements OnInit {
 
   handleDesktopMenu = true;  
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService,
+  ) { }
 
   ngOnInit(): void {
     if (this.isDesktopMenuOpen == true) {
@@ -35,8 +38,9 @@ export class NavbarDesktopComponent implements OnInit {
     }
   }
 
-  closeFromSubtitles() {
+  closeMenu(item: any) {
     this.handleDesktopMenu = false;
+    this.localStorageService.sendItem(item);
   }
 
 }

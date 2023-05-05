@@ -8,30 +8,30 @@
         <div class="breadcrumb">
             <breadcrumb></breadcrumb>
         </div>
-        
+
         <div class="product">
 
             <div class="title">
-                <h1>{{laptop.description}}</h1>
+                <h1>{{product.description}}</h1>
             </div>
 
             <div class="row-lap">
                 <div class="slider">
-                    <span><strong>laptop</strong></span>
+                    <span><strong>product</strong></span>
                     <div class="slide">
-                        <img [src]="laptop.image" [alt]="laptop.alt">
+                        <img [src]="currentImage" [alt]="currentImage">
                     </div>
                     <div>
-                        <product-gallery [productImages]="laptopImages" (indexEvent)="receiveCurrentImage($event)">
+                        <product-gallery [productImages]="productImages" (indexEvent)="receiveCurrentImage($event)">
                         </product-gallery>
                     </div>
                 </div>
 
                 <div class="order">
-                    <h1><strong>{{laptop.price}} Lei</strong></h1>
+                    <h1><strong>{{product.price}} Lei</strong></h1>
                     <p class="avail tax">Include taxa verde.</p>
-                    <p class="avail stock" *ngIf="laptop.available==='STOCK'">- in stoc</p>
-                    <p class="avail deposit" *ngIf="laptop.available==='DEPOSIT'">- in depozitul central</p>
+                    <p class="avail stock" *ngIf="product.available==='STOCK'">- in stoc</p>
+                    <p class="avail deposit" *ngIf="product.available==='DEPOSIT'">- in depozitul central</p>
 
                     <div class="guaranty">
                         <mat-icon> star_border</mat-icon>

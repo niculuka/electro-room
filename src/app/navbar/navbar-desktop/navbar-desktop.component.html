@@ -32,12 +32,12 @@
                     <div class="col-nav">
                       <div class="departament" *ngFor="let title of departament.titles">
                         <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.isReady}"
-                          (click)="closeFromSubtitles()">{{title.name}}
+                          (click)="closeMenu(title)">{{title.name}}
                         </a>
                         <ul *ngFor="let subtitle of title.subtitles">
                           <li>
                             <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.isReady}"
-                              (click)="closeFromSubtitles()">
+                              (click)="closeMenu(subtitle)">
                               {{subtitle.name}}
                             </a>
                           </li>

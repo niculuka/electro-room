@@ -40,17 +40,11 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
+import { ProductComponent } from './products-pages/product/product.component';
+import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
+import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet/laptop-phone-tablet.component';
-import { LaptopComponent } from './products-pages/laptop-phone-tablet/laptop/laptop/laptop.component';
-import { LaptopCategoryComponent } from './products-pages/laptop-phone-tablet/laptop/laptop-category/laptop-category.component';
-import { LaptopDetailComponent } from './products-pages/laptop-phone-tablet/laptop/laptop-detail/laptop-detail.component';
-import { LaptopAccessoryComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-accessory/laptop-accessory.component';
-import { LaptopBagComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-bag/laptop-bag.component';
-import { LaptopBagDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-bag-detail/laptop-bag-detail.component';
-import { LaptopChargerComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-charger/laptop-charger.component';
-import { LaptopChargerDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-charger-detail/laptop-charger-detail.component';
-import { LaptopHardComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-hard/laptop-hard.component';
-import { LaptopHardDetailComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-hard-detail/laptop-hard-detail.component';
+import { LaptopAccessoryComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-accessory.component';
 
 
 const routes: Routes = [
@@ -72,120 +66,62 @@ const routes: Routes = [
 
   // LAPTOP-PHONE-TABLET -------------------------------------------------------------------------------------------
   {
-    path: "laptops-phones-tablets", component: LaptopPhoneTabletComponent, data: {
-      title: 'laptops-phones-tablets',
+    path: "lpt", component: LaptopPhoneTabletComponent, data: {
       breadcrumb: [
         { label: 'Laptopuri, Telefoane, Tablete', url: '' }
       ]
     },
   },
-  // LAPTOPS -----------------------------------------------------------------------------------------------
+  // PRODUCTS -----------------------------------------------------------------------------------------------
   {
-    path: "laptops-phones-tablets/laptops", component: LaptopComponent, data: {
-      title: 'laptops',
+    path: "lpt/:type", component: ProductComponent, data: {
       breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Laptopuri', url: '' }
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+        { label: '{{type}}', url: '' }
       ]
     },
   },
   {
-    path: "laptops-phones-tablets/laptops/:category", component: LaptopCategoryComponent, data: {
-      title: '{{category}}',
+    path: "lpt/:type/:linkName", component: ProductDetailComponent, data: {
       breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Laptopuri', url: '/laptops-phones-tablets/laptops' },
-        { label: '{{category}}', url: '' }
-      ]
-    },
-  },
-  {
-    path: "laptops-phones-tablets/laptops/:category/:linkName", component: LaptopDetailComponent, data: {
-      title: '{{linkName}}',
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Laptopuri', url: '/laptops-phones-tablets/laptops' },
-        { label: '{{category}}', url: '/laptops-phones-tablets/laptops/:category' },
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+        { label: '{{type}}', url: '/lpt/:type' },
         { label: '{{linkName}}', url: '' }
       ]
     },
   },
-  // LAPTOPS-ACCESSORY -------------------------------------------------------------------------------------
-  {
-    path: "laptops-phones-tablets/laptops-accessories", component: LaptopAccessoryComponent, data: {
-      title: 'accessories',
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii laptop', url: '' },
-      ]
-    },
-  },
-  // Bag -------------------------------------------------------------------------------------
-  {
-    path: "laptops-phones-tablets/laptops-accessories/bags", component: LaptopBagComponent, data: {
-      title: 'bags',
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
-        { label: 'Genti si huse laptop', url: '' }
-      ]
-    },
-  },
-  {
-    path: "laptops-phones-tablets/laptops-accessories/bags/:linkName", component: LaptopBagDetailComponent, data: {
-      title: '{{linkName}}',
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
-        { label: 'Genti si huse laptop', url: '/laptops-phones-tablets/laptops-accessories/bags' },
-        { label: '{{linkName}}', url: '' },
-      ]
-    },
-  },
-  // Charger ----------------------------------------------------------------------------------
-  {
-    path: "laptops-phones-tablets/laptops-accessories/chargers", component: LaptopChargerComponent, data: {
-      title: 'chargers',
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
-        { label: 'Incarcatoare laptop', url: '' }
-      ]
-    },
-  },
-  {
-    path: "laptops-phones-tablets/laptops-accessories/chargers/:linkName", component: LaptopChargerDetailComponent, data: {
-      title: '{{linkName}}',
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
-        { label: 'Incarcatoare laptop', url: '/laptops-phones-tablets/laptops-accessories/chargers' },
-        { label: '{{linkName}}', url: '' },
-      ]
-    },
-  },
-  // Hard --------------------------------------------------------------------------------------
-  {
-    path: "laptops-phones-tablets/laptops-accessories/hards", component: LaptopHardComponent, data: {
-      title: 'harduri',
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
-        { label: 'Harduri', url: '' }
-      ]
-    },
-  },
-  {
-    path: "laptops-phones-tablets/laptops-accessories/hards/:linkName", component: LaptopHardDetailComponent, data: {
-      title: '{{linkName}}',
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/laptops-phones-tablets' },
-        { label: 'Accesorii laptop', url: '/laptops-phones-tablets/laptops-accessories' },
-        { label: 'Harduri', url: '/laptops-phones-tablets/laptops-accessories/hards' },
-        { label: '{{linkName}}', url: '' },
-      ]
-    },
-  },
+  // {
+  //   path: "lpt/laptop-bags/:linkName", component: ProductDetailComponent, data: {
+  //     breadcrumb: [
+  //       { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+  //       { label: 'laptop-bags', url: '/lpt/laptop-bags' },
+  //       { label: '{{linkName}}', url: '' }
+  //     ]
+  //   },
+  // },
+
+
+  // {
+  //   path: "lpt/laptops/:category", component: ProductCategoryComponent, data: {
+  //     breadcrumb: [
+  //       { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+  //       { label: 'Laptopuri', url: '/lpt/laptops' },
+  //       { label: '{{category}}', url: '' }
+  //     ]
+  //   },
+  // },
+  
+
+  // // LAPTOPS-ACCESSORY -------------------------------------------------------------------------------------
+  // {
+  //   path: "lpt/laptops-accessories", component: LaptopAccessoryComponent, data: {
+  //     title: 'accessories',
+  //     breadcrumb: [
+  //       { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+  //       { label: 'Accesorii laptop', url: '' },
+  //     ]
+  //   },
+  // },
 
   // admin  
   { path: "admin/laptops", component: AdminLaptopComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },

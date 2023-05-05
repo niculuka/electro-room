@@ -20,16 +20,20 @@ export class ProductService extends BearerService {
         super(authService, http);
     }
 
-    getAllProductsService(): Observable<any> {
-        return this.http.get(API_URL + "/products");
+    getProductsService(type: string): Observable<any> {
+        return this.http.get<Product>(API_URL + "/products/type/" + type);
     }
 
     getProductsByCategoryService(category: string): Observable<any> {
-        return this.http.get<Product>(API_URL + "/products/" + category);
+        return this.http.get<Product>(API_URL + "/products/category/" + category);
     }
 
     getProductByNameService(linkName: string): Observable<any> {
-        return this.http.get<Product>(API_URL + "/prod/" + linkName);
+        return this.http.get<Product>(API_URL + "/product/linkname/" + linkName);
+    }
+
+    getProductGalleryService(id: number): Observable<any> {
+        return this.http.get<Product>(API_URL + "/product/gallery/" + id);
     }
 
 }

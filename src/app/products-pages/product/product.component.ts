@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { LaptopService } from 'src/app/shared/services/laptop.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
-  selector: 'app-laptop',
-  templateUrl: './laptop.component.html',
-  styleUrls: ['./laptop.component.css']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css']
 })
-export class LaptopComponent implements OnInit {
+export class ProductComponent implements OnInit {
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;
 
   // L A P T O P S - Vars ---------------------------------------------------
-  protected laptops: Array<Product> = [];
-  protected laptops_copy: Array<Product> = [];
+  protected products: Array<Product> = [];
+  protected products_copy: Array<Product> = [];
 
   product: Product = new Product();
 
@@ -108,25 +109,31 @@ export class LaptopComponent implements OnInit {
   protected ultra_out: Array<Product> = [];
 
 
-  laptops_sorting: string = "bestSold";
+  products_sorting: string = "bestSold";
   favorite: boolean = false;
 
+  currentType: any = "";
+
   constructor(
-    private laptopService: LaptopService,
+    private productService: ProductService,
+    private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private router: Router,
     private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
-    this.laptopService.getAllLaptopsService().subscribe(data => {
-      this.laptops = data;
-      this.laptops_copy = data;
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentType = params.get('type') || "";
+      this.productService.getProductsService(this.currentType).subscribe(data => {
+        this.products = data;
+        this.products_copy = data;
 
-      this.filters_available();
-      this.filters_price();
-      this.filters_brand();
-      this.filters_category();
+        this.filters_available();
+        this.filters_price();
+        this.filters_brand();
+        this.filters_category();
+      });
     });
   }
 
@@ -147,7 +154,7 @@ export class LaptopComponent implements OnInit {
     this.product.image = item.image;
     this.product.alt = item.image;
     this.product.price = item.price;
-    
+
     this.cartService.addToCartService(this.product);
     this.router.navigateByUrl('/cart');
   }
@@ -156,15 +163,15 @@ export class LaptopComponent implements OnInit {
   // =============================================================================================
   // =============================================================================================
   sorting() {
-    if (this.laptops_sorting === "name") this.name_alphabetic();
-    if (this.laptops_sorting === "lowToHigh") this.price_ascending();
-    if (this.laptops_sorting === "highToLow") this.price_descending();
-    if (this.laptops_sorting === "bestSold") this.sold();
+    if (this.products_sorting === "name") this.name_alphabetic();
+    if (this.products_sorting === "lowToHigh") this.price_ascending();
+    if (this.products_sorting === "highToLow") this.price_descending();
+    if (this.products_sorting === "bestSold") this.sold();
   }
 
   // ------------------------------------------------------------- S o r t i n g
   name_alphabetic() {
-    this.laptops = this.laptops.sort((a, b) => {
+    this.products = this.products.sort((a, b) => {
       const nameA = a.brand.toUpperCase();
       const nameB = b.brand.toUpperCase();
       if (nameA < nameB) return -1;
@@ -174,15 +181,15 @@ export class LaptopComponent implements OnInit {
   }
 
   price_ascending() {
-    this.laptops = this.laptops.sort((a, b) => a.price - b.price);
+    this.products = this.products.sort((a, b) => a.price - b.price);
   }
 
   price_descending() {
-    this.laptops = this.laptops.sort((a, b) => b.price - a.price);
+    this.products = this.products.sort((a, b) => b.price - a.price);
   }
 
   sold() {
-    this.laptops = this.laptops.sort((a: any, b: any) => a.laptopId - b.laptopId);
+    this.products = this.products.sort((a: any, b: any) => a.id - b.id);
   }
 
   // =========================================================================== A V A I L A B L E
@@ -214,7 +221,7 @@ export class LaptopComponent implements OnInit {
 
   // --------------------------------------------------------- A V A I L A B L E
   get_stock() {
-    this.available = this.laptops_copy;
+    this.available = this.products_copy;
     this.stock_out = new Array<Product>;
     this.available.filter((res: any) => {
       if (res.available === CATEGORY.STOCK) {
@@ -224,7 +231,7 @@ export class LaptopComponent implements OnInit {
   }
 
   get_deposit() {
-    this.available = this.laptops_copy;
+    this.available = this.products_copy;
     this.deposit_out = new Array<Product>;
     this.available.filter((res: any) => {
       if (res.available === CATEGORY.DEPOSIT) {
@@ -239,7 +246,7 @@ export class LaptopComponent implements OnInit {
       this.available = this.stock.concat(this.deposit);
     }
     else {
-      this.available = this.laptops_copy;
+      this.available = this.products_copy;
     }
     this.filters_price();
   }
@@ -594,7 +601,7 @@ export class LaptopComponent implements OnInit {
     this.category = this.brand;
     this.business_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.LAPTOP_BUSINESS) {
+      if (res.category == CATEGORY.BUSINESS) {
         this.business_out.push(res);
       }
     });
@@ -604,7 +611,7 @@ export class LaptopComponent implements OnInit {
     this.category = this.brand;
     this.gaming_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.LAPTOP_GAMING) {
+      if (res.category == CATEGORY.GAMING) {
         this.gaming_out.push(res);
       }
     });
@@ -614,7 +621,7 @@ export class LaptopComponent implements OnInit {
     this.category = this.brand;
     this.home_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.LAPTOP_HOME) {
+      if (res.category == CATEGORY.HOME) {
         this.home_out.push(res);
       }
     });
@@ -624,7 +631,7 @@ export class LaptopComponent implements OnInit {
     this.category = this.brand;
     this.ultra_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.LAPTOP_ULTRA) {
+      if (res.category == CATEGORY.ULTRA) {
         this.ultra_out.push(res);
       }
     });
@@ -646,7 +653,7 @@ export class LaptopComponent implements OnInit {
     else {
       this.category = this.brand;
     }
-    this.laptops = this.category;
+    this.products = this.category;
     this.sorting();
   }
 

@@ -66,7 +66,7 @@ export enum CATEGORY {
     // L A P T O P   A C C E S S O R Y ----------------------------
     LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
 
-    BAG = "BAG",
+    LAPTOP_BAGS = "laptop-bags",
     BRIEFCASE = "BRIEFCASE",
     SLEEVE = "SLEEVE",
     BACKPACK = "BACKPACK",
@@ -75,14 +75,14 @@ export enum CATEGORY {
     BAG_BACKPACK = "BAG_BACKPACK",
 
     // C H A R G E R -----------------------------------------
-    CHARGER = "CHARGER",
+    LAPTOP_CHARGERS = "laptop-chargers",
     PLUG_IN = "PLUG_IN",
     CAR = "CAR",
     CHARGER_PLUG_IN = "CHARGER_PLUG_IN",
     CHARGER_CAR = "CHARGER_CAR",
 
     // H A R D -----------------------------------------,
-    HARD = "HARD",
+    LAPTOP_HARDS = "laptop-hards",
     HDD = "HDD",
     SSD = "SSD",
     HARD_HDD = "HARD_HDD",

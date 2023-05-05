@@ -7,8 +7,8 @@ export class Product {
     linkName: string = "";
     description: string = "";
     brand: CATEGORY;
+    type: CATEGORY;
     category: CATEGORY;
-    subcategory: CATEGORY;
     image: string = "";   
     alt: string = "";
     badge: CATEGORY;
@@ -24,8 +24,8 @@ export class Product {
         linkName: string = "",
         description: string = "",
         brand: CATEGORY = CATEGORY.CATEGORY,
+        type: CATEGORY = CATEGORY.CATEGORY,
         category: CATEGORY = CATEGORY.CATEGORY,
-        subcategory: CATEGORY = CATEGORY.CATEGORY,
         image: string = "",
         alt: string = "",
         badge: CATEGORY = CATEGORY.CATEGORY,
@@ -40,8 +40,8 @@ export class Product {
         this.linkName = linkName;
         this.description = description;
         this.brand = brand;
+        this.type = type;
         this.category = category;
-        this.subcategory = subcategory;
         this.image = image;
         this.alt = alt;
         this.badge = badge;
