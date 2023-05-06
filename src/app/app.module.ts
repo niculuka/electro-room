@@ -97,6 +97,7 @@ import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { ProductGalleryComponent } from './products-pages/product-gallery/product-gallery.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { LaptopAccessoryComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-accessory.component';
+import { AaaaComponent } from './aaaa/aaaa.component';
 
 
 @NgModule({
@@ -168,7 +169,8 @@ import { LaptopAccessoryComponent } from './products-pages/laptop-phone-tablet/l
     SearchComponent,
     InfoBlockComponent,
     ProductGalleryComponent,
-    BreadcrumbComponent,    
+    BreadcrumbComponent,
+    AaaaComponent,    
   ],
   imports: [
     BrowserModule,

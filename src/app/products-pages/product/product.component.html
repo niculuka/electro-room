@@ -13,7 +13,11 @@
             <h3>Acasa / Laptop, Telefoane, Tablete / Laptopuri / Gaming</h3>
         </div> -->
 
-        <div class="row-lap">
+        <div style="width: 100%" *ngIf="!notFoundProduct">
+            <h1>NOT FOUND PRODUCTS</h1>
+        </div>
+
+        <div class="row-lap" *ngIf="notFoundProduct">
             <!-- f i l t e r s ==================================================================================== -->
             <div class="filters-lap">
                 <!-- available filter ----------------------------------------------------------- -->

@@ -51,42 +51,31 @@ export enum CATEGORY {
     XTORM = "XTORM",
 
     // L A P T O P -----------------------------------------
-    LAPTOP = "LAPTOP",
+    LAPTOPS = "LAPTOPS",
     GAMING = "GAMING",
     ULTRA = "ULTRA",
     BUSINESS = "BUSINESS",
     HOME = "HOME",
     L2IN1 = "L2IN1",
-    LAPTOP_GAMING = "LAPTOP_GAMING",
-    LAPTOP_ULTRA = "LAPTOP_ULTRA",
-    LAPTOP_BUSINESS = "LAPTOP_BUSINESS",
-    LAPTOP_HOME = "LAPTOP_HOME",
-    LAPTOP_L2IN1 = "LAPTOP_L2IN1",
 
     // L A P T O P   A C C E S S O R Y ----------------------------
-    LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
+    LAPTOP_ACCESSORY = "laptop-accsessory",
 
+    // C H A R G E R -----------------------------------------
     LAPTOP_BAGS = "laptop-bags",
     BRIEFCASE = "BRIEFCASE",
     SLEEVE = "SLEEVE",
     BACKPACK = "BACKPACK",
-    BAG_BAG = "BAG_BAG",
-    BAG_SLEEVE = "BAG_SLEEVE",
-    BAG_BACKPACK = "BAG_BACKPACK",
 
     // C H A R G E R -----------------------------------------
     LAPTOP_CHARGERS = "laptop-chargers",
     PLUG_IN = "PLUG_IN",
     CAR = "CAR",
-    CHARGER_PLUG_IN = "CHARGER_PLUG_IN",
-    CHARGER_CAR = "CHARGER_CAR",
 
     // H A R D -----------------------------------------,
     LAPTOP_HARDS = "laptop-hards",
     HDD = "HDD",
     SSD = "SSD",
-    HARD_HDD = "HARD_HDD",
-    HARD_SSD = "HARD_SSD",
 
     // P O W E R -----------------------------------------
     W45 = "W45",

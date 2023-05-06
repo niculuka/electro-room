@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -22,6 +21,7 @@ export class ProductComponent implements OnInit {
   protected products_copy: Array<Product> = [];
 
   product: Product = new Product();
+  notFoundProduct: boolean = true;
 
   // A L L - Vars -----------------------------------------------------------
   none_chk: boolean = false;
@@ -126,13 +126,18 @@ export class ProductComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.currentType = params.get('type') || "";
       this.productService.getProductsService(this.currentType).subscribe(data => {
-        this.products = data;
-        this.products_copy = data;
+        if (data.length > 0) {
+          this.notFoundProduct = true;
+          this.products = data;
+          this.products_copy = data;
 
-        this.filters_available();
-        this.filters_price();
-        this.filters_brand();
-        this.filters_category();
+          this.filters_available();
+          this.filters_price();
+          this.filters_brand();
+          this.filters_category();
+        } else {
+          this.notFoundProduct = false;
+        }
       });
     });
   }

@@ -44,7 +44,7 @@ export const DEPARTAMENTS: Departament[] = [
                     {
                         name: "Laptopuri",
                         link: "/lpt/laptops",
-                        type: CATEGORY.LAPTOP,
+                        type: CATEGORY.LAPTOPS,
                         isReady: "#ff4196",
                     },
                     {
