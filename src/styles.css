@@ -17,23 +17,3 @@ body {
     /* font-family: Roboto, "Helvetica Neue", sans-serif;  */
 }
 
-
-/*
-   Error: C:/Users/ACASA/ANGULAR/ng-projects/electro-room/src/app/navbar/navbar-main/navbar-main.component.css exceeded maximum budget.
-   Budget 4.00 kB was not met by 1.22 kB with a total of 5.22 kB.
-
-   angular.json:
-
-  "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "4mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4mb",
-                  "maximumError": "5mb"
-                }
-              ],
-*/

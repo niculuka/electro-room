@@ -83,10 +83,10 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { ProductComponent } from './products-pages/product/product.component';
-import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
+import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet.component';
+import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
+import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
-import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet/laptop-phone-tablet.component';
 
 // others
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
@@ -94,10 +94,8 @@ import { SearchComponent } from './guest/search/search.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
-import { ProductGalleryComponent } from './products-pages/product-gallery/product-gallery.component';
+import { ProductCarouselComponent } from './products-pages/product-carousel/product-carousel.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
-import { LaptopAccessoryComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-accessory.component';
-import { AaaaComponent } from './aaaa/aaaa.component';
 
 
 @NgModule({
@@ -160,17 +158,15 @@ import { AaaaComponent } from './aaaa/aaaa.component';
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
 
-    ProductComponent,
-    ProductCategoryComponent,
-    ProductDetailComponent,
     LaptopPhoneTabletComponent,
-    LaptopAccessoryComponent,
+    ProductLevelComponent,
+    ProductTypeComponent,
+    ProductDetailComponent,
     UnderConstructionComponent,
     SearchComponent,
     InfoBlockComponent,
-    ProductGalleryComponent,
+    ProductCarouselComponent,
     BreadcrumbComponent,
-    AaaaComponent,    
   ],
   imports: [
     BrowserModule,

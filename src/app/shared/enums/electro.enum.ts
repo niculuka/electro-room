@@ -16,8 +16,7 @@ export enum PAYMENT_TYPE {
 }
 
 export enum CATEGORY {
-    NL = "NL",
-    CATEGORY = "CATEGORY",
+    CATEGORY = "CATEGORY",    
 
     // B A D G E -----------------------------------------
     TOP_FAVORITE = "TOP_FAVORITE",
@@ -50,13 +49,24 @@ export enum CATEGORY {
     WD = "WD",
     XTORM = "XTORM",
 
+    // L A V E L -----------------------------------------
+    L = "L",
+    L_URL = "l",
+    LA = "LA",
+    LA_URL = "la",
+
     // L A P T O P -----------------------------------------
     LAPTOPS = "LAPTOPS",
-    GAMING = "GAMING",
-    ULTRA = "ULTRA",
-    BUSINESS = "BUSINESS",
-    HOME = "HOME",
-    L2IN1 = "L2IN1",
+    LAPTOPS_GAMING = "LAPTOPS_GAMING",
+    LAPTOPS_GAMING_URL = "laptops-gaming",
+    LAPTOPS_ULTRA = "LAPTOPS_ULTRA",
+    LAPTOPS_ULTRA_URL = "laptops-ultra",
+    LAPTOPS_BUSINESS = "LAPTOPS_BUSINESS",
+    LAPTOPS_BUSINESS_URL = "laptops-business",
+    LAPTOPS_HOME = "LAPTOPS_HOME",
+    LAPTOPS_HOME_URL = "laptops-home",
+    LAPTOPS_L2IN1 = "LAPTOPS_L2IN1",
+    LAPTOPS_L2IN1_URL = "laptops-l2in1",
 
     // L A P T O P   A C C E S S O R Y ----------------------------
     LAPTOP_ACCESSORY = "laptop-accsessory",

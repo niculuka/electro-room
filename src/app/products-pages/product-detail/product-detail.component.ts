@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -17,6 +18,7 @@ export class ProductDetailComponent {
   product: Product = new Product();
   notFoundProduct: boolean = true;
 
+  currentLevel: any = "";
   currentType: any = "";
   currentLinkName: any = "";
 
@@ -25,33 +27,46 @@ export class ProductDetailComponent {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private productService: ProductService,
     private cartService: CartService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.currentType = this.activatedRoute.snapshot.params["type"] as string
-    this.currentLinkName = this.activatedRoute.snapshot.params["linkName"] as string
-    this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
-      if (data) {
-        let type = data.type.replace(/_/g, "-").toLowerCase();
-        if (type === this.currentType) {
-          this.notFoundProduct = true;
-          this.product = data;
-          this.productService.getProductGalleryService(data.id).subscribe(items => {
-            this.productImages = items;
-            this.currentImage = items[0].image;
-            this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-          })
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentLevel = params.get('level') || "";
+      this.currentType = params.get('type') || "";
+      this.currentLinkName = params.get('linkName') || "";
+
+      const breadcrumb = {
+        customLevel: this.currentLevel.charAt(0).toUpperCase() + this.currentLevel.slice(1),
+        customType: this.currentType.charAt(0).toUpperCase() + this.currentType.slice(1),
+        customLinkName: this.currentLinkName.charAt(0).toUpperCase() + this.currentLinkName.slice(1),
+      };
+      this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(breadcrumb);
+
+      this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
+        if (data) {
+          let level = data.level.toLowerCase();
+          let type = data.type.replace(/_/g, "-").toLowerCase();
+          let category = data.category.replace(/_/g, "-").toLowerCase();
+          if (level === this.currentLevel && (type === this.currentType || category === this.currentType)) {
+            this.notFoundProduct = true;
+            this.product = data;
+            
+            this.productService.getProductGalleryService(data.id).subscribe(items => {
+              this.productImages = items;
+              this.currentImage = items[0].image;
+            })
+          } else {
+            this.notFoundProduct = false;
+          }
         } else {
           this.notFoundProduct = false;
         }
-      } else {
-        this.notFoundProduct = false;
-      }
-
-    })
+      });
+    });
   }
 
   addToCart() {

@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { ToastrService } from 'ngx-toastr';
+import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-product-type',
+  templateUrl: './product-type.component.html',
+  styleUrls: ['./product-type.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductTypeComponent implements OnInit {
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;
@@ -21,7 +23,7 @@ export class ProductComponent implements OnInit {
   protected products_copy: Array<Product> = [];
 
   product: Product = new Product();
-  notFoundProduct: boolean = true;
+
 
   // A L L - Vars -----------------------------------------------------------
   none_chk: boolean = false;
@@ -112,34 +114,70 @@ export class ProductComponent implements OnInit {
   products_sorting: string = "bestSold";
   favorite: boolean = false;
 
+  departments: Array<Department> = DEPARTMENTS;
+  cards: Array<any> = [];
+
+  currentLevel: any = "";
   currentType: any = "";
 
+  notFoundProduct: boolean = true;
+
   constructor(
-    private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private cartService: CartService,
+    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private router: Router,
+    private productService: ProductService,
+    private cartService: CartService,
     private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentLevel = params.get('level') || "";
       this.currentType = params.get('type') || "";
-      this.productService.getProductsService(this.currentType).subscribe(data => {
-        if (data.length > 0) {
-          this.notFoundProduct = true;
-          this.products = data;
-          this.products_copy = data;
 
-          this.filters_available();
-          this.filters_price();
-          this.filters_brand();
-          this.filters_category();
-        } else {
-          this.notFoundProduct = false;
-        }
-      });
+      const breadcrumb = {
+        customLevel: this.currentLevel.charAt(0).toUpperCase() + this.currentLevel.slice(1),
+        customType: this.currentType.charAt(0).toUpperCase() + this.currentType.slice(1),
+      };
+      this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(breadcrumb);
+
+      if (
+        this.currentType === CATEGORY.LAPTOPS_GAMING_URL
+        || this.currentType === CATEGORY.LAPTOPS_BUSINESS_URL
+        || this.currentType === CATEGORY.LAPTOPS_ULTRA_URL
+        || this.currentType === CATEGORY.LAPTOPS_HOME_URL
+      ) {
+        this.productService.getProductsByCategoryService(this.currentType).subscribe(data => {
+          this.filters(data);
+        });
+      } else {
+        this.productService.getProductsByLevelService(this.currentType).subscribe(data => {
+          this.filters(data);
+        });
+      }
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     });
+  }
+
+  filters(data: any) {
+    if (data.length > 0) {
+      let level = data[0].level.toLowerCase();
+      if (level === this.currentLevel) {
+        this.notFoundProduct = true;
+        this.products = data;
+        this.products_copy = data;
+
+        this.filters_available();
+        this.filters_price();
+        this.filters_brand();
+        this.filters_category();
+      } else {
+        this.notFoundProduct = false;
+      }
+    } else {
+      this.notFoundProduct = false;
+    }
   }
 
   addToFavorite(item: Product) {
@@ -606,7 +644,7 @@ export class ProductComponent implements OnInit {
     this.category = this.brand;
     this.business_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.BUSINESS) {
+      if (res.category == CATEGORY.LAPTOPS_BUSINESS) {
         this.business_out.push(res);
       }
     });
@@ -616,7 +654,7 @@ export class ProductComponent implements OnInit {
     this.category = this.brand;
     this.gaming_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.GAMING) {
+      if (res.category == CATEGORY.LAPTOPS_GAMING) {
         this.gaming_out.push(res);
       }
     });
@@ -626,7 +664,7 @@ export class ProductComponent implements OnInit {
     this.category = this.brand;
     this.home_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.HOME) {
+      if (res.category == CATEGORY.LAPTOPS_HOME) {
         this.home_out.push(res);
       }
     });
@@ -636,7 +674,7 @@ export class ProductComponent implements OnInit {
     this.category = this.brand;
     this.ultra_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.ULTRA) {
+      if (res.category == CATEGORY.LAPTOPS_ULTRA) {
         this.ultra_out.push(res);
       }
     });

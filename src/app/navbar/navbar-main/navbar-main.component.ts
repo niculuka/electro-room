@@ -4,7 +4,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { ROLE } from 'src/app/shared/enums/electro.enum';
 import { User } from '../../shared/models/user.model';
 import { AuthService } from '../../shared/services/auth.service';
-import { Departament, DEPARTAMENTS, Title } from 'src/app/shared/data/mega-menu.data';
+import { Department, DEPARTMENTS, Title } from 'src/app/shared/data/mega-menu.data';
 import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { Cart } from 'src/app/shared/models/cart.model';
 import { SearchProductService } from 'src/app/shared/services/search-product.service';
@@ -22,7 +22,7 @@ export class NavbarMainComponent implements OnInit {
   userFirstChar: string = "";
   cartQuantity = 0;
 
-  departaments: Array<Departament> = DEPARTAMENTS;
+  departments: Array<Department> = DEPARTMENTS;
   cart!: Cart;
   link: string = "";
   currentLink: string = "";
@@ -75,8 +75,8 @@ export class NavbarMainComponent implements OnInit {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
-  openCloseDepartament(departament: Departament) {
-    departament.showTitle = !departament.showTitle;
+  openCloseDepartment(department: Department) {
+    department.showTitle = !department.showTitle;
   }
 
   openCloseTitle(title: Title) {

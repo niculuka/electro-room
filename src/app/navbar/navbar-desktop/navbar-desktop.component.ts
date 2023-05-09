@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Departament, DEPARTAMENTS } from 'src/app/shared/data/mega-menu.data';
+import { Department, DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class NavbarDesktopComponent implements OnInit {
   @Input() isDesktopMenuOpen = true;
   @Input() isCarouselOpen = true;
 
-  departaments: Array<Departament> = DEPARTAMENTS; 
+  departments: Array<Department> = DEPARTMENTS; 
 
   handleDesktopMenu = true;  
 

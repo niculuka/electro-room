@@ -8,7 +8,7 @@
         <div class="breadcrumb">
             <breadcrumb></breadcrumb>
         </div>
-
+        <h1>DETAIL</h1>
         <div style="width: 100%" *ngIf="!notFoundProduct">
             <h1>NOT FOUND PRODUCT</h1>
         </div>
@@ -26,8 +26,8 @@
                         <img [src]="currentImage" [alt]="currentImage">
                     </div>
                     <div>
-                        <product-gallery [productImages]="productImages" (indexEvent)="receiveCurrentImage($event)">
-                        </product-gallery>
+                        <product-carousel [productImages]="productImages" (indexEvent)="receiveCurrentImage($event)">
+                        </product-carousel>
                     </div>
                 </div>
 

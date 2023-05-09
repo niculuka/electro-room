@@ -142,7 +142,7 @@
   /* border: 2px solid rgb(255, 136, 0); */
 }
 
-.departament-icon {
+.department-icon {
   width: 18px;
   margin-right: 14px;
   /* border: 2px solid rgb(255, 136, 0); */
@@ -155,7 +155,7 @@
   /* border: 2px solid rgb(255, 136, 0); */
 }
 
-.departament {
+.department {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -163,7 +163,7 @@
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.departament ul {
+.department ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

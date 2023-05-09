@@ -18,25 +18,25 @@
           <div class="dropdown-menu-nav" *ngIf="handleDesktopMenu">
             <div class="left-menu">
               <ul class="d-dropdown">
-                <li *ngFor="let departament of departaments">
+                <li *ngFor="let department of departments">
                   <a>
                     <span class="d-item">
-                      <img class="departament-icon" src="{{departament.icon}}" alt="icon">
-                      <span>{{departament.name}}</span>
+                      <img class="department-icon" src="{{department.icon}}" alt="icon">
+                      <span>{{department.name}}</span>
                     </span>
                     <span class="d-item">
-                      <img class="chevron-icon" src="{{departament.chevron}}" alt="chevron-right">
+                      <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
                     </span>
                   </a>
                   <div class="d-dropdown-menu">
                     <div class="col-nav">
-                      <div class="departament" *ngFor="let title of departament.titles">
-                        <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.isReady}"
+                      <div class="department" *ngFor="let title of department.titles">
+                        <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.color}"
                           (click)="closeMenu(title)">{{title.name}}
                         </a>
                         <ul *ngFor="let subtitle of title.subtitles">
                           <li>
-                            <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.isReady}"
+                            <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
                               (click)="closeMenu(subtitle)">
                               {{subtitle.name}}
                             </a>

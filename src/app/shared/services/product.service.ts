@@ -20,7 +20,7 @@ export class ProductService extends BearerService {
         super(authService, http);
     }
 
-    getProductsService(type: string): Observable<any> {
+    getProductsByLevelService(type: string): Observable<any> {
         return this.http.get<Product>(API_URL + "/products/type/" + type);
     }
 

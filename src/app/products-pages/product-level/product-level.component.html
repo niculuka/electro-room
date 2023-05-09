@@ -1,0 +1,23 @@
+<navbar-main></navbar-main>
+
+<navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></navbar-desktop>
+
+<div class="container-aux">
+
+    <div class="row-aux">
+        <div class="breadcrumb">
+            <breadcrumb></breadcrumb>
+        </div>
+    </div>
+
+    <div class="row-aux" *ngIf="!notFoundProduct">
+        <h1>NOT FOUND PRODUCTS</h1>
+    </div>
+
+    <div class="row-aux" *ngIf="notFoundProduct">
+        <div [routerLink]="card.link" class="card" *ngFor="let card of cards" (click)="noRoute(card)">
+            <img [src]="card.image" [alt]="card.image" />
+            <h1>{{card.name}}</h1>
+        </div>
+    </div>
+</div>

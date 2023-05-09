@@ -3,11 +3,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
 
 @Component({
-  selector: 'product-gallery',
-  templateUrl: './product-gallery.component.html',
-  styleUrls: ['./product-gallery.component.css']
+  selector: 'product-carousel',
+  templateUrl: './product-carousel.component.html',
+  styleUrls: ['./product-carousel.component.css']
 })
-export class ProductGalleryComponent {
+export class ProductCarouselComponent {
   
   // productImages2: Array<CarouselLaptopData> = CAROUSEL_LAPTOP;
   @Input() productImages: Array<ImagesGallery> = [];

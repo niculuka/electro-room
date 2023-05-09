@@ -40,11 +40,10 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { ProductComponent } from './products-pages/product/product.component';
-import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
+import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet.component';
+import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
+import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
-import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet/laptop-phone-tablet.component';
-import { LaptopAccessoryComponent } from './products-pages/laptop-phone-tablet/laptop-accessory/laptop-accessory.component';
 
 
 const routes: Routes = [
@@ -63,65 +62,6 @@ const routes: Routes = [
 
   { path: "auth/register", component: RegisterComponent },
   { path: "auth/login", component: LoginComponent },
-
-  // LAPTOP-PHONE-TABLET -------------------------------------------------------------------------------------------
-  {
-    path: "lpt", component: LaptopPhoneTabletComponent, data: {
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '' }
-      ]
-    },
-  },
-  // PRODUCTS -----------------------------------------------------------------------------------------------
-  {
-    path: "lpt/:type", component: ProductComponent, data: {
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
-        { label: '{{type}}', url: '' }
-      ]
-    },
-  },
-  {
-    path: "lpt/:type/:linkName", component: ProductDetailComponent, data: {
-      breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
-        { label: '{{type}}', url: '/lpt/:type' },
-        { label: '{{linkName}}', url: '' }
-      ]
-    },
-  },
-  // {
-  //   path: "lpt/laptop-bags/:linkName", component: ProductDetailComponent, data: {
-  //     breadcrumb: [
-  //       { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
-  //       { label: 'laptop-bags', url: '/lpt/laptop-bags' },
-  //       { label: '{{linkName}}', url: '' }
-  //     ]
-  //   },
-  // },
-
-
-  // {
-  //   path: "lpt/laptops/:category", component: ProductCategoryComponent, data: {
-  //     breadcrumb: [
-  //       { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
-  //       { label: 'Laptopuri', url: '/lpt/laptops' },
-  //       { label: '{{category}}', url: '' }
-  //     ]
-  //   },
-  // },
-  
-
-  // // LAPTOPS-ACCESSORY -------------------------------------------------------------------------------------
-  // {
-  //   path: "lpt/laptops-accessories", component: LaptopAccessoryComponent, data: {
-  //     title: 'accessories',
-  //     breadcrumb: [
-  //       { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
-  //       { label: 'Accesorii laptop', url: '' },
-  //     ]
-  //   },
-  // },
 
   // admin  
   { path: "admin/laptops", component: AdminLaptopComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
@@ -148,12 +88,46 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
   { path: "my-orders", component: MyOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
 
-
   // error
   { path: "under-construction", component: UnderConstructionComponent },
   { path: "401", component: UnauthComponent },
   { path: "404", component: NotFoundComponent },
 
+  // DEPARTAMENTS -------------------------------------------------------------------------------------------
+  {
+    path: "lpt", component: LaptopPhoneTabletComponent, data: {
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '' }
+      ]
+    },
+  },
+  {
+    path: "lpt/:level", component: ProductLevelComponent, data: {
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+        { label: '{{customLevel}}', url: '' },
+      ]
+    },
+  },
+  {
+    path: "lpt/:level/:type", component: ProductTypeComponent, data: {
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+        { label: '{{customLevel}}', url: '/lpt/:level' },
+        { label: '{{customType}}', url: '' }
+      ]
+    },
+  }, 
+  {
+    path: "lpt/:level/:type/:linkName", component: ProductDetailComponent, data: {
+      breadcrumb: [
+        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+        { label: '{{customLevel}}', url: '/lpt/:level' },
+        { label: '{{customType}}', url: '/lpt/:level/:type' },
+        { label: '{{customLinkName}}', url: '' }
+      ]
+    },
+  },
 ];
 
 @NgModule({

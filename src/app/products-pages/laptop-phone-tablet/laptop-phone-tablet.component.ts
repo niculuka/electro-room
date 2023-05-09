@@ -17,17 +17,17 @@ export class LaptopPhoneTabletComponent {
     {
       image: "assets/laptops/laptops.png",
       title: "Laptopuri",
-      link: "/laptops-phones-tablets/laptops",
+      link: "/lpt/l",
     },
     {
       image: "assets/phones/phones.png",
       title: "Telefoane",
-      link: "/laptops-phones-tablets",
+      link: "/lpt",
     },
     {
       image: "assets/tablets/tablets.png",
       title: "Tablete",
-      link: "/laptops-phones-tablets",
+      link: "/lpt",
     },
   ]
 
