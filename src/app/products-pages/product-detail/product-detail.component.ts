@@ -48,7 +48,7 @@ export class ProductDetailComponent {
 
       this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
         if (data) {
-          let level = data.level.toLowerCase();
+          let level = data.level.replace(/_/g, "-").toLowerCase();
           let type = data.type.replace(/_/g, "-").toLowerCase();
           let category = data.category.replace(/_/g, "-").toLowerCase();
           if (level === this.currentLevel && (type === this.currentType || category === this.currentType)) {

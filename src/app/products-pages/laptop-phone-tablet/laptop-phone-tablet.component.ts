@@ -1,39 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 
 @Component({
   selector: 'app-laptop-phone-tablet',
   templateUrl: './laptop-phone-tablet.component.html',
   styleUrls: ['./laptop-phone-tablet.component.css']
 })
-export class LaptopPhoneTabletComponent {
+export class LaptopPhoneTabletComponent implements OnInit {
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;
 
-  constructor(private toastrService: ToastrService) { }
+  departments: Array<Department> = DEPARTMENTS;
+  cards: Array<any> = [];
 
-  cards = [
-    {
-      image: "assets/laptops/laptops.png",
-      title: "Laptopuri",
-      link: "/lpt/l",
-    },
-    {
-      image: "assets/phones/phones.png",
-      title: "Telefoane",
-      link: "/lpt",
-    },
-    {
-      image: "assets/tablets/tablets.png",
-      title: "Tablete",
-      link: "/lpt",
-    },
-  ]
+  currentName: string = "Laptopuri, Telefoane, Tablete";
 
-  goTo(card: any) {
-    if (card.title === "Telefoane" || card.title === "Tablete") {
-      this.toastrService.warning("UNDER CONSTRUCTION")
+  constructor(
+    private toastrService: ToastrService,
+  ) { }
+
+  ngOnInit(): void {
+    let depapartament: any = this.departments.find(item => item.name === this.currentName);
+    this.cards = depapartament.titles;
+  }
+
+  noRoute(card: any) {
+    if (card.isReady === false) {
+      this.toastrService.warning("C O N S T R U C T I O N", "U N D E R")
     }
   }
 }

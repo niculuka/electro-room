@@ -18,14 +18,14 @@ export class ProductLevelComponent implements OnInit {
   cards: Array<any> = [];
 
   currentLevel: any = "";
-  
-  notFoundProduct: boolean = true;
+
+  isLaptopPage: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private router: Router,
-    private toastrService: ToastrService,    
+    private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -38,17 +38,12 @@ export class ProductLevelComponent implements OnInit {
       this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(breadcrumb);
       
       this.departments.filter(data => {
-        let result = data.titles.find(items => items.level === this.currentLevel)
+        let result = data.titles.find(items => items.level.replace(/_/g, "-").toLowerCase() === this.currentLevel)
         if (result) {
           this.cards = result.subtitles;
         }
-      })
-      if (this.cards.length > 0) {
-        this.notFoundProduct = true;
-      } else {
-        this.notFoundProduct = false;
-      }
-    })
+      });
+    });
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
@@ -56,6 +51,5 @@ export class ProductLevelComponent implements OnInit {
     if (card.isReady === false) {
       this.toastrService.warning("C O N S T R U C T I O N", "U N D E R")
     }
-    
   }
 }

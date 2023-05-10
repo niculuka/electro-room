@@ -143,10 +143,10 @@ export class ProductTypeComponent implements OnInit {
       this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(breadcrumb);
 
       if (
-        this.currentType === CATEGORY.LAPTOPS_GAMING_URL
-        || this.currentType === CATEGORY.LAPTOPS_BUSINESS_URL
-        || this.currentType === CATEGORY.LAPTOPS_ULTRA_URL
-        || this.currentType === CATEGORY.LAPTOPS_HOME_URL
+        this.currentType === CATEGORY.LAPTOP_GAMING.replace(/_/g, "-").toLowerCase()
+        || this.currentType === CATEGORY.LAPTOP_BUSINESS.replace(/_/g, "-").toLowerCase()
+        || this.currentType === CATEGORY.LAPTOP_ULTRA.replace(/_/g, "-").toLowerCase()
+        || this.currentType === CATEGORY.LAPTOP_HOME.replace(/_/g, "-").toLowerCase()
       ) {
         this.productService.getProductsByCategoryService(this.currentType).subscribe(data => {
           this.filters(data);
@@ -162,7 +162,7 @@ export class ProductTypeComponent implements OnInit {
 
   filters(data: any) {
     if (data.length > 0) {
-      let level = data[0].level.toLowerCase();
+      let level = data[0].level.replace(/_/g, "-").toLowerCase();      
       if (level === this.currentLevel) {
         this.notFoundProduct = true;
         this.products = data;
@@ -644,7 +644,7 @@ export class ProductTypeComponent implements OnInit {
     this.category = this.brand;
     this.business_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.LAPTOPS_BUSINESS) {
+      if (res.category == CATEGORY.LAPTOP_BUSINESS) {
         this.business_out.push(res);
       }
     });
@@ -654,7 +654,7 @@ export class ProductTypeComponent implements OnInit {
     this.category = this.brand;
     this.gaming_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.LAPTOPS_GAMING) {
+      if (res.category == CATEGORY.LAPTOP_GAMING) {
         this.gaming_out.push(res);
       }
     });
@@ -664,7 +664,7 @@ export class ProductTypeComponent implements OnInit {
     this.category = this.brand;
     this.home_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.LAPTOPS_HOME) {
+      if (res.category == CATEGORY.LAPTOP_HOME) {
         this.home_out.push(res);
       }
     });
@@ -674,7 +674,7 @@ export class ProductTypeComponent implements OnInit {
     this.category = this.brand;
     this.ultra_out = new Array<Product>;
     this.category.filter((res: any) => {
-      if (res.category == CATEGORY.LAPTOPS_ULTRA) {
+      if (res.category == CATEGORY.LAPTOP_ULTRA) {
         this.ultra_out.push(res);
       }
     });

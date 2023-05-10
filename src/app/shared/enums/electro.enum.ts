@@ -50,40 +50,33 @@ export enum CATEGORY {
     XTORM = "XTORM",
 
     // L A V E L -----------------------------------------
-    L = "L",
-    L_URL = "l",
-    LA = "LA",
-    LA_URL = "la",
+    
+    
 
     // L A P T O P -----------------------------------------
-    LAPTOPS = "LAPTOPS",
-    LAPTOPS_GAMING = "LAPTOPS_GAMING",
-    LAPTOPS_GAMING_URL = "laptops-gaming",
-    LAPTOPS_ULTRA = "LAPTOPS_ULTRA",
-    LAPTOPS_ULTRA_URL = "laptops-ultra",
-    LAPTOPS_BUSINESS = "LAPTOPS_BUSINESS",
-    LAPTOPS_BUSINESS_URL = "laptops-business",
-    LAPTOPS_HOME = "LAPTOPS_HOME",
-    LAPTOPS_HOME_URL = "laptops-home",
-    LAPTOPS_L2IN1 = "LAPTOPS_L2IN1",
-    LAPTOPS_L2IN1_URL = "laptops-l2in1",
+    LAPTOP = "LAPTOP",
+    LAPTOP_GAMING = "LAPTOP_GAMING",
+    LAPTOP_ULTRA = "LAPTOP_ULTRA",
+    LAPTOP_BUSINESS = "LAPTOP_BUSINESS",
+    LAPTOP_HOME = "LAPTOP_HOME",
+    LAPTOP_L2IN1 = "LAPTOP_L2IN1",
 
     // L A P T O P   A C C E S S O R Y ----------------------------
-    LAPTOP_ACCESSORY = "laptop-accsessory",
+    LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
 
     // C H A R G E R -----------------------------------------
-    LAPTOP_BAGS = "laptop-bags",
+    LAPTOP_BAG = "LAPTOP_BAG",
     BRIEFCASE = "BRIEFCASE",
     SLEEVE = "SLEEVE",
     BACKPACK = "BACKPACK",
 
     // C H A R G E R -----------------------------------------
-    LAPTOP_CHARGERS = "laptop-chargers",
+    LAPTOP_CHARGER = "LAPTOP_CHARGER",
     PLUG_IN = "PLUG_IN",
     CAR = "CAR",
 
     // H A R D -----------------------------------------,
-    LAPTOP_HARDS = "laptop-hards",
+    LAPTOP_HARD = "LAPTOP_HARD",
     HDD = "HDD",
     SSD = "SSD",
 

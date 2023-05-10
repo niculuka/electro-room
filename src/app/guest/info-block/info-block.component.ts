@@ -23,7 +23,7 @@ export class InfoBlockComponent {
   rightCards = [
     {
       icon: "security",
-      title: "100% sigur",
+      title: "Siguranta 100%",
       subtitle: "Doar plati securizate"
     },
     {

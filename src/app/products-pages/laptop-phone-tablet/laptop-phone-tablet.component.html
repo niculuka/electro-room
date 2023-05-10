@@ -11,9 +11,9 @@
 
         <div class="cards">
             <div class="card" *ngFor="let card of cards">
-                <a [routerLink]="card.link" (click)="goTo(card)">
+                <a [routerLink]="card.link" (click)="noRoute(card)">
                     <img [src]="card.image" [alt]="card.image">
-                    <div class="title">{{card.title}}</div>
+                    <div class="title">{{card.name}}</div>
                 </a>
             </div>
         </div>
