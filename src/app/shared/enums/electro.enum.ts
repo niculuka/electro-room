@@ -49,11 +49,8 @@ export enum CATEGORY {
     WD = "WD",
     XTORM = "XTORM",
 
-    // L A V E L -----------------------------------------
-    
-    
-
-    // L A P T O P -----------------------------------------
+    // L A P T O P ===============================================
+    LAPTOPS = "LAPTOPS",
     LAPTOP = "LAPTOP",
     LAPTOP_GAMING = "LAPTOP_GAMING",
     LAPTOP_ULTRA = "LAPTOP_ULTRA",
@@ -61,26 +58,26 @@ export enum CATEGORY {
     LAPTOP_HOME = "LAPTOP_HOME",
     LAPTOP_L2IN1 = "LAPTOP_L2IN1",
 
-    // L A P T O P   A C C E S S O R Y ----------------------------
+    // L A P T O P   A C C E S S O R Y ===========================
     LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
 
-    // C H A R G E R -----------------------------------------
+    // C H A R G E R -----------------
     LAPTOP_BAG = "LAPTOP_BAG",
     BRIEFCASE = "BRIEFCASE",
     SLEEVE = "SLEEVE",
     BACKPACK = "BACKPACK",
 
-    // C H A R G E R -----------------------------------------
+    // C H A R G E R ------------------
     LAPTOP_CHARGER = "LAPTOP_CHARGER",
     PLUG_IN = "PLUG_IN",
     CAR = "CAR",
 
-    // H A R D -----------------------------------------,
+    // H A R D ------------------------
     LAPTOP_HARD = "LAPTOP_HARD",
     HDD = "HDD",
     SSD = "SSD",
 
-    // P O W E R -----------------------------------------
+    // P O W E R ----------------------
     W45 = "W45",
     W60 = "W60",
     W65 = "W65",

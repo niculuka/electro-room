@@ -18,6 +18,7 @@ export class Product {
     power: CATEGORY;
     capacity: CATEGORY;
     connect: CATEGORY;
+    gallery: Array<string> = []; 
 
     constructor(
         id?: number,
@@ -36,6 +37,7 @@ export class Product {
         power: CATEGORY = CATEGORY.CATEGORY,
         capacity: CATEGORY = CATEGORY.CATEGORY,
         connect: CATEGORY = CATEGORY.CATEGORY,
+        gallery: Array<string> = [],
     ) {
         this.id = id;
         this.name = name;
@@ -53,5 +55,6 @@ export class Product {
         this.power = power;
         this.capacity = capacity;
         this.connect = connect;
+        this.gallery = gallery;
     }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { ToastrService } from 'ngx-toastr';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
@@ -117,14 +116,13 @@ export class ProductTypeComponent implements OnInit {
   departments: Array<Department> = DEPARTMENTS;
   cards: Array<any> = [];
 
-  currentLevel: any = "";
-  currentType: any = "";
+  currentLevel: string = "";
+  currentType: string = "";
 
   notFoundProduct: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private router: Router,
     private productService: ProductService,
     private cartService: CartService,
@@ -135,24 +133,14 @@ export class ProductTypeComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.currentLevel = params.get('level') || "";
       this.currentType = params.get('type') || "";
-
-      const breadcrumb = {
-        customLevel: this.currentLevel.charAt(0).toUpperCase() + this.currentLevel.slice(1),
-        customType: this.currentType.charAt(0).toUpperCase() + this.currentType.slice(1),
-      };
-      this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(breadcrumb);
-
       if (
-        this.currentType === CATEGORY.LAPTOP_GAMING.replace(/_/g, "-").toLowerCase()
-        || this.currentType === CATEGORY.LAPTOP_BUSINESS.replace(/_/g, "-").toLowerCase()
-        || this.currentType === CATEGORY.LAPTOP_ULTRA.replace(/_/g, "-").toLowerCase()
-        || this.currentType === CATEGORY.LAPTOP_HOME.replace(/_/g, "-").toLowerCase()
+        this.currentType === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()
       ) {
-        this.productService.getProductsByCategoryService(this.currentType).subscribe(data => {
+        this.productService.getProductsByLevelService(this.currentLevel).subscribe(data => {
           this.filters(data);
         });
       } else {
-        this.productService.getProductsByLevelService(this.currentType).subscribe(data => {
+        this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
           this.filters(data);
         });
       }
@@ -182,6 +170,7 @@ export class ProductTypeComponent implements OnInit {
 
   addToFavorite(item: Product) {
     this.favorite = !this.favorite;
+    console.log(item.id)
     if (this.favorite) {
       this.toastrService.warning("UNDER COSNSTRUCTION")
     }

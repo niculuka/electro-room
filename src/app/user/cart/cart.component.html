@@ -9,9 +9,13 @@
       "Cosul este gol !!!"
     </div>
 
-
     <table class="row-cart" style="width: 100%;" *ngIf="!isEmpty()">
       <thead>
+        <tr class="back">
+          <td>
+            <button class="btn-goBack" (click)="goBack()">BACK</button>
+          </td>
+        </tr>
         <tr>
           <td colspan="7">
             <h3>Cosul meu de cumparaturi:</h3>

@@ -6,10 +6,11 @@
     <div class="column-lap">
 
         <div class="breadcrumb">
-            <breadcrumb></breadcrumb>
+            <breadcrumb [currentLevelCrumb]="currentLevel" [currentTypeCrumb]="currentType"
+                [currentLinkNameCrumb]="currentLinkName">
+            </breadcrumb>
         </div>
-        
-        <h1>DETAIL</h1>
+
         <div style="width: 100%" *ngIf="!notFoundProduct">
             <h1>NOT FOUND PRODUCT</h1>
         </div>

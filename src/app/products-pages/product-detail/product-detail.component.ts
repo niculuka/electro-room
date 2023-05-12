@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
+import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit{
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;
@@ -18,19 +18,18 @@ export class ProductDetailComponent {
   product: Product = new Product();
   notFoundProduct: boolean = true;
 
-  currentLevel: any = "";
-  currentType: any = "";
-  currentLinkName: any = "";
+  currentLevel: string = "";
+  currentType: string = "";
+  currentLinkName: string = "";
 
   productImages: Array<any> = [];
   currentImage: string = "";
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private productService: ProductService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,    
   ) { }
 
   ngOnInit(): void {
@@ -39,26 +38,19 @@ export class ProductDetailComponent {
       this.currentType = params.get('type') || "";
       this.currentLinkName = params.get('linkName') || "";
 
-      const breadcrumb = {
-        customLevel: this.currentLevel.charAt(0).toUpperCase() + this.currentLevel.slice(1),
-        customType: this.currentType.charAt(0).toUpperCase() + this.currentType.slice(1),
-        customLinkName: this.currentLinkName.charAt(0).toUpperCase() + this.currentLinkName.slice(1),
-      };
-      this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(breadcrumb);
-
       this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
         if (data) {
           let level = data.level.replace(/_/g, "-").toLowerCase();
           let type = data.type.replace(/_/g, "-").toLowerCase();
-          let category = data.category.replace(/_/g, "-").toLowerCase();
-          if (level === this.currentLevel && (type === this.currentType || category === this.currentType)) {
+
+          if (this.currentType === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()) {
+            this.currentType = type;
+          }
+          if (level === this.currentLevel && type === this.currentType) {
             this.notFoundProduct = true;
             this.product = data;
-            
-            this.productService.getProductGalleryService(data.id).subscribe(items => {
-              this.productImages = items;
-              this.currentImage = items[0].image;
-            })
+            this.productImages = this.product.gallery;
+            this.currentImage = this.productImages[0].image;
           } else {
             this.notFoundProduct = false;
           }

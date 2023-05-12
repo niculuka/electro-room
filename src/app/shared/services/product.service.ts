@@ -20,7 +20,11 @@ export class ProductService extends BearerService {
         super(authService, http);
     }
 
-    getProductsByLevelService(type: string): Observable<any> {
+    getProductsByLevelService(level: string): Observable<any> {
+        return this.http.get<Product>(API_URL + "/products/level/" + level);
+    }
+
+    getProductsByTypeService(type: string): Observable<any> {
         return this.http.get<Product>(API_URL + "/products/type/" + type);
     }
 
@@ -30,10 +34,6 @@ export class ProductService extends BearerService {
 
     getProductByNameService(linkName: string): Observable<any> {
         return this.http.get<Product>(API_URL + "/product/linkname/" + linkName);
-    }
-
-    getProductGalleryService(id: number): Observable<any> {
-        return this.http.get<Product>(API_URL + "/product/gallery/" + id);
     }
 
 }

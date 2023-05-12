@@ -5,6 +5,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { DELIVERY, PICK_UP } from '../../shared/constants/const';
 import { Order } from '../../shared/models/order.model';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -28,6 +29,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
+    private location: Location
   ) {
     this.cartService.getCartObservable().subscribe((data) => {
       this.cart = data;
@@ -79,5 +81,9 @@ export class CartComponent implements OnInit {
       this.link = "/laptops-phones-tablets/laptop-auxs/hards/" + cartItem.product.linkName
     }
     this.router.navigate([this.link]);
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

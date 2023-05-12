@@ -40,17 +40,17 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Laptopuri",
-                level: CATEGORY.LAPTOP,
-                link: "/lpt/laptop",
-                image: "assets/laptops/laptops.png",
+                level: CATEGORY.LAPTOPS,
+                link: "/lpt/laptops",
+                image: "assets/laptops/laptops_3.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#df0265",
                 subtitles: [
                     {
-                        name: "Laptopuri",
+                        name: "Toate Laptopurile",
                         type: CATEGORY.LAPTOP,
-                        link: "/lpt/laptop/laptop",                        
+                        link: "/lpt/laptops/laptop",                        
                         image: "assets/laptops/laptops.png",
                         isReady: true,
                         color: "#ff4196",
@@ -58,7 +58,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Gaming",
                         type: CATEGORY.LAPTOP_GAMING,
-                        link: "/lpt/laptop/laptop-gaming",                        
+                        link: "/lpt/laptops/laptop-gaming",                        
                         image: "assets/laptops/laptop_gaming.png",
                         isReady: true,
                         color: "#ff4196",
@@ -66,7 +66,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Business",
                         type: CATEGORY.LAPTOP_BUSINESS,
-                        link: "/lpt/laptop/laptop-business",                        
+                        link: "/lpt/laptops/laptop-business",                        
                         image: "assets/laptops/laptop_business.png",
                         isReady: true,
                         color: "#ff4196",
@@ -74,7 +74,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Ultraportabile",
                         type: CATEGORY.LAPTOP_ULTRA,
-                        link: "/lpt/laptop/laptop-ultra",                        
+                        link: "/lpt/laptops/laptop-ultra",                        
                         image: "assets/laptops/laptop_ultra.png",
                         isReady: true,
                         color: "#ff4196",
@@ -82,7 +82,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Home",
                         type: CATEGORY.LAPTOP_HOME,
-                        link: "/lpt/laptop/laptop-home",                        
+                        link: "/lpt/laptops/laptop-home",                        
                         image: "assets/laptops/laptop_home.png",
                         isReady: true,
                         color: "#ff4196",

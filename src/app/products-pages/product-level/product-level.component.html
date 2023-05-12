@@ -6,22 +6,11 @@
 
     <div class="row-aux">
         <div class="breadcrumb">
-            <breadcrumb></breadcrumb>
+            <breadcrumb [currentLevelCrumb]="currentLevel">
+            </breadcrumb>
         </div>
     </div>
 
-    <h1>LEVEL</h1>
-    <!-- <div class="row-aux" *ngIf="!notFoundProduct">
-        <h1>NOT FOUND PRODUCTS</h1>
-    </div> -->
-
-
-    <!-- L A P T O P U R I ---------------------------------------------------------------------------------- -->
-
-
-
-
-    
     <!-- C A R D U R I -------------------------------------------------------------------------------------- -->
     <div class="row-aux">
         <div class="card" [routerLink]="card.link" *ngFor="let card of cards" (click)="noRoute(card)">

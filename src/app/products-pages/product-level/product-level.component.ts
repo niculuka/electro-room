@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { ToastrService } from 'ngx-toastr';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 
@@ -17,13 +16,12 @@ export class ProductLevelComponent implements OnInit {
   departments: Array<Department> = DEPARTMENTS;
   cards: Array<any> = [];
 
-  currentLevel: any = "";
+  currentLevel: string = "";
 
   isLaptopPage: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private router: Router,
     private toastrService: ToastrService,
   ) { }
@@ -32,11 +30,6 @@ export class ProductLevelComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.currentLevel = params.get('level') || "";
 
-      const breadcrumb = {
-        customLevel: this.currentLevel.charAt(0).toUpperCase() + this.currentLevel.slice(1),
-      };
-      this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(breadcrumb);
-      
       this.departments.filter(data => {
         let result = data.titles.find(items => items.level.replace(/_/g, "-").toLowerCase() === this.currentLevel)
         if (result) {

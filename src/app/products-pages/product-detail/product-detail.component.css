@@ -24,6 +24,7 @@
 .product {
     box-sizing: border-box;
     background: white;
+    width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -311,6 +312,7 @@
     }
 
     .product {
+        width: auto;
         margin: 0 16px;
     }
 
