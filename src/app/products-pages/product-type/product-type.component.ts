@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
@@ -150,7 +151,7 @@ export class ProductTypeComponent implements OnInit {
 
   filters(data: any) {
     if (data.length > 0) {
-      let level = data[0].level.replace(/_/g, "-").toLowerCase();      
+      let level = data[0].level.replace(/_/g, "-").toLowerCase();
       if (level === this.currentLevel) {
         this.notFoundProduct = true;
         this.products = data;

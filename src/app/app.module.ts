@@ -87,6 +87,7 @@ import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet
 import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
+import { ProductFilterComponent } from './products-pages/product-filter/product-filter.component';
 
 // others
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
@@ -162,11 +163,12 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     ProductLevelComponent,
     ProductTypeComponent,
     ProductDetailComponent,
+    ProductFilterComponent,
     UnderConstructionComponent,
     SearchComponent,
     InfoBlockComponent,
     ProductCarouselComponent,
-    BreadcrumbComponent,
+    BreadcrumbComponent,    
   ],
   imports: [
     BrowserModule,

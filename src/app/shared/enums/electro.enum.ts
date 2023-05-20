@@ -23,11 +23,21 @@ export enum CATEGORY {
     SUPER_PRICE = "SUPER_PRICE",
 
     // A V A I L A B L E -----------------------------------------
+    AVAILABLE = "AVAILABLE",
     STOCK = "STOCK",
     DEPOSIT = "DEPOSIT",
     ONLINE = "ONLINE",
 
+    // P R I C E ----------------------------------------
+    PRICE = "PRICE",
+    UNDER1000 = "UNDER1000",
+    UNDER2000 = "UNDER2000",
+    UNDER3000 = "UNDER3000",
+    UNDER4000 = "UNDER4000",
+    OVER4000 = "OVER4000",
+
     // B R A N D -----------------------------------------
+    BRAND = "BRAND",
     ACER = "ACER",
     ADATA = "ADATA",
     ALLVIEW = "ALLVIEW",
