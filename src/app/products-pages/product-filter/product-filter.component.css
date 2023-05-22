@@ -1,3 +1,16 @@
+.side {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 1px solid black;
+}
+
+.products {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
 .filters {
     display: flex;
     flex-direction: column;
@@ -15,7 +28,6 @@
 .filterName label {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     padding: 2px 2px 2px 8px;
     color: white;

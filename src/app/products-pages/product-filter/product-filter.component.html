@@ -1,7 +1,3 @@
-<!-- <div *ngFor="let product of products">
-    <p>{{product.id}}, {{product.name}}, {{product.brand}}, {{product.price}} lei</p>
-</div> -->
-
 <div class="filters">
     <div class="filterName">
         <label *ngFor="let item of filterNames" (click)="filters_close(item)">
@@ -16,75 +12,89 @@
     </div>
 </div>
 
-<div class="filters-lap">
-    <!-- available filter ----------------------------------------------------------- -->
-    <div class="available">
-        <h3><strong>Disponibilitate ({{available_chk}})</strong></h3>
-        <div class="filter-group" *ngIf="stock_out.length">
-            <input type="checkbox" id="1" name="STOCK" value="AVAILABLE" [(ngModel)]="stock_chk"
-                (change)="onClick($event)">
-            <label for="1"> In Stoc ({{stock_out.length}})</label>
-        </div>
-        <div class="filter-group" *ngIf="deposit_out.length">
-            <input type="checkbox" id="2" name="DEPOSIT" value="AVAILABLE" [(ngModel)]="deposit_chk"
-                (change)="onClick($event)">
-            <label for="2"> In Depozit ({{deposit_out.length}})</label>
-        </div>
-    </div>
+<div class="side">
 
-    <div>
-        <hr [ngStyle]="{width: '100%', color: 'red', border: '3px solid red', opacity: '1'}">
-    </div>
-
-    <!-- price filter ---------------------------------------------------------------- -->
-    <div class="price">
-        <h3><strong>Pret ({{price_chk}})</strong></h3>
-        <div class="filter-group" *ngIf="under1000_out.length">
-            <input type="checkbox" id="3" name="UNDER1000" value="PRICE" [(ngModel)]="under1000_chk"
-                (change)="onClick($event)">
-            <label for="3">Sub 1000 ({{under1000_out.length}})</label>
-        </div>
-        <div class="filter-group" *ngIf="under2000_out.length">
-            <input type="checkbox" id="4" name="UNDER2000" value="PRICE" [(ngModel)]="under2000_chk"
-                (change)="onClick($event)">
-            <label for="4">1000 - 2000 ({{under2000_out.length}})</label>
-        </div>
-        <div class="filter-group" *ngIf="under3000_out.length">
-            <input type="checkbox" id="5" name="UNDER3000" value="PRICE" [(ngModel)]="under3000_chk"
-                (change)="onClick($event)">
-            <label for="5">2000 - 3000 ({{under3000_out.length}})</label>
+    <div class="filters-lap">
+        <!-- available filter ----------------------------------------------------------- -->
+        <div class="available">
+            <h3><strong>Disponibilitate ({{available_chk}})</strong></h3>
+            <div class="filter-group" *ngIf="stock_out.length">
+                <input type="checkbox" id="1" name="STOCK" value="AVAILABLE" [(ngModel)]="stock_chk"
+                    (change)="onClick($event)">
+                <label for="1"> In Stoc ({{stock_out.length}})</label>
+            </div>
+            <div class="filter-group" *ngIf="deposit_out.length">
+                <input type="checkbox" id="2" name="DEPOSIT" value="AVAILABLE" [(ngModel)]="deposit_chk"
+                    (change)="onClick($event)">
+                <label for="2"> In Depozit ({{deposit_out.length}})</label>
+            </div>
         </div>
 
+        <div>
+            <hr [ngStyle]="{width: '100%', color: 'red', border: '3px solid red', opacity: '1'}">
+        </div>
 
-    </div>
+        <!-- price filter ---------------------------------------------------------------- -->
+        <div class="price">
+            <h3><strong>Pret ({{price_chk}})</strong></h3>
+            <div class="filter-group" *ngIf="under1000_out.length">
+                <input type="checkbox" id="11" name="UNDER1000" value="PRICE" [(ngModel)]="under1000_chk"
+                    (change)="onClick($event)">
+                <label for="11">Sub 1000 ({{under1000_out.length}})</label>
+            </div>
+            <div class="filter-group" *ngIf="under2000_out.length">
+                <input type="checkbox" id="12" name="UNDER2000" value="PRICE" [(ngModel)]="under2000_chk"
+                    (change)="onClick($event)">
+                <label for="12">1000 - 2000 ({{under2000_out.length}})</label>
+            </div>
+            <div class="filter-group" *ngIf="under3000_out.length">
+                <input type="checkbox" id="13" name="UNDER3000" value="PRICE" [(ngModel)]="under3000_chk"
+                    (change)="onClick($event)">
+                <label for="13">2000 - 3000 ({{under3000_out.length}})</label>
+            </div>
+            <div class="filter-group" *ngIf="under4000_out.length">
+                <input type="checkbox" id="14" name="UNDER4000" value="PRICE" [(ngModel)]="under4000_chk"
+                    (change)="onClick($event)">
+                <label for="14">3000 - 4000 ({{under4000_out.length}})</label>
+            </div>
+            <div class="filter-group" *ngIf="over4000_out.length">
+                <input type="checkbox" id="15" name="OVER4000" value="PRICE" [(ngModel)]="over4000_chk"
+                    (change)="onClick($event)">
+                <label for="15">Peste 4000 ({{over4000_out.length}})</label>
+            </div>
+        </div>
 
-    <!-- brand filter --------------------------------------------------------------- -->
-    <div class="brand">
-        <h3><strong>Brand</strong></h3>
-        <div class="filter-group">
-            <input type="checkbox" id="8" name="ASUS" value="BRAND" [(ngModel)]="asus_chk" (change)="onClick($event)">
-            <label for="8">ASUS ({{asus_out.length}})</label>
+        <!-- brand filter --------------------------------------------------------------- -->
+        <div class="brand">
+            <h3><strong>Brand ({{brand_chk}})</strong></h3>
+            <div class="filter-group">
+                <input type="checkbox" id="21" name="ASUS" value="BRAND" [(ngModel)]="asus_chk"
+                    (change)="onClick($event)">
+                <label for="21">ASUS ({{asus_out.length}})</label>
+            </div>
+            <div class="filter-group">
+                <input type="checkbox" id="22" name="HP" value="BRAND" [(ngModel)]="hp_chk" (change)="onClick($event)">
+                <label for="22">HP ({{hp_out.length}})</label>
+            </div>
+            <div class="filter-group">
+                <input type="checkbox" id="23" name="ACER" value="BRAND" [(ngModel)]="acer_chk"
+                    (change)="onClick($event)">
+                <label for="23">ACER ({{acer_out.length}})</label>
+            </div>
+            <div class="filter-group">
+                <input type="checkbox" id="24" name="LENOVO" value="BRAND" [(ngModel)]="lenovo_chk"
+                    (change)="onClick($event)">
+                <label for="24">LENOVO ({{lenovo_out.length}})</label>
+            </div>
+            <div class="filter-group">
+                <input type="checkbox" id="25" name="APPLE" value="BRAND" [(ngModel)]="apple_chk"
+                    (change)="onClick($event)">
+                <label for="25">APPLE ({{apple_out.length}})</label>
+            </div>
         </div>
-        <div class="filter-group">
-            <input type="checkbox" id="9" name="HP" value="BRAND" [(ngModel)]="hp_chk" (change)="onClick($event)">
-            <label for="9">HP ({{hp_out.length}})</label>
-        </div>
-        <!-- <div class="filter-group">
-            <input type="checkbox" id="acer" name="acer" [(ngModel)]="acer_chk">
-            <label for="acer"> ACER ({{acer_out.length}})</label>
-        </div>
-        <div class="filter-group">
-            <input type="checkbox" id="lenovo" name="lenovo" [(ngModel)]="lenovo_chk">
-            <label for="lenovo"> LENOVO ({{lenovo_out.length}})</label>
-        </div>
-        <div class="filter-group">
-            <input type="checkbox" id="apple" name="apple" [(ngModel)]="apple_chk">
-            <label for="apple"> APPLE ({{apple_out.length}})</label>
-        </div> -->
-    </div>
 
-    <!-- category filter ----------------------------------------------------------- -->
-    <!-- <div class="category">
+        <!-- category filter ----------------------------------------------------------- -->
+        <!-- <div class="category">
         <h3><strong>Categorie</strong></h3>
         <div class="filter-group">
             <input type="checkbox" id="business" name="business" [(ngModel)]="business_chk">
@@ -103,4 +113,16 @@
             <label for="ultra"> Ultraportabil ({{ultra_out.length}})</label>
         </div>
     </div> -->
+    </div>
+
+    <div class="products">
+        <div *ngFor="let product of products; index as ind;">
+            <p>
+                &nbsp;
+                <strong>{{ind+1}}: &nbsp; &nbsp;</strong>
+                {{product.id}}, {{product.name}}, {{product.brand}}, {{product.price}} lei
+            </p>
+        </div>
+    </div>
+
 </div>
