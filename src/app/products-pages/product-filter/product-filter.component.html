@@ -4,6 +4,9 @@
             {{item.name.toLowerCase()}}
             <mat-icon>close</mat-icon>
         </label>
+        <h4 *ngIf="filterNames.length" (click)="filters_close_all()">
+            <strong>sterge tot</strong>
+        </h4>
     </div>
     <div class="filterGroup">
         <label *ngFor="let filterGroup of filterGroups">
@@ -64,29 +67,33 @@
             </div>
         </div>
 
+        <div>
+            <hr [ngStyle]="{width: '100%', color: 'red', border: '3px solid red', opacity: '1'}">
+        </div>
+
         <!-- brand filter --------------------------------------------------------------- -->
         <div class="brand">
             <h3><strong>Brand ({{brand_chk}})</strong></h3>
-            <div class="filter-group">
+            <div class="filter-group" *ngIf="asus_out.length">
                 <input type="checkbox" id="21" name="ASUS" value="BRAND" [(ngModel)]="asus_chk"
                     (change)="onClick($event)">
                 <label for="21">ASUS ({{asus_out.length}})</label>
             </div>
-            <div class="filter-group">
+            <div class="filter-group" *ngIf="hp_out.length">
                 <input type="checkbox" id="22" name="HP" value="BRAND" [(ngModel)]="hp_chk" (change)="onClick($event)">
                 <label for="22">HP ({{hp_out.length}})</label>
             </div>
-            <div class="filter-group">
+            <div class="filter-group" *ngIf="acer_out.length">
                 <input type="checkbox" id="23" name="ACER" value="BRAND" [(ngModel)]="acer_chk"
                     (change)="onClick($event)">
                 <label for="23">ACER ({{acer_out.length}})</label>
             </div>
-            <div class="filter-group">
+            <div class="filter-group" *ngIf="lenovo_out.length">
                 <input type="checkbox" id="24" name="LENOVO" value="BRAND" [(ngModel)]="lenovo_chk"
                     (change)="onClick($event)">
                 <label for="24">LENOVO ({{lenovo_out.length}})</label>
             </div>
-            <div class="filter-group">
+            <div class="filter-group" *ngIf="apple_out.length">
                 <input type="checkbox" id="25" name="APPLE" value="BRAND" [(ngModel)]="apple_chk"
                     (change)="onClick($event)">
                 <label for="25">APPLE ({{apple_out.length}})</label>
@@ -120,7 +127,8 @@
             <p>
                 &nbsp;
                 <strong>{{ind+1}}: &nbsp; &nbsp;</strong>
-                {{product.id}}, {{product.name}}, {{product.brand}}, {{product.price}} lei
+                {{product.id}}, <strong>{{product.brand}}</strong>, {{product.name}},
+                <strong>{{product.price}}</strong>, {{product.available}}
             </p>
         </div>
     </div>

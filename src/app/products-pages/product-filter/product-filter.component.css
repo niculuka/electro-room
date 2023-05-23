@@ -2,13 +2,15 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .products {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border-left: 1px solid black;
+    /* border: 1px solid black; */
+    background: white;
 }
 
 .filters {
@@ -21,6 +23,7 @@
 .filterName {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 4px;
     /* border: 1px solid black; */
 }
@@ -31,11 +34,25 @@
     align-items: center;
     padding: 2px 2px 2px 8px;
     color: white;
-    background-color: rgb(220, 20, 110);
+    background: rgb(220, 20, 110);
 }
 
 .filterName label:hover {
     cursor: pointer;
+}
+
+.filterName h4 {
+    cursor: pointer;
+    color: rgb(220, 20, 110);    
+    margin: 0;
+    padding: 0;    
+    background: none;
+
+}
+
+.filterName h4:hover {
+    text-shadow: 0 0 1px rgb(220, 20, 110);
+    text-decoration: underline;
 }
 
 .filterName mat-icon {
