@@ -93,6 +93,7 @@ export class ProductFilterComponent implements OnInit {
   product: Product = new Product();
 
   filterNames: Array<ProductFilter> = [];
+  currentFilterName: string = "";
   productFilter: ProductFilter = new ProductFilter();
 
   filterGroups: Array<string> = [];
@@ -116,36 +117,6 @@ export class ProductFilterComponent implements OnInit {
 
     this.filterNames_check();
   }
-
-  // =============================================================================================== C O U N T   P R O D U C T S
-  count_available(array: any) {
-    this.stock_count = array.filter((item: any) => item.available === CATEGORY.STOCK);
-    this.deposit_count = array.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-  }
-
-  count_price(array: any) {
-    this.under1000_count = array.filter((item: any) => item.price < 1000);
-    this.under2000_count = array.filter((item: any) => item.price >= 1000 && item.price < 2000);
-    this.under3000_count = array.filter((item: any) => item.price >= 2000 && item.price < 3000);
-    this.under4000_count = array.filter((item: any) => item.price >= 3000 && item.price < 4000);
-    this.over4000_count = array.filter((item: any) => item.price >= 4000);
-  }
-
-  count_brand(array: any) {
-    this.asus_count = array.filter((item: any) => item.brand === CATEGORY.ASUS);
-    this.hp_count = array.filter((item: any) => item.brand === CATEGORY.HP);
-    this.acer_count = array.filter((item: any) => item.brand === CATEGORY.ACER);
-    this.lenovo_count = array.filter((item: any) => item.brand === CATEGORY.LENOVO);
-    this.apple_count = array.filter((item: any) => item.brand === CATEGORY.APPLE);
-  }
-
-  count_category(array: any) {
-    this.business_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_BUSINESS);
-    this.gaming_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_GAMING);
-    this.home_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_HOME);
-    this.ultra_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_ULTRA);
-  }
-
 
   // =============================================================================================== Close Filters  -  ONE BY ONE
   filters_close(filterName: any) {
@@ -262,6 +233,7 @@ export class ProductFilterComponent implements OnInit {
 
   // ==============================================================================================  S E L E C T - F I L T E R S
   onClick(event: any) {
+    this.currentFilterName = event.target.name;
     this.currentFilterGroup = event.target.value;
     this.filterNames_check();
     // ------------------------------------------------------------------------------------------
@@ -457,7 +429,38 @@ export class ProductFilterComponent implements OnInit {
     // console.log(this.products)
   }
 
-  // ========================================================================================================   C  O  U  N  T
+  // ===========================================================================================================================
+  // =============================================================================================== C O U N T   P R O D U C T S
+  // ===========================================================================================================================
+  count_available(array: any) {
+    this.stock_count = array.filter((item: any) => item.available === CATEGORY.STOCK);
+    this.deposit_count = array.filter((item: any) => item.available === CATEGORY.DEPOSIT);
+  }
+
+  count_price(array: any) {
+    this.under1000_count = array.filter((item: any) => item.price < 1000);
+    this.under2000_count = array.filter((item: any) => item.price >= 1000 && item.price < 2000);
+    this.under3000_count = array.filter((item: any) => item.price >= 2000 && item.price < 3000);
+    this.under4000_count = array.filter((item: any) => item.price >= 3000 && item.price < 4000);
+    this.over4000_count = array.filter((item: any) => item.price >= 4000);
+  }
+
+  count_brand(array: any) {
+    this.asus_count = array.filter((item: any) => item.brand === CATEGORY.ASUS);
+    this.hp_count = array.filter((item: any) => item.brand === CATEGORY.HP);
+    this.acer_count = array.filter((item: any) => item.brand === CATEGORY.ACER);
+    this.lenovo_count = array.filter((item: any) => item.brand === CATEGORY.LENOVO);
+    this.apple_count = array.filter((item: any) => item.brand === CATEGORY.APPLE);
+  }
+
+  count_category(array: any) {
+    this.business_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_BUSINESS);
+    this.gaming_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_GAMING);
+    this.home_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_HOME);
+    this.ultra_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_ULTRA);
+  }
+
+  // ====================================================================================================   C O U N T  O R D E R
   count_products() {
     if (this.filterGroups.length === 0) {
       this.count_available(this.filter_0);
