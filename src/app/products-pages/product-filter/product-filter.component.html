@@ -100,26 +100,34 @@
             </div>
         </div>
 
+        <div>
+            <hr [ngStyle]="{width: '100%', color: 'red', border: '3px solid red', opacity: '1'}">
+        </div>
+
         <!-- category filter ----------------------------------------------------------- -->
-        <!-- <div class="category">
-        <h3><strong>Categorie</strong></h3>
-        <div class="filter-group">
-            <input type="checkbox" id="business" name="business" [(ngModel)]="business_chk">
-            <label for="business"> Business ({{business_count.length}})</label>
+        <div class="category">
+            <h3><strong>Categorie</strong></h3>
+            <div class="filter-group" *ngIf="business_count.length">
+                <input type="checkbox" id="31" name="LAPTOP_BUSINESS" value="CATEGORY" [(ngModel)]="business_chk"
+                    (change)="onClick($event)">
+                <label for="31"> Business ({{business_count.length}})</label>
+            </div>
+            <div class="filter-group" *ngIf="gaming_count.length">
+                <input type="checkbox" id="32" name="LAPTOP_GAMING" value="CATEGORY" [(ngModel)]="gaming_chk"
+                    (change)="onClick($event)">
+                <label for="32"> Gaming ({{gaming_count.length}})</label>
+            </div>
+            <div class="filter-group" *ngIf="home_count.length">
+                <input type="checkbox" id="33" name="LAPTOP_HOME" value="CATEGORY" [(ngModel)]="home_chk"
+                    (change)="onClick($event)">
+                <label for="33"> Home ({{home_count.length}})</label>
+            </div>
+            <div class="filter-group" *ngIf="ultra_count.length">
+                <input type="checkbox" id="34" name="LAPTOP_ULTRA" value="CATEGORY" [(ngModel)]="ultra_chk"
+                    (change)="onClick($event)">
+                <label for="34"> Ultraportabil ({{ultra_count.length}})</label>
+            </div>
         </div>
-        <div class="filter-group">
-            <input type="checkbox" id="gaming" name="gaming" [(ngModel)]="gaming_chk">
-            <label for="gaming"> Gaming ({{gaming_count.length}})</label>
-        </div>
-        <div class="filter-group">
-            <input type="checkbox" id="home" name="home" [(ngModel)]="home_chk">
-            <label for="home"> Home ({{home_count.length}})</label>
-        </div>
-        <div class="filter-group">
-            <input type="checkbox" id="ultra" name="ultra" [(ngModel)]="ultra_chk">
-            <label for="ultra"> Ultraportabil ({{ultra_count.length}})</label>
-        </div>
-    </div> -->
     </div>
 
     <div class="products">
@@ -130,8 +138,9 @@
                 {{product.id}}, &nbsp;
                 <strong>{{product.brand}}</strong>, &nbsp;
                 {{product.name}}, &nbsp;
-                <strong>{{product.price}}</strong>, &nbsp;
-                - {{product.available}}
+                <strong>{{product.category}}</strong>, &nbsp;
+                - {{product.available}}, &nbsp;
+                <strong>{{product.price}}</strong>
             </p>
         </div>
     </div>

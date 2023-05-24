@@ -88,7 +88,7 @@ export class ProductFilterComponent implements OnInit {
 
   // ------------------------------------------------------------------------------------------ 
   @Input() products: Array<Product> = [];
-  protected products_copy: Array<Product> = [];
+  protected filter_0: Array<Product> = [];
 
   product: Product = new Product();
 
@@ -101,21 +101,23 @@ export class ProductFilterComponent implements OnInit {
   protected filter_1: Array<Product> = [];
   protected filter_2: Array<Product> = [];
   protected filter_3: Array<Product> = [];
+  protected filter_4: Array<Product> = [];
 
   // ------------------------------------------------------------------------------------------ 
   constructor() { }
 
   ngOnInit(): void {
-    this.products_copy = this.products;
+    this.filter_0 = this.products;
 
-    this.count_available(this.products_copy);
-    this.count_price(this.products_copy);
-    this.count_brand(this.products_copy);
+    this.count_available(this.filter_0);
+    this.count_price(this.filter_0);
+    this.count_brand(this.filter_0);
+    this.count_category(this.filter_0);
 
     this.filterNames_check();
   }
 
-  // ============================================================================================ I N S T A N T  P R O D U C T S
+  // =============================================================================================== C O U N T   P R O D U C T S
   count_available(array: any) {
     this.stock_count = array.filter((item: any) => item.available === CATEGORY.STOCK);
     this.deposit_count = array.filter((item: any) => item.available === CATEGORY.DEPOSIT);
@@ -137,6 +139,13 @@ export class ProductFilterComponent implements OnInit {
     this.apple_count = array.filter((item: any) => item.brand === CATEGORY.APPLE);
   }
 
+  count_category(array: any) {
+    this.business_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_BUSINESS);
+    this.gaming_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_GAMING);
+    this.home_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_HOME);
+    this.ultra_count = array.filter((item: any) => item.category === CATEGORY.LAPTOP_ULTRA);
+  }
+
 
   // =============================================================================================== Close Filters  -  ONE BY ONE
   filters_close(filterName: any) {
@@ -146,6 +155,7 @@ export class ProductFilterComponent implements OnInit {
         break;
       case CATEGORY.DEPOSIT: { this.deposit_chk = false; this.currentFilterGroup = CATEGORY.AVAILABLE }
         break;
+
       case CATEGORY.UNDER1000: { this.under1000_chk = false; this.currentFilterGroup = CATEGORY.PRICE }
         break;
       case CATEGORY.UNDER2000: { this.under2000_chk = false; this.currentFilterGroup = CATEGORY.PRICE }
@@ -156,6 +166,7 @@ export class ProductFilterComponent implements OnInit {
         break;
       case CATEGORY.OVER4000: { this.over4000_chk = false; this.currentFilterGroup = CATEGORY.PRICE }
         break;
+
       case CATEGORY.ASUS: { this.asus_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
         break;
       case CATEGORY.HP: { this.hp_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
@@ -165,6 +176,15 @@ export class ProductFilterComponent implements OnInit {
       case CATEGORY.LENOVO: { this.lenovo_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
         break;
       case CATEGORY.APPLE: { this.apple_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
+        break;
+
+      case CATEGORY.LAPTOP_BUSINESS: { this.business_chk = false; this.currentFilterGroup = CATEGORY.CATEGORY }
+        break;
+      case CATEGORY.LAPTOP_GAMING: { this.gaming_chk = false; this.currentFilterGroup = CATEGORY.CATEGORY }
+        break;
+      case CATEGORY.LAPTOP_HOME: { this.home_chk = false; this.currentFilterGroup = CATEGORY.CATEGORY }
+        break;
+      case CATEGORY.LAPTOP_ULTRA: { this.ultra_chk = false; this.currentFilterGroup = CATEGORY.CATEGORY }
         break;
       default:
     }
@@ -181,10 +201,14 @@ export class ProductFilterComponent implements OnInit {
     if (!this.brand_chk) {
       this.filterGroups = this.filterGroups.filter((item: any) => item != CATEGORY.BRAND);
     }
+    if (!this.category_chk) {
+      this.filterGroups = this.filterGroups.filter((item: any) => item != CATEGORY.CATEGORY);
+    }
     // ------------------------------------------------------------------------------------------ 
     this.filterGroup_1();
     this.filterGroup_2();
     this.filterGroup_3();
+    this.filterGroup_4();
     // ------------------------------------------------------------------------------------------ 
     this.filterGroup_do();
     // ------------------------------------------------------------------------------------------  
@@ -195,20 +219,27 @@ export class ProductFilterComponent implements OnInit {
   filters_close_all() {
     this.stock_chk = false;
     this.deposit_chk = false;
+
     this.under1000_chk = false;
     this.under2000_chk = false;
     this.under3000_chk = false;
     this.under4000_chk = false;
     this.over4000_chk = false;
+
     this.asus_chk = false;
     this.hp_chk = false;
     this.acer_chk = false;
     this.lenovo_chk = false;
     this.apple_chk = false;
+
+    this.business_chk = false;
+    this.gaming_chk = false;
+    this.home_chk = false;
+    this.ultra_chk = false;
     // ------------------------------------------------------------------------------------------ 
     this.filterNames = [];
     this.filterGroups = [];
-    this.products = this.products_copy;
+    this.products = this.filter_0;
     // ------------------------------------------------------------------------------------------ 
     this.count_products();
   }
@@ -224,6 +255,9 @@ export class ProductFilterComponent implements OnInit {
     // ------------------------------------------------------------------------------------------
     if (this.asus_chk || this.hp_chk || this.acer_chk || this.lenovo_chk || this.apple_chk) this.brand_chk = true;
     else this.brand_chk = false;
+    // ------------------------------------------------------------------------------------------
+    if (this.business_chk || this.gaming_chk || this.home_chk || this.ultra_chk) this.category_chk = true;
+    else this.category_chk = false;
   }
 
   // ==============================================================================================  S E L E C T - F I L T E R S
@@ -260,11 +294,15 @@ export class ProductFilterComponent implements OnInit {
       if (!this.brand_chk) {
         this.filterGroups = this.filterGroups.filter((item: any) => item != CATEGORY.BRAND);
       }
+      if (!this.category_chk) {
+        this.filterGroups = this.filterGroups.filter((item: any) => item != CATEGORY.CATEGORY);
+      }
     }
     // ------------------------------------------------------------------------------------------ 
     this.filterGroup_1();
     this.filterGroup_2();
     this.filterGroup_3();
+    this.filterGroup_4();
     // ------------------------------------------------------------------------------------------   
     this.filterGroup_do();
     // ------------------------------------------------------------------------------------------  
@@ -274,18 +312,20 @@ export class ProductFilterComponent implements OnInit {
   // ========================================================================================================= F I L T E R _ 1
   filterGroup_1() {
     if (this.filterGroups[0] === CATEGORY.AVAILABLE) {
-      this.filter_available(this.products_copy);
+      this.filter_available(this.filter_0);
       this.filter_1 = this.stock.concat(this.deposit);
     }
-
     if (this.filterGroups[0] === CATEGORY.PRICE) {
-      this.filter_price(this.products_copy);
+      this.filter_price(this.filter_0);
       this.filter_1 = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
     }
-
     if (this.filterGroups[0] === CATEGORY.BRAND) {
-      this.filter_brand(this.products_copy);
+      this.filter_brand(this.filter_0);
       this.filter_1 = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
+    }
+    if (this.filterGroups[0] === CATEGORY.CATEGORY) {
+      this.filter_category(this.filter_0);
+      this.filter_1 = this.business.concat(this.gaming.concat(this.home.concat(this.ultra)));
     }
   }
 
@@ -295,33 +335,57 @@ export class ProductFilterComponent implements OnInit {
       this.filter_available(this.filter_1);
       this.filter_2 = this.stock.concat(this.deposit);
     }
-
     if (this.filterGroups[1] === CATEGORY.PRICE) {
       this.filter_price(this.filter_1);
       this.filter_2 = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
     }
-
     if (this.filterGroups[1] === CATEGORY.BRAND) {
       this.filter_brand(this.filter_1);
       this.filter_2 = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
     }
+    if (this.filterGroups[1] === CATEGORY.CATEGORY) {
+      this.filter_category(this.filter_1);
+      this.filter_2 = this.business.concat(this.gaming.concat(this.home.concat(this.ultra)));
+    }
   }
 
-  // ========================================================================================================= F I L T E R _ 2
+  // ========================================================================================================= F I L T E R _ 3
   filterGroup_3() {
     if (this.filterGroups[2] === CATEGORY.AVAILABLE) {
       this.filter_available(this.filter_2);
       this.filter_3 = this.stock.concat(this.deposit);
     }
-
     if (this.filterGroups[2] === CATEGORY.PRICE) {
       this.filter_price(this.filter_2);
       this.filter_3 = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
     }
-
     if (this.filterGroups[2] === CATEGORY.BRAND) {
       this.filter_brand(this.filter_2);
       this.filter_3 = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
+    }
+    if (this.filterGroups[2] === CATEGORY.CATEGORY) {
+      this.filter_category(this.filter_2);
+      this.filter_3 = this.business.concat(this.gaming.concat(this.home.concat(this.ultra)));
+    }
+  }
+
+  // ========================================================================================================= F I L T E R _ 3
+  filterGroup_4() {
+    if (this.filterGroups[3] === CATEGORY.AVAILABLE) {
+      this.filter_available(this.filter_3);
+      this.filter_4 = this.stock.concat(this.deposit);
+    }
+    if (this.filterGroups[3] === CATEGORY.PRICE) {
+      this.filter_price(this.filter_3);
+      this.filter_4 = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
+    }
+    if (this.filterGroups[3] === CATEGORY.BRAND) {
+      this.filter_brand(this.filter_3);
+      this.filter_4 = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
+    }
+    if (this.filterGroups[3] === CATEGORY.CATEGORY) {
+      this.filter_category(this.filter_3);
+      this.filter_4 = this.business.concat(this.gaming.concat(this.home.concat(this.ultra)));
     }
   }
 
@@ -368,93 +432,145 @@ export class ProductFilterComponent implements OnInit {
     if (this.apple_chk) this.apple = array.filter((item: any) => item.brand === CATEGORY.APPLE);
     else this.apple = [];
   }
+  // -------------------------------------------------------------------------------------------------- B R A N D
+  filter_category(array: any) {
+    if (this.business_chk) this.business = array.filter((item: any) => item.category === CATEGORY.LAPTOP_BUSINESS);
+    else this.business = [];
+
+    if (this.gaming_chk) this.gaming = array.filter((item: any) => item.category === CATEGORY.LAPTOP_GAMING);
+    else this.gaming = [];
+
+    if (this.home_chk) this.home = array.filter((item: any) => item.category === CATEGORY.LAPTOP_HOME);
+    else this.home = [];
+
+    if (this.ultra_chk) this.ultra = array.filter((item: any) => item.category === CATEGORY.LAPTOP_ULTRA);
+    else this.ultra = [];
+  }
 
   // ===================================================================================================== D O -  F I L T E R S
   filterGroup_do() {
-    if (this.filterGroups.length === 0) this.products = this.products_copy;
+    if (this.filterGroups.length === 0) this.products = this.filter_0;
     if (this.filterGroups.length === 1) this.products = this.filter_1;
     if (this.filterGroups.length === 2) this.products = this.filter_2;
     if (this.filterGroups.length === 3) this.products = this.filter_3;
+    if (this.filterGroups.length === 4) this.products = this.filter_4;
     // console.log(this.products)
   }
 
   // ========================================================================================================   C  O  U  N  T
   count_products() {
     if (this.filterGroups.length === 0) {
-      this.count_available(this.products_copy);
-      this.count_price(this.products_copy);
-      this.count_brand(this.products_copy);
+      this.count_available(this.filter_0);
+      this.count_price(this.filter_0);
+      this.count_brand(this.filter_0);
+      this.count_category(this.filter_0);
     }
     // ------------------------------------------------------------------------------------------------------- 1 
     if (this.filterGroups.length === 1) {
       if (this.filterGroups[0] === CATEGORY.AVAILABLE) {
-        if (this.filterGroups[0] === CATEGORY.AVAILABLE && this.currentFilterGroup !== CATEGORY.AVAILABLE) {
-          this.count_available(this.products_copy);
-        }
+        this.count_available(this.filter_0);
         this.count_price(this.filter_1);
         this.count_brand(this.filter_1);
+        this.count_category(this.filter_1);
       }
       if (this.filterGroups[0] === CATEGORY.PRICE) {
         this.count_available(this.filter_1);
-        if (this.filterGroups[0] === CATEGORY.PRICE && this.currentFilterGroup !== CATEGORY.PRICE) {
-          this.count_price(this.products_copy);
-        }
+        this.count_price(this.filter_0);
         this.count_brand(this.filter_1);
+        this.count_category(this.filter_1);
       }
       if (this.filterGroups[0] === CATEGORY.BRAND) {
         this.count_available(this.filter_1);
         this.count_price(this.filter_1);
-        if (this.filterGroups[0] === CATEGORY.BRAND && this.currentFilterGroup !== CATEGORY.BRAND) {
-          this.count_brand(this.products_copy);
-        }
+        this.count_brand(this.filter_0);
+        this.count_category(this.filter_1);
+      }
+      if (this.filterGroups[0] === CATEGORY.CATEGORY) {
+        this.count_available(this.filter_1);
+        this.count_price(this.filter_1);
+        this.count_brand(this.filter_1);
+        this.count_category(this.filter_0);
       }
     }
     // ------------------------------------------------------------------------------------------------------- 2
     if (this.filterGroups.length === 2) {
       if (this.filterGroups[1] === CATEGORY.AVAILABLE) {
-        if (this.filterGroups[1] === CATEGORY.AVAILABLE && this.currentFilterGroup !== CATEGORY.AVAILABLE) {
-          this.count_available(this.filter_1);
-        }
+        this.count_available(this.filter_1);
         this.count_price(this.filter_2);
         this.count_brand(this.filter_2);
+        this.count_category(this.filter_2);
       }
       if (this.filterGroups[1] === CATEGORY.PRICE) {
         this.count_available(this.filter_2);
-        if (this.filterGroups[1] === CATEGORY.PRICE && this.currentFilterGroup !== CATEGORY.PRICE) {
-          this.count_price(this.filter_1);
-        }
+        this.count_price(this.filter_1);
         this.count_brand(this.filter_2);
+        this.count_category(this.filter_2);
       }
       if (this.filterGroups[1] === CATEGORY.BRAND) {
         this.count_available(this.filter_2);
         this.count_price(this.filter_2);
-        if (this.filterGroups[1] === CATEGORY.BRAND && this.currentFilterGroup !== CATEGORY.BRAND) {
-          this.count_brand(this.filter_1);
-        }
+        this.count_brand(this.filter_1);
+        this.count_category(this.filter_2);
+      }
+      if (this.filterGroups[1] === CATEGORY.CATEGORY) {
+        this.count_available(this.filter_2);
+        this.count_price(this.filter_2);
+        this.count_brand(this.filter_2);
+        this.count_category(this.filter_1);
       }
     }
     // ------------------------------------------------------------------------------------------------------- 3
     if (this.filterGroups.length === 3) {
       if (this.filterGroups[2] === CATEGORY.AVAILABLE) {
-        if (this.filterGroups[2] === CATEGORY.AVAILABLE && this.currentFilterGroup !== CATEGORY.AVAILABLE) {
-          this.count_available(this.filter_2);
-        }
+        this.count_available(this.filter_2);
         this.count_price(this.filter_3);
         this.count_brand(this.filter_3);
+        this.count_category(this.filter_3);
       }
       if (this.filterGroups[2] === CATEGORY.PRICE) {
         this.count_available(this.filter_3);
-        if (this.filterGroups[2] === CATEGORY.PRICE && this.currentFilterGroup !== CATEGORY.PRICE) {
-          this.count_price(this.filter_2);
-        }
+        this.count_price(this.filter_2);
         this.count_brand(this.filter_3);
+        this.count_category(this.filter_3);
       }
       if (this.filterGroups[2] === CATEGORY.BRAND) {
         this.count_available(this.filter_3);
         this.count_price(this.filter_3);
-        if (this.filterGroups[2] === CATEGORY.BRAND && this.currentFilterGroup !== CATEGORY.BRAND) {
-          this.count_brand(this.filter_2);
-        }
+        this.count_brand(this.filter_2);
+        this.count_category(this.filter_3);
+      }
+      if (this.filterGroups[2] === CATEGORY.CATEGORY) {
+        this.count_available(this.filter_3);
+        this.count_price(this.filter_3);
+        this.count_brand(this.filter_3);
+        this.count_category(this.filter_2);
+      }
+    }
+    // ------------------------------------------------------------------------------------------------------- 3
+    if (this.filterGroups.length === 4) {
+      if (this.filterGroups[3] === CATEGORY.AVAILABLE) {
+        this.count_available(this.filter_3);
+        this.count_price(this.filter_4);
+        this.count_brand(this.filter_4);
+        this.count_category(this.filter_4);
+      }
+      if (this.filterGroups[3] === CATEGORY.PRICE) {
+        this.count_available(this.filter_4);
+        this.count_price(this.filter_3);
+        this.count_brand(this.filter_4);
+        this.count_category(this.filter_4);
+      }
+      if (this.filterGroups[3] === CATEGORY.BRAND) {
+        this.count_available(this.filter_4);
+        this.count_price(this.filter_4);
+        this.count_brand(this.filter_3);
+        this.count_category(this.filter_4);
+      }
+      if (this.filterGroups[3] === CATEGORY.CATEGORY) {
+        this.count_available(this.filter_4);
+        this.count_price(this.filter_4);
+        this.count_brand(this.filter_4);
+        this.count_category(this.filter_3);
       }
     }
   }
