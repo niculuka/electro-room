@@ -12,83 +12,79 @@ export class ProductFilterComponent implements OnInit {
 
   // A V A I L A B L E - Vars -----------------------------------------------
   available_chk: boolean = false;
-  protected products_available: Array<Product> = [];
 
   stock_chk: boolean = false;
   protected stock: Array<Product> = [];
-  protected stock_out: Array<Product> = [];
+  protected stock_count: Array<Product> = [];
 
   deposit_chk: boolean = false;
   protected deposit: Array<Product> = [];
-  protected deposit_out: Array<Product> = [];
+  protected deposit_count: Array<Product> = [];
 
   // P R I C E S - Vars -----------------------------------------------------
   price_chk: boolean = false;
-  protected products_price: Array<Product> = [];
 
   under1000_chk: boolean = false;
   protected under1000: Array<Product> = [];
-  protected under1000_out: Array<Product> = [];
+  protected under1000_count: Array<Product> = [];
 
   under2000_chk: boolean = false;
   protected under2000: Array<Product> = [];
-  protected under2000_out: Array<Product> = [];
+  protected under2000_count: Array<Product> = [];
 
   under3000_chk: boolean = false;
   protected under3000: Array<Product> = [];
-  protected under3000_out: Array<Product> = [];
+  protected under3000_count: Array<Product> = [];
 
   under4000_chk: boolean = false;
   protected under4000: Array<Product> = [];
-  protected under4000_out: Array<Product> = [];
+  protected under4000_count: Array<Product> = [];
 
   over4000_chk: boolean = false;
   protected over4000: Array<Product> = [];
-  protected over4000_out: Array<Product> = [];
+  protected over4000_count: Array<Product> = [];
 
   // B R A N D S - Vars -----------------------------------------------------
   brand_chk: boolean = false;
-  protected products_brand: Array<Product> = [];
 
   asus_chk: boolean = false;
   protected asus: Array<Product> = [];
-  protected asus_out: Array<Product> = [];
+  protected asus_count: Array<Product> = [];
 
   hp_chk: boolean = false;
   protected hp: Array<Product> = [];
-  protected hp_out: Array<Product> = [];
+  protected hp_count: Array<Product> = [];
 
   acer_chk: boolean = false;
   protected acer: Array<Product> = [];
-  protected acer_out: Array<Product> = [];
+  protected acer_count: Array<Product> = [];
 
   lenovo_chk: boolean = false;
   protected lenovo: Array<Product> = [];
-  protected lenovo_out: Array<Product> = [];
+  protected lenovo_count: Array<Product> = [];
 
   apple_chk: boolean = false;
   protected apple: Array<Product> = [];
-  protected apple_out: Array<Product> = [];
+  protected apple_count: Array<Product> = [];
 
   // C A T E G O R Y - Vars --------------------------------------------------
   category_chk: boolean = false;
-  protected products_category: Array<Product> = [];
 
   business_chk: boolean = false;
   protected business: Array<Product> = [];
-  protected business_out: Array<Product> = [];
+  protected business_count: Array<Product> = [];
 
   gaming_chk: boolean = false;
   protected gaming: Array<Product> = [];
-  protected gaming_out: Array<Product> = [];
+  protected gaming_count: Array<Product> = [];
 
   home_chk: boolean = false;
   protected home: Array<Product> = [];
-  protected home_out: Array<Product> = [];
+  protected home_count: Array<Product> = [];
 
   ultra_chk: boolean = false;
   protected ultra: Array<Product> = [];
-  protected ultra_out: Array<Product> = [];
+  protected ultra_count: Array<Product> = [];
 
   // ------------------------------------------------------------------------------------------ 
   @Input() products: Array<Product> = [];
@@ -100,6 +96,7 @@ export class ProductFilterComponent implements OnInit {
   productFilter: ProductFilter = new ProductFilter();
 
   filterGroups: Array<string> = [];
+  currentFilterGroup: string = "";
 
   protected filter_1: Array<Product> = [];
   protected filter_2: Array<Product> = [];
@@ -111,64 +108,63 @@ export class ProductFilterComponent implements OnInit {
   ngOnInit(): void {
     this.products_copy = this.products;
 
-    this.instant_available();
-    this.instant_price();
-    this.instant_brand();
+    this.count_available(this.products_copy);
+    this.count_price(this.products_copy);
+    this.count_brand(this.products_copy);
 
     this.filterNames_check();
   }
 
-  // ================================================================================= I N S T A N T  P R O D U C T S
-  instant_available() {
-    this.stock_out = this.products.filter((item: any) => item.available === CATEGORY.STOCK);
-    this.deposit_out = this.products.filter((item: any) => item.available === CATEGORY.DEPOSIT);
+  // ============================================================================================ I N S T A N T  P R O D U C T S
+  count_available(array: any) {
+    this.stock_count = array.filter((item: any) => item.available === CATEGORY.STOCK);
+    this.deposit_count = array.filter((item: any) => item.available === CATEGORY.DEPOSIT);
   }
 
-  instant_price() {
-    this.under1000_out = this.products.filter((item: any) => item.price < 1000);
-    this.under2000_out = this.products.filter((item: any) => item.price >= 1000 && item.price < 2000);
-    this.under3000_out = this.products.filter((item: any) => item.price >= 2000 && item.price < 3000);
-    this.under4000_out = this.products.filter((item: any) => item.price >= 3000 && item.price < 4000);
-    this.over4000_out = this.products.filter((item: any) => item.price >= 4000);
+  count_price(array: any) {
+    this.under1000_count = array.filter((item: any) => item.price < 1000);
+    this.under2000_count = array.filter((item: any) => item.price >= 1000 && item.price < 2000);
+    this.under3000_count = array.filter((item: any) => item.price >= 2000 && item.price < 3000);
+    this.under4000_count = array.filter((item: any) => item.price >= 3000 && item.price < 4000);
+    this.over4000_count = array.filter((item: any) => item.price >= 4000);
   }
 
-  instant_brand() {
-    this.asus_out = this.products.filter((item: any) => item.brand === CATEGORY.ASUS);
-    this.hp_out = this.products.filter((item: any) => item.brand === CATEGORY.HP);
-    this.acer_out = this.products.filter((item: any) => item.brand === CATEGORY.ACER);
-    this.lenovo_out = this.products.filter((item: any) => item.brand === CATEGORY.LENOVO);
-    this.apple_out = this.products.filter((item: any) => item.brand === CATEGORY.APPLE);
+  count_brand(array: any) {
+    this.asus_count = array.filter((item: any) => item.brand === CATEGORY.ASUS);
+    this.hp_count = array.filter((item: any) => item.brand === CATEGORY.HP);
+    this.acer_count = array.filter((item: any) => item.brand === CATEGORY.ACER);
+    this.lenovo_count = array.filter((item: any) => item.brand === CATEGORY.LENOVO);
+    this.apple_count = array.filter((item: any) => item.brand === CATEGORY.APPLE);
   }
 
 
-  // ===================================================================================== C L O S E - F I L T E R S
-  // ------------------------------------------------------------------------------------------ One by One
+  // =============================================================================================== Close Filters  -  ONE BY ONE
   filters_close(filterName: any) {
     // ------------------------------------------------------------------------------------------ 
     switch (filterName.name) {
-      case CATEGORY.STOCK: this.stock_chk = false;
+      case CATEGORY.STOCK: { this.stock_chk = false; this.currentFilterGroup = CATEGORY.AVAILABLE }
         break;
-      case CATEGORY.DEPOSIT: this.deposit_chk = false;
+      case CATEGORY.DEPOSIT: { this.deposit_chk = false; this.currentFilterGroup = CATEGORY.AVAILABLE }
         break;
-      case CATEGORY.UNDER1000: this.under1000_chk = false;
+      case CATEGORY.UNDER1000: { this.under1000_chk = false; this.currentFilterGroup = CATEGORY.PRICE }
         break;
-      case CATEGORY.UNDER2000: this.under2000_chk = false;
+      case CATEGORY.UNDER2000: { this.under2000_chk = false; this.currentFilterGroup = CATEGORY.PRICE }
         break;
-      case CATEGORY.UNDER3000: this.under3000_chk = false;
+      case CATEGORY.UNDER3000: { this.under3000_chk = false; this.currentFilterGroup = CATEGORY.PRICE }
         break;
-      case CATEGORY.UNDER4000: this.under4000_chk = false;
+      case CATEGORY.UNDER4000: { this.under4000_chk = false; this.currentFilterGroup = CATEGORY.PRICE }
         break;
-      case CATEGORY.OVER4000: this.over4000_chk = false;
+      case CATEGORY.OVER4000: { this.over4000_chk = false; this.currentFilterGroup = CATEGORY.PRICE }
         break;
-      case CATEGORY.ASUS: this.asus_chk = false;
+      case CATEGORY.ASUS: { this.asus_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
         break;
-      case CATEGORY.HP: this.hp_chk = false;
+      case CATEGORY.HP: { this.hp_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
         break;
-      case CATEGORY.ACER: this.acer_chk = false;
+      case CATEGORY.ACER: { this.acer_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
         break;
-      case CATEGORY.LENOVO: this.lenovo_chk = false;
+      case CATEGORY.LENOVO: { this.lenovo_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
         break;
-      case CATEGORY.APPLE: this.apple_chk = false;
+      case CATEGORY.APPLE: { this.apple_chk = false; this.currentFilterGroup = CATEGORY.BRAND }
         break;
       default:
     }
@@ -191,9 +187,11 @@ export class ProductFilterComponent implements OnInit {
     this.filterGroup_3();
     // ------------------------------------------------------------------------------------------ 
     this.filterGroup_do();
+    // ------------------------------------------------------------------------------------------  
+    this.count_products();
   }
 
-  // ------------------------------------------------------------------------------------------ Remove ALL
+  // ================================================================================================ Close Filters  -  CLOSE ALL
   filters_close_all() {
     this.stock_chk = false;
     this.deposit_chk = false;
@@ -207,37 +205,30 @@ export class ProductFilterComponent implements OnInit {
     this.acer_chk = false;
     this.lenovo_chk = false;
     this.apple_chk = false;
-
+    // ------------------------------------------------------------------------------------------ 
     this.filterNames = [];
     this.filterGroups = [];
     this.products = this.products_copy;
+    // ------------------------------------------------------------------------------------------ 
+    this.count_products();
   }
 
-  // ====================================================================================  C H E C K  - F I L T E R S
+  // ================================================================================================  C H E C K  - F I L T E R S
   filterNames_check() {
     // ------------------------------------------------------------------------------------------ 
-    if (this.stock_chk || this.deposit_chk) {
-      this.available_chk = true;
-    } else {
-      this.available_chk = false;
-    }
+    if (this.stock_chk || this.deposit_chk) this.available_chk = true;
+    else this.available_chk = false;
     // ------------------------------------------------------------------------------------------ 
-    if (this.under1000_chk || this.under2000_chk || this.under3000_chk || this.under4000_chk || this.over4000_chk) {
-      this.price_chk = true;
-    } else {
-      this.price_chk = false;
-    }
+    if (this.under1000_chk || this.under2000_chk || this.under3000_chk || this.under4000_chk || this.over4000_chk) this.price_chk = true;
+    else this.price_chk = false;
     // ------------------------------------------------------------------------------------------
-    if (this.asus_chk || this.hp_chk || this.acer_chk || this.lenovo_chk || this.apple_chk) {
-      this.brand_chk = true;
-    }
-    else {
-      this.brand_chk = false;
-    }
+    if (this.asus_chk || this.hp_chk || this.acer_chk || this.lenovo_chk || this.apple_chk) this.brand_chk = true;
+    else this.brand_chk = false;
   }
 
-  // ====================================================================================  S E L E C T - F I L T E R S
+  // ==============================================================================================  S E L E C T - F I L T E R S
   onClick(event: any) {
+    this.currentFilterGroup = event.target.value;
     this.filterNames_check();
     // ------------------------------------------------------------------------------------------
     if (event.target.checked) {
@@ -276,339 +267,106 @@ export class ProductFilterComponent implements OnInit {
     this.filterGroup_3();
     // ------------------------------------------------------------------------------------------   
     this.filterGroup_do();
-
-    console.log(event.target.value)
-
-    // ================================================================================================ C O U N T
-    // ================================================================================================ C O U N T
-    // ================================================================================================ C O U N T
-    if (this.filterGroups.length === 0) {
-      this.stock_out = this.products_copy.filter((item: any) => item.available === CATEGORY.STOCK);
-      this.deposit_out = this.products_copy.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-      this.under1000_out = this.products_copy.filter((item: any) => item.price < 1000);
-      this.under2000_out = this.products_copy.filter((item: any) => item.price >= 1000 && item.price < 2000);
-      this.under3000_out = this.products_copy.filter((item: any) => item.price >= 2000 && item.price < 3000);
-      this.under4000_out = this.products_copy.filter((item: any) => item.price >= 3000 && item.price < 4000);
-      this.over4000_out = this.products_copy.filter((item: any) => item.price >= 4000);
-
-      this.asus_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.ASUS);
-      this.hp_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.HP);
-      this.acer_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.ACER);
-      this.lenovo_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.LENOVO);
-      this.apple_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.APPLE);
-    }
-    // ------------------------------------------------------------------------------------------------------- 1 
-    if (this.filterGroups.length === 1) {
-      if (this.filterGroups[0] === CATEGORY.AVAILABLE) {
-        if (this.filterGroups[0] === CATEGORY.AVAILABLE && event.target.value !== CATEGORY.AVAILABLE) {
-          this.stock_out = this.products_copy.filter((item: any) => item.available === CATEGORY.STOCK);
-          this.deposit_out = this.products_copy.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-        }
-        this.under1000_out = this.filter_1.filter((item: any) => item.price < 1000);
-        this.under2000_out = this.filter_1.filter((item: any) => item.price >= 1000 && item.price < 2000);
-        this.under3000_out = this.filter_1.filter((item: any) => item.price >= 2000 && item.price < 3000);
-        this.under4000_out = this.filter_1.filter((item: any) => item.price >= 3000 && item.price < 4000);
-        this.over4000_out = this.filter_1.filter((item: any) => item.price >= 4000);
-
-        this.asus_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.ASUS);
-        this.hp_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.HP);
-        this.acer_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.ACER);
-        this.lenovo_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.LENOVO);
-        this.apple_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.APPLE);
-      }
-      if (this.filterGroups[0] === CATEGORY.PRICE) {
-        this.stock_out = this.filter_1.filter((item: any) => item.available === CATEGORY.STOCK);
-        this.deposit_out = this.filter_1.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-        if (this.filterGroups[0] === CATEGORY.PRICE && event.target.value !== CATEGORY.PRICE) {
-          this.under1000_out = this.products_copy.filter((item: any) => item.price < 1000);
-          this.under2000_out = this.products_copy.filter((item: any) => item.price >= 1000 && item.price < 2000);
-          this.under3000_out = this.products_copy.filter((item: any) => item.price >= 2000 && item.price < 3000);
-          this.under4000_out = this.products_copy.filter((item: any) => item.price >= 3000 && item.price < 4000);
-          this.over4000_out = this.products_copy.filter((item: any) => item.price >= 4000);
-        }
-        this.asus_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.ASUS);
-        this.hp_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.HP);
-        this.acer_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.ACER);
-        this.lenovo_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.LENOVO);
-        this.apple_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.APPLE);
-      }
-      if (this.filterGroups[0] === CATEGORY.BRAND) {
-        this.stock_out = this.filter_1.filter((item: any) => item.available === CATEGORY.STOCK);
-        this.deposit_out = this.filter_1.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-        this.under1000_out = this.filter_1.filter((item: any) => item.price < 1000);
-        this.under2000_out = this.filter_1.filter((item: any) => item.price >= 1000 && item.price < 2000);
-        this.under3000_out = this.filter_1.filter((item: any) => item.price >= 2000 && item.price < 3000);
-        this.under4000_out = this.filter_1.filter((item: any) => item.price >= 3000 && item.price < 4000);
-        this.over4000_out = this.filter_1.filter((item: any) => item.price >= 4000);
-
-        if (this.filterGroups[0] === CATEGORY.BRAND && event.target.value !== CATEGORY.BRAND) {
-          this.asus_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.ASUS);
-          this.hp_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.HP);
-          this.acer_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.ACER);
-          this.lenovo_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.LENOVO);
-          this.apple_out = this.products_copy.filter((item: any) => item.brand === CATEGORY.APPLE);
-        }
-      }
-    }
-    // ------------------------------------------------------------------------------------------------------- 2
-    if (this.filterGroups.length === 2) {
-      if (this.filterGroups[1] === CATEGORY.AVAILABLE) {
-        if (this.filterGroups[1] === CATEGORY.AVAILABLE && event.target.value !== CATEGORY.AVAILABLE) {
-          this.stock_out = this.filter_1.filter((item: any) => item.available === CATEGORY.STOCK);
-          this.deposit_out = this.filter_1.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-        }
-        this.under1000_out = this.filter_2.filter((item: any) => item.price < 1000);
-        this.under2000_out = this.filter_2.filter((item: any) => item.price >= 1000 && item.price < 2000);
-        this.under3000_out = this.filter_2.filter((item: any) => item.price >= 2000 && item.price < 3000);
-        this.under4000_out = this.filter_2.filter((item: any) => item.price >= 3000 && item.price < 4000);
-        this.over4000_out = this.filter_2.filter((item: any) => item.price >= 4000);
-
-        this.asus_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.ASUS);
-        this.hp_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.HP);
-        this.acer_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.ACER);
-        this.lenovo_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.LENOVO);
-        this.apple_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.APPLE);
-      }
-      if (this.filterGroups[1] === CATEGORY.PRICE) {
-        this.stock_out = this.filter_2.filter((item: any) => item.available === CATEGORY.STOCK);
-        this.deposit_out = this.filter_2.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-        if (this.filterGroups[1] === CATEGORY.PRICE && event.target.value !== CATEGORY.PRICE) {
-          this.under1000_out = this.filter_1.filter((item: any) => item.price < 1000);
-          this.under2000_out = this.filter_1.filter((item: any) => item.price >= 1000 && item.price < 2000);
-          this.under3000_out = this.filter_1.filter((item: any) => item.price >= 2000 && item.price < 3000);
-          this.under4000_out = this.filter_1.filter((item: any) => item.price >= 3000 && item.price < 4000);
-          this.over4000_out = this.filter_1.filter((item: any) => item.price >= 4000);
-        }
-        this.asus_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.ASUS);
-        this.hp_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.HP);
-        this.acer_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.ACER);
-        this.lenovo_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.LENOVO);
-        this.apple_out = this.filter_2.filter((item: any) => item.brand === CATEGORY.APPLE);
-      }
-      if (this.filterGroups[1] === CATEGORY.BRAND) {
-        this.stock_out = this.filter_2.filter((item: any) => item.available === CATEGORY.STOCK);
-        this.deposit_out = this.filter_2.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-        this.under1000_out = this.filter_2.filter((item: any) => item.price < 1000);
-        this.under2000_out = this.filter_2.filter((item: any) => item.price >= 1000 && item.price < 2000);
-        this.under3000_out = this.filter_2.filter((item: any) => item.price >= 2000 && item.price < 3000);
-        this.under4000_out = this.filter_2.filter((item: any) => item.price >= 3000 && item.price < 4000);
-        this.over4000_out = this.filter_2.filter((item: any) => item.price >= 4000);
-
-        if (this.filterGroups[1] === CATEGORY.BRAND && event.target.value !== CATEGORY.BRAND) {
-          this.asus_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.ASUS);
-          this.hp_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.HP);
-          this.acer_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.ACER);
-          this.lenovo_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.LENOVO);
-          this.apple_out = this.filter_1.filter((item: any) => item.brand === CATEGORY.APPLE);
-        }
-      }
-    }
-    // ------------------------------------------------------------------------------------------------------- 3
-    if (this.filterGroups.length === 3) {
-      if (this.filterGroups[2] === CATEGORY.AVAILABLE) {
-        this.under1000_out = this.filter_3.filter((item: any) => item.price < 1000);
-        this.under2000_out = this.filter_3.filter((item: any) => item.price >= 1000 && item.price < 2000);
-        this.under3000_out = this.filter_3.filter((item: any) => item.price >= 2000 && item.price < 3000);
-        this.under4000_out = this.filter_3.filter((item: any) => item.price >= 3000 && item.price < 4000);
-        this.over4000_out = this.filter_3.filter((item: any) => item.price >= 4000);
-
-        this.asus_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.ASUS);
-        this.hp_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.HP);
-        this.acer_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.ACER);
-        this.lenovo_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.LENOVO);
-        this.apple_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.APPLE);
-      }
-      if (this.filterGroups[2] === CATEGORY.PRICE) {
-        this.stock_out = this.filter_3.filter((item: any) => item.available === CATEGORY.STOCK);
-        this.deposit_out = this.filter_3.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-        this.asus_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.ASUS);
-        this.hp_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.HP);
-        this.acer_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.ACER);
-        this.lenovo_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.LENOVO);
-        this.apple_out = this.filter_3.filter((item: any) => item.brand === CATEGORY.APPLE);
-      }
-      if (this.filterGroups[2] === CATEGORY.BRAND) {
-        this.stock_out = this.filter_3.filter((item: any) => item.available === CATEGORY.STOCK);
-        this.deposit_out = this.filter_3.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-        this.under1000_out = this.filter_3.filter((item: any) => item.price < 1000);
-        this.under2000_out = this.filter_3.filter((item: any) => item.price >= 1000 && item.price < 2000);
-        this.under3000_out = this.filter_3.filter((item: any) => item.price >= 2000 && item.price < 3000);
-        this.under4000_out = this.filter_3.filter((item: any) => item.price >= 3000 && item.price < 4000);
-        this.over4000_out = this.filter_3.filter((item: any) => item.price >= 4000);
-      }
-    }
+    // ------------------------------------------------------------------------------------------  
+    this.count_products();
   }
 
-  // ========================================================================================================== F I L T E R _ 1
+  // ========================================================================================================= F I L T E R _ 1
   filterGroup_1() {
-    // ----------------------------------------------------------------------------------------- A V A I L A B L E
-    if (this.filterGroups[0] === CATEGORY.AVAILABLE || this.filterGroups[0] === undefined) {
-      if (this.stock_chk) this.stock = this.products_copy.filter((item: any) => item.available === CATEGORY.STOCK);
-      else this.stock = [];
-
-      if (this.deposit_chk) this.deposit = this.products_copy.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-      else this.deposit = [];
-
-      this.products_available = this.stock.concat(this.deposit);
-      this.filter_1 = this.products_available;
+    if (this.filterGroups[0] === CATEGORY.AVAILABLE) {
+      this.filter_available(this.products_copy);
+      this.filter_1 = this.stock.concat(this.deposit);
     }
-    // ------------------------------------------------------------------------------------------------ P R I C E
-    if (this.filterGroups[0] === CATEGORY.PRICE || this.filterGroups[0] === undefined) {
-      if (this.under1000_chk) this.under1000 = this.products_copy.filter((item: any) => item.price < 1000);
-      else this.under1000 = [];
 
-      if (this.under2000_chk) this.under2000 = this.products_copy.filter((item: any) => item.price >= 1000 && item.price < 2000);
-      else this.under2000 = [];
-
-      if (this.under3000_chk) this.under3000 = this.products_copy.filter((item: any) => item.price >= 2000 && item.price < 3000);
-      else this.under3000 = [];
-
-      if (this.under4000_chk) this.under4000 = this.products_copy.filter((item: any) => item.price >= 3000 && item.price < 4000);
-      else this.under4000 = [];
-
-      if (this.over4000_chk) this.over4000 = this.products_copy.filter((item: any) => item.price >= 4000);
-      else this.over4000 = [];
-
-      this.products_price = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
-      this.filter_1 = this.products_price;
+    if (this.filterGroups[0] === CATEGORY.PRICE) {
+      this.filter_price(this.products_copy);
+      this.filter_1 = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
     }
-    // -------------------------------------------------------------------------------------------------- B R A N D
-    if (this.filterGroups[0] === CATEGORY.BRAND || this.filterGroups[0] === undefined) {
-      if (this.asus_chk) this.asus = this.products_copy.filter((item: any) => item.brand === CATEGORY.ASUS);
-      else this.asus = [];
 
-      if (this.hp_chk) this.hp = this.products_copy.filter((item: any) => item.brand === CATEGORY.HP);
-      else this.hp = [];
-
-      if (this.acer_chk) this.acer = this.products_copy.filter((item: any) => item.brand === CATEGORY.ACER);
-      else this.acer = [];
-
-      if (this.lenovo_chk) this.lenovo = this.products_copy.filter((item: any) => item.brand === CATEGORY.LENOVO);
-      else this.lenovo = [];
-
-      if (this.apple_chk) this.apple = this.products_copy.filter((item: any) => item.brand === CATEGORY.APPLE);
-      else this.apple = [];
-
-      this.products_brand = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
-      this.filter_1 = this.products_brand;
+    if (this.filterGroups[0] === CATEGORY.BRAND) {
+      this.filter_brand(this.products_copy);
+      this.filter_1 = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
     }
   }
 
   // ========================================================================================================= F I L T E R _ 2
   filterGroup_2() {
-    // ------------------------------------------------------------------------------------------ A V A I L A B L E
     if (this.filterGroups[1] === CATEGORY.AVAILABLE) {
-      if (this.stock_chk) this.stock = this.filter_1.filter((item: any) => item.available === CATEGORY.STOCK);
-      else this.stock = [];
-
-      if (this.deposit_chk) this.deposit = this.filter_1.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-      else
-        this.deposit = [];
-
-      this.products_available = this.stock.concat(this.deposit);
-      this.filter_2 = this.products_available;
+      this.filter_available(this.filter_1);
+      this.filter_2 = this.stock.concat(this.deposit);
     }
-    // -------------------------------------------------------------------------------------------------- P R I C E
+
     if (this.filterGroups[1] === CATEGORY.PRICE) {
-      if (this.under1000_chk) this.under1000 = this.filter_1.filter((item: any) => item.price < 1000);
-      else this.under1000 = [];
-
-      if (this.under2000_chk) this.under2000 = this.filter_1.filter((item: any) => item.price >= 1000 && item.price < 2000);
-      else this.under2000 = [];
-
-      if (this.under3000_chk) this.under3000 = this.filter_1.filter((item: any) => item.price >= 2000 && item.price < 3000);
-      else this.under3000 = [];
-
-      if (this.under4000_chk) this.under4000 = this.filter_1.filter((item: any) => item.price >= 3000 && item.price < 4000);
-      else this.under4000 = [];
-
-      if (this.over4000_chk) this.over4000 = this.filter_1.filter((item: any) => item.price >= 4000);
-      else this.over4000 = [];
-
-      this.products_price = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
-      this.filter_2 = this.products_price;
+      this.filter_price(this.filter_1);
+      this.filter_2 = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
     }
-    // -------------------------------------------------------------------------------------------------- B R A N D
+
     if (this.filterGroups[1] === CATEGORY.BRAND) {
-      if (this.asus_chk) this.asus = this.filter_1.filter((item: any) => item.brand === CATEGORY.ASUS);
-      else this.asus = [];
-
-      if (this.hp_chk) this.hp = this.filter_1.filter((item: any) => item.brand === CATEGORY.HP);
-      else this.hp = [];
-
-      if (this.acer_chk) this.acer = this.filter_1.filter((item: any) => item.brand === CATEGORY.ACER);
-      else this.acer = [];
-
-      if (this.lenovo_chk) this.lenovo = this.filter_1.filter((item: any) => item.brand === CATEGORY.LENOVO);
-      else this.lenovo = [];
-
-      if (this.apple_chk) this.apple = this.filter_1.filter((item: any) => item.brand === CATEGORY.APPLE);
-      else this.apple = [];
-
-      this.products_brand = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
-      this.filter_2 = this.products_brand;
+      this.filter_brand(this.filter_1);
+      this.filter_2 = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
     }
   }
 
+  // ========================================================================================================= F I L T E R _ 2
   filterGroup_3() {
-    // ----------------------------------------------------------------------------------------- A V A I L A B L E
     if (this.filterGroups[2] === CATEGORY.AVAILABLE) {
-      if (this.stock_chk) this.stock = this.filter_2.filter((item: any) => item.available === CATEGORY.STOCK);
-      else this.stock = [];
-
-      if (this.deposit_chk) this.deposit = this.filter_2.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-      else this.deposit = [];
-
-      this.products_available = this.stock.concat(this.deposit);
-      this.filter_3 = this.products_available;
+      this.filter_available(this.filter_2);
+      this.filter_3 = this.stock.concat(this.deposit);
     }
-    // ------------------------------------------------------------------------------------------------ P R I C E
+
     if (this.filterGroups[2] === CATEGORY.PRICE) {
-      if (this.under1000_chk) this.under1000 = this.filter_2.filter((item: any) => item.price < 1000);
-      else this.under1000 = [];
-
-      if (this.under2000_chk) this.under2000 = this.filter_2.filter((item: any) => item.price >= 1000 && item.price < 2000);
-      else this.under2000 = [];
-
-      if (this.under3000_chk) this.under3000 = this.filter_2.filter((item: any) => item.price >= 2000 && item.price < 3000);
-      else this.under3000 = [];
-
-      if (this.under4000_chk) this.under4000 = this.filter_2.filter((item: any) => item.price >= 3000 && item.price < 4000);
-      else this.under4000 = [];
-
-      if (this.over4000_chk) this.over4000 = this.filter_2.filter((item: any) => item.price >= 4000);
-      else this.over4000 = [];
-
-      this.products_price = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
-      this.filter_3 = this.products_price;
+      this.filter_price(this.filter_2);
+      this.filter_3 = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
     }
-    // --------------------------------------------------------------------------------------------------- B R A N D
+
     if (this.filterGroups[2] === CATEGORY.BRAND) {
-      if (this.asus_chk) this.asus = this.filter_2.filter((item: any) => item.brand === CATEGORY.ASUS);
-      else this.asus = [];
-
-      if (this.hp_chk) this.hp = this.filter_2.filter((item: any) => item.brand === CATEGORY.HP);
-      else this.hp = [];
-
-      if (this.acer_chk) this.acer = this.filter_2.filter((item: any) => item.brand === CATEGORY.ACER);
-      else this.acer = [];
-
-      if (this.lenovo_chk) this.lenovo = this.filter_2.filter((item: any) => item.brand === CATEGORY.LENOVO);
-      else this.lenovo = [];
-
-      if (this.apple_chk) this.apple = this.filter_2.filter((item: any) => item.brand === CATEGORY.APPLE);
-      else this.apple = [];
-
-      this.products_brand = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
-      this.filter_3 = this.products_brand;
+      this.filter_brand(this.filter_2);
+      this.filter_3 = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
     }
+  }
+
+  // ======================================================================================================= F  I  L  T  E  R  S
+  // ------------------------------------------------------------------------------------------ A V A I L A B L E
+  filter_available(array: any) {
+    if (this.stock_chk) this.stock = array.filter((item: any) => item.available === CATEGORY.STOCK);
+    else this.stock = [];
+
+    if (this.deposit_chk) this.deposit = array.filter((item: any) => item.available === CATEGORY.DEPOSIT);
+    else this.deposit = [];
+  }
+  // -------------------------------------------------------------------------------------------------- P R I C E
+  filter_price(array: any) {
+    if (this.under1000_chk) this.under1000 = array.filter((item: any) => item.price < 1000);
+    else this.under1000 = [];
+
+    if (this.under2000_chk) this.under2000 = array.filter((item: any) => item.price >= 1000 && item.price < 2000);
+    else this.under2000 = [];
+
+    if (this.under3000_chk) this.under3000 = array.filter((item: any) => item.price >= 2000 && item.price < 3000);
+    else this.under3000 = [];
+
+    if (this.under4000_chk) this.under4000 = array.filter((item: any) => item.price >= 3000 && item.price < 4000);
+    else this.under4000 = [];
+
+    if (this.over4000_chk) this.over4000 = array.filter((item: any) => item.price >= 4000);
+    else this.over4000 = [];
+  }
+  // -------------------------------------------------------------------------------------------------- B R A N D
+  filter_brand(array: any) {
+    if (this.asus_chk) this.asus = array.filter((item: any) => item.brand === CATEGORY.ASUS);
+    else this.asus = [];
+
+    if (this.hp_chk) this.hp = array.filter((item: any) => item.brand === CATEGORY.HP);
+    else this.hp = [];
+
+    if (this.acer_chk) this.acer = array.filter((item: any) => item.brand === CATEGORY.ACER);
+    else this.acer = [];
+
+    if (this.lenovo_chk) this.lenovo = array.filter((item: any) => item.brand === CATEGORY.LENOVO);
+    else this.lenovo = [];
+
+    if (this.apple_chk) this.apple = array.filter((item: any) => item.brand === CATEGORY.APPLE);
+    else this.apple = [];
   }
 
   // ===================================================================================================== D O -  F I L T E R S
@@ -617,55 +375,88 @@ export class ProductFilterComponent implements OnInit {
     if (this.filterGroups.length === 1) this.products = this.filter_1;
     if (this.filterGroups.length === 2) this.products = this.filter_2;
     if (this.filterGroups.length === 3) this.products = this.filter_3;
-
     // console.log(this.products)
   }
 
-
-
-  // this.stock_out = this.products.filter((item: any) => item.available === CATEGORY.STOCK);
-  // this.deposit_out = this.products.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-  // this.under1000_out = this.products.filter((item: any) => item.price < 1000);
-  // this.under2000_out = this.products.filter((item: any) => item.price >= 1000 && item.price < 2000);
-  // this.under3000_out = this.products.filter((item: any) => item.price >= 2000 && item.price < 3000);
-  // this.under4000_out = this.products.filter((item: any) => item.price >= 3000 && item.price < 4000);
-  // this.over4000_out = this.products.filter((item: any) => item.price >= 4000);
-
-  // this.asus_out = this.products.filter((item: any) => item.brand === CATEGORY.ASUS);
-  // this.hp_out = this.products.filter((item: any) => item.brand === CATEGORY.HP);
-  // this.acer_out = this.products.filter((item: any) => item.brand === CATEGORY.ACER);
-  // this.lenovo_out = this.products.filter((item: any) => item.brand === CATEGORY.LENOVO);
-  // this.apple_out = this.products.filter((item: any) => item.brand === CATEGORY.APPLE);
-
-  // test() {
-  //   if (event.target.value === undefined) {
-  //     this.instant_available();
-  //     this.instant_price();
-  //     this.instant_brand();
-  //   }
-
-  //   if (event.target.value === CATEGORY.AVAILABLE) {
-  //     this.instant_price();
-  //     this.instant_brand();
-  //     if (!event.target.checked) {
-  //       this.instant_available();
-  //     }
-  //   }
-  //   if (event.target.value === CATEGORY.PRICE) {
-  //     this.instant_available();
-  //     this.instant_brand();
-  //     if (!event.target.checked) {
-  //       this.instant_price();
-  //     }
-  //   }
-  //   if (event.target.value === CATEGORY.BRAND) {
-  //     this.instant_available();
-  //     this.instant_price();
-  //     if (!event.target.checked) {
-  //       this.instant_brand();
-  //     }
-  //   }
-  // }
+  // ========================================================================================================   C  O  U  N  T
+  count_products() {
+    if (this.filterGroups.length === 0) {
+      this.count_available(this.products_copy);
+      this.count_price(this.products_copy);
+      this.count_brand(this.products_copy);
+    }
+    // ------------------------------------------------------------------------------------------------------- 1 
+    if (this.filterGroups.length === 1) {
+      if (this.filterGroups[0] === CATEGORY.AVAILABLE) {
+        if (this.filterGroups[0] === CATEGORY.AVAILABLE && this.currentFilterGroup !== CATEGORY.AVAILABLE) {
+          this.count_available(this.products_copy);
+        }
+        this.count_price(this.filter_1);
+        this.count_brand(this.filter_1);
+      }
+      if (this.filterGroups[0] === CATEGORY.PRICE) {
+        this.count_available(this.filter_1);
+        if (this.filterGroups[0] === CATEGORY.PRICE && this.currentFilterGroup !== CATEGORY.PRICE) {
+          this.count_price(this.products_copy);
+        }
+        this.count_brand(this.filter_1);
+      }
+      if (this.filterGroups[0] === CATEGORY.BRAND) {
+        this.count_available(this.filter_1);
+        this.count_price(this.filter_1);
+        if (this.filterGroups[0] === CATEGORY.BRAND && this.currentFilterGroup !== CATEGORY.BRAND) {
+          this.count_brand(this.products_copy);
+        }
+      }
+    }
+    // ------------------------------------------------------------------------------------------------------- 2
+    if (this.filterGroups.length === 2) {
+      if (this.filterGroups[1] === CATEGORY.AVAILABLE) {
+        if (this.filterGroups[1] === CATEGORY.AVAILABLE && this.currentFilterGroup !== CATEGORY.AVAILABLE) {
+          this.count_available(this.filter_1);
+        }
+        this.count_price(this.filter_2);
+        this.count_brand(this.filter_2);
+      }
+      if (this.filterGroups[1] === CATEGORY.PRICE) {
+        this.count_available(this.filter_2);
+        if (this.filterGroups[1] === CATEGORY.PRICE && this.currentFilterGroup !== CATEGORY.PRICE) {
+          this.count_price(this.filter_1);
+        }
+        this.count_brand(this.filter_2);
+      }
+      if (this.filterGroups[1] === CATEGORY.BRAND) {
+        this.count_available(this.filter_2);
+        this.count_price(this.filter_2);
+        if (this.filterGroups[1] === CATEGORY.BRAND && this.currentFilterGroup !== CATEGORY.BRAND) {
+          this.count_brand(this.filter_1);
+        }
+      }
+    }
+    // ------------------------------------------------------------------------------------------------------- 3
+    if (this.filterGroups.length === 3) {
+      if (this.filterGroups[2] === CATEGORY.AVAILABLE) {
+        if (this.filterGroups[2] === CATEGORY.AVAILABLE && this.currentFilterGroup !== CATEGORY.AVAILABLE) {
+          this.count_available(this.filter_2);
+        }
+        this.count_price(this.filter_3);
+        this.count_brand(this.filter_3);
+      }
+      if (this.filterGroups[2] === CATEGORY.PRICE) {
+        this.count_available(this.filter_3);
+        if (this.filterGroups[2] === CATEGORY.PRICE && this.currentFilterGroup !== CATEGORY.PRICE) {
+          this.count_price(this.filter_2);
+        }
+        this.count_brand(this.filter_3);
+      }
+      if (this.filterGroups[2] === CATEGORY.BRAND) {
+        this.count_available(this.filter_3);
+        this.count_price(this.filter_3);
+        if (this.filterGroups[2] === CATEGORY.BRAND && this.currentFilterGroup !== CATEGORY.BRAND) {
+          this.count_brand(this.filter_2);
+        }
+      }
+    }
+  }
 
 }
