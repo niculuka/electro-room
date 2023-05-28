@@ -28,13 +28,19 @@ export enum CATEGORY {
     DEPOSIT = "DEPOSIT",
     ONLINE = "ONLINE",
 
-    // P R I C E ----------------------------------------
+    // P R I C E  -  H I G H -------------------------------------
     PRICE = "PRICE",
     UNDER1000 = "UNDER1000",
     UNDER2000 = "UNDER2000",
     UNDER3000 = "UNDER3000",
     UNDER4000 = "UNDER4000",
     OVER4000 = "OVER4000",
+
+    // P R I C E  -  L O W ---------------------------------------
+    UNDER100 = "UNDER100",
+    UNDER200 = "UNDER200",
+    UNDER300 = "UNDER300",
+    OVER300 = "OVER300",
 
     // B R A N D -----------------------------------------
     BRAND = "BRAND",
