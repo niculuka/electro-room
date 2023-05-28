@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
@@ -208,8 +207,6 @@ export class ProductTypeComponent implements OnInit {
 
   // L A P T O P S - Vars ---------------------------------------------------
   protected products: Array<Product> = [];
-  protected filter_0: Array<Product> = [];
-
   product: Product = new Product();
 
   filterNames: Array<ProductFilter> = [];
@@ -218,6 +215,7 @@ export class ProductTypeComponent implements OnInit {
 
   currentFilterGroup: string = "";
 
+  protected filter_0: Array<Product> = [];
   protected filter_1: Array<Product> = [];
   protected filter_2: Array<Product> = [];
   protected filter_3: Array<Product> = [];
@@ -283,7 +281,7 @@ export class ProductTypeComponent implements OnInit {
 
   addToFavorite(item: Product) {
     this.favorite = !this.favorite;
-    console.log(item.id)
+    // console.log(item.id)
     if (this.favorite) {
       this.toastrService.warning("UNDER COSNSTRUCTION")
     }
@@ -464,9 +462,11 @@ export class ProductTypeComponent implements OnInit {
     this.counting();
   }
 
-  // ==================================================================================================== F I L T E R I N G
+  // ================================================================================================= F I L T E R I N G
+  // ===================================================================================================================
+  // ===================================================================================================================
   filtering() {
-    // ------------------------------------------------------------------------------------------ Filter 1
+    // ---------------------------------------------------------------------------------------------- Filter 1
     if (this.available_chk) {
       if (this.stock_chk) this.stock = this.filter_0.filter((item: any) => item.available === CATEGORY.STOCK);
       else this.stock = [];
@@ -478,7 +478,7 @@ export class ProductTypeComponent implements OnInit {
     }
     else this.filter_1 = this.filter_0;
 
-    // ------------------------------------------------------------------------------------------ Filter 2    
+    // ---------------------------------------------------------------------------------------------- Filter 2    
     if (this.price_chk) {
       // ----------------------------------------------------------------------------------  H i g h      
       if (this.under1000_chk) this.under1000 = this.filter_1.filter((item: any) => item.price < 1000);
@@ -509,34 +509,81 @@ export class ProductTypeComponent implements OnInit {
       if (this.over300_chk) this.over300 = this.filter_1.filter((item: any) => item.price >= 300);
       else this.over300 = [];
 
-      let priceHigh = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
-      let priceLow = this.under100.concat(this.under200.concat(this.under300.concat(this.over300)));
-      this.filter_2 = priceHigh.concat(priceLow);
+      let prices_high = this.under1000.concat(this.under2000.concat(this.under3000.concat(this.under4000.concat(this.over4000))));
+      let prices_low = this.under100.concat(this.under200.concat(this.under300.concat(this.over300)));
+      this.filter_2 = prices_high.concat(prices_low)
     }
     else this.filter_2 = this.filter_1;
 
-    // ------------------------------------------------------------------------------------------ Filter 3
+    // ---------------------------------------------------------------------------------------------- Filter 3
     if (this.brand_chk) {
-      if (this.asus_chk) this.asus = this.filter_2.filter((item: any) => item.brand === CATEGORY.ASUS);
-      else this.asus = [];
-
-      if (this.hp_chk) this.hp = this.filter_2.filter((item: any) => item.brand === CATEGORY.HP);
-      else this.hp = [];
-
       if (this.acer_chk) this.acer = this.filter_2.filter((item: any) => item.brand === CATEGORY.ACER);
       else this.acer = [];
 
-      if (this.lenovo_chk) this.lenovo = this.filter_2.filter((item: any) => item.brand === CATEGORY.LENOVO);
-      else this.lenovo = [];
+      if (this.adata_chk) this.adata = this.filter_2.filter((item: any) => item.brand === CATEGORY.ADATA);
+      else this.adata = [];
+
+      if (this.allview_chk) this.allview = this.filter_2.filter((item: any) => item.brand === CATEGORY.ALLVIEW);
+      else this.allview = [];
 
       if (this.apple_chk) this.apple = this.filter_2.filter((item: any) => item.brand === CATEGORY.APPLE);
       else this.apple = [];
 
-      this.filter_3 = this.asus.concat(this.hp.concat(this.acer.concat(this.lenovo.concat(this.apple))));
+      if (this.asus_chk) this.asus = this.filter_2.filter((item: any) => item.brand === CATEGORY.ASUS);
+      else this.asus = [];
+
+      if (this.dell_chk) this.dell = this.filter_2.filter((item: any) => item.brand === CATEGORY.DELL);
+      else this.dell = [];
+
+      if (this.hama_chk) this.hama = this.filter_2.filter((item: any) => item.brand === CATEGORY.HAMA);
+      else this.hama = [];
+
+      if (this.hp_chk) this.hp = this.filter_2.filter((item: any) => item.brand === CATEGORY.HP);
+      else this.hp = [];
+
+      if (this.iphone_chk) this.iphone = this.filter_2.filter((item: any) => item.brand === CATEGORY.IPHONE);
+      else this.iphone = [];
+
+      if (this.lenovo_chk) this.lenovo = this.filter_2.filter((item: any) => item.brand === CATEGORY.LENOVO);
+      else this.lenovo = [];
+
+      if (this.kingston_chk) this.kingston = this.filter_2.filter((item: any) => item.brand === CATEGORY.KINGSTON);
+      else this.kingston = [];
+
+      if (this.promate_chk) this.promate = this.filter_2.filter((item: any) => item.brand === CATEGORY.PROMATE);
+      else this.promate = [];
+
+      if (this.rivacase_chk) this.rivacase = this.filter_2.filter((item: any) => item.brand === CATEGORY.RIVACASE);
+      else this.rivacase = [];
+
+      if (this.samsonite_chk) this.samsonite = this.filter_2.filter((item: any) => item.brand === CATEGORY.SAMSONITE);
+      else this.samsonite = [];
+
+      if (this.samsung_chk) this.samsung = this.filter_2.filter((item: any) => item.brand === CATEGORY.SAMSUNG);
+      else this.samsung = [];
+
+      if (this.sandisk_chk) this.sandisk = this.filter_2.filter((item: any) => item.brand === CATEGORY.SANDISK);
+      else this.sandisk = [];
+
+      if (this.seagate_chk) this.seagate = this.filter_2.filter((item: any) => item.brand === CATEGORY.SEAGATE);
+      else this.seagate = [];
+
+      if (this.tumi_chk) this.tumi = this.filter_2.filter((item: any) => item.brand === CATEGORY.TUMI);
+      else this.tumi = [];
+
+      if (this.wd_chk) this.wd = this.filter_2.filter((item: any) => item.brand === CATEGORY.WD);
+      else this.wd = [];
+
+      if (this.xtorm_chk) this.xtorm = this.filter_2.filter((item: any) => item.brand === CATEGORY.XTORM);
+      else this.xtorm = [];
+
+      let brand_1 = this.acer.concat(this.adata.concat(this.allview.concat(this.apple.concat(this.asus.concat(this.dell.concat(this.hama.concat(this.hp.concat(this.iphone.concat(this.lenovo)))))))));
+      let brand_2 = this.kingston.concat(this.promate.concat(this.rivacase.concat(this.samsonite.concat(this.samsung.concat(this.sandisk.concat(this.seagate.concat(this.tumi.concat(this.wd.concat(this.xtorm)))))))));
+      this.filter_3 = brand_1.concat(brand_2);
     }
     else this.filter_3 = this.filter_2;
 
-    // ------------------------------------------------------------------------------------------ Filter 4
+    // ---------------------------------------------------------------------------------------------- Filter 4
     if (this.category_chk) {
       if (this.business_chk) this.business = this.filter_3.filter((item: any) => item.category === CATEGORY.LAPTOP_BUSINESS);
       else this.business = [];
@@ -550,16 +597,40 @@ export class ProductTypeComponent implements OnInit {
       if (this.ultra_chk) this.ultra = this.filter_3.filter((item: any) => item.category === CATEGORY.LAPTOP_ULTRA);
       else this.ultra = [];
 
-      this.filter_4 = this.business.concat(this.gaming.concat(this.home.concat(this.ultra)));
+      if (this.briefcase_chk) this.briefcase = this.filter_3.filter((item: any) => item.category === CATEGORY.BRIEFCASE);
+      else this.briefcase = [];
+
+      if (this.sleeve_chk) this.sleeve = this.filter_3.filter((item: any) => item.category === CATEGORY.SLEEVE);
+      else this.sleeve = [];
+
+      if (this.backpack_chk) this.backpack = this.filter_3.filter((item: any) => item.category === CATEGORY.BACKPACK);
+      else this.backpack = [];
+
+      if (this.plug_in_chk) this.plug_in = this.filter_3.filter((item: any) => item.category === CATEGORY.PLUG_IN);
+      else this.plug_in = [];
+
+      if (this.car_chk) this.car = this.filter_3.filter((item: any) => item.category === CATEGORY.CAR);
+      else this.car = [];
+
+      if (this.hdd_chk) this.hdd = this.filter_3.filter((item: any) => item.category === CATEGORY.HDD);
+      else this.hdd = [];
+
+      if (this.ssd_chk) this.ssd = this.filter_3.filter((item: any) => item.category === CATEGORY.SSD);
+      else this.ssd = [];
+
+      let category_1 = this.business.concat(this.gaming.concat(this.home.concat(this.ultra)));
+      let category_2 = this.briefcase.concat(this.sleeve.concat(this.backpack.concat(this.plug_in.concat(this.car.concat(this.hdd.concat(this.ssd))))));
+      this.filter_4 = category_1.concat(category_2);
     }
     else this.filter_4 = this.filter_3;
 
-    // --------------------------------------------------------------------------------------- O u t p u t
+    // ------------------------------------------------------------------------------------------- O u t p u t
     this.products = this.filter_4;
   }
 
   // ============================================================================================ C  O  U  N  T  I  N  G
-
+  // ===================================================================================================================
+  // ===================================================================================================================
   counting() {
     if (this.currentFilterGroup === CATEGORY.AVAILABLE) {
       if (this.available_chk) {
@@ -610,14 +681,33 @@ export class ProductTypeComponent implements OnInit {
     this.under3000_count = this.products.filter((item: any) => item.price >= 2000 && item.price < 3000).length;
     this.under4000_count = this.products.filter((item: any) => item.price >= 3000 && item.price < 4000).length;
     this.over4000_count = this.products.filter((item: any) => item.price >= 4000).length;
+    this.under100_count = this.products.filter((item: any) => item.price < 100).length;
+    this.under200_count = this.products.filter((item: any) => item.price >= 100 && item.price < 200).length;
+    this.under300_count = this.products.filter((item: any) => item.price >= 200 && item.price < 300).length;
+    this.over300_count = this.products.filter((item: any) => item.price >= 300).length;
   }
 
   count_brand() {
-    this.asus_count = this.products.filter((item: any) => item.brand === CATEGORY.ASUS).length;
-    this.hp_count = this.products.filter((item: any) => item.brand === CATEGORY.HP).length;
     this.acer_count = this.products.filter((item: any) => item.brand === CATEGORY.ACER).length;
-    this.lenovo_count = this.products.filter((item: any) => item.brand === CATEGORY.LENOVO).length;
+    this.adata_count = this.products.filter((item: any) => item.brand === CATEGORY.ADATA).length;
+    this.allview_count = this.products.filter((item: any) => item.brand === CATEGORY.ALLVIEW).length;
     this.apple_count = this.products.filter((item: any) => item.brand === CATEGORY.APPLE).length;
+    this.asus_count = this.products.filter((item: any) => item.brand === CATEGORY.ASUS).length;
+    this.dell_count = this.products.filter((item: any) => item.brand === CATEGORY.DELL).length;
+    this.hama_count = this.products.filter((item: any) => item.brand === CATEGORY.HAMA).length;
+    this.hp_count = this.products.filter((item: any) => item.brand === CATEGORY.HP).length;
+    this.iphone_count = this.products.filter((item: any) => item.brand === CATEGORY.IPHONE).length;
+    this.lenovo_count = this.products.filter((item: any) => item.brand === CATEGORY.LENOVO).length;
+    this.kingston_count = this.products.filter((item: any) => item.brand === CATEGORY.KINGSTON).length;
+    this.promate_count = this.products.filter((item: any) => item.brand === CATEGORY.PROMATE).length;
+    this.rivacase_count = this.products.filter((item: any) => item.brand === CATEGORY.RIVACASE).length;
+    this.samsonite_count = this.products.filter((item: any) => item.brand === CATEGORY.SAMSONITE).length;
+    this.samsung_count = this.products.filter((item: any) => item.brand === CATEGORY.SAMSUNG).length;
+    this.sandisk_count = this.products.filter((item: any) => item.brand === CATEGORY.SANDISK).length;
+    this.seagate_count = this.products.filter((item: any) => item.brand === CATEGORY.SEAGATE).length;
+    this.tumi_count = this.products.filter((item: any) => item.brand === CATEGORY.TUMI).length;
+    this.wd_count = this.products.filter((item: any) => item.brand === CATEGORY.WD).length;
+    this.xtorm_count = this.products.filter((item: any) => item.brand === CATEGORY.XTORM).length;
   }
 
   count_category() {
@@ -625,6 +715,13 @@ export class ProductTypeComponent implements OnInit {
     this.gaming_count = this.products.filter((item: any) => item.category === CATEGORY.LAPTOP_GAMING).length;
     this.home_count = this.products.filter((item: any) => item.category === CATEGORY.LAPTOP_HOME).length;
     this.ultra_count = this.products.filter((item: any) => item.category === CATEGORY.LAPTOP_ULTRA).length;
+    this.briefcase_count = this.products.filter((item: any) => item.category === CATEGORY.BRIEFCASE).length;
+    this.sleeve_count = this.products.filter((item: any) => item.category === CATEGORY.SLEEVE).length;
+    this.backpack_count = this.products.filter((item: any) => item.category === CATEGORY.BACKPACK).length;
+    this.plug_in_count = this.products.filter((item: any) => item.category === CATEGORY.PLUG_IN).length;
+    this.car_count = this.products.filter((item: any) => item.category === CATEGORY.CAR).length;
+    this.hdd_count = this.products.filter((item: any) => item.category === CATEGORY.HDD).length;
+    this.ssd_count = this.products.filter((item: any) => item.category === CATEGORY.SSD).length;
   }
 
   // ==================================================================================================   C O U N T  O R D E R
@@ -637,19 +734,44 @@ export class ProductTypeComponent implements OnInit {
     this.under3000_count = this.filter_1.filter((item: any) => item.price >= 2000 && item.price < 3000).length;
     this.under4000_count = this.filter_1.filter((item: any) => item.price >= 3000 && item.price < 4000).length;
     this.over4000_count = this.filter_1.filter((item: any) => item.price >= 4000).length;
+    this.under100_count = this.filter_1.filter((item: any) => item.price < 100).length;
+    this.under200_count = this.filter_1.filter((item: any) => item.price >= 100 && item.price < 200).length;
+    this.under300_count = this.filter_1.filter((item: any) => item.price >= 200 && item.price < 300).length;
+    this.over300_count = this.filter_1.filter((item: any) => item.price >= 300).length;
 
-    this.asus_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.ASUS).length;
-    this.hp_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.HP).length;
     this.acer_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.ACER).length;
-    this.lenovo_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.LENOVO).length;
+    this.adata_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.ADATA).length;
+    this.allview_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.ALLVIEW).length;
     this.apple_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.APPLE).length;
+    this.asus_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.ASUS).length;
+    this.dell_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.DELL).length;
+    this.hama_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.HAMA).length;
+    this.hp_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.HP).length;
+    this.iphone_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.IPHONE).length;
+    this.lenovo_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.LENOVO).length;
+    this.kingston_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.KINGSTON).length;
+    this.promate_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.PROMATE).length;
+    this.rivacase_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.RIVACASE).length;
+    this.samsonite_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.SAMSONITE).length;
+    this.samsung_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.SAMSUNG).length;
+    this.sandisk_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.SANDISK).length;
+    this.seagate_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.SEAGATE).length;
+    this.tumi_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.TUMI).length;
+    this.wd_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.WD).length;
+    this.xtorm_count = this.filter_2.filter((item: any) => item.brand === CATEGORY.XTORM).length;
 
     this.business_count = this.filter_3.filter((item: any) => item.category === CATEGORY.LAPTOP_BUSINESS).length;
     this.gaming_count = this.filter_3.filter((item: any) => item.category === CATEGORY.LAPTOP_GAMING).length;
     this.home_count = this.filter_3.filter((item: any) => item.category === CATEGORY.LAPTOP_HOME).length;
     this.ultra_count = this.filter_3.filter((item: any) => item.category === CATEGORY.LAPTOP_ULTRA).length;
+    this.briefcase_count = this.filter_3.filter((item: any) => item.category === CATEGORY.BRIEFCASE).length;
+    this.sleeve_count = this.filter_3.filter((item: any) => item.category === CATEGORY.SLEEVE).length;
+    this.backpack_count = this.filter_3.filter((item: any) => item.category === CATEGORY.BACKPACK).length;
+    this.plug_in_count = this.filter_3.filter((item: any) => item.category === CATEGORY.PLUG_IN).length;
+    this.car_count = this.filter_3.filter((item: any) => item.category === CATEGORY.CAR).length;
+    this.hdd_count = this.filter_3.filter((item: any) => item.category === CATEGORY.HDD).length;
+    this.ssd_count = this.filter_3.filter((item: any) => item.category === CATEGORY.SSD).length;
   }
-
 
   // ==================================================================================================   C O U N T  R E S E T
   count_reset() {
@@ -661,17 +783,43 @@ export class ProductTypeComponent implements OnInit {
     this.under3000_count = this.filter_0.filter((item: any) => item.price >= 2000 && item.price < 3000).length;
     this.under4000_count = this.filter_0.filter((item: any) => item.price >= 3000 && item.price < 4000).length;
     this.over4000_count = this.filter_0.filter((item: any) => item.price >= 4000).length;
+    this.under100_count = this.filter_0.filter((item: any) => item.price < 100).length;
+    this.under200_count = this.filter_0.filter((item: any) => item.price >= 100 && item.price < 200).length;
+    this.under300_count = this.filter_0.filter((item: any) => item.price >= 200 && item.price < 300).length;
+    this.over300_count = this.filter_0.filter((item: any) => item.price >= 300).length;
 
-    this.asus_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.ASUS).length;
-    this.hp_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.HP).length;
     this.acer_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.ACER).length;
-    this.lenovo_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.LENOVO).length;
+    this.adata_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.ADATA).length;
+    this.allview_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.ALLVIEW).length;
     this.apple_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.APPLE).length;
+    this.asus_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.ASUS).length;
+    this.dell_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.DELL).length;
+    this.hama_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.HAMA).length;
+    this.hp_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.HP).length;
+    this.iphone_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.IPHONE).length;
+    this.lenovo_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.LENOVO).length;
+    this.kingston_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.KINGSTON).length;
+    this.promate_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.PROMATE).length;
+    this.rivacase_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.RIVACASE).length;
+    this.samsonite_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.SAMSONITE).length;
+    this.samsung_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.SAMSUNG).length;
+    this.sandisk_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.SANDISK).length;
+    this.seagate_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.SEAGATE).length;
+    this.tumi_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.TUMI).length;
+    this.wd_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.WD).length;
+    this.xtorm_count = this.filter_0.filter((item: any) => item.brand === CATEGORY.XTORM).length;
 
     this.business_count = this.filter_0.filter((item: any) => item.category === CATEGORY.LAPTOP_BUSINESS).length;
     this.gaming_count = this.filter_0.filter((item: any) => item.category === CATEGORY.LAPTOP_GAMING).length;
     this.home_count = this.filter_0.filter((item: any) => item.category === CATEGORY.LAPTOP_HOME).length;
     this.ultra_count = this.filter_0.filter((item: any) => item.category === CATEGORY.LAPTOP_ULTRA).length;
+    this.briefcase_count = this.filter_0.filter((item: any) => item.category === CATEGORY.BRIEFCASE).length;
+    this.sleeve_count = this.filter_0.filter((item: any) => item.category === CATEGORY.SLEEVE).length;
+    this.backpack_count = this.filter_0.filter((item: any) => item.category === CATEGORY.BACKPACK).length;
+    this.plug_in_count = this.filter_0.filter((item: any) => item.category === CATEGORY.PLUG_IN).length;
+    this.car_count = this.filter_0.filter((item: any) => item.category === CATEGORY.CAR).length;
+    this.hdd_count = this.filter_0.filter((item: any) => item.category === CATEGORY.HDD).length;
+    this.ssd_count = this.filter_0.filter((item: any) => item.category === CATEGORY.SSD).length;
   }
 
 }

@@ -60,6 +60,27 @@
                             (change)="onClick($event)">
                         <label for="15">Peste 4000 ({{over4000_count}})</label>
                     </div>
+
+                    <div class="filter-group" *ngIf="under100_count">
+                        <input type="checkbox" id="16" name="UNDER100" value="PRICE" [(ngModel)]="under100_chk"
+                            (change)="onClick($event)">
+                        <label for="16">Sub 100 ({{under100_count}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="under200_count">
+                        <input type="checkbox" id="17" name="UNDER200" value="PRICE" [(ngModel)]="under200_chk"
+                            (change)="onClick($event)">
+                        <label for="17">100 - 200 ({{under200_count}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="under300_count">
+                        <input type="checkbox" id="18" name="UNDER300" value="PRICE" [(ngModel)]="under300_chk"
+                            (change)="onClick($event)">
+                        <label for="18">200 - 300 ({{under300_count}})</label>
+                    </div>
+                    <div class="filter-group" *ngIf="over300_count">
+                        <input type="checkbox" id="19" name="OVER300" value="PRICE" [(ngModel)]="over300_chk"
+                            (change)="onClick($event)">
+                        <label for="19">Peste 100 ({{over300_count}})</label>
+                    </div>
                 </div>
 
                 <!-- brand filter --------------------------------------------------------------- -->

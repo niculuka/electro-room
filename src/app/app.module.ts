@@ -166,7 +166,7 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     SearchComponent,
     InfoBlockComponent,
     ProductCarouselComponent,
-    BreadcrumbComponent,       
+    BreadcrumbComponent,          
   ],
   imports: [
     BrowserModule,
