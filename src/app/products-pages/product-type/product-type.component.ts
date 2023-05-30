@@ -206,6 +206,7 @@ export class ProductTypeComponent implements OnInit {
 
 
   // L A P T O P S - Vars ---------------------------------------------------
+  // ------------------------------------------------------------------------
   protected products: Array<Product> = [];
   product: Product = new Product();
 
@@ -221,10 +222,10 @@ export class ProductTypeComponent implements OnInit {
   protected filter_3: Array<Product> = [];
   protected filter_4: Array<Product> = [];
 
-  // ------------------------------------------------------------------------------------------ 
   products_sorting: string = "bestSold";
   favorite: boolean = false;
 
+  // ------------------------------------------------------------------------
   departments: Array<Department> = DEPARTMENTS;
   cards: Array<any> = [];
 
@@ -233,6 +234,7 @@ export class ProductTypeComponent implements OnInit {
 
   notFoundProduct: boolean = true;
 
+  // ------------------------------------------------------------------------
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -302,9 +304,9 @@ export class ProductTypeComponent implements OnInit {
     this.router.navigateByUrl('/cart');
   }
 
-  // =============================================================================== S O R T I N G 
-  // =============================================================================================
-  // =============================================================================================
+  // =================================================================================================== S O R T I N G 
+  // =================================================================================================================
+  // =================================================================================================================
   sorting() {
     if (this.products_sorting === "name") this.name_alphabetic();
     if (this.products_sorting === "lowToHigh") this.price_ascending();
@@ -335,9 +337,9 @@ export class ProductTypeComponent implements OnInit {
     this.products = this.products.sort((a: any, b: any) => a.id - b.id);
   }
 
-  // ========================================================================  F  I  L  T  E  R  S
-  // =============================================================================================
-  // =============================================================================================
+  // ===============================================================================================  F  I  L  T  E  R  S
+  // ====================================================================================================================
+  // ====================================================================================================================
 
   // ========================================================================================= Close Filters  -  ONE BY ONE
   filters_close(filterName: any) {
@@ -821,5 +823,6 @@ export class ProductTypeComponent implements OnInit {
     this.hdd_count = this.filter_0.filter((item: any) => item.category === CATEGORY.HDD).length;
     this.ssd_count = this.filter_0.filter((item: any) => item.category === CATEGORY.SSD).length;
   }
+
 
 }
