@@ -1,0 +1,143 @@
+<form #f="ngForm" (ngSubmit)="f.form.valid && updateProduct()">
+
+    <div class="form-group-dialog">
+        <label for="id">Id: {{product.id}}</label>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+        <label for="name">Nume</label>
+        <input type="text" name="name" [(ngModel)]="product.name" #name="ngModel" minlength="1" maxlength="100"
+            required>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!name.valid && f.submitted">Camp gol!</div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+        <label for="description">Description</label>
+        <input type="text" name="description" [(ngModel)]="product.description" #description="ngModel" minlength="1"
+            maxlength="200" required>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!description.valid && f.submitted">Camp gol!</div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+        <label for="brand">Brand</label>
+        <select name="brand" #brandSelect [(ngModel)]="product.brand">
+            <option value="ACER">ACER</option>
+            <option value="ADATA">ADATA</option>
+            <option value="ALLVIEW">ALLVIEW</option>
+            <option value="APPLE">APPLE</option>
+            <option value="ASUS">ASUS</option>
+            <option value="DELL">DELL</option>
+            <option value="HAMA">HAMA</option>
+            <option value="HP">HP</option>
+            <option value="IPHONE">IPHONE</option>
+            <option value="LENOVO">LENOVO</option>
+            <option value="KINGSTON">KINGSTON</option>
+            <option value="PROMATE">PROMATE</option>
+            <option value="RIVACASE">RIVACASE</option>
+            <option value="SAMSONITE">SAMSONITE</option>
+            <option value="SAMSUNG">SAMSUNG</option>
+            <option value="SANDISK">SANDISK</option>
+            <option value="SEAGATE">SEAGATE</option>
+            <option value="TUMI">TUMI</option>
+            <option value="WD">WD</option>
+            <option value="XTORM">XTORM</option>
+
+        </select>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+        <label for="category">Category</label>
+        <select class="select-box" name="category" #categorySelect [(ngModel)]="product.category">
+            <option value="LAPTOP_BUSINESS">LAPTOP_BUSINESS</option>
+            <option value="LAPTOP_GAMING">LAPTOP_GAMING</option>
+            <option value="LAPTOP_HOME">LAPTOP_HOME</option>
+            <option value="LAPTOP_ULTRA">LAPTOP_ULTRA</option>
+            <option value="BRIEFCASE">BRIEFCASE</option>
+            <option value="SLEEVE">SLEEVE</option>
+            <option value="BACKPACK">BACKPACK</option>
+            <option value="CAR">CAR</option>
+            <option value="PLUG_IN">PLUG_IN</option>
+            <option value="HDD">HDD</option>
+            <option value="SSD">SSD</option>
+        </select>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+
+        <li class="dropdown">
+            <label for="image">Image: </label>
+
+            <!-- SELECT image -->
+            <div class="select-line" (click)="toggleDropdownMenu()">
+                <input type="text" name="src" [(ngModel)]="product.image">
+                <mat-icon>expand_more</mat-icon>
+            </div>
+
+            <!-- VIEW gallery -->
+            <div class="dropdown-menu" [style]="isDropdownMenuOpen">
+                <div class="list-option" *ngFor="let image of productImages;" (click)="getImage(image)">
+                    <img [src]="image.image" [alt]="image.alt">
+                    <span>{{image.alt}}</span>
+                </div>
+            </div>
+        </li>
+
+        <!-- DISPLAY image -->
+        <div class="image-display">
+            <img class="image" [src]="product.image" [alt]="product.alt">
+        </div>
+
+        <!--  -->
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+        <label for="available">Available</label>
+        <select name="available" #availableSelect [(ngModel)]="product.available">
+            <option value="STOCK">STOCK</option>
+            <option value="DEPOSIT">DEPOSIT</option>
+        </select>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+        <label for="badge">Badge</label>
+        <select name="badge" #alertSelect [(ngModel)]="product.badge">
+            <option value="TOP_FAVORITE">TOP_FAVORITE</option>
+            <option value="SUPER_PRICE">SUPER_PRICE</option>
+        </select>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog"></div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+        <label for="price">Price</label>
+        <input type="number" name="price" [(ngModel)]="product.price" #price="ngModel" min="0.1" max="1000000" required>
+        <div class="alert-container-dialog">
+            <div class="alert-dialog" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
+        </div>
+    </div>
+
+    <div class="form-group-dialog">
+        <button class="btn-submit" type="submit">Submit</button>
+    </div>
+
+</form>

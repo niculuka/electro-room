@@ -22,20 +22,14 @@ import { HelpDeskComponent } from './guest/help-desk/help-desk.component';
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 
 // a d m i n
-import { AdminLaptopComponent } from './admin/admin-laptop/admin-laptop.component';
-import { AdminLaptopBagComponent } from './admin/admin-laptop-bag/admin-laptop-bag.component';
-import { AdminLaptopChargerComponent } from './admin/admin-laptop-charger/admin-laptop-charger.component';
-import { AdminLaptopHardComponent } from './admin/admin-laptop-hard/admin-laptop-hard.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
 import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 
 // a d m i n - D E M O
-import { AdminDemoLaptopComponent } from './admin-demo/admin-demo-laptop/admin-demo-laptop.component';
-import { AdminDemoBagComponent } from './admin-demo/admin-demo-bag/admin-demo-bag.component';
-import { AdminDemoChargerComponent } from './admin-demo/admin-demo-charger/admin-demo-charger.component';
-import { AdminDemoHardComponent } from './admin-demo/admin-demo-hard/admin-demo-hard.component';
+import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
@@ -64,21 +58,14 @@ const routes: Routes = [
   { path: "auth/login", component: LoginComponent },
 
   // admin  
-  { path: "admin/laptops", component: AdminLaptopComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/laptop-bags", component: AdminLaptopBagComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/laptop-chargers", component: AdminLaptopChargerComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/laptop-hards", component: AdminLaptopHardComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-
+  { path: "admin/products/:product", component: AdminProductComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/electro-orders", component: AdminOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/electro-items", component: AdminItemComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/users", component: AdminUserComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/tokens", component: AdminTokenComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
 
   // admin - D E M O
-  { path: "admin/demo/laptops", component: AdminDemoLaptopComponent },
-  { path: "admin/demo/bags", component: AdminDemoBagComponent },
-  { path: "admin/demo/chargers", component: AdminDemoChargerComponent },
-  { path: "admin/demo/hards", component: AdminDemoHardComponent },
+  { path: "admin/demo/laptops", component: AdminDemoProductComponent },
   { path: "admin/demo/electro-orders", component: AdminDemoOrderComponent },
   { path: "admin/demo/users", component: AdminDemoUserComponent },
 
@@ -117,7 +104,7 @@ const routes: Routes = [
         { label: '{{customType}}', url: '' }
       ]
     },
-  }, 
+  },
   {
     path: "lpt/:level/:type/:linkName", component: ProductDetailComponent, data: {
       breadcrumb: [

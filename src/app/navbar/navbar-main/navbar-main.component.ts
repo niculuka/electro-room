@@ -27,9 +27,6 @@ export class NavbarMainComponent implements OnInit {
   link: string = "";
   currentLink: string = "";
 
-  findLaptops: Array<Product> = [];
-  findBags: Array<Product> = [];
-  findAll: Array<any> = [];
   searchTerm: any = "";
 
   product: Product = new Product();
@@ -113,7 +110,7 @@ export class NavbarMainComponent implements OnInit {
     if (term) {
       this.router.navigate(["/search/" + term]);
     };
-  }  
+  }
 
   getProductLinkName(cartItem: CartItem) {
     if (cartItem.product.category.startsWith("LAPTOP")) {
@@ -137,7 +134,7 @@ export class NavbarMainComponent implements OnInit {
   removeFromCart(cartItem: CartItem) {
     let name: any = cartItem.product.name;
     this.cartService.removeFromCartService(name);
-  }  
+  }
 
   goToFavorites() {
     this.toastrService.warning("C O N S T R U C T I O N", "U N D E R")

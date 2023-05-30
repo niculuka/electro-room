@@ -24,18 +24,9 @@ import { DialogOrderDeleteComponent } from './dialogs/dialog-order-delete/dialog
 import { DialogItemDeleteComponent } from './dialogs/dialog-item-delete/dialog-item-delete.component';
 import { DialogUserDeleteComponent } from './dialogs/dialog-user-delete/dialog-user-delete.component';
 import { DialogTokenDeleteComponent } from './dialogs/dialog-token-delete/dialog-token-delete.component';
-import { DialogLaptopCreateComponent } from './dialogs/dialog-laptop-create/dialog-laptop-create.component';
-import { DialogLaptopUpdateComponent } from './dialogs/dialog-laptop-update/dialog-laptop-update.component';
-import { DialogLaptopDeleteComponent } from './dialogs/dialog-laptop-delete/dialog-laptop-delete.component';
-import { DialogLaptopBagCreateComponent } from './dialogs/dialog-laptop-bag-create/dialog-laptop-bag-create.component';
-import { DialogLaptopBagUpdateComponent } from './dialogs/dialog-laptop-bag-update/dialog-laptop-bag-update.component';
-import { DialogLaptopBagDeleteComponent } from './dialogs/dialog-laptop-bag-delete/dialog-laptop-bag-delete.component';
-import { DialogLaptopChargerCreateComponent } from './dialogs/dialog-laptop-charger-create/dialog-laptop-charger-create.component';
-import { DialogLaptopChargerUpdateComponent } from './dialogs/dialog-laptop-charger-update/dialog-laptop-charger-update.component';
-import { DialogLaptopChargerDeleteComponent } from './dialogs/dialog-laptop-charger-delete/dialog-laptop-charger-delete.component';
-import { DialogLaptopHardCreateComponent } from './dialogs/dialog-laptop-hard-create/dialog-laptop-hard-create.component';
-import { DialogLaptopHardUpdateComponent } from './dialogs/dialog-laptop-hard-update/dialog-laptop-hard-update.component';
-import { DialogLaptopHardDeleteComponent } from './dialogs/dialog-laptop-hard-delete/dialog-laptop-hard-delete.component';
+import { DialogProductCreateComponent } from './dialogs/dialog-product-create/dialog-product-create.component';
+import { DialogProductUpdateComponent } from './dialogs/dialog-product-update/dialog-product-update.component';
+import { DialogProductDeleteComponent } from './dialogs/dialog-product-delete/dialog-product-delete.component';
 
 // p a g e s
 import { RegisterComponent } from './guest/register/register.component';
@@ -65,20 +56,14 @@ import { CarouselAuxComponent } from './navbar/carousel-aux/carousel-aux.compone
 import { FooterComponent } from './guest/footer/footer.component';
 
 // a d m i n
-import { AdminLaptopComponent } from './admin/admin-laptop/admin-laptop.component';
-import { AdminLaptopBagComponent } from './admin/admin-laptop-bag/admin-laptop-bag.component';
-import { AdminLaptopChargerComponent } from './admin/admin-laptop-charger/admin-laptop-charger.component';
-import { AdminLaptopHardComponent } from './admin/admin-laptop-hard/admin-laptop-hard.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
 import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 
 // a d m i n - D E M O
-import { AdminDemoLaptopComponent } from './admin-demo/admin-demo-laptop/admin-demo-laptop.component';
-import { AdminDemoBagComponent } from './admin-demo/admin-demo-bag/admin-demo-bag.component';
-import { AdminDemoChargerComponent } from './admin-demo/admin-demo-charger/admin-demo-charger.component';
-import { AdminDemoHardComponent } from './admin-demo/admin-demo-hard/admin-demo-hard.component';
+import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
@@ -105,18 +90,9 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     DialogItemDeleteComponent,
     DialogUserDeleteComponent,
     DialogTokenDeleteComponent,
-    DialogLaptopCreateComponent,
-    DialogLaptopUpdateComponent,
-    DialogLaptopDeleteComponent,
-    DialogLaptopBagCreateComponent,
-    DialogLaptopBagUpdateComponent,
-    DialogLaptopBagDeleteComponent,
-    DialogLaptopChargerCreateComponent,
-    DialogLaptopChargerUpdateComponent,
-    DialogLaptopChargerDeleteComponent,
-    DialogLaptopHardCreateComponent,
-    DialogLaptopHardUpdateComponent,
-    DialogLaptopHardDeleteComponent,
+    DialogProductCreateComponent,
+    DialogProductUpdateComponent,
+    DialogProductDeleteComponent,
 
     HomeComponent,
     LoginComponent,
@@ -142,19 +118,13 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     CarouselAuxComponent,
     FooterComponent,
 
-    AdminLaptopComponent,
-    AdminLaptopBagComponent,
-    AdminLaptopChargerComponent,
-    AdminLaptopHardComponent,
+    AdminProductComponent,
     AdminOrderComponent,
     AdminItemComponent,
     AdminTokenComponent,
     AdminUserComponent,
 
-    AdminDemoLaptopComponent,
-    AdminDemoBagComponent,
-    AdminDemoChargerComponent,
-    AdminDemoHardComponent,
+    AdminDemoProductComponent,
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
 
@@ -166,7 +136,7 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     SearchComponent,
     InfoBlockComponent,
     ProductCarouselComponent,
-    BreadcrumbComponent,      
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,
