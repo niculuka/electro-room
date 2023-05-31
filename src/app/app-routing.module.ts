@@ -23,6 +23,8 @@ import { UnderConstructionComponent } from './guest/under-construction/under-con
 
 // a d m i n
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
+import { AdminProductUpdateComponent } from './admin/admin-product-update/admin-product-update.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
@@ -59,6 +61,8 @@ const routes: Routes = [
 
   // admin  
   { path: "admin/products/:product", component: AdminProductComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/product/create", component: AdminProductCreateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/product/update/:linkname", component: AdminProductUpdateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/electro-orders", component: AdminOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/electro-items", component: AdminItemComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/users", component: AdminUserComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },

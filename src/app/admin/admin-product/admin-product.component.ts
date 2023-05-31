@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DialogProductCreateComponent } from 'src/app/dialogs/dialog-product-create/dialog-product-create.component';
 import { DialogProductDeleteComponent } from 'src/app/dialogs/dialog-product-delete/dialog-product-delete.component';
-import { DialogProductUpdateComponent } from 'src/app/dialogs/dialog-product-update/dialog-product-update.component';
 import { Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 
@@ -53,27 +51,12 @@ export class AdminProductComponent implements OnInit {
     ]);
   }
 
-  createProductDialog() {
-    const create = this.matDialog.open(DialogProductCreateComponent);
-    create.afterClosed().subscribe({
-      next: result => {
-        if (result === "true") {
-          this.toastrService.success("Created Product!")
-        }
-      },
-      error: error => {
-        this.toastrService.warning("Could not create Product!")
-      }
-    })
+  createProduct() {
+    this.router.navigate(['/admin/product/create']);
   }
 
-  updateProductDialog(product: Product) {
-    const update = this.matDialog.open(DialogProductUpdateComponent, { data: product });
-    update.afterClosed().subscribe(result => {
-      if (result !== "true") {
-        window.location.reload();
-      }
-    })
+  updateProduct(product: Product) {
+    this.router.navigate(['/admin/product/update/' + product.linkName]);
   }
 
   deleteProductDialog(product: Product) {

@@ -9,10 +9,10 @@ import { AdminProductComponent } from 'src/app/admin/admin-product/admin-product
 })
 export class DialogProductDeleteComponent {
 
-  laptop: any;
+  product: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: AdminProductComponent) {
-    this.laptop = data;
+    this.product = data;
   }
 
 }

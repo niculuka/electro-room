@@ -24,8 +24,6 @@ import { DialogOrderDeleteComponent } from './dialogs/dialog-order-delete/dialog
 import { DialogItemDeleteComponent } from './dialogs/dialog-item-delete/dialog-item-delete.component';
 import { DialogUserDeleteComponent } from './dialogs/dialog-user-delete/dialog-user-delete.component';
 import { DialogTokenDeleteComponent } from './dialogs/dialog-token-delete/dialog-token-delete.component';
-import { DialogProductCreateComponent } from './dialogs/dialog-product-create/dialog-product-create.component';
-import { DialogProductUpdateComponent } from './dialogs/dialog-product-update/dialog-product-update.component';
 import { DialogProductDeleteComponent } from './dialogs/dialog-product-delete/dialog-product-delete.component';
 
 // p a g e s
@@ -57,6 +55,8 @@ import { FooterComponent } from './guest/footer/footer.component';
 
 // a d m i n
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
+import { AdminProductUpdateComponent } from './admin/admin-product-update/admin-product-update.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
 import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
@@ -90,8 +90,6 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     DialogItemDeleteComponent,
     DialogUserDeleteComponent,
     DialogTokenDeleteComponent,
-    DialogProductCreateComponent,
-    DialogProductUpdateComponent,
     DialogProductDeleteComponent,
 
     HomeComponent,
@@ -119,6 +117,8 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     FooterComponent,
 
     AdminProductComponent,
+    AdminProductCreateComponent,
+    AdminProductUpdateComponent,
     AdminOrderComponent,
     AdminItemComponent,
     AdminTokenComponent,
@@ -136,7 +136,7 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     SearchComponent,
     InfoBlockComponent,
     ProductCarouselComponent,
-    BreadcrumbComponent,
+    BreadcrumbComponent,        
   ],
   imports: [
     BrowserModule,

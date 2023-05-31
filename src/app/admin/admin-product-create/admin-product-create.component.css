@@ -1,15 +1,21 @@
+.my-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    /* border: 2px solid black;  */
+}
+
 form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    width: 400px;
-    /* border: 2px solid black; */
+    width: 1500px;
+    border: 2px solid black;
 }
 
 .form-group-dialog {
-    width: 90%;
     display: flex;
     flex-direction: column;
 }
@@ -42,7 +48,7 @@ select:focus {
 
 /* ========================================================================= */
 
-.dropdown {
+.dropdown-dialog {
     display: inline-block;
     position: relative;
     cursor: pointer;
@@ -60,7 +66,7 @@ select:focus {
     outline: 1px solid grey;
 }
 
-.dropdown input {
+.dropdown-dialog input {
     width: 100%;
     font-size: 14px;
     line-height: 14px;
@@ -69,11 +75,11 @@ select:focus {
     /* border: 1px solid grey; */
 }
 
-.dropdown input:focus {
+.dropdown-dialog input:focus {
     outline: none;
 }
 
-.dropdown mat-icon {
+.dropdown-dialog mat-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +87,7 @@ select:focus {
     /* border: 1px solid grey; */
 }
 
-.dropdown-menu {
+.dropdown-menu-dialog {
     display: none;
     position: absolute;
     overflow-y: scroll;
@@ -94,25 +100,26 @@ select:focus {
     z-index: 2;
 }
 
-.dropdown-menu .list-option {
+.dropdown-menu-dialog .list-option {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.dropdown-menu img {
+.dropdown-menu-dialog img {
     width: 30px;
     height: 30px;
     margin: 2px 10px 2px 6px;
+    border-radius: 50%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu-dialog a:hover {
     background: rgb(232, 232, 232);
 }
 
 
-.dropdown-menu button {
+.dropdown-menu-dialog button {
     color: white;
     padding: 10px;
     border-radius: 6px;
@@ -153,7 +160,7 @@ select:focus {
     font-size: 14px;
 }
 
-.btn-submit {
+.btn-create {
     color: white;
     cursor: pointer;
     font-size: 20px;
@@ -166,7 +173,7 @@ select:focus {
     background: rgb(79, 190, 4);
 }
 
-.btn-submit:hover {
+.btn-create:hover {
     color: black;
 }
 
@@ -197,16 +204,21 @@ select:focus {
         padding: 4px;
     }
 
-    .dropdown span {
+    .dropdown-dialog span {
         font-size: 12px;
         padding: 4px;
     }
 
-    .dropdown-menu {
+    .dropdown-menu-dialog {
         height: 150px;
     }
 
-    .dropdown input {
+    .alert-container-dialog {
+        min-height: 14px;
+        line-height: 14px;
+    }
+
+    .dropdown-dialog input {
         font-size: 12px;
         line-height: 12px;
     }
@@ -216,16 +228,11 @@ select:focus {
         line-height: 12px;
     }
 
-    .alert-container-dialog {
-        min-height: 14px;
-        line-height: 14px;
-    }
-
     .alert-dialog {
         font-size: 12px;
     }
 
-    .btn-submit {
+    .btn-create {
         font-size: 16px;
         margin: 10px 0;
     }

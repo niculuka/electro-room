@@ -1,20 +1,23 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AdminProductComponent } from 'src/app/admin/admin-product/admin-product.component';
-import { ProductImages, LAPTOP_IMAGES, LAPTOP_BAG_IMAGES, LAPTOP_CHARGER_IMAGES, LAPTOP_HARD_IMAGES }
-  from 'src/app/shared/data/product-images.data';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LAPTOP_BAG_IMAGES, LAPTOP_CHARGER_IMAGES, LAPTOP_HARD_IMAGES, LAPTOP_IMAGES, ProductImages } from 'src/app/shared/data/product-images.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
-  selector: 'app-dialog-product-update',
-  templateUrl: './dialog-product-update.component.html',
-  styleUrls: ['./dialog-product-update.component.css']
+  selector: 'app-admin-product-update',
+  templateUrl: './admin-product-update.component.html',
+  styleUrls: ['./admin-product-update.component.css']
 })
-export class DialogProductUpdateComponent implements OnInit {
+export class AdminProductUpdateComponent implements OnInit {
 
+  isDesktopMenuOpen = false;
+  isCarouselOpen = true;
+
+  protected product: Product = new Product();
   protected productImages: Array<ProductImages> = [];
-  product: any;
 
   errorMessage: string = "";
 
@@ -22,14 +25,19 @@ export class DialogProductUpdateComponent implements OnInit {
   isDropdownMenuOpen: string = "display: none;";
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private adminProductService: AdminProductService,
-    @Inject(MAT_DIALOG_DATA) private data: AdminProductComponent,
-  ) {
-    this.product = data;
-    // console.log(this.product)
-  }
+    private productService: ProductService,
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      let linkname = params.get('linkname') || "";
+      this.productService.getProductByNameService(linkname).subscribe(data => {
+        this.product = data;
+      });
+    });
+
     this.setImageGallery();
   }
 
@@ -73,9 +81,6 @@ export class DialogProductUpdateComponent implements OnInit {
 
   getImage(image: ProductImages) {
     this.product.image = image.image;
-    this.product.src2 = image.src2;
-    this.product.src3 = image.src3;
-    this.product.src4 = image.src4;
     this.product.alt = image.image.substring(15);
     this.handleDropdownMenu = false;
     this.checkConditions();
@@ -88,4 +93,5 @@ export class DialogProductUpdateComponent implements OnInit {
       this.isDropdownMenuOpen = "display: none;"
     }
   }
+
 }
