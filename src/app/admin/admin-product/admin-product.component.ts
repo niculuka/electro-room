@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DialogProductDeleteComponent } from 'src/app/dialogs/dialog-product-delete/dialog-product-delete.component';
 import { Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-admin-product',
@@ -23,6 +24,7 @@ export class AdminProductComponent implements OnInit {
   currentLevel: string = "";
 
   constructor(
+    private productService: ProductService,
     private adminProductService: AdminProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -33,7 +35,7 @@ export class AdminProductComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.currentLevel = params.get('product') || "";
-      this.adminProductService.getProductsByLevelService(this.currentLevel).subscribe(data => {
+      this.productService.getProductsByLevelService(this.currentLevel).subscribe(data => {
         this.products = data;
       });
     });

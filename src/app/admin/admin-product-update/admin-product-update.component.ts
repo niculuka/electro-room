@@ -17,7 +17,7 @@ export class AdminProductUpdateComponent implements OnInit {
   isCarouselOpen = true;
 
   protected product: Product = new Product();
-  protected productImages: Array<ProductImages> = [];
+  protected productImages: Array<ProductImages> = LAPTOP_IMAGES;
 
   errorMessage: string = "";
 
@@ -35,10 +35,9 @@ export class AdminProductUpdateComponent implements OnInit {
       let linkname = params.get('linkname') || "";
       this.productService.getProductByNameService(linkname).subscribe(data => {
         this.product = data;
+        this.setImageGallery();
       });
-    });
-
-    this.setImageGallery();
+    });    
   }
 
   updateProduct() {
@@ -81,7 +80,6 @@ export class AdminProductUpdateComponent implements OnInit {
 
   getImage(image: ProductImages) {
     this.product.image = image.image;
-    this.product.alt = image.image.substring(15);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

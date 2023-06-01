@@ -18,15 +18,7 @@ export class AdminProductService extends BearerService {
     http: HttpClient
   ) {
     super(authService, http);
-  }
-
-  getProductsByLevelService(level: string): Observable<any> {
-    return this.http.get<Product>(ADMIN_URL + "/level/" + level, { headers: this.getHeaders });
-  }
-
-  // getProductByIdService(product: Product): Observable<any> {
-  //   return this.http.get(`${ADMIN_URL}/${product.id}`, { headers: this.getHeaders })
-  // }
+  }  
 
   createProductService(product: Product): Observable<any> {
     return this.http.post(ADMIN_URL, product, { headers: this.getHeaders });

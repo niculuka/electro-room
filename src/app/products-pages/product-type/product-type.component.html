@@ -271,7 +271,7 @@
                 <div class="products-header">
                     <h1>{{currentType}}</h1>
 
-                    <!-- <div class="filters">
+                    <div class="filters">
                         <div class="filterName">
                             <label *ngFor="let item of filterNames" (click)="filters_close(item)">
                                 {{item.name.toLowerCase()}}
@@ -281,7 +281,7 @@
                                 <strong>sterge tot</strong>
                             </h4>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="categorySelect">
                         <label for="categorySelect">Sorteaza dupa: </label>
@@ -303,7 +303,7 @@
                         </mat-icon>
 
                         <a [routerLink]="item.linkName">
-                            <img [src]="item.image" [alt]="item.alt" />
+                            <img [src]="item.image" [alt]="item.image" />
                             <span style="background: rgb(0, 154, 230)">
                                 {{item.badge === "TOP_FAVORITE" ? "Top Favorit" : ""}}
                             </span>

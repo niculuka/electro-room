@@ -121,7 +121,6 @@ export class SearchComponent implements OnInit {
     this.product.brand = item.brand;
     this.product.category = item.category;
     this.product.image = item.image;
-    this.product.alt = item.image;
     this.product.price = item.price;
 
     this.cartService.addToCartService(this.product);

@@ -12,12 +12,20 @@ form {
     justify-content: center;
     align-items: center;
     width: 1500px;
-    border: 2px solid black;
+    padding: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
 }
 
 .form-group-dialog {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+h1 {
+    width: 100%;
+    /* border: 2px solid black; */
 }
 
 label {
@@ -129,8 +137,11 @@ select:focus {
 /* ========================================================================= */
 .image-display {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    width: 200px;
 }
 
 .image {
@@ -177,17 +188,32 @@ select:focus {
     color: black;
 }
 
+@media (max-width: 1600px) {
+    form {
+        width: 1200px;
+    }
+}
+
+@media (max-width: 1280px) {
+    form {
+        width: 980px;
+    }
+}
+
 @media (max-width: 1040px) {
     form {
-        margin-top: 10px;
-        width: 300px;
+        margin: 0 18px;
+        width: 100%;
+    }
+
+    .image-display {
+        width: 140px;
     }
 }
 
 @media (max-width: 550px) {
-    form {
-        margin-top: 0;
-        width: 250px;
+    h1 {
+        font-size: 18px;
     }
 
     label {
@@ -232,14 +258,12 @@ select:focus {
         font-size: 12px;
     }
 
+    .image-display {
+        width: 100px;
+    }
+
     .btn-create {
         font-size: 16px;
         margin: 10px 0;
-    }
-}
-
-@media (max-width: 390px) {
-    form {
-        width: 200px;
     }
 }

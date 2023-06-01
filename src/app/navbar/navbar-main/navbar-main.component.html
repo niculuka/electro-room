@@ -125,7 +125,7 @@
           <table *ngIf="!isEmpty()">
             <tr *ngFor="let item of cart.items">
               <td>
-                <img src={{item.product.image}} alt={{item.product.alt}} (click)="getProductLinkName(item)">
+                <img src={{item.product.image}} alt={{item.product.image}} (click)="getProductLinkName(item)">
               </td>
               <td>
                 <span (click)="getProductLinkName(item)">{{item.productName}}</span>

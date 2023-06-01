@@ -81,7 +81,7 @@
                     <div class="card" *ngFor="let product of products;">
         
                         <a (click)="goToProduct(product)">
-                            <img [src]="product.image" [alt]="product.alt" />
+                            <img [src]="product.image" [alt]="product.image" />
                             <span style="background: rgb(0, 154, 230)">
                                 {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : ""}}
                             </span>

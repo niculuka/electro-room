@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LAPTOP_IMAGES, ProductImages } from 'src/app/shared/data/product-images.data';
-import { Product } from 'src/app/shared/models/product.model';
+import { ToastrService } from 'ngx-toastr';
+import { LAPTOP_BAG_IMAGES, LAPTOP_CHARGER_IMAGES, LAPTOP_HARD_IMAGES, LAPTOP_IMAGES, ProductImages } from 'src/app/shared/data/product-images.data';
+import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { Product, ProductGallery } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 
 @Component({
@@ -13,6 +15,7 @@ export class AdminProductCreateComponent implements OnInit {
   isCarouselOpen = true;
 
   protected productImages: Array<ProductImages> = LAPTOP_IMAGES;
+  productGallery: ProductGallery = new ProductGallery();
   newProduct: Product = new Product();
 
   errorMessage: string = "";
@@ -22,6 +25,7 @@ export class AdminProductCreateComponent implements OnInit {
 
   constructor(
     private adminProductService: AdminProductService,
+    private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +33,15 @@ export class AdminProductCreateComponent implements OnInit {
   }
 
   createProduct() {
-    this.newProduct.linkName = this.newProduct.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
+    this.newProduct.linkName = this.newProduct.name
+      .replace(/\\|`+|~+|'+|,+|\/+|\?/g, "")
+      .replace(/\s+/g, "-")
+      .toLowerCase();
+
+    this.productGallery.image = this.newProduct.image;
+    this.newProduct.gallery = [this.productGallery];
+    // console.log(this.newProduct)
+
     this.adminProductService.createProductService(this.newProduct).subscribe({
       next: () => {
         window.location.reload();
@@ -46,9 +58,28 @@ export class AdminProductCreateComponent implements OnInit {
     this.checkConditions();
   }
 
-  getImage(image: ProductImages) {
+  setImageGallery() {
+    switch (this.newProduct.type) {
+      case CATEGORY.LAPTOP_GAMING: { this.productImages = LAPTOP_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_BUSINESS: { this.productImages = LAPTOP_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_GAMING: { this.productImages = LAPTOP_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_ULTRA: { this.productImages = LAPTOP_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_BAG: { this.productImages = LAPTOP_BAG_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_CHARGER: { this.productImages = LAPTOP_CHARGER_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_HARD: { this.productImages = LAPTOP_HARD_IMAGES };
+        break;
+      default: this.productImages = LAPTOP_IMAGES; 
+    }
+  }
+
+  getImage(image: ProductImages) {    
     this.newProduct.image = image.image;
-    this.newProduct.alt = image.image.substring(15);
     this.handleDropdownMenu = false;
     this.checkConditions();
   }

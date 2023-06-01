@@ -14,37 +14,49 @@
     <table class="table-row">
       <thead>
         <tr>
-          <th>Id</th>
+          <th>Nr</th>
           <th>Image</th>
-          <th>Brand</th>
-          <th>Name</th>
-          <th>Description</th>
+          <th>Name | Id | Brand | Description</th>
           <th>Available</th>
+          <th>Level</th>
+          <th>Type</th>
           <th>Category</th>
-          <th>Alert</th>
+          <th>Badge</th>
           <th>Price</th>
+          <th>Others</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let product of products;">
-          <td><strong>{{product.id}}</strong></td>
+        <tr *ngFor="let product of products; index as ind">
+          <td><strong>{{ind+1}}</strong></td>
           <td>
             <a (click)="viewProduct(product)">
-              <img [src]="product.image" [alt]="product.alt">
+              <img [src]="product.image" [alt]="product.image">
             </a>
           </td>
-          <td><strong>{{product.brand}}</strong></td>
           <td>
-            <strong>{{product.name}}</strong>
+            <div class="my-fields">
+              <span><strong>{{product.name}}</strong></span>
+              <span>id: {{product.id}} | {{product.brand}}</span>
+              <span>{{product.description}}</span>
+            </div>
           </td>
-          <td>{{product.description}}</td>
-          <td>{{product.available}}</td>
+          <td><strong>{{product.available}}</strong></td>
+          <td>{{product.level}}</td>
+          <td><strong>{{product.type}}</strong></td>
           <td><strong>{{product.category}}</strong></td>
           <td>{{product.badge}}</td>
           <td><strong>{{product.price}}.Lei</strong></td>
+          <td>
+            <div class="my-fields">
+              <span class="line">Power: <strong>{{product.power ? product.power : " - "}}</strong></span>
+              <span class="line">Capacity: <strong>{{product.capacity ? product.capacity : " - "}}</strong></span>
+              <span class="line">Connect: <strong>{{product.connect ? product.connect : " - "}}</strong></span>
+            </div>
+          </td>
           <td>
             <button class="btn-edit" (click)="updateProduct(product)">Edit</button>
           </td>
@@ -55,22 +67,22 @@
       </tbody>
     </table>
 
-    <table class="table-col" *ngFor="let product of products;">
+    <table class="table-col" *ngFor="let product of products; index as ind">
       <tbody>
         <tr>
-          <th colspan="2">{{product.id}}</th>
+          <th colspan="2">{{ind+1}}</th>
         </tr>
         <tr>
           <th>Image</th>
           <td>
             <a (click)="viewProduct(product)">
-              <img [src]="product.image" [alt]="product.alt">
+              <img [src]="product.image" [alt]="product.image">
             </a>
           </td>
         </tr>
         <tr>
-          <th>Brand</th>
-          <td><strong>{{product.brand}}</strong></td>
+          <th>Id | Brand</th>
+          <td><strong>id: {{product.id}} | <strong>{{product.brand}}</strong></strong></td>
         </tr>
         <tr>
           <th>Name</th>
@@ -85,16 +97,36 @@
           <td>{{product.available}}</td>
         </tr>
         <tr>
+          <th>Level</th>
+          <td><strong>{{product.level}}</strong></td>
+        </tr>
+        <tr>
+          <th>Type</th>
+          <td><strong>{{product.type}}</strong></td>
+        </tr>
+        <tr>
           <th>Category</th>
           <td><strong>{{product.category}}</strong></td>
         </tr>
         <tr>
-          <th>Alert</th>
+          <th>Badge</th>
           <td>{{product.badge}}</td>
         </tr>
         <tr>
           <th>Price</th>
           <td><strong>{{product.price}} Lei</strong></td>
+        </tr>
+        <tr>
+          <th>Power</th>
+          <td><strong>{{product.power ? product.power : " - "}}</strong></td>
+        </tr>
+        <tr>
+          <th>Capacity</th>
+          <td><strong>{{product.capacity ? product.capacity : " - "}}</strong></td>
+        </tr>
+        <tr>
+          <th>Connect</th>
+          <td><strong>{{product.connect ? product.connect : " - "}}</strong></td>
         </tr>
         <tr class="action">
           <th>Action</th>

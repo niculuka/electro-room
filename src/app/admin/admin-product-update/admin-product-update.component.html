@@ -5,6 +5,8 @@
 <div class="my-container">
     <form #f="ngForm" (ngSubmit)="f.form.valid && updateProduct()">
 
+        <h1><strong>UPDATE PRODUCT</strong></h1>
+
         <div class="form-group-dialog">
             <label for="id">Id: {{product.id}}</label>
             <div class="alert-container-dialog">
@@ -61,6 +63,34 @@
         </div>
 
         <div class="form-group-dialog">
+            <label for="level">Level</label>
+            <select name="level" #levelSelect [(ngModel)]="product.level">
+                <option value="LAPTOPS">LAPTOPS</option>
+                <option value="LAPTOP_ACCESSORY">LAPTOP_ACCESSORY</option>
+            </select>
+            <div class="alert-container-dialog">
+                <div class="alert-dialog"></div>
+            </div>
+        </div>
+
+        <div class="form-group-dialog">
+            <label for="type">Type</label>
+            <select name="type" value="{{product.type}}" #typeSelect [(ngModel)]="product.type"
+                (click)="setImageGallery()">
+                <option value="LAPTOP_BUSINESS">LAPTOP_BUSINESS</option>
+                <option value="LAPTOP_GAMING">LAPTOP_GAMING</option>
+                <option value="LAPTOP_HOME">LAPTOP_HOME</option>
+                <option value="LAPTOP_ULTRA">LAPTOP_ULTRA</option>
+                <option value="LAPTOP_BAG">LAPTOP_BAG</option>
+                <option value="LAPTOP_CHARGER">LAPTOP_CHARGER</option>
+                <option value="LAPTOP_HARD">LAPTOP_HARD</option>
+            </select>
+            <div class="alert-container-dialog">
+                <div class="alert-dialog"></div>
+            </div>
+        </div>
+
+        <div class="form-group-dialog">
             <label for="category">Category</label>
             <select class="select-box" name="category" #categorySelect [(ngModel)]="product.category">
                 <option value="LAPTOP_BUSINESS">LAPTOP_BUSINESS</option>
@@ -102,7 +132,7 @@
 
             <!-- DISPLAY image -->
             <div class="image-display">
-                <img class="image" [src]="product.image" [alt]="product.alt">
+                <img class="image" [src]="product.image" [alt]="product.image">
             </div>
 
             <!--  -->

@@ -69,7 +69,6 @@ export class ProductDetailComponent implements OnInit{
     this.product.brand = this.product.brand;
     this.product.category = this.product.category;
     this.product.image = this.product.image;
-    this.product.alt = this.product.alt;
     this.product.price = this.product.price;
 
     this.cartService.addToCartService(this.product);

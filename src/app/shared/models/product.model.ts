@@ -1,7 +1,12 @@
 import { CATEGORY } from "../enums/electro.enum";
 
+export class ProductGallery {
+    id: number | undefined;
+    image: string = "";
+    productId: number | undefined;
+}
 
-export class Product {
+export class Product { 
     id: number | undefined;
     name: string = "";
     linkName: string = "";
@@ -10,15 +15,14 @@ export class Product {
     level: CATEGORY;
     type: CATEGORY;
     category: CATEGORY;
-    image: string = "";   
-    alt: string = "";
+    image: string = "";
     badge: CATEGORY;
     available: CATEGORY;
     price: number = 0;
-    power: CATEGORY;
-    capacity: CATEGORY;
-    connect: CATEGORY;
-    gallery: Array<string> = []; 
+    power?: CATEGORY;
+    capacity?: CATEGORY;
+    connect?: CATEGORY;
+    gallery: Array<ProductGallery> = [];
 
     constructor(
         id?: number,
@@ -30,14 +34,13 @@ export class Product {
         type: CATEGORY = CATEGORY.CATEGORY,
         category: CATEGORY = CATEGORY.CATEGORY,
         image: string = "",
-        alt: string = "",
         badge: CATEGORY = CATEGORY.CATEGORY,
         available: CATEGORY = CATEGORY.CATEGORY,
         price: number = 0,
-        power: CATEGORY = CATEGORY.CATEGORY,
-        capacity: CATEGORY = CATEGORY.CATEGORY,
-        connect: CATEGORY = CATEGORY.CATEGORY,
-        gallery: Array<string> = [],
+        power?: CATEGORY,
+        capacity?: CATEGORY,
+        connect?: CATEGORY,
+        gallery: Array<ProductGallery> = [],
     ) {
         this.id = id;
         this.name = name;
@@ -48,7 +51,6 @@ export class Product {
         this.type = type;
         this.category = category;
         this.image = image;
-        this.alt = alt;
         this.badge = badge;
         this.available = available;
         this.price = price;
