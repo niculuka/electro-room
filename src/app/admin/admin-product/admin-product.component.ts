@@ -39,7 +39,6 @@ export class AdminProductComponent implements OnInit {
         this.products = data;
       });
     });
-
   }
 
   viewProduct(product: Product) {

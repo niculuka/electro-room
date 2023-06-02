@@ -6,7 +6,7 @@
   <div class="content-admin">
 
     <div class="title">
-      <h1><strong>PRODUCTS</strong></h1>
+      <h1><strong>{{currentLevel}}</strong></h1>
       <h3>Products number: {{products.length}}</h3>
       <button class="btn-new" type="button" (click)="createProduct()">NEW</button>
     </div>
@@ -18,11 +18,9 @@
           <th>Image</th>
           <th>Name | Id | Brand | Description</th>
           <th>Available</th>
-          <th>Level</th>
           <th>Type</th>
           <th>Category</th>
-          <th>Badge</th>
-          <th>Price</th>
+          <th>Price | Badge</th>
           <th>Others</th>
           <th>Edit</th>
           <th>Delete</th>
@@ -39,17 +37,20 @@
           </td>
           <td>
             <div class="my-fields">
-              <span><strong>{{product.name}}</strong></span>
-              <span>id: {{product.id}} | {{product.brand}}</span>
+              <span><strong>{{product.name}}</strong></span>              
               <span>{{product.description}}</span>
+              <span><strong>id: {{product.id}} | {{product.brand}}</strong></span>
             </div>
           </td>
           <td><strong>{{product.available}}</strong></td>
-          <td>{{product.level}}</td>
-          <td><strong>{{product.type}}</strong></td>
-          <td><strong>{{product.category}}</strong></td>
-          <td>{{product.badge}}</td>
-          <td><strong>{{product.price}}.Lei</strong></td>
+          <td>{{product.type}}</td>
+          <td><strong>{{product.category}}</strong></td>          
+          <td>
+            <div class="my-fields">
+              <span class="price"><strong>{{product.price}} Lei</strong></span>
+              <span>{{product.badge}}</span>
+            </div>
+          </td>
           <td>
             <div class="my-fields">
               <span class="line">Power: <strong>{{product.power ? product.power : " - "}}</strong></span>
@@ -114,7 +115,7 @@
         </tr>
         <tr>
           <th>Price</th>
-          <td><strong>{{product.price}} Lei</strong></td>
+          <td class="price"><strong>{{product.price}} Lei</strong></td>
         </tr>
         <tr>
           <th>Power</th>
