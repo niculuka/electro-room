@@ -310,12 +310,12 @@ mat-icon {
 }
 
 #username {
-  width: 24px;
-  height: 24px;
-  line-height: 14px;
-  padding: 4px;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  width: 22px;
+  height: 22px;
   border: 2px solid black;
   border-radius: 50%;
 }
@@ -493,11 +493,6 @@ table mat-icon {
     width: 160px;
   }
 
-  #username {
-    line-height: 18px;
-    padding: 2px;
-  }
-
   td {
     font-size: 13px;
     line-height: 16px;
@@ -523,10 +518,6 @@ table mat-icon {
 
   .admin {
     margin-right: -4px;
-  }
-
-  #username {
-    margin-right: 2px;
   }
 }
 
@@ -562,7 +553,10 @@ table mat-icon {
   }
 
   #username {
-    padding: 1px;
+    margin-right: 2px;
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
   }
 
   .logo-nav a {

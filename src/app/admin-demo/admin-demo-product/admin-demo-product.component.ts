@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/shared/models/product.model';
-import { AdminDemoService } from 'src/app/shared/services/admin-demo.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-admin-demo-product',
@@ -12,22 +13,39 @@ export class AdminDemoProductComponent implements OnInit {
   isDesktopMenuOpen = false;
   isCarouselOpen = true;
 
-  protected laptops: Array<Product> = [];
-  protected laptop: Product = new Product();
+  protected products: Array<Product> = [];
+  protected product: Product = new Product();
 
   errorMessage: string = "";
+  currentLevel: string = "";
 
   constructor(
-    private adminDemoService: AdminDemoService,
+    private productService: ProductService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.adminDemoService.getAllDemoLaptopsService().subscribe(data => {
-      this.laptops = data;
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentLevel = params.get('product') || "";
+      this.productService.getProductsByLevelService(this.currentLevel).subscribe(data => {
+        this.products = data;
+      });
     });
   }
 
   noAction() {
     alert("Esti in DEMO-MODE. Pentru acces complet, contacteaza proprietarul!")
+  }
+
+  viewProduct(product: Product) {
+    this.router.navigate([
+      '/lpt/'
+      + product.level.replace(/_/g, "-").toLowerCase()
+      + '/'
+      + product.type.replace(/_/g, "-").toLowerCase()
+      + '/'
+      + product.linkName
+    ]);
   }
 }

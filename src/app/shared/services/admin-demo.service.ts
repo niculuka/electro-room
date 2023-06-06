@@ -12,23 +12,7 @@ export class AdminDemoService {
 
     constructor(
         private http: HttpClient
-    ) { }
-
-    getAllDemoLaptopsService(): Observable<any> {
-        return this.http.get(API_URL + "/laptops");
-    }
-
-    getAllDemoBagsService(): Observable<any> {
-        return this.http.get(API_URL + "/laptop-bags");
-    }
-
-    getAllDemoChargersService(): Observable<any> {
-        return this.http.get(API_URL + "/laptop-chargers");
-    }
-
-    getAllDemoHardsService(): Observable<any> {
-        return this.http.get(API_URL + "/laptop-hards");
-    }
+    ) { }    
 
     getAllDemoOrdersService(): Observable<any> {
         return this.http.get(API_URL + "/admin/demo/electro-orders");

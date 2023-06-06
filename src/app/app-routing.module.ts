@@ -69,7 +69,7 @@ const routes: Routes = [
   { path: "admin/tokens", component: AdminTokenComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
 
   // admin - D E M O
-  { path: "admin/demo/laptops", component: AdminDemoProductComponent },
+  { path: "admin/demo/products/:product", component: AdminDemoProductComponent },
   { path: "admin/demo/electro-orders", component: AdminDemoOrderComponent },
   { path: "admin/demo/users", component: AdminDemoUserComponent },
 
