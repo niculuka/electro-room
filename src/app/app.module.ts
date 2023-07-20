@@ -79,6 +79,7 @@ import { SearchComponent } from './guest/search/search.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
+import { InfoAltexComponent } from './guest/info-altex/info-altex.component';
 import { ProductCarouselComponent } from './products-pages/product-carousel/product-carousel.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 
@@ -135,8 +136,9 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     UnderConstructionComponent,
     SearchComponent,
     InfoBlockComponent,
+    InfoAltexComponent,
     ProductCarouselComponent,
-    BreadcrumbComponent,        
+    BreadcrumbComponent,                 
   ],
   imports: [
     BrowserModule,

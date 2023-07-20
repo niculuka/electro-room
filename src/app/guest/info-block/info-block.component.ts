@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class InfoBlockComponent {
 
-  leftCards = [
+  cards = [
     {
       icon: "local_shipping",
       title: "Transport gratuit",
@@ -17,10 +17,7 @@ export class InfoBlockComponent {
       icon: "phone_in_talk",
       title: "Suport 24/7",
       subtitle: "Sunati-ne oricand!"
-    },
-  ]
-
-  rightCards = [
+    },  
     {
       icon: "security",
       title: "Siguranta 100%",
