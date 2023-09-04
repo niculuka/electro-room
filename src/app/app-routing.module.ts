@@ -40,7 +40,6 @@ import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet
 import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
-import { InfoAltexComponent } from './guest/info-altex/info-altex.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 
 

@@ -30,53 +30,33 @@ export class SearchProductService extends BearerService {
 
   searchProducts(searchTerm: string): void {
     this.findAll = new Array;
-    this.getAllLaptopsService().subscribe(laptop => {
+    this.getLaptopsService().subscribe(laptop => {
       laptop.filter((data: Product) => {
         if (data.name.toLowerCase().includes(searchTerm)) {
           this.findAll.push(data)
         }
       });
-      this.getAllBagsService().subscribe(bag => {
+      this.getLaptopAccessoryService().subscribe(bag => {
         bag.filter((data: Product) => {
           if (data.name.toLowerCase().includes(searchTerm)) {
             this.findAll.push(data)
           }
         });
-        this.getAllChargersService().subscribe(charger => {
-          charger.filter((data: Product) => {
-            if (data.name.toLowerCase().includes(searchTerm)) {
-              this.findAll.push(data)
-            }
-          });
-          this.getAllHardsService().subscribe(hard => {
-            hard.filter((data: Product) => {
-              if (data.name.toLowerCase().includes(searchTerm)) {
-                this.findAll.push(data)
-              }
-            });
-          });
-          this.products = this.findAll;
-          // console.log(this.products)
-          this.setProductsFromLocalStorage();
-        });
       });
+      this.products = this.findAll;
+      // console.log(this.products)
+      this.setProductsFromLocalStorage();
+
+
     });
   }
 
-  getAllLaptopsService(): Observable<any> {
-    return this.http.get(API_URL + "/laptops");
+  getLaptopsService(): Observable<any> {
+    return this.http.get(API_URL + "/products/level/laptops");
   }
 
-  getAllBagsService(): Observable<any> {
-    return this.http.get(API_URL + "/laptop-bags");
-  }
-
-  getAllChargersService(): Observable<any> {
-    return this.http.get(API_URL + "/laptop-chargers");
-  }
-
-  getAllHardsService(): Observable<any> {
-    return this.http.get(API_URL + "/laptop-hards");
+  getLaptopAccessoryService(): Observable<any> {
+    return this.http.get(API_URL + "/products/level/laptop-accessory");
   }
 
   // ****************************************************

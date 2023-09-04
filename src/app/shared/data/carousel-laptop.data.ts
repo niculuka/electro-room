@@ -11,7 +11,7 @@ export interface CarouselLaptopData {
 export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [    
     {
         id: "1",
-        link: "/laptops-phones-tablets/laptops/gaming/laptop-gaming-asus-rog-strix-g15-g513ic",
+        link: "/lpt/laptops/laptop/laptop-gaming-asus-rog-strix-g15-g513ic",
         src: "assets/laptops/asus-g15_1.png",
         alt: "laptop1",
         alert: "Top Favorite",
@@ -20,7 +20,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "2",
-        link: "/laptops-phones-tablets/laptops/gaming/laptop-gaming-acer-nitro-an515-57-52f5",
+        link: "/lpt/laptops/laptop/laptop-gaming-acer-nitro-an515-57-52f5",
         src: "assets/laptops/acer-nitro-an515_1.png",
         alt: "acer-nitro-an515_1.png",
         alert: "Top Favorite",
@@ -29,7 +29,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "3",
-        link: "/laptops-phones-tablets/laptops/business/laptop-apple-macbook-pro-mneh3ze",
+        link: "/lpt/laptops/laptop/laptop-apple-macbook-pro-mneh3ze",
         src: "assets/laptops/macbook-pro-13_1.png",
         alt: "macbook-pro-13_1.png",
         alert: "Super Pret",
@@ -38,7 +38,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "4",
-        link: "/laptops-phones-tablets/laptops/home/laptop-lenovo-ideapad-15IGL05",
+        link: "/lpt/laptops/laptop/laptop-lenovo-ideapad-15IGL05",
         src: "assets/laptops/intel-n4020_1.png",
         alt: "intel-n4020_1.png",
         alert: "Top Favorite",
@@ -47,7 +47,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "5",
-        link: "/laptops-phones-tablets/laptops/gaming/laptop-gaming-lenovo-legion-5-15imh6",
+        link: "/lpt/laptops/laptop/laptop-gaming-lenovo-legion-5-15imh6",
         src: "assets/laptops/legion-5-15imh6_1.png",
         alt: "legion-5-15imh6_1.png",
         alert: "Super Pret",
@@ -56,7 +56,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "6",
-        link: "/laptops-phones-tablets/laptops/ultra/laptop-apple-macbook-air-13-mlxy3ze",
+        link: "/lpt/laptops/laptop/laptop-apple-macbook-air-13-mlxy3ze",
         src: "assets/laptops/mac-mlxy3ze_1.png",
         alt: "mac-mlxy3ze_1.png",
         alert: "Super Pret",
@@ -65,7 +65,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "7",
-        link: "/laptops-phones-tablets/laptops/home/laptop-acer-aspire5-a515-36tc",
+        link: "/lpt/laptops/laptop/laptop-acer-aspire5-a515-36tc",
         src: "assets/laptops/acer57_1.png",
         alt: "acer57_1.png",
         alert: "Top Favorite",
@@ -74,7 +74,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "8",
-        link: "/laptops-phones-tablets/laptops/home/laptop-asus-vivobook-16x-m1603qa",
+        link: "/lpt/laptops/laptop/laptop-asus-vivobook-16x-m1603qa",
         src: "assets/laptops/asus-mb103_1.png",
         alt: "asus-mb103_1.png",
         alert: "Top Favorite",
@@ -83,7 +83,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "9",
-        link: "/laptops-phones-tablets/laptops/home/laptop-lenovo-ideapad3-15ttl6",
+        link: "/lpt/laptops/laptop/laptop-lenovo-ideapad3-15ttl6",
         src: "assets/laptops/lenovo6305_1.png",
         alt: "lenovo6305_1.png",
         alert: "Super Pret",
@@ -92,7 +92,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "10",
-        link: "/laptops-phones-tablets/laptops/business/laptop-hp-intel-core-i3-1005g1",
+        link: "/lpt/laptops/laptop/laptop-hp-intel-core-i3-1005g1",
         src: "assets/laptops/hp1005_1.png",
         alt: "hp1005_1.png",
         alert: "Super Pret",
@@ -101,7 +101,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "11",
-        link: "/laptops-phones-tablets/laptops/gaming/laptop-hp-victus-16-e1015nq",
+        link: "/lpt/laptops/laptop/laptop-hp-victus-16-e1015nq",
         src: "assets/laptops/hp16_1.png",
         alt: "hp16_1.png",
         alert: "Super Pret",
@@ -110,7 +110,7 @@ export const CAROUSEL_LAPTOP: CarouselLaptopData[] = [
     },
     {
         id: "12",
-        link: "/laptops-phones-tablets/laptops/gaming/laptop-gaming-asus-tuf-dash-f15-fx517zc",
+        link: "/lpt/laptops/laptop/laptop-gaming-asus-tuf-dash-f15-fx517zc",
         src: "assets/laptops/asus-f15_1.png",
         alt: "asus-f15_1.png",
         alert: "Top Favorite",
