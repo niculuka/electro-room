@@ -35,7 +35,7 @@ export class AdminDemoProductComponent implements OnInit {
   }
 
   noAction() {
-    alert("Esti in DEMO-MODE. Pentru acces complet, contacteaza proprietarul!")
+    alert("Esti DEMO / USER. Pentru ADMIN, contacteaza proprietarul!");
   }
 
   viewProduct(product: Product) {

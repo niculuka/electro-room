@@ -1,0 +1,35 @@
+@import "../node_modules/@angular/material/theming";
+@include mat-core();
+
+$my-primary: mat-palette($mat-pink, 500);
+$my-accent: mat-palette($mat-grey, 700);
+$my-warn: mat-palette($mat-red, A700);
+
+$my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
+
+@include angular-material-theme($my-theme);
+
+
+
+
+.alternative {
+  $my-primary: mat-palette($mat-amber, 800);
+  $my-accent: mat-palette($mat-light-green, 800);
+  $my-theme: mat-light-theme($my-primary, $my-accent);
+  @include angular-material-theme($my-theme);
+}
+
+
+
+
+
+// colors
+// $accent-color:          #333 !default;
+// $accent-opposite-color: #fff !default;
+// $light-opposite-color:  #333 !default;
+
+
+// .departments
+// $departments-icon-color:    rgba(#fff, .2)  !default;
+// $departments-arrow-color:   rgba(#fff, .2)  !default;
+// $departments-item-hover-bg: rgba(#fff, .08) !default;

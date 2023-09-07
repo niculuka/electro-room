@@ -1,0 +1,45 @@
+<div *ngIf="isMobileMenuOpen">
+    
+    <div class="background-menu" (click)="closeMobileMenu()">
+    </div>
+    
+    <div class="mega-menu">
+        <ul class="dropdown-nav">
+            <li *ngFor="let department of departments;">
+    
+                <a (click)="openCloseDepartment(department)">
+                    <span class="icon">
+                        <img class="department-icon" src="{{department.icon}}" alt="icon">
+                        <span>{{department.name}}</span>
+                    </span>
+                    <span class="icon">
+                        <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
+                    </span>
+                </a>
+    
+                <div class="dropdown-menu-nav" *ngFor="let title of department.titles">
+                    <div class="department" *ngIf="department.showTitle">
+    
+                        <a class="title" [ngStyle]="{'color': title.color}" (click)="openCloseTitle(title)">
+                            {{title.name}}
+                            <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
+                        </a>
+                        <a class="subtitle" *ngIf="title.showSubtitle" routerLink={{title.link}}
+                            [ngStyle]="{'color': title.color}" (click)="closeMobileMenu()"><strong>{{title.name}}</strong>
+                        </a>
+    
+                        <ul *ngFor="let subtitle of title.subtitles">
+                            <li *ngIf="title.showSubtitle">
+                                <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
+                                    (click)="closeMobileMenu()">{{subtitle.name}}
+                                </a>
+                            </li>
+                        </ul>
+    
+                    </div>
+                </div>
+    
+            </li>
+        </ul>
+    </div>
+</div>

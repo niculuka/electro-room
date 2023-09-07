@@ -16,17 +16,17 @@
   align-items: center;
   height: 100px;
   width: 100%;
-  /* border: 2px solid blue; */
+  /* border: 1px solid blue; */
 }
 
 .row1-nav>ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0 4px;
+  margin: 0;
   padding: 0;
   list-style-type: none;
-  /* border: 2px solid rgb(148, 246, 2); */
+  /* border: 1px solid rgb(148, 246, 2); */
 }
 
 .row2-nav {
@@ -34,18 +34,18 @@
   flex-direction: row;
   width: 100%;
   align-items: center;
-  /* border: 2px solid blue; */
+  /* border: 1px solid blue; */
 }
 
 .row2-nav>ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0 16px;
+  margin: 0 10px;
   padding: 0;
   list-style-type: none;
   width: 100%;
-  /* border: 2px solid rgb(3, 119, 253); */
+  /* border: 1px solid rgb(3, 119, 253); */
 }
 
 .row2-nav .search-bar {
@@ -54,164 +54,44 @@
 
 .burger-nav {
   display: none;
-  /* border: 2px solid rgb(3, 119, 253); */
+  /* border: 1px solid rgb(236, 217, 1); */
 }
 
 .burger-nav label {
   margin: 0;
 }
 
+mat-icon {
+  color: rgb(220, 20, 110);
+  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid rgb(0, 0, 0); */
+}
+
 .burger-nav mat-icon {
   font-size: 30px;
-  padding: 14px;
-  /* border: 2px solid rgb(3, 119, 253); */
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid rgb(0, 0, 0); */
 }
 
 /* MEGA MENU ========================================================= */
 /* MEGA MENU ========================================================= */
 
-.mega-menu-nav {
-  position: absolute;
-  float: left;
-  display: none;
-  top: 60px;
-  left: 0;
-  margin: 0;
-  width: 80%;
-  cursor: pointer;
-  z-index: 3;
-  /* border: 2px solid rgb(0, 0, 0); */
-}
 
-.menu-nav {
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  border-top: 2px solid rgb(199, 199, 199);
-  /* border: 2px solid rgb(255, 0, 0); */
-}
-
-.dropdown-nav {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-right: 1px solid rgb(231, 231, 231);
-  background: rgb(251, 245, 245);
-  /* border: 1px solid rgb(0, 102, 255); */
-}
-
-.dropdown-nav>li {
-  margin: 0;
-  /* border: 2px solid orange; */
-}
-
-.dropdown-nav>li>a {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  color: black;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 14px;
-  padding: 14px;
-  /* border: 1px solid red; */
-}
-
-.dropdown-nav>li>a:hover {
-  background: rgb(239, 240, 254);
-  cursor: pointer;
-}
-
-.dropdown-menu-nav {
-  display: flex;
-  flex-direction: row;
-  text-align: left;
-  background: rgb(255, 255, 255);
-  width: 100%;
-  padding: 0;
-  z-index: 2;
-  /* border: 1px solid rgb(1, 62, 159); */
-}
-
-.icon {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* border: 2px solid rgb(255, 136, 0); */
-}
-
-.department-icon {
-  width: 18px;
-  margin-right: 14px;
-  /* border: 2px solid rgb(255, 136, 0); */
-}
-
-.chevron-icon {
-  /* visibility: hidden; */
-  width: 12px;
-  margin-right: 0;
-  /* border: 2px solid rgb(255, 136, 0); */
-}
-
-.department {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  width: 100%;
-  /* border: 2px solid rgb(0, 0, 0); */
-}
-
-.department ul {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  /* border: 2px solid rgb(10, 10, 10); */
-}
-
-.title {
-  margin: 0;
-  padding: 8px 14px;
-  font-size: 14px;
-  line-height: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  color: rgb(48, 48, 48);
-  /* border: 1px solid red; */
-}
-
-.title:hover {
-  cursor: pointer;
-  text-decoration: underline;
-  color: rgb(0, 50, 157);
-}
-
-.subtitle {
-  display: block;
-  margin: 0;
-  padding: 4px 14px 4px 30px;
-  font-size: 14px;
-  line-height: 14px;
-  color: rgb(110, 110, 110);
-  text-decoration: none;
-  /* border: 1px solid red; */
-}
-
-.subtitle:hover {
-  cursor: pointer;
-  text-decoration: underline;
-  color: rgb(0, 50, 157);
-}
 
 /* ==================================================================== */
 /* ==================================================================== */
 
 .logo-nav {
-  margin-right: 14px;
+  margin: 0;
 }
 
 .logo-nav a {
@@ -227,11 +107,22 @@
 }
 
 .search-bar {
+  margin-left: 10px;
   width: 350px;
 }
 
 .search-icon {
   color: rgb(208, 208, 208);
+}
+
+.drop-nav {
+  display: inline-block;
+  position: relative;
+  /* border: 1px solid rgb(3, 74, 255); */
+}
+
+.drop-nav:hover .drop-menu-nav {
+  display: block;
 }
 
 .drop-nav a {
@@ -245,7 +136,11 @@
   padding: 12px;
   color: rgb(39, 39, 39);
   text-decoration: none;
-  /* border: 2px solid red; */
+  /* border: 1px solid red; */
+}
+
+.drop-nav:last-child a {
+  padding: 12px 0 12px 12px;
 }
 
 .drop-nav a.active {
@@ -291,22 +186,8 @@ input {
 }
 
 /* RIGHT SIDE ========================================================================== */
-mat-icon {
-  font-size: 24px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  /* border: 2px solid rgb(0, 0, 0); */
-}
-
 .admin {
   font-size: 18px;
-  width: 18px;
-  height: 18px;
-  margin-right: 2px;
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
@@ -321,24 +202,16 @@ mat-icon {
   border-radius: 50%;
 }
 
-.drop-nav {
-  display: inline-block;
-  position: relative;
-}
-
 .drop-menu-nav {
   display: none;
   position: absolute;
+  right: 0;
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background: white;
   border: 1px solid rgb(204, 204, 204);
   border-radius: 6px;
   z-index: 3;
-}
-
-.drop-nav:hover .drop-menu-nav {
-  display: block;
 }
 
 table {
@@ -350,12 +223,17 @@ table tr {
   border-bottom: 1px solid lightgray;
 }
 
-.table tr:hover {
-  background: rgb(232, 232, 232);
+table tr:hover {
+  background: rgba(220, 20, 110, 0.1);
+}
+
+table tr:last-child:hover {
+  background: none;
 }
 
 td {
   padding: 2px 10px;
+
   /* border: 1px solid black; */
 }
 
@@ -385,7 +263,7 @@ table span {
 }
 
 .drop-menu-nav a:hover {
-  background: rgb(232, 232, 232);
+  background: rgba(220, 20, 110, 0.1);
 }
 
 .quantity {
@@ -410,6 +288,11 @@ table mat-icon {
   /* border: 1px solid black; */
 }
 
+table mat-icon:hover {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+
 .drop-menu-nav button {
   color: white;
   font-size: 16px;
@@ -418,11 +301,11 @@ table mat-icon {
   border: none;
   border-radius: 4px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: rgb(79, 190, 4);
+  background: rgb(220, 20, 110);
 }
 
 .drop-menu-nav button:hover {
-  color: black;
+  background: rgb(255, 50, 143);
 }
 
 #check {
@@ -455,12 +338,16 @@ table mat-icon {
 }
 
 @media (max-width: 1040px) {
+  .row1-nav>ul {
+    margin: 0 10px;
+  }
+
   .container-nav {
     width: auto;
   }
 
-  .drop-menu-nav {
-    right: 0;
+  .drop-nav a {
+    padding: 10px;
   }
 
   .mega-menu-nav {
@@ -483,11 +370,18 @@ table mat-icon {
     /* border: 3px solid rgb(0, 0, 0); */
   }
 
+  .search-bar {
+    margin: 0;
+  }
+
   .burger-nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+  }
+
+  .logo-nav {
+    margin-left: 14px;
   }
 
   .logo-nav img {
@@ -504,21 +398,11 @@ table mat-icon {
   .price {
     font-size: 15px;
   }
-
-  td mat-icon {
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
-  }
 }
 
 @media (max-width: 760px) {
   .hide {
     display: none;
-  }
-
-  .admin {
-    margin-right: -4px;
   }
 }
 
@@ -539,6 +423,12 @@ table mat-icon {
     padding: 10px;
   }
 
+  mat-icon {
+    font-size: 22px;
+    width: 24px;
+    height: 24px;
+  }
+
   table {
     max-width: 280px;
   }
@@ -554,31 +444,17 @@ table mat-icon {
   }
 
   #username {
-    margin-right: 2px;
     font-size: 10px;
     width: 18px;
     height: 18px;
   }
 
-  .logo-nav a {
-    padding: 0 4px;
-  }
-
   .logo-nav img {
-    width: 120px;
-  }
-
-  .burger-nav mat-icon {
-    font-size: 24px;
-    padding: 6px;
+    width: 130px;
   }
 
   .admin {
     font-size: 16px;
-  }
-
-  mat-icon {
-    font-size: 18px;
   }
 
   td {
@@ -609,19 +485,9 @@ table mat-icon {
 }
 
 @media (max-width: 380px) {
-  .logo-nav img {
-    width: 100px;
-  }
-
   table {
     max-width: 240px;
-  }
-
-  .drop-nav a {
-    font-size: 12px;
-    line-height: 12px;
-    padding: 8px;
-  }
+  }  
 
   .dropdown-nav>li>a {
     font-size: 12px;

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Order } from 'src/app/shared/models/order.model';
-import { DELIVERY } from '../../shared/constants/const';
 
 @Component({
   selector: 'cart-item',

@@ -68,19 +68,14 @@ export class CartComponent implements OnInit {
   }
 
   getProductLinkName(cartItem: CartItem) {
-    if (cartItem.product.category.startsWith("LAPTOP")) {
-      this.link = "/laptops-phones-tablets/laptops/" + cartItem.product.category.substring(7).toLocaleLowerCase() + '/' + cartItem.product.linkName
-    }
-    if (cartItem.product.category.startsWith("BAG")) {
-      this.link = "/laptops-phones-tablets/laptop-auxs/bags/" + cartItem.product.linkName
-    }
-    if (cartItem.product.category.startsWith("CHARGER")) {
-      this.link = "/laptops-phones-tablets/laptop-auxs/chargers/" + cartItem.product.linkName
-    }
-    if (cartItem.product.category.startsWith("HARD")) {
-      this.link = "/laptops-phones-tablets/laptop-auxs/hards/" + cartItem.product.linkName
-    }
-    this.router.navigate([this.link]);
+    this.router.navigate([
+      '/lpt/'
+      + cartItem.product.level.replace(/_/g, "-").toLowerCase()
+      + '/'
+      + cartItem.product.type.replace(/_/g, "-").toLowerCase()
+      + '/'
+      + cartItem.product.linkName
+    ]);
   }
 
   goBack() {

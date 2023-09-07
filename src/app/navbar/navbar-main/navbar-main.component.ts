@@ -4,12 +4,13 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { ROLE } from 'src/app/shared/enums/electro.enum';
 import { User } from '../../shared/models/user.model';
 import { AuthService } from '../../shared/services/auth.service';
-import { Department, DEPARTMENTS, Title } from 'src/app/shared/data/mega-menu.data';
+
 import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { Cart } from 'src/app/shared/models/cart.model';
 import { SearchProductService } from 'src/app/shared/services/search-product.service';
 import { Product } from 'src/app/shared/models/product.model';
 import { ToastrService } from 'ngx-toastr';
+import { ScreenBlockedService } from 'src/app/shared/services/screen-blocked.service';
 
 @Component({
   selector: 'navbar-main',
@@ -22,7 +23,7 @@ export class NavbarMainComponent implements OnInit {
   userFirstChar: string = "";
   cartQuantity = 0;
 
-  departments: Array<Department> = DEPARTMENTS;
+
   cart!: Cart;
   link: string = "";
   currentLink: string = "";
@@ -32,7 +33,7 @@ export class NavbarMainComponent implements OnInit {
   product: Product = new Product();
   products: Array<Product> = [];
 
-  isMobileMenuOpen = false;
+  isMobileMenuOpen: boolean = false;
 
   @ViewChild('txt') txt: ElementRef | undefined;
 
@@ -43,6 +44,7 @@ export class NavbarMainComponent implements OnInit {
     private searchProductService: SearchProductService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
+    private screenBlockedService: ScreenBlockedService,
   ) {
     cartService.getCartObservable().subscribe(data => {
       this.cart = data;
@@ -70,18 +72,9 @@ export class NavbarMainComponent implements OnInit {
 
   displayMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-  }
-
-  openCloseDepartment(department: Department) {
-    department.showTitle = !department.showTitle;
-  }
-
-  openCloseTitle(title: Title) {
-    title.showSubtitle = !title.showSubtitle;
-  }
-
-  closeFromSubtitles() {
-    this.isMobileMenuOpen = false;
+    this.screenBlockedService.isBlockedService = this.isMobileMenuOpen;
+    this.screenBlockedService.freeze();
+    // console.log(this.screenBlockedService.isBlocked)
   }
 
   isAdmin() {
@@ -98,6 +91,8 @@ export class NavbarMainComponent implements OnInit {
       // console.log("INSIDE");
     } else {
       this.isMobileMenuOpen = false;
+      this.screenBlockedService.isBlockedService = this.isMobileMenuOpen;
+      this.screenBlockedService.freeze();
       // console.log("OUTSIDE");
     }
   }
@@ -113,22 +108,14 @@ export class NavbarMainComponent implements OnInit {
   }
 
   getProductLinkName(cartItem: CartItem) {
-    if (cartItem.product.category.startsWith("LAPTOP")) {
-      this.link = "/lap/" + cartItem.product.linkName
-    }
-    if (cartItem.product.category.startsWith("BAG")) {
-      this.link = "/bag/" + cartItem.product.linkName
-    }
-    if (cartItem.product.category.startsWith("CHARGER")) {
-      this.link = "/chg/" + cartItem.product.linkName
-    }
-    if (cartItem.product.category.startsWith("HARD")) {
-      this.link = "/ssd/" + cartItem.product.linkName
-    }
-    this.router.navigate([this.link])
-      .then(() => {
-        window.location.reload();
-      });
+    this.router.navigate([
+      '/lpt/'
+      + cartItem.product.level.replace(/_/g, "-").toLowerCase()
+      + '/'
+      + cartItem.product.type.replace(/_/g, "-").toLowerCase()
+      + '/'
+      + cartItem.product.linkName
+    ]);
   }
 
   removeFromCart(cartItem: CartItem) {

@@ -81,6 +81,8 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { ProductCarouselComponent } from './products-pages/product-carousel/product-carousel.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
+import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
+import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
 
 
 @NgModule({
@@ -136,7 +138,9 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
     SearchComponent,
     InfoBlockComponent,
     ProductCarouselComponent,
-    BreadcrumbComponent,              
+    BreadcrumbComponent,
+    MegaMenuMobileComponent,
+    MegaMenuDesktopComponent,              
   ],
   imports: [
     BrowserModule,

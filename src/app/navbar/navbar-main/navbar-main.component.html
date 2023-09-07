@@ -1,8 +1,10 @@
 <div class="container-nav">
 
+  <!-- ROW 1 ======================================================================================================= -->
+  <!-- ============================================================================================================= -->
   <div class="row1-nav">
 
-    <!-- LEFT SIDE ====================================================================================== -->
+    <!-- LEFT SIDE -------------------------------------------------------------------------------------------->
     <ul>
       <!-- BURGER ------------------------------------------------------------------ -->
       <li #txt class="burger-nav">
@@ -11,49 +13,8 @@
         </label>
 
         <!-- MEGA MENU ------------------------------------------------------------ -->
-        <div class="mega-menu-nav" *ngIf="isMobileMenuOpen">
-          <div class="menu-nav">
-
-            <ul class="dropdown-nav">
-              <li *ngFor="let department of departments;">
-
-                <a (click)="openCloseDepartment(department)">
-                  <span class="icon">
-                    <img class="department-icon" src="{{department.icon}}" alt="icon">
-                    <span>{{department.name}}</span>
-                  </span>
-                  <span class="icon">
-                    <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
-                  </span>
-                </a>
-
-                <div class="dropdown-menu-nav" *ngFor="let title of department.titles">
-                  <div class="department" *ngIf="department.showTitle">
-
-                    <a class="title" [ngStyle]="{'color': title.color}" (click)="openCloseTitle(title)">
-                      {{title.name}}
-                        <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
-                    </a>
-                    <a class="subtitle" *ngIf="title.showSubtitle" routerLink={{title.link}}
-                      [ngStyle]="{'color': title.color}"
-                      (click)="closeFromSubtitles()"><strong>{{title.name}}</strong>
-                    </a>
-
-                    <ul *ngFor="let subtitle of title.subtitles">
-                      <li *ngIf="title.showSubtitle">
-                        <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
-                          (click)="closeFromSubtitles()">{{subtitle.name}}
-                        </a>
-                      </li>
-                    </ul>
-
-                  </div>
-                </div>
-
-              </li>
-            </ul>
-
-          </div>
+        <div>
+          <mega-menu-mobile [isMobileMenuOpen]="isMobileMenuOpen"></mega-menu-mobile>
         </div>
 
       </li>
@@ -78,7 +39,8 @@
 
     </ul>
 
-    <!-- RIGHT SIDE -->
+
+    <!-- RIGHT SIDE --------------------------------------------------------------------------------------- -->
     <ul>
 
       <!-- ADMIN ------------------------------------------------------------------- -->
@@ -98,11 +60,12 @@
         </div>
       </li>
 
+
       <!-- ADMIN ------------------------------------------------------------------- -->
       <li class="drop-nav" *ngIf="!isAdmin()">
         <a>
           <mat-icon class="admin">build</mat-icon>
-          <span class="hide"><strong>DEMO</strong></span>
+          <span class="hide">Admin</span>
         </a>
         <div class="drop-menu-nav">
           <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
@@ -113,10 +76,11 @@
         </div>
       </li>
 
+
       <!-- CART -------------------------------------------------------------------- -->
       <li class="drop-nav">
         <a>
-          <mat-icon matBadge="{{cartQuantity}}" matBadgeColor="warn" matBadgeSize="medium">shopping_cart</mat-icon>
+          <mat-icon matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">shopping_cart</mat-icon>
           <span class="hide">&nbsp; Cosul meu</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
@@ -150,10 +114,11 @@
         </div>
       </li>
 
+
       <!-- FAVORITE ---------------------------------------------------------------- -->
       <li class="drop-nav">
         <a>
-          <mat-icon matBadge="0" matBadgeColor="primary" matBadgeSize="medium">favorite_border</mat-icon>
+          <mat-icon matBadge="0" matBadgeColor="accent" matBadgeSize="medium">favorite_border</mat-icon>
           <span class="hide">&nbsp; Favorite</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
@@ -162,6 +127,7 @@
           <button (click)="goToFavorites()">Vezi aici!</button>
         </div>
       </li>
+
 
       <!-- USER (login, register) -------------------------------------------------- -->
       <li class="drop-nav" *ngIf="!currentUser?.userId">
@@ -176,7 +142,8 @@
         </div>
       </li>
 
-      <!-- CART (profile, order, logout) ------------------------------------------- -->
+
+      <!-- ACCOUNT (profile, order, logout) ------------------------------------------- -->
       <li class="drop-nav" *ngIf="currentUser?.userId">
         <a>
           <span id="username">{{userFirstChar}}</span>
@@ -191,12 +158,11 @@
     </ul>
   </div>
 
+
+  <!-- ROW 2 ======================================================================================================= -->
+  <!-- ============================================================================================================= -->
   <div class="row2-nav">
-
-    <!-- ROW2 ========================================================================================== -->
     <ul>
-
-      <!-- ROW2  SEARCH BAR -------------------------------------------------------- -->
       <li class="search-bar">
         <form>
           <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)" name="searchTerm"
@@ -206,7 +172,6 @@
           </button>
         </form>
       </li>
-
     </ul>
   </div>
 

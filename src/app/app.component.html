@@ -1,1 +1,3 @@
-<router-outlet></router-outlet>
+<div class="screen-block" [style]="isScreenBlocked ? 'overflow-y: hidden' : 'overflow-y: scroll'">
+    <router-outlet></router-outlet>
+</div>
