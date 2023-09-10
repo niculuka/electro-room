@@ -15,11 +15,10 @@ export class AppComponent {
   constructor(
     private screenBlockedService: ScreenBlockedService,
   ) {
-    this.screenBlockedService.getFreezeObservable().subscribe(data => {
+    this.screenBlockedService.getBlockScreenObservable().subscribe(data => {
       this.isScreenBlocked = data;
-      // console.log(data)
+      // console.log(this.isScreenBlocked);
     })
-    
   }
 
   

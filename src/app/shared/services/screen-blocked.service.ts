@@ -7,15 +7,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 export class ScreenBlockedService {
 
-    public isBlockedService: boolean = false;
-    private isBlockedServiceSubject= new BehaviorSubject(this.isBlockedService);
+    public isScreenBlocked: boolean = false;
+    private isScreenBlockedSubject = new BehaviorSubject(this.isScreenBlocked);
 
-    freeze(){
-        this.isBlockedServiceSubject.next(this.isBlockedService);
-        // console.log(this.isBlockedService);
+    blockScreen() {
+        this.isScreenBlockedSubject.next(this.isScreenBlocked);
     }
 
-    getFreezeObservable() {
-        return this.isBlockedServiceSubject.asObservable();
-      }
+    getBlockScreenObservable() {
+        return this.isScreenBlockedSubject.asObservable();
+    }
 }

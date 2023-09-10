@@ -2,25 +2,30 @@
 
   <!-- ROW 1 ======================================================================================================= -->
   <!-- ============================================================================================================= -->
-  <div class="row1-nav">
+  <!-- ============================================================================================================= -->
+  <div class="row1">
 
     <!-- LEFT SIDE -------------------------------------------------------------------------------------------->
+    <!-- ------------------------------------------------------------------------------------------------------>
     <ul>
-      <!-- BURGER ------------------------------------------------------------------ -->
-      <li #txt class="burger-nav">
-        <label for="check" class="checkbtn" (click)="displayMobileMenu()">
+      <!-- M E G A - M E N U ------------------------------------------------------ -->
+      <li #txt class="burger">
+        <label for="check" class="check-btn" (click)="displayMobileMenu()">
           <mat-icon>{{isMobileMenuOpen ? "close": "menu" }}</mat-icon>
         </label>
 
-        <!-- MEGA MENU ------------------------------------------------------------ -->
-        <div>
-          <mega-menu-mobile [isMobileMenuOpen]="isMobileMenuOpen"></mega-menu-mobile>
-        </div>
+        <div class="mega-menu" *ngIf="isMobileMenuOpen">
+          <div class="background-menu" (click)="displayMobileMenu()">
+          </div>
 
+          <div class="departaments">
+            <mega-menu-mobile [isMobileMenuOpen]="isMobileMenuOpen"></mega-menu-mobile>
+          </div>
+        </div>
       </li>
 
       <!-- LOGO -------------------------------------------------------------------- -->
-      <li class="logo-nav">
+      <li class="logo">
         <a routerLink="/">
           <img src="assets/logo/electro-room-red-small.png" alt="logo">
         </a>
@@ -32,7 +37,7 @@
           <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)" name="searchTerm"
             [(ngModel)]="searchTerm">
           <button (click)="getProduct(s.value)">
-            <mat-icon class="search-icon">search</mat-icon>
+            <mat-icon>search</mat-icon>
           </button>
         </form>
       </li>
@@ -40,16 +45,17 @@
     </ul>
 
 
-    <!-- RIGHT SIDE --------------------------------------------------------------------------------------- -->
+    <!-- RIGHT SIDE ---------------------------------------------------------------------------------------- -->
+    <!-- ------------------------------------------------------------------------------------------------------>
     <ul>
 
       <!-- ADMIN ------------------------------------------------------------------- -->
-      <li class="drop-nav" *ngIf="isAdmin()">
+      <li class="dropdown" *ngIf="isAdmin()">
         <a>
-          <mat-icon class="admin">build</mat-icon>
+          <mat-icon class="admin">account_box</mat-icon>
           <span class="hide"><strong>Admin</strong></span>
         </a>
-        <div class="drop-menu-nav">
+        <div class="dropdown-menu">
           <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
           <a routerLink="/admin/products/laptop-accessory" routerLinkActive="active">Accessories</a>
 
@@ -62,12 +68,12 @@
 
 
       <!-- ADMIN ------------------------------------------------------------------- -->
-      <li class="drop-nav" *ngIf="!isAdmin()">
+      <li class="dropdown" *ngIf="!isAdmin()">
         <a>
-          <mat-icon class="admin">build</mat-icon>
+          <mat-icon class="admin">account_box</mat-icon>
           <span class="hide">Admin</span>
         </a>
-        <div class="drop-menu-nav">
+        <div class="dropdown-menu">
           <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
           <a routerLink="/admin/demo/products/laptop-accessory" routerLinkActive="active">Accessories</a>
 
@@ -78,18 +84,19 @@
 
 
       <!-- CART -------------------------------------------------------------------- -->
-      <li class="drop-nav">
+      <li class="dropdown">
         <a>
           <mat-icon matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">shopping_cart</mat-icon>
           <span class="hide">&nbsp; Cosul meu</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="drop-menu-nav">
+        <div class="dropdown-menu">
           <a *ngIf="isEmpty()">Cosul este gol</a>
           <table *ngIf="!isEmpty()">
             <tr *ngFor="let item of cart.items">
               <td>
-                <img src={{item.product.image}} alt={{item.product.image}} (click)="getProductLinkName(item)">
+                <img class="cart-image" src={{item.product.image}} alt={{item.product.image}}
+                  (click)="getProductLinkName(item)">
               </td>
               <td>
                 <span (click)="getProductLinkName(item)">{{item.productName}}</span>
@@ -103,7 +110,7 @@
             <tr class="subtotal">
               <td></td>
               <td colspan="2"><strong>Subtotal: </strong></td>
-              <td colspan="2" class="price total">{{cart.subtotal | number: '1.2-2'}}.lei</td>
+              <td colspan="2" class="price total">{{cart.subtotal | number: '1.2-2'}} Lei</td>
             </tr>
             <tr>
               <td colspan="6">
@@ -116,13 +123,13 @@
 
 
       <!-- FAVORITE ---------------------------------------------------------------- -->
-      <li class="drop-nav">
+      <li class="dropdown">
         <a>
           <mat-icon matBadge="0" matBadgeColor="accent" matBadgeSize="medium">favorite_border</mat-icon>
           <span class="hide">&nbsp; Favorite</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="drop-menu-nav">
+        <div class="dropdown-menu">
           <a>under construction</a>
           <button (click)="goToFavorites()">Vezi aici!</button>
         </div>
@@ -130,13 +137,13 @@
 
 
       <!-- USER (login, register) -------------------------------------------------- -->
-      <li class="drop-nav" *ngIf="!currentUser?.userId">
+      <li class="dropdown" *ngIf="!currentUser?.userId">
         <a>
           <mat-icon>perm_identity</mat-icon>
           <span class="hide">Cont</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="drop-menu-nav">
+        <div class="dropdown-menu">
           <a routerLink="/auth/login">Intra in cont!</a>
           <a routerLink="/auth/register">Inregistrare!</a>
         </div>
@@ -144,12 +151,12 @@
 
 
       <!-- ACCOUNT (profile, order, logout) ------------------------------------------- -->
-      <li class="drop-nav" *ngIf="currentUser?.userId">
+      <li class="dropdown" *ngIf="currentUser?.userId">
         <a>
           <span id="username">{{userFirstChar}}</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="drop-menu-nav">
+        <div class="dropdown-menu">
           <a routerLink="/profile" routerLinkActive="active">Profile</a>
           <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
           <a routerLink="/" (click)="logout()">Logout</a>
@@ -161,7 +168,7 @@
 
   <!-- ROW 2 ======================================================================================================= -->
   <!-- ============================================================================================================= -->
-  <div class="row2-nav">
+  <div class="row2">
     <ul>
       <li class="search-bar">
         <form>

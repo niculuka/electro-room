@@ -72,9 +72,8 @@ export class NavbarMainComponent implements OnInit {
 
   displayMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    this.screenBlockedService.isBlockedService = this.isMobileMenuOpen;
-    this.screenBlockedService.freeze();
-    // console.log(this.screenBlockedService.isBlocked)
+    this.screenBlockedService.isScreenBlocked = this.isMobileMenuOpen;
+    this.screenBlockedService.blockScreen();
   }
 
   isAdmin() {
@@ -91,8 +90,8 @@ export class NavbarMainComponent implements OnInit {
       // console.log("INSIDE");
     } else {
       this.isMobileMenuOpen = false;
-      this.screenBlockedService.isBlockedService = this.isMobileMenuOpen;
-      this.screenBlockedService.freeze();
+      this.screenBlockedService.isScreenBlocked = this.isMobileMenuOpen;
+      this.screenBlockedService.blockScreen();
       // console.log("OUTSIDE");
     }
   }

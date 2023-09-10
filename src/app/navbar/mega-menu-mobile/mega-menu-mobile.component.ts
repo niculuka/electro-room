@@ -15,16 +15,14 @@ export class MegaMenuMobileComponent {
 
   constructor(
     private screenBlockedService: ScreenBlockedService,
-  ) {
-
-  }
+  ) { }
 
   closeMobileMenu() {
     this.isMobileMenuOpen = false;
-    this.screenBlockedService.isBlockedService = this.isMobileMenuOpen;
-    this.screenBlockedService.freeze();
+    this.screenBlockedService.isScreenBlocked = this.isMobileMenuOpen;
+    this.screenBlockedService.blockScreen();
   }
-  
+
   openCloseDepartment(department: Department) {
     department.showTitle = !department.showTitle;
   }
