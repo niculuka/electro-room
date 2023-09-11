@@ -45,6 +45,7 @@
     </ul>
 
 
+
     <!-- RIGHT SIDE ---------------------------------------------------------------------------------------- -->
     <!-- ------------------------------------------------------------------------------------------------------>
     <ul>
@@ -52,8 +53,8 @@
       <!-- ADMIN ------------------------------------------------------------------- -->
       <li class="dropdown" *ngIf="isAdmin()">
         <a>
-          <mat-icon class="admin">account_box</mat-icon>
-          <span class="hide"><strong>Admin</strong></span>
+          <!-- <mat-icon class="admin">settings</mat-icon> -->
+          <span><strong>Admin</strong></span>
         </a>
         <div class="dropdown-menu">
           <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
@@ -70,8 +71,8 @@
       <!-- ADMIN ------------------------------------------------------------------- -->
       <li class="dropdown" *ngIf="!isAdmin()">
         <a>
-          <mat-icon class="admin">account_box</mat-icon>
-          <span class="hide">Admin</span>
+          <!-- <mat-icon class="admin">settings</mat-icon> -->
+          <span>Admin</span>
         </a>
         <div class="dropdown-menu">
           <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
@@ -86,38 +87,47 @@
       <!-- CART -------------------------------------------------------------------- -->
       <li class="dropdown">
         <a>
-          <mat-icon matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">shopping_cart</mat-icon>
+          <div class="badge" matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">
+            <mat-icon>add_shopping_cart</mat-icon>
+          </div>
           <span class="hide">&nbsp; Cosul meu</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
         <div class="dropdown-menu">
           <a *ngIf="isEmpty()">Cosul este gol</a>
-          <table *ngIf="!isEmpty()">
-            <tr *ngFor="let item of cart.items">
-              <td>
-                <img class="cart-image" src={{item.product.image}} alt={{item.product.image}}
-                  (click)="getProductLinkName(item)">
-              </td>
-              <td>
-                <span (click)="getProductLinkName(item)">{{item.productName}}</span>
-              </td>
-              <td class="quantity">x{{item.quantity}}</td>
-              <td class="price">{{item.price}}.lei</td>
-              <td>
-                <mat-icon (click)="removeFromCart(item)">close</mat-icon>
-              </td>
-            </tr>
-            <tr class="subtotal">
-              <td></td>
-              <td colspan="2"><strong>Subtotal: </strong></td>
-              <td colspan="2" class="price total">{{cart.subtotal | number: '1.2-2'}} Lei</td>
-            </tr>
-            <tr>
-              <td colspan="6">
-                <button routerLink="/cart" *ngIf="!isCartPage()">Vezi detalii cos!</button>
-              </td>
-            </tr>
-          </table>
+
+          <div class="cart" *ngIf="!isEmpty()">
+
+            <div class="cart-items">
+              <table>
+                <tr *ngFor="let item of cart.items">
+                  <td>
+                    <img class="cart-image" src={{item.product.image}} alt={{item.product.image}}
+                      (click)="getProductLinkName(item)">
+                  </td>
+                  <td class="name">
+                    <span (click)="getProductLinkName(item)">{{item.productName}}</span>
+                  </td>
+                  <td class="quantity">x{{item.quantity}}</td>
+                  <td class="price">{{item.price}} Lei</td>
+                  <td>
+                    <mat-icon (click)="removeFromCart(item)">close</mat-icon>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="total">
+              <div class="total-items">
+                <span><strong>Subtotal: </strong>{{cartQuantity}} produse</span>
+                <h3><strong>{{cart.subtotal | number: '1.2-2'}} Lei</strong></h3>
+              </div>
+
+              <button routerLink="/cart" *ngIf="!isCartPage()">Vezi detalii cos!</button>
+            </div>
+
+          </div>
+
         </div>
       </li>
 
@@ -125,7 +135,9 @@
       <!-- FAVORITE ---------------------------------------------------------------- -->
       <li class="dropdown">
         <a>
-          <mat-icon matBadge="0" matBadgeColor="accent" matBadgeSize="medium">favorite_border</mat-icon>
+          <div class="badge" matBadge="0" matBadgeColor="accent" matBadgeSize="medium">
+            <mat-icon>favorite_border</mat-icon>
+          </div>
           <span class="hide">&nbsp; Favorite</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
