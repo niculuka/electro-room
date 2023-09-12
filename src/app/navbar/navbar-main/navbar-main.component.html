@@ -56,7 +56,7 @@
           <!-- <mat-icon class="admin">settings</mat-icon> -->
           <span><strong>Admin</strong></span>
         </a>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu list-menu">
           <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
           <a routerLink="/admin/products/laptop-accessory" routerLinkActive="active">Accessories</a>
 
@@ -74,7 +74,7 @@
           <!-- <mat-icon class="admin">settings</mat-icon> -->
           <span>Admin</span>
         </a>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu list-menu">
           <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
           <a routerLink="/admin/demo/products/laptop-accessory" routerLinkActive="active">Accessories</a>
 
@@ -85,15 +85,15 @@
 
 
       <!-- CART -------------------------------------------------------------------- -->
-      <li class="dropdown">
-        <a>
+      <li #crt class="dropdown">
+        <a (click)="goToCart()">
           <div class="badge" matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">
             <mat-icon>add_shopping_cart</mat-icon>
           </div>
           <span class="hide">&nbsp; Cosul meu</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" [style]="displayCart">
           <a *ngIf="isEmpty()">Cosul este gol</a>
 
           <div class="cart" *ngIf="!isEmpty()">
@@ -120,10 +120,10 @@
             <div class="total">
               <div class="total-items">
                 <span><strong>Subtotal: </strong>{{cartQuantity}} produse</span>
-                <h3><strong>{{cart.subtotal | number: '1.2-2'}} Lei</strong></h3>
+                <h4><strong>{{cart.subtotal | number: '1.2-2'}} Lei</strong></h4>
               </div>
 
-              <button routerLink="/cart" *ngIf="!isCartPage()">Vezi detalii cos!</button>
+              <button routerLink="/cart">Vezi detalii cos!</button>
             </div>
 
           </div>
@@ -141,34 +141,34 @@
           <span class="hide">&nbsp; Favorite</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu list-menu">
           <a>under construction</a>
           <button (click)="goToFavorites()">Vezi aici!</button>
         </div>
       </li>
 
 
-      <!-- USER (login, register) -------------------------------------------------- -->
+      <!-- LOGGED OUT (login, register) -------------------------------------------------- -->
       <li class="dropdown" *ngIf="!currentUser?.userId">
         <a>
           <mat-icon>perm_identity</mat-icon>
           <span class="hide">Cont</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu list-menu">
           <a routerLink="/auth/login">Intra in cont!</a>
           <a routerLink="/auth/register">Inregistrare!</a>
         </div>
       </li>
 
 
-      <!-- ACCOUNT (profile, order, logout) ------------------------------------------- -->
+      <!-- LOGGED IN (profile, order, logout) ------------------------------------------- -->
       <li class="dropdown" *ngIf="currentUser?.userId">
         <a>
           <span id="username">{{userFirstChar}}</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu list-menu">
           <a routerLink="/profile" routerLinkActive="active">Profile</a>
           <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
           <a routerLink="/" (click)="logout()">Logout</a>

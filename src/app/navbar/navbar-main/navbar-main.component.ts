@@ -30,12 +30,16 @@ export class NavbarMainComponent implements OnInit {
 
   searchTerm: any = "";
 
+  isCartOpen: boolean = false;
+  displayCart: string = ""
+
   product: Product = new Product();
   products: Array<Product> = [];
 
   isMobileMenuOpen: boolean = false;
 
   @ViewChild('txt') txt: ElementRef | undefined;
+  @ViewChild('crt') crt: ElementRef | undefined;
 
   constructor(
     private cartService: CartService,
@@ -85,13 +89,28 @@ export class NavbarMainComponent implements OnInit {
   }
 
   @HostListener('document:click', ['$event'])
-  clickout(event: any) {
+  clickOut(event: any) {
     if (this.txt?.nativeElement.contains(event.target)) {
       // console.log("INSIDE");
     } else {
       this.isMobileMenuOpen = false;
       this.screenBlockedService.isScreenBlocked = this.isMobileMenuOpen;
       this.screenBlockedService.blockScreen();
+      // console.log("OUTSIDE");
+    }
+  }
+
+  @HostListener('document:mouseover', ['$event'])
+  cartOut(event: any) {
+    if (this.crt?.nativeElement.contains(event.target)) {
+      if (this.isCartPage()) {
+        this.displayCart = "display: none;"
+        return;
+      }
+      this.displayCart = "display: block;"
+      // console.log("INSIDE");
+    } else {
+      this.displayCart = "display: none;"
       // console.log("OUTSIDE");
     }
   }
@@ -120,6 +139,17 @@ export class NavbarMainComponent implements OnInit {
   removeFromCart(cartItem: CartItem) {
     let name: any = cartItem.product.name;
     this.cartService.removeFromCartService(name);
+  }
+
+  goToCart() {
+    if (this.isCartPage()) {
+      this.router.navigate(["/cart"])
+        .then(() => {
+          window.location.reload();
+        });
+      return;
+    }
+    this.router.navigate(["/cart"])
   }
 
   goToFavorites() {

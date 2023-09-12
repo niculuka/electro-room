@@ -138,8 +138,8 @@ mat-icon {
   display: none;
 }
 
-/* MEGA MENU ========================================================= */
-/* v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v */
+/* MEGA MENU ======================================================================= */
+/* v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v */
 .container-nav .row1 ul .burger .mega-menu {
   z-index: 3;
 }
@@ -167,8 +167,8 @@ mat-icon {
   /* border: 1px solid rgb(0, 102, 255); */
 }
 
-/* A A A A A A A A A A A A A A A A A A A A A A A A A A A A A  A A A A A */
-/* ==================================================================== */
+/* A A A A A A A A A A A A A A A A A A A A A A A A A A A A A  A A A A A A A A A A A */
+/* ================================================================================ */
 
 .container-nav .row1 ul .logo {
   margin: 0;
@@ -225,23 +225,25 @@ mat-icon {
 /* RIGHT SIDE ------------------------------------------------------------------------------ */
 /* ----------------------------------------------------------------------------------------- */
 .container-nav .row1 ul .dropdown .dropdown-menu {
-  display: none;
   position: absolute;
   right: 0;
   margin: 0;
   padding: 0;
-  min-width: 120px;
-  border-radius: 6px;
+  min-width: 120px;  
   z-index: 4;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);  
+  border-radius: 6px;
+  border-bottom: 1px solid rgb(204, 204, 204);
   background: white;
-  border: 1px solid rgb(204, 204, 204);
+  /* border: 1px solid red; */
 }
 
 .container-nav .row1 ul .dropdown .dropdown-menu a {
   display: block;
   text-align: left;
+  padding: 8px;
   border-bottom: 1px solid lightgray;
+  /* border: 1px solid red; */
 }
 
 .container-nav .row1 ul .dropdown .dropdown-menu a:last-child {
@@ -252,7 +254,11 @@ mat-icon {
   background: rgba(220, 20, 110, 0.1);
 }
 
-.container-nav .row1 ul .dropdown:hover .dropdown-menu {
+.container-nav .row1 ul .dropdown .list-menu {
+  display: none;
+}
+
+.container-nav .row1 ul .dropdown:hover .list-menu {
   display: block;
 }
 
@@ -263,16 +269,26 @@ mat-icon {
   flex-direction: column;
 }
 
+/* Hide scrollbar for IE, Edge and Firefox */
 .container-nav .row1 ul .dropdown .dropdown-menu .cart-items {
+  max-height: 340px;
   overflow-y: scroll;
-  max-height: 400px
+
+  /* IE and Edge */
+  -ms-overflow-style: none;
+
+  /* Firefox */
+  scrollbar-width: none;
 }
 
-
+/* Hide scrollbar for Chrome, Safari and Opera */
+.container-nav .row1 ul .dropdown .dropdown-menu .cart-items::-webkit-scrollbar {
+  display: none;
+}
 
 .container-nav .row1 ul .dropdown .dropdown-menu table {
   border-collapse: collapse;
-  width: 400px;
+  width: 300px;
 }
 
 .container-nav .row1 ul .dropdown .dropdown-menu table tr {
@@ -287,12 +303,8 @@ mat-icon {
   border-bottom: none;
 }
 
-.container-nav .row1 ul .dropdown .dropdown-menu table tr:last-child:hover {
-  background: none;
-}
-
 .container-nav .row1 ul .dropdown .dropdown-menu table td {
-  padding: 2px 10px;
+  padding: 4px 8px;
   /* border: 1px solid rgb(253, 3, 3); */
 }
 
@@ -320,6 +332,8 @@ mat-icon {
 }
 
 .container-nav .row1 ul .dropdown .dropdown-menu table mat-icon {
+  width: 16px;
+  height: 16px;
   font-size: 18px;
   color: gray;
   cursor: pointer;
@@ -334,8 +348,10 @@ mat-icon {
   display: flex;
   flex-direction: column;
   margin: 0;
+  padding: 10px;
   font-size: 14px;
   box-shadow: 0px -6px 16px 00px rgba(0, 0, 0, 0.3);
+  /* border: 1px solid black; */
 }
 
 .container-nav .row1 ul .dropdown .dropdown-menu .total-items {
@@ -343,19 +359,23 @@ mat-icon {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 14px;
-  border-bottom: 1px solid rgb(211, 211, 211);
+  /* border: 1px solid black; */
 }
 
-.container-nav .row1 ul .dropdown .dropdown-menu .total h3 {
+/* .container-nav .row1 ul .dropdown .dropdown-menu .total span {
+  border: 1px solid black;
+} */
+
+.container-nav .row1 ul .dropdown .dropdown-menu .total h4 {
   margin: 0;
   padding: 0;
   color: rgb(220, 20, 110);
+  /* border: 1px solid black; */
 }
 
 .container-nav .row1 ul .dropdown .dropdown-menu button {
   color: white;
-  margin: 8px 14px;
+  width: 100%;
   padding: 8px;
   border: none;
   border-radius: 4px;
@@ -367,6 +387,7 @@ mat-icon {
   background: rgb(255, 50, 143);
 }
 
+/* --------------------------------------------------------------------------- */
 #username {
   display: flex;
   flex-direction: row;
