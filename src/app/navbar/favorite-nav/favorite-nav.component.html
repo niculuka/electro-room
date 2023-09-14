@@ -1,0 +1,26 @@
+<div class="favorite">
+
+    <div class="favorite-items">
+        <table>
+            <tr *ngFor="let item of cart.items">
+                <td>
+                    <img src={{item.product.image}} alt={{item.product.image}} (click)="getProductLinkName(item)">
+                </td>
+                <td class="name">
+                    <span (click)="getProductLinkName(item)">{{item.productName}}</span>
+                </td>
+                <td class="addToCart">
+                    <mat-icon>shopping_cart</mat-icon>
+                </td>
+                <td class="price">{{item.price}} Lei</td>
+                <td>
+                    <mat-icon (click)="removeFromCart(item)">close</mat-icon>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="fav-btn">
+        <button routerLink="/favorites">Vezi produsele favorite!</button>
+    </div>
+</div>

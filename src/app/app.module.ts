@@ -33,7 +33,10 @@ import { NavbarMainComponent } from './navbar/navbar-main/navbar-main.component'
 import { HomeComponent } from './guest/home/home.component';
 import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
+import { FavoriteComponent } from './user/favorite/favorite.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { CartNavComponent } from './navbar/cart-nav/cart-nav.component';
+import { FavoriteNavComponent } from './navbar/favorite-nav/favorite-nav.component';
 
 import { NotFoundComponent } from './guest/not-found/not-found.component';
 import { UnauthComponent } from './guest/unauth/unauth.component';
@@ -100,6 +103,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     NavbarMainComponent,
     CartComponent,
     CartItemComponent,
+    FavoriteComponent,  
     ProfileComponent,
     NotFoundComponent,
     UnauthComponent,
@@ -117,6 +121,8 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     CarouselLaptopComponent,
     CarouselAuxComponent,
     FooterComponent,
+    CartNavComponent,
+    FavoriteNavComponent, 
 
     AdminProductComponent,
     AdminProductCreateComponent,
@@ -140,7 +146,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductCarouselComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,              
+    MegaMenuDesktopComponent,                   
   ],
   imports: [
     BrowserModule,

@@ -41,6 +41,7 @@ import { ProductLevelComponent } from './products-pages/product-level/product-le
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
+import { FavoriteComponent } from './user/favorite/favorite.component';
 
 
 
@@ -79,6 +80,7 @@ const routes: Routes = [
   // current user
   { path: "cart", component: CartComponent },
   { path: "cart/order", component: OrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
+  { path: "favorites", component: FavoriteComponent },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
   { path: "my-orders", component: MyOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
 

@@ -1,0 +1,98 @@
+.favorite {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.favorite-items {
+    max-height: 340px;
+    overflow-y: scroll;
+
+    /* IE and Edge */
+    -ms-overflow-style: none;
+
+    /* Firefox */
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.favorite .favorite-items::-webkit-scrollbar {
+    display: none;
+}
+
+.favorite .favorite-items table {
+    border-collapse: collapse;
+    width: 300px;
+}
+
+.favorite .favorite-items table tr {
+    border-bottom: 1px solid lightgray;
+}
+
+.favorite .favorite-items table tr:hover {
+    background: rgba(220, 20, 110, 0.1);
+}
+
+.favorite .favorite-items table tr:last-child {
+    border-bottom: none;
+}
+
+.favorite .favorite-items table td {
+    padding: 4px 8px;
+    /* border: 1px solid rgb(253, 3, 3); */
+}
+
+.favorite .favorite-items table img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.favorite .favorite-items table .name {
+    font-size: 12px;
+    line-height: 14px;
+    cursor: pointer;
+}
+
+.favorite .favorite-items table .price {
+    white-space: nowrap;
+    font-size: 14px;
+    color: rgb(220, 20, 110);
+}
+
+.favorite .favorite-items table mat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 18px;
+    color: gray;
+    cursor: pointer;
+    /* border: 1px solid black; */
+}
+
+.favorite .favorite-items table mat-icon:hover {
+    color: rgb(0, 0, 0);
+}
+
+/* footer -------------------------------------------*/
+.favorite .fav-btn {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    box-shadow: 0px -6px 16px 00px rgba(0, 0, 0, 0.3);
+    /* border: 1px solid black; */
+}
+
+
+.favorite .fav-btn button {
+    color: white;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: #616161;
+}
+
+.favorite .fav-btn button:hover {
+    background: #7e7e7e;
+}

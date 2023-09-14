@@ -229,7 +229,7 @@ mat-icon {
   right: 0;
   margin: 0;
   padding: 0;
-  min-width: 120px;  
+  min-width: 140px;  
   z-index: 4;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);  
   border-radius: 6px;
@@ -241,7 +241,7 @@ mat-icon {
 .container-nav .row1 ul .dropdown .dropdown-menu a {
   display: block;
   text-align: left;
-  padding: 8px;
+  padding: 10px;
   border-bottom: 1px solid lightgray;
   /* border: 1px solid red; */
 }
@@ -262,130 +262,12 @@ mat-icon {
   display: block;
 }
 
-
 /* CART ---------------------------------------------------------------------- */
-.container-nav .row1 ul .dropdown .dropdown-menu .cart {
-  display: flex;
-  flex-direction: column;
-}
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.container-nav .row1 ul .dropdown .dropdown-menu .cart-items {
-  max-height: 340px;
-  overflow-y: scroll;
 
-  /* IE and Edge */
-  -ms-overflow-style: none;
 
-  /* Firefox */
-  scrollbar-width: none;
-}
+/* FAVORITES ----------------------------------------------------------------- */
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.container-nav .row1 ul .dropdown .dropdown-menu .cart-items::-webkit-scrollbar {
-  display: none;
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table {
-  border-collapse: collapse;
-  width: 300px;
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table tr {
-  border-bottom: 1px solid lightgray;
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table tr:hover {
-  background: rgba(220, 20, 110, 0.1);
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table tr:last-child {
-  border-bottom: none;
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table td {
-  padding: 4px 8px;
-  /* border: 1px solid rgb(253, 3, 3); */
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table .cart-image {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table .name {
-  font-size: 12px;
-  line-height: 14px;
-  cursor: pointer;
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table .quantity {
-  font-size: 14px;
-  color: gray;
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table .price {
-  white-space: nowrap;
-  font-size: 14px;
-  color: rgb(220, 20, 110);
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table mat-icon {
-  width: 16px;
-  height: 16px;
-  font-size: 18px;
-  color: gray;
-  cursor: pointer;
-  /* border: 1px solid black; */
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu table mat-icon:hover {
-  color: rgb(0, 0, 0);
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu .total {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 10px;
-  font-size: 14px;
-  box-shadow: 0px -6px 16px 00px rgba(0, 0, 0, 0.3);
-  /* border: 1px solid black; */
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu .total-items {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  /* border: 1px solid black; */
-}
-
-/* .container-nav .row1 ul .dropdown .dropdown-menu .total span {
-  border: 1px solid black;
-} */
-
-.container-nav .row1 ul .dropdown .dropdown-menu .total h4 {
-  margin: 0;
-  padding: 0;
-  color: rgb(220, 20, 110);
-  /* border: 1px solid black; */
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu button {
-  color: white;
-  width: 100%;
-  padding: 8px;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: rgb(220, 20, 110);
-}
-
-.container-nav .row1 ul .dropdown .dropdown-menu button:hover {
-  background: rgb(255, 50, 143);
-}
 
 /* --------------------------------------------------------------------------- */
 #username {

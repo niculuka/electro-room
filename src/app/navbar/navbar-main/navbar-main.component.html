@@ -93,40 +93,10 @@
           <span class="hide">&nbsp; Cosul meu</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="dropdown-menu" [style]="displayCart">
-          <a *ngIf="isEmpty()">Cosul este gol</a>
+        <div class="dropdown-menu" [style]="handleCart">
+          <a *ngIf="isCartEmpty()">Cosul este gol</a>
 
-          <div class="cart" *ngIf="!isEmpty()">
-
-            <div class="cart-items">
-              <table>
-                <tr *ngFor="let item of cart.items">
-                  <td>
-                    <img class="cart-image" src={{item.product.image}} alt={{item.product.image}}
-                      (click)="getProductLinkName(item)">
-                  </td>
-                  <td class="name">
-                    <span (click)="getProductLinkName(item)">{{item.productName}}</span>
-                  </td>
-                  <td class="quantity">x{{item.quantity}}</td>
-                  <td class="price">{{item.price}} Lei</td>
-                  <td>
-                    <mat-icon (click)="removeFromCart(item)">close</mat-icon>
-                  </td>
-                </tr>
-              </table>
-            </div>
-
-            <div class="total">
-              <div class="total-items">
-                <span><strong>Subtotal: </strong>{{cartQuantity}} produse</span>
-                <h4><strong>{{cart.subtotal | number: '1.2-2'}} Lei</strong></h4>
-              </div>
-
-              <button routerLink="/cart">Vezi detalii cos!</button>
-            </div>
-
-          </div>
+          <cart-nav *ngIf="!isCartEmpty()" [cart]="cart" [cartQuantity]="cartQuantity"></cart-nav>
 
         </div>
       </li>
@@ -134,7 +104,7 @@
 
       <!-- FAVORITE ---------------------------------------------------------------- -->
       <li class="dropdown">
-        <a>
+        <a (click)="goToFavorites()">
           <div class="badge" matBadge="0" matBadgeColor="accent" matBadgeSize="medium">
             <mat-icon>favorite_border</mat-icon>
           </div>
@@ -142,8 +112,8 @@
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
         <div class="dropdown-menu list-menu">
-          <a>under construction</a>
-          <button (click)="goToFavorites()">Vezi aici!</button>
+          <a *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
+          <favorite-nav [cart]="cart"></favorite-nav>
         </div>
       </li>
 

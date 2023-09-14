@@ -4,8 +4,6 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { ROLE } from 'src/app/shared/enums/electro.enum';
 import { User } from '../../shared/models/user.model';
 import { AuthService } from '../../shared/services/auth.service';
-
-import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { Cart } from 'src/app/shared/models/cart.model';
 import { SearchProductService } from 'src/app/shared/services/search-product.service';
 import { Product } from 'src/app/shared/models/product.model';
@@ -31,7 +29,7 @@ export class NavbarMainComponent implements OnInit {
   searchTerm: any = "";
 
   isCartOpen: boolean = false;
-  displayCart: string = ""
+  handleCart: string = "";
 
   product: Product = new Product();
   products: Array<Product> = [];
@@ -88,6 +86,18 @@ export class NavbarMainComponent implements OnInit {
     return this.currentLink === "/cart";
   }
 
+  isFavoritesPage() {
+    return this.currentLink === "/favorites";
+  }
+
+  isCartEmpty() {
+    return this.cart.items.length === 0;
+  }
+
+  isFavoritesEmpty() {
+    // return this.cart.items.length === 0;
+  }
+
   @HostListener('document:click', ['$event'])
   clickOut(event: any) {
     if (this.txt?.nativeElement.contains(event.target)) {
@@ -104,41 +114,21 @@ export class NavbarMainComponent implements OnInit {
   cartOut(event: any) {
     if (this.crt?.nativeElement.contains(event.target)) {
       if (this.isCartPage()) {
-        this.displayCart = "display: none;"
+        this.handleCart = "display: none;"
         return;
       }
-      this.displayCart = "display: block;"
+      this.handleCart = "display: block;"
       // console.log("INSIDE");
     } else {
-      this.displayCart = "display: none;"
+      this.handleCart = "display: none;"
       // console.log("OUTSIDE");
     }
-  }
-
-  isEmpty() {
-    return this.cart.items.length === 0;
   }
 
   getProduct(term: string): void {
     if (term) {
       this.router.navigate(["/search/" + term]);
     };
-  }
-
-  getProductLinkName(cartItem: CartItem) {
-    this.router.navigate([
-      '/lpt/'
-      + cartItem.product.level.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.type.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.linkName
-    ]);
-  }
-
-  removeFromCart(cartItem: CartItem) {
-    let name: any = cartItem.product.name;
-    this.cartService.removeFromCartService(name);
   }
 
   goToCart() {
@@ -149,11 +139,18 @@ export class NavbarMainComponent implements OnInit {
         });
       return;
     }
-    this.router.navigate(["/cart"])
+    this.router.navigate(["/cart"]);
   }
 
   goToFavorites() {
-    this.toastrService.warning("C O N S T R U C T I O N", "U N D E R")
+    if (this.isFavoritesPage()) {
+      this.router.navigate(["/favorites"])
+        .then(() => {
+          window.location.reload();
+        });
+      return;
+    }
+    this.router.navigate(["/favorites"]);
   }
 
   logout() {
