@@ -18,6 +18,7 @@ export class Product {
     image: string = "";
     badge: CATEGORY;
     available: CATEGORY;
+    favorite: boolean = false;
     price: number = 0;
     power?: CATEGORY;
     capacity?: CATEGORY;
@@ -36,6 +37,7 @@ export class Product {
         image: string = "",
         badge: CATEGORY = CATEGORY.CATEGORY,
         available: CATEGORY = CATEGORY.CATEGORY,
+        favorite: boolean = false,
         price: number = 0,
         power?: CATEGORY,
         capacity?: CATEGORY,
@@ -53,6 +55,7 @@ export class Product {
         this.image = image;
         this.badge = badge;
         this.available = available;
+        this.favorite = favorite;
         this.price = price;
         this.power = power;
         this.capacity = capacity;

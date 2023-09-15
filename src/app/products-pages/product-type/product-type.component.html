@@ -201,7 +201,7 @@
                 <div class="category">
                     <h3><strong>Categorie</strong></h3>
 
-                    <div  *ngIf="currentType=='laptop'">
+                    <div *ngIf="currentType=='laptop'">
                         <div class="filter-group" *ngIf="business_count">
                             <input type="checkbox" id="51" name="LAPTOP_BUSINESS" value="CATEGORY"
                                 [(ngModel)]="business_chk" (change)="onClick($event)">
@@ -297,9 +297,10 @@
                 <div class="cards-container">
                     <div class="card" *ngFor="let item of products;">
 
-                        <mat-icon class="favorite_boder" *ngIf="!favorite" (click)="addToFavorite(item)">
-                            favorite_border</mat-icon>
-                        <mat-icon class="favorite" *ngIf="favorite" (click)="addToFavorite(item)">favorite
+                        <mat-icon class="favorite_boder" *ngIf="!item.favorite" (click)="handleFavorite(item)">
+                            favorite_border
+                        </mat-icon>
+                        <mat-icon class="favorite" *ngIf="item.favorite" (click)="handleFavorite(item)">favorite
                         </mat-icon>
 
                         <a [routerLink]="item.linkName">

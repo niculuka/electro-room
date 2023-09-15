@@ -94,10 +94,8 @@
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
         <div class="dropdown-menu" [style]="handleCart">
-
           <a *ngIf="isCartEmpty()">Cosul este gol</a>
           <cart-nav *ngIf="!isCartEmpty()" [cart]="cart" [cartQuantity]="cartQuantity"></cart-nav>
-
         </div>
       </li>
 
@@ -105,22 +103,20 @@
       <!-- FAVORITE ---------------------------------------------------------------- -->
       <li class="dropdown" (mouseover)="openFavorites()" (mouseout)="closeFavorites()">
         <a (click)="goToFavorites()">
-          <div class="badge" matBadge="0" matBadgeColor="accent" matBadgeSize="medium">
+          <div class="badge" matBadge="{{favoriteQuantity}}" matBadgeColor="accent" matBadgeSize="medium">
             <mat-icon>favorite_border</mat-icon>
           </div>
           <span class="hide">&nbsp; Favorite</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
         <div class="dropdown-menu" [style]="handleFavorites">
-
           <a *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
           <favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></favorite-nav>
-
         </div>
       </li>
 
 
-      <!-- LOGGED OUT (login, register) -------------------------------------------------- -->
+      <!-- LOGIN (login, register) -------------------------------------------------- -->
       <li class="dropdown" *ngIf="!currentUser?.userId">
         <a>
           <mat-icon>perm_identity</mat-icon>
@@ -134,7 +130,7 @@
       </li>
 
 
-      <!-- LOGGED IN (profile, order, logout) ------------------------------------------- -->
+      <!-- LOGOUT (profile, order, logout) ------------------------------------------- -->
       <li class="dropdown" *ngIf="currentUser?.userId">
         <a>
           <span id="username">{{userFirstChar}}</span>

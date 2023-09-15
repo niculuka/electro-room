@@ -63,7 +63,7 @@ export class ProductDetailComponent implements OnInit{
     });
   }
 
-  addToCart() {
+  createProductItem() {
     this.product.id = this.product.id;
     this.product.name = this.product.name;
     this.product.linkName = this.product.linkName;
@@ -72,23 +72,17 @@ export class ProductDetailComponent implements OnInit{
     this.product.category = this.product.category;
     this.product.image = this.product.image;
     this.product.price = this.product.price;
+  }
 
+  addToCart() {
+    this.createProductItem();
     this.cartService.addToCartService(this.product);
     this.router.navigateByUrl('/cart');
   }
 
   addToFavorites() {
-    this.product.id = this.product.id;
-    this.product.name = this.product.name;
-    this.product.linkName = this.product.linkName;
-    this.product.description = this.product.description;
-    this.product.brand = this.product.brand;
-    this.product.category = this.product.category;
-    this.product.image = this.product.image;
-    this.product.price = this.product.price;
-
+    this.createProductItem();
     this.favoriteService.addToFavoritesService(this.product);
-    // this.router.navigateByUrl('/favorites');
   }
 
   receiveCurrentImage($event: any) {

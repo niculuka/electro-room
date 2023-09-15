@@ -6,6 +6,7 @@ import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { ProductFilter } from 'src/app/shared/models/product.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -223,7 +224,6 @@ export class ProductTypeComponent implements OnInit {
   protected filter_4: Array<Product> = [];
 
   products_sorting: string = "bestSold";
-  favorite: boolean = false;
 
   // ------------------------------------------------------------------------
   departments: Array<Department> = DEPARTMENTS;
@@ -240,6 +240,7 @@ export class ProductTypeComponent implements OnInit {
     private router: Router,
     private productService: ProductService,
     private cartService: CartService,
+    private favoriteService: FavoriteService,
     private toastrService: ToastrService,
   ) { }
 
@@ -281,15 +282,7 @@ export class ProductTypeComponent implements OnInit {
     }
   }
 
-  addToFavorite(item: Product) {
-    this.favorite = !this.favorite;
-    // console.log(item.id)
-    if (this.favorite) {
-      this.toastrService.warning("UNDER COSNSTRUCTION")
-    }
-  }
-
-  addToCart(item: Product) {
+  createProductItem(item: Product) {
     this.product.id = item.id;
     this.product.name = item.name;
     this.product.linkName = item.linkName;
@@ -298,9 +291,27 @@ export class ProductTypeComponent implements OnInit {
     this.product.category = item.category;
     this.product.image = item.image;
     this.product.price = item.price;
+    this.product.favorite = item.favorite;
+  }
 
+  addToCart(item: Product) {
+    this.createProductItem(item);
     this.cartService.addToCartService(this.product);
     this.router.navigateByUrl('/cart');
+  }
+
+  handleFavorite(item: Product) {
+    item.favorite = !item.favorite;
+    // console.log(item);
+    this.createProductItem(item);
+
+    if (item.favorite) {
+      this.favoriteService.addToFavoritesService(this.product);
+    }
+    else {
+      this.favoriteService.removeFromFavoritesService(this.product.name)
+    }
+    this.product = new Product();
   }
 
   // =================================================================================================== S O R T I N G 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Cart } from 'src/app/shared/models/cart.model';
 import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
 
   isDesktopMenuOpen = false;
   isCarouselOpen = false;
@@ -38,9 +38,6 @@ export class CartComponent implements OnInit {
     if (deliveryJson) {
       this.order.favoriteDelivery = JSON.parse(deliveryJson);
     }
-  }
-
-  ngOnInit(): void {
   }
 
   isCartEmpty() {

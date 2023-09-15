@@ -41,6 +41,9 @@ export class FavoriteService {
   }
 
   private setFavoritesToLocalStorage(): void {
+    this.favorites.subtotal = this.favorites.items.reduce((prevSum, currentItem) => prevSum + currentItem.price, 0);
+    this.favorites.totalCount = this.favorites.items.reduce((prevSum, currentItem) => prevSum + currentItem.quantity, 0);
+
     const favJson = JSON.stringify(this.favorites);
     localStorage.setItem('fav-ls', favJson);
     this.favoritesSubject.next(this.favorites);

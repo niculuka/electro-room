@@ -36,7 +36,7 @@ export class FavoriteComponent {
     this.favoriteService.removeFromFavoritesService(name);
   }
 
-  clearavorites() {
+  clearFavorites() {
     this.favoriteService.clearFavoritesService();
   }
 
