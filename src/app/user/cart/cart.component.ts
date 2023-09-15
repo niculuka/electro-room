@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private location: Location
+    private location: Location,
   ) {
     this.cartService.getCartObservable().subscribe((data) => {
       this.cart = data;
@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  isEmpty() {
+  isCartEmpty() {
     return this.cart.items.length === 0;
   }
 

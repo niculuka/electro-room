@@ -1,20 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/shared/models/cart.model';
-import { CartService } from 'src/app/shared/services/cart.service';
 import { CartItem } from 'src/app/shared/models/cart-item.model';
+import { FavoriteService } from 'src/app/shared/services/favorite.service';
 
 @Component({
   selector: 'favorite-nav',
   templateUrl: './favorite-nav.component.html',
   styleUrls: ['./favorite-nav.component.css']
 })
-export class FavoriteNavComponent {
+export class FavoriteNavComponent {  
+  @Input() favorites!: Cart;
   
-  @Input() cart!: Cart;
 
   constructor(
-    private cartService: CartService,
+    private favoriteService: FavoriteService,
     private router: Router,
   ) {
 
@@ -31,9 +31,9 @@ export class FavoriteNavComponent {
     ]);
   }
 
-  removeFromCart(cartItem: CartItem) {
+  removeFromFavorites(cartItem: CartItem) {
     let name: any = cartItem.product.name;
-    this.cartService.removeFromCartService(name);
+    this.favoriteService.removeFromFavoritesService(name);
   }
 
 }

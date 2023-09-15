@@ -5,11 +5,11 @@
 <div class="container-cart">
   <div class="content-cart">
 
-    <div class="empty" *ngIf="isEmpty()">
+    <div class="empty" *ngIf="isCartEmpty()">
       "Cosul este gol !!!"
     </div>
 
-    <table class="row-cart" style="width: 100%;" *ngIf="!isEmpty()">
+    <table class="row-cart" style="width: 100%;" *ngIf="!isCartEmpty()">
       <thead>
         <tr class="back">
           <td colspan="3">
@@ -65,7 +65,7 @@
 
 
 
-    <table class="column-cart" style="width: 100%;" *ngIf="!isEmpty()">
+    <table class="column-cart" style="width: 100%;" *ngIf="!isCartEmpty()">
 
       <thead>
         <tr>

@@ -5,6 +5,7 @@ import { ROLE } from 'src/app/shared/enums/electro.enum';
 import { User } from '../../shared/models/user.model';
 import { AuthService } from '../../shared/services/auth.service';
 import { Cart } from 'src/app/shared/models/cart.model';
+import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { SearchProductService } from 'src/app/shared/services/search-product.service';
 import { Product } from 'src/app/shared/models/product.model';
 import { ToastrService } from 'ngx-toastr';
@@ -21,15 +22,14 @@ export class NavbarMainComponent implements OnInit {
   userFirstChar: string = "";
   cartQuantity = 0;
 
-
   cart!: Cart;
-  link: string = "";
+  favorites!: Cart;
   currentLink: string = "";
 
   searchTerm: any = "";
-
-  isCartOpen: boolean = false;
+  
   handleCart: string = "";
+  handleFavorites: string = "";
 
   product: Product = new Product();
   products: Array<Product> = [];
@@ -37,10 +37,10 @@ export class NavbarMainComponent implements OnInit {
   isMobileMenuOpen: boolean = false;
 
   @ViewChild('txt') txt: ElementRef | undefined;
-  @ViewChild('crt') crt: ElementRef | undefined;
 
   constructor(
     private cartService: CartService,
+    private favoriteService: FavoriteService,
     private authService: AuthService,
     private router: Router,
     private searchProductService: SearchProductService,
@@ -51,6 +51,9 @@ export class NavbarMainComponent implements OnInit {
     cartService.getCartObservable().subscribe(data => {
       this.cart = data;
       this.cartQuantity = data.totalCount;
+    });
+    favoriteService.getFavoritesObservable().subscribe(data => {
+      this.favorites = data;
     });
 
     this.authService.currentUser.subscribe(
@@ -95,7 +98,7 @@ export class NavbarMainComponent implements OnInit {
   }
 
   isFavoritesEmpty() {
-    // return this.cart.items.length === 0;
+    return this.favorites.items.length === 0;
   }
 
   @HostListener('document:click', ['$event'])
@@ -110,19 +113,28 @@ export class NavbarMainComponent implements OnInit {
     }
   }
 
-  @HostListener('document:mouseover', ['$event'])
-  cartOut(event: any) {
-    if (this.crt?.nativeElement.contains(event.target)) {
-      if (this.isCartPage()) {
-        this.handleCart = "display: none;"
-        return;
-      }
-      this.handleCart = "display: block;"
-      // console.log("INSIDE");
-    } else {
+  openCart() {
+    if (this.isCartPage()) {
       this.handleCart = "display: none;"
-      // console.log("OUTSIDE");
+      return;
     }
+    this.handleCart = "display: block;"
+  }
+
+  closeCart() {
+    this.handleCart = "display: none;"
+  }
+
+  openFavorites() {
+    if (this.isFavoritesPage()) {
+      this.handleFavorites = "display: none;"
+      return;
+    }
+    this.handleFavorites = "display: block;"
+  }
+
+  closeFavorites() {
+    this.handleFavorites = "display: none;"
   }
 
   getProduct(term: string): void {
@@ -156,6 +168,7 @@ export class NavbarMainComponent implements OnInit {
   logout() {
     this.authService.logoutService();
     this.cartService.clearCartService();
+    this.favoriteService.clearFavoritesService();
     this.router.navigate(["/"])
       .then(() => {
         window.location.reload();

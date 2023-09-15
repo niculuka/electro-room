@@ -2,7 +2,7 @@
 
     <div class="favorite-items">
         <table>
-            <tr *ngFor="let item of cart.items">
+            <tr *ngFor="let item of favorites.items">
                 <td>
                     <img src={{item.product.image}} alt={{item.product.image}} (click)="getProductLinkName(item)">
                 </td>
@@ -14,7 +14,7 @@
                 </td>
                 <td class="price">{{item.price}} Lei</td>
                 <td>
-                    <mat-icon (click)="removeFromCart(item)">close</mat-icon>
+                    <mat-icon (click)="removeFromFavorites(item)">close</mat-icon>
                 </td>
             </tr>
         </table>

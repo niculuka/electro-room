@@ -85,7 +85,7 @@
 
 
       <!-- CART -------------------------------------------------------------------- -->
-      <li #crt class="dropdown">
+      <li class="dropdown" (mouseover)="openCart()" (mouseout)="closeCart()">
         <a (click)="goToCart()">
           <div class="badge" matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">
             <mat-icon>add_shopping_cart</mat-icon>
@@ -94,8 +94,8 @@
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
         <div class="dropdown-menu" [style]="handleCart">
-          <a *ngIf="isCartEmpty()">Cosul este gol</a>
 
+          <a *ngIf="isCartEmpty()">Cosul este gol</a>
           <cart-nav *ngIf="!isCartEmpty()" [cart]="cart" [cartQuantity]="cartQuantity"></cart-nav>
 
         </div>
@@ -103,7 +103,7 @@
 
 
       <!-- FAVORITE ---------------------------------------------------------------- -->
-      <li class="dropdown">
+      <li class="dropdown" (mouseover)="openFavorites()" (mouseout)="closeFavorites()">
         <a (click)="goToFavorites()">
           <div class="badge" matBadge="0" matBadgeColor="accent" matBadgeSize="medium">
             <mat-icon>favorite_border</mat-icon>
@@ -111,9 +111,11 @@
           <span class="hide">&nbsp; Favorite</span>
           <mat-icon class="hide">expand_more</mat-icon>
         </a>
-        <div class="dropdown-menu list-menu">
+        <div class="dropdown-menu" [style]="handleFavorites">
+
           <a *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
-          <favorite-nav [cart]="cart"></favorite-nav>
+          <favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></favorite-nav>
+
         </div>
       </li>
 
