@@ -10,7 +10,7 @@
                     <span (click)="getProductLinkName(item)">{{item.productName}}</span>
                 </td>
                 <td class="addToCart">
-                    <mat-icon>shopping_cart</mat-icon>
+                    <mat-icon (click)="addToCart(item)">shopping_cart</mat-icon>
                 </td>
                 <td class="price">{{item.price}} Lei</td>
                 <td>
@@ -20,7 +20,7 @@
         </table>
     </div>
 
-    <div class="fav-btn">
+    <div class="button-container">
         <button routerLink="/favorites">Vezi produsele favorite!</button>
     </div>
 </div>

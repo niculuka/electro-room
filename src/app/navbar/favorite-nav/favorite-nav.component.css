@@ -3,10 +3,11 @@
     flex-direction: column;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .favorite-items {
     max-height: 340px;
     overflow-y: scroll;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
 
     /* IE and Edge */
     -ms-overflow-style: none;
@@ -61,6 +62,9 @@
 }
 
 .favorite .favorite-items table mat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 16px;
     height: 16px;
     font-size: 18px;
@@ -74,17 +78,17 @@
 }
 
 /* footer -------------------------------------------*/
-.favorite .fav-btn {
+.favorite .button-container {
     margin: 0;
     padding: 10px;
-    font-size: 14px;
     box-shadow: 0px -6px 16px 00px rgba(0, 0, 0, 0.3);
     /* border: 1px solid black; */
 }
 
 
-.favorite .fav-btn button {
+.favorite .button-container button {
     color: white;
+    font-size: 14px;
     width: 100%;
     padding: 8px;
     border: none;
@@ -93,6 +97,51 @@
     background: #616161;
 }
 
-.favorite .fav-btn button:hover {
+.favorite .button-container button:hover {
     background: #7e7e7e;
+}
+
+@media (max-width: 550px) {
+    .favorite-items {
+        max-height: 200px;
+    }
+
+    .favorite .favorite-items table {
+        border-collapse: collapse;
+        width: 240px;
+    }
+
+    .favorite .favorite-items table td {
+        padding: 2px 4px;
+    }
+
+    .favorite .favorite-items table img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .favorite .favorite-items table .name {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .favorite .favorite-items table .price {
+        font-size: 12px;
+    }
+
+    .favorite .favorite-items table mat-icon {
+        width: 14px;
+        height: 14px;
+        font-size: 16px;
+    }
+
+    .favorite .button-container {
+        padding: 6px;
+    }
+
+
+    .favorite .button-container button {
+        font-size: 12px;
+        padding: 6px;
+    }
 }

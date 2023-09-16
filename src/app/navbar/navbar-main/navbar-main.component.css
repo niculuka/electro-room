@@ -229,7 +229,7 @@ mat-icon {
   right: 0;
   margin: 0;
   padding: 0;
-  min-width: 140px;  
+  min-width: 120px;  
   z-index: 4;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);  
   border-radius: 6px;
@@ -264,11 +264,7 @@ mat-icon {
 
 /* CART ---------------------------------------------------------------------- */
 
-
-
 /* FAVORITES ----------------------------------------------------------------- */
-
-
 
 /* --------------------------------------------------------------------------- */
 #username {
@@ -357,51 +353,7 @@ mat-icon {
 }
 
 @media (max-width: 766px) {
-  .dropdown-nav>li>a {
-    font-size: 13px;
-    line-height: 13px;
-    padding: 10px;
-  }
-
-  table {
-    max-width: 280px;
-  }
-
-  .title {
-    font-size: 13px;
-    line-height: 13px;
-  }
-
-  .subtitle {
-    font-size: 13px;
-    line-height: 13px;
-  }
-
-  td {
-    font-size: 12px;
-    line-height: 14px;
-  }
-
-  .quantity,
-  .price {
-    font-size: 13px;
-  }
-
-  td mat-icon {
-    font-size: 18px;
-    width: 18px;
-    height: 18px;
-  }
-
-  .container-nav .row1 ul .dropdown .dropdown-menu img {
-    width: 24px;
-    height: 24px;
-  }
-
-  .drop-menu-nav button {
-    font-size: 13px;
-    padding: 8px;
-  }
+  
 }
 
 @media (max-width: 550px) {
@@ -413,6 +365,18 @@ mat-icon {
     width: 20px;
     height: 20px;
     font-size: 24px;
+  }
+
+  .container-nav .row1 ul .dropdown a {
+    font-size: 12px;
+  }
+
+  .container-nav .row1 ul .dropdown .dropdown-menu {
+    min-width: 90px;
+  }
+
+  .container-nav .row1 ul .dropdown .dropdown-menu a {
+    padding: 6px;
   }
 
   .container-nav .row1 ul .burger mat-icon {
@@ -437,27 +401,5 @@ mat-icon {
     width: 21px;
     height: 21px;
     font-size: 15px;
-  }
-}
-
-@media (max-width: 380px) {
-  table {
-    max-width: 240px;
-  }
-
-  .dropdown-nav>li>a {
-    font-size: 12px;
-    line-height: 12px;
-    padding: 8px;
-  }
-
-  .title {
-    font-size: 12px;
-    line-height: 12px;
-  }
-
-  .subtitle {
-    font-size: 12px;
-    line-height: 12px;
   }
 }

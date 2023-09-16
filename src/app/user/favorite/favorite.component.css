@@ -68,6 +68,15 @@ select {
     font-weight: 100;
 }
 
+mat-icon {
+    color: rgb(220, 20, 110);
+    cursor: pointer;
+}
+
+mat-icon:hover {
+    color: rgb(255, 70, 153);
+}
+
 button {
     color: white;
     padding: 10px 20px;

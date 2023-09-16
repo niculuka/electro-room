@@ -245,22 +245,25 @@ export class ProductTypeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentLevel = params.get('level') || "";
-      this.currentType = params.get('type') || "";
-      if (
-        this.currentType === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()
-      ) {
-        this.productService.getProductsByLevelService(this.currentLevel).subscribe(data => {
-          this.filters(data);
-        });
-      } else {
-        this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-          this.filters(data);
-        });
-      }
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.favoriteService.getFavoritesObservable().subscribe(data => {
+      this.activatedRoute.paramMap.subscribe((params) => {
+        this.currentLevel = params.get('level') || "";
+        this.currentType = params.get('type') || "";
+        if (
+          this.currentType === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()
+        ) {
+          this.productService.getProductsByLevelService(this.currentLevel).subscribe(data => {
+            this.filters(data);
+          });
+        } else {
+          this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
+            this.filters(data);
+          });
+        }
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      });
     });
+
   }
 
   filters(data: any) {
@@ -268,8 +271,10 @@ export class ProductTypeComponent implements OnInit {
       let level = data[0].level.replace(/_/g, "-").toLowerCase();
       if (level === this.currentLevel) {
         this.notFoundProduct = true;
+        this.getFavoritesProducts(data);
         this.products = data;
         this.filter_0 = data;
+
         // ------------------------------------------------------------------------------------------
         this.count_reset();
         // ------------------------------------------------------------------------------------------ 
@@ -280,6 +285,18 @@ export class ProductTypeComponent implements OnInit {
     } else {
       this.notFoundProduct = false;
     }
+  }
+
+  getFavoritesProducts(data: any) {
+    this.favoriteService.getFavoritesObservable().subscribe(wish => {
+      for (let item of wish.items) {
+        for (let product of data) {
+          if (product.name === item.productName) {
+            product.favorite = true;
+          }
+        }
+      }
+    });
   }
 
   createProductItem(item: Product) {

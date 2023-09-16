@@ -3,10 +3,11 @@
     flex-direction: column;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .cart .cart-items {
     max-height: 340px;
     overflow-y: scroll;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
 
     /* IE and Edge */
     -ms-overflow-style: none;
@@ -66,6 +67,9 @@
 }
 
 .cart .cart-items table mat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 16px;
     height: 16px;
     font-size: 18px;
@@ -84,7 +88,6 @@
     flex-direction: column;
     margin: 0;
     padding: 10px;
-    font-size: 14px;
     box-shadow: 0px -6px 16px 00px rgba(0, 0, 0, 0.3);
     /* border: 1px solid black; */
 }
@@ -94,6 +97,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 14px;
     /* border: 1px solid black; */
 }
 
@@ -101,7 +105,7 @@
     border: 1px solid black;
   } */
 
-  .cart .total .total-items h4 {
+.cart .total .total-items h4 {
     margin: 0;
     padding: 0;
     color: rgb(220, 20, 110);
@@ -110,6 +114,7 @@
 
 .cart .total button {
     color: white;
+    font-size: 14px;
     width: 100%;
     padding: 8px;
     border: none;
@@ -120,4 +125,59 @@
 
 .cart .total button:hover {
     background: rgb(255, 50, 143);
+}
+
+@media (max-width: 550px) {
+    .cart .cart-items {
+        max-height: 200px;
+    }
+
+    .cart .cart-items table {
+        width: 240px;
+    }
+
+    .cart .cart-items table td {
+        padding: 2px 4px;
+    }
+
+    .cart .cart-items table img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .cart .cart-items table .name {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .cart .cart-items table .quantity {
+        font-size: 12px;
+    }
+
+    .cart .cart-items table .price {
+        font-size: 12px;
+    }
+
+    .cart .cart-items table mat-icon {
+        width: 14px;
+        height: 14px;
+        font-size: 16px;
+    }
+
+    .cart .total {
+        padding: 6px;
+    }
+
+    .cart .total .total-items {
+        font-size: 12px;
+    }
+
+    .cart .total .total-items h4 {
+        font-size: 14px;
+    }
+
+    .cart .total button {
+        font-size: 12px;
+        padding: 6px;
+    }
 }

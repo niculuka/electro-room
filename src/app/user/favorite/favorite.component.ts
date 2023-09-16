@@ -4,6 +4,7 @@ import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-favorite',
@@ -18,6 +19,7 @@ export class FavoriteComponent {
   favorites!: Cart;
 
   constructor(
+    private cartService: CartService,
     private favoriteService: FavoriteService,
     private router: Router,
     private location: Location,
@@ -29,6 +31,10 @@ export class FavoriteComponent {
 
   isFavoritesEmpty() {
     return this.favorites.items.length === 0;
+  }
+
+  addToCart(cartItem: CartItem) {
+    this.cartService.addToCartService(cartItem.product);
   }
 
   removeFromFavorites(cartItem: CartItem) {

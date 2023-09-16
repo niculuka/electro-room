@@ -42,6 +42,9 @@
           <td>
             {{cartItem.price | number: '1.2-2'}} Lei
           </td>
+          <td class="addToCart">
+            <mat-icon (click)="addToCart(cartItem)">shopping_cart</mat-icon>
+          </td>
           <td>
             <button class="btn-remove" (click)="removeFromFavorites(cartItem)">
               Sterge
@@ -86,7 +89,7 @@
         <tr>
           <th>Descriere</th>
           <td>{{cartItem.product.description}}</td>
-        </tr>        
+        </tr>
         <tr>
           <th>Pret</th>
           <td>
