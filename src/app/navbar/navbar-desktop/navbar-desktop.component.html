@@ -6,57 +6,57 @@
     <ul class="left-side">
 
       <!-- PRODUCTS ----------------------------------------------------------------- -->
-      <li class="product">
-        <div class="dropdown-nav">
+      <li class="burger">
 
-          <button (click)="toggleDesktopMenu()">
+        <button (click)="toggleDesktopMenu()">
+          <div class="inside-btn">
             <mat-icon>menu</mat-icon>
             <span>Produse</span>
-          </button>
+          </div>
+        </button>
 
-          <!-- MEGA MENU ------------------------------------------------------------ -->
-          <div class="dropdown-menu-nav" *ngIf="handleDesktopMenu">
-            <div class="left-menu">
-              <ul class="d-dropdown">
-                <li *ngFor="let department of departments">
-                  <a>
-                    <span class="d-item">
-                      <img class="department-icon" src="{{department.icon}}" alt="icon">
-                      <span>{{department.name}}</span>
-                    </span>
-                    <span class="d-item">
-                      <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
-                    </span>
-                  </a>
-                  <div class="d-dropdown-menu">
-                    <div class="col-nav">
-                      <div class="department" *ngFor="let title of department.titles">
-                        <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.color}"
-                          (click)="closeMenu(title)">{{title.name}}
-                        </a>
-                        <ul *ngFor="let subtitle of title.subtitles">
-                          <li>
-                            <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
-                              (click)="closeMenu(subtitle)">
-                              {{subtitle.name}}
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+        <!-- MEGA MENU -------------------------------------------------------------- -->
+        <div class="dropdown-menu-nav" *ngIf="handleDesktopMenu">
+          <div class="left-menu">
+            <ul class="d-dropdown">
+              <li *ngFor="let department of departments">
+                <a>
+                  <span class="d-item">
+                    <img class="department-icon" src="{{department.icon}}" alt="icon">
+                    <span>{{department.name}}</span>
+                  </span>
+                  <span class="d-item">
+                    <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
+                  </span>
+                </a>
+                <div class="d-dropdown-menu">
+                  <div class="col-nav">
+                    <div class="department" *ngFor="let title of department.titles">
+                      <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.color}"
+                        (click)="closeMenu(title)">{{title.name}}
+                      </a>
+                      <ul *ngFor="let subtitle of title.subtitles">
+                        <li>
+                          <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
+                            (click)="closeMenu(subtitle)">
+                            {{subtitle.name}}
+                          </a>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                </li>
-              </ul>
-            </div>
-
-            <!-- CAROUSEL ---------------------------------------------------------- -->
-            <div class="carousel-display">
-              <div class="carousel-nav">
-                <carousel *ngIf="isCarouselOpen"></carousel>
-              </div>
-            </div>
-
+                </div>
+              </li>
+            </ul>
           </div>
+
+          <!-- CAROUSEL ---------------------------------------------------------- -->
+          <div class="carousel-display">
+            <div class="carousel-nav">
+              <carousel *ngIf="isCarouselOpen"></carousel>
+            </div>
+          </div>
+
         </div>
       </li>
 
