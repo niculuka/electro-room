@@ -114,7 +114,7 @@ export class SearchComponent implements OnInit {
   }
 
   addToCart(item: Product) {
-    this.product.id = item.id || item.id || item.id || item.id;
+    this.product.id = item.id;
     this.product.name = item.name;
     this.product.linkName = item.linkName;
     this.product.description = item.description;
@@ -124,7 +124,7 @@ export class SearchComponent implements OnInit {
     this.product.price = item.price;
 
     this.cartService.addToCartService(this.product);
-    this.router.navigateByUrl('/cart');
+    this.product = new Product();
   }
 
   // =============================================================================== S O R T I N G 

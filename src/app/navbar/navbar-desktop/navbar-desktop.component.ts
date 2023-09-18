@@ -3,7 +3,7 @@ import { Department, DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
-  selector: 'navbar-desktop',
+  selector: 'app-navbar-desktop',
   templateUrl: './navbar-desktop.component.html',
   styleUrls: ['./navbar-desktop.component.css']
 })

@@ -77,7 +77,6 @@ export class ProductDetailComponent implements OnInit{
   addToCart() {
     this.createProductItem();
     this.cartService.addToCartService(this.product);
-    this.router.navigateByUrl('/cart');
   }
 
   addToFavorites() {

@@ -9,9 +9,6 @@
                 <td class="name">
                     <span (click)="getProductLinkName(item)">{{item.productName}}</span>
                 </td>
-                <td class="addToCart">
-                    <mat-icon (click)="addToCart(item)">shopping_cart</mat-icon>
-                </td>
                 <td class="price">{{item.price}} Lei</td>
                 <td>
                     <mat-icon (click)="removeFromFavorites(item)">close</mat-icon>

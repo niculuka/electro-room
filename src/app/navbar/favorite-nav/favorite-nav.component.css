@@ -3,8 +3,8 @@
     flex-direction: column;
 }
 
-.favorite-items {
-    max-height: 340px;
+.favorite .favorite-items {
+    max-height: 280px;
     overflow-y: scroll;
 
     /* Hide scrollbar for IE, Edge and Firefox */
@@ -23,7 +23,7 @@
 
 .favorite .favorite-items table {
     border-collapse: collapse;
-    width: 300px;
+    width: 260px;
 }
 
 .favorite .favorite-items table tr {
@@ -102,13 +102,13 @@
 }
 
 @media (max-width: 550px) {
-    .favorite-items {
-        max-height: 200px;
+    .favorite .favorite-items {
+        max-height: 180px;
     }
 
     .favorite .favorite-items table {
         border-collapse: collapse;
-        width: 240px;
+        width: 200px;
     }
 
     .favorite .favorite-items table td {

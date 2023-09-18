@@ -1,165 +1,167 @@
 <div class="container-nav">
+  <div class="content-nav">
 
-  <!-- ROW 1 ======================================================================================================= -->
-  <!-- ============================================================================================================= -->
-  <!-- ============================================================================================================= -->
-  <div class="row1">
+    <!-- ROW 1 ======================================================================================================= -->
+    <!-- ============================================================================================================= -->
+    <!-- ============================================================================================================= -->
+    <div class="row1">
 
-    <!-- LEFT SIDE -------------------------------------------------------------------------------------------->
-    <!-- ------------------------------------------------------------------------------------------------------>
-    <ul>
-      <!-- M E G A - M E N U ------------------------------------------------------ -->
-      <li #txt class="burger">
-        <label for="check" class="check-btn" (click)="displayMobileMenu()">
-          <mat-icon>{{isMobileMenuOpen ? "close": "menu" }}</mat-icon>
-        </label>
+      <!-- LEFT SIDE -------------------------------------------------------------------------------------------->
+      <!-- ------------------------------------------------------------------------------------------------------>
+      <ul>
+        <!-- M E G A - M E N U ------------------------------------------------------ -->
+        <li #txt class="burger">
+          <label for="check" class="check-btn" (click)="displayMobileMenu()">
+            <mat-icon>{{isMobileMenuOpen ? "close": "menu" }}</mat-icon>
+          </label>
 
-        <div class="mega-menu" *ngIf="isMobileMenuOpen">
-          <div class="background-menu" (click)="displayMobileMenu()">
+          <div class="mega-menu" *ngIf="isMobileMenuOpen">
+            <div class="background-menu" (click)="displayMobileMenu()">
+            </div>
+
+            <div class="departaments">
+              <mega-menu-mobile [isMobileMenuOpen]="isMobileMenuOpen"></mega-menu-mobile>
+            </div>
           </div>
+        </li>
 
-          <div class="departaments">
-            <mega-menu-mobile [isMobileMenuOpen]="isMobileMenuOpen"></mega-menu-mobile>
+        <!-- LOGO -------------------------------------------------------------------- -->
+        <li class="logo">
+          <a routerLink="/">
+            <img src="assets/logo/electro-room-red-small.png" alt="logo">
+          </a>
+        </li>
+
+        <!-- SEARCH BAR -------------------------------------------------------------- -->
+        <li class="search-bar">
+          <form>
+            <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)"
+              name="searchTerm" [(ngModel)]="searchTerm">
+            <button (click)="getProduct(s.value)">
+              <mat-icon>search</mat-icon>
+            </button>
+          </form>
+        </li>
+
+      </ul>
+
+
+
+      <!-- RIGHT SIDE ---------------------------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------------------------------------------>
+      <ul>
+
+        <!-- ADMIN ------------------------------------------------------------------- -->
+        <li class="dropdown" *ngIf="isAdmin()">
+          <a>
+            <!-- <mat-icon class="admin">settings</mat-icon> -->
+            <span><strong>Admin</strong></span>
+          </a>
+          <div class="dropdown-menu list-menu">
+            <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
+            <a routerLink="/admin/products/laptop-accessory" routerLinkActive="active">Accessories</a>
+
+            <a routerLink="/admin/electro-orders" routerLinkActive="active">Orders</a>
+            <a routerLink="/admin/electro-items" routerLinkActive="active">Items</a>
+            <a routerLink="/admin/users" routerLinkActive="active">Users</a>
+            <a routerLink="/admin/tokens" routerLinkActive="active">Tokens</a>
           </div>
-        </div>
-      </li>
-
-      <!-- LOGO -------------------------------------------------------------------- -->
-      <li class="logo">
-        <a routerLink="/">
-          <img src="assets/logo/electro-room-red-small.png" alt="logo">
-        </a>
-      </li>
-
-      <!-- SEARCH BAR -------------------------------------------------------------- -->
-      <li class="search-bar">
-        <form>
-          <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)" name="searchTerm"
-            [(ngModel)]="searchTerm">
-          <button (click)="getProduct(s.value)">
-            <mat-icon>search</mat-icon>
-          </button>
-        </form>
-      </li>
-
-    </ul>
+        </li>
 
 
+        <!-- ADMIN ------------------------------------------------------------------- -->
+        <li class="dropdown" *ngIf="!isAdmin()">
+          <a>
+            <!-- <mat-icon class="admin">settings</mat-icon> -->
+            <span>Admin</span>
+          </a>
+          <div class="dropdown-menu list-menu">
+            <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
+            <a routerLink="/admin/demo/products/laptop-accessory" routerLinkActive="active">Accessories</a>
 
-    <!-- RIGHT SIDE ---------------------------------------------------------------------------------------- -->
-    <!-- ------------------------------------------------------------------------------------------------------>
-    <ul>
-
-      <!-- ADMIN ------------------------------------------------------------------- -->
-      <li class="dropdown" *ngIf="isAdmin()">
-        <a>
-          <!-- <mat-icon class="admin">settings</mat-icon> -->
-          <span><strong>Admin</strong></span>
-        </a>
-        <div class="dropdown-menu list-menu">
-          <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
-          <a routerLink="/admin/products/laptop-accessory" routerLinkActive="active">Accessories</a>
-
-          <a routerLink="/admin/electro-orders" routerLinkActive="active">Orders</a>
-          <a routerLink="/admin/electro-items" routerLinkActive="active">Items</a>
-          <a routerLink="/admin/users" routerLinkActive="active">Users</a>
-          <a routerLink="/admin/tokens" routerLinkActive="active">Tokens</a>
-        </div>
-      </li>
-
-
-      <!-- ADMIN ------------------------------------------------------------------- -->
-      <li class="dropdown" *ngIf="!isAdmin()">
-        <a>
-          <!-- <mat-icon class="admin">settings</mat-icon> -->
-          <span>Admin</span>
-        </a>
-        <div class="dropdown-menu list-menu">
-          <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
-          <a routerLink="/admin/demo/products/laptop-accessory" routerLinkActive="active">Accessories</a>
-
-          <a routerLink="/admin/demo/electro-orders" routerLinkActive="active">Orders</a>
-          <a routerLink="/admin/demo/users" routerLinkActive="active">Users</a>
-        </div>
-      </li>
-
-
-      <!-- CART -------------------------------------------------------------------- -->
-      <li class="dropdown" (mouseover)="openCart()" (mouseout)="closeCart()">
-        <a (click)="goToCart()">
-          <div class="badge" matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">
-            <mat-icon>add_shopping_cart</mat-icon>
+            <a routerLink="/admin/demo/electro-orders" routerLinkActive="active">Orders</a>
+            <a routerLink="/admin/demo/users" routerLinkActive="active">Users</a>
           </div>
-          <span class="hide">&nbsp; Cosul meu</span>
-          <mat-icon class="hide">expand_more</mat-icon>
-        </a>
-        <div class="dropdown-menu" [style]="handleCart">
-          <a *ngIf="isCartEmpty()">Cosul este gol</a>
-          <cart-nav *ngIf="!isCartEmpty()" [cart]="cart" [cartQuantity]="cartQuantity"></cart-nav>
-        </div>
-      </li>
+        </li>
 
 
-      <!-- FAVORITE ---------------------------------------------------------------- -->
-      <li class="dropdown" (mouseover)="openFavorites()" (mouseout)="closeFavorites()">
-        <a (click)="goToFavorites()">
-          <div class="badge" matBadge="{{favoriteQuantity}}" matBadgeColor="accent" matBadgeSize="medium">
-            <mat-icon>favorite_border</mat-icon>
+        <!-- CART -------------------------------------------------------------------- -->
+        <li class="dropdown" (mouseover)="openCart()" (mouseout)="closeCart()">
+          <a routerLink="/cart" (click)="goToCart()">
+            <div class="badge" matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">
+              <mat-icon>add_shopping_cart</mat-icon>
+            </div>
+            <span class="hide">&nbsp; Cosul meu</span>
+            <mat-icon class="hide">expand_more</mat-icon>
+          </a>
+          <div class="dropdown-menu" [style]="handleCart">
+            <a *ngIf="isCartEmpty()">Cosul este gol</a>
+            <cart-nav *ngIf="!isCartEmpty()" [cart]="cart" [cartQuantity]="cartQuantity"></cart-nav>
           </div>
-          <span class="hide">&nbsp; Favorite</span>
-          <mat-icon class="hide">expand_more</mat-icon>
-        </a>
-        <div class="dropdown-menu" [style]="handleFavorites">
-          <a *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
-          <favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></favorite-nav>
-        </div>
-      </li>
+        </li>
 
 
-      <!-- LOGIN (login, register) -------------------------------------------------- -->
-      <li class="dropdown" *ngIf="!currentUser?.userId">
-        <a>
-          <mat-icon>perm_identity</mat-icon>
-          <span class="hide">Cont</span>
-          <mat-icon class="hide">expand_more</mat-icon>
-        </a>
-        <div class="dropdown-menu list-menu">
-          <a routerLink="/auth/login">Intra in cont!</a>
-          <a routerLink="/auth/register">Inregistrare!</a>
-        </div>
-      </li>
+        <!-- FAVORITE ---------------------------------------------------------------- -->
+        <li class="dropdown" (mouseover)="openFavorites()" (mouseout)="closeFavorites()">
+          <a routerLink="/favorites" (click)="goToFavorites()">
+            <div class="badge" matBadge="{{favoriteQuantity}}" matBadgeColor="accent" matBadgeSize="medium">
+              <mat-icon>favorite_border</mat-icon>
+            </div>
+            <span class="hide">&nbsp; Favorite</span>
+            <mat-icon class="hide">expand_more</mat-icon>
+          </a>
+          <div class="dropdown-menu" [style]="handleFavorites">
+            <a *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
+            <favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></favorite-nav>
+          </div>
+        </li>
 
 
-      <!-- LOGOUT (profile, order, logout) ------------------------------------------- -->
-      <li class="dropdown" *ngIf="currentUser?.userId">
-        <a>
-          <span id="username">{{userFirstChar}}</span>
-          <mat-icon class="hide">expand_more</mat-icon>
-        </a>
-        <div class="dropdown-menu list-menu">
-          <a routerLink="/profile" routerLinkActive="active">Profile</a>
-          <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
-          <a routerLink="/" (click)="logout()">Logout</a>
-        </div>
-      </li>
-    </ul>
+        <!-- LOGIN (login, register) -------------------------------------------------- -->
+        <li class="dropdown" *ngIf="!currentUser?.userId">
+          <a>
+            <mat-icon>perm_identity</mat-icon>
+            <span class="hide">Cont</span>
+            <mat-icon class="hide">expand_more</mat-icon>
+          </a>
+          <div class="dropdown-menu list-menu">
+            <a routerLink="/auth/login">Intra in cont!</a>
+            <a routerLink="/auth/register">Inregistrare!</a>
+          </div>
+        </li>
+
+
+        <!-- LOGOUT (profile, order, logout) ------------------------------------------- -->
+        <li class="dropdown" *ngIf="currentUser?.userId">
+          <a>
+            <span id="username">{{userFirstChar}}</span>
+            <mat-icon class="hide">expand_more</mat-icon>
+          </a>
+          <div class="dropdown-menu list-menu">
+            <a routerLink="/profile" routerLinkActive="active">Profile</a>
+            <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
+            <a routerLink="/" (click)="logout()">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- ROW 2 ======================================================================================================= -->
+    <!-- ============================================================================================================= -->
+    <div class="row2">
+      <ul>
+        <li class="search-bar">
+          <form>
+            <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)"
+              name="searchTerm" [(ngModel)]="searchTerm">
+            <button (click)="getProduct(s.value)">
+              <mat-icon class="search-icon">search</mat-icon>
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+
   </div>
-
-
-  <!-- ROW 2 ======================================================================================================= -->
-  <!-- ============================================================================================================= -->
-  <div class="row2">
-    <ul>
-      <li class="search-bar">
-        <form>
-          <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)" name="searchTerm"
-            [(ngModel)]="searchTerm">
-          <button (click)="getProduct(s.value)">
-            <mat-icon class="search-icon">search</mat-icon>
-          </button>
-        </form>
-      </li>
-    </ul>
-  </div>
-
 </div>

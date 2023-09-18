@@ -31,10 +31,6 @@ export class FavoriteNavComponent {
     ]);
   }
 
-  addToCart(cartItem: CartItem) {
-    this.cartService.addToCartService(cartItem.product);
-  }
-
   removeFromFavorites(cartItem: CartItem) {
     let name: any = cartItem.product.name;
     this.favoriteService.removeFromFavoritesService(name);

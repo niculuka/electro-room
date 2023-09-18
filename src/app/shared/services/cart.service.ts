@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart } from '../models/cart.model';
 import { CartItem } from '../models/cart-item.model';
 import { Product } from '../models/product.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ export class CartService {
   public cart: Cart = this.getCartFromLocalStorage();
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
 
-  constructor() { }
+  constructor(
+    private toastrService: ToastrService,
+  ) { }
 
   addToCartService(product: Product): void {
     let cartItem = this.cart.items.find(item => item.product.name === product.name);
@@ -20,6 +23,7 @@ export class CartService {
       return;
     this.cart.items.push(new CartItem(product));
     this.setCartToLocalStorage();
+    this.toastrService.success("Produsul a fost adaugat in cos.");
   }
 
   changeQuantityService(name: string, quantity: number) {

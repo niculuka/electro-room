@@ -11,7 +11,7 @@ import { Product } from 'src/app/shared/models/product.model';
 import { ScreenBlockedService } from 'src/app/shared/services/screen-blocked.service';
 
 @Component({
-  selector: 'navbar-main',
+  selector: 'app-navbar-main',
   templateUrl: './navbar-main.component.html',
   styleUrls: ['./navbar-main.component.css']
 })
@@ -113,13 +113,8 @@ export class NavbarMainComponent {
 
   goToCart() {
     if (this.isCartPage()) {
-      this.router.navigate(["/cart"])
-        .then(() => {
-          window.location.reload();
-        });
-      return;
+      window.location.reload();
     }
-    this.router.navigate(["/cart"]);
   }
 
   // FAVORITES-NAV -----------------------------------------------------
@@ -151,13 +146,8 @@ export class NavbarMainComponent {
 
   goToFavorites() {
     if (this.isFavoritesPage()) {
-      this.router.navigate(["/favorites"])
-        .then(() => {
-          window.location.reload();
-        });
-      return;
+      window.location.reload();
     }
-    this.router.navigate(["/favorites"]);
   }
 
   // LOGS -------------------------------------------------------------

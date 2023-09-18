@@ -314,7 +314,7 @@ export class ProductTypeComponent implements OnInit {
   addToCart(item: Product) {
     this.createProductItem(item);
     this.cartService.addToCartService(this.product);
-    this.router.navigateByUrl('/cart');
+    this.product = new Product();
   }
 
   handleFavorite(item: Product) {
