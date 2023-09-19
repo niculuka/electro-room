@@ -27,7 +27,7 @@
   margin-bottom: 20px;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1530px) {
   .delimiter {
     height: 412px;
   }
@@ -37,7 +37,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1260px) {
   .delimiter {
     height: 312px;
   }
@@ -47,7 +47,7 @@
   }
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1020px) {
   .delimiter {
     position: relative;
     width: 100%;

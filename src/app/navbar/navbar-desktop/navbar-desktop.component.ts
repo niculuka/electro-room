@@ -1,46 +1,37 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Department, DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-desktop',
   templateUrl: './navbar-desktop.component.html',
   styleUrls: ['./navbar-desktop.component.css']
 })
-export class NavbarDesktopComponent implements OnInit {
+export class NavbarDesktopComponent {
 
-  @Input() isDesktopMenuOpen = true;
-  @Input() isCarouselOpen = true;
+  @Input() isDesktopMenuOpen = false;
+  @Input() isCarouselOpen = false;
 
-  departments: Array<Department> = DEPARTMENTS; 
-
-  handleDesktopMenu = true;  
+  currentLink: string = "";
 
   constructor(
-    private localStorageService: LocalStorageService,
-  ) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+  ) {
+    this.activatedRoute.params.subscribe(() => {
+      this.currentLink = this.router.url;
+    });
+  }
 
-  ngOnInit(): void {
-    if (this.isDesktopMenuOpen == true) {
-      this.handleDesktopMenu = true;
-    }
-    if (this.isDesktopMenuOpen == false) {
-      this.handleDesktopMenu = false;
-    }
+  isHomePage() {
+    return this.currentLink === "/";
   }
 
   toggleDesktopMenu() {
-    if (this.isDesktopMenuOpen == true) {
-      this.handleDesktopMenu = true;
+    if (this.isHomePage()) {
+      this.isDesktopMenuOpen = true;
+      return;
     }
-    if (this.isDesktopMenuOpen == false) {
-      this.handleDesktopMenu = !this.handleDesktopMenu;
-    }
-  }
-
-  closeMenu(item: any) {
-    this.handleDesktopMenu = false;
-    this.localStorageService.sendItem(item);
+    this.isDesktopMenuOpen = !this.isDesktopMenuOpen;
   }
 
 }

@@ -110,6 +110,7 @@
   cursor: pointer;
 }
 
+/* M A T - I C O N ----------------------------*/
 mat-icon {
   display: flex;
   flex-direction: row;
@@ -144,8 +145,6 @@ mat-icon {
   display: none;
 }
 
-/* MEGA MENU ======================================================================= */
-/* v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v */
 .content-nav .row1 ul .burger .mega-menu {
   z-index: 3;
 }
@@ -172,9 +171,6 @@ mat-icon {
   border-top: 2px solid rgb(199, 199, 199);
   /* border: 1px solid rgb(0, 102, 255); */
 }
-
-/* A A A A A A A A A A A A A A A A A A A A A A A A A A A A A  A A A A A A A A A A A */
-/* ================================================================================ */
 
 .content-nav .row1 ul .logo {
   margin: 0;

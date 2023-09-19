@@ -1,1 +1,36 @@
-<p>mega-menu-desktop works!</p>
+<ul class="dropdown-nav">
+
+    <li *ngFor="let department of departments">
+
+        <a>
+            <span class="icon">
+                <img class="department-icon" src="{{department.icon}}" alt="icon">
+                <span>{{department.name}}</span>
+            </span>
+            <span class="icon">
+                <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
+            </span>
+        </a>
+
+        <div class="dropdown-menu-nav">
+            <div class="column-nav">
+                <div class="department-titles" *ngFor="let title of department.titles">
+
+                    <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.color}">{{title.name}}
+                    </a>
+                    
+                    <ul *ngFor="let subtitle of title.subtitles">
+                        <li>
+                            <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}">
+                                {{subtitle.name}}
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+
+    </li>
+    
+</ul>

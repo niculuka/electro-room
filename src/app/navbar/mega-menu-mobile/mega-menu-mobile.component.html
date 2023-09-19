@@ -13,7 +13,7 @@
         </a>
 
         <div class="dropdown-menu-nav" *ngFor="let title of department.titles">
-            <div class="department" *ngIf="department.showTitle">
+            <div class="department-titles" *ngIf="department.showTitle">
 
                 <a class="title" [ngStyle]="{'color': title.color}" (click)="openCloseTitle(title)">
                     {{title.name}}

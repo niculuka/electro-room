@@ -3,9 +3,9 @@
 
     <!-- LEFT SIDE ======================================================================================= -->
     <!-- ================================================================================================= -->
-    <ul class="left-side">
+    <ul>
 
-      <!-- PRODUCTS ----------------------------------------------------------------- -->
+      <!-- MEGA MENU ---------------------------------------------------------------------- -->
       <li class="burger">
 
         <button (click)="toggleDesktopMenu()">
@@ -15,46 +15,14 @@
           </div>
         </button>
 
-        <!-- MEGA MENU -------------------------------------------------------------- -->
-        <div class="dropdown-menu-nav" *ngIf="handleDesktopMenu">
-          <div class="left-menu">
-            <ul class="d-dropdown">
-              <li *ngFor="let department of departments">
-                <a>
-                  <span class="d-item">
-                    <img class="department-icon" src="{{department.icon}}" alt="icon">
-                    <span>{{department.name}}</span>
-                  </span>
-                  <span class="d-item">
-                    <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
-                  </span>
-                </a>
-                <div class="d-dropdown-menu">
-                  <div class="col-nav">
-                    <div class="department" *ngFor="let title of department.titles">
-                      <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.color}"
-                        (click)="closeMenu(title)">{{title.name}}
-                      </a>
-                      <ul *ngFor="let subtitle of title.subtitles">
-                        <li>
-                          <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
-                            (click)="closeMenu(subtitle)">
-                            {{subtitle.name}}
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
+        <div class="mega-menu" *ngIf="isDesktopMenuOpen">
+
+          <div class="departments">
+            <app-mega-menu-desktop></app-mega-menu-desktop>
           </div>
 
-          <!-- CAROUSEL ---------------------------------------------------------- -->
-          <div class="carousel-display">
-            <div class="carousel-nav">
-              <carousel *ngIf="isCarouselOpen"></carousel>
-            </div>
+          <div class="carousel-nav">
+            <carousel *ngIf="isCarouselOpen"></carousel>
           </div>
 
         </div>
@@ -77,7 +45,7 @@
 
     <!-- RIGHT SIDE ====================================================================================== -->
     <!-- ================================================================================================= -->
-    <ul class="right-side">
+    <ul>
 
       <!-- HELP ------------------------------------------------------------------- -->
       <li class="item-nav">

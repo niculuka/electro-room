@@ -416,7 +416,40 @@ export const DEPARTMENTS: Department[] = [
                 showSubtitle: false,
                 isReady: false,
                 color: "#262626",
-                subtitles: []
+                subtitles: [
+                    {
+                        name: "Telefoane cu fise mici",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600.png",
+                        isReady: false,
+                        color: "#676767",
+                    },
+                    {
+                        name: "Telefoane cu disc",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600.png",
+                        isReady: false,
+                        color: "#676767",
+                    },
+                    {
+                        name: "Mini telefoane (digitale)",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600.png",
+                        isReady: false,
+                        color: "#676767",
+                    },
+                    {
+                        name: "Centrale telefonice",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600.png",
+                        isReady: false,
+                        color: "#676767",
+                    },
+                ]
             },
         ],
     },
@@ -876,22 +909,6 @@ export const DEPARTMENTS: Department[] = [
                         isReady: false,
                         color: "#676767",
                     },
-                    {
-                        name: "Mouse PAD",
-                        type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
-                        image: "assets/images/under-construction600.png",
-                        isReady: false,
-                        color: "#676767",
-                    },
-                    {
-                        name: "Produse intretinere calculator",
-                        type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
-                        image: "assets/images/under-construction600.png",
-                        isReady: false,
-                        color: "#676767",
-                    },
                 ]
             },
             {
@@ -956,7 +973,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1043,7 +1060,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1103,7 +1120,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1147,7 +1164,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1207,7 +1224,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1251,7 +1268,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1311,7 +1328,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1355,7 +1372,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1415,7 +1432,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
@@ -1459,7 +1476,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#676767",
                     },
                     {
-                        name: "4K LAPTOP_ULTRA HD",
+                        name: "4K Laptop Ultra HD",
                         type: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600.png",
