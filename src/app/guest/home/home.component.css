@@ -38,9 +38,9 @@
 }
 
 @media (max-width: 1260px) {
-  .delimiter {
+  /* .delimiter {
     height: 312px;
-  }
+  } */
 
   .content-owl {
     width: 996px;
@@ -52,7 +52,7 @@
     position: relative;
     width: 100%;
     height: auto;
-    padding-top: 45.3%;
+    padding-top: 47%;
   }
 
   .info-block {

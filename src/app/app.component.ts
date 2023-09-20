@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ScreenBlockedService } from './shared/services/screen-blocked.service';
+import { MobileMenuService } from './shared/services/mobile-menu.service';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +10,13 @@ import { ScreenBlockedService } from './shared/services/screen-blocked.service';
 export class AppComponent {
   title = 'electro-room';
   
-  isScreenBlocked = false;
+  isMobileMenuOpen = false;
 
   constructor(
-    private screenBlockedService: ScreenBlockedService,
+    private mobileMenuService: MobileMenuService,
   ) {
-    this.screenBlockedService.getBlockScreenObservable().subscribe(data => {
-      this.isScreenBlocked = data;
-      // console.log(this.isScreenBlocked);
+    this.mobileMenuService.getHandleMobileMenuObservable().subscribe(data => {
+      this.isMobileMenuOpen = data;
     })
   }
 

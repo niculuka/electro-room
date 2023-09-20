@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Department, DEPARTMENTS, Title } from 'src/app/shared/data/mega-menu.data';
-import { ScreenBlockedService } from 'src/app/shared/services/screen-blocked.service';
+import { MobileMenuService } from 'src/app/shared/services/mobile-menu.service';
 
 @Component({
   selector: 'mega-menu-mobile',
@@ -11,28 +11,28 @@ export class MegaMenuMobileComponent {
 
   departments: Array<Department> = DEPARTMENTS;
 
-  @Input() isMobileMenuOpen: boolean = false;
+  isMobileMenuOpen: boolean = false;
 
   constructor(
-    private screenBlockedService: ScreenBlockedService,
-  ) { }
+    private mobileMenuService: MobileMenuService,
+  ) {
+    this.mobileMenuService.getHandleMobileMenuObservable().subscribe(data => {
+      this.isMobileMenuOpen = data;
+    })
+  }  
 
-  closeMobileMenu() {
-    this.isMobileMenuOpen = false;
-    this.screenBlockedService.isScreenBlocked = this.isMobileMenuOpen;
-    this.screenBlockedService.blockScreen();
-  }
-
-  openCloseDepartment(department: Department) {
+  toogleDepartment(department: Department) {
     department.showTitle = !department.showTitle;
   }
 
-  openCloseTitle(title: Title) {
+  toogleTitle(title: Title) {
     title.showSubtitle = !title.showSubtitle;
   }
 
-  // closeFromSubtitles() {
-  //   this.isMobileMenuOpen = false;
-  // }
+  closeMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    this.mobileMenuService.isMobileMenuOpen = this.isMobileMenuOpen;
+    this.mobileMenuService.handleMobileMenuService();
+  }
 
 }

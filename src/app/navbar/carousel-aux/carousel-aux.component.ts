@@ -3,7 +3,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselAuxData, CAROUSEL_AUX } from 'src/app/shared/data/carousel-aux.data';
 
 @Component({
-  selector: 'carousel-aux',
+  selector: 'app-carousel-aux',
   templateUrl: './carousel-aux.component.html',
   styleUrls: ['./carousel-aux.component.css']
 })

@@ -2,7 +2,7 @@
 
     <li *ngFor="let department of departments;">
 
-        <a (click)="openCloseDepartment(department)">
+        <a (click)="toogleDepartment(department)">
             <span class="icon">
                 <img class="department-icon" src="{{department.icon}}" alt="icon">
                 <span>{{department.name}}</span>
@@ -15,7 +15,7 @@
         <div class="dropdown-menu-nav" *ngFor="let title of department.titles">
             <div class="department-titles" *ngIf="department.showTitle">
 
-                <a class="title" [ngStyle]="{'color': title.color}" (click)="openCloseTitle(title)">
+                <a class="title" [ngStyle]="{'color': title.color}" (click)="toogleTitle(title)">
                     {{title.name}}
                     <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
                 </a>

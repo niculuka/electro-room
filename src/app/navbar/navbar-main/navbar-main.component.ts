@@ -8,7 +8,7 @@ import { Cart } from 'src/app/shared/models/cart.model';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { SearchProductService } from 'src/app/shared/services/search-product.service';
 import { Product } from 'src/app/shared/models/product.model';
-import { ScreenBlockedService } from 'src/app/shared/services/screen-blocked.service';
+import { MobileMenuService } from 'src/app/shared/services/mobile-menu.service';
 
 @Component({
   selector: 'app-navbar-main',
@@ -18,10 +18,10 @@ import { ScreenBlockedService } from 'src/app/shared/services/screen-blocked.ser
 export class NavbarMainComponent {
 
   @ViewChild('txt') txt: ElementRef | undefined;
-  isMobileMenuOpen: boolean = false;  
+  isMobileMenuOpen: boolean = false;
 
   currentUser: User = new User();
-  userFirstChar: string = "";  
+  userFirstChar: string = "";
 
   cart!: Cart;
   favorites!: Cart;
@@ -30,12 +30,12 @@ export class NavbarMainComponent {
 
   currentLink: string = "";
   searchTerm: any = "";
-  
+
   handleCart: string = "";
   handleFavorites: string = "";
 
   product: Product = new Product();
-  products: Array<Product> = [];    
+  products: Array<Product> = [];
 
   constructor(
     private cartService: CartService,
@@ -44,7 +44,7 @@ export class NavbarMainComponent {
     private router: Router,
     private searchProductService: SearchProductService,
     private activatedRoute: ActivatedRoute,
-    private screenBlockedService: ScreenBlockedService,
+    private mobileMenuService: MobileMenuService,
   ) {
     cartService.getCartObservable().subscribe(data => {
       this.cart = data;
@@ -69,23 +69,26 @@ export class NavbarMainComponent {
         this.searchProductService.searchProducts(this.searchTerm.toLowerCase())
       }
     });
-  }  
+    this.mobileMenuService.getHandleMobileMenuObservable().subscribe((data) => {
+      this.isMobileMenuOpen = data;
+    });
+  }
 
   // MEGA-MENU - MOBILE ---------------------------------------------------
   displayMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    this.screenBlockedService.isScreenBlocked = this.isMobileMenuOpen;
-    this.screenBlockedService.blockScreen();
+    this.mobileMenuService.isMobileMenuOpen = this.isMobileMenuOpen;
+    this.mobileMenuService.handleMobileMenuService();
   }
-  
+
   @HostListener('document:click', ['$event'])
   clickOut(event: any) {
     if (this.txt?.nativeElement.contains(event.target)) {
       // console.log("INSIDE");
     } else {
       this.isMobileMenuOpen = false;
-      this.screenBlockedService.isScreenBlocked = this.isMobileMenuOpen;
-      this.screenBlockedService.blockScreen();
+      this.mobileMenuService.isMobileMenuOpen = this.isMobileMenuOpen;
+      this.mobileMenuService.handleMobileMenuService();
       // console.log("OUTSIDE");
     }
   }
@@ -120,11 +123,11 @@ export class NavbarMainComponent {
   // FAVORITES-NAV -----------------------------------------------------
   isFavoritesPage() {
     return this.currentLink === "/favorites";
-  }  
+  }
 
   isFavoritesEmpty() {
     return this.favorites.items.length === 0;
-  }  
+  }
 
   openFavorites() {
     if (this.isFavoritesPage()) {
@@ -142,7 +145,7 @@ export class NavbarMainComponent {
     if (term) {
       this.router.navigate(["/search/" + term]);
     };
-  }  
+  }
 
   goToFavorites() {
     if (this.isFavoritesPage()) {

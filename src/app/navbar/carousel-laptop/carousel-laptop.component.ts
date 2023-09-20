@@ -3,7 +3,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselLaptopData, CAROUSEL_LAPTOP } from 'src/app/shared/data/carousel-laptop.data';
 
 @Component({
-  selector: 'carousel-laptop',
+  selector: 'app-carousel-laptop',
   templateUrl: './carousel-laptop.component.html',
   styleUrls: ['./carousel-laptop.component.css']
 })

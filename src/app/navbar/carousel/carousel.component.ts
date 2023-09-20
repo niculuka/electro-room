@@ -3,7 +3,7 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
 import { CAROUSEL, Carousel } from 'src/app/shared/data/carousel.data';
 
 @Component({
-  selector: 'carousel',
+  selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css']
 })
