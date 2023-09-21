@@ -13,9 +13,6 @@ import { SearchProductService } from 'src/app/shared/services/search-product.ser
 })
 export class SearchComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   laptops_sorting: string = "bestSold";
   link: string = "";
 

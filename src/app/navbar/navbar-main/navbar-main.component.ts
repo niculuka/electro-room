@@ -8,7 +8,7 @@ import { Cart } from 'src/app/shared/models/cart.model';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { SearchProductService } from 'src/app/shared/services/search-product.service';
 import { Product } from 'src/app/shared/models/product.model';
-import { MobileMenuService } from 'src/app/shared/services/mobile-menu.service';
+import { MenuService } from 'src/app/shared/services/menu.service';
 
 @Component({
   selector: 'app-navbar-main',
@@ -44,7 +44,7 @@ export class NavbarMainComponent {
     private router: Router,
     private searchProductService: SearchProductService,
     private activatedRoute: ActivatedRoute,
-    private mobileMenuService: MobileMenuService,
+    private menuService: MenuService,
   ) {
     cartService.getCartObservable().subscribe(data => {
       this.cart = data;
@@ -69,7 +69,7 @@ export class NavbarMainComponent {
         this.searchProductService.searchProducts(this.searchTerm.toLowerCase())
       }
     });
-    this.mobileMenuService.getHandleMobileMenuObservable().subscribe((data) => {
+    this.menuService.handleMobileMenuObservable().subscribe((data) => {
       this.isMobileMenuOpen = data;
     });
   }
@@ -77,8 +77,8 @@ export class NavbarMainComponent {
   // MEGA-MENU - MOBILE ---------------------------------------------------
   displayMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    this.mobileMenuService.isMobileMenuOpen = this.isMobileMenuOpen;
-    this.mobileMenuService.handleMobileMenuService();
+    this.menuService.isMobileMenuOpen = this.isMobileMenuOpen;
+    this.menuService.handleMobileMenuService();
   }
 
   @HostListener('document:click', ['$event'])
@@ -87,8 +87,8 @@ export class NavbarMainComponent {
       // console.log("INSIDE");
     } else {
       this.isMobileMenuOpen = false;
-      this.mobileMenuService.isMobileMenuOpen = this.isMobileMenuOpen;
-      this.mobileMenuService.handleMobileMenuService();
+      this.menuService.isMobileMenuOpen = this.isMobileMenuOpen;
+      this.menuService.handleMobileMenuService();
       // console.log("OUTSIDE");
     }
   }

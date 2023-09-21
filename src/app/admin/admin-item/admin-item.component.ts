@@ -12,9 +12,6 @@ import { AdminItemService } from '../../shared/services/admin-item.service';
 })
 export class AdminItemComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   protected items: Array<CartItem> = [];
   protected item!: CartItem;
 

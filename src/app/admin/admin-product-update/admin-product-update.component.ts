@@ -13,9 +13,6 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class AdminProductUpdateComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = true;
-
   protected product: Product = new Product();
   protected productImages: Array<ProductImages> = LAPTOP_IMAGES;
 

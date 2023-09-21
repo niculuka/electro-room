@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MobileMenuService } from './shared/services/mobile-menu.service';
+import { MenuService } from './shared/services/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +13,9 @@ export class AppComponent {
   isMobileMenuOpen = false;
 
   constructor(
-    private mobileMenuService: MobileMenuService,
+    private menuService: MenuService,
   ) {
-    this.mobileMenuService.getHandleMobileMenuObservable().subscribe(data => {
+    this.menuService.handleMobileMenuObservable().subscribe(data => {
       this.isMobileMenuOpen = data;
     })
   }

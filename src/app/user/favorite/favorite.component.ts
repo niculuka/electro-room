@@ -13,9 +13,6 @@ import { CartService } from 'src/app/shared/services/cart.service';
 })
 export class FavoriteComponent {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   favorites!: Cart;
 
   constructor(

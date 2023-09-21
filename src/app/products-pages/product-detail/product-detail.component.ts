@@ -13,9 +13,6 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductDetailComponent implements OnInit{
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   product: Product = new Product();
   notFoundProduct: boolean = true;
 

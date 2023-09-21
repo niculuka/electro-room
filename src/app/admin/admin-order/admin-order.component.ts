@@ -14,9 +14,6 @@ import { AdminOrderService } from '../../shared/services/admin-order.service';
 })
 export class AdminOrderComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   orders: Array<Order> = [];
   order: Order = new Order();
 

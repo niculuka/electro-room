@@ -26,7 +26,8 @@
                 <ul *ngFor="let subtitle of title.subtitles">
                     <li *ngIf="title.showSubtitle">
                         <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
-                            (click)="closeMobileMenu()">{{subtitle.name}}
+                            (click)="closeMobileMenu()">
+                            {{subtitle.name}}
                         </a>
                     </li>
                 </ul>

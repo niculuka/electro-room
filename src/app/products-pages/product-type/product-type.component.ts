@@ -16,10 +16,6 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductTypeComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
-
   // A V A I L A B L E - Vars -----------------------------------------------
   available_chk: boolean = false;
 

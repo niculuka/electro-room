@@ -14,9 +14,6 @@ const bcrypt = require("bcryptjs");   // add this:  -  "browser": {"crypto": fal
 })
 export class ProfileComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   currentUser: User = new User();
   user: User = new User();
 

@@ -14,9 +14,6 @@ import { Location } from '@angular/common';
 })
 export class CartComponent {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   cart!: Cart;
   order: Order = new Order();
 

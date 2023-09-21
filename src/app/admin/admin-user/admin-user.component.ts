@@ -14,10 +14,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class AdminUserComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
-  protected users: Array<User> = [];  
+  protected users: Array<User> = [];
   protected user: User = new User();
 
   currentUser: User = new User();
@@ -30,8 +27,8 @@ export class AdminUserComponent implements OnInit {
     public matDialog: MatDialog
   ) {
     this.authService.currentUser.subscribe(data => {
-        this.currentUser = data;
-      });
+      this.currentUser = data;
+    });
   }
 
   ngOnInit(): void {

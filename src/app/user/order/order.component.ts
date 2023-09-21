@@ -17,9 +17,6 @@ import { Cart } from 'src/app/shared/models/cart.model';
 })
 export class OrderComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   cart!: Cart;
   order: Order = new Order();
 

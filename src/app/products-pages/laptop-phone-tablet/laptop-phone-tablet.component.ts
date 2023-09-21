@@ -9,9 +9,6 @@ import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 })
 export class LaptopPhoneTabletComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   departments: Array<Department> = DEPARTMENTS;
   cards: Array<any> = [];
 

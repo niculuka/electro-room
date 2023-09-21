@@ -10,9 +10,6 @@ import { AdminUserService } from 'src/app/shared/services/admin-user.service';
 })
 export class AdminDemoUserComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   protected users: Array<User> = [];  
   protected user: User = new User();
 

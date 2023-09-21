@@ -12,9 +12,6 @@ import { OrderService } from '../../shared/services/order.service';
 })
 export class MyOrderComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   orders: Array<Order> = [];
   order: Order = new Order();
 

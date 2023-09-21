@@ -12,9 +12,6 @@ import { AdminTokenService } from '../../shared/services/admin-token.service';
 })
 export class AdminTokenComponent implements OnInit {
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   protected tokens: Array<Token> = [];
   protected token!: Token;
 

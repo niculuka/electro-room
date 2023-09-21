@@ -1,29 +1,26 @@
-<app-navbar-main></app-navbar-main>
+<div class="content-home">
 
-<app-navbar-desktop [isDesktopMenuOpen]="isDesktopMenuOpen" [isCarouselOpen]="isCarouselOpen"></app-navbar-desktop>
-
-<div class="delimiter"></div>
-
-
-
-<div class="container-owl">
-  <div class="content-owl">
-
-    <div class="info-block">
-      <app-info-block></app-info-block>
+  <div class="carousel-container">
+    <div class="carousel-slider">
+      <app-carousel></app-carousel>
     </div>
-
-    <div class="carousel-laptop">
-      <app-carousel-laptop></app-carousel-laptop>
-    </div>
-
-    <div class="carousel-aux">
-      <app-carousel-aux></app-carousel-aux>
-    </div>
-
   </div>
-</div>
 
+  <div class="info-block">
+    <app-info-block></app-info-block>
+  </div>
+
+  <div class="carousel-laptop">
+    <h1>Laptopuri:</h1>
+    <app-carousel-laptop></app-carousel-laptop>
+  </div>
+
+  <div class="carousel-aux">
+    <h1>Auxiliare laptop:</h1>
+    <app-carousel-aux></app-carousel-aux>
+  </div>
+
+</div>
 
 
 <app-footer></app-footer>

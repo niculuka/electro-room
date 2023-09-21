@@ -9,9 +9,6 @@ import { STORES, Stores } from 'src/app/shared/data/store.data';
 })
 export class StoreComponent{
 
-  isDesktopMenuOpen = false;
-  isCarouselOpen = false;
-
   protected stores: Array<Stores> = STORES;
 
   constructor(

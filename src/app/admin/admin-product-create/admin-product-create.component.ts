@@ -11,8 +11,6 @@ import { AdminProductService } from 'src/app/shared/services/admin-product.servi
   styleUrls: ['./admin-product-create.component.css']
 })
 export class AdminProductCreateComponent implements OnInit {
-  isDesktopMenuOpen = false;
-  isCarouselOpen = true;
 
   protected productImages: Array<ProductImages> = LAPTOP_IMAGES;
   productGallery: ProductGallery = new ProductGallery();

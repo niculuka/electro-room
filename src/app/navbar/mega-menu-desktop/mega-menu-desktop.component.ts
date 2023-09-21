@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
+import { MenuService } from 'src/app/shared/services/menu.service';
 
 @Component({
   selector: 'app-mega-menu-desktop',
@@ -8,6 +9,15 @@ import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 })
 export class MegaMenuDesktopComponent {
 
-  departments: Array<Department> = DEPARTMENTS; 
+  departments: Array<Department> = DEPARTMENTS;
+
+  constructor(
+    private menuService: MenuService,
+  ) { }
+
+  closeDesktopMenu() {
+    this.menuService.isDesktopMenuOpen = false;
+    this.menuService.handleDesktopMenuService();
+  }
 
 }

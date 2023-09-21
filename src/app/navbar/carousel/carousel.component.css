@@ -38,7 +38,7 @@ img {
     }
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 1020px) {
     ::ng-deep .carousel-indicators {
         bottom: -16px;
     }

@@ -16,21 +16,24 @@
             <div class="column-nav">
                 <div class="department-titles" *ngFor="let title of department.titles">
 
-                    <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.color}">{{title.name}}
+                    <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.color}"
+                        (click)="closeDesktopMenu()">
+                        {{title.name}}
                     </a>
-                    
+
                     <ul *ngFor="let subtitle of title.subtitles">
                         <li>
-                            <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}">
+                            <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
+                                (click)="closeDesktopMenu()">
                                 {{subtitle.name}}
                             </a>
                         </li>
                     </ul>
-                    
+
                 </div>
             </div>
         </div>
 
     </li>
-    
+
 </ul>
