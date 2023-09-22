@@ -75,7 +75,7 @@ export class NavbarMainComponent {
   }
 
   // MEGA-MENU - MOBILE ---------------------------------------------------
-  displayMobileMenu() {
+  toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     this.menuService.isMobileMenuOpen = this.isMobileMenuOpen;
     this.menuService.handleMobileMenuService();

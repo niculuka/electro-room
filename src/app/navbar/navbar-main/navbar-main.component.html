@@ -11,12 +11,12 @@
       <ul>
         <!-- M E G A - M E N U ------------------------------------------------------ -->
         <li #txt class="burger">
-          <label for="check" class="check-btn" (click)="displayMobileMenu()">
+          <label for="check" class="check-btn" (click)="toggleMobileMenu()">
             <mat-icon>{{isMobileMenuOpen ? "close": "menu" }}</mat-icon>
           </label>
 
           <div class="mega-menu" *ngIf="isMobileMenuOpen">
-            <div class="background-menu" (click)="displayMobileMenu()">
+            <div class="background-menu" (click)="toggleMobileMenu()">
             </div>
 
             <div class="departaments">
