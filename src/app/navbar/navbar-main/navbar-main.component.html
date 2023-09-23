@@ -35,8 +35,7 @@
         <!-- SEARCH BAR -------------------------------------------------------------- -->
         <li class="search-bar">
           <form>
-            <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)"
-              name="searchTerm" [(ngModel)]="searchTerm">
+            <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)">
             <button (click)="getProduct(s.value)">
               <mat-icon>search</mat-icon>
             </button>
@@ -54,8 +53,10 @@
         <!-- ADMIN ------------------------------------------------------------------- -->
         <li class="dropdown" *ngIf="isAdmin()">
           <a>
-            <!-- <mat-icon class="admin">settings</mat-icon> -->
-            <span><strong>Admin</strong></span>
+            <div class="elements">
+              <!-- <mat-icon class="admin">settings</mat-icon> -->
+              <span><strong>Admin</strong></span>
+            </div>
           </a>
           <div class="dropdown-menu list-menu">
             <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
@@ -72,8 +73,10 @@
         <!-- ADMIN ------------------------------------------------------------------- -->
         <li class="dropdown" *ngIf="!isAdmin()">
           <a>
-            <!-- <mat-icon class="admin">settings</mat-icon> -->
-            <span>Admin</span>
+            <div class="elements">
+              <!-- <mat-icon class="admin">settings</mat-icon> -->
+              <span>Admin</span>
+            </div>
           </a>
           <div class="dropdown-menu list-menu">
             <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
@@ -86,32 +89,36 @@
 
 
         <!-- CART -------------------------------------------------------------------- -->
-        <li class="dropdown" (mouseover)="openCart()" (mouseout)="closeCart()">
-          <a routerLink="/cart" (click)="goToCart()">
-            <div class="badge" matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">
-              <mat-icon>add_shopping_cart</mat-icon>
+        <li class="dropdown">
+          <a routerLink="/cart">
+            <div class="elements" (click)="refreshCart()">
+              <div class="badge" matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </div>
+              <span class="hide">&nbsp; Cosul meu</span>
+              <mat-icon class="hide">expand_more</mat-icon>
             </div>
-            <span class="hide">&nbsp; Cosul meu</span>
-            <mat-icon class="hide">expand_more</mat-icon>
           </a>
-          <div class="dropdown-menu" [style]="handleCart">
-            <a *ngIf="isCartEmpty()">Cosul este gol</a>
+          <div class="dropdown-menu" *ngIf="!isCartPage()">
+            <a class="emptyList" *ngIf="isCartEmpty()">Cosul este gol</a>
             <cart-nav *ngIf="!isCartEmpty()" [cart]="cart" [cartQuantity]="cartQuantity"></cart-nav>
           </div>
         </li>
 
 
         <!-- FAVORITE ---------------------------------------------------------------- -->
-        <li class="dropdown" (mouseover)="openFavorites()" (mouseout)="closeFavorites()">
-          <a routerLink="/favorites" (click)="goToFavorites()">
-            <div class="badge" matBadge="{{favoriteQuantity}}" matBadgeColor="accent" matBadgeSize="medium">
-              <mat-icon>favorite_border</mat-icon>
+        <li class="dropdown">
+          <a routerLink="/favorites">
+            <div class="elements" (click)="refreshFavorites()">
+              <div class="badge" matBadge="{{favoriteQuantity}}" matBadgeColor="accent" matBadgeSize="medium">
+                <mat-icon>favorite_border</mat-icon>
+              </div>
+              <span class="hide">&nbsp; Favorite</span>
+              <mat-icon class="hide">expand_more</mat-icon>
             </div>
-            <span class="hide">&nbsp; Favorite</span>
-            <mat-icon class="hide">expand_more</mat-icon>
           </a>
-          <div class="dropdown-menu" [style]="handleFavorites">
-            <a *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
+          <div class="dropdown-menu" *ngIf="!isFavoritesPage()">
+            <a class="emptyList" *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
             <favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></favorite-nav>
           </div>
         </li>
@@ -120,9 +127,11 @@
         <!-- LOGIN (login, register) -------------------------------------------------- -->
         <li class="dropdown" *ngIf="!currentUser?.userId">
           <a>
-            <mat-icon>perm_identity</mat-icon>
-            <span class="hide">Cont</span>
-            <mat-icon class="hide">expand_more</mat-icon>
+            <div class="elements">
+              <mat-icon>perm_identity</mat-icon>
+              <span class="hide">Cont</span>
+              <mat-icon class="hide">expand_more</mat-icon>
+            </div>
           </a>
           <div class="dropdown-menu list-menu">
             <a routerLink="/auth/login">Intra in cont!</a>
@@ -134,8 +143,10 @@
         <!-- LOGOUT (profile, order, logout) ------------------------------------------- -->
         <li class="dropdown" *ngIf="currentUser?.userId">
           <a>
-            <span id="username">{{userFirstChar}}</span>
-            <mat-icon class="hide">expand_more</mat-icon>
+            <div class="elements">
+              <span id="username">{{userFirstChar}}</span>
+              <mat-icon class="hide">expand_more</mat-icon>
+            </div>
           </a>
           <div class="dropdown-menu list-menu">
             <a routerLink="/profile" routerLinkActive="active">Profile</a>
@@ -153,8 +164,7 @@
       <ul>
         <li class="search-bar">
           <form>
-            <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)"
-              name="searchTerm" [(ngModel)]="searchTerm">
+            <input #s type="text" placeholder="Cauta produsul aici!" (keyup.enter)="getProduct(s.value)">
             <button (click)="getProduct(s.value)">
               <mat-icon class="search-icon">search</mat-icon>
             </button>

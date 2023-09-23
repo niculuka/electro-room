@@ -1,13 +1,13 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ROLE } from 'src/app/shared/enums/electro.enum';
 import { User } from '../../shared/models/user.model';
 import { AuthService } from '../../shared/services/auth.service';
 import { Cart } from 'src/app/shared/models/cart.model';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
-import { SearchProductService } from 'src/app/shared/services/search-product.service';
 import { Product } from 'src/app/shared/models/product.model';
+import { CurrentUrl } from 'src/app/shared/services/current-url.service';
 import { MenuService } from 'src/app/shared/services/menu.service';
 
 @Component({
@@ -29,7 +29,6 @@ export class NavbarMainComponent {
   favoriteQuantity = 0;
 
   currentLink: string = "";
-  searchTerm: any = "";
 
   handleCart: string = "";
   handleFavorites: string = "";
@@ -42,8 +41,7 @@ export class NavbarMainComponent {
     private favoriteService: FavoriteService,
     private authService: AuthService,
     private router: Router,
-    private searchProductService: SearchProductService,
-    private activatedRoute: ActivatedRoute,
+    private currentUrl: CurrentUrl,
     private menuService: MenuService,
   ) {
     cartService.getCartObservable().subscribe(data => {
@@ -62,11 +60,9 @@ export class NavbarMainComponent {
           this.userFirstChar = this.currentUser.username.charAt(0);
         }
       });
-    this.activatedRoute.params.subscribe((params) => {
-      this.currentLink = this.router.url;
-      if (params['searchTerm']) {
-        this.searchTerm = params['searchTerm'];
-        this.searchProductService.searchProducts(this.searchTerm.toLowerCase())
+    this.currentUrl.getCurrentUrlObservable().subscribe(url => {
+      if (url) {
+        this.currentLink = url;
       }
     });
     this.menuService.handleMobileMenuObservable().subscribe((data) => {
@@ -93,64 +89,40 @@ export class NavbarMainComponent {
     }
   }
 
-  // CART-NAV -----------------------------------------------------------
+  // SEARCH - BAR -----------------------------------------------------------
+  getProduct(searchTerm: string): void {
+    if (searchTerm) {
+      this.router.navigate(["/search/" + searchTerm]);
+    };
+  }
+
+  // CART - NAV -----------------------------------------------------------
   isCartPage() {
     return this.currentLink === "/cart";
   }
 
+  refreshCart() {
+    if (this.isCartPage()) {
+      window.location.reload();
+    }
+  }
   isCartEmpty() {
     return this.cart.items.length === 0;
   }
 
-  openCart() {
-    if (this.isCartPage()) {
-      this.handleCart = "display: none;"
-      return;
-    }
-    this.handleCart = "display: block;"
-  }
-
-  closeCart() {
-    this.handleCart = "display: none;"
-  }
-
-  goToCart() {
-    if (this.isCartPage()) {
-      window.location.reload();
-    }
-  }
-
-  // FAVORITES-NAV -----------------------------------------------------
+  // FAVORITES - NAV -----------------------------------------------------
   isFavoritesPage() {
     return this.currentLink === "/favorites";
   }
 
-  isFavoritesEmpty() {
-    return this.favorites.items.length === 0;
-  }
-
-  openFavorites() {
-    if (this.isFavoritesPage()) {
-      this.handleFavorites = "display: none;"
-      return;
-    }
-    this.handleFavorites = "display: block;"
-  }
-
-  closeFavorites() {
-    this.handleFavorites = "display: none;"
-  }
-
-  getProduct(term: string): void {
-    if (term) {
-      this.router.navigate(["/search/" + term]);
-    };
-  }
-
-  goToFavorites() {
+  refreshFavorites() {
     if (this.isFavoritesPage()) {
       window.location.reload();
     }
+  }
+
+  isFavoritesEmpty() {
+    return this.favorites.items.length === 0;
   }
 
   // LOGS -------------------------------------------------------------

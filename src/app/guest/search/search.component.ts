@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -69,7 +68,6 @@ export class SearchComponent implements OnInit {
     private searchProductService: SearchProductService,
     private cartService: CartService,
     private router: Router,
-    private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute,
   ) {
 
@@ -86,7 +84,8 @@ export class SearchComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       this.searchResult = params['searchTerm'];
-      // console.log(this.searchResult)
+      this.searchProductService.searchProducts(this.searchResult.toLowerCase())
+      console.log(this.searchResult)
     });       
   }
 

@@ -125,6 +125,7 @@ button:hover {
 
 table {
   border-collapse: collapse;
+  cursor: default;
 }
 
 tr {

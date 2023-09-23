@@ -133,6 +133,7 @@ button:hover {
 }
 
 table {
+    cursor: default;
     border-collapse: collapse;
 }
 
