@@ -36,7 +36,7 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet.component';
+import { DepartmentLptComponent } from './products-pages/department-lpt/department-lpt.component';
 import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
@@ -91,7 +91,7 @@ const routes: Routes = [
 
   // DEPARTAMENTS -------------------------------------------------------------------------------------------
   {
-    path: "lpt", component: LaptopPhoneTabletComponent, data: {
+    path: "lpt", component: DepartmentLptComponent, data: {
       breadcrumb: [
         { label: 'Laptopuri, Telefoane, Tablete', url: '' }
       ]

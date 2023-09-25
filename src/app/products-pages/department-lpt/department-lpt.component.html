@@ -1,5 +1,5 @@
-<div class="container-depart">
-    <div class="content-depart">
+<div class="container-department">
+    <div class="content-department">
 
         <div class="breadcrumb">
             <breadcrumb></breadcrumb>
@@ -9,7 +9,7 @@
             <div class="card" *ngFor="let card of cards">
                 <a [routerLink]="card.link" (click)="noRoute(card)">
                     <img [src]="card.image" [alt]="card.image">
-                    <div class="title">{{card.name}}</div>
+                    <h1>{{card.name}}</h1>
                 </a>
             </div>
         </div>

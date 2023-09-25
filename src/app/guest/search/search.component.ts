@@ -84,8 +84,7 @@ export class SearchComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       this.searchResult = params['searchTerm'];
-      this.searchProductService.searchProducts(this.searchResult.toLowerCase())
-      console.log(this.searchResult)
+      this.searchProductService.searchProducts(this.searchResult.toLowerCase());
     });       
   }
 

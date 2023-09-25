@@ -71,7 +71,7 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { LaptopPhoneTabletComponent } from './products-pages/laptop-phone-tablet/laptop-phone-tablet.component';
+import { DepartmentLptComponent } from './products-pages/department-lpt/department-lpt.component';
 import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
@@ -86,6 +86,7 @@ import { ProductCarouselComponent } from './products-pages/product-carousel/prod
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
+import { CardDepartmentComponent } from './products-pages/card-department/card-department.component';
 
 
 @NgModule({
@@ -136,7 +137,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
 
-    LaptopPhoneTabletComponent,
+    DepartmentLptComponent,
     ProductLevelComponent,
     ProductTypeComponent,
     ProductDetailComponent,
@@ -146,7 +147,8 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductCarouselComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,                   
+    MegaMenuDesktopComponent,
+    CardDepartmentComponent,                   
   ],
   imports: [
     BrowserModule,

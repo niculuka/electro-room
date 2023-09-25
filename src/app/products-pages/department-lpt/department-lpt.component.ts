@@ -3,23 +3,21 @@ import { ToastrService } from 'ngx-toastr';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 
 @Component({
-  selector: 'app-laptop-phone-tablet',
-  templateUrl: './laptop-phone-tablet.component.html',
-  styleUrls: ['./laptop-phone-tablet.component.css']
+  selector: 'app-department-lpt',
+  templateUrl: './department-lpt.component.html',
+  styleUrls: ['./department-lpt.component.css']
 })
-export class LaptopPhoneTabletComponent implements OnInit {
+export class DepartmentLptComponent implements OnInit {
 
   departments: Array<Department> = DEPARTMENTS;
   cards: Array<any> = [];
-
-  currentName: string = "Laptopuri, Telefoane, Tablete";
 
   constructor(
     private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
-    let depapartament: any = this.departments.find(item => item.name === this.currentName);
+    let depapartament: any = this.departments.find(item => item.id === 1);
     this.cards = depapartament.titles;
   }
 

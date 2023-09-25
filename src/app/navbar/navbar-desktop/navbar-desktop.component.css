@@ -30,6 +30,7 @@
 
 .content-nav ul .burger {
   position: relative;
+  display: block;
   /* border: 2px solid rgb(0, 0, 0); */
 }
 

@@ -24,6 +24,7 @@ export class NavbarDesktopComponent {
     });
     this.menuService.handleDesktopMenuObservable().subscribe((data) => {
       this.isDesktopMenuOpen = data;
+      this.handleDesktopMenu();
     });
   }
 
