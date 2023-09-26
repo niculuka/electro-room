@@ -12,6 +12,9 @@ export class AppComponent {
   
   isMobileMenuOpen = false;
 
+  currentLevel: string = "";
+  currentType: string = "";
+
   constructor(
     private menuService: MenuService,
   ) {

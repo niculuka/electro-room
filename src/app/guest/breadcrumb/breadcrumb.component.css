@@ -1,3 +1,49 @@
-::ng-deep .custom-bread-crumb {
-    margin: 0;
+.container-breadcrumb {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.content-breadcrumb {
+    width: 1500px;
+    margin: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+/* ::ng-deep .custom-bread-crumb {
+    
+    padding: 10px;
+
+} */
+
+/* @import '../node_modules/bootstrap/scss/bootstrap';
+
+
+// breadcrumb style -------------------------------------
+.custom-bread-crumb {
+    margin-bottom: 18rem;
+    padding: 0 !important;
+    
+} */
+
+@media(max-width: 1530px) {
+    .content-breadcrumb {
+        width: 1200px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .content-breadcrumb {
+        width: 990px;
+    }
+}
+
+@media(max-width: 1020px) {
+    .container-breadcrumb {
+        padding: 0 10px
+    }
+
+    .content-breadcrumb {
+        width: 100%;
+    }
 }

@@ -42,6 +42,7 @@ import { ProductTypeComponent } from './products-pages/product-type/product-type
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { FavoriteComponent } from './user/favorite/favorite.component';
+import { DepartmentDpsComponent } from './products-pages/department-dps/department-dps.component';
 
 
 
@@ -89,7 +90,7 @@ const routes: Routes = [
   { path: "401", component: UnauthComponent },
   { path: "404", component: NotFoundComponent },
 
-  // DEPARTAMENTS -------------------------------------------------------------------------------------------
+  // DEPARTAMENT 1 -------------------------------------------------------------------------------------------
   {
     path: "lpt", component: DepartmentLptComponent, data: {
       breadcrumb: [
@@ -120,6 +121,41 @@ const routes: Routes = [
         { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
         { label: '{{customLevel}}', url: '/lpt/:level' },
         { label: '{{customType}}', url: '/lpt/:level/:type' },
+        { label: '{{customLinkName}}', url: '' }
+      ]
+    },
+  },
+  // DEPARTAMENT 2 -------------------------------------------------------------------------------------------
+  {
+    path: "dps", component: DepartmentDpsComponent, data: {
+      breadcrumb: [
+        { label: 'Desktop, Periferice, Software', url: '' }
+      ]
+    },
+  },
+  {
+    path: "dps/:level", component: ProductLevelComponent, data: {
+      breadcrumb: [
+        { label: 'Desktop, Periferice, Software', url: '/dps' },
+        { label: '{{customLevel}}', url: '' },
+      ]
+    },
+  },
+  {
+    path: "dps/:level/:type", component: ProductTypeComponent, data: {
+      breadcrumb: [
+        { label: 'Desktop, Periferice, Software', url: '/dps' },
+        { label: '{{customLevel}}', url: '/dps/:level' },
+        { label: '{{customType}}', url: '' }
+      ]
+    },
+  },
+  {
+    path: "dps/:level/:type/:linkName", component: ProductDetailComponent, data: {
+      breadcrumb: [
+        { label: 'Desktop, Periferice, Software', url: '/dps' },
+        { label: '{{customLevel}}', url: '/dps/:level' },
+        { label: '{{customType}}', url: '/dps/:level/:type' },
         { label: '{{customLinkName}}', url: '' }
       ]
     },

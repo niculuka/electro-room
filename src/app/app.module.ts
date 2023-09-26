@@ -72,9 +72,11 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
 
 // products-pages
 import { DepartmentLptComponent } from './products-pages/department-lpt/department-lpt.component';
+import { DepartmentDpsComponent } from './products-pages/department-dps/department-dps.component';
 import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
+import { DepartmentPageComponent } from './products-pages/department-page/department-page.component';
 
 // others
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
@@ -86,7 +88,6 @@ import { ProductCarouselComponent } from './products-pages/product-carousel/prod
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
-import { CardDepartmentComponent } from './products-pages/card-department/card-department.component';
 
 
 @NgModule({
@@ -104,7 +105,7 @@ import { CardDepartmentComponent } from './products-pages/card-department/card-d
     NavbarMainComponent,
     CartComponent,
     CartItemComponent,
-    FavoriteComponent,  
+    FavoriteComponent,
     ProfileComponent,
     NotFoundComponent,
     UnauthComponent,
@@ -123,7 +124,7 @@ import { CardDepartmentComponent } from './products-pages/card-department/card-d
     CarouselAuxComponent,
     FooterComponent,
     CartNavComponent,
-    FavoriteNavComponent, 
+    FavoriteNavComponent,
 
     AdminProductComponent,
     AdminProductCreateComponent,
@@ -138,6 +139,8 @@ import { CardDepartmentComponent } from './products-pages/card-department/card-d
     AdminDemoUserComponent,
 
     DepartmentLptComponent,
+    DepartmentDpsComponent,
+    DepartmentPageComponent,
     ProductLevelComponent,
     ProductTypeComponent,
     ProductDetailComponent,
@@ -148,7 +151,6 @@ import { CardDepartmentComponent } from './products-pages/card-department/card-d
     BreadcrumbComponent,
     MegaMenuMobileComponent,
     MegaMenuDesktopComponent,
-    CardDepartmentComponent,                   
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@ export interface Title {
 export interface Subtitle {
     name: string;
     type: CATEGORY;
-    link: string;    
+    link: string;
     image: string;
     isReady: boolean;
     color: string;
@@ -50,7 +50,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Toate Laptopurile",
                         type: CATEGORY.LAPTOP,
-                        link: "/lpt/laptops/laptop",                        
+                        link: "/lpt/laptops/laptop",
                         image: "assets/laptops/laptops.png",
                         isReady: true,
                         color: "#ff4196",
@@ -58,7 +58,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Gaming",
                         type: CATEGORY.LAPTOP_GAMING,
-                        link: "/lpt/laptops/laptop-gaming",                        
+                        link: "/lpt/laptops/laptop-gaming",
                         image: "assets/laptops/laptop_gaming.png",
                         isReady: true,
                         color: "#ff4196",
@@ -66,7 +66,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Business",
                         type: CATEGORY.LAPTOP_BUSINESS,
-                        link: "/lpt/laptops/laptop-business",                        
+                        link: "/lpt/laptops/laptop-business",
                         image: "assets/laptops/laptop_business.png",
                         isReady: true,
                         color: "#ff4196",
@@ -74,7 +74,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Ultraportabile",
                         type: CATEGORY.LAPTOP_ULTRA,
-                        link: "/lpt/laptops/laptop-ultra",                        
+                        link: "/lpt/laptops/laptop-ultra",
                         image: "assets/laptops/laptop_ultra.png",
                         isReady: true,
                         color: "#ff4196",
@@ -82,7 +82,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Home",
                         type: CATEGORY.LAPTOP_HOME,
-                        link: "/lpt/laptops/laptop-home",                        
+                        link: "/lpt/laptops/laptop-home",
                         image: "assets/laptops/laptop_home.png",
                         isReady: true,
                         color: "#ff4196",
@@ -101,7 +101,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Genti laptop",
                         type: CATEGORY.LAPTOP_BAG,
-                        link: "/lpt/laptop-accessory/laptop-bag",                        
+                        link: "/lpt/laptop-accessory/laptop-bag",
                         image: "assets/bags/bags.png",
                         isReady: true,
                         color: "#ff4196",
@@ -109,7 +109,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Incarcatoare priza/auto",
                         type: CATEGORY.LAPTOP_CHARGER,
-                        link: "/lpt/laptop-accessory/laptop-charger",                        
+                        link: "/lpt/laptop-accessory/laptop-charger",
                         image: "assets/chargers/chargers.png",
                         isReady: true,
                         color: "#ff4196",
@@ -117,7 +117,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "HARD externe",
                         type: CATEGORY.LAPTOP_HARD,
-                        link: "/lpt/laptop-accessory/laptop-hard",                        
+                        link: "/lpt/laptop-accessory/laptop-hard",
                         image: "assets/hards/hards.png",
                         isReady: true,
                         color: "#ff4196",
@@ -463,19 +463,27 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Sisteme PC",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/dps/pc",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
-                isReady: false,
-                color: "#262626",
+                isReady: true,
+                color: "#df0265",
                 subtitles: [
                     {
                         name: "Calculator Gaming",
                         type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
+                        link: "/dps/pc/gamimg",
                         image: "assets/images/under-construction600-m150.png",
-                        isReady: false,
-                        color: "#676767",
+                        isReady: true,
+                        color: "#ff4196",
+                    },
+                    {
+                        name: "All-in-one",
+                        type: CATEGORY.CATEGORY,
+                        link: "/dps/pc/all-in-one",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: true,
+                        color: "#ff4196",
                     },
                     {
                         name: "Desktop Home",
@@ -493,25 +501,25 @@ export const DEPARTMENTS: Department[] = [
                         isReady: false,
                         color: "#676767",
                     },
-                    {
-                        name: "All-in-one",
-                        type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
-                        image: "assets/images/under-construction600-m150.png",
-                        isReady: false,
-                        color: "#676767",
-                    },
                 ]
             },
             {
                 name: "Monitoare",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/dps/monitor",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
-                isReady: false,
-                color: "#262626",
+                isReady: true,
+                color: "#df0265",
                 subtitles: [
+                    {
+                        name: "Monitoare profesionale",
+                        type: CATEGORY.CATEGORY,
+                        link: "/dps/monitor/professional",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: true,
+                        color: "#ff4196",
+                    },
                     {
                         name: "Monitoare Gaming",
                         type: CATEGORY.CATEGORY,
@@ -527,15 +535,7 @@ export const DEPARTMENTS: Department[] = [
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#676767",
-                    },
-                    {
-                        name: "Monitoare profesionale",
-                        type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
-                        image: "assets/images/under-construction600-m150.png",
-                        isReady: false,
-                        color: "#676767",
-                    },
+                    },                    
                     {
                         name: "Monitoare portabile",
                         type: CATEGORY.CATEGORY,
