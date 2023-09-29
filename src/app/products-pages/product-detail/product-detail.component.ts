@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
+import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -11,7 +14,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit{
+export class ProductDetailComponent implements OnInit {
 
   product: Product = new Product();
   notFoundProduct: boolean = true;
@@ -19,6 +22,7 @@ export class ProductDetailComponent implements OnInit{
   currentLevel: string = "";
   currentType: string = "";
   currentLinkName: string = "";
+  currentBreadcrumb: Breadcrumb = new Breadcrumb();
 
   productImages: Array<any> = [];
   currentImage: string = "";
@@ -28,7 +32,9 @@ export class ProductDetailComponent implements OnInit{
     private productService: ProductService,
     private cartService: CartService,
     private favoriteService: FavoriteService,
-    private router: Router,    
+    private breadcrumbService: BreadcrumbService,
+    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -36,12 +42,11 @@ export class ProductDetailComponent implements OnInit{
       this.currentLevel = params.get('level') || "";
       this.currentType = params.get('type') || "";
       this.currentLinkName = params.get('linkName') || "";
-
+      this.createBreadcrumb();
       this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
         if (data) {
           let level = data.level.replace(/_/g, "-").toLowerCase();
           let type = data.type.replace(/_/g, "-").toLowerCase();
-
           if (this.currentType === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()) {
             this.currentType = type;
           }
@@ -58,6 +63,15 @@ export class ProductDetailComponent implements OnInit{
         }
       });
     });
+  }
+
+  createBreadcrumb() {
+    this.currentBreadcrumb = {
+      customLevel: this.currentLevel,
+      customType: this.currentType,
+      customLinkName: this.currentLinkName,
+    };
+    this.breadcrumbService.handleBreadcrumbService(this.currentBreadcrumb);
   }
 
   createProductItem() {

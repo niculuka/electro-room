@@ -10,22 +10,6 @@
     background: white;
 }
 
-/* ::ng-deep .custom-bread-crumb {
-    
-    padding: 10px;
-
-} */
-
-/* @import '../node_modules/bootstrap/scss/bootstrap';
-
-
-// breadcrumb style -------------------------------------
-.custom-bread-crumb {
-    margin-bottom: 18rem;
-    padding: 0 !important;
-    
-} */
-
 @media(max-width: 1530px) {
     .content-breadcrumb {
         width: 1200px;

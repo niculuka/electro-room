@@ -126,40 +126,40 @@ const routes: Routes = [
     },
   },
   // DEPARTAMENT 2 -------------------------------------------------------------------------------------------
-  {
-    path: "dps", component: DepartmentDpsComponent, data: {
-      breadcrumb: [
-        { label: 'Desktop, Periferice, Software', url: '' }
-      ]
-    },
-  },
-  {
-    path: "dps/:level", component: ProductLevelComponent, data: {
-      breadcrumb: [
-        { label: 'Desktop, Periferice, Software', url: '/dps' },
-        { label: '{{customLevel}}', url: '' },
-      ]
-    },
-  },
-  {
-    path: "dps/:level/:type", component: ProductTypeComponent, data: {
-      breadcrumb: [
-        { label: 'Desktop, Periferice, Software', url: '/dps' },
-        { label: '{{customLevel}}', url: '/dps/:level' },
-        { label: '{{customType}}', url: '' }
-      ]
-    },
-  },
-  {
-    path: "dps/:level/:type/:linkName", component: ProductDetailComponent, data: {
-      breadcrumb: [
-        { label: 'Desktop, Periferice, Software', url: '/dps' },
-        { label: '{{customLevel}}', url: '/dps/:level' },
-        { label: '{{customType}}', url: '/dps/:level/:type' },
-        { label: '{{customLinkName}}', url: '' }
-      ]
-    },
-  },
+  // {
+  //   path: "dps", component: DepartmentDpsComponent, data: {
+  //     breadcrumb: [
+  //       { label: 'Desktop, Periferice, Software', url: '' }
+  //     ]
+  //   },
+  // },
+  // {
+  //   path: "dps/:level", component: ProductLevelComponent, data: {
+  //     breadcrumb: [
+  //       { label: 'Desktop, Periferice, Software', url: '/dps' },
+  //       { label: '{{customLevel}}', url: '' },
+  //     ]
+  //   },
+  // },
+  // {
+  //   path: "dps/:level/:type", component: ProductTypeComponent, data: {
+  //     breadcrumb: [
+  //       { label: 'Desktop, Periferice, Software', url: '/dps' },
+  //       { label: '{{customLevel}}', url: '/dps/:level' },
+  //       { label: '{{customType}}', url: '' }
+  //     ]
+  //   },
+  // },
+  // {
+  //   path: "dps/:level/:type/:linkName", component: ProductDetailComponent, data: {
+  //     breadcrumb: [
+  //       { label: 'Desktop, Periferice, Software', url: '/dps' },
+  //       { label: '{{customLevel}}', url: '/dps/:level' },
+  //       { label: '{{customType}}', url: '/dps/:level/:type' },
+  //       { label: '{{customLinkName}}', url: '' }
+  //     ]
+  //   },
+  // },
 ];
 
 @NgModule({

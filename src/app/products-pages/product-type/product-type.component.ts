@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { ToastrService } from 'ngx-toastr';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { ProductFilter } from 'src/app/shared/models/product.model';
 import { Product } from 'src/app/shared/models/product.model';
+import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -227,6 +230,7 @@ export class ProductTypeComponent implements OnInit {
 
   currentLevel: string = "";
   currentType: string = "";
+  currentBreadcrumb: Breadcrumb = new Breadcrumb();
 
   notFoundProduct: boolean = true;
 
@@ -237,6 +241,7 @@ export class ProductTypeComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private favoriteService: FavoriteService,
+    private breadcrumbService: BreadcrumbService,
     private toastrService: ToastrService,
   ) { }
 
@@ -245,6 +250,7 @@ export class ProductTypeComponent implements OnInit {
       this.activatedRoute.paramMap.subscribe((params) => {
         this.currentLevel = params.get('level') || "";
         this.currentType = params.get('type') || "";
+        this.createBreadcrumb();
         if (
           this.currentType === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()
         ) {
@@ -293,6 +299,15 @@ export class ProductTypeComponent implements OnInit {
         }
       }
     });
+  }
+
+  createBreadcrumb() {
+    this.currentBreadcrumb = {
+      customLevel: this.currentLevel,
+      customType: this.currentType,
+      customLinkName: "",
+    };
+    this.breadcrumbService.handleBreadcrumbService(this.currentBreadcrumb);
   }
 
   createProductItem(item: Product) {

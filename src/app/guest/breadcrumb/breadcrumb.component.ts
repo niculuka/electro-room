@@ -1,62 +1,80 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
+import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
+import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 
 @Component({
-  selector: 'breadcrumb',
+  selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.css']
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent implements OnDestroy {
 
-  @Input() currentLevelCrumb: string = "";
-  @Input() currentTypeCrumb: string = "";
-  @Input() currentLinkNameCrumb: string = "";
+  currentBreadcrumb: Breadcrumb = new Breadcrumb();
 
-  currentLevel: string = "";
-  currentType: string = "";
+  private sub: any;
 
   constructor(
     private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
-  ) { }
+    private breadcrumbService: BreadcrumbService,
+  ) {
+    this.sub = this.breadcrumbService.getBreadcrumbObservable().subscribe(result => {
+      this.currentBreadcrumb = new Breadcrumb();
+      this.currentBreadcrumb = result;
+      this.customCurrentLevel();
+      this.customCurrentType();
+      this.customCurrentLinkName();
+      this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(this.currentBreadcrumb);
+      // console.log(this.currentBreadcrumb);
+    })
+  }
 
-  ngOnInit(): void {
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
-    switch (this.currentLevelCrumb) {
-      case "laptops": this.currentLevel = "Laptopuri"
+  customCurrentLevel() {
+    switch (this.currentBreadcrumb.customLevel) {
+      case "laptops": this.currentBreadcrumb.customLevel = "Laptopuri"
         break;
-      case "laptop-accessory": this.currentLevel = "Accesorii laptopuri"
+      case "laptop-accessory": this.currentBreadcrumb.customLevel = "Accesorii laptopuri"
         break;
       default:
-        this.currentLevel = "";
+        this.currentBreadcrumb.customLevel = "";
     }
+  }
 
-    switch (this.currentTypeCrumb) {
-      case "laptop": this.currentType = "Toate laptopurile"
+  customCurrentType() {
+    switch (this.currentBreadcrumb.customType) {
+      case "laptop": this.currentBreadcrumb.customType = "Toate laptopurile"
         break;
-      case "laptop-gaming": this.currentType = "Gaming"
+      case "laptop-gaming": this.currentBreadcrumb.customType = "Gaming"
         break;
-      case "laptop-business": this.currentType = "Business"
+      case "laptop-business": this.currentBreadcrumb.customType = "Business"
         break;
-      case "laptop-ultra": this.currentType = "Ultra"
+      case "laptop-ultra": this.currentBreadcrumb.customType = "Ultra"
         break;
-      case "laptop-home": this.currentType = "Home"
+      case "laptop-home": this.currentBreadcrumb.customType = "Home"
         break;
-      case "laptop-bag": this.currentType = "Genti si huse"
+      case "laptop-bag": this.currentBreadcrumb.customType = "Genti si huse"
         break;
-      case "laptop-charger": this.currentType = "Incarcatoare"
+      case "laptop-charger": this.currentBreadcrumb.customType = "Incarcatoare"
         break;
-      case "laptop-hard": this.currentType = "Harduri"
+      case "laptop-hard": this.currentBreadcrumb.customType = "Harduri"
         break;
       default:
-        this.currentType = "";
+        this.currentBreadcrumb.customType = "";
     }
+  }
 
-    const breadcrumb = {
-      customLevel: this.currentLevel,
-      customType: this.currentType,
-      customLinkName: this.currentLinkNameCrumb.charAt(0).toUpperCase() + this.currentLinkNameCrumb.slice(1),
-    };
-    this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(breadcrumb);
+  customCurrentLinkName() {
+    if (this.currentBreadcrumb.customLinkName) {
+      this.currentBreadcrumb.customLinkName
+        = this.currentBreadcrumb.customLinkName.charAt(0).toUpperCase()
+        + this.currentBreadcrumb.customLinkName.slice(1);
+    } else {
+      this.currentBreadcrumb.customLinkName = "";
+    }
   }
 
 }

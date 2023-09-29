@@ -15,7 +15,7 @@ export class MenuService {
         this.isMobileMenuOpenSubject.next(this.isMobileMenuOpen);
     }
 
-    handleMobileMenuObservable(): Observable<any> {
+    getMobileMenuObservable(): Observable<any> {
         return this.isMobileMenuOpenSubject.asObservable();
     }
 
@@ -28,7 +28,7 @@ export class MenuService {
         this.isDesktopMenuOpenSubject.next(this.isDesktopMenuOpen);
     }
 
-    handleDesktopMenuObservable(): Observable<any> {
+    getDesktopMenuObservable(): Observable<any> {
         return this.isDesktopMenuOpenSubject.asObservable();
     }
 

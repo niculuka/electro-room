@@ -65,7 +65,7 @@ export class NavbarMainComponent {
         this.currentLink = url;
       }
     });
-    this.menuService.handleMobileMenuObservable().subscribe((data) => {
+    this.menuService.getMobileMenuObservable().subscribe((data) => {
       this.isMobileMenuOpen = data;
     });
   }

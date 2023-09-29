@@ -1,8 +1,7 @@
 <div class="screen-block" [style]="isMobileMenuOpen ? 'overflow-y: hidden' : 'overflow-y: scroll'">
     <app-navbar-main></app-navbar-main>
     <app-navbar-desktop></app-navbar-desktop>
-
-    <breadcrumb [currentLevelCrumb]="currentLevel" [currentTypeCrumb]="currentType"> </breadcrumb>
+    
 
     <router-outlet></router-outlet>
 </div>

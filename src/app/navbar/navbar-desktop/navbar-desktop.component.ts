@@ -22,7 +22,7 @@ export class NavbarDesktopComponent {
         this.handleDesktopMenu();
       }
     });
-    this.menuService.handleDesktopMenuObservable().subscribe((data) => {
+    this.menuService.getDesktopMenuObservable().subscribe((data) => {
       this.isDesktopMenuOpen = data;
       this.handleDesktopMenu();
     });

@@ -9,19 +9,15 @@ import { MenuService } from './shared/services/menu.service';
 
 export class AppComponent {
   title = 'electro-room';
-  
-  isMobileMenuOpen = false;
 
-  currentLevel: string = "";
-  currentType: string = "";
+  isMobileMenuOpen = false;
 
   constructor(
     private menuService: MenuService,
   ) {
-    this.menuService.handleMobileMenuObservable().subscribe(data => {
+    this.menuService.getMobileMenuObservable().subscribe(data => {
       this.isMobileMenuOpen = data;
-    })
+    });
   }
 
-  
 }
