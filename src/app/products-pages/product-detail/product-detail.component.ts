@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
@@ -19,10 +18,11 @@ export class ProductDetailComponent implements OnInit {
   product: Product = new Product();
   notFoundProduct: boolean = true;
 
+  currentDepartment: string = "";
   currentLevel: string = "";
   currentType: string = "";
   currentLinkName: string = "";
-  currentBreadcrumb: Breadcrumb = new Breadcrumb();
+  customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   productImages: Array<any> = [];
   currentImage: string = "";
@@ -33,12 +33,12 @@ export class ProductDetailComponent implements OnInit {
     private cartService: CartService,
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentDepartment = params.get('department') || "";
       this.currentLevel = params.get('level') || "";
       this.currentType = params.get('type') || "";
       this.currentLinkName = params.get('linkName') || "";
@@ -66,12 +66,13 @@ export class ProductDetailComponent implements OnInit {
   }
 
   createBreadcrumb() {
-    this.currentBreadcrumb = {
+    this.customBreadcrumb = {
+      customDepartment: this.currentDepartment,
       customLevel: this.currentLevel,
       customType: this.currentType,
       customLinkName: this.currentLinkName,
     };
-    this.breadcrumbService.handleBreadcrumbService(this.currentBreadcrumb);
+    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
   createProductItem() {

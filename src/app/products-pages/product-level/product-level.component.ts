@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { ToastrService } from 'ngx-toastr';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
@@ -16,8 +15,9 @@ export class ProductLevelComponent implements OnInit {
   departments: Array<Department> = DEPARTMENTS;
   cards: Array<any> = [];
 
+  currentDepartment: string = "";
   currentLevel: string = "";
-  currentBreadcrumb: Breadcrumb = new Breadcrumb();
+  customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   isLaptopPage: boolean = true;
 
@@ -25,12 +25,12 @@ export class ProductLevelComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private breadcrumbService: BreadcrumbService,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentDepartment = params.get('department') || "";
       this.currentLevel = params.get('level') || "";
       this.createBreadcrumb();
       this.departments.filter(data => {
@@ -44,12 +44,13 @@ export class ProductLevelComponent implements OnInit {
   }
 
   createBreadcrumb() {
-    this.currentBreadcrumb = {
+    this.customBreadcrumb = {
+      customDepartment: this.currentDepartment,
       customLevel: this.currentLevel,
       customType: "",
       customLinkName: "",
     };
-    this.breadcrumbService.handleBreadcrumbService(this.currentBreadcrumb);
+    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
   noRoute(card: any) {

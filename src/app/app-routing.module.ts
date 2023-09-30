@@ -36,13 +36,12 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { DepartmentLptComponent } from './products-pages/department-lpt/department-lpt.component';
+import { DepartmentComponent } from './products-pages/department/department.component';
 import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { FavoriteComponent } from './user/favorite/favorite.component';
-import { DepartmentDpsComponent } from './products-pages/department-dps/department-dps.component';
 
 
 
@@ -90,76 +89,45 @@ const routes: Routes = [
   { path: "401", component: UnauthComponent },
   { path: "404", component: NotFoundComponent },
 
-  // DEPARTAMENT 1 -------------------------------------------------------------------------------------------
+  // DEPARTAMENTS -------------------------------------------------------------------------------------------
   {
-    path: "lpt", component: DepartmentLptComponent, data: {
+    path: "p/:department", component: DepartmentComponent,
+    data: {
       breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '' }
+        { label: '{{customDepartment}}', url: '' },
       ]
     },
   },
   {
-    path: "lpt/:level", component: ProductLevelComponent, data: {
+    path: "p/:department/:level", component: ProductLevelComponent,
+    data: {
       breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
+        { label: '{{customDepartment}}', url: '/p/:department' },
         { label: '{{customLevel}}', url: '' },
       ]
     },
   },
   {
-    path: "lpt/:level/:type", component: ProductTypeComponent, data: {
+    path: "p/:department/:level/:type", component: ProductTypeComponent,
+    data: {
       breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
-        { label: '{{customLevel}}', url: '/lpt/:level' },
-        { label: '{{customType}}', url: '' }
+        { label: '{{customDepartment}}', url: '/p/:department' },
+        { label: '{{customLevel}}', url: '/p/:department/:level' },
+        { label: '{{customType}}', url: '' },
       ]
     },
   },
   {
-    path: "lpt/:level/:type/:linkName", component: ProductDetailComponent, data: {
+    path: "p/:department/:level/:type/:linkName", component: ProductDetailComponent,
+    data: {
       breadcrumb: [
-        { label: 'Laptopuri, Telefoane, Tablete', url: '/lpt' },
-        { label: '{{customLevel}}', url: '/lpt/:level' },
-        { label: '{{customType}}', url: '/lpt/:level/:type' },
-        { label: '{{customLinkName}}', url: '' }
+        { label: '{{customDepartment}}', url: '/p/:department' },
+        { label: '{{customLevel}}', url: '/p/:department/:level' },
+        { label: '{{customType}}', url: '/p/:department/:level/:type' },
+        { label: '{{customLinkName}}', url: '' },
       ]
     },
   },
-  // DEPARTAMENT 2 -------------------------------------------------------------------------------------------
-  // {
-  //   path: "dps", component: DepartmentDpsComponent, data: {
-  //     breadcrumb: [
-  //       { label: 'Desktop, Periferice, Software', url: '' }
-  //     ]
-  //   },
-  // },
-  // {
-  //   path: "dps/:level", component: ProductLevelComponent, data: {
-  //     breadcrumb: [
-  //       { label: 'Desktop, Periferice, Software', url: '/dps' },
-  //       { label: '{{customLevel}}', url: '' },
-  //     ]
-  //   },
-  // },
-  // {
-  //   path: "dps/:level/:type", component: ProductTypeComponent, data: {
-  //     breadcrumb: [
-  //       { label: 'Desktop, Periferice, Software', url: '/dps' },
-  //       { label: '{{customLevel}}', url: '/dps/:level' },
-  //       { label: '{{customType}}', url: '' }
-  //     ]
-  //   },
-  // },
-  // {
-  //   path: "dps/:level/:type/:linkName", component: ProductDetailComponent, data: {
-  //     breadcrumb: [
-  //       { label: 'Desktop, Periferice, Software', url: '/dps' },
-  //       { label: '{{customLevel}}', url: '/dps/:level' },
-  //       { label: '{{customType}}', url: '/dps/:level/:type' },
-  //       { label: '{{customLinkName}}', url: '' }
-  //     ]
-  //   },
-  // },
 ];
 
 @NgModule({

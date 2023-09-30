@@ -71,12 +71,11 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { DepartmentLptComponent } from './products-pages/department-lpt/department-lpt.component';
-import { DepartmentDpsComponent } from './products-pages/department-dps/department-dps.component';
+import { DepartmentComponent } from './products-pages/department/department.component';
 import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
-import { DepartmentPageComponent } from './products-pages/department-page/department-page.component';
+import { DepartmentCardsComponent } from './products-pages/department-cards/department-cards.component';
 
 // others
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
@@ -138,9 +137,8 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
 
-    DepartmentLptComponent,
-    DepartmentDpsComponent,
-    DepartmentPageComponent,
+    DepartmentComponent,
+    DepartmentCardsComponent,
     ProductLevelComponent,
     ProductTypeComponent,
     ProductDetailComponent,

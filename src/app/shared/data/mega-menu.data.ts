@@ -4,6 +4,8 @@ export interface Department {
     id: number;
     icon: string;
     name: string;
+    acronym: string;
+    link: string;
     chevron: string;
     showTitle: boolean;
     titles: Array<Title>;
@@ -35,13 +37,15 @@ export const DEPARTMENTS: Department[] = [
         id: 1,
         icon: "assets/svgs/phone.svg",
         name: "Laptopuri, Telefoane, Tablete",
+        acronym: "lpt",
+        link: "/p/lpt",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
             {
                 name: "Laptopuri",
                 level: CATEGORY.LAPTOPS,
-                link: "/lpt/laptops",
+                link: "/p/lpt/laptops",
                 image: "assets/laptops/laptops_3.png",
                 showSubtitle: false,
                 isReady: true,
@@ -50,7 +54,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Toate Laptopurile",
                         type: CATEGORY.LAPTOP,
-                        link: "/lpt/laptops/laptop",
+                        link: "/p/lpt/laptops/laptop",
                         image: "assets/laptops/laptops.png",
                         isReady: true,
                         color: "#ff4196",
@@ -58,7 +62,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Gaming",
                         type: CATEGORY.LAPTOP_GAMING,
-                        link: "/lpt/laptops/laptop-gaming",
+                        link: "/p/lpt/laptops/laptop-gaming",
                         image: "assets/laptops/laptop_gaming.png",
                         isReady: true,
                         color: "#ff4196",
@@ -66,7 +70,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Business",
                         type: CATEGORY.LAPTOP_BUSINESS,
-                        link: "/lpt/laptops/laptop-business",
+                        link: "/p/lpt/laptops/laptop-business",
                         image: "assets/laptops/laptop_business.png",
                         isReady: true,
                         color: "#ff4196",
@@ -74,7 +78,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Ultraportabile",
                         type: CATEGORY.LAPTOP_ULTRA,
-                        link: "/lpt/laptops/laptop-ultra",
+                        link: "/p/lpt/laptops/laptop-ultra",
                         image: "assets/laptops/laptop_ultra.png",
                         isReady: true,
                         color: "#ff4196",
@@ -82,7 +86,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Home",
                         type: CATEGORY.LAPTOP_HOME,
-                        link: "/lpt/laptops/laptop-home",
+                        link: "/p/lpt/laptops/laptop-home",
                         image: "assets/laptops/laptop_home.png",
                         isReady: true,
                         color: "#ff4196",
@@ -92,7 +96,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Accesorii Laptop",
                 level: CATEGORY.LAPTOP_ACCESSORY,
-                link: "/lpt/laptop-accessory",
+                link: "/p/lpt/laptop-accessory",
                 image: "assets/laptop-accessories/laptop-accessories.png",
                 showSubtitle: false,
                 isReady: true,
@@ -101,7 +105,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Genti laptop",
                         type: CATEGORY.LAPTOP_BAG,
-                        link: "/lpt/laptop-accessory/laptop-bag",
+                        link: "/p/lpt/laptop-accessory/laptop-bag",
                         image: "assets/bags/bags.png",
                         isReady: true,
                         color: "#ff4196",
@@ -109,7 +113,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Incarcatoare priza/auto",
                         type: CATEGORY.LAPTOP_CHARGER,
-                        link: "/lpt/laptop-accessory/laptop-charger",
+                        link: "/p/lpt/laptop-accessory/laptop-charger",
                         image: "assets/chargers/chargers.png",
                         isReady: true,
                         color: "#ff4196",
@@ -117,7 +121,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "HARD externe",
                         type: CATEGORY.LAPTOP_HARD,
-                        link: "/lpt/laptop-accessory/laptop-hard",
+                        link: "/p/lpt/laptop-accessory/laptop-hard",
                         image: "assets/hards/hards.png",
                         isReady: true,
                         color: "#ff4196",
@@ -125,7 +129,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Baterii externe",
                         type: CATEGORY.CATEGORY,
-                        link: "/lpt/laptop-accessory",
+                        link: "/p/lpt/laptop-accessory",
                         image: "assets/batteries/external-batteries.png",
                         isReady: false,
                         color: "#676767",
@@ -133,7 +137,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Memorii RAM Laptop",
                         type: CATEGORY.CATEGORY,
-                        link: "/lpt/laptop-accessory",
+                        link: "/p/lpt/laptop-accessory",
                         image: "assets/rams/rams.png",
                         isReady: false,
                         color: "#676767",
@@ -141,7 +145,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Suport mobil cu racire",
                         type: CATEGORY.CATEGORY,
-                        link: "/lpt/laptop-accessory",
+                        link: "/p/lpt/laptop-accessory",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#676767",
@@ -149,7 +153,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Stickere pentru ecran",
                         type: CATEGORY.CATEGORY,
-                        link: "/lpt/laptop-accessory",
+                        link: "/p/lpt/laptop-accessory",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#676767",
@@ -159,7 +163,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Telefoane",
                 level: CATEGORY.CATEGORY,
-                link: "/lpt",
+                link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -169,7 +173,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Tablete",
                 level: CATEGORY.CATEGORY,
-                link: "/lpt",
+                link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -179,7 +183,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Accesorii telefoane",
                 level: CATEGORY.CATEGORY,
-                link: "/lpt",
+                link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -246,7 +250,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Bratari si ceasuri electronice",
                 level: CATEGORY.CATEGORY,
-                link: "/lpt",
+                link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -290,7 +294,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Casti pentru telefon",
                 level: CATEGORY.CATEGORY,
-                link: "/lpt",
+                link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -341,7 +345,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Accesorii tablete",
                 level: CATEGORY.CATEGORY,
-                link: "/lpt",
+                link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -384,7 +388,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Cartele si pachete cu telefon",
                 level: CATEGORY.CATEGORY,
-                link: "/lpt",
+                link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -411,7 +415,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Telefoane fixe",
                 level: CATEGORY.CATEGORY,
-                link: "/lpt",
+                link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -457,13 +461,15 @@ export const DEPARTMENTS: Department[] = [
         id: 2,
         icon: "assets/svgs/laptop.svg",
         name: "Desktop, Periferice, Software",
+        acronym: "dps",
+        link: "/p/dps",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
             {
                 name: "Sisteme PC",
                 level: CATEGORY.CATEGORY,
-                link: "/dps/pc",
+                link: "/p/dps/pc",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: true,
@@ -472,7 +478,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Calculator Gaming",
                         type: CATEGORY.CATEGORY,
-                        link: "/dps/pc/gamimg",
+                        link: "/p/dps/pc/gaming",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: true,
                         color: "#ff4196",
@@ -480,7 +486,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "All-in-one",
                         type: CATEGORY.CATEGORY,
-                        link: "/dps/pc/all-in-one",
+                        link: "/p/dps/pc/all-in-one",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: true,
                         color: "#ff4196",
@@ -506,7 +512,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Monitoare",
                 level: CATEGORY.CATEGORY,
-                link: "/dps/monitor",
+                link: "/p/dps/monitor",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: true,
@@ -515,7 +521,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Monitoare profesionale",
                         type: CATEGORY.CATEGORY,
-                        link: "/dps/monitor/professional",
+                        link: "/p/dps/monitor/professional",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: true,
                         color: "#ff4196",
@@ -944,6 +950,8 @@ export const DEPARTMENTS: Department[] = [
         id: 3,
         icon: "assets/svgs/tv.svg",
         name: "TV, Audio-Video, Foto",
+        acronym: "tap",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1039,6 +1047,8 @@ export const DEPARTMENTS: Department[] = [
         id: 4,
         icon: "assets/svgs/washing-machine.svg",
         name: "Electrocasnice mari",
+        acronym: "be",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1091,6 +1101,8 @@ export const DEPARTMENTS: Department[] = [
         id: 5,
         icon: "assets/svgs/iron.svg",
         name: "Electrocasnice mici, Climatizare",
+        acronym: "sec",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1143,6 +1155,8 @@ export const DEPARTMENTS: Department[] = [
         id: 6,
         icon: "assets/svgs/bag.svg",
         name: "Bacanie",
+        acronym: "b",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1195,6 +1209,8 @@ export const DEPARTMENTS: Department[] = [
         id: 7,
         icon: "assets/svgs/mirror.svg",
         name: "Ingrijire personala",
+        acronym: "psc",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1247,6 +1263,8 @@ export const DEPARTMENTS: Department[] = [
         id: 8,
         icon: "assets/svgs/running.svg",
         name: "Sport, Alte activitati",
+        acronym: "soa",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1299,6 +1317,8 @@ export const DEPARTMENTS: Department[] = [
         id: 9,
         icon: "assets/svgs/house.svg",
         name: "Casa, Gradina, Brico",
+        acronym: "hgb",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1351,6 +1371,8 @@ export const DEPARTMENTS: Department[] = [
         id: 10,
         icon: "assets/svgs/t-shirt.svg",
         name: "Moda si Cadouri",
+        acronym: "pg",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1403,6 +1425,8 @@ export const DEPARTMENTS: Department[] = [
         id: 11,
         icon: "assets/svgs/car.svg",
         name: "Auto, Moto, Velo, RCA",
+        acronym: "amvi",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
@@ -1455,6 +1479,8 @@ export const DEPARTMENTS: Department[] = [
         id: 12,
         icon: "assets/svgs/toys.svg",
         name: "Jucarii, Copii",
+        acronym: "tc",
+        link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [

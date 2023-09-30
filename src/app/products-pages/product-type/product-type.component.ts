@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { ToastrService } from 'ngx-toastr';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
@@ -228,9 +227,10 @@ export class ProductTypeComponent implements OnInit {
   departments: Array<Department> = DEPARTMENTS;
   cards: Array<any> = [];
 
+  currentDepartment: string = "";
   currentLevel: string = "";
   currentType: string = "";
-  currentBreadcrumb: Breadcrumb = new Breadcrumb();
+  customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   notFoundProduct: boolean = true;
 
@@ -248,6 +248,7 @@ export class ProductTypeComponent implements OnInit {
   ngOnInit(): void {
     this.favoriteService.getFavoritesObservable().subscribe(data => {
       this.activatedRoute.paramMap.subscribe((params) => {
+        this.currentDepartment = params.get('department') || "";
         this.currentLevel = params.get('level') || "";
         this.currentType = params.get('type') || "";
         this.createBreadcrumb();
@@ -302,12 +303,13 @@ export class ProductTypeComponent implements OnInit {
   }
 
   createBreadcrumb() {
-    this.currentBreadcrumb = {
+    this.customBreadcrumb = {
+      customDepartment: this.currentDepartment,
       customLevel: this.currentLevel,
       customType: this.currentType,
       customLinkName: "",
     };
-    this.breadcrumbService.handleBreadcrumbService(this.currentBreadcrumb);
+    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
   createProductItem(item: Product) {

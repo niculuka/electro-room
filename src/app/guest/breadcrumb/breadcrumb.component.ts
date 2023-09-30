@@ -10,7 +10,7 @@ import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 })
 export class BreadcrumbComponent implements OnDestroy {
 
-  currentBreadcrumb: Breadcrumb = new Breadcrumb();
+  customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   private sub: any;
 
@@ -19,12 +19,13 @@ export class BreadcrumbComponent implements OnDestroy {
     private breadcrumbService: BreadcrumbService,
   ) {
     this.sub = this.breadcrumbService.getBreadcrumbObservable().subscribe(result => {
-      this.currentBreadcrumb = new Breadcrumb();
-      this.currentBreadcrumb = result;
-      this.customCurrentLevel();
-      this.customCurrentType();
+      this.customBreadcrumb = new Breadcrumb();
+      this.customBreadcrumb = result;
+      this.customDepartmentLabels();
+      this.customLevelLabels();
+      this.customTypeLabels();
       this.customCurrentLinkName();
-      this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(this.currentBreadcrumb);
+      this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(this.customBreadcrumb);
       // console.log(this.currentBreadcrumb);
     })
   }
@@ -33,48 +34,58 @@ export class BreadcrumbComponent implements OnDestroy {
     this.sub.unsubscribe();
   }
 
-  customCurrentLevel() {
-    switch (this.currentBreadcrumb.customLevel) {
-      case "laptops": this.currentBreadcrumb.customLevel = "Laptopuri"
+  customDepartmentLabels() {
+    switch (this.customBreadcrumb.customDepartment) {
+      case "lpt": this.customBreadcrumb.customDepartment = "Laptopuri, Telefoane, Tablete"
         break;
-      case "laptop-accessory": this.currentBreadcrumb.customLevel = "Accesorii laptopuri"
+      case "dps": this.customBreadcrumb.customDepartment = "Desktop, Periferice, Software"
         break;
       default:
-        this.currentBreadcrumb.customLevel = "";
+        this.customBreadcrumb.customDepartment = "";
     }
   }
 
-  customCurrentType() {
-    switch (this.currentBreadcrumb.customType) {
-      case "laptop": this.currentBreadcrumb.customType = "Toate laptopurile"
+  customLevelLabels() {
+    switch (this.customBreadcrumb.customLevel) {
+      case "laptops": this.customBreadcrumb.customLevel = "Laptopuri"
         break;
-      case "laptop-gaming": this.currentBreadcrumb.customType = "Gaming"
-        break;
-      case "laptop-business": this.currentBreadcrumb.customType = "Business"
-        break;
-      case "laptop-ultra": this.currentBreadcrumb.customType = "Ultra"
-        break;
-      case "laptop-home": this.currentBreadcrumb.customType = "Home"
-        break;
-      case "laptop-bag": this.currentBreadcrumb.customType = "Genti si huse"
-        break;
-      case "laptop-charger": this.currentBreadcrumb.customType = "Incarcatoare"
-        break;
-      case "laptop-hard": this.currentBreadcrumb.customType = "Harduri"
+      case "laptop-accessory": this.customBreadcrumb.customLevel = "Accesorii laptopuri"
         break;
       default:
-        this.currentBreadcrumb.customType = "";
+        this.customBreadcrumb.customLevel = "";
+    }
+  }
+
+  customTypeLabels() {
+    switch (this.customBreadcrumb.customType) {
+      case "laptop": this.customBreadcrumb.customType = "Toate laptopurile"
+        break;
+      case "laptop-gaming": this.customBreadcrumb.customType = "Gaming"
+        break;
+      case "laptop-business": this.customBreadcrumb.customType = "Business"
+        break;
+      case "laptop-ultra": this.customBreadcrumb.customType = "Ultra"
+        break;
+      case "laptop-home": this.customBreadcrumb.customType = "Home"
+        break;
+      case "laptop-bag": this.customBreadcrumb.customType = "Genti si huse"
+        break;
+      case "laptop-charger": this.customBreadcrumb.customType = "Incarcatoare"
+        break;
+      case "laptop-hard": this.customBreadcrumb.customType = "Harduri"
+        break;
+      default:
+        this.customBreadcrumb.customType = "";
     }
   }
 
   customCurrentLinkName() {
-    if (this.currentBreadcrumb.customLinkName) {
-      this.currentBreadcrumb.customLinkName
-        = this.currentBreadcrumb.customLinkName.charAt(0).toUpperCase()
-        + this.currentBreadcrumb.customLinkName.slice(1);
+    if (this.customBreadcrumb.customLinkName) {
+      this.customBreadcrumb.customLinkName
+        = this.customBreadcrumb.customLinkName.charAt(0).toUpperCase()
+        + this.customBreadcrumb.customLinkName.slice(1);
     } else {
-      this.currentBreadcrumb.customLinkName = "";
+      this.customBreadcrumb.customLinkName = "";
     }
   }
-
 }

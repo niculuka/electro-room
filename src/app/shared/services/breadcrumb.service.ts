@@ -7,13 +7,13 @@ import { Breadcrumb } from '../models/breadcrumb.model';
 })
 export class BreadcrumbService {
 
-  public currentBreadcrumb: Breadcrumb = new Breadcrumb();
+  public customBreadcrumb: Breadcrumb = new Breadcrumb();
 
-  private currentBreadcrumbSubject = new BehaviorSubject(this.currentBreadcrumb);
+  private currentBreadcrumbSubject = new BehaviorSubject(this.customBreadcrumb);
 
-  handleBreadcrumbService(currentBreadcrumb: any) {
-    this.currentBreadcrumb = currentBreadcrumb;
-    this.currentBreadcrumbSubject.next(this.currentBreadcrumb);
+  handleBreadcrumbService(customBreadcrumb: any) {
+    this.customBreadcrumb = customBreadcrumb;
+    this.currentBreadcrumbSubject.next(this.customBreadcrumb);
   }
 
   getBreadcrumbObservable(): Observable<any> {
