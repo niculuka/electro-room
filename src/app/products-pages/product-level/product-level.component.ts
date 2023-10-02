@@ -37,6 +37,7 @@ export class ProductLevelComponent implements OnInit {
         let result = data.titles.find(items => items.level.replace(/_/g, "-").toLowerCase() === this.currentLevel)
         if (result) {
           this.cards = result.subtitles;
+          
         }
       });
     });

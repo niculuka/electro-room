@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -19,14 +19,16 @@ export class DepartmentComponent {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private breadcrumbService: BreadcrumbService,
   ) {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.currentDepartment = params.get('department') || "";
       this.createBreadcrumb();
-      let depapartament: any = this.departments.find(item => item.acronym === this.currentDepartment);
+      let depapartament: any = this.departments.find(item => item.department === this.currentDepartment);
       this.cards = depapartament.titles;
     });
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   createBreadcrumb() {

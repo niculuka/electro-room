@@ -1,11 +1,2 @@
 <app-breadcrumb></app-breadcrumb>
-<div class="container-aux">
-
-    <!-- C A R D U R I -------------------------------------------------------------------------------------- -->
-    <div class="row-aux">
-        <div class="card" [routerLink]="card.link" *ngFor="let card of cards" (click)="noRoute(card)">
-            <img [src]="card.image" [alt]="card.image" />
-            <h1>{{card.name}}</h1>
-        </div>
-    </div>
-</div>
+<app-standard-cards [cards]="cards"></app-standard-cards>

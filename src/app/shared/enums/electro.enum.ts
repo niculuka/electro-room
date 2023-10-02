@@ -65,17 +65,25 @@ export enum CATEGORY {
     WD = "WD",
     XTORM = "XTORM",
 
-    // L A P T O P ===============================================
+    // D E P A R T M E N T ========================================
+    LPT = "LPT",
+    DPS = "DPS",
+
+    // L E V E L ==================================================
     LAPTOPS = "LAPTOPS",
     LAPTOP = "LAPTOP",
+    LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
+    PC = "PC",
+    MONITOR = "MONITOR",   
+
+    // T Y P E ====================================================
     LAPTOP_GAMING = "LAPTOP_GAMING",
     LAPTOP_ULTRA = "LAPTOP_ULTRA",
     LAPTOP_BUSINESS = "LAPTOP_BUSINESS",
     LAPTOP_HOME = "LAPTOP_HOME",
-    LAPTOP_L2IN1 = "LAPTOP_L2IN1",
-
-    // L A P T O P   A C C E S S O R Y ===========================
-    LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
+    LAPTOP_L2IN1 = "LAPTOP_L2IN1",  
+    PC_GAMING = "PC_GAMING",   
+    ALL_IN_ONE = "ALL_IN_ONE",  
 
     // C H A R G E R -----------------
     LAPTOP_BAG = "LAPTOP_BAG",

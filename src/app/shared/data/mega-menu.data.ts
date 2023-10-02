@@ -4,7 +4,7 @@ export interface Department {
     id: number;
     icon: string;
     name: string;
-    acronym: string;
+    department: string;
     link: string;
     chevron: string;
     showTitle: boolean;
@@ -37,7 +37,7 @@ export const DEPARTMENTS: Department[] = [
         id: 1,
         icon: "assets/svgs/phone.svg",
         name: "Laptopuri, Telefoane, Tablete",
-        acronym: "lpt",
+        department: "lpt",
         link: "/p/lpt",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -119,7 +119,7 @@ export const DEPARTMENTS: Department[] = [
                         color: "#ff4196",
                     },
                     {
-                        name: "HARD externe",
+                        name: "Harduri",
                         type: CATEGORY.LAPTOP_HARD,
                         link: "/p/lpt/laptop-accessory/laptop-hard",
                         image: "assets/hards/hards.png",
@@ -461,23 +461,23 @@ export const DEPARTMENTS: Department[] = [
         id: 2,
         icon: "assets/svgs/laptop.svg",
         name: "Desktop, Periferice, Software",
-        acronym: "dps",
+        department: "dps",
         link: "/p/dps",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         titles: [
             {
                 name: "Sisteme PC",
-                level: CATEGORY.CATEGORY,
+                level: CATEGORY.PC,
                 link: "/p/dps/pc",
-                image: "assets/images/under-construction600-m150.png",
+                image: "assets/systems/systems2.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#df0265",
                 subtitles: [
                     {
-                        name: "Calculator Gaming",
-                        type: CATEGORY.CATEGORY,
+                        name: "Gaming PC",
+                        type: CATEGORY.PC_GAMING,
                         link: "/p/dps/pc/gaming",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: true,
@@ -485,7 +485,7 @@ export const DEPARTMENTS: Department[] = [
                     },
                     {
                         name: "All-in-one",
-                        type: CATEGORY.CATEGORY,
+                        type: CATEGORY.ALL_IN_ONE,
                         link: "/p/dps/pc/all-in-one",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: true,
@@ -511,9 +511,9 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Monitoare",
-                level: CATEGORY.CATEGORY,
+                level: CATEGORY.MONITOR,
                 link: "/p/dps/monitor",
-                image: "assets/images/under-construction600-m150.png",
+                image: "assets/monitors/monitors.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#df0265",
@@ -555,7 +555,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Suport pentru monitor",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -574,7 +574,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Mac-uri",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -593,7 +593,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Componente calculator",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -676,7 +676,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Retelistica calculatoare",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -719,7 +719,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Imprimante si multifunctionale",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -786,7 +786,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Birotica",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -837,7 +837,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Periferice si accesorii",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -920,7 +920,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "UPS-uri si surse externe ",
                 level: CATEGORY.CATEGORY,
-                link: "/under-construction",
+                link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
@@ -950,7 +950,7 @@ export const DEPARTMENTS: Department[] = [
         id: 3,
         icon: "assets/svgs/tv.svg",
         name: "TV, Audio-Video, Foto",
-        acronym: "tap",
+        department: "tap",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1047,7 +1047,7 @@ export const DEPARTMENTS: Department[] = [
         id: 4,
         icon: "assets/svgs/washing-machine.svg",
         name: "Electrocasnice mari",
-        acronym: "be",
+        department: "be",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1101,7 +1101,7 @@ export const DEPARTMENTS: Department[] = [
         id: 5,
         icon: "assets/svgs/iron.svg",
         name: "Electrocasnice mici, Climatizare",
-        acronym: "sec",
+        department: "sec",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1155,7 +1155,7 @@ export const DEPARTMENTS: Department[] = [
         id: 6,
         icon: "assets/svgs/bag.svg",
         name: "Bacanie",
-        acronym: "b",
+        department: "b",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1209,7 +1209,7 @@ export const DEPARTMENTS: Department[] = [
         id: 7,
         icon: "assets/svgs/mirror.svg",
         name: "Ingrijire personala",
-        acronym: "psc",
+        department: "psc",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1263,7 +1263,7 @@ export const DEPARTMENTS: Department[] = [
         id: 8,
         icon: "assets/svgs/running.svg",
         name: "Sport, Alte activitati",
-        acronym: "soa",
+        department: "soa",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1317,7 +1317,7 @@ export const DEPARTMENTS: Department[] = [
         id: 9,
         icon: "assets/svgs/house.svg",
         name: "Casa, Gradina, Brico",
-        acronym: "hgb",
+        department: "hgb",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1371,7 +1371,7 @@ export const DEPARTMENTS: Department[] = [
         id: 10,
         icon: "assets/svgs/t-shirt.svg",
         name: "Moda si Cadouri",
-        acronym: "pg",
+        department: "pg",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1425,7 +1425,7 @@ export const DEPARTMENTS: Department[] = [
         id: 11,
         icon: "assets/svgs/car.svg",
         name: "Auto, Moto, Velo, RCA",
-        acronym: "amvi",
+        department: "amvi",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
@@ -1479,7 +1479,7 @@ export const DEPARTMENTS: Department[] = [
         id: 12,
         icon: "assets/svgs/toys.svg",
         name: "Jucarii, Copii",
-        acronym: "tc",
+        department: "tc",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,

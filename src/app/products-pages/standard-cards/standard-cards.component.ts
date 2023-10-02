@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-department-cards',
-  templateUrl: './department-cards.component.html',
-  styleUrls: ['./department-cards.component.css']
+  selector: 'app-standard-cards',
+  templateUrl: './standard-cards.component.html',
+  styleUrls: ['./standard-cards.component.css']
 })
-export class DepartmentCardsComponent {
+export class StandardCardsComponent {
 
   @Input() cards: Array<any> = [];
 

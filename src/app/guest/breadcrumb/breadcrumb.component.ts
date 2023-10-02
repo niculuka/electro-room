@@ -26,7 +26,7 @@ export class BreadcrumbComponent implements OnDestroy {
       this.customTypeLabels();
       this.customCurrentLinkName();
       this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(this.customBreadcrumb);
-      // console.log(this.currentBreadcrumb);
+      // console.log(this.customBreadcrumb);
     })
   }
 
@@ -41,7 +41,7 @@ export class BreadcrumbComponent implements OnDestroy {
       case "dps": this.customBreadcrumb.customDepartment = "Desktop, Periferice, Software"
         break;
       default:
-        this.customBreadcrumb.customDepartment = "";
+        this.customBreadcrumb.customDepartment = this.customBreadcrumb.customDepartment;
     }
   }
 
@@ -51,8 +51,12 @@ export class BreadcrumbComponent implements OnDestroy {
         break;
       case "laptop-accessory": this.customBreadcrumb.customLevel = "Accesorii laptopuri"
         break;
+      case "pc": this.customBreadcrumb.customLevel = "PC-uri"
+        break;
+      case "monitor": this.customBreadcrumb.customLevel = "Monitoare"
+        break;
       default:
-        this.customBreadcrumb.customLevel = "";
+        this.customBreadcrumb.customLevel = this.customBreadcrumb.customLevel;
     }
   }
 
@@ -75,7 +79,7 @@ export class BreadcrumbComponent implements OnDestroy {
       case "laptop-hard": this.customBreadcrumb.customType = "Harduri"
         break;
       default:
-        this.customBreadcrumb.customType = "";
+        this.customBreadcrumb.customType = this.customBreadcrumb.customType;
     }
   }
 
@@ -85,7 +89,7 @@ export class BreadcrumbComponent implements OnDestroy {
         = this.customBreadcrumb.customLinkName.charAt(0).toUpperCase()
         + this.customBreadcrumb.customLinkName.slice(1);
     } else {
-      this.customBreadcrumb.customLinkName = "";
+      this.customBreadcrumb.customLinkName = this.customBreadcrumb.customLinkName;
     }
   }
 }

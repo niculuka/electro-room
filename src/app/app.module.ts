@@ -75,7 +75,7 @@ import { DepartmentComponent } from './products-pages/department/department.comp
 import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
-import { DepartmentCardsComponent } from './products-pages/department-cards/department-cards.component';
+import { StandardCardsComponent } from './products-pages/standard-cards/standard-cards.component';
 
 // others
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
@@ -138,7 +138,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     AdminDemoUserComponent,
 
     DepartmentComponent,
-    DepartmentCardsComponent,
+    StandardCardsComponent,
     ProductLevelComponent,
     ProductTypeComponent,
     ProductDetailComponent,
