@@ -19,8 +19,8 @@ export class ProductDetailComponent implements OnInit {
   notFoundProduct: boolean = true;
 
   currentDepartment: string = "";
-  currentLevel: string = "";
   currentType: string = "";
+  currentCategory: string = "";
   currentLinkName: string = "";
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
@@ -39,18 +39,18 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.currentDepartment = params.get('department') || "";
-      this.currentLevel = params.get('level') || "";
       this.currentType = params.get('type') || "";
+      this.currentCategory = params.get('category') || "";
       this.currentLinkName = params.get('linkName') || "";
       this.createBreadcrumb();
       this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
         if (data) {
-          let level = data.level.replace(/_/g, "-").toLowerCase();
           let type = data.type.replace(/_/g, "-").toLowerCase();
-          if (this.currentType === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()) {
-            this.currentType = type;
+          let category = data.category.replace(/_/g, "-").toLowerCase();
+          if (this.currentCategory === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()) {
+            this.currentCategory = category;
           }
-          if (level === this.currentLevel && type === this.currentType) {
+          if (type === this.currentType && category === this.currentCategory) {
             this.notFoundProduct = true;
             this.product = data;
             this.productImages = this.product.gallery;
@@ -68,8 +68,8 @@ export class ProductDetailComponent implements OnInit {
   createBreadcrumb() {
     this.customBreadcrumb = {
       customDepartment: this.currentDepartment,
-      customLevel: this.currentLevel,
       customType: this.currentType,
+      customCategory: this.currentCategory,
       customLinkName: this.currentLinkName,
     };
     this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
@@ -81,7 +81,7 @@ export class ProductDetailComponent implements OnInit {
     this.product.linkName = this.product.linkName;
     this.product.description = this.product.description;
     this.product.brand = this.product.brand;
-    this.product.category = this.product.category;
+    this.product.subcategory = this.product.subcategory;
     this.product.image = this.product.image;
     this.product.price = this.product.price;
   }

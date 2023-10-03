@@ -34,8 +34,8 @@ export class DepartmentComponent {
   createBreadcrumb() {
     this.customBreadcrumb = {
       customDepartment: this.currentDepartment,
-      customLevel: "",
       customType: "",
+      customCategory: "",
       customLinkName: "",
     };
     this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);

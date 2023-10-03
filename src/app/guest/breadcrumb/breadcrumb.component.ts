@@ -22,8 +22,8 @@ export class BreadcrumbComponent implements OnDestroy {
       this.customBreadcrumb = new Breadcrumb();
       this.customBreadcrumb = result;
       this.customDepartmentLabels();
-      this.customLevelLabels();
       this.customTypeLabels();
+      this.customCategoryLabels();
       this.customCurrentLinkName();
       this.ngDynamicBreadcrumbService.updateBreadcrumbLabels(this.customBreadcrumb);
       // console.log(this.customBreadcrumb);
@@ -45,41 +45,41 @@ export class BreadcrumbComponent implements OnDestroy {
     }
   }
 
-  customLevelLabels() {
-    switch (this.customBreadcrumb.customLevel) {
-      case "laptops": this.customBreadcrumb.customLevel = "Laptopuri"
-        break;
-      case "laptop-accessory": this.customBreadcrumb.customLevel = "Accesorii laptopuri"
-        break;
-      case "pc": this.customBreadcrumb.customLevel = "PC-uri"
-        break;
-      case "monitor": this.customBreadcrumb.customLevel = "Monitoare"
-        break;
-      default:
-        this.customBreadcrumb.customLevel = this.customBreadcrumb.customLevel;
-    }
-  }
-
   customTypeLabels() {
     switch (this.customBreadcrumb.customType) {
-      case "laptop": this.customBreadcrumb.customType = "Toate laptopurile"
+      case "laptops": this.customBreadcrumb.customType = "Laptopuri"
         break;
-      case "laptop-gaming": this.customBreadcrumb.customType = "Gaming"
+      case "laptop-accessory": this.customBreadcrumb.customType = "Accesorii laptopuri"
         break;
-      case "laptop-business": this.customBreadcrumb.customType = "Business"
+      case "pc": this.customBreadcrumb.customType = "PC-uri"
         break;
-      case "laptop-ultra": this.customBreadcrumb.customType = "Ultra"
-        break;
-      case "laptop-home": this.customBreadcrumb.customType = "Home"
-        break;
-      case "laptop-bag": this.customBreadcrumb.customType = "Genti si huse"
-        break;
-      case "laptop-charger": this.customBreadcrumb.customType = "Incarcatoare"
-        break;
-      case "laptop-hard": this.customBreadcrumb.customType = "Harduri"
+      case "monitor": this.customBreadcrumb.customType = "Monitoare"
         break;
       default:
         this.customBreadcrumb.customType = this.customBreadcrumb.customType;
+    }
+  }
+
+  customCategoryLabels() {
+    switch (this.customBreadcrumb.customCategory) {
+      case "laptop": this.customBreadcrumb.customCategory = "Toate laptopurile"
+        break;
+      case "laptop-gaming": this.customBreadcrumb.customCategory = "Gaming"
+        break;
+      case "laptop-business": this.customBreadcrumb.customCategory = "Business"
+        break;
+      case "laptop-ultra": this.customBreadcrumb.customCategory = "Ultra"
+        break;
+      case "laptop-home": this.customBreadcrumb.customCategory = "Home"
+        break;
+      case "laptop-bag": this.customBreadcrumb.customCategory = "Genti si huse"
+        break;
+      case "laptop-charger": this.customBreadcrumb.customCategory = "Incarcatoare"
+        break;
+      case "laptop-hard": this.customBreadcrumb.customCategory = "Harduri"
+        break;
+      default:
+        this.customBreadcrumb.customCategory = this.customBreadcrumb.customCategory;
     }
   }
 

@@ -59,8 +59,8 @@
         </div>
 
         <div class="form-group-dialog">
-            <label for="level">Level</label>
-            <select name="level" #levelSelect [(ngModel)]="product.level">
+            <label for="type">Type</label>
+            <select name="type" #typeSelect [(ngModel)]="product.type">
                 <option value="LAPTOPS">LAPTOPS</option>
                 <option value="LAPTOP_ACCESSORY">LAPTOP_ACCESSORY</option>
             </select>
@@ -70,8 +70,8 @@
         </div>
 
         <div class="form-group-dialog">
-            <label for="type">Type</label>
-            <select name="type" value="{{product.type}}" #typeSelect [(ngModel)]="product.type"
+            <label for="category">Category</label>
+            <select name="category" value="{{product.category}}" #categorySelect [(ngModel)]="product.category"
                 (click)="setImageGallery()">
                 <option value="LAPTOP_BUSINESS">LAPTOP_BUSINESS</option>
                 <option value="LAPTOP_GAMING">LAPTOP_GAMING</option>
@@ -87,8 +87,8 @@
         </div>
 
         <div class="form-group-dialog">
-            <label for="category">Category</label>
-            <select class="select-box" name="category" #categorySelect [(ngModel)]="product.category">
+            <label for="subcategory">Subcategory</label>
+            <select class="select-box" name="subcategory" #subcategorySelect [(ngModel)]="product.subcategory">
                 <option value="LAPTOP_BUSINESS">LAPTOP_BUSINESS</option>
                 <option value="LAPTOP_GAMING">LAPTOP_GAMING</option>
                 <option value="LAPTOP_HOME">LAPTOP_HOME</option>

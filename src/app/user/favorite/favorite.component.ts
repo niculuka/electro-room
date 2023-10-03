@@ -46,9 +46,9 @@ export class FavoriteComponent {
   getProductLinkName(cartItem: CartItem) {
     this.router.navigate([
       '/lpt/'
-      + cartItem.product.level.replace(/_/g, "-").toLowerCase()
-      + '/'
       + cartItem.product.type.replace(/_/g, "-").toLowerCase()
+      + '/'
+      + cartItem.product.category.replace(/_/g, "-").toLowerCase()
       + '/'
       + cartItem.product.linkName
     ]);

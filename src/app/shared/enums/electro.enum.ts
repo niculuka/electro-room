@@ -69,14 +69,14 @@ export enum CATEGORY {
     LPT = "LPT",
     DPS = "DPS",
 
-    // L E V E L ==================================================
+    // T Y P E ====================================================
     LAPTOPS = "LAPTOPS",
     LAPTOP = "LAPTOP",
     LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
     PC = "PC",
     MONITOR = "MONITOR",   
 
-    // T Y P E ====================================================
+    // C A T E G O R Y ============================================
     LAPTOP_GAMING = "LAPTOP_GAMING",
     LAPTOP_ULTRA = "LAPTOP_ULTRA",
     LAPTOP_BUSINESS = "LAPTOP_BUSINESS",
@@ -85,6 +85,7 @@ export enum CATEGORY {
     PC_GAMING = "PC_GAMING",   
     ALL_IN_ONE = "ALL_IN_ONE",  
 
+    // S U B = C A T E G O R Y ====================================
     // C H A R G E R -----------------
     LAPTOP_BAG = "LAPTOP_BAG",
     BRIEFCASE = "BRIEFCASE",

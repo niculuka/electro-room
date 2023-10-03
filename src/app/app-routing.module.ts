@@ -37,8 +37,8 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
 
 // products-pages
 import { DepartmentComponent } from './products-pages/department/department.component';
-import { ProductLevelComponent } from './products-pages/product-level/product-level.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
+import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { FavoriteComponent } from './user/favorite/favorite.component';
@@ -99,31 +99,31 @@ const routes: Routes = [
     },
   },
   {
-    path: "p/:department/:level", component: ProductLevelComponent,
+    path: "p/:department/:type", component: ProductTypeComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '/p/:department' },
-        { label: '{{customLevel}}', url: '' },
-      ]
-    },
-  },
-  {
-    path: "p/:department/:level/:type", component: ProductTypeComponent,
-    data: {
-      breadcrumb: [
-        { label: '{{customDepartment}}', url: '/p/:department' },
-        { label: '{{customLevel}}', url: '/p/:department/:level' },
         { label: '{{customType}}', url: '' },
       ]
     },
   },
   {
-    path: "p/:department/:level/:type/:linkName", component: ProductDetailComponent,
+    path: "p/:department/:type/:category", component: ProductCategoryComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '/p/:department' },
-        { label: '{{customLevel}}', url: '/p/:department/:level' },
-        { label: '{{customType}}', url: '/p/:department/:level/:type' },
+        { label: '{{customType}}', url: '/p/:department/:type' },
+        { label: '{{customCategory}}', url: '' },
+      ]
+    },
+  },
+  {
+    path: "p/:department/:type/:category/:linkName", component: ProductDetailComponent,
+    data: {
+      breadcrumb: [
+        { label: '{{customDepartment}}', url: '/p/:department' },
+        { label: '{{customType}}', url: '/p/:department/:type' },
+        { label: '{{customCategory}}', url: '/p/:department/:type/:category' },
         { label: '{{customLinkName}}', url: '' },
       ]
     },

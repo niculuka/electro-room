@@ -12,9 +12,9 @@ export class Product {
     linkName: string = "";
     description: string = "";
     brand: CATEGORY;
-    level: CATEGORY;
     type: CATEGORY;
     category: CATEGORY;
+    subcategory: CATEGORY;
     image: string = "";
     badge: CATEGORY;
     available: CATEGORY;
@@ -31,9 +31,9 @@ export class Product {
         linkName: string = "",
         description: string = "",
         brand: CATEGORY = CATEGORY.CATEGORY,
-        level: CATEGORY = CATEGORY.CATEGORY,
         type: CATEGORY = CATEGORY.CATEGORY,
         category: CATEGORY = CATEGORY.CATEGORY,
+        subcategory: CATEGORY = CATEGORY.CATEGORY,
         image: string = "",
         badge: CATEGORY = CATEGORY.CATEGORY,
         available: CATEGORY = CATEGORY.CATEGORY,
@@ -49,9 +49,9 @@ export class Product {
         this.linkName = linkName;
         this.description = description;
         this.brand = brand;
-        this.level = level;
         this.type = type;
         this.category = category;
+        this.subcategory = subcategory;
         this.image = image;
         this.badge = badge;
         this.available = available;

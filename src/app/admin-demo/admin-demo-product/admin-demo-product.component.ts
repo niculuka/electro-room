@@ -14,7 +14,7 @@ export class AdminDemoProductComponent implements OnInit {
   protected product: Product = new Product();
 
   errorMessage: string = "";
-  currentLevel: string = "";
+  currentType: string = "";
 
   constructor(
     private productService: ProductService,
@@ -24,8 +24,8 @@ export class AdminDemoProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentLevel = params.get('product') || "";
-      this.productService.getProductsByLevelService(this.currentLevel).subscribe(data => {
+      this.currentType = params.get('product') || "";
+      this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
         this.products = data;
       });
     });
@@ -38,9 +38,9 @@ export class AdminDemoProductComponent implements OnInit {
   viewProduct(product: Product) {
     this.router.navigate([
       '/lpt/'
-      + product.level.replace(/_/g, "-").toLowerCase()
-      + '/'
       + product.type.replace(/_/g, "-").toLowerCase()
+      + '/'
+      + product.category.replace(/_/g, "-").toLowerCase()
       + '/'
       + product.linkName
     ]);

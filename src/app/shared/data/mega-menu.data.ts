@@ -13,7 +13,7 @@ export interface Department {
 
 export interface Title {
     name: string;
-    level: CATEGORY;
+    type: CATEGORY;
     link: string;
     image: string;
     showSubtitle: boolean;
@@ -44,7 +44,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Laptopuri",
-                level: CATEGORY.LAPTOPS,
+                type: CATEGORY.LAPTOPS,
                 link: "/p/lpt/laptops",
                 image: "assets/laptops/laptops_3.png",
                 showSubtitle: false,
@@ -95,7 +95,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Accesorii Laptop",
-                level: CATEGORY.LAPTOP_ACCESSORY,
+                type: CATEGORY.LAPTOP_ACCESSORY,
                 link: "/p/lpt/laptop-accessory",
                 image: "assets/laptop-accessories/laptop-accessories.png",
                 showSubtitle: false,
@@ -162,7 +162,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Telefoane",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -172,7 +172,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Tablete",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -182,7 +182,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Accesorii telefoane",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -249,7 +249,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Bratari si ceasuri electronice",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -293,7 +293,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Casti pentru telefon",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -344,7 +344,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Accesorii tablete",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -387,7 +387,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Cartele si pachete cu telefon",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -414,7 +414,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Telefoane fixe",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/lpt",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -468,7 +468,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Sisteme PC",
-                level: CATEGORY.PC,
+                type: CATEGORY.PC,
                 link: "/p/dps/pc",
                 image: "assets/systems/systems2.png",
                 showSubtitle: false,
@@ -494,7 +494,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Desktop Home",
                         type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
+                        link: "/p/dps/pc",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#676767",
@@ -502,7 +502,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Mini PC",
                         type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
+                        link: "/p/dps/pc",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#676767",
@@ -511,7 +511,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Monitoare",
-                level: CATEGORY.MONITOR,
+                type: CATEGORY.MONITOR,
                 link: "/p/dps/monitor",
                 image: "assets/monitors/monitors.png",
                 showSubtitle: false,
@@ -529,7 +529,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Monitoare Gaming",
                         type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
+                        link: "/p/dps/monitor",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#676767",
@@ -537,7 +537,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Monitoare Home",
                         type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
+                        link: "/p/dps/monitor",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#676767",
@@ -545,7 +545,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Monitoare portabile",
                         type: CATEGORY.CATEGORY,
-                        link: "/under-construction",
+                        link: "/p/dps/monitor",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#676767",
@@ -554,7 +554,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Suport pentru monitor",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -573,7 +573,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Mac-uri",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -592,7 +592,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Componente calculator",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -675,7 +675,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Retelistica calculatoare",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -718,7 +718,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Imprimante si multifunctionale",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -785,7 +785,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Birotica",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -836,7 +836,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Periferice si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -919,7 +919,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "UPS-uri si surse externe ",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/p/dps",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -957,7 +957,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1000,7 +1000,7 @@ export const DEPARTMENTS: Department[] = [
             },
             {
                 name: "Audio-Video",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1054,7 +1054,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1108,7 +1108,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1162,7 +1162,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1216,7 +1216,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1270,7 +1270,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1324,7 +1324,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1378,7 +1378,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1432,7 +1432,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
@@ -1486,7 +1486,7 @@ export const DEPARTMENTS: Department[] = [
         titles: [
             {
                 name: "Televizoare si accesorii",
-                level: CATEGORY.CATEGORY,
+                type: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,

@@ -2,7 +2,7 @@
   <div class="content-admin">
 
     <div class="title">
-      <h1><strong>{{currentLevel}}</strong></h1>
+      <h1><strong>{{currentType}}</strong></h1>
       <h3>Products number: {{products.length}}</h3>
       <button class="btn-new" type="button" (click)="noAction()">NEW</button>
     </div>
@@ -14,8 +14,8 @@
           <th>Image</th>
           <th>Name | Description| Id | Brand</th>
           <th>Available</th>
-          <th>Type</th>
           <th>Category</th>
+          <th>Subcategory</th>
           <th>Price | Badge</th>
           <th>Others</th>
           <th>Edit</th>
@@ -39,8 +39,8 @@
             </div>
           </td>
           <td><strong>{{product.available}}</strong></td>
-          <td>{{product.type}}</td>
-          <td><strong>{{product.category}}</strong></td>
+          <td>{{product.category}}</td>
+          <td><strong>{{product.subcategory}}</strong></td>
           <td>
             <div class="my-fields">
               <span class="price"><strong>{{product.price}} Lei</strong></span>
@@ -94,16 +94,16 @@
           <td>{{product.available}}</td>
         </tr>
         <tr>
-          <th>Level</th>
-          <td><strong>{{product.level}}</strong></td>
-        </tr>
-        <tr>
           <th>Type</th>
           <td><strong>{{product.type}}</strong></td>
         </tr>
         <tr>
           <th>Category</th>
           <td><strong>{{product.category}}</strong></td>
+        </tr>
+        <tr>
+          <th>Subcategory</th>
+          <td><strong>{{product.subcategory}}</strong></td>
         </tr>
         <tr>
           <th>Price</th>
