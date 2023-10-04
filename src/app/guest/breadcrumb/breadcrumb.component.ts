@@ -78,6 +78,10 @@ export class BreadcrumbComponent implements OnDestroy {
         break;
       case "laptop-hard": this.customBreadcrumb.customCategory = "Harduri"
         break;
+      case "external-battery": this.customBreadcrumb.customCategory = "Baterii externe"
+        break;
+      case "ram-memory": this.customBreadcrumb.customCategory = "Memorii RAM"
+        break;
       default:
         this.customBreadcrumb.customCategory = this.customBreadcrumb.customCategory;
     }

@@ -86,23 +86,33 @@ export enum CATEGORY {
     ALL_IN_ONE = "ALL_IN_ONE",  
 
     // S U B = C A T E G O R Y ====================================
-    // C H A R G E R -----------------
+    // CHARGER --------------------------------
     LAPTOP_BAG = "LAPTOP_BAG",
     BRIEFCASE = "BRIEFCASE",
     SLEEVE = "SLEEVE",
     BACKPACK = "BACKPACK",
 
-    // C H A R G E R ------------------
+    // CHARGER --------------------------------
     LAPTOP_CHARGER = "LAPTOP_CHARGER",
     PLUG_IN = "PLUG_IN",
     CAR = "CAR",
 
-    // H A R D ------------------------
+    // HARD ------------------------------------
     LAPTOP_HARD = "LAPTOP_HARD",
     HDD = "HDD",
     SSD = "SSD",
 
-    // P O W E R ----------------------
+    // EXTERNAL-BATTERY-------------------------    
+    EXTERNAL_BATTERY = "EXTERNAL_BATTERY",
+    BATTERY = "BATTERY",
+
+    // RAM ------------------------------------
+    RAM = "RAM",
+    RAM_MEMORY = "RAM_MEMORY",
+    DDR3 = "DDR3",
+    DDR4 = "DDR4",
+
+    // P O W E R ------------------------------
     W45 = "W45",
     W60 = "W60",
     W65 = "W65",
@@ -110,6 +120,9 @@ export enum CATEGORY {
     W85 = "W85",
     W90 = "W90",
     W120 = "W120",
+    MHZ3200 = "MHZ3200",
+    MHZ3600 = "MHZ3600",
+    MHZ6000 = "MHZ6000",
 
     // CAPACITY -----------------------------------------
     GB120 = "GB120",
@@ -120,9 +133,18 @@ export enum CATEGORY {
     GB512 = "GB512",
     T1 = "T1",
     T2 = "T2",
+    A = "A",    
+    MA10000 = "MA10000",
+    MA15000 = "MA15000",
+    MA18000 = "MA18000",
+    MA20000 = "MA20000",
+    GB2X8 = "GB2X8",
+    GB2X16 = "GB2X16",
 
     // CONNECT -----------------------------------------
     PCI_EXPRESS = "PCI_EXPRESS",
     M_SATA3 = "M_SATA3",
     SATA3 = "SATA3",
+    USB = "USB",
+    MICRO_USB = "MICRO_USB",
 }
