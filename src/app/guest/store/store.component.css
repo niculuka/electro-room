@@ -1,106 +1,171 @@
-.container-store {
-    display: flex;
-    justify-content: center;
+.container-cards {
     width: 100%;
     /* border: 2px solid black; */
 }
 
-.row-store {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 50px;
-    width: 1500px;
-    /* border: 2px solid black; */
-}
-
-.card-store {
+.content-cards {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: black;
-    width: 490px;
-    margin-bottom: 20px;
-    padding: 20px;
-    transition: 0.3s;
-    background: white;
+    margin: auto;
+    width: 1500px;
+    /* border: 6px solid red; */
+}
+
+.cards {
+    display: grid;
+    grid: auto / 1fr 1fr 1fr 1fr 1fr;
     box-sizing: border-box;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    /* border: 1px solid black;*/
+    width: 100%;
+    gap: 14px;
+    margin-top: 14px;
+    /* border: 2px solid rgb(0, 132, 255); */
 }
 
-h1 {
+.card {    
+    min-width: 140px;
+    transition: 0.3s;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0px 6px 10px 0px rgba(62, 62, 62, 0.2);
+    border-radius: 8px;
+    /* border: 2px solid rgb(0, 132, 255); */
+}
+
+.card:hover {
+    box-shadow: 0 18px 26px 0 rgba(0, 0, 0, 0.564);
+}
+
+.card a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin: auto;
+    padding: 20px 10px;
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    /* border: 2px solid rgb(0, 176, 67); */
+}
+
+.store {
+    width: 100%;
+    /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.store h1 {
+    width: 100%;
+    min-height: 80px;
     margin: 0;
+    padding: 0;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: left;
+    word-wrap: break-word;
+    text-wrap: wrap;
+    border-bottom: 1px solid gray;
+    /* border: 1px solid rgb(0, 255, 68); */
 }
 
-p {
-    overflow-y: hidden;
+.store p {
     font-size: 16px;
     line-height: 20px;
-    height: 42px;
-    margin: 6px 0 20px 0;
+    min-height: 80px;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid rgb(0, 255, 68); */
+}
+
+.schedule h3 {
+    width: 100%;
+    margin: 20px 0 0 0;
+    padding: 0;
+    border-bottom: 1px solid gray;
     /* border: 1px solid red; */
 }
 
-h3 {
-    margin: 0;
-}
-
-button {
+.card button {
     color: white;
     cursor: pointer;
-    margin-top: 10px;
-    padding: 10px 20px;
+    margin-top: 20px;
+    padding: 10px;
     font-size: 16px;
     font-weight: 600;
     border-radius: 4px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    background: rgb(223, 33, 119);
+    background: rgb(220, 20, 110);
     border: none;
 }
 
-button:hover {
-    color: black;
+.card button:hover {
+    background: rgb(255, 53, 144);
 }
 
-@media (max-width: 1600px) {
-    .row-store {
+@media(max-width: 1530px) {
+    .content-cards {
         width: 1200px;
     }
-    .card-store {
-        width: 590px;
+    .cards {
+        grid: auto / 1fr 1fr 1fr 1fr;
     }
 }
 
-@media (max-width: 1280px) {
-    .row-store {
-        width: 980px;
-    }
-
-    .card-store {
-        width: 480px;
+@media(max-width: 1260px) {
+    .content-cards {
+        width: 990px;
     }
 }
 
-@media (max-width: 1040px) {
-    .row-store {
-        justify-content: center;
-        width: 980px;
+@media(max-width: 1020px) {
+    .content-cards {
+        width: 100%;
+        padding: 0 10px;
     }
-
-    .card-store {        
-        width: 510px;
+    
+    .cards {
+        grid: auto / 1fr 1fr 1fr;
+        gap: 10px;
     }
 }
 
-@media (max-width: 550px) {
-    .row-store {
-        width: 100%;        
+@media(max-width: 766px) {
+    .cards {
+        grid: auto / 1fr 1fr;
+    }
+}
+
+@media(max-width: 550px) {
+    .store h1 {
+        font-size: 20px;
+        line-height: 24px;
     }
 
-    .card-store {        
-        width: 580px;
-        margin: 16px;
+    .store p {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .schedule h3 {
+        font-size: 14px;
+        line-height: 18px;
+        margin: 16px 0 0 0;
+    }
+}
+
+@media(max-width: 450px) {
+    .cards {
+        gap: 6px;
+    }
+
+    .store p {
+        line-height: 16px;
+    }
+}
+
+@media(max-width: 350px) {
+    .store h1 {
+        font-size: 18px;
+        line-height: 22px;
     }
 }

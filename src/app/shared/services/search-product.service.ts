@@ -46,17 +46,15 @@ export class SearchProductService extends BearerService {
       this.products = this.findAll;
       // console.log(this.products)
       this.setProductsFromLocalStorage();
-
-
     });
   }
 
   getLaptopsService(): Observable<any> {
-    return this.http.get(API_URL + "/products/level/laptops");
+    return this.http.get(API_URL + "/products/type/laptops");
   }
 
   getLaptopAccessoryService(): Observable<any> {
-    return this.http.get(API_URL + "/products/level/laptop-accessory");
+    return this.http.get(API_URL + "/products/type/laptop-accessory");
   }
 
   // ****************************************************

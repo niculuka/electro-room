@@ -1,18 +1,24 @@
-<div class="container-store">
-    <div class="row-store">
+<app-breadcrumb></app-breadcrumb>
+<div class="container-cards">
+    <div class="content-cards">
 
-        <div class="card-store" *ngFor="let store of stores">
+        <div class="cards">
+            <div class="card" *ngFor="let store of stores">
+                <a [routerLink]="'/magazine/' + store.linkName">
+                    <div class="store">
+                        <h1><strong>{{store.name}}</strong></h1>
+                        <p>{{store.address}}</p>
+                    </div>
 
-            <h1><strong>{{store.name}}</strong></h1>
-            <p>{{store.address}}</p>
+                    <div class="schedule">
+                        <h3><strong>{{store.day1}}</strong> {{store.hour1}}</h3>
+                        <h3><strong>{{store.day2}}</strong> {{store.hour2}}</h3>
+                        <h3><strong>{{store.day3}}</strong> {{store.hour3}}</h3>
+                    </div>
 
-            <h3><strong>{{store.day1}}</strong> {{store.hour1}}</h3>
-
-            <h3><strong>{{store.day2}}</strong> {{store.hour2}}</h3>
-
-            <h3><strong>{{store.day3}}</strong> {{store.hour3}}</h3>
-
-            <button (click)="noRoute()">Vezi detalii!</button>
+                    <button>Vezi detalii!</button>
+                </a>
+            </div>
         </div>
 
     </div>

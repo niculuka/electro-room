@@ -49,6 +49,7 @@ import { NavbarDesktopComponent } from './navbar/navbar-desktop/navbar-desktop.c
 import { SpecialOfferComponent } from './guest/special-offer/special-offer.component';
 import { ElectroCardComponent } from './guest/electro-card/electro-card.component';
 import { StoreComponent } from './guest/store/store.component';
+import { StoreDetailComponent } from './guest/store-detail/store-detail.component';
 import { HelpDeskComponent } from './guest/help-desk/help-desk.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselComponent } from './navbar/carousel/carousel.component';
@@ -89,6 +90,7 @@ import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mob
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,6 +119,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     SpecialOfferComponent,
     ElectroCardComponent,
     StoreComponent,
+    StoreDetailComponent,
     HelpDeskComponent,
     CarouselComponent,
     CarouselLaptopComponent,
@@ -148,7 +151,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductCarouselComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,
+    MegaMenuDesktopComponent,    
   ],
   imports: [
     BrowserModule,

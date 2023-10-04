@@ -14,6 +14,7 @@
           <th>Image</th>
           <th>Name | Description| Id | Brand</th>
           <th>Available</th>
+          <th>Type</th>
           <th>Category</th>
           <th>Subcategory</th>
           <th>Price | Badge</th>
@@ -38,9 +39,12 @@
               <span><strong>id: {{product.id}} | {{product.brand}}</strong></span>
             </div>
           </td>
-          <td><strong>{{product.available}}</strong></td>
-          <td>{{product.category}}</td>
-          <td><strong>{{product.subcategory}}</strong></td>
+          <td [style]="{'color':product.available==='STOCK' ? '#4fbe04' : 'gray'}">
+            <strong>{{product.available}}</strong>
+          </td>
+          <td>{{product.type}}</td>
+          <td><strong>{{product.category}}</strong></td>
+          <td>{{product.subcategory}}</td>
           <td>
             <div class="my-fields">
               <span class="price"><strong>{{product.price}} Lei</strong></span>
@@ -91,11 +95,13 @@
         </tr>
         <tr>
           <th>Available</th>
-          <td>{{product.available}}</td>
+          <td [style]="{'color':product.available==='STOCK' ? '#4fbe04' : 'gray'}">
+            <strong>{{product.available}}</strong>
+          </td>
         </tr>
         <tr>
           <th>Type</th>
-          <td><strong>{{product.type}}</strong></td>
+          <td>{{product.type}}</td>
         </tr>
         <tr>
           <th>Category</th>
@@ -103,7 +109,7 @@
         </tr>
         <tr>
           <th>Subcategory</th>
-          <td><strong>{{product.subcategory}}</strong></td>
+          <td>{{product.subcategory}}</td>
         </tr>
         <tr>
           <th>Price</th>

@@ -36,8 +36,7 @@ export class ProductTypeComponent implements OnInit {
       this.departments.filter(data => {
         let result = data.titles.find(items => items.type.replace(/_/g, "-").toLowerCase() === this.currentType)
         if (result) {
-          this.cards = result.subtitles;
-          
+          this.cards = result.subtitles;          
         }
       });
     });

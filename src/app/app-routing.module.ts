@@ -17,6 +17,7 @@ import { MyOrderComponent } from './user/my-order/my-order.component';
 import { SearchComponent } from './guest/search/search.component';
 import { SpecialOfferComponent } from './guest/special-offer/special-offer.component';
 import { StoreComponent } from './guest/store/store.component';
+import { StoreDetailComponent } from './guest/store-detail/store-detail.component';
 import { ElectroCardComponent } from './guest/electro-card/electro-card.component';
 import { HelpDeskComponent } from './guest/help-desk/help-desk.component';
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
@@ -43,9 +44,6 @@ import { ProductDetailComponent } from './products-pages/product-detail/product-
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { FavoriteComponent } from './user/favorite/favorite.component';
 
-
-
-
 const routes: Routes = [
   // home
   { path: "", component: HomeComponent },
@@ -56,7 +54,7 @@ const routes: Routes = [
   { path: "search/:searchTerm", component: SearchComponent },
 
   { path: "oferta-speciala", component: SpecialOfferComponent },
-  { path: "magazine", component: StoreComponent },
+
   // { path: "card-electro", component: ElectroCardComponent },
   { path: "ajutor-clienti", component: HelpDeskComponent },
 
@@ -88,6 +86,25 @@ const routes: Routes = [
   { path: "under-construction", component: UnderConstructionComponent },
   { path: "401", component: UnauthComponent },
   { path: "404", component: NotFoundComponent },
+
+  // STORES -------------------------------------------------------------------------------------------
+  {
+    path: "magazine", component: StoreComponent,
+    data: {
+      breadcrumb: [
+        { label: 'magazine', url: '' },
+      ]
+    },
+  },
+  {
+    path: "magazine/:storeName", component: StoreDetailComponent,
+    data: {
+      breadcrumb: [
+        { label: 'magazine', url: '/magazine' },
+        { label: '{{storeName}}', url: '' },
+      ]
+    },
+  },
 
   // DEPARTAMENTS -------------------------------------------------------------------------------------------
   {

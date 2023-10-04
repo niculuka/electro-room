@@ -1,0 +1,42 @@
+.container-store {
+    width: 100%;
+    /* border: 2px solid black; */
+}
+
+.content-store {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 1500px;
+    /* border: 6px solid red; */
+}
+
+.card {
+    width: 100%;
+    transition: 0.3s;
+    padding: 20px;
+    cursor: default;
+    background: white;
+    box-shadow: 0px 6px 10px 0px rgba(62, 62, 62, 0.2);
+    /* border: 2px solid rgb(0, 132, 255); */
+}
+
+@media(max-width: 1530px) {
+    .content-store {
+        width: 1200px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .content-store {
+        width: 990px;
+    }
+}
+
+@media(max-width: 1020px) {
+    .content-store {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
