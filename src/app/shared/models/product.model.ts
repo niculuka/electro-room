@@ -20,6 +20,7 @@ export class Product {
     available: CATEGORY;
     favorite: boolean = false;
     price: number = 0;
+    display: number = 0;
     power?: CATEGORY;
     capacity?: CATEGORY;
     connect?: CATEGORY;
@@ -39,6 +40,7 @@ export class Product {
         available: CATEGORY = CATEGORY.CATEGORY,
         favorite: boolean = false,
         price: number = 0,
+        display: number = 0,
         power?: CATEGORY,
         capacity?: CATEGORY,
         connect?: CATEGORY,
@@ -57,6 +59,7 @@ export class Product {
         this.available = available;
         this.favorite = favorite;
         this.price = price;
+        this.display = display;
         this.power = power;
         this.capacity = capacity;
         this.connect = connect;

@@ -47,14 +47,18 @@ export enum CATEGORY {
     ACER = "ACER",
     ADATA = "ADATA",
     ALLVIEW = "ALLVIEW",
+    AMD = "AMD",
     APPLE = "APPLE",
     ASUS = "ASUS",
     DELL = "DELL",
     HAMA = "HAMA",
     HP = "HP",
+    INTEL = "INTEL",
     IPHONE = "IPHONE",
     LENOVO = "LENOVO",
     KINGSTON = "KINGSTON",
+    MYRIA = "MYRIA",
+    PHILIPS = "PHILIPS",
     PROMATE = "PROMATE",
     RIVACASE = "RIVACASE",
     SAMSONITE = "SAMSONITE",
@@ -73,6 +77,7 @@ export enum CATEGORY {
     LAPTOPS = "LAPTOPS",
     LAPTOP = "LAPTOP",
     LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
+    DESKTOP = "DESKTOP",
     PC = "PC",
     MONITOR = "MONITOR",   
 
@@ -83,7 +88,8 @@ export enum CATEGORY {
     LAPTOP_HOME = "LAPTOP_HOME",
     LAPTOP_L2IN1 = "LAPTOP_L2IN1",  
     PC_GAMING = "PC_GAMING",   
-    ALL_IN_ONE = "ALL_IN_ONE",  
+    ALL_IN_ONE = "ALL_IN_ONE", 
+    MONITOR_PRO = "MONITOR_PRO",  
 
     // S U B = C A T E G O R Y ====================================
     // CHARGER --------------------------------
@@ -112,6 +118,10 @@ export enum CATEGORY {
     DDR3 = "DDR3",
     DDR4 = "DDR4",
 
+    // MONITOR ------------------------------------
+    MONITOR_FLAT = "MONITOR_FLAT",
+    MONITOR_CURVED = "MONITOR_CURVED",
+
     // P O W E R ------------------------------
     W45 = "W45",
     W60 = "W60",
@@ -120,9 +130,13 @@ export enum CATEGORY {
     W85 = "W85",
     W90 = "W90",
     W120 = "W120",
+    HZ60 = "HZ60",
+    HZ75 = "HZ75",
     MHZ3200 = "MHZ3200",
     MHZ3600 = "MHZ3600",
     MHZ6000 = "MHZ6000",
+    GHZ4 =  "GHZ4",
+    GHZ5 =  "GHZ5",
 
     // CAPACITY -----------------------------------------
     GB120 = "GB120",

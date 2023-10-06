@@ -82,6 +82,12 @@ export class BreadcrumbComponent implements OnDestroy {
         break;
       case "ram-memory": this.customBreadcrumb.customCategory = "Memorii RAM"
         break;
+      case "pc-gaming": this.customBreadcrumb.customCategory = "Gaming"
+        break;
+      case "all-in-one": this.customBreadcrumb.customCategory = "All In One"
+        break;
+      case "monitor-pro": this.customBreadcrumb.customCategory = "Profesionale"
+        break;
       default:
         this.customBreadcrumb.customCategory = this.customBreadcrumb.customCategory;
     }
