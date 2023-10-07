@@ -20,7 +20,9 @@ export enum CATEGORY {
 
     // B A D G E -----------------------------------------
     TOP_FAVORITE = "TOP_FAVORITE",
+    TOP_FAVORITE_RO = "Top Favorit",
     SUPER_PRICE = "SUPER_PRICE",
+    SUPER_PRICE_RO = "Super Pret",
 
     // A V A I L A B L E -----------------------------------------
     AVAILABLE = "AVAILABLE",

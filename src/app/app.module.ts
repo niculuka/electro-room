@@ -53,8 +53,9 @@ import { StoreDetailComponent } from './guest/store-detail/store-detail.componen
 import { HelpDeskComponent } from './guest/help-desk/help-desk.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselComponent } from './navbar/carousel/carousel.component';
-import { CarouselLaptopComponent } from './navbar/carousel-laptop/carousel-laptop.component';
-import { CarouselAuxComponent } from './navbar/carousel-aux/carousel-aux.component';
+import { CarouselOwlComponent } from './navbar/carousel-owl/carousel-owl.component';
+import { CarouselOwlLptLaptopComponent } from './navbar/carousel-owl-lpt/carousel-owl-lpt.component';
+import { CarouselOwlDpsComponent } from './navbar/carousel-owl-dps/carousel-owl-dps.component';
 import { FooterComponent } from './guest/footer/footer.component';
 
 // a d m i n
@@ -91,6 +92,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,8 +124,9 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     StoreDetailComponent,
     HelpDeskComponent,
     CarouselComponent,
-    CarouselLaptopComponent,
-    CarouselAuxComponent,
+    CarouselOwlComponent, 
+    CarouselOwlLptLaptopComponent,
+    CarouselOwlDpsComponent,
     FooterComponent,
     CartNavComponent,
     FavoriteNavComponent,
@@ -151,7 +154,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductCarouselComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,    
+    MegaMenuDesktopComponent,       
   ],
   imports: [
     BrowserModule,

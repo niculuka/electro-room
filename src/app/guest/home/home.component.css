@@ -23,15 +23,11 @@
   margin-top: 20px;
 }
 
-h1 {
-  margin: 10px 6px;
-}
-
-.carousel-laptop {
+.carousel-owl-lpt {
   margin-top: 30px;
 }
 
-.carousel-aux {
+.carousel-owl-dps {
   margin-top: 20px;
 }
 
@@ -74,20 +70,10 @@ h1 {
     margin: 10px;
   }
 
-  h1 {
-    margin: 10px;
-  }
-
-  .carousel-laptop {
+  .carousel-owl-lpt {
     margin: 20px 4px 0 4px;
   }
-  .carousel-aux {
+  .carousel-owl-dps {
     margin: 10px 4px 0 4px;
   } 
-}
-
-@media (max-width: 550px) {
-  h1 {
-    font-size: 20px;
-  }
 }
