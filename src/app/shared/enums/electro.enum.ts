@@ -60,6 +60,7 @@ export enum CATEGORY {
     LENOVO = "LENOVO",
     KINGSTON = "KINGSTON",
     MYRIA = "MYRIA",
+    MSI = "MSI",
     PHILIPS = "PHILIPS",
     PROMATE = "PROMATE",
     RIVACASE = "RIVACASE",

@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class CarouselOwlLptLaptopComponent {
 
   protected carouselLpt: Array<Product> = [];
-  productIds: Array<number> = [1, 32, 27, 5, 18, 58, 33, 28, 42, 10, 15, 22, 24, 30, 35, 6];
+  productIds: Array<number> = [1, 42, 37, 5, 7, 68, 50, 38, 42, 10, 45, 63, 67, 30, 35, 20];
   laptops: string = "laptops";
   laptopAccessories: string = "laptop-accessory";
 

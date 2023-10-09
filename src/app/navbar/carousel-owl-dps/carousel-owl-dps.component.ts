@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class CarouselOwlDpsComponent {
 
   protected carouselDps: Array<Product> = [];
-  productIds: Array<number> = [62, 74, 64, 70, 66, 71, 65, 68, 72, 63, 73, 75, 61];
+  productIds: Array<number> = [72, 84, 74, 80, 76, 81, 75, 78, 82, 73, 83, 85, 71];
   pc: string = "pc";
   monitors: string = "monitor";
 
