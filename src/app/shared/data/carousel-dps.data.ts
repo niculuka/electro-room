@@ -8,7 +8,7 @@ export interface CarouselOwl2Data {
     price: number;
 }
 
-export const CAROUSEL_OWL_2: CarouselOwl2Data[] = [
+export const CAROUSEL_OWL_DPS: CarouselOwl2Data[] = [
     {
         id: "1",
         link: "/lpt/laptop-accessory/laptop-bag/geanta-laptop-samsonite-network-4",

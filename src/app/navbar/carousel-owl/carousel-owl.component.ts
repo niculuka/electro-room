@@ -1,16 +1,44 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CAROUSEL_OWL_LPT, CAROUSEL_OWL_PRODUCTS } from 'src/app/shared/data/carousel-lpt.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-carousel-owl',
   templateUrl: './carousel-owl.component.html',
   styleUrls: ['./carousel-owl.component.css']
 })
-export class CarouselOwlComponent {
+export class CarouselOwlComponent implements OnInit {
 
-  @Input() carousel: Array<Product> = [];
+  carousel: Array<Product> = [];
+  carouselArray: Array<any> = [];
+
+  @Input() productType1: string = "";
+  @Input() productType2: string = "";
+  @Input() productIds: Array<number> = [];
+
+  dataArray: Array<number> = [];
+
+  constructor(
+    private productService: ProductService
+  ) { }
+
+  ngOnInit() {
+    this.productService.getProductsByTypeService(this.productType1).subscribe(data1 => {
+      this.productService.getProductsByTypeService(this.productType2).subscribe(data2 => {
+        const data = data1.concat(data2);
+        for (let productId of this.productIds) {
+          let foundProduct = data.find((product: any) => product.id === productId);
+          this.carouselArray.push(foundProduct);
+        }
+        this.carousel = this.carouselArray;
+        // console.log(this.carousel)
+      });
+    });
+  }
+
   topFavorite: CATEGORY = CATEGORY.TOP_FAVORITE;
   topFavoriteRo: CATEGORY = CATEGORY.TOP_FAVORITE_RO;
   superPrice: CATEGORY = CATEGORY.SUPER_PRICE;
@@ -47,5 +75,7 @@ export class CarouselOwlComponent {
     dots: false,
     nav: true
   }
+
+
 
 }
