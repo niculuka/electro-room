@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CAROUSEL_OWL_LPT, CAROUSEL_OWL_PRODUCTS } from 'src/app/shared/data/carousel-lpt.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -15,15 +14,12 @@ export class CarouselOwlComponent implements OnInit {
   carousel: Array<Product> = [];
   carouselArray: Array<any> = [];
 
+  @Input() carouselTitle:string = "";
   @Input() productType1: string = "";
   @Input() productType2: string = "";
   @Input() productIds: Array<number> = [];
 
-  dataArray: Array<number> = [];
-
-  constructor(
-    private productService: ProductService
-  ) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.productService.getProductsByTypeService(this.productType1).subscribe(data1 => {
