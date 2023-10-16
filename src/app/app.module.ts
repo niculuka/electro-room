@@ -76,6 +76,8 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
 import { DepartmentComponent } from './products-pages/department/department.component';
 import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
 import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
+import { ProductFilterComponent } from './products-pages/product-filter/product-filter.component';
+import { ProductSorterComponent } from './products-pages/product-sorter/product-sorter.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { StandardCardsComponent } from './products-pages/standard-cards/standard-cards.component';
 
@@ -85,11 +87,10 @@ import { SearchComponent } from './guest/search/search.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
-import { ProductCarouselComponent } from './products-pages/product-carousel/product-carousel.component';
+import { CarouselGalleryComponent } from './products-pages/carousel-gallery/carousel-gallery.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
-
 
 
 
@@ -147,14 +148,16 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     StandardCardsComponent,
     ProductTypeComponent,
     ProductCategoryComponent,
+    ProductFilterComponent,
+    ProductSorterComponent,  
     ProductDetailComponent,
     UnderConstructionComponent,
     SearchComponent,
     InfoBlockComponent,
-    ProductCarouselComponent,
+    CarouselGalleryComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,       
+    MegaMenuDesktopComponent,         
   ],
   imports: [
     BrowserModule,

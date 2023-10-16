@@ -1,0 +1,25 @@
+<div class="products-header">
+    <h1>{{currentCategory}}</h1>
+
+    <div class="filters">
+        <div class="filterName">
+            <label *ngFor="let item of filterNames">
+                {{item.name.toLowerCase()}}
+                <mat-icon>close</mat-icon>
+            </label>
+            <h4 *ngIf="filterNames.length">
+                <strong>sterge tot</strong>
+            </h4>
+        </div>
+    </div>
+
+    <div class="categorySelect">
+        <label for="categorySelect">Sorteaza dupa: </label>
+        <select name="categorySelect" [(ngModel)]="products_sorting">
+            <option value="name" (click)="name_alphabetic()">Nume</option>
+            <option value="lowToHigh" (click)="price_ascending()">Pret crescator</option>
+            <option value="highToLow" (click)="price_descending()">Pret descrescator</option>
+            <option value="bestSold" (click)="sold()">Cele mai vandute</option>
+        </select>
+    </div>
+</div>

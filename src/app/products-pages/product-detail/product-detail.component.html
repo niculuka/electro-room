@@ -19,8 +19,8 @@
                         <img [src]="currentImage" [alt]="currentImage">
                     </div>
                     <div>
-                        <product-carousel [productImages]="productImages" (indexEvent)="receiveCurrentImage($event)">
-                        </product-carousel>
+                        <carousel-gallery [productImages]="productImages" (indexEvent)="receiveCurrentImage($event)">
+                        </carousel-gallery>
                     </div>
                 </div>
 

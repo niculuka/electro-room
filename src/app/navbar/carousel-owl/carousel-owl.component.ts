@@ -14,7 +14,7 @@ export class CarouselOwlComponent implements OnInit {
   carousel: Array<Product> = [];
   carouselArray: Array<any> = [];
 
-  @Input() carouselTitle:string = "";
+  @Input() carouselTitle: string = "";
   @Input() productType1: string = "";
   @Input() productType2: string = "";
   @Input() productIds: Array<number> = [];
@@ -68,8 +68,8 @@ export class CarouselOwlComponent implements OnInit {
         items: 6
       }
     },
-    dots: false,
-    nav: true
+    dots: true,
+    nav: false
   }
 
 

@@ -1,5 +1,41 @@
 // breadcrumb -----------------------------------------------------------
 .custom-bread-crumb {
     margin: 0;
-    padding: 10px !important;    
+    padding: 10px !important;
+}
+
+// main - carousel -----------------------------------------------------------
+.carousel-indicators [data-bs-target] {
+    background-color: rgb(220, 20, 110);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.carousel-indicators {
+    bottom: -16px;
+}
+
+// owl - carousel -----------------------------------------------------------
+.owl-theme .owl-dots .owl-dot span {
+    background: rgba(220, 20, 110, 0.3);
+}
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+    background: rgb(220, 20, 110);
+}
+
+@media (max-width: 1260px) {
+    .carousel-indicators {
+        bottom: -56px;
+    }
+}
+
+@media (max-width: 1020px) {
+    .carousel-indicators {
+        bottom: -16px;
+    }
 }

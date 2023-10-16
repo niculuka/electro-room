@@ -106,6 +106,7 @@ export class NavbarMainComponent {
       window.location.reload();
     }
   }
+  
   isCartEmpty() {
     return this.cart.items.length === 0;
   }
