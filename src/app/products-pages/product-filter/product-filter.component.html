@@ -22,32 +22,32 @@
 
         <div>
             <div class="filter-group">
-                <input type="checkbox" id="11" name="UNDER1000" value="PRICE" [(ngModel)]="under1000_chk"
+                <input type="checkbox" id="11" name="UNDER1000" value="0,1000" [(ngModel)]="under1000_chk"
                     (change)="onClick($event)">
                 <label for="11">Sub 1000 ({{under1000_count}})</label>
             </div>
             <div class="filter-group">
-                <input type="checkbox" id="12" name="UNDER2000" value="PRICE" [(ngModel)]="under2000_chk"
+                <input type="checkbox" id="12" name="UNDER2000" value="1000,2000" [(ngModel)]="under2000_chk"
                     (change)="onClick($event)">
                 <label for="12">1000 - 2000 ({{under2000_count}})</label>
             </div>
             <div class="filter-group">
-                <input type="checkbox" id="13" name="UNDER3000" value="PRICE" [(ngModel)]="under3000_chk"
+                <input type="checkbox" id="13" name="UNDER3000" value="2000,3000" [(ngModel)]="under3000_chk"
                     (change)="onClick($event)">
                 <label for="13">2000 - 3000 ({{under3000_count}})</label>
             </div>
             <div class="filter-group">
-                <input type="checkbox" id="14" name="UNDER4000" value="PRICE" [(ngModel)]="under4000_chk"
+                <input type="checkbox" id="14" name="UNDER4000" value="3000,4000" [(ngModel)]="under4000_chk"
                     (change)="onClick($event)">
                 <label for="14">3000 - 4000 ({{under4000_count}})</label>
             </div>
             <div class="filter-group">
-                <input type="checkbox" id="15" name="OVER4000" value="PRICE" [(ngModel)]="over4000_chk"
+                <input type="checkbox" id="15" name="OVER4000" value="4000,1000000" [(ngModel)]="over4000_chk"
                     (change)="onClick($event)">
                 <label for="15">Peste 4000 ({{over4000_count}})</label>
             </div>
         </div>
-        
+
     </div>
 
     <!-- brand filter --------------------------------------------------------------- -->

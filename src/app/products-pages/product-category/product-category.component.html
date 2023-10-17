@@ -2,13 +2,13 @@
 <div class="container-lap">
     <div class="column-lap">
 
-        <div style="width: 100%" *ngIf="!notFoundProduct">
+        <div style="width: 100%" *ngIf="notFoundProducts">
             <h1>NOT FOUND PRODUCTS</h1>
         </div>
 
-        <div class="row-lap" *ngIf="notFoundProduct">
+        <div class="row-lap" *ngIf="!notFoundProducts">
             <!-- f i l t e r s ==================================================================================== -->
-            <app-product-filter [products]="products"> </app-product-filter>
+            <app-product-filter> </app-product-filter>
 
             <!-- p r o d u c t s ==================================================================================== -->
             <div class="products">

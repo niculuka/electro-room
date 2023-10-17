@@ -40,12 +40,18 @@ export class ProductCategoryComponent implements OnInit {
 
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
-  notFoundProduct: boolean = true;
+  notFoundProducts: boolean = false;
 
   availables: Array<string> = ["STOCK", "DEPOSIT"];
   availablesProducts: Array<Product> = [];
 
-  prices: Array<any> = [{ min: 0, max: 1000 }, { min: 1000, max: 2000 }, { min: 2000, max: 3000 }, { min: 3000, max: 4000 }, { min: 4000, max: 1000000 }];
+  prices: Array<any> = [
+    { name: CATEGORY.UNDER1000, min: 0, max: 1000 },
+    { name: CATEGORY.UNDER2000, min: 1000, max: 2000 },
+    { name: CATEGORY.UNDER3000, min: 2000, max: 3000 },
+    { name: CATEGORY.UNDER4000, min: 3000, max: 4000 },
+    { name: CATEGORY.OVER4000, min: 4000, max: 1000000 }
+  ];
   pricesProducts: Array<Product> = [];
 
   // ------------------------------------------------------------------------
@@ -65,14 +71,21 @@ export class ProductCategoryComponent implements OnInit {
         this.currentType = params.get('type') || "";
         this.currentCategory = params.get('category') || "";
         this.createBreadcrumb();
-        if (
-          this.currentCategory === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()
-        ) {
+        if (this.currentCategory === CATEGORY.LAPTOP.toLowerCase()) {
           this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-            this.products = data;
-            this.filterAvailable(this.products);
-            this.filterPrice(this.products);
-            console.log(this.products)
+            if (data.length > 0) {
+              this.products = data;
+
+              this.filterAvailable(this.products);
+              this.filterPrice(this.products);
+
+              this.notFoundProducts = false;
+              console.log(this.products)
+            }
+            else {
+              this.notFoundProducts = true;
+              console.log(this.products)
+            }
           });
         } else {
           this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {

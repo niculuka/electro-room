@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { Product, ProductFilter } from 'src/app/shared/models/product.model';
+import { PriceFilter, Product, ProductFilter } from 'src/app/shared/models/product.model';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class ProductFilterComponent implements OnInit {
   over4000_chk: boolean = false;
   protected over4000_count: number = 0;
 
-  
+
   // B R A N D S - L a p t o p s --------------------------------------------
   brand_chk: boolean = false;
 
@@ -144,10 +144,10 @@ export class ProductFilterComponent implements OnInit {
 
   // L A P T O P S - Vars ---------------------------------------------------
   // ------------------------------------------------------------------------
-  @Input() products: Array<Product> = [];
-  product: Product = new Product();
+  products: Array<Product> = [];
 
-  filterNames: Array<ProductFilter> = [];
+  filtersNames: Array<ProductFilter> = [];
+
   currentFilterName: string = "";
   productFilter: ProductFilter = new ProductFilter();
 
@@ -159,13 +159,9 @@ export class ProductFilterComponent implements OnInit {
   protected filter_3: Array<Product> = [];
   protected filter_4: Array<Product> = [];
 
-  products_sorting: string = "bestSold";
-
-  currentDepartment: string = "";
-  currentType: string = "";
-  currentCategory: string = "";
-
-  notFoundProduct: boolean = true;
+  availables: Array<string> = [];
+  prices: Array<PriceFilter> = [];
+  priceFilter: PriceFilter = new PriceFilter()
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -177,25 +173,63 @@ export class ProductFilterComponent implements OnInit {
 
   }
 
-  filters(data: any) {
-    if (data.length > 0) {
-      let type = data[0].type.replace(/_/g, "-").toLowerCase();
-      if (type === this.currentType) {
-        this.notFoundProduct = true;
-        this.products = data;
-        this.filter_0 = data;
-
-        // ------------------------------------------------------------------------------------------
-        this.count_reset();
-        // ------------------------------------------------------------------------------------------ 
-        this.filterNames_check();
-      } else {
-        this.notFoundProduct = false;
+  // ====================================================================================  S E L E C T - F I L T E R S
+  onClick(event: any) {
+    if (event.target.checked) {
+      if (event.target.name === CATEGORY.STOCK
+        || event.target.name === CATEGORY.DEPOSIT) {
+        let av: any = this.availables.find((item: any) => item === event.target.name);
+        if (!av) {
+          this.availables.push(event.target.name)
+        }
+        console.log(this.availables)
       }
-    } else {
-      this.notFoundProduct = false;
+
+      if (event.target.name === CATEGORY.UNDER1000
+        || event.target.name === CATEGORY.UNDER2000
+        || event.target.name === CATEGORY.UNDER3000
+        || event.target.name === CATEGORY.UNDER4000
+        || event.target.name === CATEGORY.OVER4000) {
+        let pr: any = this.prices.find((item: any) => item.name === event.target.name);
+        if (!pr) {
+          this.priceFilter = new PriceFilter();
+          this.priceFilter.name = event.target.name;
+          this.priceFilter.min = event.target.value.split(",")[0];
+          this.priceFilter.max = event.target.value.split(",")[1];
+          this.prices.push(this.priceFilter);
+        }
+        console.log(this.prices)
+      }
+
+
+      // let fn = this.filtersNames.find((item: any) => item.id === event.target.id);
+      // if (!fn) {
+      //   this.productFilter = new ProductFilter();
+      //   this.productFilter.id = event.target.id;
+      //   this.productFilter.name = event.target.name;
+      //   this.productFilter.value = event.target.value;
+      //   this.filtersNames.push(this.productFilter)
+
+      //   this.filtersNames = this.filtersNames
+      //     .filter((item) => item)
+      //     .sort((a: any, b: any) => a.id - b.id)
+      // }
     }
+    else {
+      // this.filtersNames = this.filtersNames.filter((item: any) => item.id != event.target.id);
+    }
+    // ------------------------------------------------------------------------------------------ 
+    // this.filtering();
+    // ------------------------------------------------------------------------------------------    
+    this.counting();
   }
+
+
+
+
+
+
+
 
   // ========================================================================================= Close Filters  -  ONE BY ONE
   filters_close(filterName: any) {
@@ -214,7 +248,7 @@ export class ProductFilterComponent implements OnInit {
     // ------------------------------------------------------------------------------------------ 
     this.filterNames_check();
     // ------------------------------------------------------------------------------------------ 
-    this.filterNames = this.filterNames.filter((item: any) => item != filterName);
+    this.filtersNames = this.filtersNames.filter((item: any) => item != filterName);
     // ------------------------------------------------------------------------------------------ 
     // this.filtering();
     // ------------------------------------------------------------------------------------------  
@@ -227,7 +261,7 @@ export class ProductFilterComponent implements OnInit {
     // ------------------------------------------------------------------------------------------
     this.under1000_chk = false; this.under2000_chk = false; this.under3000_chk = false; this.under4000_chk = false; this.over4000_chk = false;
     // ------------------------------------------------------------------------------------------
-    this.filterNames = [];
+    this.filtersNames = [];
     this.products = this.filter_0;
     // ------------------------------------------------------------------------------------------ 
     this.count_reset();
@@ -243,34 +277,7 @@ export class ProductFilterComponent implements OnInit {
     else this.price_chk = false;
   }
 
-  // ===========================================================================================  S E L E C T - F I L T E R S
-  onClick(event: any) {
-    this.currentFilterName = event.target.name;
-    this.currentFilterGroup = event.target.value;
-    this.filterNames_check();
-    // ------------------------------------------------------------------------------------------
-    if (event.target.checked) {
-      let filterName = this.filterNames.find((item: any) => item.id === event.target.id);
-      if (!filterName) {
-        this.productFilter = new ProductFilter();
-        this.productFilter.id = event.target.id;
-        this.productFilter.name = event.target.name;
-        this.productFilter.value = event.target.value;
-        this.filterNames.push(this.productFilter)
 
-        this.filterNames = this.filterNames
-          .filter((item) => item)
-          .sort((a: any, b: any) => a.id - b.id)
-      }
-    }
-    else {
-      this.filterNames = this.filterNames.filter((item: any) => item.id != event.target.id);
-    }
-    // ------------------------------------------------------------------------------------------ 
-    // this.filtering();
-    // ------------------------------------------------------------------------------------------    
-    this.counting();
-  }
 
   // ============================================================================================ C  O  U  N  T  I  N  G
   // ===================================================================================================================
@@ -318,7 +325,7 @@ export class ProductFilterComponent implements OnInit {
     this.under2000_count = this.filter_1.filter((item: any) => item.price >= 1000 && item.price < 2000).length;
     this.under3000_count = this.filter_1.filter((item: any) => item.price >= 2000 && item.price < 3000).length;
     this.under4000_count = this.filter_1.filter((item: any) => item.price >= 3000 && item.price < 4000).length;
-    this.over4000_count = this.filter_1.filter((item: any) => item.price >= 4000).length;       
+    this.over4000_count = this.filter_1.filter((item: any) => item.price >= 4000).length;
   }
 
   // ==================================================================================================   C O U N T  R E S E T
@@ -330,7 +337,7 @@ export class ProductFilterComponent implements OnInit {
     this.under2000_count = this.filter_0.filter((item: any) => item.price >= 1000 && item.price < 2000).length;
     this.under3000_count = this.filter_0.filter((item: any) => item.price >= 2000 && item.price < 3000).length;
     this.under4000_count = this.filter_0.filter((item: any) => item.price >= 3000 && item.price < 4000).length;
-    this.over4000_count = this.filter_0.filter((item: any) => item.price >= 4000).length;    
+    this.over4000_count = this.filter_0.filter((item: any) => item.price >= 4000).length;
   }
 
 }
