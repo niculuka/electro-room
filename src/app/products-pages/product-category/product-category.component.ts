@@ -28,7 +28,7 @@ export class ProductCategoryComponent implements OnInit {
 
   currentFilterGroup: string = "";
 
-  
+
 
   // ------------------------------------------------------------------------
   departments: Array<Department> = DEPARTMENTS;
@@ -37,13 +37,16 @@ export class ProductCategoryComponent implements OnInit {
   currentDepartment: string = "";
   currentType: string = "";
   currentCategory: string = "";
-  
+
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   notFoundProduct: boolean = true;
 
   availables: Array<string> = ["STOCK", "DEPOSIT"];
-  availables_prod: Array<Product> = [];
+  availablesProducts: Array<Product> = [];
+
+  prices: Array<any> = [{ min: 0, max: 1000 }, { min: 1000, max: 2000 }, { min: 2000, max: 3000 }, { min: 3000, max: 4000 }, { min: 4000, max: 1000000 }];
+  pricesProducts: Array<Product> = [];
 
   // ------------------------------------------------------------------------
   constructor(
@@ -66,19 +69,10 @@ export class ProductCategoryComponent implements OnInit {
           this.currentCategory === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()
         ) {
           this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-
-            for (let available of this.availables) {
-              let avail = data.filter((res: any) => res.available === available)
-              this.availables_prod = this.availables_prod.concat(avail)              
-            }
-            console.log(this.availables_prod);
-
-
-            
-            // this.products = deposit;
-
-            // console.log(this.products)
-            // this.filters(data);
+            this.products = data;
+            this.filterAvailable(this.products);
+            this.filterPrice(this.products);
+            console.log(this.products)
           });
         } else {
           this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
@@ -90,7 +84,22 @@ export class ProductCategoryComponent implements OnInit {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       });
     });
+  }
 
+  filterAvailable(data: Array<Product>) {
+    for (let available of this.availables) {
+      let av = data.filter((item: any) => item.available === available)
+      this.availablesProducts = this.availablesProducts.concat(av)
+    }
+    this.products = this.availablesProducts;
+  }
+
+  filterPrice(data: Array<Product>) {
+    for (let price of this.prices) {
+      let pr = data.filter((item: any) => item.price >= price.min && item.price < price.max)
+      this.pricesProducts = this.pricesProducts.concat(pr)
+    }
+    this.products = this.pricesProducts;
   }
 
   getFavoritesProducts(data: any) {
@@ -145,7 +154,7 @@ export class ProductCategoryComponent implements OnInit {
       this.favoriteService.removeFromFavoritesService(this.product.name)
     }
     this.product = new Product();
-  } 
+  }
 
-  
+
 }
