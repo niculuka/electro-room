@@ -8,7 +8,7 @@
 
         <div class="row-lap" *ngIf="!notFoundProducts">
             <!-- f i l t e r s ==================================================================================== -->
-            <app-product-filter> </app-product-filter>
+            <app-product-filter [products]="products"> </app-product-filter>
 
             <!-- p r o d u c t s ==================================================================================== -->
             <div class="products">

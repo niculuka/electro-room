@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { PriceFilter, Product, ProductFilter } from 'src/app/shared/models/product.model';
+import { AvailableFilter, PriceFilter, Product, ProductFilter } from 'src/app/shared/models/product.model';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './product-filter.component.html',
   styleUrls: ['./product-filter.component.css']
 })
-export class ProductFilterComponent implements OnInit {
+export class ProductFilterComponent implements OnInit, OnChanges {
 
   // A V A I L A B L E - Vars -----------------------------------------------
   available_chk: boolean = false;
@@ -144,7 +144,7 @@ export class ProductFilterComponent implements OnInit {
 
   // L A P T O P S - Vars ---------------------------------------------------
   // ------------------------------------------------------------------------
-  products: Array<Product> = [];
+  @Input() products: Array<Product> = [];
 
   filtersNames: Array<ProductFilter> = [];
 
@@ -159,9 +159,22 @@ export class ProductFilterComponent implements OnInit {
   protected filter_3: Array<Product> = [];
   protected filter_4: Array<Product> = [];
 
-  availables: Array<string> = [];
-  prices: Array<PriceFilter> = [];
-  priceFilter: PriceFilter = new PriceFilter()
+  availables: Array<AvailableFilter> = [
+    // { id: 1, name: CATEGORY.STOCK },
+    // { id: 2, name: CATEGORY.DEPOSIT },
+  ];
+  availableFilter: AvailableFilter = new AvailableFilter();
+  availablesProducts: Array<Product> = [];
+
+  prices: Array<PriceFilter> = [
+    // { id: 10, name: CATEGORY.UNDER1000, min: 0, max: 1000 },
+    // { id: 11, name: CATEGORY.UNDER2000, min: 1000, max: 2000 },
+    // { id: 12, name: CATEGORY.UNDER3000, min: 2000, max: 3000 },
+    // { id: 13, name: CATEGORY.UNDER4000, min: 3000, max: 4000 },
+    // { id: 14, name: CATEGORY.OVER4000, min: 4000, max: 1000000 },
+  ];
+  priceFilter: PriceFilter = new PriceFilter();
+  pricesProducts: Array<Product> = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -169,8 +182,18 @@ export class ProductFilterComponent implements OnInit {
     private productService: ProductService,
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    for (const change in changes) {
+      const getProducts = changes[change];
+      this.products = getProducts.currentValue;
+      if (this.products.length) {
+        this.filterAvailable(this.products);
+        this.filterPrice(this.products);
+        // console.log(this.products)
+      }
+    }
   }
 
   // ====================================================================================  S E L E C T - F I L T E R S
@@ -178,11 +201,15 @@ export class ProductFilterComponent implements OnInit {
     if (event.target.checked) {
       if (event.target.name === CATEGORY.STOCK
         || event.target.name === CATEGORY.DEPOSIT) {
-        let av: any = this.availables.find((item: any) => item === event.target.name);
+        let av: any = this.availables.find((item: any) => item.name === event.target.name);
         if (!av) {
-          this.availables.push(event.target.name)
+          this.availableFilter = new AvailableFilter();
+          this.availableFilter.id = event.target.id;
+          this.availableFilter.name = event.target.name;
+          this.availables.push(this.availableFilter);
+          this.availables = this.availables.sort((a: any, b: any) => a.id - b.id);
         }
-        console.log(this.availables)
+        console.log(this.availables);
       }
 
       if (event.target.name === CATEGORY.UNDER1000
@@ -193,27 +220,15 @@ export class ProductFilterComponent implements OnInit {
         let pr: any = this.prices.find((item: any) => item.name === event.target.name);
         if (!pr) {
           this.priceFilter = new PriceFilter();
+          this.priceFilter.id = event.target.id;
           this.priceFilter.name = event.target.name;
           this.priceFilter.min = event.target.value.split(",")[0];
           this.priceFilter.max = event.target.value.split(",")[1];
           this.prices.push(this.priceFilter);
+          this.prices = this.prices.sort((a: any, b: any) => a.id - b.id);
         }
         console.log(this.prices)
       }
-
-
-      // let fn = this.filtersNames.find((item: any) => item.id === event.target.id);
-      // if (!fn) {
-      //   this.productFilter = new ProductFilter();
-      //   this.productFilter.id = event.target.id;
-      //   this.productFilter.name = event.target.name;
-      //   this.productFilter.value = event.target.value;
-      //   this.filtersNames.push(this.productFilter)
-
-      //   this.filtersNames = this.filtersNames
-      //     .filter((item) => item)
-      //     .sort((a: any, b: any) => a.id - b.id)
-      // }
     }
     else {
       // this.filtersNames = this.filtersNames.filter((item: any) => item.id != event.target.id);
@@ -228,7 +243,24 @@ export class ProductFilterComponent implements OnInit {
 
 
 
+  // ================================================================================================= F I L T E R I N G
+  // ===================================================================================================================
+  // ===================================================================================================================
+  filterAvailable(data: Array<Product>) {
+    for (let available of this.availables) {
+      let av = data.filter((item: any) => item.available === available.name)
+      this.availablesProducts = this.availablesProducts.concat(av)
+    }
+    this.products = this.availablesProducts;
+  }
 
+  filterPrice(data: Array<Product>) {
+    for (let price of this.prices) {
+      let pr = data.filter((item: any) => item.price >= price.min && item.price < price.max)
+      this.pricesProducts = this.pricesProducts.concat(pr)
+    }
+    this.products = this.pricesProducts;
+  }
 
 
   // ========================================================================================= Close Filters  -  ONE BY ONE

@@ -67,7 +67,13 @@ export class Product {
     }
 }
 
+export class AvailableFilter {
+    id: number = 0;
+    name: string = "";
+}
+
 export class PriceFilter {
+    id: number = 0;
     name: string = "";
     min: number = 0;
     max: number = 0;

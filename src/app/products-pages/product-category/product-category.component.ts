@@ -42,17 +42,6 @@ export class ProductCategoryComponent implements OnInit {
 
   notFoundProducts: boolean = false;
 
-  availables: Array<string> = ["STOCK", "DEPOSIT"];
-  availablesProducts: Array<Product> = [];
-
-  prices: Array<any> = [
-    { name: CATEGORY.UNDER1000, min: 0, max: 1000 },
-    { name: CATEGORY.UNDER2000, min: 1000, max: 2000 },
-    { name: CATEGORY.UNDER3000, min: 2000, max: 3000 },
-    { name: CATEGORY.UNDER4000, min: 3000, max: 4000 },
-    { name: CATEGORY.OVER4000, min: 4000, max: 1000000 }
-  ];
-  pricesProducts: Array<Product> = [];
 
   // ------------------------------------------------------------------------
   constructor(
@@ -75,44 +64,23 @@ export class ProductCategoryComponent implements OnInit {
           this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
             if (data.length > 0) {
               this.products = data;
-
-              this.filterAvailable(this.products);
-              this.filterPrice(this.products);
-
+              // console.log(this.products);
               this.notFoundProducts = false;
-              console.log(this.products)
             }
             else {
+              // console.log(this.products);
               this.notFoundProducts = true;
-              console.log(this.products)
             }
           });
         } else {
           this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
             this.products = data;
-            // console.log(this.products)
-            // this.filters(data);
+            // console.log(this.products);
           });
         }
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       });
     });
-  }
-
-  filterAvailable(data: Array<Product>) {
-    for (let available of this.availables) {
-      let av = data.filter((item: any) => item.available === available)
-      this.availablesProducts = this.availablesProducts.concat(av)
-    }
-    this.products = this.availablesProducts;
-  }
-
-  filterPrice(data: Array<Product>) {
-    for (let price of this.prices) {
-      let pr = data.filter((item: any) => item.price >= price.min && item.price < price.max)
-      this.pricesProducts = this.pricesProducts.concat(pr)
-    }
-    this.products = this.pricesProducts;
   }
 
   getFavoritesProducts(data: any) {
