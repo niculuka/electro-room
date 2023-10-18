@@ -1,8 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { AvailableFilter, PriceFilter, Product, ProductFilter } from 'src/app/shared/models/product.model';
-import { ProductService } from 'src/app/shared/services/product.service';
+import { AvailableFilter, BrandFilter, PriceFilter, Product, ProductFilter } from 'src/app/shared/models/product.model';
 
 @Component({
   selector: 'app-product-filter',
@@ -13,134 +11,91 @@ export class ProductFilterComponent implements OnInit, OnChanges {
 
   // A V A I L A B L E - Vars -----------------------------------------------
   available_chk: boolean = false;
-
   stock_chk: boolean = false;
   protected stock_count: number = 0;
-
   deposit_chk: boolean = false;
   protected deposit_count: number = 0;
 
-
   // P R I C E S ------------------------------------------------
   price_chk: boolean = false;
-
   under1000_chk: boolean = false;
   protected under1000_count: number = 0;
-
   under2000_chk: boolean = false;
   protected under2000_count: number = 0;
-
   under3000_chk: boolean = false;
   protected under3000_count: number = 0;
-
   under4000_chk: boolean = false;
   protected under4000_count: number = 0;
-
   over4000_chk: boolean = false;
   protected over4000_count: number = 0;
 
-
   // B R A N D S - L a p t o p s --------------------------------------------
   brand_chk: boolean = false;
-
   acer_chk: boolean = false;
   protected acer_count: number = 0;
-
   adata_chk: boolean = false;
   protected adata_count: number = 0;
-
   allview_chk: boolean = false;
   protected allview_count: number = 0;
-
   apple_chk: boolean = false;
   protected apple_count: number = 0;
-
   asus_chk: boolean = false;
   protected asus_count: number = 0;
-
   dell_chk: boolean = false;
   protected dell_count: number = 0;
-
   hama_chk: boolean = false;
   protected hama_count: number = 0;
-
   hp_chk: boolean = false;
   protected hp_count: number = 0;
-
   iphone_chk: boolean = false;
   protected iphone_count: number = 0;
-
   lenovo_chk: boolean = false;
   protected lenovo_count: number = 0;
-
   kingston_chk: boolean = false;
   protected kingston_count: number = 0;
-
   promate_chk: boolean = false;
   protected promate_count: number = 0;
-
   rivacase_chk: boolean = false;
   protected rivacase_count: number = 0;
-
   samsonite_chk: boolean = false;
   protected samsonite_count: number = 0;
-
   samsung_chk: boolean = false;
   protected samsung_count: number = 0;
-
   sandisk_chk: boolean = false;
   protected sandisk_count: number = 0;
-
   seagate_chk: boolean = false;
   protected seagate_count: number = 0;
-
   tumi_chk: boolean = false;
   protected tumi_count: number = 0;
-
   wd_chk: boolean = false;
   protected wd_count: number = 0;
-
   xtorm_chk: boolean = false;
   protected xtorm_count: number = 0;
 
-
   // C A T E G O R Y - Vars --------------------------------------------------
   category_chk: boolean = false;
-
   business_chk: boolean = false;
   protected business_count: number = 0;
-
   gaming_chk: boolean = false;
   protected gaming_count: number = 0;
-
   home_chk: boolean = false;
   protected home_count: number = 0;
-
   ultra_chk: boolean = false;
   protected ultra_count: number = 0;
-
   briefcase_chk: boolean = false;
   protected briefcase_count: number = 0;
-
   sleeve_chk: boolean = false;
   protected sleeve_count: number = 0;
-
   backpack_chk: boolean = false;
   protected backpack_count: number = 0;
-
   plug_in_chk: boolean = false;
   protected plug_in_count: number = 0;
-
   car_chk: boolean = false;
   protected car_count: number = 0;
-
   hdd_chk: boolean = false;
   protected hdd_count: number = 0;
-
   ssd_chk: boolean = false;
   protected ssd_count: number = 0;
-
-
 
   // L A P T O P S - Vars ---------------------------------------------------
   // ------------------------------------------------------------------------
@@ -159,6 +114,7 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   protected filter_3: Array<Product> = [];
   protected filter_4: Array<Product> = [];
 
+  // AVAILABLE ---------------------------------------------------------
   availables: Array<AvailableFilter> = [
     // { id: 1, name: CATEGORY.STOCK },
     // { id: 2, name: CATEGORY.DEPOSIT },
@@ -166,21 +122,27 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   availableFilter: AvailableFilter = new AvailableFilter();
   availablesProducts: Array<Product> = [];
 
+  // PRICE ------------------------------------------------------------
   prices: Array<PriceFilter> = [
-    // { id: 10, name: CATEGORY.UNDER1000, min: 0, max: 1000 },
-    // { id: 11, name: CATEGORY.UNDER2000, min: 1000, max: 2000 },
-    // { id: 12, name: CATEGORY.UNDER3000, min: 2000, max: 3000 },
-    // { id: 13, name: CATEGORY.UNDER4000, min: 3000, max: 4000 },
-    // { id: 14, name: CATEGORY.OVER4000, min: 4000, max: 1000000 },
+    // { id: 101, name: CATEGORY.UNDER1000, min: 0, max: 1000 },
+    // { id: 102, name: CATEGORY.UNDER2000, min: 1000, max: 2000 },
+    // { id: 103, name: CATEGORY.UNDER3000, min: 2000, max: 3000 },
+    // { id: 104, name: CATEGORY.UNDER4000, min: 3000, max: 4000 },
+    // { id: 105, name: CATEGORY.OVER4000, min: 4000, max: 1000000 },
   ];
   priceFilter: PriceFilter = new PriceFilter();
   pricesProducts: Array<Product> = [];
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private productService: ProductService,
-  ) { }
+  // BRAND -------------------------------------------------------------
+  brands: Array<BrandFilter> = [
+    // { id: 201, name: CATEGORY.ACER },
+    // { id: 202, name: CATEGORY.ADATA },
+    // { id: 202, name: CATEGORY.ALLVIEW },
+  ];
+  brandFilter: BrandFilter = new BrandFilter();
+  brandsProducts: Array<Product> = [];
+
+  constructor() { }
 
   ngOnInit(): void { }
 
@@ -191,6 +153,7 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       if (this.products.length) {
         this.filterAvailable(this.products);
         this.filterPrice(this.products);
+        this.filterBrand(this.products);
         // console.log(this.products)
       }
     }
@@ -199,8 +162,7 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   // ====================================================================================  S E L E C T - F I L T E R S
   onClick(event: any) {
     if (event.target.checked) {
-      if (event.target.name === CATEGORY.STOCK
-        || event.target.name === CATEGORY.DEPOSIT) {
+      if (event.target.value === CATEGORY.AVAILABLE) {
         let av: any = this.availables.find((item: any) => item.name === event.target.name);
         if (!av) {
           this.availableFilter = new AvailableFilter();
@@ -212,23 +174,33 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         console.log(this.availables);
       }
 
-      if (event.target.name === CATEGORY.UNDER1000
-        || event.target.name === CATEGORY.UNDER2000
-        || event.target.name === CATEGORY.UNDER3000
-        || event.target.name === CATEGORY.UNDER4000
-        || event.target.name === CATEGORY.OVER4000) {
+      if (event.target.value.startsWith(CATEGORY.PRICE)) {
         let pr: any = this.prices.find((item: any) => item.name === event.target.name);
         if (!pr) {
           this.priceFilter = new PriceFilter();
           this.priceFilter.id = event.target.id;
           this.priceFilter.name = event.target.name;
-          this.priceFilter.min = event.target.value.split(",")[0];
-          this.priceFilter.max = event.target.value.split(",")[1];
+          this.priceFilter.minPrice = event.target.value.split(",")[1];
+          this.priceFilter.maxPrice = event.target.value.split(",")[2];
           this.prices.push(this.priceFilter);
           this.prices = this.prices.sort((a: any, b: any) => a.id - b.id);
         }
         console.log(this.prices)
       }
+
+      if (event.target.value === CATEGORY.BRAND) {
+        let br: any = this.brands.find((item: any) => item.name === event.target.name);
+        if (!br) {
+          this.brandFilter = new BrandFilter();
+          this.brandFilter.id = event.target.id;
+          this.brandFilter.name = event.target.name;
+          this.brands.push(this.brandFilter);
+          this.brands = this.brands.sort((a: any, b: any) => a.id - b.id);
+        }
+        console.log(this.brands);
+      }
+
+
     }
     else {
       // this.filtersNames = this.filtersNames.filter((item: any) => item.id != event.target.id);
@@ -236,12 +208,8 @@ export class ProductFilterComponent implements OnInit, OnChanges {
     // ------------------------------------------------------------------------------------------ 
     // this.filtering();
     // ------------------------------------------------------------------------------------------    
-    this.counting();
+    // this.counting();
   }
-
-
-
-
 
   // ================================================================================================= F I L T E R I N G
   // ===================================================================================================================
@@ -256,11 +224,23 @@ export class ProductFilterComponent implements OnInit, OnChanges {
 
   filterPrice(data: Array<Product>) {
     for (let price of this.prices) {
-      let pr = data.filter((item: any) => item.price >= price.min && item.price < price.max)
+      let pr = data.filter((item: any) => item.price >= price.minPrice && item.price < price.maxPrice)
       this.pricesProducts = this.pricesProducts.concat(pr)
     }
     this.products = this.pricesProducts;
   }
+
+  filterBrand(data: Array<Product>) {
+    for (let brand of this.brands) {
+      let br = data.filter((item: any) => item.brand === brand.name)
+      this.brandsProducts = this.brandsProducts.concat(br)
+    }
+    this.products = this.brandsProducts;
+  }
+
+
+
+
 
 
   // ========================================================================================= Close Filters  -  ONE BY ONE

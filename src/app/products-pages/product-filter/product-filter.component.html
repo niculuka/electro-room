@@ -22,27 +22,27 @@
 
         <div>
             <div class="filter-group">
-                <input type="checkbox" id="101" name="UNDER1000" value="0,1000" [(ngModel)]="under1000_chk"
+                <input type="checkbox" id="101" name="UNDER1000" value="PRICE,0,1000" [(ngModel)]="under1000_chk"
                     (change)="onClick($event)">
                 <label for="101">Sub 1000 ({{under1000_count}})</label>
             </div>
             <div class="filter-group">
-                <input type="checkbox" id="102" name="UNDER2000" value="1000,2000" [(ngModel)]="under2000_chk"
+                <input type="checkbox" id="102" name="UNDER2000" value="PRICE,1000,2000" [(ngModel)]="under2000_chk"
                     (change)="onClick($event)">
                 <label for="102">1000 - 2000 ({{under2000_count}})</label>
             </div>
             <div class="filter-group">
-                <input type="checkbox" id="103" name="UNDER3000" value="2000,3000" [(ngModel)]="under3000_chk"
+                <input type="checkbox" id="103" name="UNDER3000" value="PRICE,2000,3000" [(ngModel)]="under3000_chk"
                     (change)="onClick($event)">
                 <label for="103">2000 - 3000 ({{under3000_count}})</label>
             </div>
             <div class="filter-group">
-                <input type="checkbox" id="104" name="UNDER4000" value="3000,4000" [(ngModel)]="under4000_chk"
+                <input type="checkbox" id="104" name="UNDER4000" value="PRICE,3000,4000" [(ngModel)]="under4000_chk"
                     (change)="onClick($event)">
                 <label for="104">3000 - 4000 ({{under4000_count}})</label>
             </div>
             <div class="filter-group">
-                <input type="checkbox" id="105" name="OVER4000" value="4000,1000000" [(ngModel)]="over4000_chk"
+                <input type="checkbox" id="105" name="OVER4000" value="PRICE,4000,1000000" [(ngModel)]="over4000_chk"
                     (change)="onClick($event)">
                 <label for="105">Peste 4000 ({{over4000_count}})</label>
             </div>
@@ -68,7 +68,7 @@
                 (change)="onClick($event)">
             <label for="203">ALLVIEW ({{allview_count}})</label>
         </div>
-        <div class="filter-group">
+        <!-- <div class="filter-group">
             <input type="checkbox" id="204" name="APPLE" value="BRAND" [(ngModel)]="apple_chk"
                 (change)="onClick($event)">
             <label for="204">APPLE ({{apple_count}})</label>
@@ -98,9 +98,9 @@
             <input type="checkbox" id="210" name="LENOVO" value="BRAND" [(ngModel)]="lenovo_chk"
                 (change)="onClick($event)">
             <label for="210">LENOVO ({{lenovo_count}})</label>
-        </div>
+        </div> -->
         <!-- 10 - 20 -->
-        <div class="filter-group">
+        <!-- <div class="filter-group">
             <input type="checkbox" id="211" name="KINGSTON" value="BRAND" [(ngModel)]="kingston_chk"
                 (change)="onClick($event)">
             <label for="211">KINGSTON ({{kingston_count}})</label>
@@ -147,7 +147,7 @@
             <input type="checkbox" id="220" name="XTORM" value="BRAND" [(ngModel)]="xtorm_chk"
                 (change)="onClick($event)">
             <label for="220">XTORM ({{xtorm_count}})</label>
-        </div>
+        </div> -->
     </div>
 
     <!-- category filter ----------------------------------------------------------- -->
