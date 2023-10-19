@@ -126,7 +126,6 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       const getProducts = changes[change];
       this.productsFilterIN = getProducts.currentValue;
       if (this.productsFilterIN.length) {
-        
         this.filtering(this.productsFilterIN);
         // this.filterAvailable(this.products);
 
@@ -164,54 +163,74 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   }
 
   productsFilters: Array<ProductFilter> = [
-    //   { id: 1, name: CATEGORY.STOCK, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
-    // { id: 2, name: CATEGORY.DEPOSIT, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
+    { id: 1, name: CATEGORY.STOCK, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
+    { id: 2, name: CATEGORY.DEPOSIT, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
 
-    // { id: 101, name: CATEGORY.UNDER1000, value: CATEGORY.PRICE, min: 0, max: 1000 },
-    // { id: 102, name: CATEGORY.UNDER2000, value: CATEGORY.PRICE, min: 1000, max: 2000 },
-    // { id: 103, name: CATEGORY.UNDER3000, value: CATEGORY.PRICE, min: 2000, max: 3000 },
-    // { id: 104, name: CATEGORY.UNDER4000, value: CATEGORY.PRICE, min: 3000, max: 4000 },
-    // { id: 105, name: CATEGORY.OVER4000, value: CATEGORY.PRICE, min: 4000, max: 1000000 },
+    { id: 101, name: CATEGORY.UNDER1000, value: CATEGORY.PRICE, min: 0, max: 1000 },
+    { id: 102, name: CATEGORY.UNDER2000, value: CATEGORY.PRICE, min: 1000, max: 2000 },
+    { id: 103, name: CATEGORY.UNDER3000, value: CATEGORY.PRICE, min: 2000, max: 3000 },
+    { id: 104, name: CATEGORY.UNDER4000, value: CATEGORY.PRICE, min: 3000, max: 4000 },
+    { id: 105, name: CATEGORY.OVER4000, value: CATEGORY.PRICE, min: 4000, max: 1000000 },
 
-    // { id: 201, name: CATEGORY.ACER, value: CATEGORY.BRAND, min: 0, max: 0 },
-    // { id: 204, name: CATEGORY.APPLE, value: CATEGORY.BRAND, min: 0, max: 0 },
-    // { id: 205, name: CATEGORY.ASUS, value: CATEGORY.BRAND, min: 0, max: 0 },
+    { id: 201, name: CATEGORY.ACER, value: CATEGORY.BRAND, min: 0, max: 0 },
+    { id: 204, name: CATEGORY.APPLE, value: CATEGORY.BRAND, min: 0, max: 0 },
+    { id: 205, name: CATEGORY.ASUS, value: CATEGORY.BRAND, min: 0, max: 0 },
   ];
 
   // ================================================================================================= F I L T E R I N G
   // ===================================================================================================================
   // ===================================================================================================================
   filtering(productsFilterIN: Array<Product>) {
-    this.availablesProducts = this.pricesProducts = this.brandsProducts = productsFilterIN;
+    // this.availablesProducts = this.pricesProducts = this.brandsProducts = productsFilterIN;
 
-    for (let pf of this.productsFilters) {
-      this.availablesProducts = this.pricesProducts = this.brandsProducts = [];
-      
-      switch (pf.value) {
-        case CATEGORY.AVAILABLE: {
+    if (this.productsFilters.length) {
+      // --------------------------------------------------------------------------------
+      for (let pf of this.productsFilters) {
+        // this.availablesProducts = this.pricesProducts = this.brandsProducts = [];
+
+        if (pf.value === CATEGORY.AVAILABLE) {
           let av = productsFilterIN.filter((item: any) => item.available === pf.name);
           this.availablesProducts = this.availablesProducts.concat(av);
-          // console.log(this.availablesProducts);
-        } break;
+        }
+      }
+      if (!this.availablesProducts.length) {
+        this.availablesProducts = productsFilterIN;
+      }
+      // console.log(this.availablesProducts);
 
-        case CATEGORY.PRICE: {
+      // --------------------------------------------------------------------------------
+      for (let pf of this.productsFilters) {
+        if (pf.value === CATEGORY.PRICE) {
           let pr = this.availablesProducts.filter((item: any) => item.price >= pf.min && item.price < pf.max);
           this.pricesProducts = this.pricesProducts.concat(pr);
-          // console.log(this.pricesProducts);
-        } break;
+        }
+      }
+      if (!this.pricesProducts.length) {
+        this.pricesProducts = this.availablesProducts;
+      }
+      // console.log(this.pricesProducts);
 
-        case CATEGORY.BRAND: {
+      // --------------------------------------------------------------------------------
+      for (let pf of this.productsFilters) {
+        if (pf.value === CATEGORY.BRAND) {
           let br = this.pricesProducts.filter((item: any) => item.brand === pf.name);
           this.brandsProducts = this.brandsProducts.concat(br);
-          // console.log(this.brandsProducts);
-        } break;
+        }
       }
-    }
-    // console.log(this.availablesProducts);
-    // console.log(this.pricesProducts);
-    // console.log(this.brandsProducts);
+      if (!this.brandsProducts.length) {
+        this.brandsProducts = this.pricesProducts;
+      }
+      // console.log(this.brandsProducts);
 
-    this.productsFilterOUT = this.availablesProducts;
+
+      // --------------------------------------------------------------------------------
+      this.productsFilterOUT = this.brandsProducts;
+      // console.log(this.productsFilterOUT);
+    }
+    else {
+      this.productsFilterOUT = productsFilterIN;
+      // console.log(this.productsFilterOUT);
+    }
     console.log(this.productsFilterOUT);
   }
 
