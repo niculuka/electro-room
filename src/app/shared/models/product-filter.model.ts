@@ -22,10 +22,3 @@ export class ProductFilter {
     min: number = 0;
     max: number = 0;
 }
-
-// export class ProductFilter {
-//     id: number = 0;
-//     name: string = "";
-//     min: number = 0;
-//     max: number = 0;
-// }
