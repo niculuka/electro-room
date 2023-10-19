@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { AvailableFilter, BrandFilter, PriceFilter, Product, ProductFilter } from 'src/app/shared/models/product.model';
+import { AvailableFilter, BrandFilter, PriceFilter, ProductFilter } from 'src/app/shared/models/product-filter.model';
+import { Product } from 'src/app/shared/models/product.model';
 
 @Component({
   selector: 'app-product-filter',
@@ -11,91 +12,53 @@ export class ProductFilterComponent implements OnInit, OnChanges {
 
   // A V A I L A B L E - Vars -----------------------------------------------
   available_chk: boolean = false;
-  stock_chk: boolean = false;
-  protected stock_count: number = 0;
-  deposit_chk: boolean = false;
-  protected deposit_count: number = 0;
+  stock_chk: boolean = false; protected stock_count: number = 0;
+  deposit_chk: boolean = false; protected deposit_count: number = 0;
 
   // P R I C E S ------------------------------------------------
   price_chk: boolean = false;
-  under1000_chk: boolean = false;
-  protected under1000_count: number = 0;
-  under2000_chk: boolean = false;
-  protected under2000_count: number = 0;
-  under3000_chk: boolean = false;
-  protected under3000_count: number = 0;
-  under4000_chk: boolean = false;
-  protected under4000_count: number = 0;
-  over4000_chk: boolean = false;
-  protected over4000_count: number = 0;
+  under1000_chk: boolean = false; protected under1000_count: number = 0;
+  under2000_chk: boolean = false; protected under2000_count: number = 0;
+  under3000_chk: boolean = false; protected under3000_count: number = 0;
+  under4000_chk: boolean = false; protected under4000_count: number = 0;
+  over4000_chk: boolean = false; protected over4000_count: number = 0;
 
   // B R A N D S - L a p t o p s --------------------------------------------
   brand_chk: boolean = false;
-  acer_chk: boolean = false;
-  protected acer_count: number = 0;
-  adata_chk: boolean = false;
-  protected adata_count: number = 0;
-  allview_chk: boolean = false;
-  protected allview_count: number = 0;
-  apple_chk: boolean = false;
-  protected apple_count: number = 0;
-  asus_chk: boolean = false;
-  protected asus_count: number = 0;
-  dell_chk: boolean = false;
-  protected dell_count: number = 0;
-  hama_chk: boolean = false;
-  protected hama_count: number = 0;
-  hp_chk: boolean = false;
-  protected hp_count: number = 0;
-  iphone_chk: boolean = false;
-  protected iphone_count: number = 0;
-  lenovo_chk: boolean = false;
-  protected lenovo_count: number = 0;
-  kingston_chk: boolean = false;
-  protected kingston_count: number = 0;
-  promate_chk: boolean = false;
-  protected promate_count: number = 0;
-  rivacase_chk: boolean = false;
-  protected rivacase_count: number = 0;
-  samsonite_chk: boolean = false;
-  protected samsonite_count: number = 0;
-  samsung_chk: boolean = false;
-  protected samsung_count: number = 0;
-  sandisk_chk: boolean = false;
-  protected sandisk_count: number = 0;
-  seagate_chk: boolean = false;
-  protected seagate_count: number = 0;
-  tumi_chk: boolean = false;
-  protected tumi_count: number = 0;
-  wd_chk: boolean = false;
-  protected wd_count: number = 0;
-  xtorm_chk: boolean = false;
-  protected xtorm_count: number = 0;
+  acer_chk: boolean = false; protected acer_count: number = 0;
+  adata_chk: boolean = false; protected adata_count: number = 0;
+  allview_chk: boolean = false; protected allview_count: number = 0;
+  apple_chk: boolean = false; protected apple_count: number = 0;
+  asus_chk: boolean = false; protected asus_count: number = 0;
+  dell_chk: boolean = false; protected dell_count: number = 0;
+  hama_chk: boolean = false; protected hama_count: number = 0;
+  hp_chk: boolean = false; protected hp_count: number = 0;
+  iphone_chk: boolean = false; protected iphone_count: number = 0;
+  lenovo_chk: boolean = false; protected lenovo_count: number = 0;
+  kingston_chk: boolean = false; protected kingston_count: number = 0;
+  promate_chk: boolean = false; protected promate_count: number = 0;
+  rivacase_chk: boolean = false; protected rivacase_count: number = 0;
+  samsonite_chk: boolean = false; protected samsonite_count: number = 0;
+  samsung_chk: boolean = false; protected samsung_count: number = 0;
+  sandisk_chk: boolean = false; protected sandisk_count: number = 0;
+  seagate_chk: boolean = false; protected seagate_count: number = 0;
+  tumi_chk: boolean = false; protected tumi_count: number = 0;
+  wd_chk: boolean = false; protected wd_count: number = 0;
+  xtorm_chk: boolean = false; protected xtorm_count: number = 0;
 
   // C A T E G O R Y - Vars --------------------------------------------------
   category_chk: boolean = false;
-  business_chk: boolean = false;
-  protected business_count: number = 0;
-  gaming_chk: boolean = false;
-  protected gaming_count: number = 0;
-  home_chk: boolean = false;
-  protected home_count: number = 0;
-  ultra_chk: boolean = false;
-  protected ultra_count: number = 0;
-  briefcase_chk: boolean = false;
-  protected briefcase_count: number = 0;
-  sleeve_chk: boolean = false;
-  protected sleeve_count: number = 0;
-  backpack_chk: boolean = false;
-  protected backpack_count: number = 0;
-  plug_in_chk: boolean = false;
-  protected plug_in_count: number = 0;
-  car_chk: boolean = false;
-  protected car_count: number = 0;
-  hdd_chk: boolean = false;
-  protected hdd_count: number = 0;
-  ssd_chk: boolean = false;
-  protected ssd_count: number = 0;
+  business_chk: boolean = false; protected business_count: number = 0;
+  gaming_chk: boolean = false; protected gaming_count: number = 0;
+  home_chk: boolean = false; protected home_count: number = 0;
+  ultra_chk: boolean = false; protected ultra_count: number = 0;
+  briefcase_chk: boolean = false; protected briefcase_count: number = 0;
+  sleeve_chk: boolean = false; protected sleeve_count: number = 0;
+  backpack_chk: boolean = false; protected backpack_count: number = 0;
+  plug_in_chk: boolean = false; protected plug_in_count: number = 0;
+  car_chk: boolean = false; protected car_count: number = 0;
+  hdd_chk: boolean = false; protected hdd_count: number = 0;
+  ssd_chk: boolean = false; protected ssd_count: number = 0;
 
   // L A P T O P S - Vars ---------------------------------------------------
   // ------------------------------------------------------------------------
@@ -124,11 +87,11 @@ export class ProductFilterComponent implements OnInit, OnChanges {
 
   // PRICE ------------------------------------------------------------
   prices: Array<PriceFilter> = [
-    // { id: 101, name: CATEGORY.UNDER1000, min: 0, max: 1000 },
-    // { id: 102, name: CATEGORY.UNDER2000, min: 1000, max: 2000 },
-    // { id: 103, name: CATEGORY.UNDER3000, min: 2000, max: 3000 },
-    // { id: 104, name: CATEGORY.UNDER4000, min: 3000, max: 4000 },
-    // { id: 105, name: CATEGORY.OVER4000, min: 4000, max: 1000000 },
+    // { id: 101, name: CATEGORY.UNDER1000, minPrice: 0, maxPrice: 1000 },
+    // { id: 102, name: CATEGORY.UNDER2000, minPrice: 1000, maxPrice: 2000 },
+    // { id: 103, name: CATEGORY.UNDER3000, minPrice: 2000, maxPrice: 3000 },
+    // { id: 104, name: CATEGORY.UNDER4000, minPrice: 3000, maxPrice: 4000 },
+    // { id: 105, name: CATEGORY.OVER4000, minPrice: 4000, maxPrice: 1000000 },
   ];
   priceFilter: PriceFilter = new PriceFilter();
   pricesProducts: Array<Product> = [];
@@ -152,8 +115,8 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       this.products = getProducts.currentValue;
       if (this.products.length) {
         this.filterAvailable(this.products);
-        this.filterPrice(this.products);
-        this.filterBrand(this.products);
+        // this.filterPrice(this.products);
+        // this.filterBrand(this.products);
         // console.log(this.products)
       }
     }
@@ -173,7 +136,6 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         }
         console.log(this.availables);
       }
-
       if (event.target.value.startsWith(CATEGORY.PRICE)) {
         let pr: any = this.prices.find((item: any) => item.name === event.target.name);
         if (!pr) {
@@ -187,7 +149,6 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         }
         console.log(this.prices)
       }
-
       if (event.target.value === CATEGORY.BRAND) {
         let br: any = this.brands.find((item: any) => item.name === event.target.name);
         if (!br) {
@@ -199,11 +160,20 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         }
         console.log(this.brands);
       }
-
-
     }
     else {
-      // this.filtersNames = this.filtersNames.filter((item: any) => item.id != event.target.id);
+      if (event.target.value === CATEGORY.AVAILABLE) {
+        this.availables = this.availables.filter((item: any) => item.id != event.target.id);
+        console.log(this.availables)
+      }
+      if (event.target.value.startsWith(CATEGORY.PRICE)) {
+        this.prices = this.prices.filter((item: any) => item.id != event.target.id);
+        console.log(this.prices)
+      }
+      if (event.target.value === CATEGORY.BRAND) {
+        this.brands = this.brands.filter((item: any) => item.id != event.target.id);
+        console.log(this.brands)
+      }
     }
     // ------------------------------------------------------------------------------------------ 
     // this.filtering();
@@ -220,6 +190,8 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       this.availablesProducts = this.availablesProducts.concat(av)
     }
     this.products = this.availablesProducts;
+    // console.log(this.products)
+    this.filterPrice(this.products);
   }
 
   filterPrice(data: Array<Product>) {
@@ -228,6 +200,8 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       this.pricesProducts = this.pricesProducts.concat(pr)
     }
     this.products = this.pricesProducts;
+    // console.log(this.products)
+    this.filterBrand(this.products);
   }
 
   filterBrand(data: Array<Product>) {
@@ -236,6 +210,7 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       this.brandsProducts = this.brandsProducts.concat(br)
     }
     this.products = this.brandsProducts;
+    // console.log(this.products)
   }
 
 
