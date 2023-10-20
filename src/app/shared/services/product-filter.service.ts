@@ -15,7 +15,6 @@ export class ProductFilterService {
   clearProductsFiltersService() {
     this.productsFilters = [];
     this.setProductsFiltersLS([]);
-    window.location.reload();
   }
 
   getProductsFiltersObservable(): Observable<Array<ProductFilter>> {

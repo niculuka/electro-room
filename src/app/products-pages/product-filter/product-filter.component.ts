@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { ProductFilter } from 'src/app/shared/models/product.model';
+import { PRODUCTS_FILTERS, ProductFilter } from 'src/app/shared/models/product.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 
@@ -69,48 +69,27 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   productsFilterOUT: Array<Product> = [];
 
   productsFilter: ProductFilter = new ProductFilter();
-  productsFilters: Array<ProductFilter> = [
-    // { id: 1, name: CATEGORY.STOCK, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
-    // { id: 2, name: CATEGORY.DEPOSIT, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
-    // { id: 101, name: CATEGORY.UNDER1000, value: CATEGORY.PRICE, min: 0, max: 1000 },
-    // { id: 102, name: CATEGORY.UNDER2000, value: CATEGORY.PRICE, min: 1000, max: 2000 },
-    // { id: 103, name: CATEGORY.UNDER3000, value: CATEGORY.PRICE, min: 2000, max: 3000 },
-    // { id: 104, name: CATEGORY.UNDER4000, value: CATEGORY.PRICE, min: 3000, max: 4000 },
-    // { id: 105, name: CATEGORY.OVER4000, value: CATEGORY.PRICE, min: 4000, max: 1000000 },
-    // { id: 201, name: CATEGORY.ACER, value: CATEGORY.BRAND, min: 0, max: 0 },
-    // { id: 204, name: CATEGORY.APPLE, value: CATEGORY.BRAND, min: 0, max: 0 },
-    // { id: 205, name: CATEGORY.ASUS, value: CATEGORY.BRAND, min: 0, max: 0 },
-  ];
+  productsFilters: Array<ProductFilter> = [];
+  // productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;
 
   availablesProducts: Array<Product> = [];
   pricesProducts: Array<Product> = [];
   brandsProducts: Array<Product> = [];
 
+
+
   constructor(
     private productFilterService: ProductFilterService,
   ) {
     productFilterService.getProductsFiltersObservable().subscribe(data => {
+      console.log(data);
       this.productsFilters = data;
+      this.defaultFilters();
     })
-    this.productsFilters.filter((item: any) => {
-      switch (item.name) {
-        case CATEGORY.STOCK: this.stock_chk = true;
-          break;
-        case CATEGORY.DEPOSIT: this.deposit_chk = true;
-          break;
-        case CATEGORY.UNDER1000: this.under1000_chk = true;
-          break;
-        case CATEGORY.UNDER2000: this.under2000_chk = true;
-          break;
-        case CATEGORY.UNDER3000: this.under3000_chk = true;
-          break;
-        case CATEGORY.UNDER4000: this.under4000_chk = true;
-          break;
-        case CATEGORY.OVER4000: this.over4000_chk = true;
-          break;
-      }
-    });
+
   }
+
+
 
   ngOnInit(): void { }
 
@@ -119,12 +98,13 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       const getProducts = changes[change];
       this.productsFilterIN = getProducts.currentValue;
       if (this.productsFilterIN.length) {
-        this.filtering(this.productsFilterIN);
+        this.filtering();
       }
     }
   }
 
-  // ====================================================================================  S E L E C T - F I L T E R S
+
+
   onClick(event: any) {
     if (event.target.checked) {
       let prod: any = this.productsFilters.find((item: any) => item.name === event.target.name);
@@ -145,30 +125,77 @@ export class ProductFilterComponent implements OnInit, OnChanges {
     }
     // console.log(this.productsFilters);
     this.productFilterService.setProductsFiltersLS(this.productsFilters);
-
-    // ------------------------------------------------------------------------------------------ 
-    // this.filtering();
-    // ------------------------------------------------------------------------------------------    
-    // this.counting();
   }
 
-  removeAllFilters() {
+
+
+  clearProductsFilters() {
     this.productFilterService.clearProductsFiltersService();
   }
+
+
+
+  defaultFilters() {
+    if (this.productsFilters.length) {
+      this.productsFilters.filter((item: any) => {
+        switch (item.name) {
+          case CATEGORY.STOCK: this.stock_chk = true;
+            break;
+          case CATEGORY.DEPOSIT: this.deposit_chk = true;
+            break;
+
+          case CATEGORY.UNDER1000: this.under1000_chk = true;
+            break;
+          case CATEGORY.UNDER2000: this.under2000_chk = true;
+            break;
+          case CATEGORY.UNDER3000: this.under3000_chk = true;
+            break;
+          case CATEGORY.UNDER4000: this.under4000_chk = true;
+            break;
+          case CATEGORY.OVER4000: this.over4000_chk = true;
+            break;
+
+          case CATEGORY.ACER: this.acer_chk = true;
+            break;
+          case CATEGORY.APPLE: this.apple_chk = true;
+            break;
+          case CATEGORY.ASUS: this.asus_chk = true;
+            break;
+        }
+      });
+    }
+    else {
+      this.stock_chk
+        = this.deposit_chk
+        = this.under1000_chk
+        = this.under2000_chk
+        = this.under3000_chk
+        = this.under4000_chk
+        = this.over4000_chk
+        = this.acer_chk
+        = this.apple_chk
+        = this.asus_chk
+        = false;
+    }
+  }
+
+
+
+
 
   // ================================================================================================= F I L T E R I N G
   // ===================================================================================================================
   // ===================================================================================================================
-  filtering(productsFilterIN: Array<Product>) {
+  filtering() {
     if (this.productsFilters.length) {
       for (let pf of this.productsFilters) {
         if (pf.value === CATEGORY.AVAILABLE) {
-          let av = productsFilterIN.filter((item: any) => item.available === pf.name);
+          let av = this.productsFilterIN.filter((item: any) => item.available === pf.name);
           this.availablesProducts = this.availablesProducts.concat(av);
         }
       }
       if (!this.availablesProducts.length) {
-        this.availablesProducts = productsFilterIN;
+        this.availablesProducts = this.productsFilterIN;
       }
       // console.log(this.availablesProducts);
       for (let pf of this.productsFilters) {
@@ -194,122 +221,12 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       this.productsFilterOUT = this.brandsProducts;
     }
     else {
-      this.productsFilterOUT = productsFilterIN;
+      this.productsFilterOUT = this.productsFilterIN;
     }
-    console.log(this.productsFilterOUT);
+    // console.log(this.productsFilterOUT);
   }
-
-
-
-
-
-  // // ========================================================================================= Close Filters  -  ONE BY ONE
-  // filters_close(filterName: any) {
-  //   // ------------------------------------------------------------------------------------------ 
-  //   switch (filterName.name) {
-  //     case CATEGORY.STOCK: { this.stock_chk = false; this.currentFilterGroup = CATEGORY.AVAILABLE } break;
-  //     case CATEGORY.DEPOSIT: { this.deposit_chk = false; this.currentFilterGroup = CATEGORY.AVAILABLE } break;
-
-  //     case CATEGORY.UNDER1000: { this.under1000_chk = false; this.currentFilterGroup = CATEGORY.PRICE } break;
-  //     case CATEGORY.UNDER2000: { this.under2000_chk = false; this.currentFilterGroup = CATEGORY.PRICE } break;
-  //     case CATEGORY.UNDER3000: { this.under3000_chk = false; this.currentFilterGroup = CATEGORY.PRICE } break;
-  //     case CATEGORY.UNDER4000: { this.under4000_chk = false; this.currentFilterGroup = CATEGORY.PRICE } break;
-  //     case CATEGORY.OVER4000: { this.over4000_chk = false; this.currentFilterGroup = CATEGORY.PRICE } break;
-  //     default:
-  //   }
-  //   // ------------------------------------------------------------------------------------------ 
-  //   this.filterNames_check();
-  //   // ------------------------------------------------------------------------------------------ 
-  //   this.filtersNames = this.filtersNames.filter((item: any) => item != filterName);
-  //   // ------------------------------------------------------------------------------------------ 
-  //   // this.filtering();
-  //   // ------------------------------------------------------------------------------------------  
-  //   this.counting();
-  // }
-
-  // // =========================================================================================== Close Filters  -  CLOSE ALL
-  // filters_close_all() {
-  //   this.stock_chk = false; this.deposit_chk = false;
-  //   // ------------------------------------------------------------------------------------------
-  //   this.under1000_chk = false; this.under2000_chk = false; this.under3000_chk = false; this.under4000_chk = false; this.over4000_chk = false;
-  //   // ------------------------------------------------------------------------------------------
-  //   this.filtersNames = [];
-  //   this.products = this.filter_0;
-  //   // ------------------------------------------------------------------------------------------ 
-  //   this.count_reset();
-  // }
-
-  // // ============================================================================================  C H E C K  - F I L T E R S
-  // filterNames_check() {
-  //   // ------------------------------------------------------------------------------------------ 
-  //   if (this.stock_chk || this.deposit_chk) this.available_chk = true;
-  //   else this.available_chk = false;
-  //   // ------------------------------------------------------------------------------------------ 
-  //   if (this.under1000_chk || this.under2000_chk || this.under3000_chk || this.under4000_chk || this.over4000_chk) this.price_chk = true;
-  //   else this.price_chk = false;
-  // }
-
-
-
-  // // ============================================================================================ C  O  U  N  T  I  N  G
-  // // ===================================================================================================================
-  // // ===================================================================================================================
-  // counting() {
-  //   if (this.currentFilterGroup === CATEGORY.AVAILABLE) {
-  //     if (this.available_chk) {
-  //       this.count_price();
-  //       // this.count_brand();
-  //       // this.count_category();
-  //     }
-  //     else this.count_ordered();
-  //   }
-
-  //   if (this.currentFilterGroup === CATEGORY.PRICE) {
-  //     if (this.price_chk) {
-  //       this.count_available();
-  //       // this.count_brand();
-  //       // this.count_category();
-  //     }
-  //     else this.count_ordered();
-  //   }
-  // }
-
-  // // =========================================================================================   C O U N T  A V A I L A B L E
-  // count_available() {
-  //   this.stock_count = this.products.filter((item: any) => item.available === CATEGORY.STOCK).length;
-  //   this.deposit_count = this.products.filter((item: any) => item.available === CATEGORY.DEPOSIT).length;
-  // }
-
-  // count_price() {
-  //   this.under1000_count = this.products.filter((item: any) => item.price < 1000).length;
-  //   this.under2000_count = this.products.filter((item: any) => item.price >= 1000 && item.price < 2000).length;
-  //   this.under3000_count = this.products.filter((item: any) => item.price >= 2000 && item.price < 3000).length;
-  //   this.under4000_count = this.products.filter((item: any) => item.price >= 3000 && item.price < 4000).length;
-  //   this.over4000_count = this.products.filter((item: any) => item.price >= 4000).length;
-  // }
-
-  // // ==================================================================================================   C O U N T  O R D E R
-  // count_ordered() {
-  //   this.stock_count = this.filter_0.filter((item: any) => item.available === CATEGORY.STOCK).length;
-  //   this.deposit_count = this.filter_0.filter((item: any) => item.available === CATEGORY.DEPOSIT).length;
-
-  //   this.under1000_count = this.filter_1.filter((item: any) => item.price < 1000).length;
-  //   this.under2000_count = this.filter_1.filter((item: any) => item.price >= 1000 && item.price < 2000).length;
-  //   this.under3000_count = this.filter_1.filter((item: any) => item.price >= 2000 && item.price < 3000).length;
-  //   this.under4000_count = this.filter_1.filter((item: any) => item.price >= 3000 && item.price < 4000).length;
-  //   this.over4000_count = this.filter_1.filter((item: any) => item.price >= 4000).length;
-  // }
-
-  // // ==================================================================================================   C O U N T  R E S E T
-  // count_reset() {
-  //   this.stock_count = this.filter_0.filter((item: any) => item.available === CATEGORY.STOCK).length;
-  //   this.deposit_count = this.filter_0.filter((item: any) => item.available === CATEGORY.DEPOSIT).length;
-
-  //   this.under1000_count = this.filter_0.filter((item: any) => item.price < 1000).length;
-  //   this.under2000_count = this.filter_0.filter((item: any) => item.price >= 1000 && item.price < 2000).length;
-  //   this.under3000_count = this.filter_0.filter((item: any) => item.price >= 2000 && item.price < 3000).length;
-  //   this.under4000_count = this.filter_0.filter((item: any) => item.price >= 3000 && item.price < 4000).length;
-  //   this.over4000_count = this.filter_0.filter((item: any) => item.price >= 4000).length;
-  // }
+  // ===================================================================================================================
+  // ===================================================================================================================
+  // ===================================================================================================================
 
 }
