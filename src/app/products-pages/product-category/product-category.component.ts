@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
-import { ProductFilter } from 'src/app/shared/models/product-filter.model';
+import { ProductFilter } from 'src/app/shared/models/product.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { CartService } from 'src/app/shared/services/cart.service';

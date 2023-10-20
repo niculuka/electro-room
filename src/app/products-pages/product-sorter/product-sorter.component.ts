@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductFilter } from 'src/app/shared/models/product-filter.model';
+import { ProductFilter } from 'src/app/shared/models/product.model';
 import { Product } from 'src/app/shared/models/product.model';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AvailableFilter } from '../models/product-filter.model';
+import { ProductFilter } from '../models/product.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -7,29 +7,30 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ProductFilterService {
 
-  public availables: Array<AvailableFilter> = this.getAvailableFilterLS();
-  private availablesSubject: BehaviorSubject<Array<AvailableFilter>> = new BehaviorSubject(this.availables);
+  public productsFilters: Array<ProductFilter> = this.getProductsFiltersLS();
+  private productsFiltersSubject: BehaviorSubject<Array<ProductFilter>> = new BehaviorSubject(this.productsFilters);
 
   constructor() { }
 
-
-  clearAvailablesService() {
-    this.availables = [];
-    this.setAvailableFilterLS();
+  clearProductsFiltersService() {
+    this.productsFilters = [];
+    this.setProductsFiltersLS([]);
+    window.location.reload();
   }
 
-  getAvailablesObservable(): Observable<Array<AvailableFilter>> {
-    return this.availablesSubject.asObservable();
+  getProductsFiltersObservable(): Observable<Array<ProductFilter>> {
+    return this.productsFiltersSubject.asObservable();
   }
 
-  private setAvailableFilterLS(): void {
-    const avJson = JSON.stringify(this.availables);
-    localStorage.setItem('av-ls', avJson);
-    this.availablesSubject.next(this.availables);
+  setProductsFiltersLS(data: Array<ProductFilter>): void {
+    this.productsFilters = data;
+    const pfJson = JSON.stringify(this.productsFilters);
+    localStorage.setItem('pf-ls', pfJson);
+    this.productsFiltersSubject.next(this.productsFilters);
   }
 
-  private getAvailableFilterLS(): Array<AvailableFilter> {
-    const avJson = localStorage.getItem('av-ls');
-    return avJson ? JSON.parse(avJson) : [];
+  private getProductsFiltersLS(): Array<ProductFilter> {
+    const pfJson = localStorage.getItem('pf-ls');
+    return pfJson ? JSON.parse(pfJson) : [];
   }
 }

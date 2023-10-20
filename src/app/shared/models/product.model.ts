@@ -67,3 +67,11 @@ export class Product {
     }
 }
 
+export class ProductFilter {
+    id: number = 0;
+    name: string = "";
+    value: string = "";
+    min: number = 0;
+    max: number = 0;
+}
+

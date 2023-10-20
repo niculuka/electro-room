@@ -1,7 +1,8 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { AvailableFilter, BrandFilter, PriceFilter, ProductFilter } from 'src/app/shared/models/product-filter.model';
+import { ProductFilter } from 'src/app/shared/models/product.model';
 import { Product } from 'src/app/shared/models/product.model';
+import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 
 @Component({
   selector: 'app-product-filter',
@@ -10,6 +11,7 @@ import { Product } from 'src/app/shared/models/product.model';
 })
 export class ProductFilterComponent implements OnInit, OnChanges {
 
+  // I N P U T S ------------------------------------------------------------
   // A V A I L A B L E - Vars -----------------------------------------------
   available_chk: boolean = false;
   stock_chk: boolean = false; protected stock_count: number = 0;
@@ -66,58 +68,49 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   productsFilterIN_copy: Array<Product> = this.productsFilterIN;
   productsFilterOUT: Array<Product> = [];
 
-  // productsFilters: Array<ProductFilter> = [
-  //   { id: 1, name: CATEGORY.STOCK, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
-  //   { id: 2, name: CATEGORY.DEPOSIT, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
-  //   { id: 101, name: CATEGORY.UNDER1000, value: CATEGORY.PRICE, min: 0, max: 1000 },
-  //   { id: 102, name: CATEGORY.UNDER2000, value: CATEGORY.PRICE, min: 1000, max: 2000 },
-  //   { id: 103, name: CATEGORY.UNDER3000, value: CATEGORY.PRICE, min: 2000, max: 3000 },
-  //   { id: 104, name: CATEGORY.UNDER4000, value: CATEGORY.PRICE, min: 3000, max: 4000 },
-  //   { id: 105, name: CATEGORY.OVER4000, value: CATEGORY.PRICE, min: 4000, max: 1000000 },
-  //   { id: 201, name: CATEGORY.ACER, value: CATEGORY.BRAND, min: 0, max: 0 },
-  //   { id: 204, name: CATEGORY.APPLE, value: CATEGORY.BRAND, min: 0, max: 0 },
-  //   { id: 205, name: CATEGORY.ASUS, value: CATEGORY.BRAND, min: 0, max: 0 },
-  // ];
   productsFilter: ProductFilter = new ProductFilter();
-
-  currentFilterName: string = "";
-  currentFilterGroup: string = "";
-
-  protected filter_0: Array<Product> = [];
-  protected filter_1: Array<Product> = [];
-  protected filter_2: Array<Product> = [];
-  protected filter_3: Array<Product> = [];
-  protected filter_4: Array<Product> = [];
-
-  // AVAILABLE ---------------------------------------------------------
-  availables: Array<AvailableFilter> = [
-    // { id: 1, name: CATEGORY.STOCK },
-    // { id: 2, name: CATEGORY.DEPOSIT },
+  productsFilters: Array<ProductFilter> = [
+    // { id: 1, name: CATEGORY.STOCK, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
+    // { id: 2, name: CATEGORY.DEPOSIT, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
+    // { id: 101, name: CATEGORY.UNDER1000, value: CATEGORY.PRICE, min: 0, max: 1000 },
+    // { id: 102, name: CATEGORY.UNDER2000, value: CATEGORY.PRICE, min: 1000, max: 2000 },
+    // { id: 103, name: CATEGORY.UNDER3000, value: CATEGORY.PRICE, min: 2000, max: 3000 },
+    // { id: 104, name: CATEGORY.UNDER4000, value: CATEGORY.PRICE, min: 3000, max: 4000 },
+    // { id: 105, name: CATEGORY.OVER4000, value: CATEGORY.PRICE, min: 4000, max: 1000000 },
+    // { id: 201, name: CATEGORY.ACER, value: CATEGORY.BRAND, min: 0, max: 0 },
+    // { id: 204, name: CATEGORY.APPLE, value: CATEGORY.BRAND, min: 0, max: 0 },
+    // { id: 205, name: CATEGORY.ASUS, value: CATEGORY.BRAND, min: 0, max: 0 },
   ];
-  availableFilter: AvailableFilter = new AvailableFilter();
+
   availablesProducts: Array<Product> = [];
-
-  // PRICE ------------------------------------------------------------
-  prices: Array<PriceFilter> = [
-    // { id: 101, name: CATEGORY.UNDER1000, minPrice: 0, maxPrice: 1000 },
-    // { id: 102, name: CATEGORY.UNDER2000, minPrice: 1000, maxPrice: 2000 },
-    // { id: 103, name: CATEGORY.UNDER3000, minPrice: 2000, maxPrice: 3000 },
-    // { id: 104, name: CATEGORY.UNDER4000, minPrice: 3000, maxPrice: 4000 },
-    // { id: 105, name: CATEGORY.OVER4000, minPrice: 4000, maxPrice: 1000000 },
-  ];
-  priceFilter: PriceFilter = new PriceFilter();
   pricesProducts: Array<Product> = [];
-
-  // BRAND -------------------------------------------------------------
-  brands: Array<BrandFilter> = [
-    // { id: 201, name: CATEGORY.ACER },
-    // { id: 202, name: CATEGORY.ADATA },
-    // { id: 202, name: CATEGORY.ALLVIEW },
-  ];
-  brandFilter: BrandFilter = new BrandFilter();
   brandsProducts: Array<Product> = [];
 
-  constructor() { }
+  constructor(
+    private productFilterService: ProductFilterService,
+  ) {
+    productFilterService.getProductsFiltersObservable().subscribe(data => {
+      this.productsFilters = data;
+    })
+    this.productsFilters.filter((item: any) => {
+      switch (item.name) {
+        case CATEGORY.STOCK: this.stock_chk = true;
+          break;
+        case CATEGORY.DEPOSIT: this.deposit_chk = true;
+          break;
+        case CATEGORY.UNDER1000: this.under1000_chk = true;
+          break;
+        case CATEGORY.UNDER2000: this.under2000_chk = true;
+          break;
+        case CATEGORY.UNDER3000: this.under3000_chk = true;
+          break;
+        case CATEGORY.UNDER4000: this.under4000_chk = true;
+          break;
+        case CATEGORY.OVER4000: this.over4000_chk = true;
+          break;
+      }
+    });
+  }
 
   ngOnInit(): void { }
 
@@ -127,34 +120,31 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       this.productsFilterIN = getProducts.currentValue;
       if (this.productsFilterIN.length) {
         this.filtering(this.productsFilterIN);
-        // this.filterAvailable(this.products);
-
-        // this.filterPrice(this.products);
-        // this.filterBrand(this.products);
-        // console.log(this.products)
       }
     }
   }
 
   // ====================================================================================  S E L E C T - F I L T E R S
   onClick(event: any) {
-    // if (event.target.checked) {
-    //   let prod: any = this.productsFilters.find((item: any) => item.name === event.target.name);
-    //   if (!prod) {
-    //     this.productsFilter = new ProductFilter();
-    //     this.productsFilter.id = event.target.id;
-    //     this.productsFilter.name = event.target.name;
-    //     this.productsFilter.value = event.target.value.split(",")[0];
-    //     this.productsFilter.min = event.target.value.split(",")[1];
-    //     this.productsFilter.max = event.target.value.split(",")[2];
-    //     this.productsFilters.push(this.productsFilter);
-    //     this.productsFilters = this.productsFilters.sort((a: any, b: any) => a.id - b.id);
-    //   }
-    // }
-    // else {
-    //   this.productsFilters = this.productsFilters.filter((item: any) => item.id != event.target.id);
-    // }
+    if (event.target.checked) {
+      let prod: any = this.productsFilters.find((item: any) => item.name === event.target.name);
+      if (!prod) {
+        this.productsFilter = new ProductFilter();
+        this.productsFilter.id = event.target.id;
+        this.productsFilter.name = event.target.name;
+        this.productsFilter.value = event.target.value.split(",")[0];
+        this.productsFilter.min = event.target.value.split(",")[1];
+        this.productsFilter.max = event.target.value.split(",")[2];
+
+        this.productsFilters.push(this.productsFilter);
+        this.productsFilters = this.productsFilters.sort((a: any, b: any) => a.id - b.id);
+      }
+    }
+    else {
+      this.productsFilters = this.productsFilters.filter((item: any) => item.id != event.target.id);
+    }
     // console.log(this.productsFilters);
+    this.productFilterService.setProductsFiltersLS(this.productsFilters);
 
     // ------------------------------------------------------------------------------------------ 
     // this.filtering();
@@ -162,32 +152,16 @@ export class ProductFilterComponent implements OnInit, OnChanges {
     // this.counting();
   }
 
-  productsFilters: Array<ProductFilter> = [
-    { id: 1, name: CATEGORY.STOCK, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
-    { id: 2, name: CATEGORY.DEPOSIT, value: CATEGORY.AVAILABLE, min: 0, max: 0 },
-
-    { id: 101, name: CATEGORY.UNDER1000, value: CATEGORY.PRICE, min: 0, max: 1000 },
-    { id: 102, name: CATEGORY.UNDER2000, value: CATEGORY.PRICE, min: 1000, max: 2000 },
-    { id: 103, name: CATEGORY.UNDER3000, value: CATEGORY.PRICE, min: 2000, max: 3000 },
-    { id: 104, name: CATEGORY.UNDER4000, value: CATEGORY.PRICE, min: 3000, max: 4000 },
-    { id: 105, name: CATEGORY.OVER4000, value: CATEGORY.PRICE, min: 4000, max: 1000000 },
-
-    { id: 201, name: CATEGORY.ACER, value: CATEGORY.BRAND, min: 0, max: 0 },
-    { id: 204, name: CATEGORY.APPLE, value: CATEGORY.BRAND, min: 0, max: 0 },
-    { id: 205, name: CATEGORY.ASUS, value: CATEGORY.BRAND, min: 0, max: 0 },
-  ];
+  removeAllFilters() {
+    this.productFilterService.clearProductsFiltersService();
+  }
 
   // ================================================================================================= F I L T E R I N G
   // ===================================================================================================================
   // ===================================================================================================================
   filtering(productsFilterIN: Array<Product>) {
-    // this.availablesProducts = this.pricesProducts = this.brandsProducts = productsFilterIN;
-
     if (this.productsFilters.length) {
-      // --------------------------------------------------------------------------------
       for (let pf of this.productsFilters) {
-        // this.availablesProducts = this.pricesProducts = this.brandsProducts = [];
-
         if (pf.value === CATEGORY.AVAILABLE) {
           let av = productsFilterIN.filter((item: any) => item.available === pf.name);
           this.availablesProducts = this.availablesProducts.concat(av);
@@ -197,8 +171,6 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         this.availablesProducts = productsFilterIN;
       }
       // console.log(this.availablesProducts);
-
-      // --------------------------------------------------------------------------------
       for (let pf of this.productsFilters) {
         if (pf.value === CATEGORY.PRICE) {
           let pr = this.availablesProducts.filter((item: any) => item.price >= pf.min && item.price < pf.max);
@@ -209,8 +181,6 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         this.pricesProducts = this.availablesProducts;
       }
       // console.log(this.pricesProducts);
-
-      // --------------------------------------------------------------------------------
       for (let pf of this.productsFilters) {
         if (pf.value === CATEGORY.BRAND) {
           let br = this.pricesProducts.filter((item: any) => item.brand === pf.name);
@@ -221,15 +191,10 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         this.brandsProducts = this.pricesProducts;
       }
       // console.log(this.brandsProducts);
-
-
-      // --------------------------------------------------------------------------------
       this.productsFilterOUT = this.brandsProducts;
-      // console.log(this.productsFilterOUT);
     }
     else {
       this.productsFilterOUT = productsFilterIN;
-      // console.log(this.productsFilterOUT);
     }
     console.log(this.productsFilterOUT);
   }
