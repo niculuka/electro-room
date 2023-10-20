@@ -35,9 +35,11 @@
     width: 18px;
     height: 18px;
     accent-color: rgb(220, 20, 110);
+    cursor: pointer;
 }
 
 .filter-group label {
     font-size: 14px;
     margin-left: 4px;
+    cursor: pointer;
 }

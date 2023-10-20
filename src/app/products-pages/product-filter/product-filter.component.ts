@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { PRODUCTS_FILTERS, ProductFilter } from 'src/app/shared/models/product.model';
+import { PRODUCTS_FILTERS, ProductFilter } from 'src/app/shared/models/product-filter.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 
@@ -76,20 +76,15 @@ export class ProductFilterComponent implements OnInit, OnChanges {
   pricesProducts: Array<Product> = [];
   brandsProducts: Array<Product> = [];
 
-
-
   constructor(
     private productFilterService: ProductFilterService,
   ) {
-    productFilterService.getProductsFiltersObservable().subscribe(data => {
-      console.log(data);
+    productFilterService.getProductsFiltersObservable().subscribe(data => {      
       this.productsFilters = data;
+      console.log(this.productsFilters);
       this.defaultFilters();
-    })
-
+    });
   }
-
-
 
   ngOnInit(): void { }
 
@@ -98,12 +93,10 @@ export class ProductFilterComponent implements OnInit, OnChanges {
       const getProducts = changes[change];
       this.productsFilterIN = getProducts.currentValue;
       if (this.productsFilterIN.length) {
-        this.filtering();
+        // this.filtering();
       }
     }
   }
-
-
 
   onClick(event: any) {
     if (event.target.checked) {
@@ -115,7 +108,6 @@ export class ProductFilterComponent implements OnInit, OnChanges {
         this.productsFilter.value = event.target.value.split(",")[0];
         this.productsFilter.min = event.target.value.split(",")[1];
         this.productsFilter.max = event.target.value.split(",")[2];
-
         this.productsFilters.push(this.productsFilter);
         this.productsFilters = this.productsFilters.sort((a: any, b: any) => a.id - b.id);
       }
@@ -123,17 +115,12 @@ export class ProductFilterComponent implements OnInit, OnChanges {
     else {
       this.productsFilters = this.productsFilters.filter((item: any) => item.id != event.target.id);
     }
-    // console.log(this.productsFilters);
-    this.productFilterService.setProductsFiltersLS(this.productsFilters);
+    this.productFilterService.setProductsFiltersToLS(this.productsFilters);
   }
-
-
 
   clearProductsFilters() {
     this.productFilterService.clearProductsFiltersService();
   }
-
-
 
   defaultFilters() {
     if (this.productsFilters.length) {
@@ -179,52 +166,48 @@ export class ProductFilterComponent implements OnInit, OnChanges {
     }
   }
 
-
-
-
-
   // ================================================================================================= F I L T E R I N G
   // ===================================================================================================================
   // ===================================================================================================================
-  filtering() {
-    if (this.productsFilters.length) {
-      for (let pf of this.productsFilters) {
-        if (pf.value === CATEGORY.AVAILABLE) {
-          let av = this.productsFilterIN.filter((item: any) => item.available === pf.name);
-          this.availablesProducts = this.availablesProducts.concat(av);
-        }
-      }
-      if (!this.availablesProducts.length) {
-        this.availablesProducts = this.productsFilterIN;
-      }
-      // console.log(this.availablesProducts);
-      for (let pf of this.productsFilters) {
-        if (pf.value === CATEGORY.PRICE) {
-          let pr = this.availablesProducts.filter((item: any) => item.price >= pf.min && item.price < pf.max);
-          this.pricesProducts = this.pricesProducts.concat(pr);
-        }
-      }
-      if (!this.pricesProducts.length) {
-        this.pricesProducts = this.availablesProducts;
-      }
-      // console.log(this.pricesProducts);
-      for (let pf of this.productsFilters) {
-        if (pf.value === CATEGORY.BRAND) {
-          let br = this.pricesProducts.filter((item: any) => item.brand === pf.name);
-          this.brandsProducts = this.brandsProducts.concat(br);
-        }
-      }
-      if (!this.brandsProducts.length) {
-        this.brandsProducts = this.pricesProducts;
-      }
-      // console.log(this.brandsProducts);
-      this.productsFilterOUT = this.brandsProducts;
-    }
-    else {
-      this.productsFilterOUT = this.productsFilterIN;
-    }
-    // console.log(this.productsFilterOUT);
-  }
+  // filtering() {
+  //   if (this.productsFilters.length) {
+  //     for (let pf of this.productsFilters) {
+  //       if (pf.value === CATEGORY.AVAILABLE) {
+  //         let av = this.productsFilterIN.filter((item: any) => item.available === pf.name);
+  //         this.availablesProducts = this.availablesProducts.concat(av);
+  //       }
+  //     }
+  //     if (!this.availablesProducts.length) {
+  //       this.availablesProducts = this.productsFilterIN;
+  //     }
+  //     // console.log(this.availablesProducts);
+  //     for (let pf of this.productsFilters) {
+  //       if (pf.value === CATEGORY.PRICE) {
+  //         let pr = this.availablesProducts.filter((item: any) => item.price >= pf.min && item.price < pf.max);
+  //         this.pricesProducts = this.pricesProducts.concat(pr);
+  //       }
+  //     }
+  //     if (!this.pricesProducts.length) {
+  //       this.pricesProducts = this.availablesProducts;
+  //     }
+  //     // console.log(this.pricesProducts);
+  //     for (let pf of this.productsFilters) {
+  //       if (pf.value === CATEGORY.BRAND) {
+  //         let br = this.pricesProducts.filter((item: any) => item.brand === pf.name);
+  //         this.brandsProducts = this.brandsProducts.concat(br);
+  //       }
+  //     }
+  //     if (!this.brandsProducts.length) {
+  //       this.brandsProducts = this.pricesProducts;
+  //     }
+  //     // console.log(this.brandsProducts);
+  //     this.productsFilterOUT = this.brandsProducts;
+  //   }
+  //   else {
+  //     this.productsFilterOUT = this.productsFilterIN;
+  //   }
+  //   // console.log(this.productsFilterOUT);
+  // }
   // ===================================================================================================================
   // ===================================================================================================================
   // ===================================================================================================================
