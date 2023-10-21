@@ -8,6 +8,7 @@ import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
+import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -51,6 +52,7 @@ export class ProductCategoryComponent implements OnInit {
     private cartService: CartService,
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
+    private productFilterService: ProductFilterService,
   ) { }
 
   ngOnInit(): void {
@@ -65,6 +67,7 @@ export class ProductCategoryComponent implements OnInit {
             if (data.length > 0) {
               this.products = data;
               // console.log(this.products);
+              this.productFilterService.filtering(this.products)             
               this.notFoundProducts = false;
             }
             else {
@@ -76,6 +79,7 @@ export class ProductCategoryComponent implements OnInit {
           this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
             this.products = data;
             // console.log(this.products);
+            this.productFilterService.filtering(this.products);
           });
         }
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
