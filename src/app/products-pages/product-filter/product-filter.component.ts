@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { PRODUCTS_FILTERS, ProductFilter } from 'src/app/shared/models/product-filter.model';
 import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
@@ -70,7 +70,7 @@ export class ProductFilterComponent {
   constructor(
     private productFilterService: ProductFilterService,
   ) {
-    productFilterService.getProductsFiltersObservable().subscribe(data => {      
+    productFilterService.getProductsFiltersObservable().subscribe(data => {
       this.productsFilters = data;
       // console.log(this.productsFilters);
       this.defaultFilters();
@@ -95,50 +95,39 @@ export class ProductFilterComponent {
       this.productsFilters = this.productsFilters.filter((item: any) => item.id != event.target.id);
     }
     this.productFilterService.setProductsFiltersToLS(this.productsFilters);
-  }  
+  }
 
   defaultFilters() {
-    if (this.productsFilters.length) {
-      this.productsFilters.filter((item: any) => {
-        switch (item.name) {
-          case CATEGORY.STOCK: this.stock_chk = true;
-            break;
-          case CATEGORY.DEPOSIT: this.deposit_chk = true;
-            break;
+    this.stock_chk = this.deposit_chk = false;
+    this.under1000_chk = this.under2000_chk = this.under3000_chk = this.under4000_chk = this.over4000_chk = false;
+    this.acer_chk = this.apple_chk = this.asus_chk = false;
 
-          case CATEGORY.UNDER1000: this.under1000_chk = true;
-            break;
-          case CATEGORY.UNDER2000: this.under2000_chk = true;
-            break;
-          case CATEGORY.UNDER3000: this.under3000_chk = true;
-            break;
-          case CATEGORY.UNDER4000: this.under4000_chk = true;
-            break;
-          case CATEGORY.OVER4000: this.over4000_chk = true;
-            break;
+    this.productsFilters.filter((item: any) => {
+      switch (item.name) {
+        case CATEGORY.STOCK: this.stock_chk = true;
+          break;
+        case CATEGORY.DEPOSIT: this.deposit_chk = true;
+          break;
 
-          case CATEGORY.ACER: this.acer_chk = true;
-            break;
-          case CATEGORY.APPLE: this.apple_chk = true;
-            break;
-          case CATEGORY.ASUS: this.asus_chk = true;
-            break;
-        }
-      });
-    }
-    else {
-      this.stock_chk
-        = this.deposit_chk
-        = this.under1000_chk
-        = this.under2000_chk
-        = this.under3000_chk
-        = this.under4000_chk
-        = this.over4000_chk
-        = this.acer_chk
-        = this.apple_chk
-        = this.asus_chk
-        = false;
-    }
+        case CATEGORY.UNDER1000: this.under1000_chk = true;
+          break;
+        case CATEGORY.UNDER2000: this.under2000_chk = true;
+          break;
+        case CATEGORY.UNDER3000: this.under3000_chk = true;
+          break;
+        case CATEGORY.UNDER4000: this.under4000_chk = true;
+          break;
+        case CATEGORY.OVER4000: this.over4000_chk = true;
+          break;
+
+        case CATEGORY.ACER: this.acer_chk = true;
+          break;
+        case CATEGORY.APPLE: this.apple_chk = true;
+          break;
+        case CATEGORY.ASUS: this.asus_chk = true;
+          break;
+      }
+    });
   }
 
   clearProductsFilters() {

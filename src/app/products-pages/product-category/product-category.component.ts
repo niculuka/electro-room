@@ -67,7 +67,7 @@ export class ProductCategoryComponent implements OnInit {
             if (data.length > 0) {
               this.products = data;
               // console.log(this.products);
-              this.productFilterService.filtering(this.products)             
+              this.productFilterService.productsFiltersService(this.products)             
               this.notFoundProducts = false;
             }
             else {
@@ -79,7 +79,7 @@ export class ProductCategoryComponent implements OnInit {
           this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
             this.products = data;
             // console.log(this.products);
-            this.productFilterService.filtering(this.products);
+            this.productFilterService.productsFiltersService(this.products);
           });
         }
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
