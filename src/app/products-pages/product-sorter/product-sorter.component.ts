@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProductFilter } from 'src/app/shared/models/product-filter.model';
-import { Product } from 'src/app/shared/models/product.model';
 import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 
 @Component({
@@ -13,18 +12,18 @@ export class ProductSorterComponent {
   currentCategory: string = "";
 
   productsFilters: Array<ProductFilter> = [];
-  
-  currentSorter: string = "bestSold";
 
-  protected products: Array<Product> = [];
+  currentSorter: string = "bestSold";
 
   constructor(
     private productFilterService: ProductFilterService,
   ) {
     this.productFilterService.getProductsFiltersObservable().subscribe(data => {
-      this.productsFilters = data
-      // console.log(this.filterNames) 
-    });    
+      this.productsFilters = data;
+    });
+    this.productFilterService.getCurrentSorterObservable().subscribe(data => {
+      this.currentSorter = data;
+    });
   }
 
   closeFilter(currentFilter: any) {
@@ -36,36 +35,11 @@ export class ProductSorterComponent {
     this.productFilterService.clearProductsFiltersService();
   }
 
-  sorting() {
-    if (this.currentSorter === "name") this.name_alphabetic();
-    if (this.currentSorter === "lowToHigh") this.price_ascending();
-    if (this.currentSorter === "highToLow") this.price_descending();
-    if (this.currentSorter === "bestSold") this.sold();
+  productsSorters() {
+    this.productFilterService.setCurrentSorterToLS(this.currentSorter);
   }
 
-  // ------------------------------------------------------------- S o r t i n g
-  name_alphabetic() {
-    this.products = this.products.sort((a, b) => {
-      const nameA = a.brand.toUpperCase();
-      const nameB = b.brand.toUpperCase();
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
-      return 0;
-    });
+  clearCurrentSorter() {
+    this.productFilterService.clearCurrentSorterService("bestSold");
   }
-
-  price_ascending() {
-    this.products = this.products.sort((a, b) => a.price - b.price);
-  }
-
-  price_descending() {
-    this.products = this.products.sort((a, b) => b.price - a.price);
-  }
-
-  sold() {
-    this.products = this.products.sort((a: any, b: any) => a.id - b.id);
-  }
-
-  
-
 }

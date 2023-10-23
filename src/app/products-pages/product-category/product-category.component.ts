@@ -67,7 +67,7 @@ export class ProductCategoryComponent implements OnInit {
             if (data.length > 0) {
               this.products = data;
               // console.log(this.products);
-              this.productFilterService.productsFiltersService(this.products)             
+              this.productFilterService.productsFiltersService(this.products);
               this.notFoundProducts = false;
             }
             else {

@@ -42,13 +42,12 @@ export class ProductFilterService {
   // ============================================================================== F I L T E R
   // ============================================================================== F I L T E R
   // ============================================================================== F I L T E R
-  productsFilterOUT: Array<Product> = [];
+  products_filtered: Array<Product> = [];
   availablesProducts: Array<Product> = [];
   pricesProducts: Array<Product> = [];
   brandsProducts: Array<Product> = [];
 
-  productsFiltersService(productsIN: Array<Product>) {
-
+  productsFiltersService(products: Array<Product>) {
     this.getProductsFiltersObservable().subscribe((productsFilters) => {
       this.availablesProducts = [];
       this.pricesProducts = [];
@@ -57,12 +56,12 @@ export class ProductFilterService {
         // ----------------------------------------------------------------------        
         for (let pf of productsFilters) {
           if (pf.value === CATEGORY.AVAILABLE) {
-            let av = productsIN.filter((item: any) => item.available === pf.name);
+            let av = products.filter((item: any) => item.available === pf.name);
             this.availablesProducts = this.availablesProducts.concat(av);
           }
         }
         if (!this.availablesProducts.length) {
-          this.availablesProducts = productsIN;
+          this.availablesProducts = products;
         }
         // console.log(this.availablesProducts);
         // ----------------------------------------------------------------------        
@@ -88,18 +87,84 @@ export class ProductFilterService {
         }
         // console.log(this.brandsProducts);
         // ----------------------------------------------------------------------
-        this.productsFilterOUT = this.brandsProducts;
-        // console.log(this.productsFilterOUT);
+        this.products_filtered = this.brandsProducts;
+        // console.log(this.products_filtered);
       }
       else {
-        this.productsFilterOUT = productsIN;
-        // console.log(this.productsFilterOUT);
+        this.products_filtered = products;
+        // console.log(this.products_filtered);
       }
       // console.log(productsFilters);
-      // console.log(this.productsFilterOUT);
+      // console.log(this.products_filtered);
+      this.productsSortersService();
     });
   }
-  // ================================================================================================
-  // ================================================================================================
-  // ================================================================================================
+  // ============================================================================== S O R T E R
+  // ============================================================================== S O R T E R
+  // ============================================================================== S O R T E R
+  public currentSorter: string = this.getCurrentSorterFromLS();
+  private currentSorterSubject: BehaviorSubject<string> = new BehaviorSubject(this.currentSorter);
+
+  getCurrentSorterObservable(): Observable<string> {
+    return this.currentSorterSubject.asObservable();
+  }
+
+  clearCurrentSorterService(data: string) {
+    this.currentSorter = data;
+    this.setCurrentSorterToLS(this.currentSorter);
+  }
+
+  setCurrentSorterToLS(data: string): void {
+    this.currentSorter = data;
+    localStorage.setItem('curr-sorter-ls', this.currentSorter);
+    this.currentSorterSubject.next(this.currentSorter);
+  }
+
+  private getCurrentSorterFromLS(): string {
+    const currSorter = localStorage.getItem('curr-sorter-ls');
+    return currSorter ? currSorter : "";
+  }
+
+  productsSortersService() {
+    this.getCurrentSorterObservable().subscribe((data) => {
+      console.log(data);
+      // switch (this.currentSorter) {
+      //   case "bestSold": this.sort_bestSold();
+      //     break;
+      //   case "name": this.sort_name();
+      //     break;
+      //   case "lowToHigh": this.sort_lowToHigh();
+      //     break;
+      //   case "highToLow": this.sort_highToLow();
+      //     break;
+      //   default: this.sort_bestSold();
+      // }
+      // console.log(this.currentSorter);
+      console.log(this.products_filtered);
+    });
+  }
+
+  sort_bestSold() {
+    this.products_filtered = this.products_filtered.sort((a: any, b: any) => a.id - b.id);
+  }
+
+  sort_name() {
+    this.products_filtered = this.products_filtered.sort((a, b) => {
+      const nameA = a.brand.toUpperCase();
+      const nameB = b.brand.toUpperCase();
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+      return 0;
+    });
+  }
+
+  sort_lowToHigh() {
+    this.products_filtered = this.products_filtered.sort((a, b) => a.price - b.price);
+  }
+
+  sort_highToLow() {
+    this.products_filtered = this.products_filtered.sort((a, b) => b.price - a.price);
+  }
+
+
 }

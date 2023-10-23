@@ -15,6 +15,13 @@ export enum PAYMENT_TYPE {
     CARD = "CARD",
 }
 
+export enum SORTER_SELECT {
+    BEST_SOLD = "BEST_SOLD",
+    NAME = "NAME",
+    LOW_TO_HIGH = "LOW_TO_HIGH",
+    HIGH_TO_LOW = "HIGH_TO_LOW",
+}
+
 export enum CATEGORY {
     CATEGORY = "CATEGORY",    
 
