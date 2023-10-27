@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
-import { ProductFilter } from 'src/app/shared/models/product-filter.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -18,33 +16,16 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductCategoryComponent implements OnInit {
 
-  // L A P T O P S - Vars ---------------------------------------------------
-  // ------------------------------------------------------------------------
   protected products: Array<Product> = [];
   product: Product = new Product();
-
-  filterNames: Array<ProductFilter> = [];
-  currentFilterName: string = "";
-  productFilter: ProductFilter = new ProductFilter();
-
-  currentFilterGroup: string = "";
-
-
-
-  // ------------------------------------------------------------------------
-  departments: Array<Department> = DEPARTMENTS;
-  cards: Array<any> = [];
-
+ 
   currentDepartment: string = "";
   currentType: string = "";
   currentCategory: string = "";
 
   customBreadcrumb: Breadcrumb = new Breadcrumb();
-
   notFoundProducts: boolean = false;
 
-
-  // ------------------------------------------------------------------------
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -64,22 +45,19 @@ export class ProductCategoryComponent implements OnInit {
         this.createBreadcrumb();
         if (this.currentCategory === CATEGORY.LAPTOP.toLowerCase()) {
           this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-            if (data.length > 0) {
+            if (data.length) {
               this.products = data;
-              // console.log(this.products);
-              this.productFilterService.productsFiltersService(this.products);
+              // this.productFilterService.productsFiltersService(this.products);
               this.notFoundProducts = false;
             }
             else {
-              // console.log(this.products);
               this.notFoundProducts = true;
             }
           });
         } else {
           this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
             this.products = data;
-            // console.log(this.products);
-            this.productFilterService.productsFiltersService(this.products);
+            // this.productFilterService.productsFiltersService(this.products);
           });
         }
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;

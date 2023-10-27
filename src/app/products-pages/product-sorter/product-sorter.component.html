@@ -1,27 +1,30 @@
 <div class="products-header">
-    <h1>CATEGORY: ...{{currentCategory}}</h1>
+    <!-- <h1>CATEGORY: ...{{currentCategory}}</h1> -->
 
     <div class="filters">
-        <div class="filterName" *ngIf="productsFilters.length">
-            <label *ngFor="let filter of productsFilters" (click)="closeFilter(filter)">
-                {{filter.name.toLowerCase()}}
-                <mat-icon>close</mat-icon>
-            </label>
+        <div class="filterName" *ngIf="checkForLength">
+            <div *ngFor="let pf of productsFilters">
+                <div *ngFor="let cf of pf.filters" (click)="closeFilter(cf)">
+                    <label *ngIf="cf.isChecked">
+                        {{cf.name.toLowerCase()}}
+                        <mat-icon>close</mat-icon>
+                    </label>
+                </div>
+            </div>
             <h4 (click)="clearProductsFilters()">
                 <strong>sterge tot</strong>
             </h4>
         </div>
     </div>
 
-    <div class="categorySelect">
+    <!-- <div class="categorySelect">
         <label for="categorySelect">Sorteaza dupa: </label>
-        <select name="categorySelect" [(ngModel)]="currentSorter" (change)="productsSorters()">
-            <option value="bestSold">Cele mai vandute</option>
-            <option value="name" >Nume</option>
-            <option value="lowToHigh">Pret crescator</option>
-            <option value="highToLow">Pret descrescator</option>
+        <select name="categorySelect" [(ngModel)]="currentOption" (change)="productsSorters()">
+            <option [value]="option.value" *ngFor="let option of sortersOptions">
+                {{option.name}}
+            </option>
         </select>
 
         <button (click)="clearCurrentSorter()">reset</button>
-    </div>
+    </div> -->
 </div>
