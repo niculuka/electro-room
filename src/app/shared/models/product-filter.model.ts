@@ -1,4 +1,4 @@
-export interface IProdFilter {
+export interface IProductFilter {
     id: number;
     name: string;
     value: string;
@@ -9,12 +9,13 @@ export interface IProdFilter {
     count: number;
 }
 
-export interface IProductFilter {
+export interface IProductFilterArray {
     value: string;
     name: string;
-    filters: Array<IProdFilter>;
+    filters: Array<IProductFilter>;
 }
 
+// ------------------------------------------
 export class ProductFilter {
     id: number = 0;
     name: string = "";
@@ -26,6 +27,13 @@ export class ProductFilter {
     count: number = 0;
 }
 
+export class ProductFilterArray {
+    value: string = "";
+    name: string = "";
+    filters: Array<ProductFilter> = [];
+}
+
+// ------------------------------------------
 export class ProductCounter {
     stock_count: any;
     deposit_count: any;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IProductFilter, ProductCounter, ProductFilter, SORTERS_OPTIONS } from '../models/product-filter.model';
+import { IProductFilter, ProductCounter, ProductFilter, ProductFilterArray, SORTERS_OPTIONS } from '../models/product-filter.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CATEGORY, SORTER_SELECT } from '../enums/electro.enum';
 import { Product } from '../models/product.model';
@@ -10,32 +10,35 @@ import { PRODUCTS_FILTERS } from '../data/product-filter.data';
 })
 export class ProductFilterService {
 
-  public productsFilters: Array<IProductFilter> = this.getProductsFiltersFromLS();
-  private productsFiltersSubject: BehaviorSubject<Array<IProductFilter>> = new BehaviorSubject(this.productsFilters);
+  public productsFilters: Array<ProductFilterArray> = this.getProductsFiltersFromLS();
+  private productsFiltersSubject: BehaviorSubject<Array<ProductFilterArray>> = new BehaviorSubject(this.productsFilters);
 
-  clearProductsFiltersService() {
-    this.productsFilters = PRODUCTS_FILTERS;
-    this.setProductsFiltersToLS(this.productsFilters);
-  }
-
-  getProductsFilters(): Array<IProductFilter> {
-    return this.productsFiltersSubject.value;
-  }
-
-  getProductsFiltersObservable(): Observable<Array<IProductFilter>> {
-    return this.productsFiltersSubject.asObservable();
-  }
-
-  setProductsFiltersToLS(productsFilters: Array<IProductFilter>): void {
-    this.productsFilters = productsFilters;
+  private setProductsFiltersToLS(): void {
     const pfJson = JSON.stringify(this.productsFilters);
     localStorage.setItem('pf-ls', pfJson);
     this.productsFiltersSubject.next(this.productsFilters);
   }
 
-  private getProductsFiltersFromLS(): Array<IProductFilter> {
+  private getProductsFiltersFromLS(): Array<ProductFilterArray> {
     const pfJson = localStorage.getItem('pf-ls');
-    return pfJson ? JSON.parse(pfJson) : [];
+    return pfJson ? JSON.parse(pfJson) : PRODUCTS_FILTERS;
+  }
+
+  getProductsFiltersObservable(): Observable<Array<ProductFilterArray>> {
+    return this.productsFiltersSubject.asObservable();
+  }
+
+  changeFiltersService(productsFilters: Array<ProductFilterArray>) {
+    this.productsFilters = productsFilters;
+    this.setProductsFiltersToLS();
+  }
+
+
+  clearProductsFiltersService() {
+    this.productsFilters.filter((item: any) => {
+      item.filters.filter((res: any) => res.isChecked = false)
+    });
+    this.setProductsFiltersToLS();
   }
 
 

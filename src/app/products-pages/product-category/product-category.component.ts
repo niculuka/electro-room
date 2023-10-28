@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-filter.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
+import { IProductFilter, ProductFilterArray } from 'src/app/shared/models/product-filter.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -18,13 +20,15 @@ export class ProductCategoryComponent implements OnInit {
 
   protected products: Array<Product> = [];
   product: Product = new Product();
- 
+
   currentDepartment: string = "";
   currentType: string = "";
   currentCategory: string = "";
 
   customBreadcrumb: Breadcrumb = new Breadcrumb();
   notFoundProducts: boolean = false;
+
+  productsFilters: Array<ProductFilterArray> = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,7 +38,11 @@ export class ProductCategoryComponent implements OnInit {
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
     private productFilterService: ProductFilterService,
-  ) { }
+  ) {
+    // productFilterService.getProductsFiltersObservable().subscribe(data => {
+    //   if (data.length) this.productsFilters = data;
+    // });
+  }
 
   ngOnInit(): void {
     this.favoriteService.getFavoritesObservable().subscribe(() => {

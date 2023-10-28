@@ -4,7 +4,7 @@
     <div class="available">
         <div *ngFor="let pf of productsFilters">
             <h3><strong>{{pf.name}}</strong></h3>
-            <div class="filter-group" *ngFor="let cf of pf.filters" (change)="onChange($event, cf)">
+            <div class="filter-group" *ngFor="let cf of pf.filters" (change)="changeFilters($event, cf)">
                 <input type="checkbox" [id]="cf.id" [value]="cf.value" [checked]="cf.isChecked">
                 <label [for]="cf.id"> {{cf.labelName}} ({{cf.count}})</label>
             </div>
