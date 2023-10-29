@@ -28,8 +28,6 @@ export class ProductCategoryComponent implements OnInit {
   customBreadcrumb: Breadcrumb = new Breadcrumb();
   notFoundProducts: boolean = false;
 
-  productsFilters: Array<ProductFilterArray> = [];
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -38,11 +36,7 @@ export class ProductCategoryComponent implements OnInit {
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
     private productFilterService: ProductFilterService,
-  ) {
-    // productFilterService.getProductsFiltersObservable().subscribe(data => {
-    //   if (data.length) this.productsFilters = data;
-    // });
-  }
+  ) { }
 
   ngOnInit(): void {
     this.favoriteService.getFavoritesObservable().subscribe(() => {

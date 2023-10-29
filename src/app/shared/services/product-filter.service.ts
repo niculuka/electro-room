@@ -13,6 +13,22 @@ export class ProductFilterService {
   public productsFilters: Array<ProductFilterArray> = this.getProductsFiltersFromLS();
   private productsFiltersSubject: BehaviorSubject<Array<ProductFilterArray>> = new BehaviorSubject(this.productsFilters);
 
+  changeFiltersService(productsFilters: Array<ProductFilterArray>) {
+    this.productsFilters = productsFilters;
+    this.setProductsFiltersToLS();
+  }
+
+  clearProductsFiltersService() {
+    this.productsFilters
+      .filter((item: any) => item.filters
+        .filter((res: any) => res.isChecked = false));
+    this.setProductsFiltersToLS();
+  }
+
+  getProductsFiltersObservable(): Observable<Array<ProductFilterArray>> {
+    return this.productsFiltersSubject.asObservable();
+  }
+
   private setProductsFiltersToLS(): void {
     const pfJson = JSON.stringify(this.productsFilters);
     localStorage.setItem('pf-ls', pfJson);
@@ -21,36 +37,18 @@ export class ProductFilterService {
 
   private getProductsFiltersFromLS(): Array<ProductFilterArray> {
     const pfJson = localStorage.getItem('pf-ls');
-    return pfJson ? JSON.parse(pfJson) : PRODUCTS_FILTERS;
+    return pfJson ? JSON.parse(pfJson) : [];
   }
-
-  getProductsFiltersObservable(): Observable<Array<ProductFilterArray>> {
-    return this.productsFiltersSubject.asObservable();
-  }
-
-  changeFiltersService(productsFilters: Array<ProductFilterArray>) {
-    this.productsFilters = productsFilters;
-    this.setProductsFiltersToLS();
-  }
-
-
-  clearProductsFiltersService() {
-    this.productsFilters.filter((item: any) => {
-      item.filters.filter((res: any) => res.isChecked = false)
-    });
-    this.setProductsFiltersToLS();
-  }
-
 
   // ============================================================================== F I L T E R
   // ============================================================================== F I L T E R
   // ============================================================================== F I L T E R
-  products_filtered: Array<Product> = [];
-  availablesProducts: Array<Product> = [];
-  pricesProducts: Array<Product> = [];
-  brandsProducts: Array<Product> = [];
+  // products_filtered: Array<Product> = [];
+  // availablesProducts: Array<Product> = [];
+  // pricesProducts: Array<Product> = [];
+  // brandsProducts: Array<Product> = [];
 
-  productsCounter: ProductCounter = new ProductCounter();
+  // productsCounter: ProductCounter = new ProductCounter();
 
   // productsFiltersService(products: Array<Product>) {
   //   this.getProductsFiltersObservable().subscribe((productsFilters) => {
