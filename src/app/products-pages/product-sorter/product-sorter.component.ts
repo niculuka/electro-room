@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-filter.data';
 import { SORTER_SELECT } from 'src/app/shared/enums/electro.enum';
-import { IProductFilter, ProductFilter, ProductSorter, SORTERS_OPTIONS } from 'src/app/shared/models/product-filter.model';
+import {  ProductSorter, SORTERS_OPTIONS } from 'src/app/shared/models/product-filter.model';
 import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 
 @Component({

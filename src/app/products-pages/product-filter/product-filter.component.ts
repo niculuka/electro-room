@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-filter.data';
-import { ProductFilterArray } from 'src/app/shared/models/product-filter.model';
+import { ProductFilter } from 'src/app/shared/models/product-filter.model';
 import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 
 @Component({
@@ -8,17 +8,21 @@ import { ProductFilterService } from 'src/app/shared/services/product-filter.ser
   templateUrl: './product-filter.component.html',
   styleUrls: ['./product-filter.component.css']
 })
-export class ProductFilterComponent {
+export class ProductFilterComponent implements OnDestroy {
 
-  productsFilters: Array<ProductFilterArray> = PRODUCTS_FILTERS;
+  productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;
+  private sub: any;
 
   constructor(
     private productFilterService: ProductFilterService,
   ) {
-    productFilterService.getProductsFiltersObservable().subscribe(data => {
+    this.sub = productFilterService.getProductsFiltersObservable().subscribe(data => {
       if (data.length) this.productsFilters = data;
       console.log(this.productsFilters);
     });
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   changeFilters(event: any) {

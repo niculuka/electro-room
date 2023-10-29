@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IProductFilter, ProductCounter, ProductFilter, ProductFilterArray, SORTERS_OPTIONS } from '../models/product-filter.model';
+import {  ProductCounter, ProductFilter, SORTERS_OPTIONS } from '../models/product-filter.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CATEGORY, SORTER_SELECT } from '../enums/electro.enum';
 import { Product } from '../models/product.model';
@@ -10,10 +10,10 @@ import { PRODUCTS_FILTERS } from '../data/product-filter.data';
 })
 export class ProductFilterService {
 
-  public productsFilters: Array<ProductFilterArray> = this.getProductsFiltersFromLS();
-  private productsFiltersSubject: BehaviorSubject<Array<ProductFilterArray>> = new BehaviorSubject(this.productsFilters);
+  public productsFilters: Array<ProductFilter> = this.getProductsFiltersFromLS();
+  private productsFiltersSubject: BehaviorSubject<Array<ProductFilter>> = new BehaviorSubject(this.productsFilters);
 
-  changeFiltersService(productsFilters: Array<ProductFilterArray>) {
+  changeFiltersService(productsFilters: Array<ProductFilter>) {
     this.productsFilters = productsFilters;
     this.setProductsFiltersToLS();
   }
@@ -25,7 +25,7 @@ export class ProductFilterService {
     this.setProductsFiltersToLS();
   }
 
-  getProductsFiltersObservable(): Observable<Array<ProductFilterArray>> {
+  getProductsFiltersObservable(): Observable<Array<ProductFilter>> {
     return this.productsFiltersSubject.asObservable();
   }
 
@@ -35,7 +35,7 @@ export class ProductFilterService {
     this.productsFiltersSubject.next(this.productsFilters);
   }
 
-  private getProductsFiltersFromLS(): Array<ProductFilterArray> {
+  private getProductsFiltersFromLS(): Array<ProductFilter> {
     const pfJson = localStorage.getItem('pf-ls');
     return pfJson ? JSON.parse(pfJson) : [];
   }

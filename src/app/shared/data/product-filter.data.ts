@@ -1,7 +1,7 @@
 import { CATEGORY } from "../enums/electro.enum";
-import { ProductFilterArray} from "../models/product-filter.model";
+import { ProductFilter} from "../models/product-filter.model";
 
-export const PRODUCTS_FILTERS: Array<ProductFilterArray> = [
+export const PRODUCTS_FILTERS: Array<ProductFilter> = [
     {
         value: CATEGORY.AVAILABLE,
         name: "Disponibilitate",

@@ -1,22 +1,11 @@
-export interface IProductFilter {
-    id: number;
-    name: string;
-    value: string;
-    isChecked: boolean;
-    min: number;
-    max: number;
-    labelName: string;
-    count: number;
-}
 
-export interface IProductFilterArray {
-    value: string;
-    name: string;
-    filters: Array<IProductFilter>;
-}
-
-// ------------------------------------------
 export class ProductFilter {
+    value: string = "";
+    name: string = "";
+    filters: Array<ProdFilter> = [];
+}
+
+export class ProdFilter {
     id: number = 0;
     name: string = "";
     value: string = "";
@@ -25,12 +14,6 @@ export class ProductFilter {
     max: number = 0;
     labelName: string = "";
     count: number = 0;
-}
-
-export class ProductFilterArray {
-    value: string = "";
-    name: string = "";
-    filters: Array<ProductFilter> = [];
 }
 
 // ------------------------------------------

@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-filter.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
-import { IProductFilter, ProductFilterArray } from 'src/app/shared/models/product-filter.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -16,7 +14,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './product-category.component.html',
   styleUrls: ['./product-category.component.css']
 })
-export class ProductCategoryComponent implements OnInit {
+export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   protected products: Array<Product> = [];
   product: Product = new Product();
@@ -27,6 +25,10 @@ export class ProductCategoryComponent implements OnInit {
 
   customBreadcrumb: Breadcrumb = new Breadcrumb();
   notFoundProducts: boolean = false;
+  
+  private sub1: any;
+  private sub2: any;
+  private sub3: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -39,14 +41,14 @@ export class ProductCategoryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.favoriteService.getFavoritesObservable().subscribe(() => {
-      this.activatedRoute.paramMap.subscribe((params) => {
+    this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
+      this.sub2 = this.activatedRoute.paramMap.subscribe((params) => {
         this.currentDepartment = params.get('department') || "";
         this.currentType = params.get('type') || "";
         this.currentCategory = params.get('category') || "";
         this.createBreadcrumb();
         if (this.currentCategory === CATEGORY.LAPTOP.toLowerCase()) {
-          this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
+          this.sub3 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
             if (data.length) {
               this.products = data;
               // this.productFilterService.productsFiltersService(this.products);
@@ -57,7 +59,7 @@ export class ProductCategoryComponent implements OnInit {
             }
           });
         } else {
-          this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
+          this.sub3 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
             this.products = data;
             // this.productFilterService.productsFiltersService(this.products);
           });
@@ -121,5 +123,10 @@ export class ProductCategoryComponent implements OnInit {
     this.product = new Product();
   }
 
+  ngOnDestroy(): void {
+    this.sub1.unsubscribe();
+    this.sub2.unsubscribe();
+    this.sub3.unsubscribe();    
+  }
 
 }
