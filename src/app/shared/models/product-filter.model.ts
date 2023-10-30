@@ -17,6 +17,11 @@ export class ProdFilter {
 }
 
 // ------------------------------------------
+export interface ProductSorter {
+    name: string;
+    value: string;
+}
+
 export class ProductCounter {
     stock_count: any;
     deposit_count: any;
@@ -29,16 +34,3 @@ export class ProductCounter {
     apple_count: any;
     asus_count: any;
 }
-
-export interface ProductSorter {
-    name: string;
-    value: string;
-}
-
-export const SORTERS_OPTIONS: Array<ProductSorter> = [
-    { value: "BEST_SOLD", name: "Cele mai vandute" },
-    { value: "NAME", name: "Nume" },
-    { value: "LOW_TO_HIGH", name: "Pret crescator" },
-    { value: "HIGH_TO_LOW", name: "Pret descrescator" },
-
-]

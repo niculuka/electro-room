@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-filter.data';
-import { SORTER_SELECT } from 'src/app/shared/enums/electro.enum';
-import {  ProductSorter, SORTERS_OPTIONS } from 'src/app/shared/models/product-filter.model';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { PRODUCTS_FILTERS, SORTERS_OPTIONS } from 'src/app/shared/data/product-filter.data';
+import { SORTERS } from 'src/app/shared/enums/electro.enum';
+import { ProductFilter, ProductSorter } from 'src/app/shared/models/product-filter.model';
 import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 
 @Component({
@@ -9,50 +9,65 @@ import { ProductFilterService } from 'src/app/shared/services/product-filter.ser
   templateUrl: './product-sorter.component.html',
   styleUrls: ['./product-sorter.component.css']
 })
-export class ProductSorterComponent{ 
+export class ProductSorterComponent implements OnDestroy {
 
-  // @Input() currentCategory: string = "";  
+  @Input() currentCategory: string = "";
 
-  // @Input() productsFilters: Array<IProductFilter> = PRODUCTS_FILTERS;
+  productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;
 
-  // defaultOption: string = SORTER_SELECT.BEST_SOLD;
-  // currentOption: string = this.defaultOption;
-  // sortersOptions: Array<ProductSorter> = SORTERS_OPTIONS;
+  defaultOption: string = SORTERS.BEST_SOLD;
+  currentOption: string = this.defaultOption;
+  productsSorters: Array<ProductSorter> = SORTERS_OPTIONS;
 
-  // constructor(
-  //   private productFilterService: ProductFilterService,
-  // ) {
-  //   this.check();
-  //   //   this.productFilterService.getCurrentSorterObservable().subscribe(data => {
-  //   //     if (data) {
-  //   //       this.currentOption = data;
-  //   //     }
-  //   //   });
-  // }
+  private sub1: any;
+  private sub2: any;
 
-  // closeCurrentFilter(cf: any) {
-  //   let pfc: any = this.productsFilters.find((item: any) => item.value === cf.value);
-  //   pfc.filters.find((res: any) => { if (res.id === cf.id) res.isChecked = false; });
-  //   // console.log(this.productsFilters)
-  //   this.productFilterService.setProductsFiltersToLS(this.productsFilters);
-  // }
+  constructor(
+    private productFilterService: ProductFilterService,
+  ) {
+    this.sub1 = productFilterService.getProductsFiltersObservable().subscribe(data => {
+      if (data.length) this.productsFilters = data;
+    });
+    this.sub2 = this.productFilterService.getCurrentSorterObservable().subscribe(data => {
+      if (data || data.length > 0) this.currentOption = data;
+      else this.currentOption = this.defaultOption;
+    });
+  }
 
-  // check() {
-  //   for (let pf of this.productsFilters) {
-  //     let aaa: any = pf.filters.find((item: any) => item.isChecked === true);
-  //     if (aaa) return aaa;
-  //   }
-  // }
+  // -------------------------------------------------------------- L A B E L S - F I L T E R S
+  closeFilter(cf: any) {
+    this.productsFilters
+      .filter((item: any) => item.filters
+        .filter((res: any) => {
+          if (res.id === cf.id) res.isChecked = false;
+        })
+      );
+    this.productFilterService.changeFilterService(this.productsFilters);
+  }
 
-  // clearProductsFilters() {
-  //   this.productFilterService.clearProductsFiltersService();
-  // }
+  isFilterChecked() {
+    for (let pf of this.productsFilters) {
+      let aaa: any = pf.filters.find((item: any) => item.isChecked === true);
+      if (aaa) return aaa;
+    }
+  }
 
-  // productsSorters() {
-  //   // this.productFilterService.setCurrentSorterToLS(this.currentOption);
-  // }
+  clearProductsFilters() {
+    this.productFilterService.clearProductsFiltersService();
+  }
 
-  // clearCurrentSorter() {
-  //   // this.productFilterService.clearCurrentSorterService(this.defaultOption);
-  // }
+  // ---------------------------------------------------------------------------- S O R T E R S
+  changeSorter() {
+    this.productFilterService.changeSorterService(this.currentOption);
+  }
+
+  clearCurrentSorter() {
+    this.productFilterService.clearCurrentSorterService();
+  }
+
+  ngOnDestroy(): void {
+    this.sub1?.unsubscribe();
+    this.sub1?.unsubscribe();
+  }
+
 }

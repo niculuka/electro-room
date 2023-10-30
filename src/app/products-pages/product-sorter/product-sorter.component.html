@@ -1,12 +1,11 @@
-<!-- <div class="products-header">
+<div class="products-header">
     <h1>CATEGORY: {{currentCategory}}</h1>
 
     <div class="filters">
-        <div class="filterName">
+        <div class="filterName" *ngIf="isFilterChecked()">
             <div *ngFor="let pf of productsFilters">
-                <div *ngFor="let cf of pf.filters" (click)="closeCurrentFilter(cf)">
-                    <label *ngIf="cf.isChecked">
-                        {{cf.labelName.toLowerCase()}}
+                <div *ngFor="let cf of pf.filters" (click)="closeFilter(cf)">
+                    <label *ngIf="cf.isChecked"> {{cf.labelName.toLowerCase()}}
                         <mat-icon>close</mat-icon>
                     </label>
                 </div>
@@ -19,12 +18,12 @@
 
     <div class="categorySelect">
         <label for="categorySelect">Sorteaza dupa: </label>
-        <select name="categorySelect" [(ngModel)]="currentOption" (change)="productsSorters()">
-            <option [value]="option.value" *ngFor="let option of sortersOptions">
-                {{option.name}}
+        <select name="categorySelect" [(ngModel)]="currentOption" (change)="changeSorter()">
+            <option [value]="ps.value" *ngFor="let ps of productsSorters" >
+                {{ps.name}}
             </option>
         </select>
 
         <button (click)="clearCurrentSorter()">reset</button>
     </div>
-</div> -->
+</div>

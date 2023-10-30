@@ -1,5 +1,5 @@
-import { CATEGORY } from "../enums/electro.enum";
-import { ProductFilter} from "../models/product-filter.model";
+import { CATEGORY, SORTERS } from "../enums/electro.enum";
+import { ProductFilter, ProductSorter } from "../models/product-filter.model";
 
 export const PRODUCTS_FILTERS: Array<ProductFilter> = [
     {
@@ -68,4 +68,12 @@ export const PRODUCTS_FILTERS: Array<ProductFilter> = [
             // { id: 407, name: CATEGORY.SSD, value: CATEGORY.CATEGORY, isChecked: false, min: 0, max: 0, labelName: CATEGORY.SSD, count: 0 },
         ]
     },
+]
+
+export const SORTERS_OPTIONS: Array<ProductSorter> = [
+    { name: "Cele mai vandute", value: SORTERS.BEST_SOLD },
+    { name: "Nume", value: SORTERS.NAME },
+    { name: "Pret crescator", value: SORTERS.LOW_TO_HIGH },
+    { name: "Pret descrescator", value: SORTERS.HIGH_TO_LOW },
+
 ]

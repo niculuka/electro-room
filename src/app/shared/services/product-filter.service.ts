@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {  ProductCounter, ProductFilter, SORTERS_OPTIONS } from '../models/product-filter.model';
+import { ProductCounter, ProductFilter, ProductSorter } from '../models/product-filter.model';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CATEGORY, SORTER_SELECT } from '../enums/electro.enum';
+import { CATEGORY, SORTERS } from '../enums/electro.enum';
 import { Product } from '../models/product.model';
 import { PRODUCTS_FILTERS } from '../data/product-filter.data';
 
@@ -10,10 +10,13 @@ import { PRODUCTS_FILTERS } from '../data/product-filter.data';
 })
 export class ProductFilterService {
 
+  // ============================================================================== F I L T E R
+  // ============================================================================== F I L T E R
+  // ============================================================================== F I L T E R
   public productsFilters: Array<ProductFilter> = this.getProductsFiltersFromLS();
   private productsFiltersSubject: BehaviorSubject<Array<ProductFilter>> = new BehaviorSubject(this.productsFilters);
 
-  changeFiltersService(productsFilters: Array<ProductFilter>) {
+  changeFilterService(productsFilters: Array<ProductFilter>) {
     this.productsFilters = productsFilters;
     this.setProductsFiltersToLS();
   }
@@ -40,9 +43,55 @@ export class ProductFilterService {
     return pfJson ? JSON.parse(pfJson) : [];
   }
 
-  // ============================================================================== F I L T E R
-  // ============================================================================== F I L T E R
-  // ============================================================================== F I L T E R
+  // ============================================================================== S O R T E R
+  // ============================================================================== S O R T E R
+  // ============================================================================== S O R T E R
+  public currentSorter: string = this.getCurrentSorterFromLS();
+  private currentSorterSubject: BehaviorSubject<string> = new BehaviorSubject(this.currentSorter);
+
+  changeSorterService(currentSorter: string) {
+    this.currentSorter = currentSorter;
+    this.setCurrentSorterToLS();
+  }
+
+  clearCurrentSorterService() {
+    this.currentSorter = "";
+    this.setCurrentSorterToLS();
+  }
+
+  getCurrentSorterObservable(): Observable<string> {
+    return this.currentSorterSubject.asObservable();
+  }
+
+  private setCurrentSorterToLS(): void {
+    localStorage.setItem('cs-ls', this.currentSorter);
+    this.currentSorterSubject.next(this.currentSorter);
+    // this.productsSortersService();
+  }
+
+  private getCurrentSorterFromLS(): string {
+    const psJson = localStorage.getItem('cs-ls');
+    return psJson ? psJson : "";
+  }
+
+  productsSortersService() {
+    // switch (this.productsSorters) {
+    //   case SORTER_SELECT.BEST_SOLD: this.sort_bestSold();
+    //     break;
+    //   case SORTER_SELECT.NAME: this.sort_name();
+    //     break;
+    //   case SORTER_SELECT.LOW_TO_HIGH: this.sort_lowToHigh();
+    //     break;
+    //   case SORTER_SELECT.HIGH_TO_LOW: this.sort_highToLow();
+    //     break;
+    //   default: this.sort_bestSold();
+    // }
+    // console.log(this.currentSorter);
+    // console.log(this.products_filtered);
+  }
+
+
+  // ========================================================== P R O D U C T S - F I L T E R S
   // products_filtered: Array<Product> = [];
   // availablesProducts: Array<Product> = [];
   // pricesProducts: Array<Product> = [];
@@ -100,45 +149,7 @@ export class ProductFilterService {
   // ============================================================================== S O R T E R
   // ============================================================================== S O R T E R
   // ============================================================================== S O R T E R
-  // public currentSorter: string = this.getCurrentSorterFromLS();
-  // private currentSorterSubject: BehaviorSubject<string> = new BehaviorSubject(this.currentSorter);
 
-  // getCurrentSorterObservable(): Observable<string> {
-  //   return this.currentSorterSubject.asObservable();
-  // }
-
-  // clearCurrentSorterService(data: string) {
-  //   this.currentSorter = data;
-  //   this.setCurrentSorterToLS(this.currentSorter);
-  // }
-
-  // setCurrentSorterToLS(data: string): void {
-  //   this.currentSorter = data;
-  //   localStorage.setItem('curr-sorter-ls', this.currentSorter);
-  //   this.currentSorterSubject.next(this.currentSorter);
-  //   this.productsSortersService();
-  // }
-
-  // private getCurrentSorterFromLS(): string {
-  //   const currSorter = localStorage.getItem('curr-sorter-ls');
-  //   return currSorter ? currSorter : "";
-  // }
-
-  // productsSortersService() {
-  //   switch (this.currentSorter) {
-  //     case SORTER_SELECT.BEST_SOLD: this.sort_bestSold();
-  //       break;
-  //     case SORTER_SELECT.NAME: this.sort_name();
-  //       break;
-  //     case SORTER_SELECT.LOW_TO_HIGH: this.sort_lowToHigh();
-  //       break;
-  //     case SORTER_SELECT.HIGH_TO_LOW: this.sort_highToLow();
-  //       break;
-  //     default: this.sort_bestSold();
-  //   }
-  //   // console.log(this.currentSorter);
-  //   // console.log(this.products_filtered);
-  // }
 
   // sort_bestSold() {
   //   this.products_filtered = this.products_filtered.sort((a: any, b: any) => a.id - b.id);
