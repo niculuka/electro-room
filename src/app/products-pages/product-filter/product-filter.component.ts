@@ -18,7 +18,7 @@ export class ProductFilterComponent implements OnDestroy {
   ) {
     this.sub = productFilterService.getProductsFiltersObservable().subscribe(data => {
       if (data.length) this.productsFilters = data;
-      console.log(this.productsFilters);
+      // console.log(this.productsFilters);
     });
   }  
 

@@ -67,7 +67,7 @@ export class ProductSorterComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.sub1?.unsubscribe();
-    this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe();
   }
 
 }

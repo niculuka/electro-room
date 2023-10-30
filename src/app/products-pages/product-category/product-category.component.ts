@@ -51,7 +51,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
           this.sub3 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
             if (data.length) {
               this.products = data;
-              // this.productFilterService.productsFiltersService(this.products);
+              this.productFilterService.productsFiltersService(this.products);
               this.notFoundProducts = false;
             }
             else {
@@ -124,9 +124,9 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub1.unsubscribe();
-    this.sub2.unsubscribe();
-    this.sub3.unsubscribe();    
+    this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe();
+    this.sub3?.unsubscribe();    
   }
 
 }

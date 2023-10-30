@@ -3,16 +3,16 @@ import { ProductFilter, ProductSorter } from "../models/product-filter.model";
 
 export const PRODUCTS_FILTERS: Array<ProductFilter> = [
     {
-        value: CATEGORY.AVAILABLE,
         name: "Disponibilitate",
+        value: CATEGORY.AVAILABLE,
         filters: [
             { id: 1, name: CATEGORY.STOCK, value: CATEGORY.AVAILABLE, isChecked: false, min: 0, max: 0, labelName: "In Stoc", count: 0 },
             { id: 2, name: CATEGORY.DEPOSIT, value: CATEGORY.AVAILABLE, isChecked: false, min: 0, max: 0, labelName: "In Depozit", count: 0 },
         ]
     },
     {
-        value: CATEGORY.PRICE,
         name: "Pret",
+        value: CATEGORY.PRICE,
         filters: [
             { id: 101, name: CATEGORY.UNDER1000, value: CATEGORY.PRICE, isChecked: false, min: 0, max: 1000, labelName: "Sub 1000", count: 0 },
             { id: 102, name: CATEGORY.UNDER2000, value: CATEGORY.PRICE, isChecked: false, min: 1000, max: 2000, labelName: "1000 - 2000", count: 0 },
@@ -22,8 +22,8 @@ export const PRODUCTS_FILTERS: Array<ProductFilter> = [
         ]
     },
     {
-        value: CATEGORY.BRAND,
         name: "Brand",
+        value: CATEGORY.BRAND,
         filters: [
             { id: 201, name: CATEGORY.ACER, value: CATEGORY.BRAND, isChecked: false, min: 0, max: 0, labelName: CATEGORY.ACER, count: 0 },
             // { id: 202, name: CATEGORY.ADATA, value: CATEGORY.BRAND, isChecked: false, min: 0, max: 0, labelName: CATEGORY.ADATA, count: 0 },
@@ -48,8 +48,8 @@ export const PRODUCTS_FILTERS: Array<ProductFilter> = [
         ]
     },
     {
-        value: CATEGORY.CATEGORY,
         name: "Categorie",
+        value: CATEGORY.CATEGORY,
         filters: [
             { id: 301, name: CATEGORY.LAPTOP_BUSINESS, value: CATEGORY.CATEGORY, isChecked: false, min: 0, max: 0, labelName: "Business", count: 0 },
             { id: 302, name: CATEGORY.LAPTOP_GAMING, value: CATEGORY.CATEGORY, isChecked: false, min: 0, max: 0, labelName: "Gaming", count: 0 },

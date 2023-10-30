@@ -1,7 +1,7 @@
 
 export class ProductFilter {
-    value: string = "";
     name: string = "";
+    value: string = "";    
     filters: Array<ProdFilter> = [];
 }
 
