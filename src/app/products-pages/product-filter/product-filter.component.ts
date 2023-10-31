@@ -21,6 +21,7 @@ export class ProductFilterComponent implements OnDestroy {
       if (data.length) this.productsFilters = data;
       // console.log(this.productsFilters);
     });
+    this.productFilterService.changeFilterService(this.productsFilters);
   }  
 
   changeFilters($event: any) {

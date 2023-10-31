@@ -28,7 +28,7 @@ export class ProductFilterService {
   }
 
   refreshProductsFiltersService() {
-    // localStorage.removeItem('pf-ls');
+    localStorage.removeItem('pf-ls');
   }
 
   getProductsFiltersObservable(): Observable<Array<ProductFilter>> {
