@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ProductCounter, ProductFilter, ProductSorter } from '../models/product-filter.model';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CATEGORY, SORTERS } from '../enums/electro.enum';
+import { CATEGORY } from '../enums/electro.enum';
 import { Product } from '../models/product.model';
-import { PRODUCTS_FILTERS } from '../data/product-filter.data';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +27,10 @@ export class ProductFilterService {
     this.setProductsFiltersToLS();
   }
 
+  refreshProductsFiltersService() {
+    // localStorage.removeItem('pf-ls');
+  }
+
   getProductsFiltersObservable(): Observable<Array<ProductFilter>> {
     return this.productsFiltersSubject.asObservable();
   }
@@ -41,6 +44,76 @@ export class ProductFilterService {
   private getProductsFiltersFromLS(): Array<ProductFilter> {
     const pfJson = localStorage.getItem('pf-ls');
     return pfJson ? JSON.parse(pfJson) : [];
+  }
+
+  // ========================================================== P R O D U C T S - F I L T E R I N G
+  public productsOut: Array<Product> = [];
+  private productsOutSubject: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.productsOut);
+
+  getProductsOutObservable(): Observable<Array<Product>> {
+    return this.productsOutSubject.asObservable();
+  }
+
+  products_filtered: Array<Product> = [];
+  availablesProducts: Array<Product> = [];
+  availablesProducts_total: Array<Product> = [];
+  pricesProducts: Array<Product> = [];
+  pricesProducts_total: Array<Product> = [];
+  brandsProducts: Array<Product> = [];
+  brandsProducts_total: Array<Product> = [];
+
+  productsCounter: ProductCounter = new ProductCounter();
+
+  productsFiltersService(products: Array<Product>) {
+    this.getProductsFiltersObservable().subscribe((productsFilters) => {
+      this.availablesProducts = [];
+      this.availablesProducts_total = [];
+      this.pricesProducts = [];
+      this.pricesProducts_total = [];
+      this.brandsProducts = [];
+      this.brandsProducts_total = [];
+
+      // if (productsFilters.length) {
+      // ----------------------------------------------------------------------
+      for (let pf of productsFilters) {
+        if (pf.value == CATEGORY.AVAILABLE) {
+          for (let f of pf.filters) {
+            let av = products.filter((prod: any) => f.name === prod.available);
+            f.count = av.length;
+            this.availablesProducts = this.availablesProducts.concat(av);
+          }
+          console.log(this.availablesProducts);
+        }
+      }
+
+
+      // ----------------------------------------------------------------------
+      for (let pf of productsFilters) {
+        if (pf.value == CATEGORY.PRICE) {
+          for (let f of pf.filters) {
+            let pr = this.availablesProducts.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
+            f.count = pr.length;
+            this.pricesProducts = this.pricesProducts.concat(pr);
+          }
+        }
+      }
+      if (!this.pricesProducts.length) {
+        this.pricesProducts = this.availablesProducts;
+      }
+      console.log(this.pricesProducts);
+
+      // }
+      // else {
+      //   this.products_filtered = products;
+      // }
+
+      // console.log(productsFilters);      
+      // console.log("--------------------------");
+
+      // this.productsOut = this.products_filtered;
+      // this.productsOutSubject.next(this.productsOut);
+      // console.log(this.productsOut);
+    });
   }
 
   // ============================================================================== S O R T E R
@@ -91,91 +164,8 @@ export class ProductFilterService {
   }
 
 
-  // ========================================================== P R O D U C T S - F I L T E R S
-  products_filtered: Array<Product> = [];
-  availablesProducts: Array<Product> = [];
-  availablesProducts_total: Array<Product> = [];
-  pricesProducts: Array<Product> = [];
-  pricesProducts_total: Array<Product> = [];
-  brandsProducts: Array<Product> = [];
-  brandsProducts_total: Array<Product> = [];
 
-  productsCounter: ProductCounter = new ProductCounter();
 
-  productsFiltersService(products: Array<Product>) {
-    this.getProductsFiltersObservable().subscribe((productsFilters) => {
-      this.availablesProducts = [];
-      this.availablesProducts_total = [];
-      this.pricesProducts = [];
-      this.pricesProducts_total = [];
-      this.brandsProducts = [];
-      this.brandsProducts_total = [];
-
-      if (productsFilters.length) {
-        // ----------------------------------------------------------------------
-        for (let pf of productsFilters) {
-          if (pf.value == CATEGORY.AVAILABLE) {
-            for (let f of pf.filters) {
-              if (f.isChecked == true) {
-                let av = products.filter((prod: any) => f.name === prod.available);
-                this.availablesProducts = this.availablesProducts.concat(av);
-              }
-            }
-          }
-        }
-        if (!this.availablesProducts.length) {
-          this.availablesProducts = products;
-        }
-        console.log(this.availablesProducts);
-
-        // ----------------------------------------------------------------------
-        for (let pf of productsFilters) {
-          if (pf.value == CATEGORY.PRICE) {
-            for (let f of pf.filters) {
-              if (f.isChecked == true) {
-                let pr = this.availablesProducts.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
-                this.pricesProducts = this.pricesProducts.concat(pr);
-              }
-              let pr_t = products.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
-              this.pricesProducts_total = this.pricesProducts_total.concat(pr_t);
-            }
-          }
-        }
-        if (!this.pricesProducts.length) {
-          this.pricesProducts = this.pricesProducts_total;
-        }
-        console.log(this.pricesProducts);
-
-        // ----------------------------------------------------------------------
-        for (let pf of productsFilters) {
-          if (pf.value == CATEGORY.BRAND) {
-            for (let f of pf.filters) {
-              if (f.isChecked == true) {
-                let br = this.pricesProducts.filter((prod: any) => f.name === prod.brand);
-                this.brandsProducts = this.brandsProducts.concat(br);
-              }
-              let br_t = products.filter((prod: any) => f.name === prod.brand);
-              this.brandsProducts_total = this.brandsProducts_total.concat(br_t);
-            }
-          }
-        }
-        if (!this.brandsProducts.length) {
-          this.brandsProducts = this.brandsProducts_total;
-        }
-        console.log(this.brandsProducts);
-        console.log("--------------------------");
-
-     
-        //   this.products_filtered = this.brandsProducts;
-        // }
-        // else {
-        //   this.products_filtered = products;
-      }
-      // console.log(productsFilters);
-      // console.log(this.products_filtered);
-      // console.log("--------------------------");
-    });
-  }
   // ============================================================================== S O R T E R
   // ============================================================================== S O R T E R
   // ============================================================================== S O R T E R

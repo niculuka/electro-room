@@ -20,28 +20,28 @@
 
                 <!-- products cards -------------------------------------------------------------------------------- -->
                 <div class="cards-container">
-                    <div class="card" *ngFor="let item of products;">
+                    <div class="card" *ngFor="let prod of productsOut;">
 
-                        <mat-icon class="favorite_boder" *ngIf="!item.favorite" (click)="handleFavorite(item)">
+                        <mat-icon class="favorite_boder" *ngIf="!prod.favorite" (click)="handleFavorite(prod)">
                             favorite_border
                         </mat-icon>
-                        <mat-icon class="favorite" *ngIf="item.favorite" (click)="handleFavorite(item)">favorite
+                        <mat-icon class="favorite" *ngIf="prod.favorite" (click)="handleFavorite(prod)">favorite
                         </mat-icon>
 
-                        <a [routerLink]="item.linkName">
-                            <img [src]="item.image" [alt]="item.image" />
+                        <a [routerLink]="prod.linkName">
+                            <img [src]="prod.image" [alt]="prod.image" />
                             <span style="background: rgb(0, 154, 230)">
-                                {{item.badge === "TOP_FAVORITE" ? "Top Favorit" : ""}}
+                                {{prod.badge === "TOP_FAVORITE" ? "Top Favorit" : ""}}
                             </span>
                             <span style="background: rgb(220, 20, 110)">
-                                {{item.badge === "SUPER_PRICE" ? "Super Pret" : ""}}
+                                {{prod.badge === "SUPER_PRICE" ? "Super Pret" : ""}}
                             </span>
-                            <h4><strong>{{item.description}}</strong></h4>
+                            <h4><strong>{{prod.description}}</strong></h4>
                         </a>
-                        <p class="avail stock" *ngIf="item.available==='STOCK'">in stoc</p>
-                        <p class="avail deposit" *ngIf="item.available==='DEPOSIT'">in depozitul central</p>
-                        <p class="val"><strong>{{item.price}} Lei</strong></p>
-                        <button (click)="addToCart(item)">Adauga in cos</button>
+                        <p class="avail stock" *ngIf="prod.available==='STOCK'">in stoc</p>
+                        <p class="avail deposit" *ngIf="prod.available==='DEPOSIT'">in depozitul central</p>
+                        <p class="val"><strong>{{prod.price}} Lei</strong></p>
+                        <button (click)="addToCart(prod)">Adauga in cos</button>
                     </div>
                 </div>
 

@@ -18,6 +18,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   protected products: Array<Product> = [];
   product: Product = new Product();
+  productsOut: Array<Product> = [];
 
   currentDepartment: string = "";
   currentType: string = "";
@@ -26,6 +27,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   customBreadcrumb: Breadcrumb = new Breadcrumb();
   notFoundProducts: boolean = false;
   
+  private sub0: any;
   private sub1: any;
   private sub2: any;
   private sub3: any;
@@ -38,7 +40,11 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
     private productFilterService: ProductFilterService,
-  ) { }
+  ) {
+    this.sub0 = this.productFilterService.getProductsOutObservable().subscribe(data => {
+      if(data.length) this.productsOut = data;
+    });    
+  }
 
   ngOnInit(): void {
     this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
@@ -124,6 +130,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.sub0?.unsubscribe();
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
     this.sub3?.unsubscribe();    

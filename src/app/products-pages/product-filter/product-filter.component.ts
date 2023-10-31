@@ -16,6 +16,7 @@ export class ProductFilterComponent implements OnDestroy {
   constructor(
     private productFilterService: ProductFilterService,
   ) {
+    this.refreshProductsFilters();
     this.sub = productFilterService.getProductsFiltersObservable().subscribe(data => {
       if (data.length) this.productsFilters = data;
       // console.log(this.productsFilters);
@@ -34,6 +35,10 @@ export class ProductFilterComponent implements OnDestroy {
 
   clearProductsFilters() {
     this.productFilterService.clearProductsFiltersService();
+  }
+
+  refreshProductsFilters() {
+    this.productFilterService.refreshProductsFiltersService();
   }
 
   ngOnDestroy(): void {

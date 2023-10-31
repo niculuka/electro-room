@@ -141,7 +141,7 @@ a {
 .card span {
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 0;
     width: 80px;
     border-radius: 0 4px 4px 0;
     font-size: 12px;
@@ -201,10 +201,6 @@ a {
         width: 230px;
     }
 
-    .card span {
-        top: 44%;
-    }
-
     .card h4 {
         font-size: 14px;
         line-height: 18px;
@@ -232,7 +228,7 @@ a {
     }
 
     .card {
-        width: 240px;
+        width: 160px;
     }
 
     .card h4 {
@@ -284,10 +280,6 @@ a {
 
     .card {
         width: 256px;
-    }
-
-    .card span {
-        top: 44%;
     }
 
     .card h4 {
