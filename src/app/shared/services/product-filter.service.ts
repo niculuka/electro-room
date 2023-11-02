@@ -112,16 +112,33 @@ export class ProductFilterService {
       }
       // console.log(this.pricesProducts);
 
-      // v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v
-      // v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v
-      this.availablesProducts.filter((av: any) =>
-        this.pricesProducts.filter((pr: any) => {
-          if (av.id === pr.id) {
-            this.products_OUT = this.products_OUT.concat(av);
+      // ----------------------------------------------------------------------
+      for (let pf of productsFilters) {
+        if (pf.value == CATEGORY.BRAND) {
+          for (let f of pf.filters) {
+            let br = products.filter((prod: any) => f.name === prod.brand);
+            f.count = br.length;
+            if (f.isChecked == true) {
+              this.brandsProducts = this.brandsProducts.concat(br);
+            }
           }
-        })
-      )
-      console.log(this.products_OUT);
+        }
+      }
+      if (!this.brandsProducts.length) {
+        this.brandsProducts = products;
+      }
+      // console.log(this.brandsProducts);
+
+      // v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v
+      // v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v
+
+      let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
+      let av_pr_br = av_pr.filter((el: any) => this.brandsProducts.includes(el));
+
+      this.productsOut = av_pr_br;
+      this.productsOutSubject.next(this.productsOut)
+      // console.log(this.products_OUT);
+
       // A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A
       // A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A
 
@@ -129,16 +146,11 @@ export class ProductFilterService {
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.AVAILABLE) {
           for (let f of pf.filters) {
-            let av: any;
-            if (this.pricesProducts.length) {
-              av = this.pricesProducts.filter((prod: any) => f.name === prod.available);
-            }
-            else {
-              av = products.filter((prod: any) => f.name === prod.available);
-            }
-            // console.log(av);
-            f.count = av.length;
 
+            let pr_br = this.pricesProducts.filter((el: any) => this.brandsProducts.includes(el));
+            let av = pr_br.filter((prod: any) => f.name === prod.available);
+            f.count = av.length;
+            // console.log(av);
           }
         }
       }
@@ -147,16 +159,22 @@ export class ProductFilterService {
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.PRICE) {
           for (let f of pf.filters) {
-            let pr: any;
-            if (this.availablesProducts.length) {
-              pr = this.availablesProducts.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
-            }
-            else {
-              pr = products.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
-            }
-            // console.log(pr);
+            let av_br = this.availablesProducts.filter((el: any) => this.brandsProducts.includes(el));
+            let pr = av_br.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
             f.count = pr.length;
-            
+            // console.log(pr);
+          }
+        }
+      }
+
+
+      for (let pf of productsFilters) {
+        if (pf.value == CATEGORY.BRAND) {
+          for (let f of pf.filters) {
+            let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
+            let br = av_pr.filter((prod: any) => f.name === prod.brand);
+            f.count = br.length;
+            // console.log(br);
           }
         }
       }
