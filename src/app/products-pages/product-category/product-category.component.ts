@@ -67,7 +67,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
         } else {
           this.sub3 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
             this.products = data;
-            // this.productFilterService.productsFiltersService(this.products);
+            this.productFilterService.productsFiltersService(this.products);
           });
         }
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;

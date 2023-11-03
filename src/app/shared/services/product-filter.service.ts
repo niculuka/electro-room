@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductCounter, ProductFilter, ProductSorter } from '../models/product-filter.model';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CATEGORY } from '../enums/electro.enum';
+import { CATEGORY, SORTERS } from '../enums/electro.enum';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -9,9 +9,9 @@ import { Product } from '../models/product.model';
 })
 export class ProductFilterService {
 
-  // ============================================================================== F I L T E R
-  // ============================================================================== F I L T E R
-  // ============================================================================== F I L T E R
+  // ====================================================================  F I L T E R S  -  S E L E C T
+  // ====================================================================  F I L T E R S  -  S E L E C T
+  // ====================================================================  F I L T E R S  -  S E L E C T
   public productsFilters: Array<ProductFilter> = this.getProductsFiltersFromLS();
   private productsFiltersSubject: BehaviorSubject<Array<ProductFilter>> = new BehaviorSubject(this.productsFilters);
 
@@ -46,147 +46,119 @@ export class ProductFilterService {
     return pfJson ? JSON.parse(pfJson) : [];
   }
 
-  // ========================================================== P R O D U C T S - F I L T E R I N G
+  // ================================================================  F  I  L  T  E  R  I  N  G
   public productsOut: Array<Product> = [];
   private productsOutSubject: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.productsOut);
+
+  availablesProducts: Array<Product> = [];
+  pricesProducts: Array<Product> = [];
+  brandsProducts: Array<Product> = [];
 
   getProductsOutObservable(): Observable<Array<Product>> {
     return this.productsOutSubject.asObservable();
   }
 
-  products_filtered: Array<Product> = [];
-  products_OUT: Array<Product> = [];
-  // av: Array<Product> = [];
-  availablesProducts: Array<Product> = [];
-  availablesProducts_f: Array<Product> = [];
-  // pr: Array<Product> = [];
-  pricesProducts: Array<Product> = [];
-  pricesProducts_f: Array<Product> = [];
-  brandsProducts: Array<Product> = [];
-  brandsProducts_f: Array<Product> = [];
-
-  productsCounter: ProductCounter = new ProductCounter();
-
   productsFiltersService(products: Array<Product>) {
-    this.getProductsFiltersObservable().subscribe((productsFilters) => {
-      this.products_OUT = [];
+    this.getProductsFiltersObservable().subscribe((productsFilters: Array<ProductFilter>) => {
       this.availablesProducts = [];
-      this.availablesProducts_f = [];
       this.pricesProducts = [];
-      this.pricesProducts_f = [];
       this.brandsProducts = [];
-      this.brandsProducts_f = [];
 
-      // ----------------------------------------------------------------------
+      // A V A I L A B L E S  -  F I L T E R --------------------------------------------------
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.AVAILABLE) {
           for (let f of pf.filters) {
             let av = products.filter((prod: any) => f.name === prod.available);
             f.count = av.length;
-            if (f.isChecked == true) {
-              this.availablesProducts = this.availablesProducts.concat(av);
-            }
+            if (f.isChecked == true) this.availablesProducts = this.availablesProducts.concat(av);
           }
         }
       }
-      if (!this.availablesProducts.length) {
-        this.availablesProducts = products;
-      }
-      // console.log(this.availablesProducts);
+      if (!this.availablesProducts.length) this.availablesProducts = products;
 
-      // ----------------------------------------------------------------------
+      // P R I C E S  -  F I L T E R  ---------------------------------------------------------
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.PRICE) {
           for (let f of pf.filters) {
             let pr = products.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
             f.count = pr.length;
-            if (f.isChecked == true) {
-              this.pricesProducts = this.pricesProducts.concat(pr);
-            }
+            if (f.isChecked == true) this.pricesProducts = this.pricesProducts.concat(pr);
           }
         }
       }
+      if (!this.pricesProducts.length) this.pricesProducts = products;
 
-      if (!this.pricesProducts.length) {
-        this.pricesProducts = products;
-      }
-      // console.log(this.pricesProducts);
-
-      // ----------------------------------------------------------------------
+      // B R A N D S  -  F I L T E R  ----------------------------------------------------------
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.BRAND) {
           for (let f of pf.filters) {
             let br = products.filter((prod: any) => f.name === prod.brand);
             f.count = br.length;
-            if (f.isChecked == true) {
-              this.brandsProducts = this.brandsProducts.concat(br);
-            }
+            if (f.isChecked == true) this.brandsProducts = this.brandsProducts.concat(br);
           }
         }
       }
-      if (!this.brandsProducts.length) {
-        this.brandsProducts = products;
-      }
-      // console.log(this.brandsProducts);
+      if (!this.brandsProducts.length) this.brandsProducts = products;
 
-      // v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v
-      // v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v
-
+      // ---------------------------------------------------------------------------------------
+      // -----------   F   I   L   T   E   R   S   -   R   E   S   U   L   T   -----------------
+      // ---------------------------------------------------------------------------------------
       let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
       let av_pr_br = av_pr.filter((el: any) => this.brandsProducts.includes(el));
-
       this.productsOut = av_pr_br;
-      this.productsOutSubject.next(this.productsOut)
-      // console.log(this.products_OUT);
+      // console.log(this.productsOut);
 
-      // A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A
-      // A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A
-
-
-      for (let pf of productsFilters) {
-        if (pf.value == CATEGORY.AVAILABLE) {
-          for (let f of pf.filters) {
-
-            let pr_br = this.pricesProducts.filter((el: any) => this.brandsProducts.includes(el));
-            let av = pr_br.filter((prod: any) => f.name === prod.available);
-            f.count = av.length;
-            // console.log(av);
-          }
-        }
-      }
-
-
-      for (let pf of productsFilters) {
-        if (pf.value == CATEGORY.PRICE) {
-          for (let f of pf.filters) {
-            let av_br = this.availablesProducts.filter((el: any) => this.brandsProducts.includes(el));
-            let pr = av_br.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
-            f.count = pr.length;
-            // console.log(pr);
-          }
-        }
-      }
-
-
-      for (let pf of productsFilters) {
-        if (pf.value == CATEGORY.BRAND) {
-          for (let f of pf.filters) {
-            let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
-            let br = av_pr.filter((prod: any) => f.name === prod.brand);
-            f.count = br.length;
-            // console.log(br);
-          }
-        }
-      }
-
-
-
+      this.productsCountersService(productsFilters);
+      this.productsSortersService();
+      // ---------------------------------------------------------------------------------------
+      // -----------------   P   R   O   D   U   C   T   ---   O   U   T   ---------------------
+      // -----------------   P   R   O   D   U   C   T   ---   O   U   T   ---------------------
+      // -----------------   P   R   O   D   U   C   T   ---   O   U   T   ---------------------
+      // ---------------------------------------------------------------------------------------
+      this.productsOutSubject.next(this.productsOut);
+      // console.log(this.productsOut);
     });
   }
 
-  // ============================================================================== S O R T E R
-  // ============================================================================== S O R T E R
-  // ============================================================================== S O R T E R
+  // ===================================================================  C  O  U  N  T  I  N  G
+  productsCountersService(productsFilters: Array<ProductFilter>) {
+    // A V A I L A B L E S  -  C O U N T  ----------------------------------------------------
+    for (let pf of productsFilters) {
+      if (pf.value == CATEGORY.AVAILABLE) {
+        for (let f of pf.filters) {
+          let pr_br = this.pricesProducts.filter((el: any) => this.brandsProducts.includes(el));
+          let av = pr_br.filter((prod: any) => f.name === prod.available);
+          f.count = av.length;
+        }
+      }
+    }
+
+    // P R I C E S -  C O U N T  -------------------------------------------------------------
+    for (let pf of productsFilters) {
+      if (pf.value == CATEGORY.PRICE) {
+        for (let f of pf.filters) {
+          let av_br = this.availablesProducts.filter((el: any) => this.brandsProducts.includes(el));
+          let pr = av_br.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
+          f.count = pr.length;
+        }
+      }
+    }
+
+    // B R A N D S  -  C O U N T  -------------------------------------------------------------
+    for (let pf of productsFilters) {
+      if (pf.value == CATEGORY.BRAND) {
+        for (let f of pf.filters) {
+          let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
+          let br = av_pr.filter((prod: any) => f.name === prod.brand);
+          f.count = br.length;
+        }
+      }
+    }
+  }
+
+  // ====================================================================  S O R T E R S  -  S E L E C T
+  // ====================================================================  S O R T E R S  -  S E L E C T
+  // ====================================================================  S O R T E R S  -  S E L E C T
   public currentSorter: string = this.getCurrentSorterFromLS();
   private currentSorterSubject: BehaviorSubject<string> = new BehaviorSubject(this.currentSorter);
 
@@ -207,7 +179,7 @@ export class ProductFilterService {
   private setCurrentSorterToLS(): void {
     localStorage.setItem('cs-ls', this.currentSorter);
     this.currentSorterSubject.next(this.currentSorter);
-    // this.productsSortersService();
+    this.productsSortersService();
   }
 
   private getCurrentSorterFromLS(): string {
@@ -215,72 +187,41 @@ export class ProductFilterService {
     return psJson ? psJson : "";
   }
 
+  // ======================================================================  S  O  R  T  I  N  G
   productsSortersService() {
-    // switch (this.productsSorters) {
-    //   case SORTER_SELECT.BEST_SOLD: this.sort_bestSold();
-    //     break;
-    //   case SORTER_SELECT.NAME: this.sort_name();
-    //     break;
-    //   case SORTER_SELECT.LOW_TO_HIGH: this.sort_lowToHigh();
-    //     break;
-    //   case SORTER_SELECT.HIGH_TO_LOW: this.sort_highToLow();
-    //     break;
-    //   default: this.sort_bestSold();
-    // }
-    // console.log(this.currentSorter);
-    // console.log(this.products_filtered);
+    switch (this.currentSorter) {
+      case SORTERS.BEST_SOLD: this.sort_bestSold();
+        break;
+      case SORTERS.NAME: this.sort_name();
+        break;
+      case SORTERS.LOW_TO_HIGH: this.sort_lowToHigh();
+        break;
+      case SORTERS.HIGH_TO_LOW: this.sort_highToLow();
+        break;
+      default: this.sort_bestSold();
+    }
   }
 
+  sort_bestSold() {
+    this.productsOut = this.productsOut.sort((a: any, b: any) => a.id - b.id);
+  }
 
+  sort_name() {
+    this.productsOut = this.productsOut.sort((a, b) => {
+      const nameA = a.brand.toUpperCase();
+      const nameB = b.brand.toUpperCase();
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+      return 0;
+    });
+  }
 
+  sort_lowToHigh() {
+    this.productsOut = this.productsOut.sort((a, b) => a.price - b.price);
+  }
 
-  // ============================================================================== S O R T E R
-  // ============================================================================== S O R T E R
-  // ============================================================================== S O R T E R
-
-
-  // sort_bestSold() {
-  //   this.products_filtered = this.products_filtered.sort((a: any, b: any) => a.id - b.id);
-  // }
-
-  // sort_name() {
-  //   this.products_filtered = this.products_filtered.sort((a, b) => {
-  //     const nameA = a.brand.toUpperCase();
-  //     const nameB = b.brand.toUpperCase();
-  //     if (nameA < nameB) return -1;
-  //     if (nameA > nameB) return 1;
-  //     return 0;
-  //   });
-  // }
-
-  // sort_lowToHigh() {
-  //   this.products_filtered = this.products_filtered.sort((a, b) => a.price - b.price);
-  // }
-
-  // sort_highToLow() {
-  //   this.products_filtered = this.products_filtered.sort((a, b) => b.price - a.price);
-  // }
-
-  // filt() {
-  // this.productsCounter.stock_count = this.products_filtered.filter((item: any) => item.available === CATEGORY.STOCK);
-  // this.productsCounter.deposit_count = this.products_filtered.filter((item: any) => item.available === CATEGORY.DEPOSIT);
-
-  // this.productsCounter.under1000_count = this.products_filtered.filter((item: any) => item.price >= 0 && item.price < 1000);
-  // this.productsCounter.under2000_count = this.products_filtered.filter((item: any) => item.price >= 1000 && item.price < 2000);
-  // this.productsCounter.under3000_count = this.products_filtered.filter((item: any) => item.price >= 2000 && item.price < 3000);
-  // this.productsCounter.under4000_count = this.products_filtered.filter((item: any) => item.price >= 3000 && item.price < 4000);
-  // this.productsCounter.over4000_count = this.products_filtered.filter((item: any) => item.price >= 4000 && item.price < 1000000);
-
-
-  // console.log(this.productsCounter.stock_count);
-  // console.log(this.productsCounter.deposit_count);
-
-  // console.log(this.productsCounter.under1000_count);
-  // console.log(this.productsCounter.under2000_count);
-  // console.log(this.productsCounter.under3000_count);
-  // console.log(this.productsCounter.under4000_count);
-  // console.log(this.productsCounter.over4000_count);
-  // console.log("--------------------------");
-  // }
+  sort_highToLow() {
+    this.productsOut = this.productsOut.sort((a, b) => b.price - a.price);
+  }
 
 }
