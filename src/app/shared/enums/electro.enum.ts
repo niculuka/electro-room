@@ -23,7 +23,8 @@ export enum SORTERS{
 }
 
 export enum CATEGORY {
-    CATEGORY = "CATEGORY",    
+    CATEGORY = "CATEGORY",
+    SUBCATEGORY = "SUBCATEGORY", 
 
     // B A D G E -----------------------------------------
     TOP_FAVORITE = "TOP_FAVORITE",

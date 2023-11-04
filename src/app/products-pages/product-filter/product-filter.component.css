@@ -1,18 +1,11 @@
 /*  filters -------------------------------------------- */
 .filters-lap {
-    width: 290px;
+    width: 260px;
     height: 100%;
     box-sizing: border-box;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: white;
     /* border: 1px solid black; */
-}
-
-.available,
-.price,
-.brand,
-.category {
-    margin-bottom: 24px;
 }
 
 .filters-lap h3 {

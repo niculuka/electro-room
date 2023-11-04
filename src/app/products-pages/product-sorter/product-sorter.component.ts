@@ -12,6 +12,7 @@ import { ProductFilterService } from 'src/app/shared/services/product-filter.ser
 export class ProductSorterComponent implements OnDestroy {
 
   @Input() currentCategory: string = "";
+  totalFoundProducts: number = 0;
 
   productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;
 
@@ -19,6 +20,7 @@ export class ProductSorterComponent implements OnDestroy {
   currentOption: string = this.defaultOption;
   productsSorters: Array<ProductSorter> = SORTERS_OPTIONS;
 
+  private sub0: any;
   private sub1: any;
   private sub2: any;
 
@@ -32,6 +34,9 @@ export class ProductSorterComponent implements OnDestroy {
       if (data || data.length > 0) this.currentOption = data;
       else this.currentOption = this.defaultOption;
     });
+    this.sub0 = this.productFilterService.getProductsOutObservable().subscribe(data => {
+      if(data.length) this.totalFoundProducts = data.length;
+    }); 
   }
 
   // -------------------------------------------------------------- L A B E L S - F I L T E R S
