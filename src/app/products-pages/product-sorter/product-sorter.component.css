@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
     /* border: 1px solid black; */
 }
 
@@ -46,6 +46,7 @@
     align-items: center;
     flex-wrap: wrap;
     cursor: pointer;
+    font-size: 12px;
     padding-left: 6px;
     color: white;
     background: rgb(220, 20, 110);
@@ -55,9 +56,10 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
+    font-size: 16px;
+    font-weight: bold;
     padding: 0;
-    font-size: 18px;
 }
 
 .filters h4 {
@@ -75,18 +77,18 @@
 
 
 /* category-select filter --------------------------------------------- */
-.categorySelect {
+.category-select {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 10px;
 }
 
-.categorySelect label {
+.category-select label {
     font-size: 14px;
 }
 
-.categorySelect select {
+.category-select select {
     font-size: 14px;
     margin-left: 10px;
     background: white;

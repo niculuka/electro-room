@@ -43,7 +43,7 @@ export class ProductSorterComponent implements OnDestroy {
     });
   }
 
-  // -------------------------------------------------------------- L A B E L S - F I L T E R S
+  // --------------------------------------------------------- S E L E C T E D - F I L T E R S
   activeFiltersArray() {
     this.activeFilters = [];
     this.productsFilters
