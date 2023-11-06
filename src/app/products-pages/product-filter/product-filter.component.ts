@@ -22,7 +22,14 @@ export class ProductFilterComponent implements OnDestroy {
       // console.log(this.productsFilters);
     });
     this.productFilterService.changeFilterService(this.productsFilters);
-  }  
+  }
+
+  isAnyFilterChecked() {
+    for (let pf of this.productsFilters) {
+      let aaa: any = pf.filters.find((item: any) => item.isChecked === true);
+      if (aaa) return aaa;
+    }
+  }
 
   changeFilters($event: any) {
     this.productsFilters

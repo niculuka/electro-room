@@ -1,49 +1,22 @@
 <app-breadcrumb></app-breadcrumb>
-<div class="container-lap">
-    <div class="column-lap">
 
+<div class="container-categ">
+    <div class="categ">
+
+        <!-- *ngIf="notFoundProducts" -->
         <div style="width: 100%" *ngIf="notFoundProducts">
-            <h1>NOT FOUND PRODUCTS</h1>
+            <h2>NOT FOUND PRODUCTS</h2>
         </div>
 
-        <div class="row-lap" *ngIf="!notFoundProducts">
-            <!-- f i l t e r s ==================================================================================== -->
-            <app-product-filter>
-            </app-product-filter>
+        <div class="row-categ" *ngIf="!notFoundProducts">
 
-            <!-- p r o d u c t s ==================================================================================== -->
-            <div class="products">
+            <app-product-filter></app-product-filter>
 
-                <!-- s o r t i n g ===================================================================================-->
-                <app-product-sorter [currentCategory]="currentCategory">
-                </app-product-sorter>
+            <div class="col-categ">
 
-                <!-- products cards -------------------------------------------------------------------------------- -->
-                <div class="cards-container">
-                    <div class="card" *ngFor="let prod of productsOut;">
+                <app-product-sorter [currentCategory]="currentCategory"></app-product-sorter>
 
-                        <mat-icon class="favorite_boder" *ngIf="!prod.favorite" (click)="handleFavorite(prod)">
-                            favorite_border
-                        </mat-icon>
-                        <mat-icon class="favorite" *ngIf="prod.favorite" (click)="handleFavorite(prod)">favorite
-                        </mat-icon>
-
-                        <a [routerLink]="prod.linkName">
-                            <img [src]="prod.image" [alt]="prod.image" />
-                            <span style="background: rgb(0, 154, 230)">
-                                {{prod.badge === "TOP_FAVORITE" ? "Top Favorit" : ""}}
-                            </span>
-                            <span style="background: rgb(220, 20, 110)">
-                                {{prod.badge === "SUPER_PRICE" ? "Super Pret" : ""}}
-                            </span>
-                            <h4><strong>{{prod.description}}</strong></h4>
-                        </a>
-                        <p class="avail stock" *ngIf="prod.available==='STOCK'">in stoc</p>
-                        <p class="avail deposit" *ngIf="prod.available==='DEPOSIT'">in depozitul central</p>
-                        <p class="val"><strong>{{prod.price}} Lei</strong></p>
-                        <button (click)="addToCart(prod)">Adauga in cos</button>
-                    </div>
-                </div>
+                <app-product-display></app-product-display>
 
             </div>
 

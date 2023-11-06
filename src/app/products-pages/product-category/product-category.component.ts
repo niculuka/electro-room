@@ -4,7 +4,6 @@ import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
-import { CartService } from 'src/app/shared/services/cart.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -17,8 +16,6 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   protected products: Array<Product> = [];
-  product: Product = new Product();
-  productsOut: Array<Product> = [];
 
   currentDepartment: string = "";
   currentType: string = "";
@@ -26,8 +23,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   customBreadcrumb: Breadcrumb = new Breadcrumb();
   notFoundProducts: boolean = false;
-  
-  private sub0: any;
+
   private sub1: any;
   private sub2: any;
   private sub3: any;
@@ -36,15 +32,10 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
-    private cartService: CartService,
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
     private productFilterService: ProductFilterService,
-  ) {
-    this.sub0 = this.productFilterService.getProductsOutObservable().subscribe(data => {
-      if(data.length) this.productsOut = data;
-    });    
-  }
+  ) { }
 
   ngOnInit(): void {
     this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
@@ -75,18 +66,6 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     });
   }
 
-  getFavoritesProducts(data: any) {
-    this.favoriteService.getFavoritesObservable().subscribe(wish => {
-      for (let item of wish.items) {
-        for (let product of data) {
-          if (product.name === item.productName) {
-            product.favorite = true;
-          }
-        }
-      }
-    });
-  }
-
   createBreadcrumb() {
     this.customBreadcrumb = {
       customDepartment: this.currentDepartment,
@@ -97,43 +76,10 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
-  createProductItem(item: Product) {
-    this.product.id = item.id;
-    this.product.name = item.name;
-    this.product.linkName = item.linkName;
-    this.product.description = item.description;
-    this.product.brand = item.brand;
-    this.product.subcategory = item.subcategory;
-    this.product.image = item.image;
-    this.product.price = item.price;
-    this.product.favorite = item.favorite;
-  }
-
-  addToCart(item: Product) {
-    this.createProductItem(item);
-    this.cartService.addToCartService(this.product);
-    this.product = new Product();
-  }
-
-  handleFavorite(item: Product) {
-    item.favorite = !item.favorite;
-    // console.log(item);
-    this.createProductItem(item);
-
-    if (item.favorite) {
-      this.favoriteService.addToFavoritesService(this.product);
-    }
-    else {
-      this.favoriteService.removeFromFavoritesService(this.product.name)
-    }
-    this.product = new Product();
-  }
-
   ngOnDestroy(): void {
-    this.sub0?.unsubscribe();
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
-    this.sub3?.unsubscribe();    
+    this.sub3?.unsubscribe();
   }
 
 }

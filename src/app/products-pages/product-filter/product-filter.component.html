@@ -1,17 +1,24 @@
-<div class="filters-lap">
-    <button style="background: pink;" (click)="clearProductsFilters()">Sterge toate filtrele</button>
+<div class="col-filters">
 
-    <div class="available">
-        <div *ngFor="let pf of productsFilters">
+    <div class="filters-module" *ngIf="isAnyFilterChecked()">
 
-            <h3><strong>{{pf.name}}</strong></h3>
-            <div *ngFor="let cf of pf.filters" (change)="changeFilters($event)">
-                <div class="filter-group" *ngIf="cf.count">
-                    <input type="checkbox" [id]="cf.id" [value]="cf.value" [checked]="cf.isChecked">
-                    <label [for]="cf.id"> {{cf.labelName}} ({{cf.count}})</label>
-                </div>                
-            </div>
-            
-        </div>
+        <label (click)="clearProductsFilters()">Sterge toate filtrele
+            <mat-icon>close</mat-icon>
+        </label>
+        
     </div>
+
+    <div class="filters-module" *ngFor="let pf of productsFilters">
+
+        <h3><strong>{{pf.name}}</strong></h3>
+
+        <div *ngFor="let cf of pf.filters" (change)="changeFilters($event)">
+            <div class="filters-group" *ngIf="cf.count">
+                <input type="checkbox" [id]="cf.id" [value]="cf.value" [checked]="cf.isChecked">
+                <label [for]="cf.id"> {{cf.labelName}} ({{cf.count}})</label>
+            </div>
+        </div>
+
+    </div>
+
 </div>

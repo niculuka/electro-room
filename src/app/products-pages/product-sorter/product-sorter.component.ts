@@ -15,6 +15,7 @@ export class ProductSorterComponent implements OnDestroy {
   totalFoundProducts: number = 0;
 
   productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;
+  activeFilters: Array<string> = [];
 
   defaultOption: string = SORTERS.BEST_SOLD;
   currentOption: string = this.defaultOption;
@@ -28,33 +29,39 @@ export class ProductSorterComponent implements OnDestroy {
     private productFilterService: ProductFilterService,
   ) {
     this.sub1 = productFilterService.getProductsFiltersObservable().subscribe(data => {
-      if (data.length) this.productsFilters = data;
+      if (data.length) {
+        this.productsFilters = data;
+        this.activeFiltersArray();
+      }
     });
     this.sub2 = this.productFilterService.getCurrentSorterObservable().subscribe(data => {
       if (data || data.length > 0) this.currentOption = data;
       else this.currentOption = this.defaultOption;
     });
     this.sub0 = this.productFilterService.getProductsOutObservable().subscribe(data => {
-      if(data.length) this.totalFoundProducts = data.length;
-    }); 
+      if (data.length) this.totalFoundProducts = data.length;
+    });
   }
 
   // -------------------------------------------------------------- L A B E L S - F I L T E R S
-  closeFilter(cf: any) {
+  activeFiltersArray() {
+    this.activeFilters = [];
     this.productsFilters
       .filter((item: any) => item.filters
         .filter((res: any) => {
-          if (res.id === cf.id) res.isChecked = false;
+          if (res.isChecked === true) this.activeFilters.push(res.labelName);
+        })
+      );
+  }
+
+  closeSelectedFilter(af: any) {
+    this.productsFilters
+      .filter((item: any) => item.filters
+        .filter((res: any) => {
+          if (res.labelName === af) res.isChecked = false;
         })
       );
     this.productFilterService.changeFilterService(this.productsFilters);
-  }
-
-  isFilterChecked() {
-    for (let pf of this.productsFilters) {
-      let aaa: any = pf.filters.find((item: any) => item.isChecked === true);
-      if (aaa) return aaa;
-    }
   }
 
   clearProductsFilters() {
@@ -66,11 +73,12 @@ export class ProductSorterComponent implements OnDestroy {
     this.productFilterService.changeSorterService(this.currentOption);
   }
 
-  clearCurrentSorter() {
-    this.productFilterService.clearCurrentSorterService();
+  resetSorter() {
+    this.productFilterService.resetSorterService();
   }
 
   ngOnDestroy(): void {
+    // this.sub0?.unsubscribe();
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
   }

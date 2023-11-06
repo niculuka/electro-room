@@ -197,7 +197,7 @@ export class ProductFilterService implements OnDestroy {
     this.setCurrentSorterToLS();
   }
 
-  clearCurrentSorterService() {
+  resetSorterService() {
     this.currentSorter = "";
     this.setCurrentSorterToLS();
   }

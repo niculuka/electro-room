@@ -1,29 +1,32 @@
-<div class="products-header">
-    <h1>{{currentCategory}} ({{totalFoundProducts}} {{totalFoundProducts==1 ? 'produs' : 'produse'}})</h1>
+<div class="col-sorters">
+    <div class="categ-count">
+        <h1>{{currentCategory}}</h1>
+        <h2>({{totalFoundProducts}} {{totalFoundProducts==1 ? 'produs' : 'produse'}})</h2>
+    </div>
 
-    <div class="filters">
-        <div class="filterName" *ngIf="isFilterChecked()">
-            <div *ngFor="let pf of productsFilters">
-                <div *ngFor="let cf of pf.filters" (click)="closeFilter(cf)">
-                    <label *ngIf="cf.isChecked"> {{cf.labelName.toLowerCase()}}
-                        <mat-icon>close</mat-icon>
-                    </label>
-                </div>
-            </div>
-            <h4 (click)="clearProductsFilters()">
-                <strong>sterge tot</strong>
-            </h4>
+    <div class="filters" *ngIf="activeFilters.length">
+
+        <div class="active-filters" *ngFor="let af of activeFilters" (click)="closeSelectedFilter(af)">
+            <label> {{af.toLowerCase()}}
+                <mat-icon>close</mat-icon>
+            </label>
         </div>
+
+        <h4 (click)="clearProductsFilters()">
+            <strong>sterge tot</strong>
+        </h4>
+
     </div>
 
     <div class="categorySelect">
+
         <label for="categorySelect">Sorteaza dupa: </label>
         <select name="categorySelect" [(ngModel)]="currentOption" (change)="changeSorter()">
-            <option [value]="ps.value" *ngFor="let ps of productsSorters" >
+            <option [value]="ps.value" *ngFor="let ps of productsSorters">
                 {{ps.name}}
             </option>
         </select>
 
-        <button (click)="clearCurrentSorter()">reset</button>
+        <!-- <button (click)="resetSorter()">reset</button> -->
     </div>
 </div>

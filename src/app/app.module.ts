@@ -78,6 +78,7 @@ import { ProductTypeComponent } from './products-pages/product-type/product-type
 import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
 import { ProductFilterComponent } from './products-pages/product-filter/product-filter.component';
 import { ProductSorterComponent } from './products-pages/product-sorter/product-sorter.component';
+import { ProductDisplayComponent } from './products-pages/product-display/product-display.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { StandardCardsComponent } from './products-pages/standard-cards/standard-cards.component';
 
@@ -91,7 +92,6 @@ import { CarouselGalleryComponent } from './products-pages/carousel-gallery/caro
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
-
 
 
 @NgModule({
@@ -149,7 +149,8 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductTypeComponent,
     ProductCategoryComponent,
     ProductFilterComponent,
-    ProductSorterComponent,  
+    ProductSorterComponent,
+    ProductDisplayComponent,    
     ProductDetailComponent,
     UnderConstructionComponent,
     SearchComponent,
@@ -157,7 +158,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     CarouselGalleryComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,         
+    MegaMenuDesktopComponent,           
   ],
   imports: [
     BrowserModule,
