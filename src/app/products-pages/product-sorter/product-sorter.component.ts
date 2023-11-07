@@ -1,8 +1,10 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { PRODUCTS_FILTERS, SORTERS_OPTIONS } from 'src/app/shared/data/product-filter.data';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogProductsSorterComponent } from 'src/app/dialogs/dialog-products-sorter/dialog-products-sorter.component';
+import { PRODUCTS_FILTERS, SORTERS_OPTIONS } from 'src/app/shared/data/product-category.data';
 import { SORTERS } from 'src/app/shared/enums/electro.enum';
 import { ProductFilter, ProductSorter } from 'src/app/shared/models/product-filter.model';
-import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
+import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 
 @Component({
   selector: 'app-product-sorter',
@@ -26,19 +28,20 @@ export class ProductSorterComponent implements OnDestroy {
   private sub2: any;
 
   constructor(
-    private productFilterService: ProductFilterService,
+    private productCategoryService: ProductCategoryService,
+    public matDialog: MatDialog,
   ) {
-    this.sub1 = productFilterService.getProductsFiltersObservable().subscribe(data => {
+    this.sub1 = productCategoryService.getProductsFiltersObservable().subscribe(data => {
       if (data.length) {
         this.productsFilters = data;
         this.activeFiltersArray();
       }
     });
-    this.sub2 = this.productFilterService.getCurrentSorterObservable().subscribe(data => {
+    this.sub2 = this.productCategoryService.getCurrentSorterObservable().subscribe(data => {
       if (data || data.length > 0) this.currentOption = data;
       else this.currentOption = this.defaultOption;
     });
-    this.sub0 = this.productFilterService.getProductsOutObservable().subscribe(data => {
+    this.sub0 = this.productCategoryService.getProductsOutObservable().subscribe(data => {
       if (data.length) this.totalFoundProducts = data.length;
     });
   }
@@ -61,24 +64,30 @@ export class ProductSorterComponent implements OnDestroy {
           if (res.labelName === af) res.isChecked = false;
         })
       );
-    this.productFilterService.changeFilterService(this.productsFilters);
+    this.productCategoryService.changeFilterService(this.productsFilters);
   }
 
   clearProductsFilters() {
-    this.productFilterService.clearProductsFiltersService();
+    this.productCategoryService.clearProductsFiltersService();
   }
 
   // ---------------------------------------------------------------------------- S O R T E R S
   changeSorter() {
-    this.productFilterService.changeSorterService(this.currentOption);
+    this.productCategoryService.changeSorterService(this.currentOption);
   }
 
   resetSorter() {
-    this.productFilterService.resetSorterService();
+    this.productCategoryService.resetSorterService();
+  }
+
+  // ---------------------------------------------------------------------------- B U T T O N S
+  displaySortersDialog() {
+    this.matDialog.open(DialogProductsSorterComponent, {width: '100%'});
+    
   }
 
   ngOnDestroy(): void {
-    // this.sub0?.unsubscribe();
+    this.sub0?.unsubscribe();
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
   }

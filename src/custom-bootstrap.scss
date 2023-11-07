@@ -1,7 +1,7 @@
 // breadcrumb -----------------------------------------------------------
 .custom-bread-crumb {
     margin: 0;
-    padding: 10px !important;
+    padding: 10px 20px !important;
 }
 
 // main - carousel -----------------------------------------------------------
@@ -35,6 +35,10 @@
 }
 
 @media (max-width: 1020px) {
+    .custom-bread-crumb {
+        padding: 10px !important;
+    }
+
     .carousel-indicators {
         bottom: -16px;
     }

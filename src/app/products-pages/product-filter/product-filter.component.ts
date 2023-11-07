@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-filter.data';
+import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-category.data';
 import { ProductFilter } from 'src/app/shared/models/product-filter.model';
-import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
+import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 
 @Component({
   selector: 'app-product-filter',
@@ -14,14 +14,14 @@ export class ProductFilterComponent implements OnDestroy {
   private sub: any;
 
   constructor(
-    private productFilterService: ProductFilterService,
+    private productCategoryService: ProductCategoryService,
   ) {
     this.refreshProductsFilters();
-    this.sub = productFilterService.getProductsFiltersObservable().subscribe(data => {
+    this.sub = productCategoryService.getProductsFiltersObservable().subscribe(data => {
       if (data.length) this.productsFilters = data;
       // console.log(this.productsFilters);
     });
-    this.productFilterService.changeFilterService(this.productsFilters);
+    this.productCategoryService.changeFilterService(this.productsFilters);
   }
 
   isAnyFilterChecked() {
@@ -38,15 +38,15 @@ export class ProductFilterComponent implements OnDestroy {
           if (res.id == $event.target.id) res.isChecked = $event.target.checked;
         })
       );
-    this.productFilterService.changeFilterService(this.productsFilters);
+    this.productCategoryService.changeFilterService(this.productsFilters);
   }
 
   clearProductsFilters() {
-    this.productFilterService.clearProductsFiltersService();
+    this.productCategoryService.clearProductsFiltersService();
   }
 
   refreshProductsFilters() {
-    this.productFilterService.refreshProductsFiltersService();
+    this.productCategoryService.refreshProductsFiltersService();
   }
 
   ngOnDestroy(): void {

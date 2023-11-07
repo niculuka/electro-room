@@ -10,6 +10,7 @@
 
 .filters-module {
     padding: 12px 20px;
+    border-radius: 4px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: white;    
 }
@@ -70,7 +71,7 @@ h3 {
 }
 
 @media(max-width: 1020px) {
-    /* .col-filters {
-        width: 20%;
-    }   */
+    .col-filters {
+        display: none;
+    }  
 }

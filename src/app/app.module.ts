@@ -25,6 +25,8 @@ import { DialogItemDeleteComponent } from './dialogs/dialog-item-delete/dialog-i
 import { DialogUserDeleteComponent } from './dialogs/dialog-user-delete/dialog-user-delete.component';
 import { DialogTokenDeleteComponent } from './dialogs/dialog-token-delete/dialog-token-delete.component';
 import { DialogProductDeleteComponent } from './dialogs/dialog-product-delete/dialog-product-delete.component';
+import { DialogProductFilterComponent } from './dialogs/dialog-product-filter/dialog-product-filter.component';
+import { DialogProductsSorterComponent } from './dialogs/dialog-products-sorter/dialog-products-sorter.component';
 
 // p a g e s
 import { RegisterComponent } from './guest/register/register.component';
@@ -93,7 +95,6 @@ import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,6 +103,8 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     DialogUserDeleteComponent,
     DialogTokenDeleteComponent,
     DialogProductDeleteComponent,
+    DialogProductFilterComponent,
+    DialogProductsSorterComponent,  
 
     HomeComponent,
     LoginComponent,
@@ -150,7 +153,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductCategoryComponent,
     ProductFilterComponent,
     ProductSorterComponent,
-    ProductDisplayComponent,    
+    ProductDisplayComponent,
     ProductDetailComponent,
     UnderConstructionComponent,
     SearchComponent,
@@ -158,7 +161,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     CarouselGalleryComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,           
+    MegaMenuDesktopComponent,                   
   ],
   imports: [
     BrowserModule,

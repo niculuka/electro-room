@@ -171,7 +171,7 @@
         }
     }
 
-    @media(max-width: 840px) {
+    @media(max-width: 640px) {
         .cards-container {
             display: grid;
             grid: auto / 1fr 1fr;

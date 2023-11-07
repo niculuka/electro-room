@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
-import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
+import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 
 @Component({
   selector: 'app-product-display',
@@ -18,9 +18,9 @@ export class ProductDisplayComponent implements OnDestroy {
   constructor(
     private favoriteService: FavoriteService,
     private cartService: CartService,
-    private productFilterService: ProductFilterService,
+    private productCategoryService: ProductCategoryService,
   ){
-    this.sub0 = this.productFilterService.getProductsOutObservable().subscribe(data => {
+    this.sub0 = this.productCategoryService.getProductsOutObservable().subscribe(data => {
       if(data.length) this.productsOut = data;
     }); 
   }

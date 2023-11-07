@@ -1,0 +1,16 @@
+<div class="category-select">
+
+    <label for="categorySelect">Sorteaza: </label>
+    <select name="categorySelect" [(ngModel)]="currentOption" (change)="changeSorter()">
+        <option [value]="ps.value" *ngFor="let ps of productsSorters">
+            {{ps.name}}
+        </option>
+    </select>
+
+    <div class="buttons">
+        <button class="btn-delete" mat-dialog-close="true" cdkFocusInitial>Ok</button>
+    </div>
+
+    <!-- <button (click)="resetSorter()">reset</button> -->
+
+</div>

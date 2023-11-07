@@ -1,4 +1,5 @@
 <div class="col-sorters">
+
     <div class="categ-count">
         <h1>{{currentCategory}}</h1>
         <h2>({{totalFoundProducts}} {{totalFoundProducts==1 ? 'produs' : 'produse'}})</h2>
@@ -28,5 +29,18 @@
         </select>
 
         <!-- <button (click)="resetSorter()">reset</button> -->
+
     </div>
+
+    <div class="row-buttons">
+        <button>
+            <mat-icon>filter_list</mat-icon>
+            Filtreaza
+        </button>
+        <button (click)="displaySortersDialog()">
+            <mat-icon>sort</mat-icon>
+            Sorteaza
+        </button>
+    </div>
+
 </div>

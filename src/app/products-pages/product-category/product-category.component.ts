@@ -5,7 +5,7 @@ import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
-import { ProductFilterService } from 'src/app/shared/services/product-filter.service';
+import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
-    private productFilterService: ProductFilterService,
+    private productCategoryService: ProductCategoryService,
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
           this.sub3 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
             if (data.length) {
               this.products = data;
-              this.productFilterService.productsFiltersService(this.products);
+              this.productCategoryService.productsFiltersService(this.products);
               this.notFoundProducts = false;
             }
             else {
@@ -58,7 +58,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
         } else {
           this.sub3 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
             this.products = data;
-            this.productFilterService.productsFiltersService(this.products);
+            this.productCategoryService.productsFiltersService(this.products);
           });
         }
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;

@@ -7,7 +7,7 @@ import { Product } from '../models/product.model';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductFilterService implements OnDestroy {
+export class ProductCategoryService implements OnDestroy {
   private sub: any;
   // =========================================================================  F I L T E R S  -  S E L E C T
   // =========================================================================  F I L T E R S  -  S E L E C T
