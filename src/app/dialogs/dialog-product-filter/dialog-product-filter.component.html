@@ -1,1 +1,21 @@
-<p>dialog-product-filter works!</p>
+<div class="col-filters">
+
+    <div class="filters-module" *ngFor="let pf of productsFilters">
+
+        <h3><strong>{{pf.name}}</strong></h3>
+
+        <div *ngFor="let cf of pf.filters">
+            <div class="filters-group" *ngIf="cf.count">
+                <input type="checkbox" [id]="cf.id" [value]="cf.value" [checked]="cf.isChecked">
+                <label [for]="cf.id"> {{cf.labelName}} ({{cf.count}})</label>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+        <button class="btn-ok" mat-dialog-close="true">Ok</button>
+        <button class="btn-delete" mat-dialog-close="false">Sterge tot</button>
+    </div>
+
+</div>

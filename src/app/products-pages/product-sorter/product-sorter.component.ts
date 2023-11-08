@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogProductFilterComponent } from 'src/app/dialogs/dialog-product-filter/dialog-product-filter.component';
 import { DialogProductsSorterComponent } from 'src/app/dialogs/dialog-products-sorter/dialog-products-sorter.component';
 import { PRODUCTS_FILTERS, SORTERS_OPTIONS } from 'src/app/shared/data/product-category.data';
 import { SORTERS } from 'src/app/shared/enums/electro.enum';
@@ -81,9 +82,18 @@ export class ProductSorterComponent implements OnDestroy {
   }
 
   // ---------------------------------------------------------------------------- B U T T O N S
+  displayFiltersDialog() {
+    const dialogFilter = this.matDialog.open(DialogProductFilterComponent, { width: '100%' });
+    dialogFilter.afterClosed().subscribe(res => {
+      if (res === "false") this.clearProductsFilters();
+    });
+  }
+
   displaySortersDialog() {
-    this.matDialog.open(DialogProductsSorterComponent, {width: '100%'});
-    
+    const dialogSorter = this.matDialog.open(DialogProductsSorterComponent, { width: '100%' });
+    dialogSorter.afterClosed().subscribe(res =>
+      this.productCategoryService.changeSorterService(res.data)
+    )
   }
 
   ngOnDestroy(): void {

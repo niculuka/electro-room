@@ -13,25 +13,37 @@
     width: 90%;
     font-size: 16px;
     margin-top: 10px;
-    padding: 10px; 
+    padding: 10px;
     background: white;
-   
+
 }
 
 .buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 90%;
     margin-top: 30px;
 }
 
-.btn-delete {
-    width: 100%;
-    font-size: 20px;
-    padding: 16px 30px;
-    color: white;
-    border: none;
+.btn-ok {
+    font-size: 18px;
+    padding: 10px 40px;
+    border: 2px solid rgb(79, 190, 4);
     border-radius: 4px;
-    background: rgb(79, 190, 4);
+    background: none;
+}
+
+@media(max-width: 550px) {
+    .category-select label {
+        font-size: 18px;
+    }
+
+    .category-select select {
+        font-size: 14px;
+    }
+
+    .btn-ok {
+        font-size: 16px;
+        padding: 8px 32px;
+    }
 }
