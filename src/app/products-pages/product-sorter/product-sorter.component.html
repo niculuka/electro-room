@@ -25,7 +25,7 @@
     <div class="sorters">
 
         <div class="category-select">
-            <label for="categorySelect">Sorteaza dupa: </label>
+            <label for="categorySelect">Ordoneaza: </label>
             <select name="categorySelect" [(ngModel)]="currentOption" (change)="changeSorter()">
                 <option [value]="ps.value" *ngFor="let ps of productsSorters">
                     {{ps.name}}
@@ -34,10 +34,11 @@
         </div>
 
         <div class="grid-list">
-            <button class="btn-grid" [ngClass]="{'active' : displayType==='grid'}" (click)="getDisplayType('grid')">
+            <label for="">Afisare: </label>
+            <button class="btn-grid" [ngClass]="{'active' : displayType==='grid'}" (click)="changeDisplayType('grid')">
                 <mat-icon>view_module</mat-icon>
             </button>
-            <button class="btn-list" [ngClass]="{'active' : displayType=== 'list'}" (click)="getDisplayType('list')">
+            <button class="btn-list" [ngClass]="{'active' : displayType=== 'list'}" (click)="changeDisplayType('list')">
                 <mat-icon>view_list</mat-icon>
             </button>
         </div>
@@ -59,10 +60,10 @@
         </button>
 
         <div>
-            <button *ngIf="displayType==='list'" (click)="getDisplayType('grid')">
+            <button *ngIf="displayType==='list'" (click)="changeDisplayType('grid')">
                 <mat-icon>view_module</mat-icon>
             </button>
-            <button *ngIf="displayType==='grid'"  (click)="getDisplayType('list')">
+            <button *ngIf="displayType==='grid'"  (click)="changeDisplayType('list')">
                 <mat-icon>view_list</mat-icon>
             </button>
                         

@@ -94,16 +94,16 @@
     align-items: center;
 }
 
-.category-select label {
-    font-size: 14px;
+.category-select label {    
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 .category-select select {
-    font-size: 14px;
-    margin-left: 10px;
+    font-size: 16px;    
+    width: 180px;
+    height: 34px;
     background: white;
-    width: 160px;
-    height: 30px;
 }
 
 .grid-list {
@@ -112,12 +112,17 @@
     align-items: center;
 }
 
+.grid-list label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
 .grid-list button {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 8px;
+    padding: 4px;
     background: none;
 }
 

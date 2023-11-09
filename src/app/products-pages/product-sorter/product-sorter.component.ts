@@ -29,23 +29,27 @@ export class ProductSorterComponent implements OnDestroy {
   private sub0: any;
   private sub1: any;
   private sub2: any;
+  private sub3: any;
 
   constructor(
     private productCategoryService: ProductCategoryService,
     public matDialog: MatDialog,
   ) {
-    this.sub1 = productCategoryService.getProductsFiltersObservable().subscribe(data => {
+    this.sub0 = productCategoryService.getProductsFiltersObservable().subscribe(data => {
       if (data.length) {
         this.productsFilters = data;
         this.activeFiltersArray();
       }
     });
-    this.sub2 = this.productCategoryService.getCurrentSorterObservable().subscribe(data => {
+    this.sub1 = this.productCategoryService.getCurrentSorterObservable().subscribe(data => {
       if (data || data.length > 0) this.currentOption = data;
       else this.currentOption = this.defaultOption;
     });
-    this.sub0 = this.productCategoryService.getProductsOutObservable().subscribe(data => {
+    this.sub2 = this.productCategoryService.getProductsOutObservable().subscribe(data => {
       if (data.length) this.totalFoundProducts = data.length;
+    });
+    this.sub3 = this.productCategoryService.getDisplayTypeObservable().subscribe(data => {
+      if (data || data.length > 0) this.displayType = data;
     });
   }
 
@@ -84,6 +88,11 @@ export class ProductSorterComponent implements OnDestroy {
   }
 
   // ---------------------------------------------------------------------------- B U T T O N S
+  changeDisplayType(displayType: any) {
+    this.displayType = displayType;
+    this.productCategoryService.changeDisplayTypeService(this.displayType);
+  }
+
   displayFiltersDialog() {
     const dialogFilter = this.matDialog.open(DialogProductFilterComponent, { width: '100%' });
     dialogFilter.afterClosed().subscribe(res => {
@@ -96,11 +105,7 @@ export class ProductSorterComponent implements OnDestroy {
     dialogSorter.afterClosed().subscribe(res =>
       this.productCategoryService.changeSorterService(res.data)
     )
-  }
-
-  getDisplayType(displayType: any) {
-    this.displayType = displayType;
-  }
+  }  
 
   ngOnDestroy(): void {
     this.sub0?.unsubscribe();

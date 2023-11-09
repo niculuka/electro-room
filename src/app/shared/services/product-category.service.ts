@@ -254,6 +254,35 @@ export class ProductCategoryService implements OnDestroy {
     this.productsOut = this.productsOut.sort((a, b) => b.price - a.price);
   }
 
+  // =============================================================================  D I S P L A Y  -  T Y P E
+  // =============================================================================  D I S P L A Y  -  T Y P E
+  // =============================================================================  D I S P L A Y  -  T Y P E
+  public displayType: string = this.getDisplayTypeFromLS();
+  private displayTypeSubject: BehaviorSubject<string> = new BehaviorSubject(this.displayType);
+
+  changeDisplayTypeService(displayType: string) {
+    this.displayType = displayType;
+    this.setDisplayTypeToLS();
+  }
+
+  getDisplayTypeObservable(): Observable<string> {
+    return this.displayTypeSubject.asObservable();
+  }
+
+  private setDisplayTypeToLS(): void {
+    localStorage.setItem('displayType-ls', this.displayType);
+    this.displayTypeSubject.next(this.displayType);
+  }
+
+  private getDisplayTypeFromLS(): string {
+    const dtJson = localStorage.getItem('displayType-ls');
+    return dtJson ? dtJson : "";
+  }
+
+
+
+
+  // -----------------------------------------------------------------------------
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
