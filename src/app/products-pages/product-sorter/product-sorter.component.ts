@@ -24,6 +24,8 @@ export class ProductSorterComponent implements OnDestroy {
   currentOption: string = this.defaultOption;
   productsSorters: Array<ProductSorter> = SORTERS_OPTIONS;
 
+  displayType: string = "grid";
+
   private sub0: any;
   private sub1: any;
   private sub2: any;
@@ -94,6 +96,10 @@ export class ProductSorterComponent implements OnDestroy {
     dialogSorter.afterClosed().subscribe(res =>
       this.productCategoryService.changeSorterService(res.data)
     )
+  }
+
+  getDisplayType(displayType: any) {
+    this.displayType = displayType;
   }
 
   ngOnDestroy(): void {

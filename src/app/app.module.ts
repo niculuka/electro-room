@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 
@@ -104,7 +105,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     DialogTokenDeleteComponent,
     DialogProductDeleteComponent,
     DialogProductFilterComponent,
-    DialogProductsSorterComponent,  
+    DialogProductsSorterComponent,
 
     HomeComponent,
     LoginComponent,
@@ -128,7 +129,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     StoreDetailComponent,
     HelpDeskComponent,
     CarouselComponent,
-    CarouselOwlComponent, 
+    CarouselOwlComponent,
     CarouselOwlLptLaptopComponent,
     CarouselOwlDpsComponent,
     FooterComponent,
@@ -161,7 +162,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     CarouselGalleryComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,                   
+    MegaMenuDesktopComponent,
   ],
   imports: [
     BrowserModule,
@@ -184,6 +185,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     MatChipsModule,
     MatBadgeModule,
     MatIconModule,
+    MatButtonToggleModule,
     MatDialogModule,
     NgbModule,
     NgbCarouselModule,

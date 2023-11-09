@@ -1,10 +1,12 @@
 <div class="col-sorters">
-
+    
+    <!-- categ-count ----------------------------------------------------------------- -->
     <div class="categ-count">
         <h1>{{currentCategory}}</h1>
         <h2>({{totalFoundProducts}} {{totalFoundProducts==1 ? 'produs' : 'produse'}})</h2>
     </div>
 
+    <!-- filters ---------------------------------------------------------------------- -->
     <div class="filters" *ngIf="activeFilters.length">
 
         <div class="active-filters" *ngFor="let af of activeFilters" (click)="closeSelectedFilter(af)">
@@ -19,20 +21,34 @@
 
     </div>
 
-    <div class="category-select">
+    <!-- category-select filter ------------------------------------------------------ -->
+    <div class="sorters">
 
-        <label for="categorySelect">Sorteaza dupa: </label>
-        <select name="categorySelect" [(ngModel)]="currentOption" (change)="changeSorter()">
-            <option [value]="ps.value" *ngFor="let ps of productsSorters">
-                {{ps.name}}
-            </option>
-        </select>
+        <div class="category-select">
+            <label for="categorySelect">Sorteaza dupa: </label>
+            <select name="categorySelect" [(ngModel)]="currentOption" (change)="changeSorter()">
+                <option [value]="ps.value" *ngFor="let ps of productsSorters">
+                    {{ps.name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="grid-list">
+            <button class="btn-grid" [ngClass]="{'active' : displayType==='grid'}" (click)="getDisplayType('grid')">
+                <mat-icon>view_module</mat-icon>
+            </button>
+            <button class="btn-list" [ngClass]="{'active' : displayType=== 'list'}" (click)="getDisplayType('list')">
+                <mat-icon>view_list</mat-icon>
+            </button>
+        </div>
 
         <!-- <button (click)="resetSorter()">reset</button> -->
 
     </div>
 
+    <!-- buttons --------------------------------------------------------------------- -->
     <div class="row-buttons">
+
         <button (click)="displayFiltersDialog()">
             <mat-icon>filter_list</mat-icon>
             Filtreaza
@@ -41,6 +57,16 @@
             <mat-icon>sort</mat-icon>
             Sorteaza
         </button>
+
+        <div>
+            <button *ngIf="displayType==='list'" (click)="getDisplayType('grid')">
+                <mat-icon>view_module</mat-icon>
+            </button>
+            <button *ngIf="displayType==='grid'"  (click)="getDisplayType('list')">
+                <mat-icon>view_list</mat-icon>
+            </button>
+                        
+        </div>
     </div>
 
 </div>
