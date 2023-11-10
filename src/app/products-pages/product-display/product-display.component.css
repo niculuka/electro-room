@@ -8,12 +8,11 @@
 
     .card {
         position: relative;
-        padding: 14px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        text-align: center;
-        background: white;
         box-sizing: border-box;
+        padding: 14px;
+        text-align: center;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        background: white;
         /* border: 1px solid black;*/
     }
 
@@ -21,7 +20,7 @@
         box-shadow: 0 18px 26px 0 rgba(0, 0, 0, 0.564);
     }
 
-    .card mat-icon {
+    mat-icon {
         position: absolute;
         display: flex;
         flex-direction: row;
@@ -37,7 +36,7 @@
         /* border: 2px solid black; */
     }
 
-    .card mat-icon:hover {
+    mat-icon:hover {
         color: red;
         font-size: 26px;
     }
@@ -50,28 +49,16 @@
         color: red;
     }
 
-    img {
-        width: 100%;
-    }
-
-    .card h4 {
-        font-size: 15px;
-        line-height: 20px;
-        height: 60px;
-        text-align: left;
-        overflow-y: hidden;
+    .card a {
+        text-decoration: none;
+        color: black;
         /* border: 1px solid black; */
     }
 
-    a {
-        text-decoration: none;
-        color: black;
-    }
-
-    .card span {
+    .card a span {
         position: absolute;
         left: 0;
-        top: 0;
+        top: 15px;
         width: 80px;
         border-radius: 0 4px 4px 0;
         font-size: 12px;
@@ -80,37 +67,55 @@
         text-align: center;
     }
 
-    .avail {
-        font-size: 14px;
-        line-height: 14px;
-        text-align: left;
+    .card a img {
+        width: 100%;
     }
 
-    .avail.stock {
+    .card a p {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        height: 62px;
+        margin: 0;
+        text-align: left;
+        overflow-y: hidden;
+        /* border: 1px solid black; */
+    }
+
+    .stock,
+    .deposit {
+        font-size: 15px;
+        text-align: left;
+        margin-top: 10px;
+        /* border: 1px solid black; */
+    }
+
+    .stock {
         color: rgb(0, 184, 0);
     }
 
-    .avail.deposit {
-        color: grey;
+    .deposit {
+        color: rgb(0, 0, 0, 0.5);
     }
 
-    .val {
-        color: rgb(223, 33, 119);
+    .card h1 {
         font-size: 24px;
-        margin: 20px 0;
+        margin: 10px 0;
         text-align: left;
+        color: rgb(223, 33, 119);
+        /* border: 1px solid black; */
     }
 
     .card button {
         width: 100%;
-        padding: 10px 20px;
+        padding: 10px;
         font-size: 16px;
         font-weight: 600;
         border-radius: 4px;
-        color: white;
-        border: none;
         cursor: pointer;
+        border: none;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        color: white;
         background: rgb(223, 33, 119);
     }
 
@@ -118,56 +123,24 @@
         background: rgb(182, 27, 97);
     }
 
-    @media(max-width: 1530px) {
-        .card h4 {
-            font-size: 14px;
-            line-height: 18px;
-            height: 56px;
-        }
-
-        .avail {
-            font-size: 13px;
-            line-height: 13px;
-        }
-
-        .val {
-            font-size: 22px;
-            margin: 14px 0;
-        }
-    }
-
     @media(max-width: 1260px) {
         .cards-container {
             display: grid;
             grid: auto / 1fr 1fr 1fr;
         }
-
-        .card h4 {
-            font-size: 14px;
-            line-height: 18px;
-            height: 56px;
-        }
     }
 
-    @media(max-width: 1020px) {
-        .card h4 {
+    @media(max-width: 766px) {
+        .card a p {
             font-size: 14px;
             line-height: 18px;
             height: 56px;
+            /* border: 1px solid black; */
         }
 
-        .avail {
-            font-size: 13px;
-            line-height: 13px;
-        }
-
-        .val {
+        .card h1 {
             font-size: 22px;
-            margin: 14px 0;
-        }
-
-        .card button {
-            font-size: 14px;
+            margin: 0 0 4px 0;
         }
     }
 
@@ -176,25 +149,14 @@
             display: grid;
             grid: auto / 1fr 1fr;
         }
+    }
 
-        .card h4 {
-            font-size: 12px;
-            line-height: 14px;
-            height: 44px;
-        }
-
-        .avail {
-            font-size: 12px;
-            line-height: 12px;
-        }
-
-        .val {
+    @media(max-width: 400px) {
+        .card h1 {
             font-size: 20px;
-            margin: 10px 0;
         }
 
         .card button {
-            font-size: 12px;
-            padding: 6px;
+         font-size: 14px;
         }
     }

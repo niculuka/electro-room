@@ -83,7 +83,7 @@ import { ProductFilterComponent } from './products-pages/product-filter/product-
 import { ProductSorterComponent } from './products-pages/product-sorter/product-sorter.component';
 import { ProductDisplayComponent } from './products-pages/product-display/product-display.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
-import { StandardCardsComponent } from './products-pages/standard-cards/standard-cards.component';
+import { CardTitleComponent } from './products-pages/card-title/card-title.component';
 
 // others
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
@@ -149,7 +149,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     AdminDemoUserComponent,
 
     DepartmentComponent,
-    StandardCardsComponent,
+    CardTitleComponent,
     ProductTypeComponent,
     ProductCategoryComponent,
     ProductFilterComponent,

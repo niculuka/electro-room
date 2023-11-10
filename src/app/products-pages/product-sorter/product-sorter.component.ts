@@ -111,6 +111,7 @@ export class ProductSorterComponent implements OnDestroy {
     this.sub0?.unsubscribe();
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
+    this.sub3?.unsubscribe();
   }
 
 }

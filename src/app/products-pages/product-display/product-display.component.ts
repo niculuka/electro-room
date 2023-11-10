@@ -10,19 +10,26 @@ import { ProductCategoryService } from 'src/app/shared/services/product-category
   styleUrls: ['./product-display.component.css']
 })
 export class ProductDisplayComponent implements OnDestroy {
-
-  private sub0: any;
+  
   product: Product = new Product();
   productsOut: Array<Product> = [];
+
+  displayType?: string;
+
+  private sub0: any;
+  private sub1: any;
 
   constructor(
     private favoriteService: FavoriteService,
     private cartService: CartService,
     private productCategoryService: ProductCategoryService,
   ){
-    this.sub0 = this.productCategoryService.getProductsOutObservable().subscribe(data => {
+    this.sub0 = this.productCategoryService.getDisplayTypeObservable().subscribe(data => {
+      if (data || data.length > 0) this.displayType = data;
+    });
+    this.sub1 = this.productCategoryService.getProductsOutObservable().subscribe(data => {
       if(data.length) this.productsOut = data;
-    }); 
+    });     
   }
 
   createProductItem(item: Product) {
@@ -73,5 +80,6 @@ export class ProductDisplayComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.sub0?.unsubscribe();
+    this.sub1?.unsubscribe();
   }
 }

@@ -1,25 +1,33 @@
 <div class="cards-container">
-    <div class="card" *ngFor="let prod of productsOut;">
+    <div class="card" *ngFor="let prod of productsOut">
 
         <mat-icon class="favorite_boder" *ngIf="!prod.favorite" (click)="handleFavorite(prod)">
             favorite_border
         </mat-icon>
-        <mat-icon class="favorite" *ngIf="prod.favorite" (click)="handleFavorite(prod)">favorite
+        <mat-icon class="favorite" *ngIf="prod.favorite" (click)="handleFavorite(prod)">
+            favorite
         </mat-icon>
 
         <a [routerLink]="prod.linkName">
-            <img [src]="prod.image" [alt]="prod.image" />
+
             <span style="background: rgb(0, 154, 230)">
                 {{prod.badge === "TOP_FAVORITE" ? "Top Favorit" : ""}}
             </span>
             <span style="background: rgb(220, 20, 110)">
                 {{prod.badge === "SUPER_PRICE" ? "Super Pret" : ""}}
             </span>
-            <h4><strong>{{prod.description}}</strong></h4>
+
+            <img [src]="prod.image" [alt]="prod.image" />
+
+            <p>{{prod.description}}</p>
         </a>
-        <p class="avail stock" *ngIf="prod.available==='STOCK'">in stoc</p>
-        <p class="avail deposit" *ngIf="prod.available==='DEPOSIT'">in depozitul central</p>
-        <p class="val"><strong>{{prod.price}} Lei</strong></p>
+
+        <p class="stock" *ngIf="prod.available==='STOCK'">in stoc</p>
+        <p class="deposit" *ngIf="prod.available==='DEPOSIT'">in depozit</p>
+        
+        <h1><strong>{{prod.price}} Lei</strong></h1>
+
         <button (click)="addToCart(prod)">Adauga in cos</button>
+
     </div>
 </div>
