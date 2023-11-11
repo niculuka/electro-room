@@ -13,9 +13,10 @@
 
             <div class="col-categ">
 
-                <app-product-sorter [currentCategory]="currentCategory"></app-product-sorter>
+                <app-product-sorter [currentCategory]="currentCategory" [displayType]="displayType">
+                </app-product-sorter>
 
-                <app-product-display></app-product-display>
+                <app-product-display [displayType]="displayType"></app-product-display>
 
             </div>
 

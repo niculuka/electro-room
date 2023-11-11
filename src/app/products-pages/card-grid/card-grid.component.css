@@ -1,0 +1,169 @@
+.cards-container {
+    display: grid;
+    grid: auto / 1fr 1fr 1fr 1fr;
+    margin-top: 12px;
+    gap: 10px;
+    /* border: 1px solid black; */
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
+    /* border: 1px solid black;*/
+}
+
+.card:hover {
+    box-shadow: 0 18px 26px 0 rgba(0, 0, 0, 0.564);
+}
+
+.favorite-compare {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 10px;
+}
+
+mat-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    /* border: 2px solid black; */
+}
+
+mat-icon:hover {
+    color: red;
+    font-size: 26px;
+}
+
+.favorite-black {
+    color: grey;
+}
+
+.favorite-red {
+    color: red;
+}
+
+.card a {
+    text-decoration: none;
+    color: black;
+    /* border: 1px solid black; */
+}
+
+.card a span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    border-radius: 0 4px 4px 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.card a img {
+    width: 100%;
+}
+
+.card a p {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    height: 62px;
+    margin: 0;
+    text-align: left;
+    overflow-y: hidden;
+    /* border: 1px solid black; */
+}
+
+.stock,
+.deposit {
+    font-size: 15px;
+    text-align: left;
+    margin-top: 10px;
+    /* border: 1px solid black; */
+}
+
+.stock {
+    color: rgb(0, 184, 0);
+}
+
+.deposit {
+    color: rgb(0, 0, 0, 0.5);
+}
+
+.card h1 {
+    font-size: 24px;
+    margin: 10px 0;
+    text-align: left;
+    color: rgb(223, 33, 119);
+    /* border: 1px solid black; */
+}
+
+.card button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    color: white;
+    background: rgb(223, 33, 119);
+}
+
+.card button:hover {
+    background: rgb(182, 27, 97);
+}
+
+@media(max-width: 1260px) {
+    .cards-container {
+        display: grid;
+        grid: auto / 1fr 1fr 1fr;
+    }
+}
+
+@media(max-width: 766px) {
+    .card a p {
+        font-size: 14px;
+        line-height: 18px;
+        height: 56px;
+        /* border: 1px solid black; */
+    }
+
+    .card h1 {
+        font-size: 22px;
+        margin: 0 0 4px 0;
+    }
+}
+
+@media(max-width: 550px) {
+    .cards-container {
+        display: grid;
+        grid: auto / 1fr 1fr;
+    }
+}
+
+@media(max-width: 400px) {
+    .card h1 {
+        font-size: 20px;
+    }
+
+    .card button {
+        font-size: 14px;
+    }
+}

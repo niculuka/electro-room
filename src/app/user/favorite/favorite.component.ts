@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Cart } from 'src/app/shared/models/cart.model';
-import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { Product } from 'src/app/shared/models/product.model';
 
 @Component({
   selector: 'app-favorite',
@@ -13,7 +12,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 })
 export class FavoriteComponent {
 
-  favorites!: Cart;
+  favorites!: Array<Product>;
 
   constructor(
     private cartService: CartService,
@@ -27,31 +26,19 @@ export class FavoriteComponent {
   }
 
   isFavoritesEmpty() {
-    return this.favorites.items.length === 0;
+    return this.favorites.length === 0;
   }
 
-  addToCart(cartItem: CartItem) {
-    this.cartService.addToCartService(cartItem.product);
+  addToCart(product: Product) {
+    this.cartService.addToCartService(product);
   }
 
-  removeFromFavorites(cartItem: CartItem) {
-    let name: any = cartItem.product.name;
-    this.favoriteService.removeFromFavoritesService(name);
+  removeFromFavorites(product: Product) {
+    this.favoriteService.removeFromFavoritesService(product);
   }
 
   clearFavorites() {
     this.favoriteService.clearFavoritesService();
-  }
-
-  getProductLinkName(cartItem: CartItem) {
-    this.router.navigate([
-      '/lpt/'
-      + cartItem.product.type.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.category.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.linkName
-    ]);
   }
 
   goBack() {

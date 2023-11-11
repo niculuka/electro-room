@@ -82,6 +82,8 @@ import { ProductCategoryComponent } from './products-pages/product-category/prod
 import { ProductFilterComponent } from './products-pages/product-filter/product-filter.component';
 import { ProductSorterComponent } from './products-pages/product-sorter/product-sorter.component';
 import { ProductDisplayComponent } from './products-pages/product-display/product-display.component';
+import { CardListComponent } from './products-pages/card-list/card-list.component';
+import { CardGridComponent } from './products-pages/card-grid/card-grid.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { CardTitleComponent } from './products-pages/card-title/card-title.component';
 
@@ -95,6 +97,7 @@ import { CarouselGalleryComponent } from './products-pages/carousel-gallery/caro
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
+
 
 @NgModule({
   declarations: [
@@ -155,6 +158,8 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductFilterComponent,
     ProductSorterComponent,
     ProductDisplayComponent,
+    CardListComponent,
+    CardGridComponent,
     ProductDetailComponent,
     UnderConstructionComponent,
     SearchComponent,

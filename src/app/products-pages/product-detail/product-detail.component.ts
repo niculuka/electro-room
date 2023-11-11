@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
@@ -18,9 +18,9 @@ export class ProductDetailComponent implements OnInit {
   product: Product = new Product();
   notFoundProduct: boolean = true;
 
-  currentDepartment: string = "";
-  currentType: string = "";
-  currentCategory: string = "";
+  @Input() currentDepartment: string = "";
+  @Input() currentType: string = "";
+  @Input() currentCategory: string = "";
   currentLinkName: string = "";
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
@@ -38,26 +38,26 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentDepartment = params.get('department') || "";
-      this.currentType = params.get('type') || "";
-      this.currentCategory = params.get('category') || "";
+      // this.currentDepartment = params.get('department') || "";
+      // this.currentType = params.get('type') || "";
+      // this.currentCategory = params.get('category') || "";
       this.currentLinkName = params.get('linkName') || "";
       this.createBreadcrumb();
       this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
         if (data) {
-          let type = data.type.replace(/_/g, "-").toLowerCase();
-          let category = data.category.replace(/_/g, "-").toLowerCase();
-          if (this.currentCategory === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()) {
-            this.currentCategory = category;
-          }
-          if (type === this.currentType && category === this.currentCategory) {
+          // let type = data.type.replace(/_/g, "-").toLowerCase();
+          // let category = data.category.replace(/_/g, "-").toLowerCase();
+          // if (this.currentCategory === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()) {
+          //   this.currentCategory = category;
+          // }
+          // if (type === this.currentType && category === this.currentCategory) {
             this.notFoundProduct = true;
             this.product = data;
             this.productImages = this.product.gallery;
             this.currentImage = this.productImages[0].image;
-          } else {
-            this.notFoundProduct = false;
-          }
+          // } else {
+          //   this.notFoundProduct = false;
+          // }
         } else {
           this.notFoundProduct = false;
         }
@@ -92,8 +92,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToFavorites() {
-    this.createProductItem();
-    this.favoriteService.addToFavoritesService(this.product);
+    // this.createProductItem();
+    // this.favoriteService.addToFavoritesService(this.product);
   }
 
   receiveCurrentImage($event: any) {

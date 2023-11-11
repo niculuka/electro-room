@@ -13,6 +13,7 @@ export class Product {
     description: string = "";
     brand: CATEGORY;
     type: CATEGORY;
+    department: CATEGORY;
     category: CATEGORY;
     subcategory: CATEGORY;
     image: string = "";
@@ -32,6 +33,7 @@ export class Product {
         linkName: string = "",
         description: string = "",
         brand: CATEGORY = CATEGORY.CATEGORY,
+        department: CATEGORY = CATEGORY.CATEGORY,
         type: CATEGORY = CATEGORY.CATEGORY,
         category: CATEGORY = CATEGORY.CATEGORY,
         subcategory: CATEGORY = CATEGORY.CATEGORY,
@@ -52,6 +54,7 @@ export class Product {
         this.description = description;
         this.brand = brand;
         this.type = type;
+        this.department = department;
         this.category = category;
         this.subcategory = subcategory;
         this.image = image;

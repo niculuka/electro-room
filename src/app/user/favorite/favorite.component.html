@@ -14,7 +14,7 @@
         </tr>
         <tr>
           <td colspan="7">
-            <h3>Favorite: {{favorites.items.length}} produse</h3>
+            <h3>Favorite: {{favorites.length}} produse</h3>
           </td>
         </tr>
         <tr>
@@ -24,25 +24,25 @@
 
 
       <tbody>
-        <tr *ngFor="let cartItem of favorites.items; index as ind">
+        <tr *ngFor="let product of favorites; index as ind">
 
           <td>{{ind+1}}</td>
           <td>
-            <a (click)="getProductLinkName(cartItem)">
-              <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
+            <a [routerLink]="'/prod/' + product.linkName">
+              <img [src]="product.image" [alt]="product.name">
             </a>
           </td>
           <td class="name">
-            <strong>{{cartItem.product.description}}</strong>
+            <strong>{{product.description}}</strong>
           </td>
           <td>
-            {{cartItem.price | number: '1.2-2'}} Lei
+            {{product.price | number: '1.2-2'}} Lei
           </td>
           <td class="addToCart">
-            <mat-icon (click)="addToCart(cartItem)">shopping_cart</mat-icon>
+            <mat-icon (click)="addToCart(product)">shopping_cart</mat-icon>
           </td>
           <td>
-            <button class="btn-remove" (click)="removeFromFavorites(cartItem)">
+            <button class="btn-remove" (click)="removeFromFavorites(product)">
               Sterge
             </button>
           </td>
@@ -66,36 +66,36 @@
         </tr>
       </thead>
 
-      <tbody *ngFor="let cartItem of favorites.items; index as ind">
+      <tbody *ngFor="let product of favorites; index as ind">
         <tr class="index">
           <th colspan="2">{{ind+1}}</th>
         </tr>
         <tr>
           <th>Imagine</th>
           <td>
-            <a (click)="getProductLinkName(cartItem)">
-              <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
+            <a [routerLink]="'/prod/' + product.linkName">
+              <img [src]="product.image" [alt]="product.name">
             </a>
           </td>
         </tr>
         <tr>
           <th>Nume</th>
-          <td><strong>{{cartItem.product.name}}</strong></td>
+          <td><strong>{{product.name}}</strong></td>
         </tr>
         <tr>
           <th>Descriere</th>
-          <td>{{cartItem.product.description}}</td>
+          <td>{{product.description}}</td>
         </tr>
         <tr>
           <th>Pret</th>
           <td>
-            {{cartItem.price | number: '1.2-2'}} Lei
+            {{product.price | number: '1.2-2'}} Lei
           </td>
         </tr>
         <tr>
           <th>Sterge</th>
           <td>
-            <button class="btn-remove" (click)="removeFromFavorites(cartItem)">
+            <button class="btn-remove" (click)="removeFromFavorites(product)">
               Sterge
             </button>
           </td>

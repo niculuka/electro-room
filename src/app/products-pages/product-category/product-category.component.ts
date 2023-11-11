@@ -24,9 +24,12 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   customBreadcrumb: Breadcrumb = new Breadcrumb();
   notFoundProducts: boolean = false;
 
+  displayType: string = "grid";
+
   private sub1: any;
   private sub2: any;
   private sub3: any;
+  private sub4: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,7 +38,11 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
     private productCategoryService: ProductCategoryService,
-  ) { }
+  ) {
+    this.sub4 = this.productCategoryService.getDisplayTypeObservable().subscribe(data => {
+      if (data || data.length > 0) this.displayType = data;
+    });
+  }
 
   ngOnInit(): void {
     this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
@@ -80,6 +87,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
     this.sub3?.unsubscribe();
+    this.sub4?.unsubscribe();
   }
 
 }

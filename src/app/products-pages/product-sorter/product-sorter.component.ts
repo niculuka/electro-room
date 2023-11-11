@@ -24,7 +24,7 @@ export class ProductSorterComponent implements OnDestroy {
   currentOption: string = this.defaultOption;
   productsSorters: Array<ProductSorter> = SORTERS_OPTIONS;
 
-  displayType: string = "grid";
+  @Input() displayType: string = "";
 
   private sub0: any;
   private sub1: any;
@@ -47,9 +47,6 @@ export class ProductSorterComponent implements OnDestroy {
     });
     this.sub2 = this.productCategoryService.getProductsOutObservable().subscribe(data => {
       if (data.length) this.totalFoundProducts = data.length;
-    });
-    this.sub3 = this.productCategoryService.getDisplayTypeObservable().subscribe(data => {
-      if (data || data.length > 0) this.displayType = data;
     });
   }
 

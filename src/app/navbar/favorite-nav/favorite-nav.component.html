@@ -2,16 +2,20 @@
 
     <div class="favorite-items">
         <table>
-            <tr *ngFor="let item of favorites.items">
+            <tr *ngFor="let product of favorites">
                 <td>
-                    <img src={{item.product.image}} alt={{item.product.image}} (click)="getProductLinkName(item)">
+                    <a [routerLink]="'/prod/' + product.linkName">
+                        <img src={{product.image}}>
+                    </a>
                 </td>
                 <td class="name">
-                    <span (click)="getProductLinkName(item)">{{item.productName}}</span>
+                    <a [routerLink]="'/prod/' + product.linkName">
+                        <span>{{product.name}}</span>
+                    </a>
                 </td>
-                <td class="price">{{item.price}} Lei</td>
+                <td class="price">{{product.price}} Lei</td>
                 <td>
-                    <mat-icon (click)="removeFromFavorites(item)">close</mat-icon>
+                    <mat-icon (click)="removeFromFavorites(product)">close</mat-icon>
                 </td>
             </tr>
         </table>

@@ -24,7 +24,7 @@ export class NavbarMainComponent {
   userFirstChar: string = "";
 
   cart!: Cart;
-  favorites!: Cart;
+  favorites!: Array<Product>;
   cartQuantity = 0;
   favoriteQuantity = 0;
 
@@ -50,7 +50,6 @@ export class NavbarMainComponent {
     });
     favoriteService.getFavoritesObservable().subscribe(data => {
       this.favorites = data;
-      this.favoriteQuantity = data.totalCount;
     });
 
     this.authService.currentUser.subscribe(
@@ -123,7 +122,7 @@ export class NavbarMainComponent {
   }
 
   isFavoritesEmpty() {
-    return this.favorites.items.length === 0;
+    return this.favorites.length === 0;
   }
 
   // LOGS -------------------------------------------------------------

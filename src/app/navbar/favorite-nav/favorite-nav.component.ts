@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from 'src/app/shared/models/cart.model';
-import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
+import { Product } from 'src/app/shared/models/product.model';
 
 @Component({
   selector: 'favorite-nav',
@@ -10,28 +9,15 @@ import { FavoriteService } from 'src/app/shared/services/favorite.service';
   styleUrls: ['./favorite-nav.component.css']
 })
 export class FavoriteNavComponent {
-  @Input() favorites!: Cart;
-
+  @Input() favorites!: Array<Product>;
 
   constructor(
     private favoriteService: FavoriteService,
     private router: Router,
   ) { }
 
-  getProductLinkName(cartItem: CartItem) {
-    this.router.navigate([
-      '/lpt/'
-      + cartItem.product.type.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.category.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.linkName
-    ]);
-  }
-
-  removeFromFavorites(cartItem: CartItem) {
-    let name: any = cartItem.product.name;
-    this.favoriteService.removeFromFavoritesService(name);
+  removeFromFavorites(product: Product) {
+    this.favoriteService.removeFromFavoritesService(product);
   }
 
 }

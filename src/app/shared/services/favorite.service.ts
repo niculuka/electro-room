@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Cart } from '../models/cart.model';
-import { CartItem } from '../models/cart-item.model';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -9,48 +7,39 @@ import { Product } from '../models/product.model';
 })
 export class FavoriteService {
 
-  public favorites: Cart = this.getFavoritesFromLocalStorage();
-  private favoritesSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.favorites);
-
-  constructor() { }
+  public favorites: Array<Product> = this.getFavoritesFromLocalStorage();
+  private favoritesSubject: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.favorites);
 
   addToFavoritesService(product: Product): void {
-    let favoriteItem = this.favorites.items.find(item => item.product.name === product.name);
-    if (favoriteItem)
-      return;
-    this.favorites.items.push(new CartItem(product));
+    let fav = this.favorites.find(item => item.id === product.id);
+    if (fav) return;
+    this.favorites.push(product);
+    this.favorites = this.favorites.sort((a: any, b: any) => a.id - b.id);
     this.setFavoritesToLocalStorage();
   }
 
-  removeFromFavoritesService(name: string): void {
-    this.favorites.items = this.favorites.items.filter(item => item.product.name != name);
+  removeFromFavoritesService(product: Product): void {
+    this.favorites = this.favorites.filter(item => item.id != product.id);
     this.setFavoritesToLocalStorage();
   }
 
   clearFavoritesService() {
-    this.favorites = new Cart();
+    this.favorites = [];
     this.setFavoritesToLocalStorage();
   }
 
-  getFavoritesObservable(): Observable<Cart> {
+  getFavoritesObservable(): Observable<Array<Product>> {
     return this.favoritesSubject.asObservable();
   }
 
-  getFavorites(): Cart {
-    return this.favoritesSubject.value;
-  }
-
   private setFavoritesToLocalStorage(): void {
-    this.favorites.subtotal = this.favorites.items.reduce((prevSum, currentItem) => prevSum + currentItem.price, 0);
-    this.favorites.totalCount = this.favorites.items.reduce((prevSum, currentItem) => prevSum + currentItem.quantity, 0);
-
     const favJson = JSON.stringify(this.favorites);
     localStorage.setItem('fav-ls', favJson);
     this.favoritesSubject.next(this.favorites);
   }
 
-  private getFavoritesFromLocalStorage(): Cart {
+  private getFavoritesFromLocalStorage(): Array<Product> {
     const favJson = localStorage.getItem('fav-ls');
-    return favJson ? JSON.parse(favJson) : new Cart();
+    return favJson ? JSON.parse(favJson) : [];
   }
 }

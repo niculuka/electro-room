@@ -110,7 +110,7 @@
         <li class="dropdown">
           <a routerLink="/favorites">
             <div class="elements" (click)="refreshFavorites()">
-              <div class="badge" matBadge="{{favoriteQuantity}}" matBadgeColor="accent" matBadgeSize="medium">
+              <div class="badge" matBadge="{{favorites.length}}" matBadgeColor="accent" matBadgeSize="medium">
                 <mat-icon>favorite_border</mat-icon>
               </div>
               <span class="hide">&nbsp; Favorite</span>
