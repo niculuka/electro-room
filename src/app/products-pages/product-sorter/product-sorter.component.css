@@ -127,6 +127,10 @@
     background: none;
 }
 
+.grid-list button:hover {
+    transform: translateY(-2px);
+}
+
 .btn-grid {
     border-radius: 4px 0 0 4px;
 }

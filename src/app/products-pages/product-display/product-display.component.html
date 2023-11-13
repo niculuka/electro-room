@@ -1,2 +1,49 @@
-<app-card-grid *ngIf="displayType==='grid'"></app-card-grid>
-<app-card-list *ngIf="displayType==='list'"></app-card-list>
+<div class="cards-container" [ngStyle]="{'grid-template-columns':displayType==='grid'?'1fr 1fr 1fr 1fr':'1fr'}">
+
+    <div class="card" [ngStyle]="{'flex-direction':displayType==='grid'?'column':'row'}"
+        *ngFor="let product of productsOut">
+
+        <div class="icons">
+            <mat-icon [ngStyle]="{color: product.favorite ? 'rgb(220, 20, 110)' : 'grey'}"
+                (click)="handleFavorites(product)">
+                {{product.favorite ? 'favorite' : 'favorite_border'}}
+            </mat-icon>
+            <mat-icon [ngStyle]="{color: product.compare ? 'rgb(220, 20, 110)' : 'grey'}"
+                (click)="handleCompares(product)">
+                {{product.compare ? 'check_box' : 'check_box_outline_blank'}}
+            </mat-icon>
+        </div>
+
+        <div class="image" [ngStyle]="{'width':displayType==='grid'?'100%':'20%'}">
+            <a [routerLink]="'/prod/' + product.linkName">
+                <img [src]="product.image" />
+            </a>
+        </div>
+
+        <div class="description" [ngStyle]="{'width':displayType==='grid'?'100%':'60%'}">
+            <span [ngStyle]="{'background':product.badge==='TOP_FAVORITE'?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+                {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : "Super Pret"}}
+            </span>
+
+            <a [routerLink]="'/prod/' + product.linkName">
+                <p>{{product.description}}</p>
+            </a>
+
+            <p>{{product.category}}</p>
+            <p>{{product.name}}</p>
+            <p>{{product.linkName}}</p>
+        </div>
+
+        <div class="details" [ngStyle]="{'width':displayType==='grid'?'100%':'20%'}">
+            <p class="stock" *ngIf="product.available==='STOCK'">in stoc</p>
+            <p class="deposit" *ngIf="product.available==='DEPOSIT'">in depozit</p>
+            <h1><strong>{{product.price}} Lei</strong></h1>
+
+            <button (click)="addToCart(product)">Adauga in cos</button>
+        </div>
+
+        
+
+    </div>
+
+</div>

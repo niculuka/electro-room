@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +11,21 @@ export class FavoriteService {
   public favorites: Array<Product> = this.getFavoritesFromLocalStorage();
   private favoritesSubject: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.favorites);
 
+  constructor(
+    private toastrService: ToastrService,
+  ) { }
+
   addToFavoritesService(product: Product): void {
     let fav = this.favorites.find(item => item.id === product.id);
     if (fav) return;
     this.favorites.push(product);
-    this.favorites = this.favorites.sort((a: any, b: any) => a.id - b.id);
+    this.toastrService.success("Produsul a fost adaugat la Favorite")
     this.setFavoritesToLocalStorage();
   }
 
   removeFromFavoritesService(product: Product): void {
     this.favorites = this.favorites.filter(item => item.id != product.id);
+    this.toastrService.warning("Produsul a fost sters din Favorite")
     this.setFavoritesToLocalStorage();
   }
 

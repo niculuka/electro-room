@@ -4,6 +4,7 @@ import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
+import { CompareService } from 'src/app/shared/services/compare.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -26,6 +27,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   displayType: string = "grid";
 
+  private sub0: any;
   private sub1: any;
   private sub2: any;
   private sub3: any;
@@ -36,6 +38,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     private router: Router,
     private productService: ProductService,
     private favoriteService: FavoriteService,
+    private compareService: CompareService,
     private breadcrumbService: BreadcrumbService,
     private productCategoryService: ProductCategoryService,
   ) {
@@ -45,30 +48,32 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
-      this.sub2 = this.activatedRoute.paramMap.subscribe((params) => {
-        this.currentDepartment = params.get('department') || "";
-        this.currentType = params.get('type') || "";
-        this.currentCategory = params.get('category') || "";
-        this.createBreadcrumb();
-        if (this.currentCategory === CATEGORY.LAPTOP.toLowerCase()) {
-          this.sub3 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-            if (data.length) {
+    this.sub0 = this.favoriteService.getFavoritesObservable().subscribe(() => {
+      this.sub1 = this.compareService.getComparesObservable().subscribe(() => {
+        this.sub2 = this.activatedRoute.paramMap.subscribe((params) => {
+          this.currentDepartment = params.get('department') || "";
+          this.currentType = params.get('type') || "";
+          this.currentCategory = params.get('category') || "";
+          this.createBreadcrumb();
+          if (this.currentCategory === CATEGORY.LAPTOP.toLowerCase()) {
+            this.sub3 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
+              if (data.length) {
+                this.products = data;
+                this.productCategoryService.productsFiltersService(this.products);
+                this.notFoundProducts = false;
+              }
+              else {
+                this.notFoundProducts = true;
+              }
+            });
+          } else {
+            this.sub3 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
               this.products = data;
               this.productCategoryService.productsFiltersService(this.products);
-              this.notFoundProducts = false;
-            }
-            else {
-              this.notFoundProducts = true;
-            }
-          });
-        } else {
-          this.sub3 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
-            this.products = data;
-            this.productCategoryService.productsFiltersService(this.products);
-          });
-        }
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+            });
+          }
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        });
       });
     });
   }
@@ -84,6 +89,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.sub0?.unsubscribe();
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
     this.sub3?.unsubscribe();
