@@ -1,26 +1,40 @@
 .cards-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 12px;
     gap: 10px;
     /* border: 1px solid black; */
 }
 
+.cards-container-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
+}
+
+.cards-container-list {
+    grid-template-columns: 1fr;
+}
+
 .card {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: flex;    
+    justify-content: center;
+    align-items: flex-start;
     padding: 14px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: white;
     /* border: 1px solid black;*/
 }
 
-.image {
-    width: 20%;
+.card-grid {
+    flex-direction: column;
+    min-width: 150px;
 }
 
-.icons {
+.card-list {
+    flex-direction: row;
+    /* min-width: 200px; */
+}
+
+.fav-comp {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -47,6 +61,7 @@ mat-icon:hover {
     font-size: 26px;
 }
 
+/* ----------------------------------------------------------- */
 .card a {
     text-decoration: none;
     color: black;
@@ -55,7 +70,7 @@ mat-icon:hover {
 
 .card a span {
     position: absolute;
-    display: block; 
+    display: block;
     left: 0;
     top: 0;
     padding: 0 6px;
@@ -66,9 +81,46 @@ mat-icon:hover {
     border-radius: 0 4px 4px 0;
 }
 
+.image-grid {
+    width: 100%;
+}
+
+.image-list {
+    width: 20%;
+    min-width: 100px;
+}
+
+.main-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main-list {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
 .card a img {
     width: 100%;
 }
+
+.description {
+    width: 80%;
+}
+
+.details {
+    width: 20%;
+    min-width: 130px;
+}
+
+.specifications {
+    display: flex;
+    flex-direction: row;
+}
+
+
 
 .card a p {
     font-size: 15px;
@@ -123,13 +175,16 @@ mat-icon:hover {
 }
 
 @media(max-width: 1260px) {
-    .cards-container {
-        display: grid;
+    .cards-container-grid {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .specifications {
+        flex-direction: column;
     }
 }
 
-@media(max-width: 766px) {
+@media(max-width: 766px) {    
     .card a p {
         font-size: 14px;
         line-height: 18px;
@@ -144,9 +199,16 @@ mat-icon:hover {
 }
 
 @media(max-width: 550px) {
-    .cards-container {
-        display: grid;
+    .cards-container-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .main-list {
+        flex-direction: column;
+    }
+
+    .specifications {
+        display: none;
     }
 }
 

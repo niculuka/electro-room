@@ -1,9 +1,10 @@
-<div class="cards-container" [ngStyle]="{'grid-template-columns':displayType==='grid'?'1fr 1fr 1fr 1fr':'1fr'}">
+<div class="cards-container"
+    [ngClass]="{'cards-container-grid':displayType==='grid','cards-container-list':displayType==='list'}">
 
-    <div class="card" [ngStyle]="{'flex-direction':displayType==='grid'?'column':'row'}"
+    <div class="card" [ngClass]="{'card-grid':displayType==='grid','card-list':displayType==='list'}"
         *ngFor="let product of productsOut">
 
-        <div class="icons">
+        <div class="fav-comp">
             <mat-icon [ngStyle]="{color: product.favorite ? 'rgb(220, 20, 110)' : 'grey'}"
                 (click)="handleFavorites(product)">
                 {{product.favorite ? 'favorite' : 'favorite_border'}}
@@ -14,35 +15,45 @@
             </mat-icon>
         </div>
 
-        <div class="image" [ngStyle]="{'width':displayType==='grid'?'100%':'20%'}">
+        <!-- ============================================================================================= -->
+        <div [ngClass]="{'image-grid':displayType==='grid','image-list':displayType==='list'}">
             <a [routerLink]="'/prod/' + product.linkName">
                 <img [src]="product.image" />
             </a>
         </div>
 
-        <div class="description" [ngStyle]="{'width':displayType==='grid'?'100%':'60%'}">
-            <span [ngStyle]="{'background':product.badge==='TOP_FAVORITE'?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
-                {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : "Super Pret"}}
-            </span>
+        <div [ngClass]="{'main-grid':displayType==='grid', 'main-list':displayType==='list'}">
+            <div class="description">
+                <span [ngStyle]="{'background':product.badge==='TOP_FAVORITE'?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+                    {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : "Super Pret"}}
+                </span>
 
-            <a [routerLink]="'/prod/' + product.linkName">
-                <p>{{product.description}}</p>
-            </a>
+                <a [routerLink]="'/prod/' + product.linkName">
+                    <p>{{product.description}}</p>
+                </a>
 
-            <p>{{product.category}}</p>
-            <p>{{product.name}}</p>
-            <p>{{product.linkName}}</p>
+                <div class="specifications" *ngIf="displayType==='list'">
+                    <div>
+                        <p>{{product.category}}</p>
+                        <p>{{product.name}}</p>
+                        <p>{{product.linkName}}</p>
+                    </div>
+                    <div>
+                        <p>{{product.category}}</p>
+                        <p>{{product.name}}</p>
+                        <p>{{product.linkName}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details">
+                <p class="stock" *ngIf="product.available==='STOCK'">in stoc</p>
+                <p class="deposit" *ngIf="product.available==='DEPOSIT'">in depozit</p>
+                <h1><strong>{{product.price}} Lei</strong></h1>
+
+                <button (click)="addToCart(product)">Adauga in cos</button>
+            </div>
         </div>
-
-        <div class="details" [ngStyle]="{'width':displayType==='grid'?'100%':'20%'}">
-            <p class="stock" *ngIf="product.available==='STOCK'">in stoc</p>
-            <p class="deposit" *ngIf="product.available==='DEPOSIT'">in depozit</p>
-            <h1><strong>{{product.price}} Lei</strong></h1>
-
-            <button (click)="addToCart(product)">Adauga in cos</button>
-        </div>
-
-        
 
     </div>
 
