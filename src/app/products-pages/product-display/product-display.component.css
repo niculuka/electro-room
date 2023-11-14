@@ -6,7 +6,7 @@
 }
 
 .cards-container-grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;    
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .cards-container-list {
@@ -15,7 +15,7 @@
 
 .card {
     position: relative;
-    display: flex;    
+    display: flex;
     justify-content: center;
     align-items: flex-start;
     padding: 14px;
@@ -31,14 +31,14 @@
 
 .card-list {
     flex-direction: row;
-    /* min-width: 200px; */
+    min-width: 300px;
 }
 
 .fav-comp {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 0;
+    top: 10px;
     right: 10px;
 }
 
@@ -61,26 +61,7 @@ mat-icon:hover {
     font-size: 26px;
 }
 
-/* ----------------------------------------------------------- */
-.card a {
-    text-decoration: none;
-    color: black;
-    /* border: 1px solid black; */
-}
-
-.card a span {
-    position: absolute;
-    display: block;
-    left: 0;
-    top: 0;
-    padding: 0 6px;
-    font-size: 12px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    border-radius: 0 4px 4px 0;
-}
-
+/* ================================================== */
 .image-grid {
     width: 100%;
 }
@@ -90,39 +71,78 @@ mat-icon:hover {
     min-width: 100px;
 }
 
-.main-grid {
+/* ================================================== */
+.body-grid {
     display: flex;
     flex-direction: column;
     width: 100%;
+    /* border: 1px solid black; */
+}
+
+.body-list {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    /* border: 1px solid black; */
+}
+
+/* -------------------------------------- */
+.main-grid {
+    width: 100%;
+    /* border: 1px solid black; */
 }
 
 .main-list {
-    display: flex;
-    flex-direction: row;
     width: 80%;
+    padding: 0 14px;
+    /* border: 1px solid black; */
 }
 
-.card a img {
+/* -------------------------------------- */
+.details-grid {
+    width: 100%;
+    /* border: 1px solid black; */
+}
+
+.details-list {
+    width: 20%;
+    min-width: 130px;
+    /* border: 1px solid black; */
+}
+
+/*  - - - - - - - - - - - -  */
+span {
+    display: block;
+    width: fit-content;
+    padding: 0 6px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    border-radius: 0 4px 4px 0;
+}
+
+.badge-grid {
+    position: absolute;
+    left: 0;
+    top: 14px;
+}
+
+.badge-list {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    /* border: 1px solid black; */
+}
+
+a img {
     width: 100%;
 }
 
-.description {
-    width: 80%;
-}
-
-.details {
-    width: 20%;
-    min-width: 130px;
-}
-
-.specifications {
-    display: flex;
-    flex-direction: row;
-}
-
-
-
-.card a p {
+a p {
     font-size: 15px;
     line-height: 20px;
     font-weight: 500;
@@ -133,23 +153,35 @@ mat-icon:hover {
     /* border: 1px solid black; */
 }
 
-.stock,
-.deposit {
-    font-size: 15px;
-    text-align: left;
-    margin-top: 10px;
+.specifications {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.specifications p {
+    font-size: 13px;
+    line-height: 15px;
+    margin: 10px 0;
     /* border: 1px solid black; */
 }
 
-.stock {
-    color: rgb(0, 184, 0);
+.available-grid,
+.available-list {
+    font-size: 15px;
+    text-align: left;
+    /* border: 1px solid black; */
 }
 
-.deposit {
-    color: rgb(0, 0, 0, 0.5);
+.available-grid {
+    margin: 10px 0 0 0;
 }
 
-.card h1 {
+.available-list {
+    margin: 0;
+}
+
+h1 {
     font-size: 24px;
     margin: 10px 0;
     text-align: left;
@@ -157,7 +189,7 @@ mat-icon:hover {
     /* border: 1px solid black; */
 }
 
-.card button {
+button {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -170,7 +202,7 @@ mat-icon:hover {
     background: rgb(223, 33, 119);
 }
 
-.card button:hover {
+button:hover {
     background: rgb(182, 27, 97);
 }
 
@@ -184,7 +216,7 @@ mat-icon:hover {
     }
 }
 
-@media(max-width: 766px) {    
+@media(max-width: 766px) {
     .card a p {
         font-size: 14px;
         line-height: 18px;
@@ -192,7 +224,7 @@ mat-icon:hover {
         /* border: 1px solid black; */
     }
 
-    .card h1 {
+    h1 {
         font-size: 22px;
         margin: 0 0 4px 0;
     }
@@ -203,21 +235,34 @@ mat-icon:hover {
         grid-template-columns: 1fr 1fr;
     }
 
-    .main-list {
+    .body-list {
         flex-direction: column;
     }
 
     .specifications {
         display: none;
     }
-}
 
-@media(max-width: 400px) {
-    .card h1 {
+    .available-grid,
+    .available-list {
+        font-size: 14px;
+    }
+
+    .main-list {
+        padding: 0 10px;
+    }
+
+    .details-list {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    h1 {
         font-size: 20px;
     }
 
-    .card button {
+    button {
+        width: fit-content;
         font-size: 14px;
     }
 }

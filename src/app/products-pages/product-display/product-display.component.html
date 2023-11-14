@@ -15,16 +15,23 @@
             </mat-icon>
         </div>
 
-        <!-- ============================================================================================= -->
+
+        <!-- I M A G E ===================================================================================== -->
         <div [ngClass]="{'image-grid':displayType==='grid','image-list':displayType==='list'}">
             <a [routerLink]="'/prod/' + product.linkName">
                 <img [src]="product.image" />
             </a>
         </div>
 
-        <div [ngClass]="{'main-grid':displayType==='grid', 'main-list':displayType==='list'}">
-            <div class="description">
-                <span [ngStyle]="{'background':product.badge==='TOP_FAVORITE'?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+
+        <!-- B O D Y ======================================================================================= -->
+        <div [ngClass]="{'body-grid':displayType==='grid', 'body-list':displayType==='list'}">
+
+
+            <!-- m a i n ---------------------------------------------------------------------------- -->
+            <div [ngClass]="{'main-grid':displayType==='grid', 'main-list':displayType==='list'}">
+                <span [ngClass]="{'badge-grid':displayType==='grid', 'badge-list':displayType==='list'}"
+                    [ngStyle]="{'background':product.badge==='TOP_FAVORITE'?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
                     {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : "Super Pret"}}
                 </span>
 
@@ -34,25 +41,38 @@
 
                 <div class="specifications" *ngIf="displayType==='list'">
                     <div>
-                        <p>{{product.category}}</p>
                         <p>{{product.name}}</p>
                         <p>{{product.linkName}}</p>
+                        <p>departament: {{product.department}}</p>
+                        <p>type: {{product.type}}</p>
+                        <p>category: {{product.category}}</p>
+                        <p>subcategory: {{product.subcategory}}</p>
                     </div>
                     <div>
-                        <p>{{product.category}}</p>
                         <p>{{product.name}}</p>
                         <p>{{product.linkName}}</p>
+                        <p>departament: {{product.department}}</p>
+                        <p>type: {{product.type}}</p>
+                        <p>category: {{product.category}}</p>
+                        <p>subcategory: {{product.subcategory}}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="details">
-                <p class="stock" *ngIf="product.available==='STOCK'">in stoc</p>
-                <p class="deposit" *ngIf="product.available==='DEPOSIT'">in depozit</p>
+
+            <!-- d e t a i l s------------------------------------------------------------------------ -->
+            <div [ngClass]="{'details-grid':displayType==='grid', 'details-list':displayType==='list'}">
+                <p [ngClass]="{'available-grid':displayType==='grid', 'available-list':displayType==='list'}"
+                    [ngStyle]="{color: product.available==='STOCK' ? 'rgb(0, 184, 0)' : 'grey'}">
+                    {{product.available==='STOCK'? 'in stoc' : ''}}
+                    {{product.available==='DEPOSIT'? 'in depozit': ""}}
+                </p>
+
                 <h1><strong>{{product.price}} Lei</strong></h1>
 
                 <button (click)="addToCart(product)">Adauga in cos</button>
             </div>
+
         </div>
 
     </div>
