@@ -156,7 +156,12 @@ a p {
 .specifications {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* border: 1px solid black; */
+}
+
+.specifications div {
+    width: 50%;
+    /* border: 1px solid black; */
 }
 
 .specifications p {
@@ -213,6 +218,10 @@ button:hover {
 
     .specifications {
         flex-direction: column;
+    }
+
+    .specifications div{
+        width: 100%;
     }
 }
 
