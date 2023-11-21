@@ -62,7 +62,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Gaming",
                         type: CATEGORY.LAPTOP_GAMING,
-                        link: "/p/lpt/laptops/laptop-gaming",
+                        link: "/p/lpt/laptops/laptop_gaming",
                         image: "assets/departments/lpt/laptops/laptop-gaming.png",
                         isReady: true,
                         color: "#ff4196",
@@ -70,7 +70,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Business",
                         type: CATEGORY.LAPTOP_BUSINESS,
-                        link: "/p/lpt/laptops/laptop-business",
+                        link: "/p/lpt/laptops/laptop_business",
                         image: "assets/departments/lpt/laptops/laptop-business.png",
                         isReady: true,
                         color: "#ff4196",
@@ -78,7 +78,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Ultraportabile",
                         type: CATEGORY.LAPTOP_ULTRA,
-                        link: "/p/lpt/laptops/laptop-ultra",
+                        link: "/p/lpt/laptops/laptop_ultra",
                         image: "assets/departments/lpt/laptops/laptop-ultra.png",
                         isReady: true,
                         color: "#ff4196",
@@ -86,7 +86,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Home",
                         type: CATEGORY.LAPTOP_HOME,
-                        link: "/p/lpt/laptops/laptop-home",
+                        link: "/p/lpt/laptops/laptop_home",
                         image: "assets/departments/lpt/laptops/laptop-home.png",
                         isReady: true,
                         color: "#ff4196",
@@ -96,7 +96,7 @@ export const DEPARTMENTS: Department[] = [
             {
                 name: "Accesorii Laptop",
                 type: CATEGORY.LAPTOP_ACCESSORY,
-                link: "/p/lpt/laptop-accessory",
+                link: "/p/lpt/laptop_accessory",
                 image: "assets/departments/lpt/laptop-accessories.png",
                 showSubtitle: false,
                 isReady: true,
@@ -105,7 +105,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Genti laptop",
                         type: CATEGORY.LAPTOP_BAG,
-                        link: "/p/lpt/laptop-accessory/laptop-bag",
+                        link: "/p/lpt/laptop_accessory/laptop_bag",
                         image: "assets/departments/lpt/laptop-accessories/bags.png",
                         isReady: true,
                         color: "#ff4196",
@@ -113,7 +113,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Incarcatoare priza/auto",
                         type: CATEGORY.LAPTOP_CHARGER,
-                        link: "/p/lpt/laptop-accessory/laptop-charger",
+                        link: "/p/lpt/laptop_accessory/laptop_charger",
                         image: "assets/departments/lpt/laptop-accessories/chargers.png",
                         isReady: true,
                         color: "#ff4196",
@@ -121,7 +121,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Harduri",
                         type: CATEGORY.LAPTOP_HARD,
-                        link: "/p/lpt/laptop-accessory/laptop-hard",
+                        link: "/p/lpt/laptop_accessory/laptop_hard",
                         image: "assets/departments/lpt/laptop-accessories/hards.png",
                         isReady: true,
                         color: "#ff4196",
@@ -129,7 +129,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Baterii externe",
                         type: CATEGORY.EXTERNAL_BATTERY,
-                        link: "/p/lpt/laptop-accessory/external-battery",
+                        link: "/p/lpt/laptop_accessory/external_battery",
                         image: "assets/departments/lpt/laptop-accessories/external-batteries.png",
                         isReady: true,
                         color: "#ff4196",
@@ -137,7 +137,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Memorii RAM",
                         type: CATEGORY.RAM,
-                        link: "/p/lpt/laptop-accessory/ram-memory",
+                        link: "/p/lpt/laptop_accessory/ram_memory",
                         image: "assets/departments/lpt/laptop-accessories/rams.png",
                         isReady: true,
                         color: "#ff4196",

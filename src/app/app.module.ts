@@ -163,7 +163,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     CarouselGalleryComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
-    MegaMenuDesktopComponent,    
+    MegaMenuDesktopComponent,
   ],
   imports: [
     BrowserModule,

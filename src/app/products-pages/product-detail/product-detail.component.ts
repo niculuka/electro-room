@@ -38,28 +38,19 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
-      // this.currentDepartment = params.get('department') || "";
-      // this.currentType = params.get('type') || "";
-      // this.currentCategory = params.get('category') || "";
+      this.currentDepartment = params.get('department') || "";
+      this.currentType = params.get('type') || "";
+      this.currentCategory = params.get('category') || "";
       this.currentLinkName = params.get('linkName') || "";
       this.createBreadcrumb();
       this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
         if (data) {
-          // let type = data.type.replace(/_/g, "-").toLowerCase();
-          // let category = data.category.replace(/_/g, "-").toLowerCase();
-          // if (this.currentCategory === CATEGORY.LAPTOP.replace(/_/g, "-").toLowerCase()) {
-          //   this.currentCategory = category;
-          // }
-          // if (type === this.currentType && category === this.currentCategory) {
-            this.notFoundProduct = true;
+            this.notFoundProduct = false;
             this.product = data;
             this.productImages = this.product.gallery;
             this.currentImage = this.productImages[0].image;
-          // } else {
-          //   this.notFoundProduct = false;
-          // }
         } else {
-          this.notFoundProduct = false;
+          this.notFoundProduct = true;
         }
       });
     });

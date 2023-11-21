@@ -34,7 +34,7 @@ export class ProductTypeComponent implements OnInit {
       this.currentType = params.get('type') || "";
       this.createBreadcrumb();
       this.departments.filter(data => {
-        let result = data.titles.find(items => items.type.replace(/_/g, "-").toLowerCase() === this.currentType)
+        let result = data.titles.find(items => items.type.toLowerCase() === this.currentType)
         if (result) {
           this.cards = result.subtitles;          
         }

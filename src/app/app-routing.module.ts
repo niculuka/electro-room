@@ -135,7 +135,7 @@ const routes: Routes = [
     },
   },
   {
-    path: "prod/:linkName", component: ProductDetailComponent,
+    path: "p/:department/:type/:category/:linkName", component: ProductDetailComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '/p/:department' },

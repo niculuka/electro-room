@@ -1,12 +1,13 @@
 <app-breadcrumb></app-breadcrumb>
+
 <div class="container-lap">
     <div class="column-lap">
 
-        <div style="width: 100%" *ngIf="!notFoundProduct">
+        <div style="width: 100%" *ngIf="notFoundProduct">
             <h1>NOT FOUND PRODUCT</h1>
         </div>
 
-        <div class="product" *ngIf="notFoundProduct">
+        <div class="product" *ngIf="!notFoundProduct">
 
             <div class="title">
                 <h1>{{product.description}}</h1>
@@ -60,7 +61,7 @@
         </div>
 
         <!-- =================================================================================== DETAILS -->
-        <div class="details" *ngIf="notFoundProduct">
+        <div class="details" *ngIf="!notFoundProduct">
 
             <input type="radio" name="box" id="box1" checked="checked">
             <label for="box1">Descriere</label>

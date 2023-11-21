@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -8,7 +8,7 @@ import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.css']
 })
-export class BreadcrumbComponent implements OnDestroy {
+export class BreadcrumbComponent implements OnInit, OnDestroy {
 
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
@@ -17,7 +17,9 @@ export class BreadcrumbComponent implements OnDestroy {
   constructor(
     private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
     private breadcrumbService: BreadcrumbService,
-  ) {
+  ) { }
+
+  ngOnInit(): void {
     this.sub = this.breadcrumbService.getBreadcrumbObservable().subscribe(result => {
       this.customBreadcrumb = new Breadcrumb();
       this.customBreadcrumb = result;
@@ -49,7 +51,7 @@ export class BreadcrumbComponent implements OnDestroy {
     switch (this.customBreadcrumb.customType) {
       case "laptops": this.customBreadcrumb.customType = "Laptopuri"
         break;
-      case "laptop-accessory": this.customBreadcrumb.customType = "Accesorii laptopuri"
+      case "laptop_accessory": this.customBreadcrumb.customType = "Accesorii laptopuri"
         break;
       case "pc": this.customBreadcrumb.customType = "PC-uri"
         break;
@@ -64,29 +66,29 @@ export class BreadcrumbComponent implements OnDestroy {
     switch (this.customBreadcrumb.customCategory) {
       case "laptop": this.customBreadcrumb.customCategory = "Toate laptopurile"
         break;
-      case "laptop-gaming": this.customBreadcrumb.customCategory = "Gaming"
+      case "laptop_gaming": this.customBreadcrumb.customCategory = "Gaming"
         break;
-      case "laptop-business": this.customBreadcrumb.customCategory = "Business"
+      case "laptop_business": this.customBreadcrumb.customCategory = "Business"
         break;
-      case "laptop-ultra": this.customBreadcrumb.customCategory = "Ultra"
+      case "laptop_ultra": this.customBreadcrumb.customCategory = "Ultra"
         break;
-      case "laptop-home": this.customBreadcrumb.customCategory = "Home"
+      case "laptop_home": this.customBreadcrumb.customCategory = "Home"
         break;
-      case "laptop-bag": this.customBreadcrumb.customCategory = "Genti si huse"
+      case "laptop_bag": this.customBreadcrumb.customCategory = "Genti si huse"
         break;
-      case "laptop-charger": this.customBreadcrumb.customCategory = "Incarcatoare"
+      case "laptop_charger": this.customBreadcrumb.customCategory = "Incarcatoare"
         break;
-      case "laptop-hard": this.customBreadcrumb.customCategory = "Harduri"
+      case "laptop_hard": this.customBreadcrumb.customCategory = "Harduri"
         break;
-      case "external-battery": this.customBreadcrumb.customCategory = "Baterii externe"
+      case "external_battery": this.customBreadcrumb.customCategory = "Baterii externe"
         break;
-      case "ram-memory": this.customBreadcrumb.customCategory = "Memorii RAM"
+      case "ram_memory": this.customBreadcrumb.customCategory = "Memorii RAM"
         break;
-      case "pc-gaming": this.customBreadcrumb.customCategory = "Gaming"
+      case "pc_gaming": this.customBreadcrumb.customCategory = "Gaming"
         break;
-      case "all-in-one": this.customBreadcrumb.customCategory = "All In One"
+      case "all_in_one": this.customBreadcrumb.customCategory = "All In One"
         break;
-      case "monitor-pro": this.customBreadcrumb.customCategory = "Profesionale"
+      case "monitor_pro": this.customBreadcrumb.customCategory = "Profesionale"
         break;
       default:
         this.customBreadcrumb.customCategory = this.customBreadcrumb.customCategory;
