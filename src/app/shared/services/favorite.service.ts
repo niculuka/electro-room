@@ -17,7 +17,10 @@ export class FavoriteService {
 
   addToFavoritesService(product: Product): void {
     let fav = this.favorites.find(item => item.id === product.id);
-    if (fav) return;
+    if (fav) {
+      this.toastrService.warning("Produsul este deja in Favorite.")
+      return;
+    }
     this.favorites.push(product);
     this.toastrService.success("Produsul a fost adaugat la Favorite")
     this.setFavoritesToLocalStorage();

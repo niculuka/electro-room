@@ -9,6 +9,6 @@ export class CarouselOwlLptLaptopComponent {
 
   carouselTitle:string = "Laptopuri si Accesorii:";
   productType1: string = "laptops";
-  productType2: string = "laptop-accessory";
+  productType2: string = "laptop_accessory";
   productIds: Array<number> = [1, 42, 37, 5, 7, 68, 50, 38, 42, 10, 45, 63, 67, 30, 35, 20];
 }

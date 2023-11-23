@@ -15,16 +15,20 @@ export enum PAYMENT_TYPE {
     CARD = "CARD",
 }
 
-export enum SORTERS{
+export enum SORTERS {
     BEST_SOLD = "BEST_SOLD",
     NAME = "NAME",
     LOW_TO_HIGH = "LOW_TO_HIGH",
     HIGH_TO_LOW = "HIGH_TO_LOW",
 }
 
+export enum FINANCE {
+    PROMO = "PROMO",
+}
+
 export enum CATEGORY {
     CATEGORY = "CATEGORY",
-    SUBCATEGORY = "SUBCATEGORY", 
+    SUBCATEGORY = "SUBCATEGORY",
 
     // B A D G E -----------------------------------------
     TOP_FAVORITE = "TOP_FAVORITE",
@@ -90,17 +94,17 @@ export enum CATEGORY {
     LAPTOP_ACCESSORY = "LAPTOP_ACCESSORY",
     DESKTOP = "DESKTOP",
     PC = "PC",
-    MONITOR = "MONITOR",   
+    MONITOR = "MONITOR",
 
     // C A T E G O R Y ============================================
     LAPTOP_GAMING = "LAPTOP_GAMING",
     LAPTOP_ULTRA = "LAPTOP_ULTRA",
     LAPTOP_BUSINESS = "LAPTOP_BUSINESS",
     LAPTOP_HOME = "LAPTOP_HOME",
-    LAPTOP_L2IN1 = "LAPTOP_L2IN1",  
-    PC_GAMING = "PC_GAMING",   
-    ALL_IN_ONE = "ALL_IN_ONE", 
-    MONITOR_PRO = "MONITOR_PRO",  
+    LAPTOP_L2IN1 = "LAPTOP_L2IN1",
+    PC_GAMING = "PC_GAMING",
+    ALL_IN_ONE = "ALL_IN_ONE",
+    MONITOR_PRO = "MONITOR_PRO",
 
     // S U B = C A T E G O R Y ====================================
     // CHARGER --------------------------------
@@ -146,19 +150,19 @@ export enum CATEGORY {
     MHZ3200 = "MHZ3200",
     MHZ3600 = "MHZ3600",
     MHZ6000 = "MHZ6000",
-    GHZ4 =  "GHZ4",
-    GHZ5 =  "GHZ5",
+    GHZ4 = "GHZ4",
+    GHZ5 = "GHZ5",
 
     // CAPACITY -----------------------------------------
     GB120 = "GB120",
-    GB240 = "GB240",    
+    GB240 = "GB240",
     GB256 = "GB256",
     GB480 = "GB480",
     GB500 = "GB500",
     GB512 = "GB512",
     T1 = "T1",
     T2 = "T2",
-    A = "A",    
+    A = "A",
     MA10000 = "MA10000",
     MA15000 = "MA15000",
     MA18000 = "MA18000",

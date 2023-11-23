@@ -42,7 +42,7 @@ import { ProductTypeComponent } from './products-pages/product-type/product-type
 import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
-import { FavoriteComponent } from './user/favorite/favorite.component';
+import { FavoriteComponent } from './guest/favorite/favorite.component';
 
 const routes: Routes = [
   // home
@@ -56,6 +56,7 @@ const routes: Routes = [
   { path: "oferta-speciala", component: SpecialOfferComponent },
 
   // { path: "card-electro", component: ElectroCardComponent },
+  { path: "electro-card", component: UnderConstructionComponent },
   { path: "ajutor-clienti", component: HelpDeskComponent },
 
   { path: "auth/register", component: RegisterComponent },

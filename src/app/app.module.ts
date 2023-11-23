@@ -36,7 +36,7 @@ import { NavbarMainComponent } from './navbar/navbar-main/navbar-main.component'
 import { HomeComponent } from './guest/home/home.component';
 import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
-import { FavoriteComponent } from './user/favorite/favorite.component';
+import { FavoriteComponent } from './guest/favorite/favorite.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { CartNavComponent } from './navbar/cart-nav/cart-nav.component';
 import { FavoriteNavComponent } from './navbar/favorite-nav/favorite-nav.component';

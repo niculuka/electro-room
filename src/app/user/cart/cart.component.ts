@@ -61,17 +61,6 @@ export class CartComponent {
     localStorage.setItem('delivery-ls', deliveryJson);
   }
 
-  getProductLinkName(cartItem: CartItem) {
-    this.router.navigate([
-      '/lpt/'
-      + cartItem.product.type.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.category.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.linkName
-    ]);
-  }
-
   goBack() {
     this.location.back();
   }

@@ -6,8 +6,11 @@
 
             <div class="card">
 
-                <a (click)="sendCurrentImage(productImage)">
-                    <img [src]="productImage.image" [alt]="productImage.image">
+                <a [ngClass]="{'active' : productImage===currentSelectedObject}"
+                    (mouseover)="sendCurrentImage(productImage)">
+
+                    <img [src]="productImage.image">
+                    
                 </a>
             </div>
 

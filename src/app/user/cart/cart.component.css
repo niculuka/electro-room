@@ -36,8 +36,14 @@
 }
 
 h3 {
-  font-size: 26px;
+  font-size: 24px;
   margin: 16px 0;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: black;
 }
 
 img {
@@ -53,8 +59,8 @@ img:hover {
 }
 
 .name {
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 select {

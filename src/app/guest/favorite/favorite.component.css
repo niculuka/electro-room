@@ -52,11 +52,6 @@ img:hover {
     background: white;
 }
 
-.name {
-    font-size: 20px;
-    line-height: 22px;
-}
-
 select {
     width: 50px;
     padding: 4px 10px;
@@ -162,6 +157,15 @@ th {
     padding: 10px 20px;
     flex-wrap: wrap;
     word-wrap: break-word;
+}
+
+td a,
+th a {
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
 }
 
 .total {

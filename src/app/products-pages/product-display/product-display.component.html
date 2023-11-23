@@ -18,7 +18,8 @@
 
         <!-- I M A G E ===================================================================================== -->
         <div [ngClass]="{'image-grid':displayType==='grid','image-list':displayType==='list'}">
-            <a [routerLink]="'/p/'+product.department.toLowerCase()+'/'+product.type.toLowerCase()+'/'+product.category.toLowerCase()+'/'+product.linkName">
+            <a [routerLink]="'/p/'+product.department.toLowerCase()+'/'+product.type.toLowerCase()+'/'
+                +product.category.toLowerCase()+'/'+product.linkName">
                 <img [src]="product.image" />
             </a>
         </div>
@@ -35,7 +36,8 @@
                     {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : "Super Pret"}}
                 </span>
 
-                <a [routerLink]="'/p/'+product.department+'/'+product.type+'/'+product.category+'/'+product.linkName">
+                <a [routerLink]="'/p/'+product.department.toLowerCase()+'/'+product.type.toLowerCase()+'/'
+                    +product.category.toLowerCase()+'/'+product.linkName">
                     <p>{{product.description}}</p>
                 </a>
 

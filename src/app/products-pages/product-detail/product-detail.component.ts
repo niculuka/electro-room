@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { INFO, Info } from 'src/app/shared/data/info.data';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -16,11 +16,12 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class ProductDetailComponent implements OnInit {
 
   product: Product = new Product();
+  info: Info[] = INFO;
   notFoundProduct: boolean = true;
 
-  @Input() currentDepartment: string = "";
-  @Input() currentType: string = "";
-  @Input() currentCategory: string = "";
+  currentDepartment: string = "";
+  currentType: string = "";
+  currentCategory: string = "";
   currentLinkName: string = "";
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
@@ -33,7 +34,6 @@ export class ProductDetailComponent implements OnInit {
     private cartService: CartService,
     private favoriteService: FavoriteService,
     private breadcrumbService: BreadcrumbService,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -66,25 +66,12 @@ export class ProductDetailComponent implements OnInit {
     this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
-  createProductItem() {
-    this.product.id = this.product.id;
-    this.product.name = this.product.name;
-    this.product.linkName = this.product.linkName;
-    this.product.description = this.product.description;
-    this.product.brand = this.product.brand;
-    this.product.subcategory = this.product.subcategory;
-    this.product.image = this.product.image;
-    this.product.price = this.product.price;
-  }
-
   addToCart() {
-    this.createProductItem();
     this.cartService.addToCartService(this.product);
   }
 
   addToFavorites() {
-    // this.createProductItem();
-    // this.favoriteService.addToFavoritesService(this.product);
+    this.favoriteService.addToFavoritesService(this.product);
   }
 
   receiveCurrentImage($event: any) {

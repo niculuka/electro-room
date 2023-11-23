@@ -28,12 +28,20 @@
 
           <td>{{ind+1}}</td>
           <td>
-            <a (click)="getProductLinkName(cartItem)">
+            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
+                            +'/'+cartItem.product.type.toLowerCase()
+                            +'/'+cartItem.product.category.toLowerCase()
+                            +'/'+cartItem.product.linkName">
               <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
             </a>
           </td>
           <td class="name">
-            <strong>{{cartItem.product.description}}</strong>
+            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
+                            +'/'+cartItem.product.type.toLowerCase()
+                            +'/'+cartItem.product.category.toLowerCase()
+                            +'/'+cartItem.product.linkName">
+              {{cartItem.product.description}}
+            </a>
           </td>
           <td>
             <select #quantitySelect name="quantity" [ngModel]="cartItem.quantity"
@@ -81,14 +89,24 @@
         <tr>
           <th>Imagine</th>
           <td>
-            <a (click)="getProductLinkName(cartItem)">
+            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
+                            +'/'+cartItem.product.type.toLowerCase()
+                            +'/'+cartItem.product.category.toLowerCase()
+                            +'/'+cartItem.product.linkName">
               <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
             </a>
           </td>
         </tr>
         <tr>
           <th>Nume</th>
-          <td><strong>{{cartItem.product.name}}</strong></td>
+          <td>
+            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
+                            +'/'+cartItem.product.type.toLowerCase()
+                            +'/'+cartItem.product.category.toLowerCase()
+                            +'/'+cartItem.product.linkName">
+              <strong>{{cartItem.product.name}}</strong>
+            </a>
+          </td>
         </tr>
         <tr>
           <th>Descriere</th>

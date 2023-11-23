@@ -100,8 +100,6 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       this.customBreadcrumb.customLinkName
         = this.customBreadcrumb.customLinkName.charAt(0).toUpperCase()
         + this.customBreadcrumb.customLinkName.slice(1);
-    } else {
-      this.customBreadcrumb.customLinkName = this.customBreadcrumb.customLinkName;
     }
   }
 }

@@ -19,8 +19,10 @@ export class CartService {
 
   addToCartService(product: Product): void {
     let cartItem = this.cart.items.find(item => item.product.name === product.name);
-    if (cartItem)
+    if (cartItem) {
+      this.toastrService.warning("Produsul este deja in cos.")
       return;
+    }
     this.cart.items.push(new CartItem(product));
     this.setCartToLocalStorage();
     this.toastrService.success("Produsul a fost adaugat in cos.");
@@ -31,7 +33,7 @@ export class CartService {
     if (!cartItem)
       return;
     cartItem.quantity = quantity;
-    cartItem.price = Math.round((quantity * cartItem.product.price) * 100)/100;
+    cartItem.price = Math.round((quantity * cartItem.product.price) * 100) / 100;
     this.setCartToLocalStorage();
   }
 

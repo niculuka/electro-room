@@ -28,12 +28,20 @@
 
           <td>{{ind+1}}</td>
           <td>
-            <a [routerLink]="'/prod/' + product.linkName">
+            <a [routerLink]="'/p/'+product.department.toLowerCase()
+                                    +'/'+product.type.toLowerCase()
+                                    +'/'+product.category.toLowerCase()
+                                    +'/'+product.linkName">
               <img [src]="product.image" [alt]="product.name">
             </a>
           </td>
-          <td class="name">
-            <strong>{{product.description}}</strong>
+          <td>
+            <a [routerLink]="'/p/'+product.department.toLowerCase()
+                                    +'/'+product.type.toLowerCase()
+                                    +'/'+product.category.toLowerCase()
+                                    +'/'+product.linkName">
+              {{product.description}}
+            </a>
           </td>
           <td>
             {{product.price | number: '1.2-2'}} Lei
@@ -73,14 +81,23 @@
         <tr>
           <th>Imagine</th>
           <td>
-            <a [routerLink]="'/prod/' + product.linkName">
+            <a [routerLink]="'/p/'+product.department.toLowerCase()
+                            +'/'+product.type.toLowerCase()
+                            +'/'+product.category.toLowerCase()
+                            +'/'+product.linkName">
               <img [src]="product.image" [alt]="product.name">
             </a>
           </td>
         </tr>
         <tr>
           <th>Nume</th>
-          <td><strong>{{product.name}}</strong></td>
+          <td><a [routerLink]="'/p/'+product.department.toLowerCase()
+                              +'/'+product.type.toLowerCase()
+                              +'/'+product.category.toLowerCase()
+                              +'/'+product.linkName">
+              <strong>{{product.name}}</strong>
+            </a>
+          </td>
         </tr>
         <tr>
           <th>Descriere</th>

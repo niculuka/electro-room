@@ -2,26 +2,30 @@
 <div>
     <owl-carousel-o [options]="customOptions" (dragging)="isDragging = $event.dragging">
 
-        <ng-container *ngFor="let card of carousel">
+        <ng-container *ngFor="let product of carousel">
 
             <ng-template carouselSlide>
 
                 <div class="card">
 
-                    <a [owlRouterLink]="card.linkName" [stopLink]="isDragging">
-                        <img class="image" [src]="card.image">
+                    <a [owlRouterLink]="'/p/'+product.department.toLowerCase()
+                                        +'/'+product.type.toLowerCase()
+                                        +'/'+product.category.toLowerCase()
+                                        +'/'+product.linkName" [stopLink]="isDragging">
+
+                        <img class="image" [src]="product.image">
 
                         <span style="background: rgb(0, 154, 230)">
-                            {{card.badge === topFavorite ? topFavoriteRo : ""}}
+                            {{product.badge === topFavorite ? topFavoriteRo : ""}}
                         </span>
 
                         <span style="background: rgb(220, 20, 110)">
-                            {{card.badge === superPrice ? superPriceRo : ""}}
+                            {{product.badge === superPrice ? superPriceRo : ""}}
                         </span>
 
-                        <h3>{{card.description}}</h3>
+                        <h3>{{product.description}}</h3>
 
-                        <p>{{card.price}} Lei</p>
+                        <p>{{product.price}} Lei</p>
                     </a>
                 </div>
 

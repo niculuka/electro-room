@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
 
@@ -7,11 +7,13 @@ import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
   templateUrl: './carousel-gallery.component.html',
   styleUrls: ['./carousel-gallery.component.css']
 })
-export class CarouselGalleryComponent {
+export class CarouselGalleryComponent implements OnInit {  
   
   // productImages2: Array<CarouselLaptopData> = CAROUSEL_LAPTOP;
   @Input() productImages: Array<ImagesGallery> = [];
   @Output() indexEvent = new EventEmitter<number>();
+
+  currentSelectedObject: any;
 
   isDragging: boolean = false;
   customOptions: OwlOptions = {
@@ -31,9 +33,14 @@ export class CarouselGalleryComponent {
     },
     dots: false,
     nav: true
-  }
+  }  
 
+  ngOnInit(): void {
+    this.currentSelectedObject = this.productImages[0];
+  }
+  
   sendCurrentImage(selectedObject: any) {
+    this.currentSelectedObject = selectedObject;
     this.indexEvent.emit(selectedObject.image);
   }
 
