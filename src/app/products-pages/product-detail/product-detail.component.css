@@ -55,6 +55,14 @@
     z-index: 1;
 }
 
+.fav-comp {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 10px;
+    right: 10px;
+}
+
 .body {
     display: flex;
     flex-direction: row;
@@ -71,16 +79,34 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    padding-left: 10px;
+    padding-left: 20px;
     /* border: 1px solid black; */
+}
+
+.info h2 {
+    display: block;
+    margin: 0;
+    padding: 0;
+    color: rgb(223, 33, 119);
+}
+
+.finance {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }
 
 .info a {
     display: block;
-    color: rgb(223, 33, 119);
-    font-size: 20px;
-    margin: 30px 0 10px 0;
+    margin-left: 6px;
+    font-size: 14px;
     text-decoration: none;
+    /* border: 1px solid black; */
+}
+
+.info p {
+    display: block;
+    margin: 10px 0;
     /* border: 1px solid black; */
 }
 
@@ -89,7 +115,7 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    padding-left: 10px;
+    padding-left: 20px;
     /* border: 1px solid black; */
 }
 
@@ -269,7 +295,11 @@
     .info,
     .order {
         width: 100%;
-        padding: 0;
+        padding-left: 10px;
+    }
+
+    .info {
+        margin-top: 20px;
     }
 }
 
@@ -293,6 +323,11 @@
         top: 0;
         left: 0;
     }
+
+    .info,
+    .order {
+        padding: 0;
+    }    
 
     .details {
         flex-direction: column;
