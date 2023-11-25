@@ -93,7 +93,7 @@ const routes: Routes = [
     path: "magazine", component: StoreComponent,
     data: {
       breadcrumb: [
-        { label: 'magazine', url: '' },
+        { label: 'Magazine', url: '' },
       ]
     },
   },
@@ -101,7 +101,7 @@ const routes: Routes = [
     path: "magazine/:storeName", component: StoreDetailComponent,
     data: {
       breadcrumb: [
-        { label: 'magazine', url: '/magazine' },
+        { label: 'Magazine', url: '/magazine' },
         { label: '{{storeName}}', url: '' },
       ]
     },

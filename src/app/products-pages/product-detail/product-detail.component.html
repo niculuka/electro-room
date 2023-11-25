@@ -7,6 +7,7 @@
             <h1>NOT FOUND PRODUCT</h1>
         </div>
 
+        <!-- ============================================================================== P R O D U C T -->
         <div class="product" *ngIf="!notFoundProduct">
 
             <div class="title">
@@ -89,11 +90,12 @@
 
         </div>
 
-        <!-- =================================================================================== DETAILS -->
+        <!-- ============================================================================== D E T A I L S -->
         <div class="details" *ngIf="!notFoundProduct">
 
             <input type="radio" name="box" id="box1" checked="checked">
             <label for="box1">Descriere</label>
+            
             <div class="box">
                 <h1><span>COMUTATORUL MUX CRESTE PERFORMANTELE GRAFICE.</span></h1>
                 <p>
@@ -147,4 +149,8 @@
             </div>
 
         </div>
+        
     </div>
+</div>
+
+<app-footer></app-footer>

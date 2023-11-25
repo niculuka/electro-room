@@ -133,6 +133,7 @@ span {
 }
 
 a {
+    display: block;
     text-decoration: none;
     color: black;
     /* border: 1px solid black; */
@@ -143,11 +144,11 @@ a img {
 }
 
 a p {
+    margin: 10px 0 0 0;
     font-size: 15px;
     line-height: 20px;
     font-weight: 500;
     height: 62px;
-    margin: 0;
     text-align: left;
     overflow-y: hidden;
     /* border: 1px solid black; */

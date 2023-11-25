@@ -478,15 +478,15 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Gaming PC",
                         type: CATEGORY.PC_GAMING,
-                        link: "/p/dps/pc/pc-gaming",
+                        link: "/p/dps/pc/pc_gaming",
                         image: "assets/departments/dps/pc/pc-gaming.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: "All-in-one",
+                        name: "All In One",
                         type: CATEGORY.ALL_IN_ONE,
-                        link: "/p/dps/pc/all-in-one",
+                        link: "/p/dps/pc/all_in_one",
                         image: "assets/departments/dps/pc/all-in-one.png",
                         isReady: true,
                         color: "#ff4196",
@@ -521,7 +521,7 @@ export const DEPARTMENTS: Department[] = [
                     {
                         name: "Monitoare profesionale",
                         type: CATEGORY.MONITOR_PRO,
-                        link: "/p/dps/monitor/monitor-pro",
+                        link: "/p/dps/monitor/monitor_pro",
                         image: "assets/departments/dps/monitors/pro-monitors.png",
                         isReady: true,
                         color: "#ff4196",

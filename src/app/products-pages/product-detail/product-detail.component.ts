@@ -1,5 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';

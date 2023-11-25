@@ -98,7 +98,7 @@
     display: flex;
 }
 
-@media(max-width: 1600px) {
+@media(max-width: 1530px) {
     .content-help {
         width: 1200px;
         margin-top: 40px;
@@ -110,13 +110,13 @@
     }
 }
 
-@media(max-width: 1280px) {
+@media(max-width: 1260px) {
     .content-help {
         width: 980px;
     }    
 }
 
-@media(max-width: 1040px) {
+@media(max-width: 1020px) {
     .content-help {
         width: 100%;
         margin: 16px;
@@ -131,7 +131,7 @@
     }
 }
 
-@media(max-width: 760px) {
+@media(max-width: 766px) {
     .content-help {
         justify-content: center;
         width: 100%;
