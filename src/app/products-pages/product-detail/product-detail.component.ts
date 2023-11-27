@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
-import { CartService } from 'src/app/shared/services/cart.service';
 import { CompareService } from 'src/app/shared/services/compare.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -22,10 +21,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   currentType: string = "";
   currentCategory: string = "";
   currentLinkName: string = "";
+  
   customBreadcrumb: Breadcrumb = new Breadcrumb();
-
-  productImages: Array<any> = [];
-  currentImage: string = "";
 
   private sub0: any;
   private sub1: any;
@@ -36,7 +33,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private cartService: CartService,
     private favoriteService: FavoriteService,
     private compareService: CompareService,
     private breadcrumbService: BreadcrumbService,
@@ -55,8 +51,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
             if (data) {
               this.notFoundProduct = false;
               this.product = data;
-              this.productImages = this.product.gallery;
-              this.currentImage = this.productImages[0].image;
               this.getFavoritesProducts();
               this.getComparesProducts();
             } else {
@@ -78,10 +72,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
-  addToCart() {
-    this.cartService.addToCartService(this.product);
-  }
-
   getFavoritesProducts() {
     this.sub3 = this.favoriteService.getFavoritesObservable().subscribe(fav => {
       for (let fp of fav) {
@@ -100,20 +90,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         }
       }
     });
-  }
-
-  handleFavorites(product: Product) {
-    if (product.favorite) this.favoriteService.removeFromFavoritesService(product);
-    else this.favoriteService.addToFavoritesService(product);
-  }
-
-  handleCompares(product: Product) {
-    if (product.compare) this.compareService.removeFromComparesService(product);
-    else this.compareService.addToComparesService(product);
-  }
-
-  receiveCurrentImage($event: any) {
-    this.currentImage = $event;
   }
 
   ngOnDestroy(): void {

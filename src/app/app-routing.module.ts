@@ -14,7 +14,7 @@ import { NotFoundComponent } from './guest/not-found/not-found.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { OrderComponent } from './user/order/order.component';
 import { MyOrderComponent } from './user/my-order/my-order.component';
-import { SearchComponent } from './guest/search/search.component';
+import { SearchComponent } from './products-pages/search/search.component';
 import { SpecialOfferComponent } from './guest/special-offer/special-offer.component';
 import { StoreComponent } from './guest/store/store.component';
 import { StoreDetailComponent } from './guest/store-detail/store-detail.component';
@@ -49,9 +49,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   // { path: "**", component: HomeComponent },
 
-  { path: "test", component: InfoBlockComponent },
-
-  { path: "search/:searchTerm", component: SearchComponent },
+  { path: "test", component: InfoBlockComponent },  
 
   { path: "oferta-speciala", component: SpecialOfferComponent },
 
@@ -82,6 +80,7 @@ const routes: Routes = [
   { path: "favorites", component: FavoriteComponent },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
   { path: "my-orders", component: MyOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
+  { path: "search/:searchTerm", component: SearchComponent },
 
   // error
   { path: "under-construction", component: UnderConstructionComponent },

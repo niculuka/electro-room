@@ -83,11 +83,13 @@ import { ProductFilterComponent } from './products-pages/product-filter/product-
 import { ProductSorterComponent } from './products-pages/product-sorter/product-sorter.component';
 import { ProductDisplayComponent } from './products-pages/product-display/product-display.component';
 import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
+import { ProductSpecsComponent } from './products-pages/product-specs/product-specs.component';
+import { ProductMainComponent } from './products-pages/product-main/product-main.component';
 import { CardTitleComponent } from './products-pages/card-title/card-title.component';
+import { SearchComponent } from './products-pages/search/search.component';
 
 // others
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
-import { SearchComponent } from './guest/search/search.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
@@ -157,13 +159,15 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductSorterComponent,
     ProductDisplayComponent,
     ProductDetailComponent,
-    UnderConstructionComponent,
-    SearchComponent,
+    ProductSpecsComponent,
+    ProductMainComponent,
+    SearchComponent,       
     InfoBlockComponent,
     CarouselGalleryComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
     MegaMenuDesktopComponent,
+    UnderConstructionComponent,    
   ],
   imports: [
     BrowserModule,
