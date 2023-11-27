@@ -1,0 +1,28 @@
+<div class="container-categ">
+    <div class="categ">
+
+        <app-breadcrumb></app-breadcrumb>
+
+        <div style="width: 100%" *ngIf="notFoundProducts">
+            <h2>NOT FOUND PRODUCTS</h2>
+        </div>
+
+        <div class="row-categ" *ngIf="!notFoundProducts">
+
+            <app-product-filter></app-product-filter>
+
+            <div class="col-categ">
+
+                <app-product-sorter [currentCategory]="currentCategory" [displayType]="displayType">
+                </app-product-sorter>
+
+                <app-product-display [displayType]="displayType"></app-product-display>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<app-footer></app-footer>

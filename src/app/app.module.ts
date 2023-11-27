@@ -53,7 +53,7 @@ import { SpecialOfferComponent } from './guest/special-offer/special-offer.compo
 import { ElectroCardComponent } from './guest/electro-card/electro-card.component';
 import { StoreComponent } from './guest/store/store.component';
 import { StoreDetailComponent } from './guest/store-detail/store-detail.component';
-import { HelpDeskComponent } from './guest/help-desk/help-desk.component';
+import { CustomerSupportComponent } from './guest/customer-support/customer-support.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselComponent } from './navbar/carousel/carousel.component';
 import { CarouselOwlComponent } from './navbar/carousel-owl/carousel-owl.component';
@@ -67,7 +67,7 @@ import { AdminProductCreateComponent } from './admin/admin-product-create/admin-
 import { AdminProductUpdateComponent } from './admin/admin-product-update/admin-product-update.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
 import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
-import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
+import { AdminOrderComponent } from './admin/admin-order/admin-order.component'; 
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 
 // a d m i n - D E M O
@@ -76,16 +76,17 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { DepartmentComponent } from './products-pages/department/department.component';
-import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
-import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
-import { ProductFilterComponent } from './products-pages/product-filter/product-filter.component';
-import { ProductSorterComponent } from './products-pages/product-sorter/product-sorter.component';
-import { ProductDisplayComponent } from './products-pages/product-display/product-display.component';
-import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
-import { ProductSpecsComponent } from './products-pages/product-specs/product-specs.component';
-import { ProductMainComponent } from './products-pages/product-main/product-main.component';
-import { CardTitleComponent } from './products-pages/card-title/card-title.component';
+import { ProductDepartmentComponent } from './products-pages/department/product-department/product-department.component';
+import { DepartmentCardComponent } from './products-pages/department/department-card/department-card.component';
+import { ProductTypeComponent } from './products-pages/type/product-type/product-type.component';
+import { TypeCardComponent } from './products-pages/type/type-card/type-card.component';
+import { ProductCategoryComponent } from './products-pages/category/product-category/product-category.component';
+import { ProductFilterComponent } from './products-pages/category/product-filter/product-filter.component';
+import { ProductSorterComponent } from './products-pages/category/product-sorter/product-sorter.component';
+import { ProductDisplayComponent } from './products-pages/category/product-display/product-display.component';
+import { ProductDetailComponent } from './products-pages/detail/product-detail/product-detail.component';
+import { ProductSpecsComponent } from './products-pages/detail/product-specs/product-specs.component';
+import { ProductMainComponent } from './products-pages/detail/product-main/product-main.component';
 import { SearchComponent } from './products-pages/search/search.component';
 
 // others
@@ -93,7 +94,7 @@ import { UnderConstructionComponent } from './guest/under-construction/under-con
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
-import { CarouselGalleryComponent } from './products-pages/carousel-gallery/carousel-gallery.component';
+import { CarouselGalleryComponent } from './products-pages/detail/carousel-gallery/carousel-gallery.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
@@ -130,7 +131,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ElectroCardComponent,
     StoreComponent,
     StoreDetailComponent,
-    HelpDeskComponent,
+    CustomerSupportComponent,
     CarouselComponent,
     CarouselOwlComponent,
     CarouselOwlLptLaptopComponent,
@@ -151,9 +152,10 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
 
-    DepartmentComponent,
-    CardTitleComponent,
+    ProductDepartmentComponent,
+    DepartmentCardComponent,
     ProductTypeComponent,
+    TypeCardComponent,  
     ProductCategoryComponent,
     ProductFilterComponent,
     ProductSorterComponent,
@@ -167,7 +169,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     BreadcrumbComponent,
     MegaMenuMobileComponent,
     MegaMenuDesktopComponent,
-    UnderConstructionComponent,    
+    UnderConstructionComponent,      
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+<div class="container-product">
+    <div class="column-product">
+
+        <app-breadcrumb></app-breadcrumb>
+
+        <div *ngIf="notFoundProduct">
+            <h1>NOT FOUND PRODUCT</h1>
+        </div>
+
+        <div *ngIf="!notFoundProduct">
+
+            <app-product-main [product]="product"></app-product-main>
+
+            <app-product-specs [product]="product"></app-product-specs>
+
+        </div>
+
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,31 @@
+.container-product {
+    width: 100%;
+    /* border: 2px solid black; */
+}
+
+.column-product {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 1500px;
+    /* border: 2px solid black; */
+}
+
+@media(max-width: 1530px) {
+    .column-product {
+        width: 1200px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .column-product {
+        width: 990px;
+    }
+}
+
+@media(max-width: 1020px) {
+    .column-product {
+        width: auto;
+        margin: 0 10px;
+    }
+}

@@ -1,0 +1,163 @@
+.container-help {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* border: 2px solid black; */
+}
+
+.content-help {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 1500px;
+    /* border: 2px solid black; */
+}
+
+.content-help img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0px 6px 10px 0px rgba(62, 62, 62, 0.2);
+    border-radius: 8px;
+    background: white;
+}
+
+.help-desk {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 40px;
+    /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.box {
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    order: 99;
+    flex-grow: 1;
+    width: 100%;
+    /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.box h1 {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 500;
+}
+
+.box p {
+    font-size: 16px;
+    color: black;
+}
+
+
+.help-desk>label {
+    display: block;
+    color: white;
+    text-align: center;
+    order: 1;
+    font-size: 16px;
+    padding: 6px 10px;
+    margin-right: 4px;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    background: rgb(220, 20, 110);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.help-desk>label:hover {
+    color: black;
+}
+
+.help-desk>input {
+    display: none;
+}
+
+.help-desk>input:checked+label {
+    color: black;
+    background: #fff;
+}
+
+.help-desk>input:checked+label+.box {
+    display: flex;
+}
+
+@media(max-width: 1530px) {
+    .content-help {
+        width: 1200px;
+        margin-top: 40px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .content-help {
+        width: 980px;
+    }
+}
+
+@media(max-width: 1020px) {
+    .content-help {
+        width: 100%;
+        margin: 16px;
+    }
+
+    .help-desk label {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 766px) {
+    .content-help {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .help-desk {
+        flex-direction: column;
+    }
+
+    .help-desk>label {
+        margin: 0;
+        margin-bottom: 4px;
+    }
+
+    .help-desk input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+}
+
+@media(max-width: 550px) {
+
+    .help-desk label {
+        font-size: 14px;
+    }
+
+    .help-desk input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .box h1 {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .box p {
+        font-size: 14px;
+    }
+}

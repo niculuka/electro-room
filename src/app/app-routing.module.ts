@@ -19,7 +19,7 @@ import { SpecialOfferComponent } from './guest/special-offer/special-offer.compo
 import { StoreComponent } from './guest/store/store.component';
 import { StoreDetailComponent } from './guest/store-detail/store-detail.component';
 import { ElectroCardComponent } from './guest/electro-card/electro-card.component';
-import { HelpDeskComponent } from './guest/help-desk/help-desk.component';
+import { CustomerSupportComponent } from './guest/customer-support/customer-support.component';
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 
 // a d m i n
@@ -37,10 +37,10 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { DepartmentComponent } from './products-pages/department/department.component';
-import { ProductTypeComponent } from './products-pages/product-type/product-type.component';
-import { ProductCategoryComponent } from './products-pages/product-category/product-category.component';
-import { ProductDetailComponent } from './products-pages/product-detail/product-detail.component';
+import { ProductDepartmentComponent } from './products-pages/department/product-department/product-department.component';
+import { ProductTypeComponent } from './products-pages/type/product-type/product-type.component';
+import { ProductCategoryComponent } from './products-pages/category/product-category/product-category.component';
+import { ProductDetailComponent } from './products-pages/detail/product-detail/product-detail.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { FavoriteComponent } from './guest/favorite/favorite.component';
 
@@ -49,13 +49,12 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   // { path: "**", component: HomeComponent },
 
-  { path: "test", component: InfoBlockComponent },  
+  { path: "test", component: InfoBlockComponent },
 
   { path: "oferta-speciala", component: SpecialOfferComponent },
 
   // { path: "card-electro", component: ElectroCardComponent },
   { path: "electro-card", component: UnderConstructionComponent },
-  { path: "ajutor-clienti", component: HelpDeskComponent },
 
   { path: "auth/register", component: RegisterComponent },
   { path: "auth/login", component: LoginComponent },
@@ -87,28 +86,42 @@ const routes: Routes = [
   { path: "401", component: UnauthComponent },
   { path: "404", component: NotFoundComponent },
 
-  // STORES -------------------------------------------------------------------------------------------
+  // C U S T O M E R S   S U P P O R T -----------------------------------------------------------------------------
   {
-    path: "magazine", component: StoreComponent,
+    path: "suport-clienti",
+    component: CustomerSupportComponent,
     data: {
       breadcrumb: [
+        { label: 'Suport Clienti', url: '' },
+      ]
+    },
+  },
+  {
+    path: "suport-clienti/magazine",
+    component: StoreComponent,
+    data: {
+      breadcrumb: [
+        { label: 'Suport Clienti', url: '/suport-clienti' },
         { label: 'Magazine', url: '' },
       ]
     },
   },
   {
-    path: "magazine/:storeName", component: StoreDetailComponent,
+    path: "suport-clienti/magazine/:storeName",
+    component: StoreDetailComponent,
     data: {
       breadcrumb: [
-        { label: 'Magazine', url: '/magazine' },
+        { label: 'Suport Clienti', url: '/suport-clienti' },
+        { label: 'Magazine', url: '/suport-clienti/magazine' },
         { label: '{{storeName}}', url: '' },
       ]
     },
   },
 
-  // DEPARTAMENTS -------------------------------------------------------------------------------------------
+  // P R O D U C T S ----------------------------------------------------------------------------------------------
   {
-    path: "p/:department", component: DepartmentComponent,
+    path: "p/:department",
+    component: ProductDepartmentComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '' },
@@ -116,7 +129,8 @@ const routes: Routes = [
     },
   },
   {
-    path: "p/:department/:type", component: ProductTypeComponent,
+    path: "p/:department/:type",
+    component: ProductTypeComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '/p/:department' },
@@ -125,7 +139,8 @@ const routes: Routes = [
     },
   },
   {
-    path: "p/:department/:type/:category", component: ProductCategoryComponent,
+    path: "p/:department/:type/:category",
+    component: ProductCategoryComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '/p/:department' },
@@ -135,7 +150,8 @@ const routes: Routes = [
     },
   },
   {
-    path: "p/:department/:type/:category/:linkName", component: ProductDetailComponent,
+    path: "p/:department/:type/:category/:linkName",
+    component: ProductDetailComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '/p/:department' },

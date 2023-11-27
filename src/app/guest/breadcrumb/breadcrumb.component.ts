@@ -99,7 +99,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
     if (this.customBreadcrumb.customLinkName) {
       this.customBreadcrumb.customLinkName
         = this.customBreadcrumb.customLinkName.charAt(0).toUpperCase()
-        + this.customBreadcrumb.customLinkName.slice(1);
+        + this.customBreadcrumb.customLinkName.slice(1).replace(/-/g, " ").toLowerCase();
     }
   }
 }
