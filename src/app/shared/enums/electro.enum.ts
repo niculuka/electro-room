@@ -176,4 +176,10 @@ export enum CATEGORY {
     SATA3 = "SATA3",
     USB = "USB",
     MICRO_USB = "MICRO_USB",
+
+    RYZEN_7 = "RYZEN_7",
+    G15 = "G15",
+    HZ4200 = "4200HZ",
+    D15 = "D15",
+    HZ120 = "HZ120",
 }
