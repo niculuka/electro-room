@@ -4,17 +4,59 @@
     <label for="box1">Descriere</label>
 
     <div class="box">
-        <h1><span>COMUTATORUL MUX CRESTE PERFORMANTELE GRAFICE.</span></h1>
-        <p>
-            Componentele de top necesita putere, mai ales cand vine vorba de placi video de ultima
-            generatie.
-        </p>
+        <div *ngFor="let description of product.descriptions">
+            <div>
+                <h1><span>{{description.title}}</span></h1>
+                <p>
+                    {{description.text}}
+                </p>
+            </div>
+
+            <img src={{description.image}}>
+        </div>
     </div>
 
     <input type="radio" name="box" id="box2">
     <label for="box2">Specificatii</label>
+
     <div class="box">
-        <h1>Specificatii</h1>
+        <div *ngFor="let specification of product.specifications">
+            <div>
+                <h1>PROCESOR</h1>
+                <p><strong>Producator: </strong>{{specification.processor_producer}}</p>
+                <p><strong>Tipul: </strong>{{specification.processor_type}}</p>
+                <p><strong>Model: </strong>{{specification.processor_model}}</p>
+                <p><strong>Frecventa: </strong>{{specification.processor_frequency}}</p>
+
+            </div>
+            <div>
+                <h1>ECRAN</h1>
+                <p><strong>Diagonala:</strong> {{specification.display_diagonal}}</p>
+                <p><strong>Frecventa: </strong>{{specification.display_frequency}}</p>
+                <p><strong>Ecran tactil: </strong>{{specification.display_touchable?'Da':'Nu'}}</p>
+
+            </div>
+            <div>
+                <h1>MEMORIE</h1>
+                <p><strong>Capacitate: </strong>{{specification.memory_capacity}}</p>
+                <p><strong>Tipul: </strong>{{specification.memory_type}}</p>
+                <p><strong>Frecventa: </strong>{{specification.memory_frequency}}</p>
+
+            </div>
+            <div>
+                <h1>HARD</h1>
+                <p><strong>Tipul: </strong>{{specification.hard_type}}</p>
+                <p><strong>Capacitate: </strong>{{specification.hard_capacity}}</p>
+                <p><strong>Slot: </strong>{{specification.hard_slot}}</p>
+
+            </div>
+            <div>
+                <h1>CONECTIVITATE</h1>
+                <p><strong>Diagonala:</strong> {{specification.connectivity_bluetooth}}</p>
+                <p><strong>Frecventa: </strong>{{specification.connectivity_wireless}}</p>
+
+            </div>
+        </div>
     </div>
 
     <input type="radio" name="box" id="box3">

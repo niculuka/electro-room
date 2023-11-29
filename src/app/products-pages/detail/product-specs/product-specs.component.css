@@ -23,8 +23,15 @@
     /* border: 2px solid rgb(255, 0, 0); */
 }
 
+.box>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .box h1 {
     font-size: 16px;
+    color: rgb(220, 20, 110);
 }
 
 .details>label {
@@ -44,6 +51,10 @@
 
 .details>label:hover {
     color: black;
+}
+
+.box img{
+    width: 200px;
 }
 
 .details>input {

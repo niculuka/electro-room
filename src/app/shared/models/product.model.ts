@@ -24,11 +24,10 @@ export class ProductSpecification {
     processor_type?: String;
     processor_model?: String;
     processor_frequency?: String;
-    processor_power?: String;
 
     display_diagonal?: String;
     display_frequency?: String;
-    display_touchable: boolean = false;
+    display_touchable?: boolean;
 
     memory_capacity?: String;
     memory_type?: String;
@@ -38,7 +37,7 @@ export class ProductSpecification {
     hard_capacity?: String;
     hard_slot?: String;
 
-    connectivity_slot?: String;
+    connectivity_bluetooth?: String;
     connectivity_wireless?: String;
     
     productId: number | undefined;
