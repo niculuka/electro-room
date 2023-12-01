@@ -1,6 +1,6 @@
 <div class="details">
 
-    <input type="radio" name="box" id="box1" checked="checked">
+    <input type="radio" name="box" id="box1">
     <label for="box1">Descriere</label>
 
     <div class="box">
@@ -12,50 +12,110 @@
                 </p>
             </div>
 
-            <img src={{description.image}}>
+            <div>
+                <img src={{description.image}}>
+            </div>
         </div>
     </div>
 
-    <input type="radio" name="box" id="box2">
+    <input type="radio" name="box" id="box2" checked="checked">
     <label for="box2">Specificatii</label>
 
     <div class="box">
-        <div *ngFor="let specification of product.specifications">
-            <div>
+        <div>
+            <!-- L a p t o p s ------------------------------------------------------------------------------- -->
+            <div *ngIf="sp.processor_brand || sp.processor_type || sp.processor_model || sp.processor_frequency">
                 <h1>PROCESOR</h1>
-                <p><strong>Producator: </strong>{{specification.processor_producer}}</p>
-                <p><strong>Tipul: </strong>{{specification.processor_type}}</p>
-                <p><strong>Model: </strong>{{specification.processor_model}}</p>
-                <p><strong>Frecventa: </strong>{{specification.processor_frequency}}</p>
-
+                <p *ngIf="sp.processor_brand">
+                    <strong>Producator: </strong>{{sp.processor_brand}}
+                </p>
+                <p *ngIf="sp.processor_type">
+                    <strong>Tipul: </strong>{{sp.processor_type}}
+                </p>
+                <p *ngIf="sp.processor_model">
+                    <strong>Model: </strong>{{sp.processor_model}}
+                </p>
+                <p *ngIf="sp.processor_frequency">
+                    <strong>Frecventa: </strong>{{sp.processor_frequency}} MHz
+                </p>
             </div>
-            <div>
+    
+            <div *ngIf="sp.display_size || sp.display_frequency || sp.display_touch">
                 <h1>ECRAN</h1>
-                <p><strong>Diagonala:</strong> {{specification.display_diagonal}}</p>
-                <p><strong>Frecventa: </strong>{{specification.display_frequency}}</p>
-                <p><strong>Ecran tactil: </strong>{{specification.display_touchable?'Da':'Nu'}}</p>
-
+                <p *ngIf="sp.display_size">
+                    <strong>Diagonala: </strong>{{sp.display_size}} inch
+                </p>
+                <p *ngIf="sp.display_frequency">
+                    <strong>Frecventa: </strong>{{sp.display_frequency}} Hz
+                </p>
+                <p *ngIf="sp.display_touch || !sp.display_touch">
+                    <strong>Ecran tactil: </strong>{{sp.display_touch?'Da':'Nu'}}
+                </p>
             </div>
-            <div>
+    
+            <div *ngIf="sp.memory_type || sp.memory_type || sp.memory_frequency">
                 <h1>MEMORIE</h1>
-                <p><strong>Capacitate: </strong>{{specification.memory_capacity}}</p>
-                <p><strong>Tipul: </strong>{{specification.memory_type}}</p>
-                <p><strong>Frecventa: </strong>{{specification.memory_frequency}}</p>
-
+                <p *ngIf="sp.memory_type">
+                    <strong>Tipul: </strong>{{sp.memory_type}}
+                </p>
+                <p *ngIf="sp.memory_capacity">
+                    <strong>Capacitate: </strong>{{sp.memory_capacity}} GB
+                </p>
+                <p *ngIf="sp.memory_frequency">
+                    <strong>Frecventa: </strong>{{sp.memory_frequency}} MHz
+                </p>
             </div>
-            <div>
+    
+            <div *ngIf="sp.hard_type || sp.hard_capacity || sp.hard_slot">
                 <h1>HARD</h1>
-                <p><strong>Tipul: </strong>{{specification.hard_type}}</p>
-                <p><strong>Capacitate: </strong>{{specification.hard_capacity}}</p>
-                <p><strong>Slot: </strong>{{specification.hard_slot}}</p>
-
+                <p *ngIf="sp.hard_type">
+                    <strong>Tipul: </strong>{{sp.hard_type}}
+                </p>
+                <p *ngIf="sp.hard_capacity">
+                    <strong>Capacitate: </strong>{{sp.hard_capacity}} GB
+                </p>
+                <p *ngIf="sp.hard_slot">
+                    <strong>Slot: </strong>{{sp.hard_slot}}
+                </p>
             </div>
-            <div>
+    
+            <div *ngIf="sp.connectivity_bluetooth || sp.connectivity_wireless">
                 <h1>CONECTIVITATE</h1>
-                <p><strong>Diagonala:</strong> {{specification.connectivity_bluetooth}}</p>
-                <p><strong>Frecventa: </strong>{{specification.connectivity_wireless}}</p>
-
+                <p *ngIf="sp.connectivity_bluetooth">
+                    <strong>Bluetooth: </strong>{{sp.connectivity_bluetooth}}
+                </p>
+                <p *ngIf="sp.connectivity_wireless">
+                    <strong>Wireless: </strong>{{sp.connectivity_wireless}}
+                </p>
             </div>
+
+            <!-- B a g s ---------------------------------------------------------------------------------- -->
+            <div *ngIf="sp.bag_brand ||sp.bag_type || sp.bag_compatibility">
+                <h1>CARACTERISTICI GENERALE</h1>
+                <p *ngIf="sp.bag_brand">
+                    <strong>Producator: </strong>{{sp.bag_brand}}
+                </p>
+                <p *ngIf="sp.bag_type">
+                    <strong>Tip produs: </strong>{{sp.bag_type}}
+                </p>
+                <p *ngIf="sp.bag_compatibility">
+                    <strong>Compatibilitate: </strong>{{sp.bag_compatibility}} inch
+                </p>
+            </div>
+
+            <div *ngIf="sp.bag_color || sp.bag_material || sp.bag_weight">
+                <h1>ALTELE</h1>
+                <p *ngIf="sp.bag_color">
+                    <strong>Culoare: </strong>{{sp.bag_color}}
+                </p>
+                <p *ngIf="sp.bag_material">
+                    <strong>Material: </strong>{{sp.bag_material}}
+                </p>
+                <p *ngIf="sp.bag_weight">
+                    <strong>Greutate: </strong>{{sp.bag_weight}} kg
+                </p>
+            </div>
+
         </div>
     </div>
 
