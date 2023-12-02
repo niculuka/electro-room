@@ -17,7 +17,7 @@ export class ProductDescription {
 export class ProductSpecification {
     id: number | undefined;     
     
-    // L a p t o p s - - - - - - - - - - - - -
+    // Laptops - Desktops - Monitors - - - - - - - - - - - - -
     processor_brand?: string;
     processor_type?: string;
     processor_model?: string;
@@ -25,7 +25,7 @@ export class ProductSpecification {
 
     display_size?: number;
     display_frequency?: number;
-    display_touch?: boolean;
+    display_touch?: string;
 
     memory_type?: string;
     memory_capacity?: number;
@@ -38,60 +38,27 @@ export class ProductSpecification {
     connectivity_bluetooth?: string;
     connectivity_wireless?: string;
 
-    // B a g s - - - - - - - - - - - - - - - - -
-    bag_brand?: string;
-    bag_type?: string;
-    bag_compatibility?: number;
+    // Bags - Chargers - Hards - ExtBaterries - Rams  - - - - - -
+    brand?: string;
+    type?: string;
+    model?: string;
+    connection?: string; 
+    output?: string;
+    compatibility?: string;     
+    frequency?: number;
+    capacity?: number;
+    screen_size?: number;
+    power?: number;
+    speed?: number;
+    read_speed?: number;
+    write_speed?: number;
     
-    bag_color?: string;
-    bag_material?: string;
-    bag_weight?: number;
-
-    // C h a r g e r s - - - - - - - - - - - - -
-    charger_brand?: string;
-    charger_type?: string;
-    charger_output?: number;
-    charger_power?: number;
-    
-    charger_color?: string;
-    charger_weight?: number;
-
-    // H a r d s - - - - - - - - - - - - - - - - -
-    harddisk_brand?: string;
-    harddisk_type?: string;
-    harddisk_capacity?: number;
-    harddisk_slot?: string;
-    
-    harddisk_read?: number;
-    harddisk_write?: number; 
-
-    // E x t e r n a l  B a t t e r  r i e s - - -
-    ext_batterry_brand?: string;
-    ext_batterry_type?: string;
-    ext_batterry_capacity?: number;
-    ext_batterry_connection?: string;
-    
-    ext_batterry_color?: string;
-    ext_batterry_weight?: number;
-
-    // R a m  s - - - - - - - - - - - - - - - - - -
-    ram_brand?: string;
-    ram_type?: string;
-    ram_capacity?: number;
-    ram_frequency?: number;
-    
-    ram_compatibility?: string;
-    ram_radiator?: boolean;
-
-    // M o n i t o r s - - - - - - - - - - - - - -
-    monitor_brand?: string;
-    monitor_model?: string;
-    monitor_type?: string;
-    monitor_size?: number;
-    monitor_frequency?: number;
-    
-    monitor_hdmi?: number;
-    monitor_speaker?: boolean;
+    material?: string;
+    color?: string;
+    weight?: number;         
+    hdmi?: number;
+    speaker?: string;
+    radiator?: string;
     
     product_id_fk: number | undefined;
 }

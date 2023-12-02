@@ -23,7 +23,7 @@
 
     <div class="box">
         <div>
-            <!-- L a p t o p s ------------------------------------------------------------------------------- -->
+            <!-- Laptops - Desktops - Monitors ------------------------------------------------------------------------- -->
             <div *ngIf="sp.processor_brand || sp.processor_type || sp.processor_model || sp.processor_frequency">
                 <h1>PROCESOR</h1>
                 <p *ngIf="sp.processor_brand">
@@ -39,7 +39,7 @@
                     <strong>Frecventa: </strong>{{sp.processor_frequency}} MHz
                 </p>
             </div>
-    
+
             <div *ngIf="sp.display_size || sp.display_frequency || sp.display_touch">
                 <h1>ECRAN</h1>
                 <p *ngIf="sp.display_size">
@@ -48,11 +48,11 @@
                 <p *ngIf="sp.display_frequency">
                     <strong>Frecventa: </strong>{{sp.display_frequency}} Hz
                 </p>
-                <p *ngIf="sp.display_touch || !sp.display_touch">
-                    <strong>Ecran tactil: </strong>{{sp.display_touch?'Da':'Nu'}}
+                <p *ngIf="sp.display_touch">
+                    <strong>Ecran tactil: </strong>{{sp.display_touch}}
                 </p>
             </div>
-    
+
             <div *ngIf="sp.memory_type || sp.memory_type || sp.memory_frequency">
                 <h1>MEMORIE</h1>
                 <p *ngIf="sp.memory_type">
@@ -65,7 +65,7 @@
                     <strong>Frecventa: </strong>{{sp.memory_frequency}} MHz
                 </p>
             </div>
-    
+
             <div *ngIf="sp.hard_type || sp.hard_capacity || sp.hard_slot">
                 <h1>HARD</h1>
                 <p *ngIf="sp.hard_type">
@@ -78,7 +78,7 @@
                     <strong>Slot: </strong>{{sp.hard_slot}}
                 </p>
             </div>
-    
+
             <div *ngIf="sp.connectivity_bluetooth || sp.connectivity_wireless">
                 <h1>CONECTIVITATE</h1>
                 <p *ngIf="sp.connectivity_bluetooth">
@@ -89,33 +89,72 @@
                 </p>
             </div>
 
-            <!-- B a g s ---------------------------------------------------------------------------------- -->
-            <div *ngIf="sp.bag_brand ||sp.bag_type || sp.bag_compatibility">
+            <!-- Bags - Chargers - Hards - ExtBaterries - Rams ------------------------------------------------------ -->
+            <div
+                *ngIf="sp.brand || sp.type || sp.model || sp.connection || sp.output || sp.compatibility || sp.frequency || sp.capacity|| sp.screen_size || sp.power">
                 <h1>CARACTERISTICI GENERALE</h1>
-                <p *ngIf="sp.bag_brand">
-                    <strong>Producator: </strong>{{sp.bag_brand}}
+                <p *ngIf="sp.brand">
+                    <strong>Producator: </strong>{{sp.brand}}
                 </p>
-                <p *ngIf="sp.bag_type">
-                    <strong>Tip produs: </strong>{{sp.bag_type}}
+                <p *ngIf="sp.type">
+                    <strong>Tip produs: </strong>{{sp.type}}
                 </p>
-                <p *ngIf="sp.bag_compatibility">
-                    <strong>Compatibilitate: </strong>{{sp.bag_compatibility}} inch
+                <p *ngIf="sp.model">
+                    <strong>Model: </strong>{{sp.model}}
                 </p>
+                <p *ngIf="sp.connection">
+                    <strong>Conectare: </strong>{{sp.connection}}
+                </p>
+                <p *ngIf="sp.output">
+                    <strong>Iesire: </strong>{{sp.output}}
+                </p>
+                <p *ngIf="sp.compatibility">
+                    <strong>Compatibilitate: </strong>{{sp.compatibility}}
+                </p>
+                <p *ngIf="sp.frequency">
+                    <strong>Frecventa: </strong>{{sp.frequency}}
+                </p>
+                <p *ngIf="sp.capacity">
+                    <strong>Capacitate: </strong>{{sp.capacity}} MB
+                </p>
+                <p *ngIf="sp.screen_size">
+                    <strong>Diagonala: </strong>{{sp.screen_size}} inch
+                </p>
+                <p *ngIf="sp.power">
+                    <strong>Putere: </strong>{{sp.power}} W
+                </p>                
             </div>
 
-            <div *ngIf="sp.bag_color || sp.bag_material || sp.bag_weight">
+            <div *ngIf="sp.material || sp.color || sp.weight || sp.speed || sp.read_speed || sp.write_speed || sp.hdmi || sp.speaker || sp.radiator">
                 <h1>ALTELE</h1>
-                <p *ngIf="sp.bag_color">
-                    <strong>Culoare: </strong>{{sp.bag_color}}
+                <p *ngIf="sp.material">
+                    <strong>Material: </strong>{{sp.material}}
                 </p>
-                <p *ngIf="sp.bag_material">
-                    <strong>Material: </strong>{{sp.bag_material}}
+                <p *ngIf="sp.color">
+                    <strong>Culoare: </strong>{{sp.color}}
                 </p>
-                <p *ngIf="sp.bag_weight">
-                    <strong>Greutate: </strong>{{sp.bag_weight}} kg
+                <p *ngIf="sp.weight">
+                    <strong>Greutate: </strong>{{sp.weight}} kg
+                </p>
+                <p *ngIf="sp.speed">
+                    <strong>Viteza: </strong>{{sp.speed}} Rpm
+                </p>
+                <p *ngIf="sp.read_speed">
+                    <strong>Viteza citire: </strong>{{sp.read_speed}} MB/s
+                </p>
+                <p *ngIf="sp.write_speed">
+                    <strong>Viteza scriere: </strong>{{sp.write_speed}} MB/s
+                </p>
+                <p *ngIf="sp.hdmi">
+                    <strong>HDMI: </strong>{{sp.hdmi}}
+                </p>
+                <p *ngIf="sp.speaker">
+                    <strong>Difuzor: </strong>{{sp.speaker}}
+                </p>
+                <p *ngIf="sp.radiator">
+                    <strong>Radiator: </strong>{{sp.radiator}}
                 </p>
             </div>
-
         </div>
     </div>
 
