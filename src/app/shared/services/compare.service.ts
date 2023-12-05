@@ -19,13 +19,13 @@ export class CompareService {
     let comp = this.compares.find(item => item.id === product.id);
     if (comp) return;
     this.compares.push(product);
-    this.toastrService.success("Produsul a fost adaugat la Comparari", "Under Construction")
+    this.toastrService.success("Produsul a fost adaugat la Comparari")
     this.setComparesToLocalStorage();
   }
 
   removeFromComparesService(product: Product): void {
     this.compares = this.compares.filter(item => item.id != product.id);
-    this.toastrService.warning("Produsul a fost sters din Comparari", "Under Construction")
+    this.toastrService.warning("Produsul a fost sters din Comparari")
     this.setComparesToLocalStorage();
   }
 

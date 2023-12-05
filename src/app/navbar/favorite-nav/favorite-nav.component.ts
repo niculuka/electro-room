@@ -4,7 +4,7 @@ import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { Product } from 'src/app/shared/models/product.model';
 
 @Component({
-  selector: 'favorite-nav',
+  selector: 'app-favorite-nav',
   templateUrl: './favorite-nav.component.html',
   styleUrls: ['./favorite-nav.component.css']
 })

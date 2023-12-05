@@ -43,6 +43,7 @@ import { ProductCategoryComponent } from './products-pages/category/product-cate
 import { ProductDetailComponent } from './products-pages/detail/product-detail/product-detail.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { FavoriteComponent } from './guest/favorite/favorite.component';
+import { CompareComponent } from './guest/compare/compare.component';
 
 const routes: Routes = [
   // home
@@ -77,6 +78,7 @@ const routes: Routes = [
   { path: "cart", component: CartComponent },
   { path: "cart/order", component: OrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
   { path: "favorites", component: FavoriteComponent },
+  { path: "compare", component: CompareComponent },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
   { path: "my-orders", component: MyOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
   { path: "search/:searchTerm", component: SearchComponent },

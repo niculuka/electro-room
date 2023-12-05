@@ -1,0 +1,162 @@
+.compare {
+    position: absolute;
+    bottom: 2%;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+    border-radius: 8px;
+    /* border: 1px solid rgb(176, 176, 176); */
+    box-shadow: 0px -4px 16px 0px rgba(0, 0, 0, 0.6);
+    background: white;
+}
+
+.compare .compare-items {
+    max-height: 280px;
+    overflow-y: scroll;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+
+    /* IE and Edge */
+    -ms-overflow-style: none;
+
+    /* Firefox */
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.compare .compare-items::-webkit-scrollbar {
+    display: none;
+}
+
+.compare .compare-items table {
+    cursor: default;
+    border-collapse: collapse;
+    width: 260px;
+}
+
+.compare .compare-items table tr {
+    border-bottom: 1px solid lightgray;
+}
+
+.compare .compare-items table tr:hover {
+    background: rgba(220, 20, 110, 0.1);
+}
+
+.compare .compare-items table tr:last-child {
+    border-bottom: none;
+}
+
+.compare .compare-items table td {
+    padding: 4px 8px;
+    /* border: 1px solid rgb(253, 3, 3); */
+}
+
+.compare .compare-items table td a {
+    text-decoration: none;
+    color: black;
+    /* border: 1px solid black; */
+}
+
+.compare .compare-items table img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.compare .compare-items table .name {
+    font-size: 12px;
+    line-height: 14px;
+    cursor: pointer;
+}
+
+.compare .compare-items table .price {
+    white-space: nowrap;
+    font-size: 14px;
+    color: rgb(220, 20, 110);
+}
+
+.compare .compare-items table mat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    font-size: 18px;
+    color: gray;
+    cursor: pointer;
+    /* border: 1px solid black; */
+}
+
+.compare .compare-items table mat-icon:hover {
+    color: rgb(0, 0, 0);
+}
+
+/* footer -------------------------------------------*/
+.compare .button-container {
+    margin: 0;
+    padding: 10px;
+    box-shadow: 0px -6px 16px 00px rgba(0, 0, 0, 0.3);
+    /* border: 1px solid black; */
+}
+
+
+.compare .button-container button {
+    color: white;
+    font-size: 14px;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: #616161;
+}
+
+.compare .button-container button:hover {
+    background: #7e7e7e;
+}
+
+@media (max-width: 550px) {
+    .compare .compare-items {
+        max-height: 180px;
+    }
+
+    .compare .compare-items table {
+        border-collapse: collapse;
+        width: 200px;
+    }
+
+    .compare .compare-items table td {
+        padding: 2px 4px;
+    }
+
+    .compare .compare-items table img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .compare .compare-items table .name {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .compare .compare-items table .price {
+        font-size: 12px;
+    }
+
+    .compare .compare-items table mat-icon {
+        width: 14px;
+        height: 14px;
+        font-size: 16px;
+    }
+
+    .compare .button-container {
+        padding: 6px;
+    }
+
+
+    .compare .button-container button {
+        font-size: 12px;
+        padding: 6px;
+    }
+}

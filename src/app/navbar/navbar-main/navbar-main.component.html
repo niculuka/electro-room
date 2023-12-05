@@ -119,7 +119,7 @@
           </a>
           <div class="dropdown-menu" *ngIf="!isFavoritesPage()">
             <a class="emptyList" *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
-            <favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></favorite-nav>
+            <app-favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></app-favorite-nav>
           </div>
         </li>
 

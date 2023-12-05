@@ -17,48 +17,57 @@ export class ProductDescription {
 export class ProductSpecification {
     id: number | undefined;     
     
-    // Laptops - Desktops - Monitors - - - - - - - - - - - - -
+    // Laptops - Desktops - - - - - - - - - - - - - - - - - - - - - - -
+    motherboard_brand?: string;
+    motherboard_chipset?: string;
+    motherboard_slot?: string;
+    motherboard_audio?: string;
+    
     processor_brand?: string;
     processor_type?: string;
     processor_model?: string;
-    processor_frequency?: number;
+    processor_frequency?: string;
 
-    display_size?: number;
-    display_frequency?: number;
+    display_size?: string;
+    display_frequency?: string;
     display_touch?: string;
 
     memory_type?: string;
-    memory_capacity?: number;
-    memory_frequency?: number;
+    memory_capacity?: string;
+    memory_frequency?: string;
 
-    hard_type?: string;
-    hard_capacity?: number;
-    hard_slot?: string;      
+    hard_type_1?: string;
+    hard_capacity_1?: string;
+    hard_slot_1?: string;
+
+    hard_type_2?: string;
+    hard_capacity_2?: string; 
+    hard_slot_2?: string;         
 
     connectivity_bluetooth?: string;
     connectivity_wireless?: string;
 
-    // Bags - Chargers - Hards - ExtBaterries - Rams  - - - - - -
-    brand?: string;
+    // Bags - Chargers - Hards - ExtBaterries - Rams - Monitors - - - -
     type?: string;
     model?: string;
+    capacity?: string; 
     connection?: string; 
     output?: string;
-    compatibility?: string;     
-    frequency?: number;
-    capacity?: number;
-    screen_size?: number;
-    power?: number;
-    speed?: number;
-    read_speed?: number;
-    write_speed?: number;
+    compatibility?: string; 
+    screen_size?: string;    
+    frequency?: string;       
+    power?: string;
     
     material?: string;
     color?: string;
-    weight?: number;         
-    hdmi?: number;
+    weight?: string;
+    speed?: string;
+    read_speed?: string;
+    write_speed?: string;    
+    hdmi?: string;
     speaker?: string;
     radiator?: string;
+    voltage?: string;
     
     product_id_fk: number | undefined;
 }

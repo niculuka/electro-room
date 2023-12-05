@@ -1,8 +1,8 @@
-<div class="favorite">
+<div class="compare">
 
-    <div class="favorite-items">
+    <div class="compare-items">
         <table>
-            <tr *ngFor="let product of favorites">
+            <tr *ngFor="let product of compares">
                 <td>
                     <a [routerLink]="'/p/'
                                     +product.department.toLowerCase()
@@ -29,13 +29,13 @@
                 </td>
                 <td class="price">{{product.price}} Lei</td>
                 <td>
-                    <mat-icon (click)="removeFromFavorites(product)">close</mat-icon>
+                    <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
                 </td>
             </tr>
         </table>
     </div>
 
     <div class="button-container">
-        <button routerLink="/favorites">Vezi produsele favorite!</button>
+        <button routerLink="/compare">Vezi produsele comparate!</button>
     </div>
 </div>
