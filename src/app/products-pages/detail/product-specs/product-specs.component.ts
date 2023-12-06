@@ -13,7 +13,7 @@ export class ProductSpecsComponent implements OnInit {
 
   ngOnInit(): void {
     this.sp = this.product.specifications[0];
-    console.log (this.product);
+    // console.log (this.product);
   }
 
 }

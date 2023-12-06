@@ -4,26 +4,18 @@
         <table>
             <tr *ngFor="let product of favorites">
                 <td>
-                    <a [routerLink]="'/p/'
-                                    +product.department.toLowerCase()
-                                    +'/'
-                                    +product.type.toLowerCase()
-                                    +'/'
-                                    +product.category.toLowerCase()
-                                    +'/'
-                                    +product.linkName">
+                    <a [routerLink]="'/p/'+product.department.toLowerCase()
+                                    +'/'+product.type.toLowerCase()
+                                    +'/'+product.category.toLowerCase()
+                                    +'/'+product.linkName">
                         <img src={{product.image}}>
                     </a>
                 </td>
                 <td class="name">
-                    <a [routerLink]="'/p/'
-                                    +product.department.toLowerCase()
-                                    +'/'
-                                    +product.type.toLowerCase()
-                                    +'/'
-                                    +product.category.toLowerCase()
-                                    +'/'
-                                    +product.linkName">
+                    <a [routerLink]="'/p/'+product.department.toLowerCase()
+                                    +'/'+product.type.toLowerCase()
+                                    +'/'+product.category.toLowerCase()
+                                    +'/'+product.linkName">
                         <span>{{product.name}}</span>
                     </a>
                 </td>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { Product } from 'src/app/shared/models/product.model';
 
@@ -14,14 +13,15 @@ export class FavoriteComponent {
 
   favorites!: Array<Product>;
 
+  private sub: any;
+
   constructor(
     private cartService: CartService,
     private favoriteService: FavoriteService,
-    private router: Router,
     private location: Location,
   ) {
-    this.favoriteService.getFavoritesObservable().subscribe((data) => {
-      this.favorites = data;
+    this.sub = this.favoriteService.getFavoritesObservable().subscribe((fav) => {
+      this.favorites = fav;
     });
   }
 
@@ -43,6 +43,10 @@ export class FavoriteComponent {
 
   goBack() {
     this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
   }
 
 }

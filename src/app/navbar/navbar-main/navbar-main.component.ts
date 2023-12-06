@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ROLE } from 'src/app/shared/enums/electro.enum';
@@ -15,7 +15,7 @@ import { MenuService } from 'src/app/shared/services/menu.service';
   templateUrl: './navbar-main.component.html',
   styleUrls: ['./navbar-main.component.css']
 })
-export class NavbarMainComponent {
+export class NavbarMainComponent implements OnDestroy{
 
   @ViewChild('txt') txt: ElementRef | undefined;
   isMobileMenuOpen: boolean = false;
@@ -36,6 +36,12 @@ export class NavbarMainComponent {
   product: Product = new Product();
   products: Array<Product> = [];
 
+  private sub0: any;
+  private sub1: any;
+  private sub2: any;
+  private sub3: any;
+  private sub4: any;
+
   constructor(
     private cartService: CartService,
     private favoriteService: FavoriteService,
@@ -44,27 +50,27 @@ export class NavbarMainComponent {
     private currentUrl: CurrentUrl,
     private menuService: MenuService,
   ) {
-    cartService.getCartObservable().subscribe(data => {
+    this.sub0 = cartService.getCartObservable().subscribe(data => {
       this.cart = data;
       this.cartQuantity = data.totalCount;
     });
-    favoriteService.getFavoritesObservable().subscribe(data => {
+    this.sub1 = favoriteService.getFavoritesObservable().subscribe(data => {
       this.favorites = data;
     });
 
-    this.authService.currentUser.subscribe(
+    this.sub2 = this.authService.currentUser.subscribe(
       data => {
         this.currentUser = data;
         if (this.currentUser) {
           this.userFirstChar = this.currentUser.username.charAt(0);
         }
       });
-    this.currentUrl.getCurrentUrlObservable().subscribe(url => {
+      this.sub3 = this.currentUrl.getCurrentUrlObservable().subscribe(url => {
       if (url) {
         this.currentLink = url;
       }
     });
-    this.menuService.getMobileMenuObservable().subscribe((data) => {
+    this.sub4 = this.menuService.getMobileMenuObservable().subscribe((data) => {
       this.isMobileMenuOpen = data;
     });
   }
@@ -138,5 +144,13 @@ export class NavbarMainComponent {
       .then(() => {
         window.location.reload();
       });
+  }
+
+  ngOnDestroy(): void {
+    this.sub0?.unsubscribe();
+    this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe();
+    this.sub3?.unsubscribe();
+    this.sub4?.unsubscribe();
   }
 }

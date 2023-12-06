@@ -1,1 +1,88 @@
-<p>compare works!</p>
+<div class="container-favorites">
+    <div class="content-favorites">
+
+        <h1>Compara produse</h1>
+        <div class="header">
+            <div class="titles">
+            </div>
+
+            <div class="specifications" *ngFor="let product of compares;">
+                <div class="aaa">
+                    <a [routerLink]="'/p/'+product.department.toLowerCase()
+                                +'/'+product.type.toLowerCase()
+                                +'/'+product.category.toLowerCase()
+                                +'/'+product.linkName">
+                        <img [src]="product.image" [alt]="product.name">
+                    </a>
+                </div>
+                <div class="aaa">
+                    <a [routerLink]="'/p/'+product.department.toLowerCase()
+                                    +'/'+product.type.toLowerCase()
+                                    +'/'+product.category.toLowerCase()
+                                    +'/'+product.linkName">
+                        {{product.description}}
+                    </a>
+                </div>
+                <div class="aaa">
+                    {{product.price | number: '1.2-2'}} Lei
+                </div>
+                <div class="aaa">
+                    <button (click)="addToCart(product)">Adauga in cos</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-col" *ngIf="titles.display">
+            <div>
+                E C R A N
+            </div>
+            <div class="display">
+                <div class="titles">
+                    <div class="aaa" *ngIf="specification.display_size">Diagonala</div>
+                    <div class="aaa" *ngIf="specification.display_frequency">Frecventa</div>
+                    <div class="aaa" *ngIf="specification.display_touch">Ecran Tactil</div>
+                </div>
+                <div class="specifications" *ngFor="let spec of specifications;">
+                    
+                        <div class="aaa" *ngIf="specification.display_size">
+                            {{spec.display_size}}
+                        </div>
+                        <div class="aaa" *ngIf="specification.display_frequency">
+                            {{spec.display_frequency}}
+                        </div>
+                        <div class="aaa" *ngIf="specification.display_touch">
+                            {{spec.display_touch}}
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="general-col" *ngIf="titles.general">
+            <div>
+                C A R A C T E R I S T I C I - G E N E R A L E
+            </div>
+            <div class="general">
+                <div class="titles">
+                    <div class="aaa" *ngIf="specification.type">Tip</div>
+                    <div class="aaa" *ngIf="specification.power">Putere</div>
+                    <div class="aaa" *ngIf="specification.output">Iesire</div>
+                </div>
+                <div class="specifications" *ngFor="let product of compares;">
+                    <div *ngFor="let prod of product.specifications;">
+                        <div class="aaa" *ngIf="specification.type">
+                            {{prod.type}}
+                        </div>
+                        <div class="aaa" *ngIf="specification.power">
+                            {{prod.power}}
+                        </div>
+                        <div class="aaa" *ngIf="specification.output">
+                            {{prod.output}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

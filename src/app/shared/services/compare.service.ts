@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { ToastrService } from 'ngx-toastr';
+import { CATEGORY } from '../enums/electro.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,31 @@ export class CompareService {
   ) { }
 
   addToComparesService(product: Product): void {
+    if (!this.compares.length) {
+      this.addProductToList(product);
+    }
+    else {
+      if (this.compares.length <= 3) {
+        let type = this.compares.find(item => item.type.toLowerCase() === product.type.toLowerCase());
+        let categ = this.compares.find(item => item.category.toLowerCase() === product.category.toLowerCase());
+
+        if (type || categ) {
+          this.addProductToList(product);
+        }
+        else {
+          this.toastrService.warning("Produsele trebuie sa fie din aceeasi categorie");
+        }
+      }
+      else {
+        this.toastrService.warning("Se pot compara maxim 4 produse");
+      }
+    }
+  }
+
+  addProductToList(product: Product) {
     let comp = this.compares.find(item => item.id === product.id);
     if (comp) return;
     this.compares.push(product);
-    this.toastrService.success("Produsul a fost adaugat la Comparari")
     this.setComparesToLocalStorage();
   }
 
@@ -42,6 +64,7 @@ export class CompareService {
     const compJson = JSON.stringify(this.compares);
     localStorage.setItem('comp-ls', compJson);
     this.comparesSubject.next(this.compares);
+    this.toastrService.success("Produsul a fost adaugat la Comparari")
   }
 
   private getComparesFromLocalStorage(): Array<Product> {
