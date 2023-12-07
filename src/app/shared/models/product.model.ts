@@ -14,23 +14,35 @@ export class ProductDescription {
     productId: number | undefined;
 }
 
+export class SpecificationTitle {
+    display?: string;
+    motherboard?: string;
+    processor?: string;    
+    memory?: string;
+    hard?: string
+    connectivity?: string;
+
+    general?: string;
+    others?: string;
+}
+
 export class ProductSpecification {
-    id: number | undefined;     
-    
+    id: number | undefined;
+
     // Laptops - Desktops - - - - - - - - - - - - - - - - - - - - - - -
+    display_size?: string;
+    display_frequency?: string;
+    display_touch?: string;
+
     motherboard_brand?: string;
     motherboard_chipset?: string;
     motherboard_slot?: string;
     motherboard_audio?: string;
-    
+
     processor_brand?: string;
     processor_type?: string;
     processor_model?: string;
-    processor_frequency?: string;
-
-    display_size?: string;
-    display_frequency?: string;
-    display_touch?: string;
+    processor_frequency?: string;    
 
     memory_type?: string;
     memory_capacity?: string;
@@ -41,8 +53,8 @@ export class ProductSpecification {
     hard_slot_1?: string;
 
     hard_type_2?: string;
-    hard_capacity_2?: string; 
-    hard_slot_2?: string;         
+    hard_capacity_2?: string;
+    hard_slot_2?: string;
 
     connectivity_bluetooth?: string;
     connectivity_wireless?: string;
@@ -50,25 +62,25 @@ export class ProductSpecification {
     // Bags - Chargers - Hards - ExtBaterries - Rams - Monitors - - - -
     type?: string;
     model?: string;
-    capacity?: string; 
-    connection?: string; 
+    capacity?: string;
+    connection?: string;
     output?: string;
-    compatibility?: string; 
-    screen_size?: string;    
-    frequency?: string;       
+    compatibility?: string;
+    screen_size?: string;
+    frequency?: string;
     power?: string;
-    
+
     material?: string;
     color?: string;
     weight?: string;
     speed?: string;
     read_speed?: string;
-    write_speed?: string;    
+    write_speed?: string;
     hdmi?: string;
     speaker?: string;
     radiator?: string;
     voltage?: string;
-    
+
     product_id_fk: number | undefined;
 }
 
@@ -88,7 +100,7 @@ export class Product {
     available: CATEGORY;
     favorite: boolean = false;
     compare: boolean = false;
-    price: number = 0;    
+    price: number = 0;
     gallery: Array<ProductGallery> = [];
     descriptions: Array<ProductDescription> = [];
     specifications: Array<ProductSpecification> = [];
@@ -106,7 +118,7 @@ export class Product {
         image: string = "",
         badge: CATEGORY = CATEGORY.CATEGORY,
         available: CATEGORY = CATEGORY.CATEGORY,
-        price: number = 0,        
+        price: number = 0,
         gallery: Array<ProductGallery> = [],
         descriptions: Array<ProductDescription> = [],
         specifications: Array<ProductSpecification> = [],

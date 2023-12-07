@@ -10,24 +10,24 @@
     flex-direction: column;
     margin: auto;
     width: 1500px;
+    /* border-radius: 8px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    background: white;
+    background: white;   */
     /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.header,
-.display,
-.general {
-    display: flex;
-    flex-direction: row;
+.title {
     width: 100%;
 }
 
-.titles {
-    width: 20%;
+.display {
+    display: flex;
+    flex-direction: row;
+    width: 100%;    
 }
 
-.specifications {
+.subtitle,
+.specification {
     width: 20%;
 }
 
@@ -40,15 +40,32 @@ img:hover {
     background: white;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
 
-.aaa {
+.description {
+    margin: 2px;
     height: 64px;
     overflow: hidden;
     border: 1px solid rgb(0, 0, 0);
 }
 
-.title {
+.cell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 18px;
+    overflow: hidden;
     border: 1px solid rgb(0, 0, 0);
+}
+
+h2 {
+    color: rgb(220, 20, 110);
 }
 
 /* .general {
@@ -61,4 +78,3 @@ img:hover {
         width: auto;
     }
 }
-

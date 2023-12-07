@@ -2,84 +2,135 @@
     <div class="content-favorites">
 
         <h1>Compara produse</h1>
-        <div class="header">
-            <div class="titles">
-            </div>
-
-            <div class="specifications" *ngFor="let product of compares;">
-                <div class="aaa">
-                    <a [routerLink]="'/p/'+product.department.toLowerCase()
+        <div>
+            <div class="display">
+                <div class="subtitle">
+                </div>
+                <div class="specification" *ngFor="let product of compares;">
+                    <div class="cell">
+                        <a [routerLink]="'/p/'+product.department.toLowerCase()
                                 +'/'+product.type.toLowerCase()
                                 +'/'+product.category.toLowerCase()
                                 +'/'+product.linkName">
-                        <img [src]="product.image" [alt]="product.name">
-                    </a>
-                </div>
-                <div class="aaa">
-                    <a [routerLink]="'/p/'+product.department.toLowerCase()
+                            <img [src]="product.image" [alt]="product.name">
+                        </a>
+                    </div>
+                    <div class="description">
+                        <a [routerLink]="'/p/'+product.department.toLowerCase()
                                     +'/'+product.type.toLowerCase()
                                     +'/'+product.category.toLowerCase()
                                     +'/'+product.linkName">
-                        {{product.description}}
-                    </a>
-                </div>
-                <div class="aaa">
-                    {{product.price | number: '1.2-2'}} Lei
-                </div>
-                <div class="aaa">
-                    <button (click)="addToCart(product)">Adauga in cos</button>
+                            {{product.description}}
+                        </a>
+                    </div>
+                    <div class="cell">
+                        {{product.price | number: '1.2-2'}} Lei
+                    </div>
+                    <div class="cell">
+                        <button (click)="addToCart(product)">Adauga in cos</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="display-col" *ngIf="titles.display">
-            <div>
-                E C R A N
+        <!-- ------------------------------------------------------------------------------------------ -->
+        <div *ngIf="title.display">
+            <div class="title">
+                <h2>{{title.display}}</h2>
             </div>
             <div class="display">
-                <div class="titles">
-                    <div class="aaa" *ngIf="specification.display_size">Diagonala</div>
-                    <div class="aaa" *ngIf="specification.display_frequency">Frecventa</div>
-                    <div class="aaa" *ngIf="specification.display_touch">Ecran Tactil</div>
+                <div class="subtitle">
+                    <div class="cell" *ngIf="specification.display_size">Diagonala</div>
+                    <div class="cell" *ngIf="specification.display_frequency">Frecventa</div>
+                    <div class="cell" *ngIf="specification.display_touch">Ecran Tactil</div>
                 </div>
-                <div class="specifications" *ngFor="let spec of specifications;">
-                    
-                        <div class="aaa" *ngIf="specification.display_size">
-                            {{spec.display_size}}
-                        </div>
-                        <div class="aaa" *ngIf="specification.display_frequency">
-                            {{spec.display_frequency}}
-                        </div>
-                        <div class="aaa" *ngIf="specification.display_touch">
-                            {{spec.display_touch}}
-                        </div>
-                    
+                <div class="specification" *ngFor="let spec of specifications;">
+                    <div class="cell" *ngIf="specification.display_size"> {{spec.display_size}} </div>
+                    <div class="cell" *ngIf="specification.display_frequency"> {{spec.display_frequency}} </div>
+                    <div class="cell" *ngIf="specification.display_touch"> {{spec.display_touch}} </div>
                 </div>
             </div>
         </div>
-        
-        <div class="general-col" *ngIf="titles.general">
-            <div>
-                C A R A C T E R I S T I C I - G E N E R A L E
+
+        <div *ngIf="title.processor">
+            <div class="title">
+                <h2>{{title.processor}}</h2>
             </div>
-            <div class="general">
-                <div class="titles">
-                    <div class="aaa" *ngIf="specification.type">Tip</div>
-                    <div class="aaa" *ngIf="specification.power">Putere</div>
-                    <div class="aaa" *ngIf="specification.output">Iesire</div>
+            <div class="display">
+                <div class="subtitle">
+                    <div class="cell" *ngIf="specification.processor_brand">Producator</div>
+                    <div class="cell" *ngIf="specification.processor_type">Tip</div>
+                    <div class="cell" *ngIf="specification.processor_model">Model</div>
+                    <div class="cell" *ngIf="specification.processor_frequency">Frecventa</div>
                 </div>
-                <div class="specifications" *ngFor="let product of compares;">
-                    <div *ngFor="let prod of product.specifications;">
-                        <div class="aaa" *ngIf="specification.type">
-                            {{prod.type}}
-                        </div>
-                        <div class="aaa" *ngIf="specification.power">
-                            {{prod.power}}
-                        </div>
-                        <div class="aaa" *ngIf="specification.output">
-                            {{prod.output}}
-                        </div>
-                    </div>
+                <div class="specification" *ngFor="let spec of specifications;">
+                    <div class="cell" *ngIf="specification.processor_brand"> {{spec.processor_brand}} </div>
+                    <div class="cell" *ngIf="specification.processor_type"> {{spec.processor_type}} </div>
+                    <div class="cell" *ngIf="specification.processor_model"> {{spec.processor_model}} </div>
+                    <div class="cell" *ngIf="specification.processor_frequency"> {{spec.processor_frequency}} </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ------------------------------------------------------------------------------------------ -->
+        <div *ngIf="title.general">
+            <div class="title">
+                <h2>{{title.general}}</h2>
+            </div>
+            <div class="display">
+                <div class="subtitle">
+                    <div class="cell" *ngIf="specification.type"> Tip </div>
+                    <div class="cell" *ngIf="specification.model"> Model </div>
+                    <div class="cell" *ngIf="specification.capacity"> Capacitate </div>
+                    <div class="cell" *ngIf="specification.connection"> Conectare </div>
+                    <div class="cell" *ngIf="specification.output"> Iesire </div>
+                    <div class="cell" *ngIf="specification.compatibility"> Compatibilitate </div>
+                    <div class="cell" *ngIf="specification.screen_size"> Diagonala </div>
+                    <div class="cell" *ngIf="specification.frequency"> Frecventa </div>
+                    <div class="cell" *ngIf="specification.power"> Putere </div>
+                </div>
+                <div class="specification" *ngFor="let spec of specifications;">
+                    <div class="cell" *ngIf="specification.type"> {{spec.type}} </div>
+                    <div class="cell" *ngIf="specification.model"> {{spec.model}} </div>
+                    <div class="cell" *ngIf="specification.capacity"> {{spec.capacity}} </div>
+                    <div class="cell" *ngIf="specification.connection"> {{spec.connection}} </div>
+                    <div class="cell" *ngIf="specification.output"> {{spec.output}} </div>
+                    <div class="cell" *ngIf="specification.compatibility"> {{spec.compatibility}} </div>
+                    <div class="cell" *ngIf="specification.screen_size"> {{spec.screen_size}} </div>
+                    <div class="cell" *ngIf="specification.frequency"> {{spec.frequency}} </div>
+                    <div class="cell" *ngIf="specification.power"> {{spec.power}} </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="title.general">
+            <div class="title">
+                <h2>{{title.others}}</h2>
+            </div>
+            <div class="display">
+                <div class="subtitle">
+                    <div class="cell" *ngIf="specification.material">Tip</div>
+                    <div class="cell" *ngIf="specification.color">Putere</div>
+                    <div class="cell" *ngIf="specification.weight">Iesire</div>
+                    <div class="cell" *ngIf="specification.speed">Tip</div>
+                    <div class="cell" *ngIf="specification.read_speed">Putere</div>
+                    <div class="cell" *ngIf="specification.write_speed">Iesire</div>
+                    <div class="cell" *ngIf="specification.hdmi">Tip</div>
+                    <div class="cell" *ngIf="specification.speaker">Putere</div>
+                    <div class="cell" *ngIf="specification.radiator">Iesire</div>
+                    <div class="cell" *ngIf="specification.voltage">Iesire</div>
+                </div>
+                <div class="specification" *ngFor="let spec of specifications;">
+                    <div class="cell" *ngIf="specification.material"> {{spec.material}} </div>
+                    <div class="cell" *ngIf="specification.color"> {{spec.color}} </div>
+                    <div class="cell" *ngIf="specification.weight"> {{spec.weight}} </div>
+                    <div class="cell" *ngIf="specification.speed"> {{spec.speed}} </div>
+                    <div class="cell" *ngIf="specification.read_speed"> {{spec.read_speed}} </div>
+                    <div class="cell" *ngIf="specification.write_speed"> {{spec.write_speed}} </div>
+                    <div class="cell" *ngIf="specification.hdmi"> {{spec.hdmi}} </div>
+                    <div class="cell" *ngIf="specification.speaker"> {{spec.speaker}} </div>
+                    <div class="cell" *ngIf="specification.radiator"> {{spec.radiator}} </div>
+                    <div class="cell" *ngIf="specification.voltage"> {{spec.voltage}} </div>
                 </div>
             </div>
         </div>
