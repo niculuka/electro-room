@@ -15,15 +15,15 @@ export class ProductDescription {
 }
 
 export class SpecificationTitle {
-    display?: string;
-    motherboard?: string;
-    processor?: string;    
-    memory?: string;
-    hard?: string
-    connectivity?: string;
+    display: boolean = false;
+    motherboard: boolean = false;
+    processor: boolean = false;   
+    memory: boolean = false;
+    hard: boolean = false;
+    connectivity: boolean = false;
 
-    general?: string;
-    others?: string;
+    general: boolean = false;
+    others: boolean = false;
 }
 
 export class ProductSpecification {

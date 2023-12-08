@@ -13,7 +13,7 @@ export class CompareComponent {
 
   compares!: Array<Product>;
 
-  title: SpecificationTitle = new SpecificationTitle(); 
+  title: SpecificationTitle = new SpecificationTitle();
   specifications: Array<ProductSpecification> = [];
   specification: ProductSpecification = new ProductSpecification();
 
@@ -26,14 +26,14 @@ export class CompareComponent {
   ) {
     this.sub = compareService.getComparesObservable().subscribe(comp => {
       this.compares = comp;
-      this.isSpecificationsEmpty();
+      for (let product of this.compares) {
+        this.specifications = this.specifications.concat(product.specifications);
+      }
+      this.emptySpecification();
     });
   }
 
-  isSpecificationsEmpty() {
-    for (let product of this.compares) {
-      this.specifications = this.specifications.concat(product.specifications);
-    }
+  emptySpecification() {
     this.specifications.find(item => {
       if (item.display_size) this.specification.display_size = item.display_size;
       if (item.display_frequency) this.specification.display_frequency = item.display_frequency;
@@ -85,28 +85,28 @@ export class CompareComponent {
       if (item.voltage) this.specification.voltage = item.voltage;
     })
     if (this.specification.display_size || this.specification.display_frequency || this.specification.display_touch) {
-      this.title.display = "Ecran";
+      this.title.display = true;
     }
     if (this.specification.motherboard_brand || this.specification.motherboard_chipset || this.specification.motherboard_slot || this.specification.motherboard_audio) {
-      this.title.motherboard = "Placa de baza";
+      this.title.motherboard = true;
     }
     if (this.specification.processor_brand || this.specification.processor_type || this.specification.processor_model || this.specification.processor_frequency) {
-      this.title.processor = "Procesor";
+      this.title.processor = true;
     }
     if (this.specification.memory_type || this.specification.memory_capacity || this.specification.memory_frequency) {
-      this.title.memory = "Memorie Ram";
+      this.title.memory = true;
     }
     if (this.specification.hard_type_1 || this.specification.hard_capacity_1 || this.specification.hard_slot_1 || this.specification.hard_type_2 || this.specification.hard_capacity_2 || this.specification.hard_slot_2) {
-      this.title.hard = "Stocare";
+      this.title.hard = true;
     }
     if (this.specification.connectivity_bluetooth || this.specification.connectivity_wireless) {
-      this.title.connectivity = "Comunicatii";
+      this.title.connectivity = true;
     }
     if (this.specification.type || this.specification.model || this.specification.capacity || this.specification.connection || this.specification.output || this.specification.compatibility || this.specification.screen_size || this.specification.frequency || this.specification.power) {
-      this.title.general = "Caracteristici generale";
+      this.title.general = true;
     }
     if (this.specification.material || this.specification.color || this.specification.weight || this.specification.speed || this.specification.read_speed || this.specification.write_speed || this.specification.hdmi || this.specification.speaker || this.specification.radiator || this.specification.voltage) {
-      this.title.others = "Altele";
+      this.title.others = true;
     }
     // console.log(this.compares)
     // console.log(this.specification)
