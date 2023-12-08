@@ -13,9 +13,9 @@ export class CompareComponent {
 
   compares!: Array<Product>;
 
-  title: SpecificationTitle = new SpecificationTitle();
-  specification: ProductSpecification = new ProductSpecification();
+  title: SpecificationTitle = new SpecificationTitle(); 
   specifications: Array<ProductSpecification> = [];
+  specification: ProductSpecification = new ProductSpecification();
 
   private sub: any;
 
@@ -85,29 +85,31 @@ export class CompareComponent {
       if (item.voltage) this.specification.voltage = item.voltage;
     })
     if (this.specification.display_size || this.specification.display_frequency || this.specification.display_touch) {
-      this.title.display = "ECRAN";
+      this.title.display = "Ecran";
     }
     if (this.specification.motherboard_brand || this.specification.motherboard_chipset || this.specification.motherboard_slot || this.specification.motherboard_audio) {
-      this.title.motherboard = "PLACA DE BAZA";
+      this.title.motherboard = "Placa de baza";
     }
     if (this.specification.processor_brand || this.specification.processor_type || this.specification.processor_model || this.specification.processor_frequency) {
-      this.title.processor = "PROCESOR";
+      this.title.processor = "Procesor";
     }
     if (this.specification.memory_type || this.specification.memory_capacity || this.specification.memory_frequency) {
-      this.title.memory = "MEMORIE RAM";
+      this.title.memory = "Memorie Ram";
     }
     if (this.specification.hard_type_1 || this.specification.hard_capacity_1 || this.specification.hard_slot_1 || this.specification.hard_type_2 || this.specification.hard_capacity_2 || this.specification.hard_slot_2) {
-      this.title.hard = "STOCARE";
+      this.title.hard = "Stocare";
     }
     if (this.specification.connectivity_bluetooth || this.specification.connectivity_wireless) {
-      this.title.connectivity = "COMUNICATII";
+      this.title.connectivity = "Comunicatii";
     }
     if (this.specification.type || this.specification.model || this.specification.capacity || this.specification.connection || this.specification.output || this.specification.compatibility || this.specification.screen_size || this.specification.frequency || this.specification.power) {
-      this.title.general = "CARACTERISTICI GENERALE";
+      this.title.general = "Caracteristici generale";
     }
     if (this.specification.material || this.specification.color || this.specification.weight || this.specification.speed || this.specification.read_speed || this.specification.write_speed || this.specification.hdmi || this.specification.speaker || this.specification.radiator || this.specification.voltage) {
-      this.title.others = "ALTELE";
+      this.title.others = "Altele";
     }
+    // console.log(this.compares)
+    // console.log(this.specification)
   }
 
   addToCart(product: Product) {
