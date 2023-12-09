@@ -1,172 +1,266 @@
 <div class="container-compare">
     <div class="content-compare">
 
-        <h1>Compara produse</h1>
-        <div>
-            <div class="title"> </div>
-            <div class="specification">
-                <div class="cell subtitle"> </div>
-                <div class="cell" *ngFor="let product of compares;">
-                    <a [routerLink]="'/p/'+product.department.toLowerCase()
+        <h1 class="empty-list" *ngIf="!compares.length">Nu exista produse comparate</h1>
+        <div *ngIf="compares.length">
+            <div class="header">
+                <h1>Compara produse</h1>
+                <div class="cards">
+                    <div class="empty-card"></div>
+                    <div class="card" *ngFor="let product of compares;">
+                        <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
+                        <div class="image">
+                            <a [routerLink]="'/p/'+product.department.toLowerCase()
                                     +'/'+product.type.toLowerCase()
                                     +'/'+product.category.toLowerCase()
                                     +'/'+product.linkName">
-                        <img [src]="product.image" [alt]="product.name">
-                    </a>
-                </div>
-            </div>
-            <div class="specification">
-                <div class="cell subtitle"> </div>
-                <div class="cell" *ngFor="let product of compares;">
-                    <a [routerLink]="'/p/'+product.department.toLowerCase()
-                                        +'/'+product.type.toLowerCase()
-                                        +'/'+product.category.toLowerCase()
-                                        +'/'+product.linkName">
-                        {{product.description}}
-                    </a>
-                </div>
-            </div>
-            <div class="specification">
-                <div class="cell subtitle"> </div>
-                <div class="cell" *ngFor="let product of compares;">
-                    {{product.price | number: '1.2-2'}} Lei
-                </div>
-            </div>
-            <div class="specification">
-                <div class="cell subtitle"> </div>
-                <div class="cell" *ngFor="let product of compares;">
-                    <button (click)="addToCart(product)">Adauga in cos</button>
-                </div>
-            </div>
-        </div>
 
-        <!-- ------------------------------------------------------------------------------------------ -->
-        <div *ngIf="title.display">
-            <div class="title">
-                <h2>Ecran</h2>
+                                <img [src]="product.image" [alt]="product.name">
+                            </a>
+                        </div>
+                        <div class="description">
+                            <a [routerLink]="'/p/'+product.department.toLowerCase()
+                                            +'/'+product.type.toLowerCase()
+                                            +'/'+product.category.toLowerCase()
+                                            +'/'+product.linkName">
+                                {{product.description}}
+                            </a>
+                        </div>
+                        <div class="price">
+                            {{product.price | number: '1.2-2'}} Lei
+                        </div>
+                        <div>
+                            <button class="btn-add" (click)="addToCart(product)">Adauga in cos</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="specification" *ngIf="specification.display_size">
-                <div class="cell subtitle"> Diagonala </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.display_size}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.display_frequency">
-                <div class="cell subtitle"> Frecventa </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.display_frequency}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.display_touch">
-                <div class="cell subtitle"> Ecran Tactil </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.display_touch}} </div>
-            </div>
-        </div>
-        <div *ngIf="title.processor">
-            <div class="title">
-                <h2>Procesor</h2>
-            </div>
-            <div class="specification" *ngIf="specification.processor_brand">
-                <div class="cell subtitle"> Producator </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.processor_brand}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.processor_type">
-                <div class="cell subtitle"> Tip </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.processor_type}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.processor_model">
-                <div class="cell subtitle"> Model </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.processor_model}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.processor_frequency">
-                <div class="cell subtitle"> Frecventa </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.processor_frequency}} </div>
-            </div>
-        </div>
 
-        <!-- ------------------------------------------------------------------------------------------ -->
-        <div *ngIf="title.general">
-            <div class="title">
-                <h2>Caracteristici generale</h2>
-            </div>
-            <div class="specification" *ngIf="specification.type">
-                <div class="cell subtitle"> Tip </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.type}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.model">
-                <div class="cell subtitle"> Model </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.model}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.capacity">
-                <div class="cell subtitle"> Capacitate </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.capacity}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.connection">
-                <div class="cell subtitle"> Conectare </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.connection}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.output">
-                <div class="cell subtitle"> Iesire </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.output}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.compatibility">
-                <div class="cell subtitle"> Compatibilitate </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.compatibility}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.screen_size">
-                <div class="cell subtitle"> Diagonala </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.screen_size}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.frequency">
-                <div class="cell subtitle"> Frecventa </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.frequency}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.power">
-                <div class="cell subtitle"> Putere </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.power}} </div>
-            </div>
-        </div>
-        <div *ngIf="title.others">
-            <div class="title">
-                <h2>Altele</h2>
-            </div>
-            <div class="specification" *ngIf="specification.material">
-                <div class="cell subtitle"> Material </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.material}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.color">
-                <div class="cell subtitle"> Culoare </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.color}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.weight">
-                <div class="cell subtitle"> Greutate </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.weight}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.speed">
-                <div class="cell subtitle"> Viteza </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.speed}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.read_speed">
-                <div class="cell subtitle"> Viteza de citire </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.read_speed}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.write_speed">
-                <div class="cell subtitle"> Viteza de scriere </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.write_speed}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.hdmi">
-                <div class="cell subtitle"> Hdmi </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.hdmi}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.speaker">
-                <div class="cell subtitle"> Difuzor </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.speaker}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.radiator">
-                <div class="cell subtitle"> Radiator </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.radiator}} </div>
-            </div>
-            <div class="specification" *ngIf="specification.voltage">
-                <div class="cell subtitle"> Tensiune </div>
-                <div class="cell" *ngFor="let spec of specifications;"> {{spec.voltage}} </div>
+            <!-- ------------------------------------------------------------------------------------------ -->
+            <div class="body">
+
+                <div class="table" *ngIf="title.display">
+                    <div class="title">
+                        <h2>Ecran</h2>
+                    </div>
+
+                    <div class="tr" *ngIf="specification.display_size">
+                        <div class="subtitle"> Diagonala </div>
+                        <div class="specification">
+                            <div class="td" *ngFor="let spec of specifications;"> {{spec.display_size}} </div>
+                        </div>
+                    </div>
+
+                    <div class="tr" *ngIf="specification.display_frequency">
+                        <div class="subtitle"> Frecventa </div>
+                        <div class="specification">
+                            <div class="td" *ngFor="let spec of specifications;"> {{spec.display_frequency}} </div>
+                        </div>
+                    </div>
+
+                    <div class="tr" *ngIf="specification.display_touch">
+                        <div class="subtitle"> Ecran Tactil </div>
+                        <div class="specification">
+                            <div class="td" *ngFor="let spec of specifications;"> {{spec.display_touch}} </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- <div class="table" *ngIf="title.motherboard">
+                    <div class="title">
+                        <h2>Placa de baza</h2>
+                    </div>
+                    <div class="specification" *ngIf="specification.motherboard_brand">
+                        <div class="cell subtitle"> Brand </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.motherboard_brand}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.motherboard_chipset">
+                        <div class="cell subtitle"> Chipset </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.motherboard_chipset}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.motherboard_slot">
+                        <div class="cell subtitle"> Sloturi </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.motherboard_slot}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.motherboard_audio">
+                        <div class="cell subtitle"> Audio </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.motherboard_audio}} </div>
+                    </div>
+                </div> -->
+                <!-- <div class="table" *ngIf="title.processor">
+                    <div class="title">
+                        <h2>Procesor</h2>
+                    </div>
+                    <div class="specification" *ngIf="specification.processor_brand">
+                        <div class="cell subtitle"> Producator </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.processor_brand}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.processor_type">
+                        <div class="cell subtitle"> Tip </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.processor_type}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.processor_model">
+                        <div class="cell subtitle"> Model </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.processor_model}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.processor_frequency">
+                        <div class="cell subtitle"> Frecventa </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.processor_frequency}} </div>
+                    </div>
+                </div> -->
+                <!-- <div class="table" *ngIf="title.memory">
+                    <div class="title">
+                        <h2>Memorie</h2>
+                    </div>
+                    <div class="specification" *ngIf="specification.memory_type">
+                        <div class="cell subtitle"> Tip </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.memory_type}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.memory_capacity">
+                        <div class="cell subtitle"> Capacitate </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.memory_capacity}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.memory_frequency">
+                        <div class="cell subtitle"> Frecventa </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.memory_frequency}} </div>
+                    </div>
+                </div> -->
+                <!-- <div class="table" *ngIf="title.hard">
+                    <div class="title">
+                        <h2>Hard</h2>
+                    </div>
+                    <div class="specification" *ngIf="specification.hard_type_1">
+                        <div class="cell subtitle"> Tip </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.hard_type_1}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.hard_capacity_1">
+                        <div class="cell subtitle"> Capacitate </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.hard_capacity_1}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.hard_slot_1">
+                        <div class="cell subtitle"> Slot </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.hard_slot_1}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.hard_type_2">
+                        <div class="cell subtitle"> Tip </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.hard_type_2}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.hard_capacity_2">
+                        <div class="cell subtitle"> Capacitate </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.hard_capacity_2}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.hard_slot_2">
+                        <div class="cell subtitle"> Slot </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.hard_slot_2}} </div>
+                    </div>
+                </div> -->
+                <!-- <div class="table" *ngIf="title.connectivity">
+                    <div class="title">
+                        <h2>Conectivitate</h2>
+                    </div>
+                    <div class="specification" *ngIf="specification.connectivity_bluetooth">
+                        <div class="cell subtitle"> Bluetooth </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.connectivity_bluetooth}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.connectivity_wireless">
+                        <div class="cell subtitle"> Wireless </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.connectivity_wireless}} </div>
+                    </div>
+                </div> -->
+
+                <!-- ------------------------------------------------------------------------------------------ -->
+                <!-- <div class="table" *ngIf="title.general">
+                    <div class="title">
+                        <h2>Caracteristici generale</h2>
+                    </div>
+                    <div class="specification" *ngIf="specification.type">
+                        <div class="cell subtitle"> Tip </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.type}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.model">
+                        <div class="cell subtitle"> Model </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.model}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.capacity">
+                        <div class="cell subtitle"> Capacitate </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.capacity}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.connection">
+                        <div class="cell subtitle"> Conectare </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.connection}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.output">
+                        <div class="cell subtitle"> Iesire </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.output}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.compatibility">
+                        <div class="cell subtitle"> Compatibilitate </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.compatibility}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.screen_size">
+                        <div class="cell subtitle"> Diagonala </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.screen_size}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.frequency">
+                        <div class="cell subtitle"> Frecventa </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.frequency}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.power">
+                        <div class="cell subtitle"> Putere </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.power}} </div>
+                    </div>
+                </div> -->
+                <!-- <div class="table" *ngIf="title.others">
+                    <div class="title">
+                        <h2>Altele</h2>
+                    </div>
+                    <div class="specification" *ngIf="specification.material">
+                        <div class="cell subtitle"> Material </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.material}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.color">
+                        <div class="cell subtitle"> Culoare </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.color}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.weight">
+                        <div class="cell subtitle"> Greutate </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.weight}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.speed">
+                        <div class="cell subtitle"> Viteza </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.speed}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.read_speed">
+                        <div class="cell subtitle"> Viteza de citire </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.read_speed}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.write_speed">
+                        <div class="cell subtitle"> Viteza de scriere </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.write_speed}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.hdmi">
+                        <div class="cell subtitle"> Hdmi </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.hdmi}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.speaker">
+                        <div class="cell subtitle"> Difuzor </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.speaker}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.radiator">
+                        <div class="cell subtitle"> Radiator </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.radiator}} </div>
+                    </div>
+                    <div class="specification" *ngIf="specification.voltage">
+                        <div class="cell subtitle"> Tensiune </div>
+                        <div class="cell" *ngFor="let spec of specifications;"> {{spec.voltage}} </div>
+                    </div>
+                </div> -->
             </div>
         </div>
 
     </div>
 </div>
+
+<app-footer></app-footer>

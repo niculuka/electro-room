@@ -6,7 +6,6 @@
 
 .content-compare {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     margin: auto;
     width: 1500px;
@@ -16,74 +15,153 @@
     /* border: 2px solid rgb(0, 0, 0); */
 }
 
-/* .content-compare>div {
-    border: 2px solid rgb(0, 0, 0);
-} */
-
-.title {
-    width: 100%;
+.empty-list {
+    margin-bottom: 66vh;
+    color: rgb(220, 20, 110);
 }
 
-.display {
-    display: flex;
-    flex-direction: row;
-    width: 100%;    
+h1 {
+    padding: 20px 0;
+    /* border: 1px solid rgb(0, 0, 0); */
 }
 
-/* .subtitle {
-    
-} */
-
-.specification {
-    display: flex;
-    flex-direction: row; 
-    width: 100%;
-}
-
-img {
-    height: 50px;
-    cursor: pointer;
-}
-
-img:hover {
+/* header -------------------------------------------------- */
+.header {
+    padding: 6px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: white;
 }
 
+.cards {
+    display: flex;
+    flex-direction: row;
+}
+
+.empty-card,
+.card {
+    width: 20%;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+mat-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
 a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
     color: black;
     text-decoration: none;
+    /* border: 1px solid rgb(255, 0, 0); */
+}
+
+.image a:hover {
+    transform: scale(1.02, 1.02);
+}
+
+img {
+    width: 200px;
+    padding: 20px;
+    border-radius: 4px;
 }
 
 .description {
-    margin: 2px;
-    height: 64px;
+    height: 62px;
     overflow: hidden;
-    border: 1px solid rgb(0, 0, 0);
+    /* border: 1px solid rgb(0, 0, 0); */
 }
 
-.spec-row {
-    display: flex;
-    flex-direction: row;    
-    border: 1px solid rgb(0, 0, 0);
+.description a:hover {
+    color: rgb(220, 20, 110);
 }
 
-.cell {
-    display: flex;
-    flex-direction: row;    
-    width: 20%;
-    margin: 2px;
+
+.price {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 30px 0;
+    color: rgb(220, 20, 110);
+}
+
+.btn-add {
+    width: 100%;
     font-size: 16px;
-    line-height: 18px;
-    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(220, 20, 110);
+}
+
+/* body -------------------------------------------------- */
+.body {
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.table {
+    width: 100%;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.title {
+    width: 100%;
+    margin: 6px;
 }
 
 h2 {
     color: rgb(220, 20, 110);
 }
 
-/* .general {
-    display: none;
-} */
+.tr {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.subtitle {
+    width: 20%;
+    padding: 12px;
+}
+
+.specification {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    /* background: rgb(243, 242, 242); */
+}
+
+.td {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    margin: 2px;
+    padding: 12px;
+    font-size: 14px;
+    cursor: default;
+    border: 1px solid rgb(0, 0, 0);
+    /* background: rgb(243, 242, 242);  */
+}
+
+
+
 
 @media (max-width: 1500px) {
     .content-compare {

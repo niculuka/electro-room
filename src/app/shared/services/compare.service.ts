@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { ToastrService } from 'ngx-toastr';
-import { CATEGORY } from '../enums/electro.enum';
 
 @Injectable({
   providedIn: 'root'

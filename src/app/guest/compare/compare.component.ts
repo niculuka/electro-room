@@ -26,14 +26,16 @@ export class CompareComponent {
   ) {
     this.sub = compareService.getComparesObservable().subscribe(comp => {
       this.compares = comp;
-      for (let product of this.compares) {
-        this.specifications = this.specifications.concat(product.specifications);
-      }
       this.emptySpecification();
     });
   }
 
   emptySpecification() {
+    this.specifications = [];
+    for (let product of this.compares) {
+      this.specifications = this.specifications.concat(product.specifications);
+    }
+    this.specification = new ProductSpecification();
     this.specifications.find(item => {
       if (item.display_size) this.specification.display_size = item.display_size;
       if (item.display_frequency) this.specification.display_frequency = item.display_frequency;
@@ -86,28 +88,28 @@ export class CompareComponent {
     })
     if (this.specification.display_size || this.specification.display_frequency || this.specification.display_touch) {
       this.title.display = true;
-    }
+    } else { this.title.display = false; }
     if (this.specification.motherboard_brand || this.specification.motherboard_chipset || this.specification.motherboard_slot || this.specification.motherboard_audio) {
       this.title.motherboard = true;
-    }
+    } else { this.title.motherboard = false; }
     if (this.specification.processor_brand || this.specification.processor_type || this.specification.processor_model || this.specification.processor_frequency) {
       this.title.processor = true;
-    }
+    } else { this.title.processor = false; }
     if (this.specification.memory_type || this.specification.memory_capacity || this.specification.memory_frequency) {
       this.title.memory = true;
-    }
+    } else { this.title.memory = false; }
     if (this.specification.hard_type_1 || this.specification.hard_capacity_1 || this.specification.hard_slot_1 || this.specification.hard_type_2 || this.specification.hard_capacity_2 || this.specification.hard_slot_2) {
       this.title.hard = true;
-    }
+    } else { this.title.hard = false; }
     if (this.specification.connectivity_bluetooth || this.specification.connectivity_wireless) {
       this.title.connectivity = true;
-    }
+    } else { this.title.connectivity = false; }
     if (this.specification.type || this.specification.model || this.specification.capacity || this.specification.connection || this.specification.output || this.specification.compatibility || this.specification.screen_size || this.specification.frequency || this.specification.power) {
       this.title.general = true;
-    }
+    } else { this.title.general = false; }
     if (this.specification.material || this.specification.color || this.specification.weight || this.specification.speed || this.specification.read_speed || this.specification.write_speed || this.specification.hdmi || this.specification.speaker || this.specification.radiator || this.specification.voltage) {
       this.title.others = true;
-    }
+    } else { this.title.others = false; }
     // console.log(this.compares)
     // console.log(this.specification)
   }
