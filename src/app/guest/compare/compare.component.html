@@ -8,7 +8,6 @@
                 <div class="cards">
                     <div class="empty-card"></div>
                     <div class="card" *ngFor="let product of compares;">
-                        <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
                         <div class="image">
                             <a [routerLink]="'/p/'+product.department.toLowerCase()
                                     +'/'+product.type.toLowerCase()
@@ -18,6 +17,7 @@
                                 <img [src]="product.image" [alt]="product.name">
                             </a>
                         </div>
+                        <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
                         <div class="description">
                             <a [routerLink]="'/p/'+product.department.toLowerCase()
                                             +'/'+product.type.toLowerCase()
@@ -44,23 +44,19 @@
                         <h2>Ecran</h2>
                     </div>
 
-                    <div class="tr" *ngIf="specification.display_size">
-                        <div class="subtitle"> Diagonala </div>
-                        <div class="specification">
+                    <div class="specifications" [style]="trWidth">
+                        <div class="tr" *ngIf="specification.display_size">
+                            <div class="td subtitle"> Diagonala </div>
                             <div class="td" *ngFor="let spec of specifications;"> {{spec.display_size}} </div>
                         </div>
-                    </div>
 
-                    <div class="tr" *ngIf="specification.display_frequency">
-                        <div class="subtitle"> Frecventa </div>
-                        <div class="specification">
+                        <div class="tr" *ngIf="specification.display_frequency">
+                            <div class="td subtitle"> Frecventa </div>
                             <div class="td" *ngFor="let spec of specifications;"> {{spec.display_frequency}} </div>
                         </div>
-                    </div>
 
-                    <div class="tr" *ngIf="specification.display_touch">
-                        <div class="subtitle"> Ecran Tactil </div>
-                        <div class="specification">
+                        <div class="tr" *ngIf="specification.display_touch">
+                            <div class="td subtitle"> Ecran Tactil </div>
                             <div class="td" *ngFor="let spec of specifications;"> {{spec.display_touch}} </div>
                         </div>
                     </div>

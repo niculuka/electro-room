@@ -12,10 +12,15 @@ import { CompareService } from 'src/app/shared/services/compare.service';
 export class CompareComponent {
 
   compares!: Array<Product>;
+  trWidth: string = 'width: 100%';
 
   title: SpecificationTitle = new SpecificationTitle();
   specifications: Array<ProductSpecification> = [];
   specification: ProductSpecification = new ProductSpecification();
+  specification0: ProductSpecification = new ProductSpecification();
+  specification1: ProductSpecification = new ProductSpecification();
+  specification2: ProductSpecification = new ProductSpecification();
+  specification3: ProductSpecification = new ProductSpecification();
 
   private sub: any;
 
@@ -26,8 +31,16 @@ export class CompareComponent {
   ) {
     this.sub = compareService.getComparesObservable().subscribe(comp => {
       this.compares = comp;
+      this.checkWidth();
       this.emptySpecification();
     });
+  }
+
+  checkWidth() {
+    if (this.compares.length === 1) this.trWidth = 'width: 40%';
+    if (this.compares.length === 2) this.trWidth = 'width: 60%';
+    if (this.compares.length === 3) this.trWidth = 'width: 80%';
+    if (this.compares.length === 4) this.trWidth = 'width: 100%';
   }
 
   emptySpecification() {
@@ -111,6 +124,7 @@ export class CompareComponent {
       this.title.others = true;
     } else { this.title.others = false; }
     // console.log(this.compares)
+    // console.log(this.specifications)
     // console.log(this.specification)
   }
 
