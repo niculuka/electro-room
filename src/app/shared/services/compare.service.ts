@@ -42,6 +42,7 @@ export class CompareService {
     if (comp) return;
     this.compares.push(product);
     this.setComparesToLocalStorage();
+    this.toastrService.success("Produsul a fost adaugat la Comparari")
   }
 
   removeFromComparesService(product: Product): void {
@@ -62,8 +63,7 @@ export class CompareService {
   private setComparesToLocalStorage(): void {
     const compJson = JSON.stringify(this.compares);
     localStorage.setItem('comp-ls', compJson);
-    this.comparesSubject.next(this.compares);
-    this.toastrService.success("Produsul a fost adaugat la Comparari")
+    this.comparesSubject.next(this.compares);    
   }
 
   private getComparesFromLocalStorage(): Array<Product> {

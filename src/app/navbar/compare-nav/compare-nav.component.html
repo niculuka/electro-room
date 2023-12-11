@@ -1,33 +1,14 @@
 <div class="compare" *ngIf="!isCompareEmpty()">
 
-    <div class="compare-items">
-        <table>
-            <tr *ngFor="let product of compares">
-                <td>
-                    <a [routerLink]="'/p/'+product.department.toLowerCase()
-                                    +'/'+product.type.toLowerCase()
-                                    +'/'+product.category.toLowerCase()
-                                    +'/'+product.linkName">
-                        <img src={{product.image}}>
-                    </a>
-                </td>
-                <td class="name">
-                    <a [routerLink]="'/p/'+product.department.toLowerCase()
-                                    +'/'+product.type.toLowerCase()
-                                    +'/'+product.category.toLowerCase()
-                                    +'/'+product.linkName">
-                        <span>{{product.name}}</span>
-                    </a>
-                </td>
-                <td>
-                    <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
-                </td>
-            </tr>
-        </table>
+    <div class="compare-col" *ngFor="let product of compares">
+
+        <img src={{product.image}}>
+        <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
+
     </div>
 
-    <div class="button-container">
-        <button (click)="clearCompare()">Sterge TOT</button>
-        <button routerLink="/compare">Vezi produsele comparate!</button>
-    </div>
+    <!-- <button (click)="clearCompare()">Sterge lista</button> -->
+    <!-- <button [routerLink]="compares.length>1 ? '/compare' : ''" >Compara</button> -->
+    <button (click)="goToCompare()" >Compara</button>
+
 </div>

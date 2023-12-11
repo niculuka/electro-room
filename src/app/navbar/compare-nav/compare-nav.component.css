@@ -1,119 +1,80 @@
 .compare {
+    z-index: 10;
     position: absolute;
-    bottom: 2%;
+    top: 40%;
     right: 12px;
     display: flex;
     flex-direction: column;
-    padding: 14px;
+    width: 80px;
+    padding: 8px;
     border-radius: 8px;
-    /* border: 1px solid rgb(176, 176, 176); */
     box-shadow: 0px -4px 16px 0px rgba(0, 0, 0, 0.6);
     background: white;
 }
 
-.compare .compare-items {
-    max-height: 280px;
-    overflow-y: scroll;
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-
-    /* IE and Edge */
-    -ms-overflow-style: none;
-
-    /* Firefox */
-    scrollbar-width: none;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.compare .compare-items::-webkit-scrollbar {
-    display: none;
-}
-
-.compare .compare-items table {
+.compare-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 8px;
     cursor: default;
-    border-collapse: collapse;
-    width: 260px;
+    /* border: 1px solid black; */
 }
 
-.compare .compare-items table tr {
-    border-bottom: 1px solid lightgray;
-}
-
-.compare .compare-items table tr:hover {
-    background: rgba(220, 20, 110, 0.1);
-}
-
-.compare .compare-items table tr:last-child {
-    border-bottom: none;
-}
-
-.compare .compare-items table td {
-    padding: 4px 8px;
-    /* border: 1px solid rgb(253, 3, 3); */
-}
-
-.compare .compare-items table td a {
+a {
+    display: block;
     text-decoration: none;
     color: black;
     /* border: 1px solid black; */
 }
 
-.compare .compare-items table img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+img {
+    width: 100%;
+    cursor: default;
+    border-radius: 8px;
+    border: 1px solid rgb(203, 201, 201);
 }
 
-.compare .compare-items table .name {
-    font-size: 12px;
-    line-height: 14px;
-    cursor: pointer;
+img:hover {
+    border: 1px solid rgb(220, 20, 110);
 }
 
-.compare .compare-items table .price {
-    white-space: nowrap;
-    font-size: 14px;
-    color: rgb(220, 20, 110);
-}
-
-.compare .compare-items table mat-icon {
+mat-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     font-size: 18px;
-    color: gray;
-    cursor: pointer;
-    /* border: 1px solid black; */
-}
-
-.compare .compare-items table mat-icon:hover {
-    color: rgb(0, 0, 0);
-}
-
-/* footer -------------------------------------------*/
-.compare .button-container {
-    margin: 0;
-    padding: 10px;
-    box-shadow: 0px -6px 16px 00px rgba(0, 0, 0, 0.3);
-    /* border: 1px solid black; */
-}
-
-
-.compare .button-container button {
     color: white;
-    font-size: 14px;
-    width: 100%;
-    padding: 8px;
-    border: none;
+    cursor: pointer;
     border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    background: #616161;
+    background: rgb(220, 20, 110);
+    /* border: 1px solid black; */
 }
 
-.compare .button-container button:hover {
-    background: #7e7e7e;
+mat-icon:hover {
+    transform: scale(1.2, 1.2);
+}
+
+button {    
+    font-size: 13px;
+    width: 100%;
+    padding: 4px 0;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(220, 20, 110);
+}
+
+button:hover {
+    background: rgb(242, 61, 143);
+    /* background: #7e7e7e; */
 }
 
 @media (max-width: 550px) {
