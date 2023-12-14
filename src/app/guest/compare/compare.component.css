@@ -16,8 +16,9 @@
     color: rgb(220, 20, 110);
 }
 
-h1 {
+.minimum-products {
     font-size: 28px;
+    margin-bottom: 66vh;
     /* border: 1px solid rgb(0, 0, 0); */
 }
 
@@ -136,8 +137,20 @@ mat-icon:hover {
     width: 100%;
 }
 
+.content {
+    width: 100%;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
 h2 {
     color: rgb(220, 20, 110);
+}
+
+.aaa {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 3px solid rgb(0, 0, 0);
 }
 
 .tr {
@@ -157,6 +170,16 @@ h2 {
 
 .tr:last-child {
     border-bottom: 2px solid rgb(223, 223, 223);
+}
+
+.subtitle {
+    width: 20%;
+}
+
+.specifications {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
 }
 
 .td {

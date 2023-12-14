@@ -14,16 +14,34 @@ export class ProductDescription {
     productId: number | undefined;
 }
 
-export class SpecificationTitle {
-    display: boolean = false;
-    motherboard: boolean = false;
-    processor: boolean = false;   
-    memory: boolean = false;
-    hard: boolean = false;
-    connectivity: boolean = false;
+export class CategorySpecification {
+    display_size: any = [];
+    display_frequency: any = [];
+    display_touch: any = [];
 
-    general: boolean = false;
-    others: boolean = false;
+    motherboard_brand: any = [];
+    motherboard_chipset: any = [];
+    motherboard_slot: any = [];
+    motherboard_audio: any = [];
+
+    processor_brand: any = [];
+    processor_type: any = [];
+    processor_model: any = [];
+    processor_frequency: any = [];
+
+    memory_type: any = [];
+    memory_capacity: any = [];
+    memory_frequency: any = [];
+
+    hard_type_1: any = [];
+    hard_capacity_1: any = [];
+    hard_slot_1: any = [];
+    hard_type_2: any = [];
+    hard_capacity_2: any = [];
+    hard_slot_2: any = [];
+
+    connectivity_bluetooth: any = [];
+    connectivity_wireless: any = [];
 }
 
 export class ProductSpecification {
@@ -42,7 +60,7 @@ export class ProductSpecification {
     processor_brand?: string;
     processor_type?: string;
     processor_model?: string;
-    processor_frequency?: string;    
+    processor_frequency?: string;
 
     memory_type?: string;
     memory_capacity?: string;
@@ -51,7 +69,6 @@ export class ProductSpecification {
     hard_type_1?: string;
     hard_capacity_1?: string;
     hard_slot_1?: string;
-
     hard_type_2?: string;
     hard_capacity_2?: string;
     hard_slot_2?: string;
