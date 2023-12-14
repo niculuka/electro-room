@@ -14,24 +14,13 @@ export class ProductDescription {
     productId: number | undefined;
 }
 
-export class SpecificationTitle {
-    display: boolean = false;
-    motherboard: boolean = false;
-    processor: boolean = false;   
-    memory: boolean = false;
-    hard: boolean = false;
-    connectivity: boolean = false;
-
-    general: boolean = false;
-    others: boolean = false;
-}
-
 export class ProductSpecification {
     id: number | undefined;
 
     // Laptops - Desktops - - - - - - - - - - - - - - - - - - - - - - -
     display_size?: string;
     display_frequency?: string;
+    display_resolution?: string;
     display_touch?: string;
 
     motherboard_brand?: string;
@@ -42,7 +31,7 @@ export class ProductSpecification {
     processor_brand?: string;
     processor_type?: string;
     processor_model?: string;
-    processor_frequency?: string;    
+    processor_frequency?: string;
 
     memory_type?: string;
     memory_capacity?: string;
@@ -51,7 +40,6 @@ export class ProductSpecification {
     hard_type_1?: string;
     hard_capacity_1?: string;
     hard_slot_1?: string;
-
     hard_type_2?: string;
     hard_capacity_2?: string;
     hard_slot_2?: string;

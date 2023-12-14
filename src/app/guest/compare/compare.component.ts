@@ -1,6 +1,8 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { Product, ProductSpecification, SpecificationTitle } from 'src/app/shared/models/product.model';
+import { SPECIFICATION, Specification } from 'src/app/shared/data/specification.data';
+import { SPECIFICATIONS } from 'src/app/shared/enums/electro.enum';
+import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { CompareService } from 'src/app/shared/services/compare.service';
 
@@ -14,13 +16,7 @@ export class CompareComponent {
   compares!: Array<Product>;
   trWidth: string = 'width: 100%';
 
-  title: SpecificationTitle = new SpecificationTitle();
-  specifications: Array<ProductSpecification> = [];
-  specification: ProductSpecification = new ProductSpecification();
-  specification0: ProductSpecification = new ProductSpecification();
-  specification1: ProductSpecification = new ProductSpecification();
-  specification2: ProductSpecification = new ProductSpecification();
-  specification3: ProductSpecification = new ProductSpecification();
+  specifications: Array<Specification> = SPECIFICATION;
 
   private sub: any;
 
@@ -36,103 +32,226 @@ export class CompareComponent {
     });
   }
 
-  checkWidth() {
+  handleWidth() {
     if (this.compares.length === 1) this.trWidth = 'width: 40%';
     if (this.compares.length === 2) this.trWidth = 'width: 60%';
     if (this.compares.length === 3) this.trWidth = 'width: 80%';
     if (this.compares.length === 4) this.trWidth = 'width: 100%';
   }
+  
+  addToCart(product: Product) {
+    this.cartService.addToCartService(product);
+  }
+
+  removeFromCompare(product: Product) {
+    this.compareService.removeFromComparesService(product);
+  }
+
+  goBack() {
+    this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
 
   emptySpecification() {
-    this.specifications = [];
-    for (let product of this.compares) {
-      this.specifications = this.specifications.concat(product.specifications);
-    }
-    this.specification = new ProductSpecification();
-    this.specifications.find(item => {
-      if (item.display_size) this.specification.display_size = item.display_size;
-      if (item.display_frequency) this.specification.display_frequency = item.display_frequency;
-      if (item.display_touch) this.specification.display_touch = item.display_touch;
-
-      if (item.motherboard_brand) this.specification.motherboard_brand = item.motherboard_brand;
-      if (item.motherboard_chipset) this.specification.motherboard_chipset = item.motherboard_chipset;
-      if (item.motherboard_slot) this.specification.motherboard_slot = item.motherboard_slot;
-      if (item.motherboard_audio) this.specification.motherboard_audio = item.motherboard_audio;
-
-      if (item.processor_brand) this.specification.processor_brand = item.processor_brand;
-      if (item.processor_type) this.specification.processor_type = item.processor_type;
-      if (item.processor_model) this.specification.processor_model = item.processor_model;
-      if (item.processor_frequency) this.specification.processor_frequency = item.processor_frequency;
-
-      if (item.memory_type) this.specification.memory_type = item.memory_type;
-      if (item.memory_capacity) this.specification.memory_capacity = item.memory_capacity;
-      if (item.memory_frequency) this.specification.memory_frequency = item.memory_frequency;
-
-      }
-      // console.log(this.categSpec);
-    }
-
     for (let specification of this.specifications) {
+      specification.title_chk = false;
+
       for (let sub of specification.subtitles) {
-        if (sub.subtitle == SPECIFICATIONS.DISPLAY_DIAGONAL) {
-          sub.specifications = this.categSpec.display_size;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.DISPLAY_FREQUENCY) {
-          sub.specifications = this.categSpec.display_frequency;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.DISPLAY_TOUCH) {
-          sub.specifications = this.categSpec.display_touch;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
+        sub.subtitle_chk = false;
+        sub.specifications = [];
+
+        for (let product of this.compares) {
+          for (let ps of product.specifications) {
+
+            // D I S P L A Y -------------------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.DISPLAY_DIAGONAL) {
+              sub.specifications.push(ps.display_size);
+              if (ps.display_size) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.RESOLUTION) {
+              sub.specifications.push(ps.display_resolution);
+              if (ps.display_resolution) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.DISPLAY_FREQUENCY) {
+              sub.specifications.push(ps.display_frequency);
+              if (ps.display_frequency) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.DISPLAY_TOUCH) {
+              sub.specifications.push(ps.display_touch);
+              if (ps.display_touch) sub.subtitle_chk = true;
+            }
+
+            // M O T H E R B O A R D -----------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.MOTHERBOARD_BRAND) {
+              sub.specifications.push(ps.motherboard_brand);
+              if (ps.motherboard_brand) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.MOTHERBOARD_CHIPSET) {
+              sub.specifications.push(ps.motherboard_chipset);
+              if (ps.motherboard_chipset) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.MOTHERBOARD_SLOT) {
+              sub.specifications.push(ps.motherboard_slot);
+              if (ps.motherboard_slot) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.MOTHERBOARD_AUDIO) {
+              sub.specifications.push(ps.motherboard_audio);
+              if (ps.motherboard_audio) sub.subtitle_chk = true;
+            }
+
+            // P R O C E S S O R ---------------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.PROCESSOR_BRAND) {
+              sub.specifications.push(ps.processor_brand);
+              if (ps.processor_brand) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.PROCESSOR_TYPE) {
+              sub.specifications.push(ps.processor_type);
+              if (ps.processor_type) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.PROCESSOR_MODEL) {
+              sub.specifications.push(ps.processor_model);
+              if (ps.processor_model) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.PROCESSOR_FREQUENCY) {
+              sub.specifications.push(ps.processor_frequency);
+              if (ps.processor_frequency) sub.subtitle_chk = true;
+            }
+
+            // M E M O R Y -------------------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.MEMORY_TYPE) {
+              sub.specifications.push(ps.memory_type);
+              if (ps.memory_type) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.MEMORY_CAPACITY) {
+              sub.specifications.push(ps.memory_capacity);
+              if (ps.memory_capacity) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.MEMORY_FREQUENCY) {
+              sub.specifications.push(ps.memory_frequency);
+              if (ps.memory_frequency) sub.subtitle_chk = true;
+            }
+
+            // H A R D ------------------------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.HARD_TYPE_1) {
+              sub.specifications.push(ps.hard_type_1);
+              if (ps.hard_type_1) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.HARD_CAPACITY_1) {
+              sub.specifications.push(ps.hard_capacity_1);
+              if (ps.hard_capacity_1) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.HARD_SLOT_1) {
+              sub.specifications.push(ps.hard_slot_1);
+              if (ps.hard_slot_1) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.HARD_TYPE_2) {
+              sub.specifications.push(ps.hard_type_2);
+              if (ps.hard_type_2) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.HARD_CAPACITY_2) {
+              sub.specifications.push(ps.hard_capacity_2);
+              if (ps.hard_capacity_2) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.HARD_SLOT_2) {
+              sub.specifications.push(ps.hard_slot_2);
+              if (ps.hard_slot_2) sub.subtitle_chk = true;
+            }
+
+            // C O N N E C T I V I T Y ----------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.CONNECTIVITY_BLUETOOTH) {
+              sub.specifications.push(ps.connectivity_bluetooth);
+              if (ps.connectivity_bluetooth) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.CONNECTIVITY_WIRELESS) {
+              sub.specifications.push(ps.connectivity_wireless);
+              if (ps.connectivity_wireless) sub.subtitle_chk = true;
+            }
+
+            // G E N E R A L -----------------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.TYPE) {
+              sub.specifications.push(ps.type);
+              if (ps.type) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.MODEL) {
+              sub.specifications.push(ps.model);
+              if (ps.model) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.CAPACITY) {
+              sub.specifications.push(ps.capacity);
+              if (ps.capacity) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.CONNECTION) {
+              sub.specifications.push(ps.connection);
+              if (ps.connection) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.OUTPUT) {
+              sub.specifications.push(ps.output);
+              if (ps.output) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.COMPATIBILITY) {
+              sub.specifications.push(ps.compatibility);
+              if (ps.compatibility) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.SCREEN_SIZE) {
+              sub.specifications.push(ps.screen_size);
+              if (ps.screen_size) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.FREQUENCY) {
+              sub.specifications.push(ps.frequency);
+              if (ps.frequency) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.POWER) {
+              sub.specifications.push(ps.power);
+              if (ps.power) sub.subtitle_chk = true;
+            }
+
+            // O T H E R -----------------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.MATERIAL) {
+              sub.specifications.push(ps.material);
+              if (ps.material) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.COLOR) {
+              sub.specifications.push(ps.color);
+              if (ps.color) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.WEIGHT) {
+              sub.specifications.push(ps.weight);
+              if (ps.weight) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.SPEED) {
+              sub.specifications.push(ps.speed);
+              if (ps.speed) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.READ_SPEED) {
+              sub.specifications.push(ps.read_speed);
+              if (ps.read_speed) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.WRITE_SPEED) {
+              sub.specifications.push(ps.write_speed);
+              if (ps.write_speed) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.HDMI) {
+              sub.specifications.push(ps.hdmi);
+              if (ps.hdmi) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.SPEAKER) {
+              sub.specifications.push(ps.speaker);
+              if (ps.speaker) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.RADIATOR) {
+              sub.specifications.push(ps.radiator);
+              if (ps.radiator) sub.subtitle_chk = true;
+            }
+            if (sub.subtitle == SPECIFICATIONS.VOLTAGE) {
+              sub.specifications.push(ps.voltage);
+              if (ps.voltage) sub.subtitle_chk = true;
+            }
+          }
         }
 
-        if (sub.subtitle == SPECIFICATIONS.MOTHERBOARD_BRAND) {
-          sub.specifications = this.categSpec.motherboard_brand;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.MOTHERBOARD_CHIPSET) {
-          sub.specifications = this.categSpec.motherboard_chipset;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.MOTHERBOARD_SLOT) {
-          sub.specifications = this.categSpec.motherboard_slot;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.MOTHERBOARD_AUDIO) {
-          sub.specifications = this.categSpec.motherboard_audio;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-
-        if (sub.subtitle == SPECIFICATIONS.PROCESSOR_BRAND) {
-          sub.specifications = this.categSpec.processor_brand;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.PROCESSOR_TYPE) {
-          sub.specifications = this.categSpec.processor_type;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.PROCESSOR_MODEL) {
-          sub.specifications = this.categSpec.processor_model;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.PROCESSOR_FREQUENCY) {
-          sub.specifications = this.categSpec.processor_frequency;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-
-        if (sub.subtitle == SPECIFICATIONS.MEMORY_TYPE) {
-          sub.specifications = this.categSpec.memory_type;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.MEMORY_CAPACITY) {
-          sub.specifications = this.categSpec.memory_capacity;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
-        if (sub.subtitle == SPECIFICATIONS.MEMORY_FREQUENCY) {
-          sub.specifications = this.categSpec.memory_frequency;
-          sub.specifications.find((item: any) => { if (item) sub.subtitle_chk = true; })
-        }
       }
     }
 
@@ -150,31 +269,20 @@ export class CompareComponent {
         if (specification.title === SPECIFICATIONS.TITLE_MEMORY) {
           sub.specifications.find((item: any) => { if (item) specification.title_chk = true; });
         }
+        if (specification.title === SPECIFICATIONS.TITLE_HARD) {
+          sub.specifications.find((item: any) => { if (item) specification.title_chk = true; });
+        }
+        if (specification.title === SPECIFICATIONS.TITLE_CONNECTIVITY) {
+          sub.specifications.find((item: any) => { if (item) specification.title_chk = true; });
+        }
+        if (specification.title === SPECIFICATIONS.TITLE_GENERAL) {
+          sub.specifications.find((item: any) => { if (item) specification.title_chk = true; });
+        }
+        if (specification.title === SPECIFICATIONS.TITLE_OTHER) {
+          sub.specifications.find((item: any) => { if (item) specification.title_chk = true; });
+        }
       }
     }
-    // console.log(specification);
-    // console.log(this.categSpec.display_size);
-    console.log(this.specifications);
-    // console.log(this.categSpec.display_size);
-    // }
-
-
-  }
-
-  addToCart(product: Product) {
-    this.cartService.addToCartService(product);
-  }
-
-  removeFromCompare(product: Product) {
-    this.compareService.removeFromComparesService(product);
-  }
-
-  goBack() {
-    this.location.back();
-  }
-
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe();
-  }
+  } 
 
 }

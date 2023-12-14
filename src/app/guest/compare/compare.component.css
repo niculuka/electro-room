@@ -5,7 +5,6 @@
 
 .content-compare {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     margin: auto;
     width: 1500px;
@@ -23,37 +22,37 @@
     /* border: 1px solid rgb(0, 0, 0); */
 }
 
-/* header -------------------------------------------------- */
+/* header ======================================================= */
 .header {
-    padding: 6px;
+    padding: 12px;
     border-radius: 0 0 8px 8px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: white;
 }
 
-.display {
+.cards {
     display: flex;
     flex-direction: row;
+    /* border: 1px solid rgb(255, 0, 0); */
 }
 
-/* .subtitle {
-    
-} */
+.empty-card,
+.card {
+    width: 20%;
+}
 
-.specification {
+.card {
+    position: relative;
     display: flex;
-    flex-direction: row; 
-    width: 100%;
-}
-
-mat-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+    flex-direction: column;
+    padding: 10px;
 }
 
 a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
     color: black;
     text-decoration: none;
     /* border: 1px solid rgb(255, 0, 0); */
@@ -64,7 +63,8 @@ a {
 }
 
 img {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     padding: 20px;
     border-radius: 4px;
 }
@@ -89,20 +89,18 @@ mat-icon:hover {
 }
 
 .description {
-    margin: 2px;
-    height: 64px;
+    height: 62px;
     overflow: hidden;
-    border: 1px solid rgb(0, 0, 0);
+    /* border: 1px solid rgb(0, 0, 0); */
 }
 
-.spec-row {
-    display: flex;
-    flex-direction: row;    
-    border: 1px solid rgb(0, 0, 0);
+.description a:hover {
+    color: rgb(220, 20, 110);
 }
+
 
 .price {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
     margin: 30px 0;
     color: rgb(220, 20, 110);
@@ -121,8 +119,10 @@ mat-icon:hover {
     background: rgb(220, 20, 110);
 }
 
-/* body -------------------------------------------------- */
+/* body ======================================================= */
 .body {
+    margin-top: 12px;
+    padding: 12px;
     border-radius: 8px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: white;
@@ -144,6 +144,13 @@ mat-icon:hover {
 
 h2 {
     color: rgb(220, 20, 110);
+}
+
+.aaa {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 3px solid rgb(0, 0, 0);
 }
 
 .tr {
@@ -178,19 +185,41 @@ h2 {
 .td {
     display: flex;
     flex-direction: row;
-    width: 25%;
-    margin: 2px;
-    padding: 12px;
-    font-size: 14px;
+    width: 100%;
+    padding: 12px 6px;
+    font-size: 16px;
     cursor: default;
-    border: 1px solid rgb(0, 0, 0);
-    /* background: rgb(243, 242, 242);  */
+    /* border: 1px solid rgb(0, 0, 0); */
 }
 
+.td:nth-child(2) {
+    border-left: 2px solid rgb(223, 223, 223);
+}
 
+.td:last-child {
+    border-right: 2px solid rgb(223, 223, 223);
+}
 
+.subtitle {
+    margin: -2px 0;
+    padding: 12px 12px 12px 0;
+    background: white;
+}
 
-@media (max-width: 1500px) {
+/* ------------------------------------------------------ */
+@media (max-width: 1530px) {
+    .content-compare {
+        width: 1200px;
+    }
+}
+
+@media (max-width: 1260px) {
+    .content-compare {
+        width: 990px;
+    }
+}
+
+@media (max-width: 1020px) {
     .content-compare {
         width: auto;
         min-width: 640px;
