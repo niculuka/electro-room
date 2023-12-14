@@ -26,65 +26,6 @@ export enum FINANCE {
     PROMO = "PROMO",
 }
 
-export enum SPECIFICATIONS {
-    TITLE_DISPLAY = "Ecran",
-    DISPLAY_DIAGONAL = "Diagonala ecran",
-    DISPLAY_FREQUENCY = "Frecventa ecran",
-    DISPLAY_TOUCH = "Ecran Tactil",
-
-    TITLE_MOTHERBOARD = "Placa de baza",
-    MOTHERBOARD_BRAND = "Producator pb",
-    MOTHERBOARD_CHIPSET = "Chipset",
-    MOTHERBOARD_SLOT = "Sloturi",
-    MOTHERBOARD_AUDIO = "Audio",
-
-    TITLE_PROCESSOR = "Procesor",
-    PROCESSOR_BRAND = "Producator procesor",
-    PROCESSOR_TYPE = "Tip procesor",
-    PROCESSOR_MODEL = "Model procesor",
-    PROCESSOR_FREQUENCY = "Frecventa procesor",
-
-    TITLE_MEMORY = "Memorie",
-    MEMORY_TYPE = "Tip memorie",
-    MEMORY_CAPACITY = "Capacitate memorie",
-    MEMORY_FREQUENCY = "Frecventa memorie",
-
-    TITLE_HARD = "Hard",
-    HARD_TYPE_1 = "Tip hard",
-    HARD_CAPACITY_1 = "Capacitate hard",
-    HARD_SLOT_1 = "Slot hard",
-    HARD_TYPE_2 = "Tip hard 2",
-    HARD_CAPACITY_2 = "Capacitate hard 2",
-    HARD_SLOT_2 = "Slot hard 2",
-
-    TITLE_CONNECTIVITY = "Conectivitate",
-    CONNECTIVITY_BLUETOOTH = "Bluetooth",
-    CONNECTIVITY_WIRELESS = "Wireless",
-
-    TITLE_GENERAL = "Caracteristici generale",
-    TIP = "Tip",
-    MODEL = "Model",
-    CAPACITY = "Capacitate",
-    CONNECTION = "Conectare",
-    OUTPUT = "Iesire",
-    COMPATIBILITY = "Compatibilitate",
-    SCREEN_SIZE = "Diagonala",
-    FREQUENCY = "Frecventa",
-    POWER = "Putere",
-
-    TITLE_OTHER = "Altele",
-    MATERIAL = "Material",
-    COLOR = "Culoare",
-    WEIGHT = "Greutate",
-    SPEED = "Viteza",
-    READ_SPEED = "Viteza de citire",
-    WRITE_SPEED = "Viteza de scriere",
-    HDMI = "Hdmi",
-    SPEAKER = "Difuzor",
-    RADIATOR = "Radiator",
-    BOLTAGE = "Tensiune",
-}
-
 export enum CATEGORY {
     CATEGORY = "CATEGORY",
     SUBCATEGORY = "SUBCATEGORY",

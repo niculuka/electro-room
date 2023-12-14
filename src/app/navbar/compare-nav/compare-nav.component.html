@@ -1,18 +1,14 @@
 <div class="compare" *ngIf="!isCompareEmpty()">
 
-    <div class="products">
-        <div class="product" *ngFor="let product of compares">
+    <div class="compare-col" *ngFor="let product of compares">
 
-            <img src={{product.image}}>
-            <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
+        <img src={{product.image}}>
+        <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
 
-        </div>
     </div>
 
-    <div class="btn">
-        <!-- <button (click)="clearCompare()">Sterge lista</button> -->
-        <!-- <button [routerLink]="compares.length>1 ? '/compare' : ''" >Compara</button> -->
-        <button (click)="goToCompare()">Compara</button>
-    </div>
+    <!-- <button (click)="clearCompare()">Sterge lista</button> -->
+    <!-- <button [routerLink]="compares.length>1 ? '/compare' : ''" >Compara</button> -->
+    <button (click)="goToCompare()" >Compara</button>
 
 </div>
