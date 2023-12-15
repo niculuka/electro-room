@@ -8,6 +8,7 @@
     flex-direction: column;
     margin: auto;
     width: 1500px;
+    min-width: 520px;
     /* border: 2px solid rgb(0, 0, 0); */
 }
 
@@ -135,33 +136,27 @@ mat-icon:hover {
 
 .title {
     width: 100%;
-}
-
-.content {
-    width: 100%;
     /* border: 1px solid rgb(0, 0, 0); */
 }
 
 h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
     color: rgb(220, 20, 110);
 }
 
-.aaa {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    border: 3px solid rgb(0, 0, 0);
+.content {
+    /* border: 1px solid rgb(0, 0, 0); */
 }
 
 .tr {
-    display: flex;
-    flex-direction: row;
     width: 100%;
     /* border: 1px solid rgb(0, 0, 0); */
 }
 
 .tr:nth-child(odd) {
-    background: rgb(220, 20, 110, 0.1);
+    background: rgb(220, 20, 110, 0.05);
 }
 
 .tr:first-child {
@@ -172,14 +167,43 @@ h2 {
     border-bottom: 2px solid rgb(223, 223, 223);
 }
 
-.subtitle {
-    width: 20%;
-}
-
-.specifications {
+.tr-row {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 100%;
+    padding: 0;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.tr-col {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.subtitle-row {
+    margin: -2px 0;
+    padding: 12px 6px 12px 0;
+    font-size: 16px;
+    background: white;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.subtitle-col {}
+
+.specifications-row {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+.specifications-col {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
 }
 
 .td {
@@ -192,18 +216,12 @@ h2 {
     /* border: 1px solid rgb(0, 0, 0); */
 }
 
-.td:nth-child(2) {
+.td:first-child {
     border-left: 2px solid rgb(223, 223, 223);
 }
 
 .td:last-child {
     border-right: 2px solid rgb(223, 223, 223);
-}
-
-.subtitle {
-    margin: -2px 0;
-    padding: 12px 12px 12px 0;
-    background: white;
 }
 
 /* ------------------------------------------------------ */
@@ -217,21 +235,24 @@ h2 {
     .content-compare {
         width: 990px;
     }
+
+    .subtitle-row {
+        font-size: 14px;
+    }
+
+    .subtitle-col {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 1020px) {
     .content-compare {
         width: auto;
-        min-width: 640px;
         margin: 0 10px;
     }
 
     h1 {
         font-size: 24px;
-    }
-
-    .card {
-        padding: 6px;
     }
 
     .description {
@@ -251,25 +272,75 @@ h2 {
     }
 
     h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .td {
         font-size: 14px;
-        padding: 6px;
     }
 
     .subtitle {
-        padding: 6px 12px 6px 0;
+        padding: 6px 6px 6px 0;
     }
+
+    .specifications {
+        border: 2px solid rgb(223, 223, 223);
+    }
+
 }
 
-@media (max-width: 760px) {
+@media (max-width: 766px) {
     h1 {
         font-size: 20px;
     }
 
+    .empty-card {
+        display: none;
+    }
+
+    .card {
+        padding: 6px;
+        width: 25%;
+    }
+
+
     .price {
         font-size: 16px;
     }
+
+
+    .tr {
+        margin-top: 6px;
+    }
+
+    .tr:first-child,
+    .tr:last-child {
+        border: none;
+    }
+
+    .subtitle {
+        display: none;
+    }
+
+    .tr-row {
+        display: none;
+    }
+
+    .tr-col {
+        display: flex;
+    }
+
+    .details {
+        width: 100%;
+    }
+
+    .subtitling {
+        display: block;
+    }
+
+    .td:first-child,
+    .td:last-child {
+        border: none;
+    }
+
 }

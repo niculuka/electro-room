@@ -96,7 +96,7 @@ img {
   
 }
 
-@media (max-width: 760px) {
+@media (max-width: 766px) {
   .row-item {
     display: none;
   }

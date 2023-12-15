@@ -24,11 +24,11 @@ export const SPECIFICATION: Array<Specification> = [
                 subtitle_chk: false,
                 specifications: [],
             },
-            {
-                subtitle: SPECIFICATIONS.RESOLUTION,
-                subtitle_chk: false,
-                specifications: [],
-            },
+            // {
+            //     subtitle: SPECIFICATIONS.RESOLUTION,
+            //     subtitle_chk: false,
+            //     specifications: [],
+            // },
             {
                 subtitle: SPECIFICATIONS.DISPLAY_FREQUENCY,
                 subtitle_chk: false,
