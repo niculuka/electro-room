@@ -16,6 +16,7 @@ export class CompareComponent {
   compares!: Array<Product>;
 
   screenWidth: any = 10000;
+  minWidth: string = 'min-width: 150px';
   trWidth: string = 'width: 100%';
 
   specifications: Array<Specification> = SPECIFICATION;
@@ -44,7 +45,13 @@ export class CompareComponent {
       if (this.compares.length === 3) this.trWidth = 'width: 80%';
       if (this.compares.length === 4) this.trWidth = 'width: 100%';
     }
-    else this.trWidth = 'width: 100%';
+    else {
+      this.trWidth = 'width: 100%';
+      if (this.compares.length === 1) this.minWidth = 'min-width: 150px';
+      if (this.compares.length === 2) this.minWidth = 'min-width: 300px';
+      if (this.compares.length === 3) this.minWidth = 'min-width: 500px';
+      if (this.compares.length === 4) this.minWidth = 'min-width: 600px';
+    }
   }
 
   addToCart(product: Product) {

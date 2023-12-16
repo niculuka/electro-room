@@ -98,20 +98,19 @@
 @media(max-width: 1530px) {
     .content-help {
         width: 1200px;
-        margin-top: 40px;
     }
 }
 
 @media(max-width: 1260px) {
     .content-help {
-        width: 980px;
+        width: 990px;
     }
 }
 
 @media(max-width: 1020px) {
     .content-help {
         width: 100%;
-        margin: 16px;
+        margin: 0 10px;
     }
 
     .help-desk label {

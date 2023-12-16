@@ -1,5 +1,8 @@
 .container-compare {
+    display: flex;
+    flex-direction: row;
     width: 100%;
+    overflow: scroll;
     /* border: 2px solid rgb(0, 0, 0); */
 }
 
@@ -8,7 +11,6 @@
     flex-direction: column;
     margin: auto;
     width: 1500px;
-    min-width: 520px;
     /* border: 2px solid rgb(0, 0, 0); */
 }
 
@@ -17,10 +19,14 @@
     color: rgb(220, 20, 110);
 }
 
-.minimum-products {
+h1 {    
     font-size: 28px;
-    margin-bottom: 66vh;
     /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.minimum-products {
+    margin-bottom: 66vh;
+    color: rgb(220, 20, 110);
 }
 
 /* header ======================================================= */
@@ -200,9 +206,6 @@ mat-icon:hover {
     /* border: 1px solid rgb(0, 0, 0); */
 }
 
-
-
-
 /* ------------------------------------------------------ */
 @media (max-width: 1530px) {
     .content-compare {
@@ -225,9 +228,12 @@ mat-icon:hover {
 }
 
 @media (max-width: 1020px) {
+    .container-compare {
+        padding: 0 10px;
+    }
+
     .content-compare {
-        width: auto;
-        margin: 0 10px;
+        width: 100%;
     }
 
     h1 {
