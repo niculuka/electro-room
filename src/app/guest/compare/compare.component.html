@@ -40,45 +40,24 @@
 
             <!-- ------------------------------------------------------------------------------------------ -->
             <div class="body">
-
                 <div *ngFor="let specification of specifications;">
-                    <div class="table" *ngIf="specification.title_chk">
-
+                    <div class="table" [style]="trWidth" *ngIf="specification.title_chk">
                         <div class="title">
                             <h2>{{specification.title}}</h2>
                         </div>
-
-                        <div class="content" [style]="trWidth1">
-                            <div class="tr" *ngFor="let sp of specification.subtitles; index as ind">
-
-                                <div class="tr-row" *ngIf="sp.subtitle_chk">
-                                    <div class="subtitle-row" [style]="td1Row"> {{sp.subtitle}} </div>
-                                    <div class="specifications-row" [style]="td2Row">
-                                        <div class="td" *ngFor="let s of sp.specifications;"> {{s ? s :"-"}} </div>
-                                    </div>
-                                </div>
-
+                        <div class="tr" *ngFor="let sp of specification.subtitles; index as ind">
+                            <div class="td subtitle"> {{sp.subtitle}} </div>
+                            <!-- desktop ---------------------------------------------------------- -->
+                            <div class="td desktop" *ngFor="let s of sp.specifications;"> {{s ? s :"-"}} </div>
+                            <!-- mobile ----------------------------------------------------------- -->
+                            <div class="specifications mobile">
+                                <div class="td" *ngFor="let s of sp.specifications;"> {{s ? s :"-"}} </div>
                             </div>
                         </div>
-
-                        <div class="content" [style]="trWidth2">
-                            <div class="tr" *ngFor="let sp of specification.subtitles; index as ind">
-
-                                <div class="tr-col" *ngIf="sp.subtitle_chk">
-                                    <div class="subtitle-col"> {{sp.subtitle}} </div>
-                                    <div class="specifications-col">
-                                        <div class="td" *ngFor="let s of sp.specifications;"> {{s ? s :"-"}} </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-
             </div>
-            
+
             <!-- ------------------------------------------------------------------------------------------ -->
         </div>
 

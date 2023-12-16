@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { SPECIFICATION, Specification } from 'src/app/shared/data/specification.data';
 import { SPECIFICATIONS } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
@@ -14,12 +14,9 @@ import { CompareService } from 'src/app/shared/services/compare.service';
 export class CompareComponent {
 
   compares!: Array<Product>;
-  trWidth1: string = 'width: 100%';
-  trWidth2: string = 'width: 100%';
-  td1Row: string = 'width: 100%';
-  td2Row: string = 'width: 100%';
-  td1Col: string = 'width: 100%';
-  td2Col: string = 'width: 100%';
+
+  screenWidth: any = 10000;
+  trWidth: string = 'width: 100%';
 
   specifications: Array<Specification> = SPECIFICATION;
 
@@ -32,31 +29,22 @@ export class CompareComponent {
   ) {
     this.sub = compareService.getComparesObservable().subscribe(comp => {
       this.compares = comp;
+      this.screenWidth = window.innerWidth;
       this.handleWidth();
       this.emptySpecification();
     });
   }
 
+  @HostListener('window:resize', ['$event'])
   handleWidth() {
-    if (this.compares.length === 1) this.trWidth1 = 'width: 40%';
-    if (this.compares.length === 1) this.trWidth2 = 'width: 25%';
-    if (this.compares.length === 1) this.td1Row = 'width: 50%';
-    if (this.compares.length === 1) this.td2Row = 'width: 50%';
-
-    if (this.compares.length === 2) this.trWidth1 = 'width: 60%';
-    if (this.compares.length === 2) this.trWidth2 = 'width: 50%';
-    if (this.compares.length === 2) this.td1Row = 'width: 33.33%';
-    if (this.compares.length === 2) this.td2Row = 'width: 66.66%';
-
-    if (this.compares.length === 3) this.trWidth1 = 'width: 80%';
-    if (this.compares.length === 3) this.trWidth2 = 'width: 75%';
-    if (this.compares.length === 3) this.td1Row = 'width: 25%';
-    if (this.compares.length === 3) this.td2Row = 'width: 75%';
-
-    if (this.compares.length === 4) this.trWidth1 = 'width: 100%';
-    if (this.compares.length === 4) this.trWidth2 = 'width: 100%';
-    if (this.compares.length === 4) this.td1Row = 'width: 20%';
-    if (this.compares.length === 4) this.td2Row = 'width: 80%';
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth > 766) {
+      if (this.compares.length === 1) this.trWidth = 'width: 40%';
+      if (this.compares.length === 2) this.trWidth = 'width: 60%';
+      if (this.compares.length === 3) this.trWidth = 'width: 80%';
+      if (this.compares.length === 4) this.trWidth = 'width: 100%';
+    }
+    else this.trWidth = 'width: 100%';
   }
 
   addToCart(product: Product) {
