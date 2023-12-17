@@ -1,0 +1,15 @@
+<div class="descriptions">
+    <h1>Descriere</h1>
+    <div class="description" *ngFor="let description of product.descriptions">
+        <div class="text">
+            <h2><span>{{description.title}}</span></h2>
+            <p>
+                {{description.text}}
+            </p>
+        </div>
+
+        <div class="image">
+            <img src={{description.image}}>
+        </div>
+    </div>
+</div>

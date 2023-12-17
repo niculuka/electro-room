@@ -1,0 +1,248 @@
+<div class="specifications-content">
+
+    <h1>Specificatii</h1>
+
+    <div class="specifications">
+        <div class="left-side">
+            <!-- Laptops - Desktops ------------------------------------------------------------------------- -->
+            <table *ngIf="sp.display_size || sp.display_frequency || sp.display_touch">
+                <thead>
+                    <h2>{{name.TITLE_DISPLAY}}</h2>
+                </thead>
+
+                <tbody>
+                    <tr *ngIf="sp.display_size">
+                        <th>{{name.DISPLAY_DIAGONAL}}</th>
+                        <td>{{sp.display_size}}</td>
+                    </tr>
+                    <tr *ngIf="sp.display_frequency">
+                        <th>{{name.DISPLAY_FREQUENCY}}</th>
+                        <td>{{sp.display_frequency}}</td>
+                    </tr>
+                    <tr *ngIf="sp.display_touch">
+                        <th>{{name.DISPLAY_TOUCH}}</th>
+                        <td>{{sp.display_touch}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table
+                *ngIf="sp.motherboard_brand || sp.motherboard_chipset || sp.motherboard_slot || sp.motherboard_audio">
+                <thead>
+                    <h2>{{name.TITLE_MOTHERBOARD}}</h2>
+                </thead>
+                <tbody>
+                    <tr *ngIf="sp.motherboard_brand">
+                        <th>{{name.MOTHERBOARD_BRAND}}</th>
+                        <td>{{sp.motherboard_brand}}</td>
+                    </tr>
+                    <tr *ngIf="sp.motherboard_chipset">
+                        <th>{{name.MOTHERBOARD_CHIPSET}}</th>
+                        <td>{{sp.motherboard_chipset}}</td>
+                    </tr>
+                    <tr *ngIf="sp.motherboard_slot">
+                        <th>{{name.MOTHERBOARD_SLOT}}</th>
+                        <td>{{sp.motherboard_slot}}</td>
+                    </tr>
+                    <tr *ngIf="sp.motherboard_audio">
+                        <th>{{name.MOTHERBOARD_AUDIO}}</th>
+                        <td>{{sp.motherboard_audio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table *ngIf="sp.processor_brand || sp.processor_type || sp.processor_model || sp.processor_frequency">
+                <thead>
+                    <h2>{{name.TITLE_PROCESSOR}}</h2>
+                </thead>
+                <tbody>
+                    <tr *ngIf="sp.processor_brand">
+                        <th>{{name.PROCESSOR_BRAND}}</th>
+                        <td>{{sp.processor_brand}}</td>
+                    </tr>
+                    <tr *ngIf="sp.processor_type">
+                        <th>{{name.PROCESSOR_TYPE}}</th>
+                        <td>{{sp.processor_type}}</td>
+                    </tr>
+                    <tr *ngIf="sp.processor_model">
+                        <th>{{name.PROCESSOR_MODEL}}</th>
+                        <td>{{sp.processor_model}}</td>
+                    </tr>
+                    <tr *ngIf="sp.processor_frequency">
+                        <th>{{name.PROCESSOR_FREQUENCY}}</th>
+                        <td>{{sp.processor_frequency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table *ngIf="sp.memory_type || sp.memory_capacity || sp.memory_frequency">
+                <thead>
+                    <h2>{{name.TITLE_MEMORY}}</h2>
+                </thead>
+                <tbody>
+                    <tr *ngIf="sp.memory_type">
+                        <th>{{name.MEMORY_TYPE}}</th>
+                        <td>{{sp.memory_type}}</td>
+                    </tr>
+                    <tr *ngIf="sp.memory_capacity">
+                        <th>{{name.MEMORY_CAPACITY}}</th>
+                        <td>{{sp.memory_capacity}}</td>
+                    </tr>
+                    <tr *ngIf="sp.memory_frequency">
+                        <th>{{name.MEMORY_FREQUENCY}}</th>
+                        <td>{{sp.memory_frequency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Bags - Chargers - Hards - ExtBaterries - Rams - Monitors---------------------------------------------- -->
+            <table
+                *ngIf="sp.type || sp.model || sp.capacity || sp.connection || sp.output || sp.compatibility || sp.screen_size || sp.frequency || sp.power">
+                <thead>
+                    <h2>{{name.TITLE_GENERAL}}</h2>
+                </thead>
+                <tbody>
+                    <tr *ngIf="product.brand">
+                        <th>{{name.BRAND}}</th>
+                        <td>{{product.brand}}</td>
+                    </tr>
+                    <tr *ngIf="sp.type">
+                        <th>{{name.TYPE}}</th>
+                        <td>{{sp.type}}</td>
+                    </tr>
+                    <tr *ngIf="sp.model">
+                        <th>{{name.MODEL}}</th>
+                        <td>{{sp.model}}</td>
+                    </tr>
+                    <tr *ngIf="sp.capacity">
+                        <th>{{name.CAPACITY}}</th>
+                        <td>{{sp.capacity}}</td>
+                    </tr>
+                    <tr *ngIf="sp.connection">
+                        <th>{{name.CONNECTION}}</th>
+                        <td>{{sp.connection}}</td>
+                    </tr>
+                    <tr *ngIf="sp.output">
+                        <th>{{name.OUTPUT}}</th>
+                        <td>{{sp.output}}</td>
+                    </tr>
+                    <tr *ngIf="sp.compatibility">
+                        <th>{{name.COMPATIBILITY}}</th>
+                        <td>{{sp.compatibility}}</td>
+                    </tr>
+                    <tr *ngIf="sp.screen_size">
+                        <th>{{name.SCREEN_SIZE}}</th>
+                        <td>{{sp.screen_size}}</td>
+                    </tr>
+                    <tr *ngIf="sp.frequency">
+                        <th>{{name.FREQUENCY}}</th>
+                        <td>{{sp.frequency}}</td>
+                    </tr>
+                    <tr *ngIf="sp.power">
+                        <th>{{name.POWER}}</th>
+                        <td>{{sp.power}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="right-side">
+            <!-- Laptops - Desktops ------------------------------------------------------------------------- -->
+            <table
+                *ngIf="sp.hard_type_1 || sp.hard_capacity_1 || sp.hard_slot_1 || sp.hard_type_2 || sp.hard_capacity_2 || sp.hard_slot_2">
+                <thead>
+                    <h2>{{name.TITLE_HARD}}</h2>
+                </thead>
+                <tbody>
+                    <tr *ngIf="sp.hard_type_1">
+                        <th>{{name.HARD_TYPE_1}}</th>
+                        <td>{{sp.hard_type_1}}</td>
+                    </tr>
+                    <tr *ngIf="sp.hard_capacity_1">
+                        <th>{{name.HARD_CAPACITY_1}}</th>
+                        <td>{{sp.hard_capacity_1}}</td>
+                    </tr>
+                    <tr *ngIf="sp.hard_slot_1">
+                        <th>{{name.HARD_SLOT_1}}</th>
+                        <td>{{sp.hard_slot_1}}</td>
+                    </tr>
+                    <tr *ngIf="sp.hard_type_2">
+                        <th>{{name.HARD_TYPE_2}}</th>
+                        <td>{{sp.hard_type_2}}</td>
+                    </tr>
+                    <tr *ngIf="sp.hard_capacity_2">
+                        <th>{{name.HARD_CAPACITY_2}}</th>
+                        <td>{{sp.hard_capacity_2}}</td>
+                    </tr>
+                    <tr *ngIf="sp.hard_slot_2">
+                        <th>{{name.HARD_SLOT_2}}</th>
+                        <td>{{sp.hard_slot_2}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table *ngIf="sp.connectivity_bluetooth || sp.connectivity_wireless">
+                <thead>
+                    <h2>{{name.TITLE_CONNECTIVITY}}</h2>
+                </thead>
+                <tbody>
+                    <tr *ngIf="sp.connectivity_bluetooth">
+                        <th>{{name.CONNECTIVITY_BLUETOOTH}}</th>
+                        <td>{{sp.connectivity_bluetooth}}</td>
+                    </tr>
+                    <tr *ngIf="sp.connectivity_wireless">
+                        <th>{{name.CONNECTIVITY_WIRELESS}}</th>
+                        <td>{{sp.connectivity_wireless}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Bags - Chargers - Hards - ExtBaterries - Rams - Monitors---------------------------------------------- -->
+            <table
+                *ngIf="sp.read_speed || sp.write_speed || sp.material || sp.color || sp.weight || sp.speed || sp.hdmi || sp.speaker || sp.radiator || sp.voltage">
+                <thead>
+                    <h2>{{name.TITLE_OTHER}}</h2>
+                </thead>
+                <tbody>
+                    <tr *ngIf="sp.read_speed">
+                        <th>{{name.READ_SPEED}}</th>
+                        <td>{{sp.read_speed}}</td>
+                    </tr>
+                    <tr *ngIf="sp.write_speed">
+                        <th>{{name.WRITE_SPEED}}</th>
+                        <td>{{sp.write_speed}}</td>
+                    </tr>
+                    <tr *ngIf="sp.material">
+                        <th>{{name.MATERIAL}}</th>
+                        <td>{{sp.material}}</td>
+                    </tr>
+                    <tr *ngIf="sp.color">
+                        <th>{{name.COLOR}}</th>
+                        <td>{{sp.color}}</td>
+                    </tr>
+                    <tr *ngIf="sp.weight">
+                        <th>{{name.WEIGHT}}</th>
+                        <td>{{sp.weight}}</td>
+                    </tr>
+                    <tr *ngIf="sp.speed">
+                        <th>{{name.SPEED}}</th>
+                        <td>{{sp.speed}}</td>
+                    </tr>
+                    <tr *ngIf="sp.hdmi">
+                        <th>{{name.HDMI}}</th>
+                        <td>{{sp.hdmi}}</td>
+                    </tr>
+                    <tr *ngIf="sp.speaker">
+                        <th>{{name.SPEAKER}}</th>
+                        <td>{{sp.speaker}}</td>
+                    </tr>
+                    <tr *ngIf="sp.radiator">
+                        <th>{{name.RADIATOR}}</th>
+                        <td>{{sp.radiator}}</td>
+                    </tr>
+                    <tr *ngIf="sp.voltage">
+                        <th>{{name.VOLTAGE}}</th>
+                        <td>{{sp.voltage}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

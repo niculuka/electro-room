@@ -87,8 +87,10 @@ import { ProductFilterComponent } from './products-pages/category/product-filter
 import { ProductSorterComponent } from './products-pages/category/product-sorter/product-sorter.component';
 import { ProductDisplayComponent } from './products-pages/category/product-display/product-display.component';
 import { ProductDetailComponent } from './products-pages/detail/product-detail/product-detail.component';
-import { ProductSpecsComponent } from './products-pages/detail/product-specs/product-specs.component';
 import { ProductMainComponent } from './products-pages/detail/product-main/product-main.component';
+import { CarouselGalleryComponent } from './products-pages/detail/carousel-gallery/carousel-gallery.component';
+import { ProductDescriptionComponent } from './products-pages/detail/product-description/product-description.component';
+import { ProductSpecificationComponent } from './products-pages/detail/product-specification/product-specification.component';
 import { SearchComponent } from './products-pages/search/search.component';
 
 // others
@@ -96,13 +98,9 @@ import { UnderConstructionComponent } from './guest/under-construction/under-con
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
-import { CarouselGalleryComponent } from './products-pages/detail/carousel-gallery/carousel-gallery.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -167,11 +165,12 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     ProductSorterComponent,
     ProductDisplayComponent,
     ProductDetailComponent,
-    ProductSpecsComponent,
     ProductMainComponent,
+    CarouselGalleryComponent,
+    ProductDescriptionComponent,
+    ProductSpecificationComponent,
     SearchComponent,
     InfoBlockComponent,
-    CarouselGalleryComponent,
     BreadcrumbComponent,
     MegaMenuMobileComponent,
     MegaMenuDesktopComponent,

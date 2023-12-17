@@ -1,0 +1,60 @@
+.descriptions {
+    width: 100%;
+    margin-top: 16px;
+    padding: 20px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* border: 2px solid rgb(255, 0, 0); */
+}
+
+h1 {
+    font-size: 26px;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid rgb(255, 0, 0); */
+}
+
+.description {
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid black; */
+}
+
+.description:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.description>div {
+    margin: 0;
+    /* border: 1px solid black; */
+}
+
+h2 {
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+    border-bottom: 4px solid rgb(220, 20, 110);
+    /* border: 1px solid rgb(255, 0, 0); */
+}
+
+p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.text {
+    width: 60%;
+}
+
+.image {
+    width: 40%;
+}
+
+img {
+    width: 100%;
+}
+
+@media(max-width: 766px) {
+    
+}

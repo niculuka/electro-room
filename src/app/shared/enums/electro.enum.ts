@@ -63,6 +63,7 @@ export enum SPECIFICATIONS {
     CONNECTIVITY_WIRELESS = "Wireless",
 
     TITLE_GENERAL = "Caracteristici generale",
+    BRAND = "Producator",
     TYPE = "Tip",
     MODEL = "Model",
     CAPACITY = "Capacitate",
