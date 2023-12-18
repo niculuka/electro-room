@@ -40,12 +40,12 @@
 
             <!-- ------------------------------------------------------------------------------------------ -->
             <div class="body">
-                <div *ngFor="let specification of specifications;">
-                    <div class="table" [style]="trWidth" *ngIf="specification.title_chk">
+                <div *ngFor="let specific of specifics;">
+                    <div class="table" [style]="trWidth">
                         <div class="title">
-                            <h2>{{specification.title}}</h2>
+                            <h2>{{specific.title}}</h2>
                         </div>
-                        <div class="tr" *ngFor="let sp of specification.subtitles; index as ind">
+                        <div class="tr" *ngFor="let sp of specific.subtitles; index as ind">
                             <div class="td subtitle"> {{sp.subtitle}} </div>
                             <!-- desktop ---------------------------------------------------------- -->
                             <div class="td desktop" *ngFor="let s of sp.specifications;"> {{s ? s :"-"}} </div>

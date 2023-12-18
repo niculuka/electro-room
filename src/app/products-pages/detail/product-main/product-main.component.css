@@ -175,6 +175,16 @@
     background: rgba(193, 36, 107, 0.1);
 }
 
+@media(max-width: 1020px) {
+    .title h1 {
+        font-size: 22px;
+    }
+
+    .order h1 {
+        font-size: 32px;
+    }
+}
+
 @media(max-width: 766px) {
     .images {
         width: 50%;
@@ -210,7 +220,7 @@
     .body {
         width: 100%;
     }
-    
+
     .images span {
         position: absolute;
         top: 0;
@@ -220,6 +230,10 @@
     .info,
     .order {
         padding: 0;
-    }   
+    }
+
+    .order h1 {
+        font-size: 28px;
+    }
 
 }

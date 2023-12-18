@@ -130,6 +130,7 @@ mat-icon:hover {
 /* body ======================================================= */
 .body {
     margin-top: 12px;
+    margin-bottom: 30px;
     padding: 12px;
     border-radius: 8px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
