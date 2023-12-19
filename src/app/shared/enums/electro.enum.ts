@@ -28,7 +28,7 @@ export enum FINANCE {
 
 export enum SPECIFICATIONS {
     TITLE_DISPLAY = "Ecran",
-    DISPLAY_DIAGONAL = "Diagonala ecran",
+    DISPLAY_SIZE = "Diagonala ecran",
     DISPLAY_RESOLUTION = "Rezolutie",
     DISPLAY_FREQUENCY = "Frecventa ecran",
     DISPLAY_TOUCH = "Ecran Tactil",

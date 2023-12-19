@@ -48,6 +48,7 @@ export class ProductSpecification {
     connectivity_wireless?: string;
 
     // Bags - Chargers - Hards - ExtBaterries - Rams - Monitors - - - -
+    brand?: string;
     type?: string;
     model?: string;
     capacity?: string;
