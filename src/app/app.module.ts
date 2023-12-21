@@ -101,6 +101,7 @@ import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
 import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-desktop.component';
+import { DialogCartComponent } from './dialogs/dialog-cart/dialog-cart.component';
 
 @NgModule({
   declarations: [
@@ -175,6 +176,7 @@ import { MegaMenuDesktopComponent } from './navbar/mega-menu-desktop/mega-menu-d
     MegaMenuMobileComponent,
     MegaMenuDesktopComponent,
     UnderConstructionComponent,
+    DialogCartComponent,
   ],
   imports: [
     BrowserModule,

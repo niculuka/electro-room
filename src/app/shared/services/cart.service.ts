@@ -4,6 +4,8 @@ import { Cart } from '../models/cart.model';
 import { CartItem } from '../models/cart-item.model';
 import { Product } from '../models/product.model';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCartComponent } from 'src/app/dialogs/dialog-cart/dialog-cart.component';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +17,20 @@ export class CartService {
 
   constructor(
     private toastrService: ToastrService,
+    public matDialog: MatDialog,
   ) { }
 
   addToCartService(product: Product): void {
     let cartItem = this.cart.items.find(item => item.product.name === product.name);
     if (cartItem) {
-      this.toastrService.warning("Produsul este deja in cos.")
+      let message = "Produsul este deja in cos.";
+      this.matDialog.open(DialogCartComponent, { data: { obj: product, text: message } });
       return;
     }
     this.cart.items.push(new CartItem(product));
     this.setCartToLocalStorage();
-    this.toastrService.success("Produsul a fost adaugat in cos.");
+    let message = "Produsul a fost adaugat in cos.";
+    this.matDialog.open(DialogCartComponent, { data: { obj: product, text: message } });
   }
 
   changeQuantityService(name: string, quantity: number) {

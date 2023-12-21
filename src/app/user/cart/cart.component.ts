@@ -60,8 +60,4 @@ export class CartComponent {
     const deliveryJson = JSON.stringify(this.order.favoriteDelivery);
     localStorage.setItem('delivery-ls', deliveryJson);
   }
-
-  goBack() {
-    this.location.back();
-  }
 }

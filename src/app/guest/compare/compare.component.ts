@@ -22,7 +22,6 @@ export class CompareComponent {
   trWidth: string = 'width: 100%';
 
   specifications: Array<Specification> = [];
-  subtitle_chk?: boolean;
 
   private sub: any;
 
@@ -37,6 +36,24 @@ export class CompareComponent {
       this.handleWidth();
       this.emptySpecification();
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  handleWidth() {
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth > 766) {
+      if (this.compares.length === 1) this.trWidth = 'width: 40%';
+      if (this.compares.length === 2) this.trWidth = 'width: 60%';
+      if (this.compares.length === 3) this.trWidth = 'width: 80%';
+      if (this.compares.length === 4) this.trWidth = 'width: 100%';
+    }
+    else {
+      this.trWidth = 'width: 100%';
+      if (this.compares.length === 1) this.minWidth = 'min-width: 150px';
+      if (this.compares.length === 2) this.minWidth = 'min-width: 300px';
+      if (this.compares.length === 3) this.minWidth = 'min-width: 500px';
+      if (this.compares.length === 4) this.minWidth = 'min-width: 600px';
+    }
   }
 
   emptySpecification() {
@@ -84,6 +101,7 @@ export class CompareComponent {
             if (sub.subtitle == SPECIFICATIONS.CONNECTIVITY_WIRELESS) sub.specifications.push(ps.connectivity_wireless);
 
             // G E N E R A L ---------------------------------------------------------------------------------------
+            if (sub.subtitle == SPECIFICATIONS.BRAND) sub.specifications.push(ps.brand);
             if (sub.subtitle == SPECIFICATIONS.TYPE) sub.specifications.push(ps.type);
             if (sub.subtitle == SPECIFICATIONS.MODEL) sub.specifications.push(ps.model);
             if (sub.subtitle == SPECIFICATIONS.CAPACITY) sub.specifications.push(ps.capacity);
@@ -111,41 +129,24 @@ export class CompareComponent {
     }
 
     // 1) IF ANY VALUE IN SPECIFICATION ==>> SUBTITLE_CHK = TRUE; 2) IF SUBTITLE_CHK = FALSE ==>> THAT SPECIFICATION IS REMOVED;
+    let subtitle_chk: boolean;
     for (let spec of this.specifications) {
       for (let sub of spec.subtitles) {
-        this.subtitle_chk = false;
-        sub.specifications.find(item => { if (item) this.subtitle_chk = true });
-        if (this.subtitle_chk == false) {
+        subtitle_chk = false;
+        sub.specifications.find(item => { if (item) subtitle_chk = true });
+        if (subtitle_chk == false) {
           spec.subtitles = spec.subtitles.filter(item => item.subtitle != sub.subtitle);
         }
       }
     }
 
-    // 1) IF ANY VALUE IN SUBTITLES ==>> TITLE_CHK = TRUE; 2) IF TITLE_CHK = FALSE ==>> THAT SUBTITLES IS REMOVED;
+    // 1) IF EMPTY SUBTITLES ==>> THAT SUBTITLES IS REMOVED;
     for (let spec of this.specifications) {
       if (!spec.subtitles.length) {
         this.specifications = this.specifications.filter(item => item.title != spec.title);
       }
     }
     // console.log(this.specifications);
-  }
-
-  @HostListener('window:resize', ['$event'])
-  handleWidth() {
-    this.screenWidth = window.innerWidth;
-    if (this.screenWidth > 766) {
-      if (this.compares.length === 1) this.trWidth = 'width: 40%';
-      if (this.compares.length === 2) this.trWidth = 'width: 60%';
-      if (this.compares.length === 3) this.trWidth = 'width: 80%';
-      if (this.compares.length === 4) this.trWidth = 'width: 100%';
-    }
-    else {
-      this.trWidth = 'width: 100%';
-      if (this.compares.length === 1) this.minWidth = 'min-width: 150px';
-      if (this.compares.length === 2) this.minWidth = 'min-width: 300px';
-      if (this.compares.length === 3) this.minWidth = 'min-width: 500px';
-      if (this.compares.length === 4) this.minWidth = 'min-width: 600px';
-    }
   }
 
   addToCart(product: Product) {

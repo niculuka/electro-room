@@ -5,139 +5,139 @@
     <div class="specifications">
         <div class="left-side">
             <!-- Laptops - Desktops ------------------------------------------------------------------------- -->
-            <table *ngIf="sp.display_size || sp.display_frequency || sp.display_touch">
+            <table *ngIf="ps.display_size || ps.display_frequency || ps.display_touch">
                 <thead>
                     <h2>{{name.TITLE_DISPLAY}}</h2>
                 </thead>
 
                 <tbody>
-                    <tr *ngIf="sp.display_size">
+                    <tr *ngIf="ps.display_size">
                         <th>{{name.DISPLAY_SIZE}}</th>
-                        <td>{{sp.display_size}}</td>
+                        <td>{{ps.display_size}}</td>
                     </tr>
-                    <tr *ngIf="sp.display_frequency">
+                    <tr *ngIf="ps.display_frequency">
                         <th>{{name.DISPLAY_FREQUENCY}}</th>
-                        <td>{{sp.display_frequency}}</td>
+                        <td>{{ps.display_frequency}}</td>
                     </tr>
-                    <tr *ngIf="sp.display_touch">
+                    <tr *ngIf="ps.display_touch">
                         <th>{{name.DISPLAY_TOUCH}}</th>
-                        <td>{{sp.display_touch}}</td>
+                        <td>{{ps.display_touch}}</td>
                     </tr>
                 </tbody>
             </table>
             <table
-                *ngIf="sp.motherboard_brand || sp.motherboard_chipset || sp.motherboard_slot || sp.motherboard_audio">
+                *ngIf="ps.motherboard_brand || ps.motherboard_chipset || ps.motherboard_slot || ps.motherboard_audio">
                 <thead>
                     <h2>{{name.TITLE_MOTHERBOARD}}</h2>
                 </thead>
                 <tbody>
-                    <tr *ngIf="sp.motherboard_brand">
+                    <tr *ngIf="ps.motherboard_brand">
                         <th>{{name.MOTHERBOARD_BRAND}}</th>
-                        <td>{{sp.motherboard_brand}}</td>
+                        <td>{{ps.motherboard_brand}}</td>
                     </tr>
-                    <tr *ngIf="sp.motherboard_chipset">
+                    <tr *ngIf="ps.motherboard_chipset">
                         <th>{{name.MOTHERBOARD_CHIPSET}}</th>
-                        <td>{{sp.motherboard_chipset}}</td>
+                        <td>{{ps.motherboard_chipset}}</td>
                     </tr>
-                    <tr *ngIf="sp.motherboard_slot">
+                    <tr *ngIf="ps.motherboard_slot">
                         <th>{{name.MOTHERBOARD_SLOT}}</th>
-                        <td>{{sp.motherboard_slot}}</td>
+                        <td>{{ps.motherboard_slot}}</td>
                     </tr>
-                    <tr *ngIf="sp.motherboard_audio">
+                    <tr *ngIf="ps.motherboard_audio">
                         <th>{{name.MOTHERBOARD_AUDIO}}</th>
-                        <td>{{sp.motherboard_audio}}</td>
+                        <td>{{ps.motherboard_audio}}</td>
                     </tr>
                 </tbody>
             </table>
-            <table *ngIf="sp.processor_brand || sp.processor_type || sp.processor_model || sp.processor_frequency">
+            <table *ngIf="ps.processor_brand || ps.processor_type || ps.processor_model || ps.processor_frequency">
                 <thead>
                     <h2>{{name.TITLE_PROCESSOR}}</h2>
                 </thead>
                 <tbody>
-                    <tr *ngIf="sp.processor_brand">
+                    <tr *ngIf="ps.processor_brand">
                         <th>{{name.PROCESSOR_BRAND}}</th>
-                        <td>{{sp.processor_brand}}</td>
+                        <td>{{ps.processor_brand}}</td>
                     </tr>
-                    <tr *ngIf="sp.processor_type">
+                    <tr *ngIf="ps.processor_type">
                         <th>{{name.PROCESSOR_TYPE}}</th>
-                        <td>{{sp.processor_type}}</td>
+                        <td>{{ps.processor_type}}</td>
                     </tr>
-                    <tr *ngIf="sp.processor_model">
+                    <tr *ngIf="ps.processor_model">
                         <th>{{name.PROCESSOR_MODEL}}</th>
-                        <td>{{sp.processor_model}}</td>
+                        <td>{{ps.processor_model}}</td>
                     </tr>
-                    <tr *ngIf="sp.processor_frequency">
+                    <tr *ngIf="ps.processor_frequency">
                         <th>{{name.PROCESSOR_FREQUENCY}}</th>
-                        <td>{{sp.processor_frequency}}</td>
+                        <td>{{ps.processor_frequency}}</td>
                     </tr>
                 </tbody>
             </table>
-            <table *ngIf="sp.memory_type || sp.memory_capacity || sp.memory_frequency">
+            <table *ngIf="ps.memory_type || ps.memory_capacity || ps.memory_frequency">
                 <thead>
                     <h2>{{name.TITLE_MEMORY}}</h2>
                 </thead>
                 <tbody>
-                    <tr *ngIf="sp.memory_type">
+                    <tr *ngIf="ps.memory_type">
                         <th>{{name.MEMORY_TYPE}}</th>
-                        <td>{{sp.memory_type}}</td>
+                        <td>{{ps.memory_type}}</td>
                     </tr>
-                    <tr *ngIf="sp.memory_capacity">
+                    <tr *ngIf="ps.memory_capacity">
                         <th>{{name.MEMORY_CAPACITY}}</th>
-                        <td>{{sp.memory_capacity}}</td>
+                        <td>{{ps.memory_capacity}}</td>
                     </tr>
-                    <tr *ngIf="sp.memory_frequency">
+                    <tr *ngIf="ps.memory_frequency">
                         <th>{{name.MEMORY_FREQUENCY}}</th>
-                        <td>{{sp.memory_frequency}}</td>
+                        <td>{{ps.memory_frequency}}</td>
                     </tr>
                 </tbody>
             </table>
 
             <!-- Bags - Chargers - Hards - ExtBaterries - Rams - Monitors---------------------------------------------- -->
             <table
-                *ngIf="sp.type || sp.model || sp.capacity || sp.connection || sp.output || sp.compatibility || sp.screen_size || sp.frequency || sp.power">
+                *ngIf="ps.type || ps.model || ps.capacity || ps.connection || ps.output || ps.compatibility || ps.screen_size || ps.frequency || ps.power">
                 <thead>
                     <h2>{{name.TITLE_GENERAL}}</h2>
                 </thead>
                 <tbody>
-                    <tr *ngIf="product.brand">
+                    <tr *ngIf="ps.brand">
                         <th>{{name.BRAND}}</th>
-                        <td>{{product.brand}}</td>
+                        <td>{{ps.brand}}</td>
                     </tr>
-                    <tr *ngIf="sp.type">
+                    <tr *ngIf="ps.type">
                         <th>{{name.TYPE}}</th>
-                        <td>{{sp.type}}</td>
+                        <td>{{ps.type}}</td>
                     </tr>
-                    <tr *ngIf="sp.model">
+                    <tr *ngIf="ps.model">
                         <th>{{name.MODEL}}</th>
-                        <td>{{sp.model}}</td>
+                        <td>{{ps.model}}</td>
                     </tr>
-                    <tr *ngIf="sp.capacity">
+                    <tr *ngIf="ps.capacity">
                         <th>{{name.CAPACITY}}</th>
-                        <td>{{sp.capacity}}</td>
+                        <td>{{ps.capacity}}</td>
                     </tr>
-                    <tr *ngIf="sp.connection">
+                    <tr *ngIf="ps.connection">
                         <th>{{name.CONNECTION}}</th>
-                        <td>{{sp.connection}}</td>
+                        <td>{{ps.connection}}</td>
                     </tr>
-                    <tr *ngIf="sp.output">
+                    <tr *ngIf="ps.output">
                         <th>{{name.OUTPUT}}</th>
-                        <td>{{sp.output}}</td>
+                        <td>{{ps.output}}</td>
                     </tr>
-                    <tr *ngIf="sp.compatibility">
+                    <tr *ngIf="ps.compatibility">
                         <th>{{name.COMPATIBILITY}}</th>
-                        <td>{{sp.compatibility}}</td>
+                        <td>{{ps.compatibility}}</td>
                     </tr>
-                    <tr *ngIf="sp.screen_size">
+                    <tr *ngIf="ps.screen_size">
                         <th>{{name.SCREEN_SIZE}}</th>
-                        <td>{{sp.screen_size}}</td>
+                        <td>{{ps.screen_size}}</td>
                     </tr>
-                    <tr *ngIf="sp.frequency">
+                    <tr *ngIf="ps.frequency">
                         <th>{{name.FREQUENCY}}</th>
-                        <td>{{sp.frequency}}</td>
+                        <td>{{ps.frequency}}</td>
                     </tr>
-                    <tr *ngIf="sp.power">
+                    <tr *ngIf="ps.power">
                         <th>{{name.POWER}}</th>
-                        <td>{{sp.power}}</td>
+                        <td>{{ps.power}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -146,99 +146,99 @@
         <div class="right-side">
             <!-- Laptops - Desktops ------------------------------------------------------------------------- -->
             <table
-                *ngIf="sp.hard_type_1 || sp.hard_capacity_1 || sp.hard_slot_1 || sp.hard_type_2 || sp.hard_capacity_2 || sp.hard_slot_2">
+                *ngIf="ps.hard_type_1 || ps.hard_capacity_1 || ps.hard_slot_1 || ps.hard_type_2 || ps.hard_capacity_2 || ps.hard_slot_2">
                 <thead>
                     <h2>{{name.TITLE_HARD}}</h2>
                 </thead>
                 <tbody>
-                    <tr *ngIf="sp.hard_type_1">
+                    <tr *ngIf="ps.hard_type_1">
                         <th>{{name.HARD_TYPE_1}}</th>
-                        <td>{{sp.hard_type_1}}</td>
+                        <td>{{ps.hard_type_1}}</td>
                     </tr>
-                    <tr *ngIf="sp.hard_capacity_1">
+                    <tr *ngIf="ps.hard_capacity_1">
                         <th>{{name.HARD_CAPACITY_1}}</th>
-                        <td>{{sp.hard_capacity_1}}</td>
+                        <td>{{ps.hard_capacity_1}}</td>
                     </tr>
-                    <tr *ngIf="sp.hard_slot_1">
+                    <tr *ngIf="ps.hard_slot_1">
                         <th>{{name.HARD_SLOT_1}}</th>
-                        <td>{{sp.hard_slot_1}}</td>
+                        <td>{{ps.hard_slot_1}}</td>
                     </tr>
-                    <tr *ngIf="sp.hard_type_2">
+                    <tr *ngIf="ps.hard_type_2">
                         <th>{{name.HARD_TYPE_2}}</th>
-                        <td>{{sp.hard_type_2}}</td>
+                        <td>{{ps.hard_type_2}}</td>
                     </tr>
-                    <tr *ngIf="sp.hard_capacity_2">
+                    <tr *ngIf="ps.hard_capacity_2">
                         <th>{{name.HARD_CAPACITY_2}}</th>
-                        <td>{{sp.hard_capacity_2}}</td>
+                        <td>{{ps.hard_capacity_2}}</td>
                     </tr>
-                    <tr *ngIf="sp.hard_slot_2">
+                    <tr *ngIf="ps.hard_slot_2">
                         <th>{{name.HARD_SLOT_2}}</th>
-                        <td>{{sp.hard_slot_2}}</td>
+                        <td>{{ps.hard_slot_2}}</td>
                     </tr>
                 </tbody>
             </table>
-            <table *ngIf="sp.connectivity_bluetooth || sp.connectivity_wireless">
+            <table *ngIf="ps.connectivity_bluetooth || ps.connectivity_wireless">
                 <thead>
                     <h2>{{name.TITLE_CONNECTIVITY}}</h2>
                 </thead>
                 <tbody>
-                    <tr *ngIf="sp.connectivity_bluetooth">
+                    <tr *ngIf="ps.connectivity_bluetooth">
                         <th>{{name.CONNECTIVITY_BLUETOOTH}}</th>
-                        <td>{{sp.connectivity_bluetooth}}</td>
+                        <td>{{ps.connectivity_bluetooth}}</td>
                     </tr>
-                    <tr *ngIf="sp.connectivity_wireless">
+                    <tr *ngIf="ps.connectivity_wireless">
                         <th>{{name.CONNECTIVITY_WIRELESS}}</th>
-                        <td>{{sp.connectivity_wireless}}</td>
+                        <td>{{ps.connectivity_wireless}}</td>
                     </tr>
                 </tbody>
             </table>
 
             <!-- Bags - Chargers - Hards - ExtBaterries - Rams - Monitors---------------------------------------------- -->
             <table
-                *ngIf="sp.read_speed || sp.write_speed || sp.material || sp.color || sp.weight || sp.speed || sp.hdmi || sp.speaker || sp.radiator || sp.voltage">
+                *ngIf="ps.read_speed || ps.write_speed || ps.material || ps.color || ps.weight || ps.speed || ps.hdmi || ps.speaker || ps.radiator || ps.voltage">
                 <thead>
                     <h2>{{name.TITLE_OTHER}}</h2>
                 </thead>
                 <tbody>
-                    <tr *ngIf="sp.read_speed">
+                    <tr *ngIf="ps.read_speed">
                         <th>{{name.READ_SPEED}}</th>
-                        <td>{{sp.read_speed}}</td>
+                        <td>{{ps.read_speed}}</td>
                     </tr>
-                    <tr *ngIf="sp.write_speed">
+                    <tr *ngIf="ps.write_speed">
                         <th>{{name.WRITE_SPEED}}</th>
-                        <td>{{sp.write_speed}}</td>
+                        <td>{{ps.write_speed}}</td>
                     </tr>
-                    <tr *ngIf="sp.material">
+                    <tr *ngIf="ps.material">
                         <th>{{name.MATERIAL}}</th>
-                        <td>{{sp.material}}</td>
+                        <td>{{ps.material}}</td>
                     </tr>
-                    <tr *ngIf="sp.color">
+                    <tr *ngIf="ps.color">
                         <th>{{name.COLOR}}</th>
-                        <td>{{sp.color}}</td>
+                        <td>{{ps.color}}</td>
                     </tr>
-                    <tr *ngIf="sp.weight">
+                    <tr *ngIf="ps.weight">
                         <th>{{name.WEIGHT}}</th>
-                        <td>{{sp.weight}}</td>
+                        <td>{{ps.weight}}</td>
                     </tr>
-                    <tr *ngIf="sp.speed">
+                    <tr *ngIf="ps.speed">
                         <th>{{name.SPEED}}</th>
-                        <td>{{sp.speed}}</td>
+                        <td>{{ps.speed}}</td>
                     </tr>
-                    <tr *ngIf="sp.hdmi">
+                    <tr *ngIf="ps.hdmi">
                         <th>{{name.HDMI}}</th>
-                        <td>{{sp.hdmi}}</td>
+                        <td>{{ps.hdmi}}</td>
                     </tr>
-                    <tr *ngIf="sp.speaker">
+                    <tr *ngIf="ps.speaker">
                         <th>{{name.SPEAKER}}</th>
-                        <td>{{sp.speaker}}</td>
+                        <td>{{ps.speaker}}</td>
                     </tr>
-                    <tr *ngIf="sp.radiator">
+                    <tr *ngIf="ps.radiator">
                         <th>{{name.RADIATOR}}</th>
-                        <td>{{sp.radiator}}</td>
+                        <td>{{ps.radiator}}</td>
                     </tr>
-                    <tr *ngIf="sp.voltage">
+                    <tr *ngIf="ps.voltage">
                         <th>{{name.VOLTAGE}}</th>
-                        <td>{{sp.voltage}}</td>
+                        <td>{{ps.voltage}}</td>
                     </tr>
                 </tbody>
             </table>

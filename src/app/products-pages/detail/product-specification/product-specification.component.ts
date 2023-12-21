@@ -10,12 +10,12 @@ import { Product, ProductSpecification } from 'src/app/shared/models/product.mod
 export class ProductSpecificationComponent implements OnInit {  
 
   @Input() product: Product = new Product();
-  sp: ProductSpecification = new ProductSpecification();
+  ps: ProductSpecification = new ProductSpecification();
 
   name = SPECIFICATIONS;
 
   ngOnInit(): void {
-    this.sp = this.product.specifications[0];
+    this.ps = this.product.specifications[0];
     // console.log (this.product);
   }
 

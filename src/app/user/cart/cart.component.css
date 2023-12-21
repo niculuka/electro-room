@@ -1,44 +1,58 @@
 .container-cart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  cursor: default;
   /* margin: 10px; */
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
 .content-cart {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
   width: 1500px;
+  margin: auto;
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
 .empty {
-  margin-top: 10px;
-  font-size: 22px;
-  color: red;
-  text-align: center;
+  margin-bottom: 66vh;
+  color: rgb(220, 20, 110);
 }
 
-.row-cart {
-  padding: 10px;
+.header {
   width: 100%;
-  box-sizing: border-box;
+  padding: 20px;  
+  border-radius: 0 0 8px 8px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background: white;
 }
 
-.livration {
+.header h1{
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(220, 20, 110);
+}
+
+
+.header p {
+  font-size: 18px;
   color: rgb(176, 175, 103);
 }
 
-h3 {
-  font-size: 24px;
-  margin: 16px 0;
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
 }
+
+.cart {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+
 
 a {
   display: block;
@@ -74,6 +88,10 @@ select {
   font-weight: 100;
 }
 
+.price {
+  white-space: nowrap;
+}
+
 button {
   color: white;
   padding: 10px 20px;
@@ -102,23 +120,6 @@ button:hover {
   color: rgb(57, 57, 57);
 }
 
-.column-cart {
-  display: none;
-  width: 100%;
-  box-sizing: border-box;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: white;
-}
-
-.column-cart tbody th,
-.column-cart tbody td {
-  border: 1px solid rgb(195, 195, 195);
-}
-
-.column-cart tbody td {
-  width: 100%;
-}
-
 .checkout {
   display: flex;
   flex-direction: row;
@@ -130,8 +131,7 @@ button:hover {
 }
 
 table {
-  border-collapse: collapse;
-  cursor: default;
+  border-collapse: collapse;  
 }
 
 tr {
@@ -146,24 +146,20 @@ tbody tr:last-child,
   border-bottom: none;
 }
 
-tr:hover {
-  background-color: rgb(238, 238, 238);
-}
-
 .checkout tr {
   background-color: transparent;
 }
 
 td,
 th {
-  padding: 10px 20px;
+  padding: 30px 16px;
   flex-wrap: wrap;
   word-wrap: break-word;
 }
 
 .total {
   flex-wrap: wrap;
-  word-wrap: break-word;
+  border-radius: 8px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background: white;
 }

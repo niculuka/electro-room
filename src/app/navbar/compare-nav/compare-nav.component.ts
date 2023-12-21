@@ -35,7 +35,7 @@ export class CompareNavComponent implements OnDestroy {
       this.router.navigate(['/compare']);
     }
     else {
-      this.toastrService.warning('E nevoie de minim 2 produse')
+      this.toastrService.warning('Selectati minim 2 produse')
     }
 
   }

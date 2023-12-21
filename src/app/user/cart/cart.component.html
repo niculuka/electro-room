@@ -2,153 +2,59 @@
   <div class="content-cart">
 
     <div class="empty" *ngIf="isCartEmpty()">
-      "Cosul este gol !!!"
+      <h1>"Cosul este gol !!!"</h1>
     </div>
 
-    <table class="row-cart" style="width: 100%;" *ngIf="!isCartEmpty()">
-      <thead>
-        <tr class="back">
-          <td colspan="3">
-            <button class="btn-goBack" (click)="goBack()">BACK</button>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="7">
-            <h3>Cosul meu de cumparaturi:</h3>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="7" class="livration">Livrare: 1-5 zile lucratoare</th>
-        </tr>
-      </thead>
+    <div class="header">
+      <h1>Cosul meu de cumparaturi:</h1>
+      <p>Livrare: 1-5 zile lucratoare</p>
+    </div>
+
+    <div class="body">
+      <table class="cart" style="width: 100%;" *ngIf="!isCartEmpty()">
+        <tbody>
+          <tr *ngFor="let cartItem of cart.items; index as ind">
+            <td>{{ind+1}}</td>
+            <td>
+              <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
+                              +'/'+cartItem.product.type.toLowerCase()
+                              +'/'+cartItem.product.category.toLowerCase()
+                              +'/'+cartItem.product.linkName">
+                <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
+              </a>
+            </td>
+            <td class="name">
+              <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
+                              +'/'+cartItem.product.type.toLowerCase()
+                              +'/'+cartItem.product.category.toLowerCase()
+                              +'/'+cartItem.product.linkName">
+                {{cartItem.product.description}}
+              </a>
+            </td>
+            <td>
+              <select #quantitySelect name="quantity" [ngModel]="cartItem.quantity"
+                (change)="changeQuantity(cartItem, quantitySelect.value)">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </td>
+            <td class="price">
+              {{cartItem.price | number: '1.2-2'}} Lei
+            </td>
+            <td>
+              <button class="btn-remove" (click)="removeFromCart(cartItem)">
+                Sterge
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
 
-      <tbody>
-        <tr *ngFor="let cartItem of cart.items; index as ind">
-
-          <td>{{ind+1}}</td>
-          <td>
-            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
-                            +'/'+cartItem.product.type.toLowerCase()
-                            +'/'+cartItem.product.category.toLowerCase()
-                            +'/'+cartItem.product.linkName">
-              <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
-            </a>
-          </td>
-          <td class="name">
-            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
-                            +'/'+cartItem.product.type.toLowerCase()
-                            +'/'+cartItem.product.category.toLowerCase()
-                            +'/'+cartItem.product.linkName">
-              {{cartItem.product.description}}
-            </a>
-          </td>
-          <td>
-            <select #quantitySelect name="quantity" [ngModel]="cartItem.quantity"
-              (change)="changeQuantity(cartItem, quantitySelect.value)">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </td>
-          <td>
-            {{cartItem.price | number: '1.2-2'}} Lei
-          </td>
-          <td>
-            <button class="btn-remove" (click)="removeFromCart(cartItem)">
-              Sterge
-            </button>
-          </td>
-
-        </tr>
-      </tbody>
-
-    </table>
-
-
-
-    <table class="column-cart" style="width: 100%;" *ngIf="!isCartEmpty()">
-
-      <thead>
-        <tr>
-          <td colspan="2">
-            <h3>Cosul meu de cumparaturi:</h3>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="7" class="livration">Livrare: 1-5 zile lucratoare</th>
-        </tr>
-      </thead>
-
-      <tbody *ngFor="let cartItem of cart.items; index as ind">
-        <tr class="index">
-          <th colspan="2">{{ind+1}}</th>
-        </tr>
-        <tr>
-          <th>Imagine</th>
-          <td>
-            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
-                            +'/'+cartItem.product.type.toLowerCase()
-                            +'/'+cartItem.product.category.toLowerCase()
-                            +'/'+cartItem.product.linkName">
-              <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <th>Nume</th>
-          <td>
-            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
-                            +'/'+cartItem.product.type.toLowerCase()
-                            +'/'+cartItem.product.category.toLowerCase()
-                            +'/'+cartItem.product.linkName">
-              <strong>{{cartItem.product.name}}</strong>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <th>Descriere</th>
-          <td>{{cartItem.product.description}}</td>
-        </tr>
-        <tr>
-          <th>Cantitate</th>
-          <td>
-            <select #quantitySelect name="quantity" [ngModel]="cartItem.quantity"
-              (change)="changeQuantity(cartItem, quantitySelect.value)">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <th>Pret</th>
-          <td>
-            {{cartItem.price | number: '1.2-2'}} Lei
-          </td>
-        </tr>
-        <tr>
-          <th>Sterge</th>
-          <td>
-            <button class="btn-remove" (click)="removeFromCart(cartItem)">
-              Sterge
-            </button>
-          </td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-
-
-    <div class="checkout" *ngIf="cart.items.length">
       <table class="total">
-
         <tr>
           <th colspan="2">
             <h3>Total cos:</h3>
@@ -188,10 +94,10 @@
             <button class="btn-proceed" routerLink="/cart/order">Continua</button>
           </th>
         </tr>
-
       </table>
-
     </div>
 
   </div>
 </div>
+
+<app-footer></app-footer>

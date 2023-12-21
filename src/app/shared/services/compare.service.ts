@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { ToastrService } from 'ngx-toastr';
-import { CATEGORY } from '../enums/electro.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +28,7 @@ export class CompareService {
           this.addProductToList(product);
         }
         else {
-          this.toastrService.warning("Produsele trebuie sa fie din aceeasi categorie");
+          this.toastrService.warning("Selectati produse din aceeasi categorie");
         }
       }
       else {
@@ -64,7 +63,7 @@ export class CompareService {
   private setComparesToLocalStorage(): void {
     const compJson = JSON.stringify(this.compares);
     localStorage.setItem('comp-ls', compJson);
-    this.comparesSubject.next(this.compares);    
+    this.comparesSubject.next(this.compares);
   }
 
   private getComparesFromLocalStorage(): Array<Product> {

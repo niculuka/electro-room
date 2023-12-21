@@ -1,0 +1,21 @@
+<h1 class="message">{{getData.text}}</h1>
+
+<div class="product">
+
+    <div class="image-desc-price">
+        <div class="image">
+            <img src={{getData.obj.image}} alt="{{getData.obj.image}}">
+        </div>
+
+        <div class="desc-price">
+            <p class="desc">{{getData.obj.description}}</p>
+            <h2 class="price">{{getData.obj.price}} Lei</h2>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <a class="btn-cart" routerLink="/cart" mat-dialog-close="true"> Vezi cosul </a>
+        <a class="btn-continu" mat-dialog-close="false">Continua</a>
+    </div>
+
+</div>

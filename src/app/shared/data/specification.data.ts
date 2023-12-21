@@ -137,6 +137,10 @@ export const SPECIFICATION: Array<Specification> = [
         title: SPECIFICATIONS.TITLE_GENERAL,
         subtitles: [
             {
+                subtitle: SPECIFICATIONS.BRAND,
+                specifications: [],
+            },
+            {
                 subtitle: SPECIFICATIONS.TYPE,
                 specifications: [],
             },
