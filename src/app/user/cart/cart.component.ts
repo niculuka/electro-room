@@ -4,8 +4,6 @@ import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { DELIVERY, PICK_UP } from '../../shared/constants/const';
 import { Order } from '../../shared/models/order.model';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -25,8 +23,6 @@ export class CartComponent {
 
   constructor(
     private cartService: CartService,
-    private router: Router,
-    private location: Location,
   ) {
     this.cartService.getCartObservable().subscribe((data) => {
       this.cart = data;
@@ -41,10 +37,20 @@ export class CartComponent {
     return this.cart.items.length === 0;
   }
 
-  changeQuantity(cartItem: CartItem, quantityInString: string) {
-    const quantity = parseInt(quantityInString);
-    let name: any = cartItem.product.name;
-    this.cartService.changeQuantityService(name, quantity);
+  decrease(cartItem: CartItem) {
+    if (cartItem.quantity > 1) {
+      cartItem.quantity--;
+      let name: any = cartItem.product.name;
+      this.cartService.changeQuantityService(name, cartItem.quantity);
+    }
+  }
+
+  increase(cartItem: CartItem) {
+    if (cartItem.quantity < 5) {
+      cartItem.quantity++;
+      let name: any = cartItem.product.name;
+      this.cartService.changeQuantityService(name, cartItem.quantity);
+    }
   }
 
   removeFromCart(cartItem: CartItem) {

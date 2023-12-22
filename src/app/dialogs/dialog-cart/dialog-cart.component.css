@@ -68,13 +68,13 @@ img {
     /* border: 1px solid black; */
 }
 
-.buttons>a {
+button {
     display: block;
     width: 100%;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
+    padding: 10px;    
     border-radius: 4px;
+    border: none;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .btn-cart {
@@ -88,6 +88,7 @@ img {
 
 .btn-continu {
     color: black;
+    background: none;
     border: 2px solid rgb(220, 20, 110);
 }
 

@@ -6,6 +6,7 @@ import { Product } from '../models/product.model';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCartComponent } from 'src/app/dialogs/dialog-cart/dialog-cart.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +18,32 @@ export class CartService {
 
   constructor(
     private toastrService: ToastrService,
+    private router: Router,
     public matDialog: MatDialog,
   ) { }
 
   addToCartService(product: Product): void {
+    let message: string = "";
     let cartItem = this.cart.items.find(item => item.product.name === product.name);
     if (cartItem) {
-      let message = "Produsul este deja in cos.";
-      this.matDialog.open(DialogCartComponent, { data: { obj: product, text: message } });
+      message = "Produsul este deja in cos.";
+      this.handleDialog(product, message);
       return;
     }
     this.cart.items.push(new CartItem(product));
     this.setCartToLocalStorage();
-    let message = "Produsul a fost adaugat in cos.";
-    this.matDialog.open(DialogCartComponent, { data: { obj: product, text: message } });
+    message = "Produsul a fost adaugat in cos.";
+    this.handleDialog(product, message);
+  }
+
+  handleDialog(product: Product, message: string) {
+    const dialogRef = this.matDialog.open(DialogCartComponent, { data: { obj: product, text: message } });
+    dialogRef.afterClosed().subscribe({
+      next: result => {
+        if (result === "true") this.router.navigate(['/cart']);
+      },
+      error: error => console.log(error)
+    });
   }
 
   changeQuantityService(name: string, quantity: number) {

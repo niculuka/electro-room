@@ -68,7 +68,7 @@ export class AdminProductComponent implements OnInit {
       error: error => {
         this.toastrService.warning("Could not delete Product!")
       }
-    })
+    });
   }
 
   deleteProduct(product: Product) {

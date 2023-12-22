@@ -10,21 +10,23 @@
     flex-direction: column;
     margin: auto;
     width: 1500px;
+    min-height: 70vh;
     /* border: 2px solid rgb(0, 0, 0); */
 }
 
 .empty-list {
-    margin-bottom: 66vh;
     color: rgb(220, 20, 110);
 }
 
 h1 {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
     font-size: 28px;
     /* border: 1px solid rgb(0, 0, 0); */
 }
 
 .minimum-products {
-    margin-bottom: 66vh;
     color: rgb(220, 20, 110);
 }
 
