@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { Product } from 'src/app/shared/models/product.model';
 
@@ -13,7 +12,6 @@ export class FavoriteNavComponent {
 
   constructor(
     private favoriteService: FavoriteService,
-    private router: Router,
   ) { }
 
   removeFromFavorites(product: Product) {

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Cart } from 'src/app/shared/models/cart.model';
 import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { DELIVERY, PICK_UP } from '../../shared/constants/const';
+import { DELIVERY, FREE, PICK_UP } from '../../shared/constants/const';
 import { Order } from '../../shared/models/order.model';
 
 @Component({
@@ -17,6 +17,7 @@ export class CartComponent {
 
   delivery: number = DELIVERY;
   pickUp: number = PICK_UP;
+  free: number = FREE;
 
   message: string = "";
   link: string = "";

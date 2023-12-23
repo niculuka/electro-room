@@ -10,83 +10,70 @@
       <p>Livrare: 1-5 zile lucratoare</p>
     </div>
 
-    <div class="body" *ngIf="!isCartEmpty()">
+    <div class="main" *ngIf="!isCartEmpty()">
       <table class="cart">
         <tr *ngFor="let cartItem of cart.items;">
           <td class="image">
             <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
-                              +'/'+cartItem.product.type.toLowerCase()
-                              +'/'+cartItem.product.category.toLowerCase()
-                              +'/'+cartItem.product.linkName">
+                                +'/'+cartItem.product.type.toLowerCase()
+                                +'/'+cartItem.product.category.toLowerCase()
+                                +'/'+cartItem.product.linkName">
               <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
             </a>
           </td>
-          <td class="description">
+          <td colspan="4" class="description">
             <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
-                              +'/'+cartItem.product.type.toLowerCase()
-                              +'/'+cartItem.product.category.toLowerCase()
-                              +'/'+cartItem.product.linkName">
+                                +'/'+cartItem.product.type.toLowerCase()
+                                +'/'+cartItem.product.category.toLowerCase()
+                                +'/'+cartItem.product.linkName">
               {{cartItem.product.description}}
             </a>
           </td>
           <td class="quantity">
             <div>
               <mat-icon (click)="decrease(cartItem)">remove</mat-icon>
-              <span class="value">{{cartItem.quantity}}</span>
+              <label>{{cartItem.quantity}}</label>
               <mat-icon (click)="increase(cartItem)">add</mat-icon>
             </div>
           </td>
           <td class="price">
             {{cartItem.price | number: '1.2-2'}} Lei
           </td>
-          <td>
-            <button class="btn-remove" (click)="removeFromCart(cartItem)">
-              Sterge
-            </button>
+          <td class="remove">
+            <mat-icon (click)="removeFromCart(cartItem)">close</mat-icon>
           </td>
         </tr>
       </table>
 
-
-      <table class="total">
-        <tr>
-          <th colspan="2">
-            <h3>Total cos:</h3>
-          </th>
-        </tr>
-
-        <tr>
-          <td><strong>Subtotal: </strong></td>
-          <td>{{cart.subtotal | number: '1.2-2'}} lei</td>
-        </tr>
-
-        <tr>
-          <td><strong>Livrare: </strong></td>
-          <td>
-            <div class="radio">
-              <input type="radio" id="delivery" [value]="delivery" [(ngModel)]="order.favoriteDelivery"
-                (change)="deliveryOption()">
-              <label for="delivery">Livrare</label>
-              <strong>: &nbsp; {{delivery}} lei</strong>
-            </div>
-            <div class="radio">
-              <input type="radio" id="pickUp" [value]="pickUp" [(ngModel)]="order.favoriteDelivery"
-                (change)="deliveryOption()">
-              <label for="pickUp">Ridicare</label>
-              <strong>: &nbsp; {{pickUp}} lei</strong>
-            </div>
+      <table class="sum">
+        <tr class="title">
+          <td colspan="2">
+            <h1>Sumar comanda</h1>
           </td>
         </tr>
 
-        <tr>
-          <td><strong>Total: </strong></td>
-          <td>{{(cart.subtotal + order.favoriteDelivery) | number: '1.2-2'}} lei</td>
+        <tr class="subtotal">
+          <td>Subtotal: </td>
+          <td class="right">{{cart.subtotal | number: '1.2-2'}} lei</td>
         </tr>
 
-        <tr>
-          <th class="last" colspan="2">
+        <tr class="livration">
+          <td>Taxa livrare: </td>
+          <td class="right" *ngIf="cart.subtotal>=200" style="color: rgb(0, 164, 0);"><strong>Gratuit</strong></td>
+          <td class="right" *ngIf="cart.subtotal<200">{{delivery | number: '1.2-2'}} lei</td>
+        </tr>
+        <tr class="line">
+          <td colspan="2"></td>
+        </tr>
+        <tr class="total">
+          <th><strong>Total: </strong></th>
+          <td><strong>{{(cart.subtotal + order.favoriteDelivery) | number: '1.2-2'}} lei</strong></td>
+        </tr>
+
+        <tr class="proceed">
+          <td colspan="2">
             <button class="btn-proceed" routerLink="/cart/order">Continua</button>
-          </th>
+          </td>
         </tr>
       </table>
     </div>
@@ -95,3 +82,28 @@
 </div>
 
 <app-footer></app-footer>
+
+<!-- <table>
+  <td>
+    <div class="radio">
+
+      <input type="radio" id="delivery" [value]="delivery" [(ngModel)]="order.favoriteDelivery"
+        (change)="deliveryOption()">
+
+      <label for="delivery">Livrare</label>
+
+      <strong>: &nbsp; {{delivery}} lei</strong>
+
+    </div>
+
+    <div class="radio">
+
+      <input type="radio" id="pickUp" [value]="pickUp" [(ngModel)]="order.favoriteDelivery" (change)="deliveryOption()">
+      
+      <label for="pickUp">Ridicare</label>
+
+      <strong>: &nbsp; {{pickUp}} lei</strong>
+      
+    </div>
+  </td>
+</table> -->

@@ -3,6 +3,7 @@
 
 export const DELIVERY = 25;
 export const PICK_UP = 0;
+export const FREE = 0;
 
 // export const IS_SCREEN_BLOCK = false;
 

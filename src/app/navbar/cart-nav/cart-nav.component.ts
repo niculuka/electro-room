@@ -13,21 +13,19 @@ export class CartNavComponent {
   @Input() cart!: Cart;
   @Input() cartQuantity = 0;
 
-  constructor(    
+  constructor(
     private cartService: CartService,
     private router: Router,
   ) {
-
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
-  
+
   getProductLinkName(cartItem: CartItem) {
     this.router.navigate([
-      '/lpt/'
-      + cartItem.product.type.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.category.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + cartItem.product.linkName
+      '/p/' + cartItem.product.department.toLowerCase()
+      + '/' + cartItem.product.type.toLowerCase()
+      + '/' + cartItem.product.category.toLowerCase()
+      + '/' + cartItem.product.linkName
     ]);
   }
 

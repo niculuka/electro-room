@@ -15,7 +15,7 @@ import { MenuService } from 'src/app/shared/services/menu.service';
   templateUrl: './navbar-main.component.html',
   styleUrls: ['./navbar-main.component.css']
 })
-export class NavbarMainComponent implements OnDestroy{
+export class NavbarMainComponent implements OnDestroy {
 
   @ViewChild('txt') txt: ElementRef | undefined;
   isMobileMenuOpen: boolean = false;
@@ -65,7 +65,7 @@ export class NavbarMainComponent implements OnDestroy{
           this.userFirstChar = this.currentUser.username.charAt(0);
         }
       });
-      this.sub3 = this.currentUrl.getCurrentUrlObservable().subscribe(url => {
+    this.sub3 = this.currentUrl.getCurrentUrlObservable().subscribe(url => {
       if (url) {
         this.currentLink = url;
       }
@@ -111,7 +111,7 @@ export class NavbarMainComponent implements OnDestroy{
       window.location.reload();
     }
   }
-  
+
   isCartEmpty() {
     return this.cart.items.length === 0;
   }
@@ -140,10 +140,9 @@ export class NavbarMainComponent implements OnDestroy{
     this.authService.logoutService();
     this.cartService.clearCartService();
     this.favoriteService.clearFavoritesService();
-    this.router.navigate(["/"])
-      .then(() => {
-        window.location.reload();
-      });
+    this.router
+      .navigate(["/"])
+      .then(() => window.location.reload());
   }
 
   ngOnDestroy(): void {

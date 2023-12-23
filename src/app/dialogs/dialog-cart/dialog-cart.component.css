@@ -1,7 +1,33 @@
 .message {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
     margin: 0;
     padding: 10px 0;
+    cursor: default;
     border-bottom: 1px solid rgb(220, 20, 110);
+}
+
+h1 {
+    margin: 0;
+}
+
+mat-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+mat-icon:hover {
+    transform: scale(1.1, 1.1);
+    color: rgb(220, 20, 110);;
 }
 
 .product {
@@ -10,6 +36,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 30px 0;
+    cursor: default;
     /* border: 1px solid black; */
 }
 
@@ -71,8 +98,9 @@ img {
 button {
     display: block;
     width: 100%;
-    padding: 10px;    
+    padding: 10px;
     border-radius: 4px;
+    white-space: nowrap;
     border: none;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
@@ -126,7 +154,7 @@ button {
 }
 
 @media (max-width: 550px) {
-    .message {
+    h1 {
         font-size: 20px;
         line-height: 24px;
     }
