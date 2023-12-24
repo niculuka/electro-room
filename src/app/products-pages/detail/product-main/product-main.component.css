@@ -51,6 +51,10 @@
     right: 10px;
 }
 
+.fav-comp mat-icon {
+    cursor: pointer;
+}
+
 .body {
     display: flex;
     flex-direction: row;

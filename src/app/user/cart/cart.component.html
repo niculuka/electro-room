@@ -3,6 +3,9 @@
 
     <div class="empty" *ngIf="isCartEmpty()">
       <h1>"Cosul este gol"</h1>
+      <mat-icon (click)="goBack()">shopping_cart</mat-icon>
+      <p>Poti adauga produse prin apasarea butonului 'Adauga in cos' din dreptul fiecarui produs dorit.</p>
+      <button class="btn-back" (click)="goBack()">Inapoi</button>
     </div>
 
     <div class="header" *ngIf="!isCartEmpty()">
@@ -11,39 +14,55 @@
     </div>
 
     <div class="main" *ngIf="!isCartEmpty()">
-      <table class="cart">
-        <tr *ngFor="let cartItem of cart.items;">
-          <td class="image">
-            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
-                                +'/'+cartItem.product.type.toLowerCase()
-                                +'/'+cartItem.product.category.toLowerCase()
-                                +'/'+cartItem.product.linkName">
-              <img [src]="cartItem.product.image" [alt]="cartItem.product.name">
+      <div class="cart">
+        <div class="cart-row" *ngFor="let item of cart.items;">
+
+          <div class="image">
+            <a [routerLink]="'/p/'+item.product.department.toLowerCase()
+                                  +'/'+item.product.type.toLowerCase()
+                                  +'/'+item.product.category.toLowerCase()
+                                  +'/'+item.product.linkName">
+              <img [src]="item.product.image" [alt]="item.product.name">
             </a>
-          </td>
-          <td colspan="4" class="description">
-            <a [routerLink]="'/p/'+cartItem.product.department.toLowerCase()
-                                +'/'+cartItem.product.type.toLowerCase()
-                                +'/'+cartItem.product.category.toLowerCase()
-                                +'/'+cartItem.product.linkName">
-              {{cartItem.product.description}}
-            </a>
-          </td>
-          <td class="quantity">
-            <div>
-              <mat-icon (click)="decrease(cartItem)">remove</mat-icon>
-              <label>{{cartItem.quantity}}</label>
-              <mat-icon (click)="increase(cartItem)">add</mat-icon>
+          </div>
+
+          <div class="description-quantity-price">
+            <div class="description">
+              <a [routerLink]="'/p/'+item.product.department.toLowerCase()
+                                  +'/'+item.product.type.toLowerCase()
+                                  +'/'+item.product.category.toLowerCase()
+                                  +'/'+item.product.linkName">
+                {{item.product.description}}
+              </a>
             </div>
-          </td>
-          <td class="price">
-            {{cartItem.price | number: '1.2-2'}} Lei
-          </td>
-          <td class="remove">
-            <mat-icon (click)="removeFromCart(cartItem)">close</mat-icon>
-          </td>
-        </tr>
-      </table>
+            <div class="quantity-price">
+              <div class="quantity">
+                <div>
+                  <mat-icon (click)="decrease(item)">remove</mat-icon>
+                  <label>{{item.quantity}}</label>
+                  <mat-icon (click)="increase(item)">add</mat-icon>
+                </div>
+              </div>
+              <div class="price">
+                {{item.price | number: '1.2-2'}} Lei
+              </div>
+            </div>
+          </div>
+
+          <!-- remove ----------------------------------------------- -->
+          <div class="remove-fav">
+            <div class="remove">
+              <mat-icon (click)="removeFromCart(item)">close</mat-icon>
+            </div>
+            <div class="fav">
+              <mat-icon [ngStyle]="{color: item.product.favorite ? 'rgb(220, 20, 110)' : 'grey'}"
+                (click)="handleFavorites(item)">
+                {{item.product.favorite ? 'favorite' : 'favorite_border'}}
+              </mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <table class="sum">
         <tr class="title">
