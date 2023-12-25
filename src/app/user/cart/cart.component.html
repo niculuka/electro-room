@@ -16,7 +16,6 @@
     <div class="main" *ngIf="!isCartEmpty()">
       <div class="cart">
         <div class="cart-row" *ngFor="let item of cart.items;">
-
           <div class="image">
             <a [routerLink]="'/p/'+item.product.department.toLowerCase()
                                   +'/'+item.product.type.toLowerCase()
@@ -25,7 +24,6 @@
               <img [src]="item.product.image" [alt]="item.product.name">
             </a>
           </div>
-
           <div class="description-quantity-price">
             <div class="description">
               <a [routerLink]="'/p/'+item.product.department.toLowerCase()
@@ -37,19 +35,17 @@
             </div>
             <div class="quantity-price">
               <div class="quantity">
-                <div>
-                  <mat-icon (click)="decrease(item)">remove</mat-icon>
-                  <label>{{item.quantity}}</label>
-                  <mat-icon (click)="increase(item)">add</mat-icon>
-                </div>
+                <mat-icon (click)="decrease(item)">remove</mat-icon>
+                <label>{{item.quantity}}</label>
+                <mat-icon (click)="increase(item)">add</mat-icon>
               </div>
               <div class="price">
-                {{item.price | number: '1.2-2'}} Lei
+                <p>{{item.price | number: '1.2-2'}} Lei</p>
               </div>
             </div>
           </div>
 
-          <!-- remove ----------------------------------------------- -->
+          <!-- remove - favorites ----------------------------------------------- -->
           <div class="remove-fav">
             <div class="remove">
               <mat-icon (click)="removeFromCart(item)">close</mat-icon>
@@ -64,37 +60,28 @@
         </div>
       </div>
 
-      <table class="sum">
-        <tr class="title">
-          <td colspan="2">
-            <h1>Sumar comanda</h1>
-          </td>
-        </tr>
-
-        <tr class="subtotal">
-          <td>Subtotal: </td>
-          <td class="right">{{cart.subtotal | number: '1.2-2'}} lei</td>
-        </tr>
-
-        <tr class="livration">
-          <td>Taxa livrare: </td>
-          <td class="right" *ngIf="cart.subtotal>=200" style="color: rgb(0, 164, 0);"><strong>Gratuit</strong></td>
-          <td class="right" *ngIf="cart.subtotal<200">{{delivery | number: '1.2-2'}} lei</td>
-        </tr>
-        <tr class="line">
-          <td colspan="2"></td>
-        </tr>
-        <tr class="total">
-          <th><strong>Total: </strong></th>
-          <td><strong>{{(cart.subtotal + order.favoriteDelivery) | number: '1.2-2'}} lei</strong></td>
-        </tr>
-
-        <tr class="proceed">
-          <td colspan="2">
-            <button class="btn-proceed" routerLink="/cart/order">Continua</button>
-          </td>
-        </tr>
-      </table>
+      <div class="sum">
+        <div class="title">
+          <h1>Sumar comanda</h1>
+        </div>
+        <div class="subtotal">
+          <span>Subtotal: </span>
+          <span>{{cart.subtotal | number: '1.2-2'}} lei</span>
+        </div>
+        <div class="livration">
+          <span>Taxa livrare: </span>
+          <span *ngIf="cart.subtotal>=200" style="color: rgb(0, 164, 0);"><strong>Gratuit</strong></span>
+          <span *ngIf="cart.subtotal<200">{{delivery | number: '1.2-2'}} lei</span>
+        </div>
+        <hr>
+        <div class="total">
+          <span>Total: </span>
+          <span class="sub">{{(cart.subtotal + order.favoriteDelivery) | number: '1.2-2'}} lei</span>
+        </div>
+        <div class="proceed">
+          <button class="btn-proceed" routerLink="/cart/order">Continua</button>
+        </div>
+      </div>
     </div>
 
   </div>
