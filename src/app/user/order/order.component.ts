@@ -31,19 +31,14 @@ export class OrderComponent implements OnInit {
     private orderService: OrderService,
     public matDialog: MatDialog
   ) {
-    const deliveryJson = localStorage.getItem('delivery-ls');
-    if (deliveryJson) {
-      this.order.favoriteDelivery = JSON.parse(deliveryJson)
-    }
     this.cartService.getCartObservable().subscribe((data) => {
       this.cart = data;
       this.order.items = this.cart.items;
       this.order.subtotal = Math.round(this.cart.subtotal * 100) / 100;
-      this.order.totalPrice = this.order.favoriteDelivery + this.order.subtotal;
-      if (this.order.items.length <=0) {
-        this.router.navigate(["/"]);
-      }
-    })   
+      this.order.delivery = this.cart.delivery;
+      this.order.totalPrice = this.order.delivery + this.order.subtotal;
+      if (this.order.items.length <= 0) this.router.navigate(["/"]);
+    })
 
     const paymentJson = localStorage.getItem('payment-ls');
     if (paymentJson) {
@@ -65,7 +60,7 @@ export class OrderComponent implements OnInit {
     this.order.emailGet = this.authService.currentUserValue.email;
     this.order.addressGet = this.authService.currentUserValue.address;
     this.order.phoneGet = this.authService.currentUserValue.phone;
-  }  
+  }
 
   paymentMethod() {
     const paymentJson = JSON.stringify(this.order.paymentType);
@@ -121,5 +116,5 @@ export class OrderComponent implements OnInit {
       }
     })
   }
-  
+
 }

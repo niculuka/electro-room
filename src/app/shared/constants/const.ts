@@ -5,6 +5,8 @@ export const DELIVERY = 25;
 export const PICK_UP = 0;
 export const FREE = 0;
 
+export const FREE_DELIVERY_FROM = 200;
+
 // export const IS_SCREEN_BLOCK = false;
 
 // export const FAVORITE_DELIVERY = 10;

@@ -237,12 +237,20 @@ img:hover {
 .sum {
   display: block;
   width: 25%;
-  height: fit-content;
-  padding: 20px;
+  height: fit-content;  
   box-sizing: border-box;
   border-radius: 8px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background: white;
+}
+
+.title-subtotal-livration {
+  padding: 20px;
+  border-bottom: 1px solid rgb(220, 20, 110);
+}
+
+.total-proceed {
+  padding: 20px;
 }
 
 .subtotal,
@@ -251,7 +259,7 @@ img:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 4px; 
+  gap: 4px;
   font-size: 16px;
   white-space: nowrap;
 }
@@ -260,18 +268,13 @@ img:hover {
   margin-top: 10px;
 }
 
-hr {
-  width: 100%;
-  border: 1px solid rgb(220, 20, 110);
-}
-
 .total {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 4px;  
-  margin-top: 30px;
+  gap: 4px;
+  margin-top: 10px;
 }
 
 .total span {
@@ -321,7 +324,7 @@ hr {
   }
 
   .sum {
-    width: 280px;
+    width: 320px;
   }
 
 }
@@ -348,20 +351,16 @@ hr {
   }
 
   .cart-row {
-    padding: 10px;
+    padding: 20px 10px;
     gap: 10px;
-  }
-
-  .description-quantity-price {
-    gap: 10px;
-  }
+  } 
 
   img {
     width: 80px;
   }
 
   .quantity-price {
-    gap: 10px;
+    gap: 14px;
   }
 
   .description {
@@ -385,6 +384,7 @@ hr {
 
   .quantity label {
     width: 20px;
+    font-size: 16px;
   }
 
   .title h1 {
@@ -401,11 +401,24 @@ hr {
     flex-direction: column;
   }
 
+  .description-quantity-price {
+    gap: 10px;
+  }
+
+  .description {
+    padding-right: 0;
+  }
+
   .quantity-price {
     flex-direction: column;
+    gap: 10px;
   }
 
   .sum {
     width: 100%;
+  }
+
+  .total {
+    flex-wrap: wrap;
   }
 }

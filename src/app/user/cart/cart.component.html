@@ -61,25 +61,28 @@
       </div>
 
       <div class="sum">
-        <div class="title">
-          <h1>Sumar comanda</h1>
+        <div class="title-subtotal-livration">
+          <div class="title">
+            <h1>Sumar comanda</h1>
+          </div>
+          <div class="subtotal">
+            <span>Subtotal: </span>
+            <span>{{cart.subtotal | number: '1.2-2'}} lei</span>
+          </div>
+          <div class="livration">
+            <span>Taxa livrare: </span>
+            <span *ngIf="cart.delivery==0" style="color: rgb(0, 164, 0);"><strong>Gratuit</strong></span>
+            <span *ngIf="cart.delivery!=0">{{cart.delivery | number: '1.2-2'}} lei</span>
+          </div>
         </div>
-        <div class="subtotal">
-          <span>Subtotal: </span>
-          <span>{{cart.subtotal | number: '1.2-2'}} lei</span>
-        </div>
-        <div class="livration">
-          <span>Taxa livrare: </span>
-          <span *ngIf="cart.subtotal>=200" style="color: rgb(0, 164, 0);"><strong>Gratuit</strong></span>
-          <span *ngIf="cart.subtotal<200">{{delivery | number: '1.2-2'}} lei</span>
-        </div>
-        <hr>
-        <div class="total">
-          <span>Total: </span>
-          <span class="sub">{{(cart.subtotal + order.favoriteDelivery) | number: '1.2-2'}} lei</span>
-        </div>
-        <div class="proceed">
-          <button class="btn-proceed" routerLink="/cart/order">Continua</button>
+        <div class="total-proceed">
+          <div class="total">
+            <span>Total: </span>
+            <span class="sub">{{(cart.subtotal + cart.delivery) | number: '1.2-2'}} lei</span>
+          </div>
+          <div class="proceed">
+            <button class="btn-proceed" routerLink="/cart/order">Continua</button>
+          </div>
         </div>
       </div>
     </div>

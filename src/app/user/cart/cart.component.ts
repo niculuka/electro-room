@@ -2,8 +2,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { Cart } from 'src/app/shared/models/cart.model';
 import { CartItem } from 'src/app/shared/models/cart-item.model';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { DELIVERY, FREE, PICK_UP } from '../../shared/constants/const';
-import { Order } from '../../shared/models/order.model';
 import { Location } from '@angular/common';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 
@@ -15,26 +13,19 @@ import { FavoriteService } from 'src/app/shared/services/favorite.service';
 export class CartComponent implements OnDestroy {
 
   cart!: Cart;
-  order: Order = new Order();
 
-  delivery: number = DELIVERY;
-  pickUp: number = PICK_UP;
-  free: number = FREE;
-
-  private sub: any;
+  private sub0: any;
+  private sub1: any;
 
   constructor(
     private cartService: CartService,
     private location: Location,
     private favoriteService: FavoriteService,
   ) {
-    this.sub = this.cartService.getCartObservable().subscribe((data) => {
+    this.sub0 = this.cartService.getCartObservable().subscribe((data) => {
       this.cart = data;
     })
-    const deliveryJson = localStorage.getItem('delivery-ls');
-    if (deliveryJson) {
-      this.order.favoriteDelivery = JSON.parse(deliveryJson);
-    }
+    this.getFavoritesProducts();
   }
 
   isCartEmpty() {
@@ -62,25 +53,32 @@ export class CartComponent implements OnDestroy {
     this.cartService.removeFromCartService(name);
   }
 
-  handleFavorites(cartItem: CartItem) {
-    if (cartItem.product.favorite) this.favoriteService.removeFromFavoritesService(cartItem.product);
-    else this.favoriteService.addToFavoritesService(cartItem.product);
-  }
-
   clearCart() {
     this.cartService.clearCartService();
   }
+
+  getFavoritesProducts() {
+    this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(fav => {
+      for (let cp of this.cart.items) {
+        cp.product.favorite = false;
+        for (let fp of fav) {
+          if (fp.id == cp.product.id) cp.product.favorite = true;
+        }
+      }
+    });
+  }
+
+  handleFavorites(cartItem: CartItem) {
+    if (cartItem.product.favorite) this.favoriteService.removeFromFavoritesService(cartItem.product);
+    else this.favoriteService.addToFavoritesService(cartItem.product);
+  }  
 
   goBack() {
     this.location.back();
   }
 
-  deliveryOption() {
-    const deliveryJson = JSON.stringify(this.order.favoriteDelivery);
-    localStorage.setItem('delivery-ls', deliveryJson);
-  }
-
   ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+    this.sub0?.unsubscribe();
+    this.sub1?.unsubscribe();
   }
 }

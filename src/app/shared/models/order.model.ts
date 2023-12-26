@@ -7,7 +7,7 @@ export class Order {
   items!: CartItem[];
 
   subtotal!: number;
-  favoriteDelivery: number = DELIVERY;
+  delivery: number = DELIVERY;
   totalPrice!: number;
 
   paymentType: string = PAYMENT_TYPE.CASH;
