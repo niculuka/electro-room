@@ -1,66 +1,39 @@
 <table class="row-item">
   <thead>
     <tr>
-      <th colspan="6">Produse:</th>
+      <td colspan="6">Sumar comanda:</td>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let item of order.items; index as ind">
+      <td> {{ind+1}} </td>
       <td>
-        {{ind+1}}
+        <img [src]="item.product.image" [alt]="item.product.image">
       </td>
-      <td>
-        <img [src]="item.product.image">
-      </td>
-      <td style="width: 60%;"><strong>{{item.product.description}}</strong></td>
-      <td>{{item.product.price}} Lei</td>
-      <td>{{item.quantity}}</td>
-      <td>{{item.price | number: '1.2-2'}} Lei</td>
-    </tr>
-
-    <tr>
-      <td colspan="4"></td>
-      <td>
-        <strong>
-          Subtotal:
-        </strong>
-      </td>
-      <td>
-        <strong>
-          {{order.subtotal}} Lei
-        </strong>
-      </td>
-    </tr>
-
-    <tr>
-      <td colspan="4"></td>
-      <td>
-        <strong>
-          Delivery:
-        </strong>
-      </td>
-      <td>
-        <strong>
-          {{order.delivery}} Lei
-        </strong>
-      </td>
-    </tr>
-
-    <tr>
-      <td colspan="4"></td>
-      <td>
-        <strong>
-          TOTAL:
-        </strong>
-      </td>
-      <td>
-        <strong>
-          {{order.totalPrice | number: '1.2-2'}} Lei
-        </strong>
-      </td>
+      <td class="description"> {{item.product.description}} </td>
+      <td class="price"> {{item.product.price}} Lei </td>
+      <td class="quantity"> x {{item.quantity}} buc </td>
+      <td class="price"> {{item.price | number: '1.2-2'}} Lei</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr class="subtotal">
+      <th colspan="3"></th>
+      <td colspan="2"> Subtotal </td>
+      <td> {{order.subtotal}} Lei </td>
+    </tr>
+    <tr class="delivery">
+      <th colspan="3"> </th>
+      <td colspan="2"> Taxa livrare </td>
+      <td> {{order.delivery}} Lei </td>
+    </tr>
+    <tr class="total">
+      <th colspan="3"></th>
+      <td colspan="2"> <strong> TOTAL </strong> </td>
+      <td> <strong> {{order.totalPrice | number: '1.2-2'}} Lei </strong> </td>
+    </tr>
+  </tfoot>
 
 </table>
 
@@ -68,7 +41,7 @@
 <table class="column-item">
   <thead>
     <tr>
-      <th colspan="6">Produse:</th>
+      <td colspan="6">Sumar comanda:</td>
     </tr>
   </thead>
 

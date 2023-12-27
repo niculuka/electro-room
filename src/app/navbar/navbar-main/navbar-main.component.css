@@ -423,3 +423,9 @@ mat-icon {
     font-size: 15px;
   }
 }
+
+@media (max-width: 340px) {
+  .content-nav .row1 ul .logo img {
+    width: 100px;
+  }
+}

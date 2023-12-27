@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Order } from '../../shared/models/order.model';
 
 @Component({
-  selector: 'payment-form',
+  selector: 'app-payment-form',
   templateUrl: './payment-form.component.html',
   styleUrls: ['./payment-form.component.css']
 })

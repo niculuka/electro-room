@@ -55,6 +55,25 @@
     cursor: pointer;
 }
 
+mat-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    font-size: 24px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    /* border: 2px solid black; */
+}
+
+mat-icon:hover {
+    color: rgb(220, 20, 110);
+    font-size: 26px;
+}
+
 .body {
     display: flex;
     flex-direction: row;

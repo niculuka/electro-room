@@ -17,177 +17,216 @@
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.title,
-.order,
-.payment,
-.billing {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+/* address --------------------------------------------- */
+.address {
   width: 100%;
   box-sizing: border-box;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 8px 8px;
   background: white;
 }
 
-.title {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-sizing: border-box;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: white;
-}
-
-.title h1 {
-  font-size: 24px;
-}
-
-.payment h3 {
-  font-size: 24px;
-  margin: 16px;
+.address h1 {
+  margin: 0;
+  padding: 20px;
+  border-bottom: 1px solid rgb(220, 20, 110);
 }
 
 .line {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  padding: 0 20px;
+  width: 300px;
   /* border: 1px solid rgb(0, 0, 0); */
 }
 
-.title a {
-  color: rgb(247, 153, 31);
-  text-decoration: none;
-}
-
-.title a:hover {
-  color: rgb(247, 153, 31);
-  text-decoration: underline;
-}
-
-.title span {
-  margin-top: 16px;
+.line div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  /* border: 1px solid rgb(0, 0, 0); */
 }
 
 .line h3 {
+  width: 30%;
   margin: 0;
-  margin-right: 10px;
+  padding: 0;
   /* border: 1px solid black; */
 }
 
 .line label {
+  width: 70%;
   font-size: 16px;
   margin: 0;
   /* border: 1px solid black; */
 }
 
-
-/* ------------------------------------------------------------------ */
-.bank {
-  max-width: 100%;
+.edit {
+  width: fit-content;
+  padding: 6px 20px 20px 20px;
+  /* border: 1px solid black; */
 }
 
-.buttons-container {
-  flex-basis: 100%;
-  display: flex;
-  justify-content: center;
+.edit a {
+  color: rgb(220, 20, 110);
+  text-decoration: none;
+}
+
+.edit a:hover {
+  text-decoration: underline;
+}
+
+/* order -------------------------------------------- */
+.order {
+  width: 100%;
+  margin-top: 12px;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: white;
+}
+
+/* payment ---------------------------------------------- */
+.payment {
+  width: 100%;
+  margin-top: 12px;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: white;
+}
+
+.payment h1 {
+  margin: 0;
+  padding: 20px;
+  border-bottom: 1px solid rgb(220, 20, 110);
 }
 
 .money {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
+  padding: 20px;
   font-size: 18px;
   /* border: 1px solid grey; */
 }
 
 .radio {
-  padding: 6px;
-  border-top: 1px solid grey;
-}
-
-.radio input {
-  margin: 10px 16px;
-}
-
-.bank {
-  margin-left: 34px;
-}
-
-.conditions {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  padding: 16px;
-  font-size: 18px;
-  box-sizing: border-box;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: white;
-}
-
-.conditions-line {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
 }
 
-.conditions input {
-  margin: 10px;
+.radio input {
+  width: 16px;
+  height: 16px;
+  accent-color: rgb(220, 20, 110);
+  cursor: pointer;
 }
 
-.conditions a {
-  color: rgb(223, 33, 119);
+.radio label {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+/* card ------------------------------------------------ */
+.card {
+  width: 100%;
+  margin-top: 12px;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: white;
+}
+
+/* send ------------------------------------------ */
+.send {
+  width: 100%;
+  margin-top: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: white;
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   font-size: 18px;
+}
+
+.check input {
+  width: 16px;
+  height: 16px;
+  accent-color: rgb(220, 20, 110);
+  cursor: pointer;
+}
+
+.check label {
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.check a {
   margin-left: 6px;
+  color: rgb(223, 33, 119);
   cursor: pointer;
 }
 
 .error {
-  color: red;
   font-size: 14px;
-  margin-left: 10px;
+  margin-left: 26px;
+  color: rgb(223, 33, 119);
 }
 
 .buttons {
-  margin: 32px;
-  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 12px;
+  padding: 20px;
 }
 
-button {
-  color: white;
-  cursor: pointer;
-  width: 100%;
+button {  
   font-size: 22px;
-  padding: 16px;
-  font-weight: 600;  
+  padding: 16px 30px;
+  font-weight: 500;
   border: none;
   cursor: pointer;
+  color: white;
   border-radius: 4px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: rgb(79, 190, 4);
+  background: rgb(220, 20, 110);
 }
 
 button:hover {
-  color: black;
-  box-shadow: 1px 1px 4px;
+  transition: 0.2s;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+  background: rgb(206, 9, 98);
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1530px) {
   .content-order {
     width: 1200px;
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1260px) {
   .content-order {
-    width: 980px;
+    width: 990px;
   }
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1020px) {
   .content-order {
-    width: 100%;
-    margin: 16px;
+    width: auto;
+    margin: 0 10px;
   }
 
   .title h1 {
@@ -229,7 +268,7 @@ button:hover {
   .line h3 {
     font-size: 14px;
   }
-  
+
   .line label {
     font-size: 14px;
   }

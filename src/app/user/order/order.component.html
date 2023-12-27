@@ -1,46 +1,43 @@
 <div class="container-order">
   <div class="content-order">
 
-    <div class="title">
-
-      <h1>Order Form:</h1>
-
+    <div class="address">
+      <h1>Date de contact:</h1>
       <div class="line">
-        <h3>Name: </h3>
-        <label><b>{{order.nameGet}}</b></label>
+        <div>
+          <h3>Nume: </h3>
+          <label><b>{{order.nameGet}}</b></label>
+        </div>
+        <div>
+          <h3>Email: </h3>
+          <label><b>{{order.emailGet}}</b></label>
+        </div>
+        <div>
+          <h3>Telefon: </h3>
+          <label><b>{{order.phoneGet}}</b></label>
+        </div>
+        <div>
+          <h3>Adresa: </h3>
+          <label><b>{{order.addressGet}}</b></label>
+        </div>
       </div>
-      <div class="line">
-        <h3>Email: </h3>
-        <label><b>{{order.emailGet}}</b></label>
+      <div class="edit">
+        <a routerLink="/profile">editeaza</a>
       </div>
-      <div class="line">
-        <h3>Phone: </h3>
-        <label><b>{{order.phoneGet}}</b></label>
-      </div>
-      <div class="line">
-        <h3>Address: </h3>
-        <label><b>{{order.addressGet}}</b></label>
-      </div>
-
-      <span>
-        <a routerLink="/profile">edit profile!</a>
-      </span>
-
     </div>
 
     <div class="order">
-      <cart-item [order]="order"></cart-item>
+      <app-cart-item [order]="order"></app-cart-item>
     </div>
 
     <div class="payment">
-      <h3>Payment method:</h3>
+      <h1>Metoda de plata:</h1>
 
       <div class="money">
         <div class="radio">
           <input type="radio" id="cash" value="CASH" [(ngModel)]="order.paymentType" (change)="paymentMethod()">
           <label for="cash">Cash</label>
         </div>
-
         <div class="radio">
           <input type="radio" id="card" value="CARD" [(ngModel)]="order.paymentType" (change)="paymentMethod()">
           <label for="card">Card</label>
@@ -48,25 +45,26 @@
       </div>
     </div>
 
-    <payment-form class="billing" [order]="order" *ngIf="payWithCard()"></payment-form>
+    <div class="card" *ngIf="payWithCard()">
+      <app-payment-form [order]="order"></app-payment-form>
+    </div>
 
-    <div class="conditions">
-      <div class="conditions-line">
+    <div class="send">
+      <h1>Acordul:</h1>
+      <div class="check">
         <input type="checkbox" id="condition" [(ngModel)]="conditions" (change)="conditionsCheck()">
-        <label for="condition">Sunt de acord cu  </label>
+        <label for="condition">Sunt de acord cu </label>
         <a (click)="conditionsAgreement()">conditiile.</a>
       </div>
-      <div class="error" *ngIf="errorMessage()">{{message}}</div>
-    </div>
-
-    <div class="buttons-container">
+      <div class="error" *ngIf="errorMessage()">
+        {{message}}
+      </div>
       <div class="buttons">
-        <button (click)="createOrder()">
-          Comanda
-        </button>
+        <button (click)="createOrder()"> Trimite comanda </button>
       </div>
     </div>
-
 
   </div>
 </div>
+
+<app-footer></app-footer>

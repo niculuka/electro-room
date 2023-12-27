@@ -73,7 +73,7 @@ export class OrderComponent implements OnInit {
   }
 
   conditionsAgreement() {
-    const agrement = this.matDialog.open(OrderAgreementComponent);
+    this.matDialog.open(OrderAgreementComponent);
   }
 
   errorMessage() {
