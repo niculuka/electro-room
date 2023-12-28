@@ -1,83 +1,34 @@
-<table class="row-item">
-  <thead>
-    <tr>
-      <td colspan="6">Sumar comanda:</td>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let item of order.items; index as ind">
-      <td> {{ind+1}} </td>
-      <td>
-        <img [src]="item.product.image" [alt]="item.product.image">
-      </td>
-      <td class="description"> {{item.product.description}} </td>
-      <td class="price"> {{item.product.price}} Lei </td>
-      <td class="quantity"> x {{item.quantity}} buc </td>
-      <td class="price"> {{item.price | number: '1.2-2'}} Lei</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr class="subtotal">
-      <th colspan="3"></th>
-      <td colspan="2"> Subtotal </td>
-      <td> {{order.subtotal}} Lei </td>
-    </tr>
-    <tr class="delivery">
-      <th colspan="3"> </th>
-      <td colspan="2"> Taxa livrare </td>
-      <td> {{order.delivery}} Lei </td>
-    </tr>
-    <tr class="total">
-      <th colspan="3"></th>
-      <td colspan="2"> <strong> TOTAL </strong> </td>
-      <td> <strong> {{order.totalPrice | number: '1.2-2'}} Lei </strong> </td>
-    </tr>
-  </tfoot>
-
-</table>
+<div class="row-item">
+  <h1>Sumar comanda:</h1>
 
 
-<table class="column-item">
-  <thead>
-    <tr>
-      <td colspan="6">Sumar comanda:</td>
-    </tr>
-  </thead>
+  <div class="item" *ngFor="let item of order.items;">
+    <div class="image">
+      <img [src]="item.product.image" [alt]="item.product.image">
+    </div>
+    <div>
+      <div>
+        <label class="description"> {{item.product.description}} </label>
+      </div>
+      <div class="item-price-quantity-price">
+        <label class="item-price"> {{item.product.price}} Lei </label>
+        <label class="quantity"> {{item.quantity}} buc </label>
+        <label class="price"> {{item.price | number: '1.2-2'}} Lei</label>
+      </div>
+    </div>
+  </div>
 
-  <tbody *ngFor="let item of order.items; index as ind">
-    <tr class="index">
-      <td colspan="2"><strong>{{ind+1}}</strong></td>
-    </tr>
-    <tr>
-      <th><img [src]="item.product.image"></th>
-      <td>{{item.product.description}}</td>
-    </tr>
-    <tr>
-      <th>{{item.quantity}} buc</th>
-      <td><strong>{{item.price | number: '1.2-2'}} Lei</strong></td>
-    </tr>
-  </tbody>
+  <div class="sum">
+    <div>
+      <span>Subtotal: </span>
+      <span>Taxa livrare: </span>
+      <span class="total"> <strong>TOTAL: </strong> </span>
+    </div>
+    <div>
+      <span> {{order.subtotal}} Lei </span>
+      <span> {{order.delivery}} Lei </span>
+      <span class="total"> <strong> {{order.totalPrice | number: '1.2-2'}} Lei </strong> </span>
+    </div>
+  </div>
 
-  <tfoot>
-    <tr class="footer">
-      <td colspan="2"></td>
-    </tr>
-    <tr>
-      <td><strong>Subtotal: </strong></td>
-      <td><strong>{{order.subtotal}} Lei</strong>
-      </td>
-    </tr>
-
-    <tr>
-      <td><strong>Delivery: </strong></td>
-      <td><strong>{{order.delivery}} Lei</strong>
-      </td>
-    </tr>
-
-    <tr>
-      <td><strong>TOTAL: </strong></td>
-      <td><strong>{{order.totalPrice | number: '1.2-2'}} Lei</strong></td>
-    </tr>
-  </tfoot>
-</table>
+</div>

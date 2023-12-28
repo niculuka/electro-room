@@ -1,57 +1,39 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
     text-transform: capitalize;
-    transition: all .2s linear;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    /* border: 2px solid black; */
-}
-
-.container form {
+form {
     padding: 20px;
     width: 100%;
     border-radius: 8px;
-    background: rgb(223, 33, 119);
+    background: rgb(220, 20, 110);
     /* border: 2px solid black; */
 }
 
-.container form .row {
+.row {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     gap: 15px;
 }
 
-.container form .row .col {
-    flex: 1 1 230px;
-}
-
-.container form .row .col .title {
+.row .col .title {
     font-size: 20px;
     color: rgb(255, 255, 255);
     padding-bottom: 5px;
     text-transform: uppercase;
 }
 
-.container form .row .col .inputBox {
+.row .col .inputBox {
     margin: 15px 0;
 }
 
-.container form .row .col .inputBox span {
+.row .col .inputBox span {
     color: white;
     margin-bottom: 10px;
     display: block;
 }
 
-.container form .row .col .inputBox input {
+.row .col .inputBox input {
     width: 100%;
     border: 1px solid #ccc;
     padding: 10px 15px;
@@ -59,26 +41,31 @@
     text-transform: none;
 }
 
-.container form .row .col .inputBox input:focus {
-    border: 1px solid #000;
+.row .col .inputBox input:focus {
+    outline: none;
+    border: 2px solid #000000;
 }
 
-.container form .row .col .flex {
+.row .col .flex {
     display: flex;
+    justify-content: space-between;
     gap: 15px;
+    /* border: 1px solid #000; */
 }
 
-.container form .row .col .flex .inputBox {
+.row .col .flex .inputBox {
+    width: 100%;
     margin-top: 5px;
+    /* border: 1px solid #000; */
 }
 
-.container form .row .col .inputBox img {
+.row .col .inputBox img {
     height: 34px;
     margin-top: 5px;
     filter: drop-shadow(0 0 1px #000);
 }
 
-.container form .submit-btn {
+.submit-btn {
     width: 100%;
     padding: 12px;
     font-size: 17px;
@@ -88,12 +75,24 @@
     cursor: pointer;
 }
 
-.container form .submit-btn:hover {
+.submit-btn:hover {
     background: #2ecc71;
 }
 
-.container form .amount {
+.amount {
     color: white;
     text-align: center;
     margin: 15px auto;
+}
+
+.amount span {
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+@media (max-width: 550px) {
+    .row {
+        flex-direction: column;
+    }
 }
