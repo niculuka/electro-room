@@ -10,7 +10,10 @@
 
     <div class="header" *ngIf="!isCartEmpty()">
       <h1>Cosul meu de cumparaturi:</h1>
-      <p>Livrare: 1-5 zile lucratoare</p>
+      <div>
+        <p>Livrare: 1-5 zile lucratoare</p>
+        <p>Transport gratuit pentru comenzi de minim 200 de lei</p>
+      </div>
     </div>
 
     <div class="main" *ngIf="!isCartEmpty()">
@@ -91,28 +94,3 @@
 </div>
 
 <app-footer></app-footer>
-
-<!-- <table>
-  <td>
-    <div class="radio">
-
-      <input type="radio" id="delivery" [value]="delivery" [(ngModel)]="order.favoriteDelivery"
-        (change)="deliveryOption()">
-
-      <label for="delivery">Livrare</label>
-
-      <strong>: &nbsp; {{delivery}} lei</strong>
-
-    </div>
-
-    <div class="radio">
-
-      <input type="radio" id="pickUp" [value]="pickUp" [(ngModel)]="order.favoriteDelivery" (change)="deliveryOption()">
-      
-      <label for="pickUp">Ridicare</label>
-
-      <strong>: &nbsp; {{pickUp}} lei</strong>
-      
-    </div>
-  </td>
-</table> -->

@@ -11,7 +11,6 @@ import { CartItem } from 'src/app/shared/models/cart-item.model';
 })
 export class CartNavComponent {
   @Input() cart!: Cart;
-  @Input() cartQuantity = 0;
 
   constructor(
     private cartService: CartService,

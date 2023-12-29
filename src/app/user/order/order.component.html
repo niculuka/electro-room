@@ -53,7 +53,7 @@
       <h1>Finalizare:</h1>
       <div class="accord">
         <div class="check">
-          <input type="checkbox" id="condition" [(ngModel)]="conditions" (change)="conditionsCheck()">
+          <input type="checkbox" id="condition" [(ngModel)]="order.conditions" (change)="conditionsCheck()">
           <label for="condition">Sunt de acord cu </label>
           <a (click)="conditionsAgreement()">conditiile.</a>
         </div>

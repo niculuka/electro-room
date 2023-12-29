@@ -21,7 +21,6 @@ export class OrderComponent implements OnInit {
   order: Order = new Order();
 
   message: string = "";
-  conditions!: boolean;
 
   constructor(
     private cartService: CartService,
@@ -41,16 +40,11 @@ export class OrderComponent implements OnInit {
     })
 
     const paymentJson = localStorage.getItem('payment-ls');
-    if (paymentJson) {
-      this.order.paymentType = JSON.parse(paymentJson);
-    }
+    if (paymentJson) this.order.paymentType = JSON.parse(paymentJson);
 
     const conditionsJson = localStorage.getItem('conditions-ls');
-    if (conditionsJson) {
-      this.conditions = JSON.parse(conditionsJson);
-    } else {
-      this.conditions = false;
-    }
+    if (conditionsJson) this.order.conditions = JSON.parse(conditionsJson);
+    else this.order.conditions = false;
   }
 
   ngOnInit(): void {
@@ -68,7 +62,7 @@ export class OrderComponent implements OnInit {
   }
 
   conditionsCheck() {
-    const conditionsJson = JSON.stringify(this.conditions);
+    const conditionsJson = JSON.stringify(this.order.conditions);
     localStorage.setItem('conditions-ls', conditionsJson);
   }
 
@@ -77,15 +71,15 @@ export class OrderComponent implements OnInit {
   }
 
   errorMessage() {
-    return this.conditions === false;
+    return this.order.conditions == false;
   }
 
   payWithCard() {
-    return this.order.paymentType === PAYMENT_TYPE.CARD;
+    return this.order.paymentType == PAYMENT_TYPE.CARD;
   }
 
   createOrder() {
-    if (this.conditions) {
+    if (this.order.conditions) {
       if (!this.authService.currentUserValue.userId) {
         return;
       }
@@ -96,7 +90,7 @@ export class OrderComponent implements OnInit {
         return;
       }
       if (this.order.paymentType === PAYMENT_TYPE.CARD) {
-        // Other Validations here!
+        // Other validations here!
         this.creatingMethod();
       }
     } else {

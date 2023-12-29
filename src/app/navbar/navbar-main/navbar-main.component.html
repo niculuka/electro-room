@@ -92,7 +92,7 @@
         <li class="dropdown">
           <a routerLink="/cart">
             <div class="elements" (click)="refreshCart()">
-              <div class="badge" matBadge="{{cartQuantity}}" matBadgeColor="primary" matBadgeSize="medium">
+              <div class="badge" matBadge="{{cart.totalCount}}" matBadgeColor="primary" matBadgeSize="medium">
                 <mat-icon>add_shopping_cart</mat-icon>
               </div>
               <span class="hide">&nbsp; Cosul meu</span>
@@ -101,7 +101,7 @@
           </a>
           <div class="dropdown-menu" *ngIf="!isCartPage()">
             <a class="emptyList" *ngIf="isCartEmpty()">Cosul este gol</a>
-            <cart-nav *ngIf="!isCartEmpty()" [cart]="cart" [cartQuantity]="cartQuantity"></cart-nav>
+            <cart-nav *ngIf="!isCartEmpty()" [cart]="cart"></cart-nav>
           </div>
         </li>
 

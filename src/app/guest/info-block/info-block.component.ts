@@ -11,7 +11,7 @@ export class InfoBlockComponent {
     {
       icon: "local_shipping",
       title: "Transport gratuit",
-      subtitle: "Comenzi peste 100 lei"
+      subtitle: "Comenzi peste 200 lei"
     },
     {
       icon: "phone_in_talk",

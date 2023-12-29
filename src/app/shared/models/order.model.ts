@@ -10,7 +10,8 @@ export class Order {
   delivery: number = DELIVERY;
   totalPrice!: number;
 
-  paymentType: string = PAYMENT_TYPE.CASH;
+  paymentType: string = PAYMENT_TYPE.CARD;
+  conditions: boolean = false;
 
   createdAt!: string;
   status: string = ORDER_STATUS.NEW;

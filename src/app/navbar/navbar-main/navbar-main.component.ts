@@ -25,16 +25,9 @@ export class NavbarMainComponent implements OnDestroy {
 
   cart!: Cart;
   favorites!: Array<Product>;
-  cartQuantity = 0;
   favoriteQuantity = 0;
 
   currentLink: string = "";
-
-  handleCart: string = "";
-  handleFavorites: string = "";
-
-  product: Product = new Product();
-  products: Array<Product> = [];
 
   private sub0: any;
   private sub1: any;
@@ -52,7 +45,6 @@ export class NavbarMainComponent implements OnDestroy {
   ) {
     this.sub0 = cartService.getCartObservable().subscribe(data => {
       this.cart = data;
-      this.cartQuantity = data.totalCount;
     });
     this.sub1 = favoriteService.getFavoritesObservable().subscribe(data => {
       this.favorites = data;

@@ -20,7 +20,7 @@
 
   <div class="total">
     <div class="total-items">
-      <span><strong>Subtotal: </strong>{{cartQuantity}} produse</span>
+      <span><strong>Subtotal: </strong>{{cart.totalCount}} {{cart.totalCount==1 ? 'produs' : 'produse'}}</span>
       <h4><strong>{{cart.subtotal | number: '1.2-2'}} Lei</strong></h4>
     </div>
 

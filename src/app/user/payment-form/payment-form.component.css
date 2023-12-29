@@ -6,7 +6,6 @@ form {
     padding: 20px;
     width: 100%;
     border-radius: 8px;
-    background: rgb(220, 20, 110);
     /* border: 2px solid black; */
 }
 
@@ -17,9 +16,8 @@ form {
 }
 
 .row .col .title {
-    font-size: 20px;
-    color: rgb(255, 255, 255);
     padding-bottom: 5px;
+    font-size: 20px;
     text-transform: uppercase;
 }
 
@@ -28,7 +26,6 @@ form {
 }
 
 .row .col .inputBox span {
-    color: white;
     margin-bottom: 10px;
     display: block;
 }
@@ -43,7 +40,11 @@ form {
 
 .row .col .inputBox input:focus {
     outline: none;
-    border: 2px solid #000000;
+    border: 1.5px solid rgba(0, 0, 0, 0.5);;
+}
+
+.row .col .inputBox input::placeholder {
+    opacity: 0.3;
 }
 
 .row .col .flex {
@@ -65,34 +66,28 @@ form {
     filter: drop-shadow(0 0 1px #000);
 }
 
-.submit-btn {
-    width: 100%;
-    padding: 12px;
-    font-size: 17px;
-    background: #27ae60;
-    color: #fff;
-    margin-top: 5px;
-    cursor: pointer;
-}
-
-.submit-btn:hover {
-    background: #2ecc71;
-}
-
-.amount {
-    color: white;
-    text-align: center;
+.amount {    
     margin: 15px auto;
+    text-align: center;
+    color: rgb(220, 20, 110);
 }
 
 .amount span {
     font-size: 24px;
-    font-weight: bold;
+    font-weight: bold;    
     white-space: nowrap;
 }
 
 @media (max-width: 550px) {
     .row {
         flex-direction: column;
+    }
+
+    .row .col .title {
+        font-size: 18px;
+    }
+
+    .amount span {
+        font-size: 22px;
     }
 }
