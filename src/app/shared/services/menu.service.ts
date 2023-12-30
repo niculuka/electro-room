@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { HandleWindow } from '../models/handle-window.model';
 
 @Injectable({
     providedIn: 'root'
@@ -7,29 +8,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 export class MenuService {
 
-    // isMobileMenuOpen  ----------------------------------------------------------
-    public isMobileMenuOpen: boolean = false;
-    private isMobileMenuOpenSubject = new BehaviorSubject(this.isMobileMenuOpen);
+    public handleWindow: HandleWindow = new HandleWindow();
+    private handleWindowSubject = new BehaviorSubject(this.handleWindow);
 
-    handleMobileMenuService() {
-        this.isMobileMenuOpenSubject.next(this.isMobileMenuOpen);
+    handleWindowService() {
+        this.handleWindowSubject.next(this.handleWindow);
     }
 
-    getMobileMenuObservable(): Observable<any> {
-        return this.isMobileMenuOpenSubject.asObservable();
-    }
-
-
-    // isDesktopMenuOpen  ----------------------------------------------------------
-    public isDesktopMenuOpen: boolean = false;
-    private isDesktopMenuOpenSubject = new BehaviorSubject(this.isDesktopMenuOpen);
-
-    handleDesktopMenuService() {
-        this.isDesktopMenuOpenSubject.next(this.isDesktopMenuOpen);
-    }
-
-    getDesktopMenuObservable(): Observable<any> {
-        return this.isDesktopMenuOpenSubject.asObservable();
+    getHandleWindowObservable(): Observable<any> {
+        return this.handleWindowSubject.asObservable();
     }
 
 }

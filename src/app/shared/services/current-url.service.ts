@@ -10,7 +10,7 @@ export class CurrentUrl implements OnDestroy {
 
     event$;
     public currentLink: string = "";
-    private currentLinkSubject = new BehaviorSubject(this.currentLink);    
+    private currentLinkSubject = new BehaviorSubject(this.currentLink);
 
     constructor(
         private router: Router,
@@ -18,17 +18,17 @@ export class CurrentUrl implements OnDestroy {
         this.event$ = this.router.events.subscribe((event: NavigationEvent) => {
             if (event instanceof NavigationStart) {
                 this.currentLink = event.url;
-                this.currentLinkSubject.next(this.currentLink); 
+                this.currentLinkSubject.next(this.currentLink);
             }
         });
     }
 
-    ngOnDestroy() {
-        this.event$.unsubscribe();
-    }
-
     getCurrentUrlObservable(): Observable<any> {
         return this.currentLinkSubject.asObservable();
+    }
+
+    ngOnDestroy() {
+        this.event$.unsubscribe();
     }
 
 }

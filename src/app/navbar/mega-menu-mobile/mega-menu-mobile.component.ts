@@ -24,8 +24,8 @@ export class MegaMenuMobileComponent {
   }
 
   closeMobileMenu() {
-    this.menuService.isMobileMenuOpen = false;
-    this.menuService.handleMobileMenuService();
+    this.menuService.handleWindow.isMobileMenuOpen = false;
+    this.menuService.handleWindowService();
   }
 
 }

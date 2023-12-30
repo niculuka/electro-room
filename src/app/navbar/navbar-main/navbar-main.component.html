@@ -10,12 +10,12 @@
       <!-- ------------------------------------------------------------------------------------------------------>
       <ul>
         <!-- M E G A - M E N U ------------------------------------------------------ -->
-        <li #txt class="burger">
+        <li #brg class="burger">
           <label for="check" class="check-btn" (click)="toggleMobileMenu()">
-            <mat-icon>{{isMobileMenuOpen ? "close": "menu" }}</mat-icon>
+            <mat-icon>{{handleWindow.isMobileMenuOpen ? "close": "menu" }}</mat-icon>
           </label>
 
-          <div class="mega-menu" *ngIf="isMobileMenuOpen">
+          <div class="mega-menu" *ngIf="handleWindow.isMobileMenuOpen">
             <div class="background-menu" (click)="toggleMobileMenu()">
             </div>
 
@@ -90,36 +90,30 @@
 
         <!-- CART -------------------------------------------------------------------- -->
         <li class="dropdown">
-          <a routerLink="/cart">
-            <div class="elements" (click)="refreshCart()">
-              <div class="badge" matBadge="{{cart.totalCount}}" matBadgeColor="primary" matBadgeSize="medium">
-                <mat-icon>add_shopping_cart</mat-icon>
-              </div>
-              <span class="hide">&nbsp; Cosul meu</span>
-              <mat-icon class="hide">expand_more</mat-icon>
+          <div #crt class="elements" (click)="toggleCartNav()">
+            <div class="badge" matBadge="{{cart.totalCount}}" matBadgeColor="primary" matBadgeSize="medium">
+              <mat-icon>add_shopping_cart</mat-icon>
             </div>
-          </a>
-          <div class="dropdown-menu" *ngIf="!isCartPage()">
-            <a class="emptyList" *ngIf="isCartEmpty()">Cosul este gol</a>
-            <cart-nav *ngIf="!isCartEmpty()" [cart]="cart"></cart-nav>
+            <span class="hide">&nbsp; Cosul meu</span>
+            <mat-icon class="hide">expand_more</mat-icon>
+          </div>
+          <div class="dropdown-menu" *ngIf="handleWindow.isCartNavOpen">
+            <cart-nav [cart]="cart"></cart-nav>
           </div>
         </li>
 
 
         <!-- FAVORITE ---------------------------------------------------------------- -->
         <li class="dropdown">
-          <a routerLink="/favorites">
-            <div class="elements" (click)="refreshFavorites()">
-              <div class="badge" matBadge="{{favorites.length}}" matBadgeColor="accent" matBadgeSize="medium">
-                <mat-icon>favorite_border</mat-icon>
-              </div>
-              <span class="hide">&nbsp; Favorite</span>
-              <mat-icon class="hide">expand_more</mat-icon>
+          <div #fav class="elements" (click)="toggleFavNav()">
+            <div class="badge" matBadge="{{favorites.length}}" matBadgeColor="accent" matBadgeSize="medium">
+              <mat-icon>favorite_border</mat-icon>
             </div>
-          </a>
-          <div class="dropdown-menu" *ngIf="!isFavoritesPage()">
-            <a class="emptyList" *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
-            <app-favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></app-favorite-nav>
+            <span class="hide">&nbsp; Favorite</span>
+            <mat-icon class="hide">expand_more</mat-icon>
+          </div>
+          <div class="dropdown-menu" *ngIf="handleWindow.isFavNavOpen">
+            <app-favorite-nav [favorites]="favorites"></app-favorite-nav>
           </div>
         </li>
 

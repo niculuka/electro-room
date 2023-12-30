@@ -9,6 +9,7 @@ import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { Product } from 'src/app/shared/models/product.model';
 import { CurrentUrl } from 'src/app/shared/services/current-url.service';
 import { MenuService } from 'src/app/shared/services/menu.service';
+import { HandleWindow } from 'src/app/shared/models/handle-window.model';
 
 @Component({
   selector: 'app-navbar-main',
@@ -17,8 +18,10 @@ import { MenuService } from 'src/app/shared/services/menu.service';
 })
 export class NavbarMainComponent implements OnDestroy {
 
-  @ViewChild('txt') txt: ElementRef | undefined;
-  isMobileMenuOpen: boolean = false;
+  @ViewChild('brg') brg: ElementRef | undefined;
+  @ViewChild('crt') crt: ElementRef | undefined;
+  @ViewChild('fav') fav: ElementRef | undefined;
+  handleWindow: HandleWindow = new HandleWindow();
 
   currentUser: User = new User();
   userFirstChar: string = "";
@@ -53,77 +56,95 @@ export class NavbarMainComponent implements OnDestroy {
     this.sub2 = this.authService.currentUser.subscribe(
       data => {
         this.currentUser = data;
-        if (this.currentUser) {
-          this.userFirstChar = this.currentUser.username.charAt(0);
-        }
+        if (this.currentUser) this.userFirstChar = this.currentUser.username.charAt(0);
       });
     this.sub3 = this.currentUrl.getCurrentUrlObservable().subscribe(url => {
-      if (url) {
-        this.currentLink = url;
-      }
+      if (url) this.currentLink = url;
     });
-    this.sub4 = this.menuService.getMobileMenuObservable().subscribe((data) => {
-      this.isMobileMenuOpen = data;
+    this.sub4 = this.menuService.getHandleWindowObservable().subscribe((data) => {
+      this.handleWindow = data;
     });
   }
+
+  // C L I C K - O U T ============================================================
+  @HostListener('document:click', ['$event'])
+  clickOut(event: any) {
+    if (this.brg?.nativeElement.contains(event.target)) {
+      // console.log("INSIDE - BURGER");
+    }
+    else {
+      this.handleWindow.isMobileMenuOpen = false;
+      // console.log("OUTSIDE - BURGER");
+    }
+    if (this.crt?.nativeElement.contains(event.target)) {
+      // console.log("INSIDE - CART");
+    }
+    else {
+      this.handleWindow.isCartNavOpen = false;
+      // console.log("OUTSIDE - CART");
+    }
+    if (this.fav?.nativeElement.contains(event.target)) {
+      // console.log("INSIDE - FAV");
+    }
+    else {
+      this.handleWindow.isFavNavOpen = false;
+      // console.log("OUTSIDE - FAV");
+    }
+    this.menuService.handleWindow.isMobileMenuOpen = this.handleWindow.isMobileMenuOpen;
+    this.menuService.handleWindow.isCartNavOpen = this.handleWindow.isCartNavOpen;
+    this.menuService.handleWindow.isFavNavOpen = this.handleWindow.isFavNavOpen;
+    this.menuService.handleWindowService();
+    // console.log("-------------------------------")
+  }
+  // ===============================================================================
 
   // MEGA-MENU - MOBILE ---------------------------------------------------
   toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    this.menuService.isMobileMenuOpen = this.isMobileMenuOpen;
-    this.menuService.handleMobileMenuService();
+    this.handleWindow.isMobileMenuOpen = !this.handleWindow.isMobileMenuOpen;
+    // this.menuService.isMobileMenuOpen = this.isMobileMenuOpen;
+    // this.menuService.handleMobileMenuService();
   }
 
-  @HostListener('document:click', ['$event'])
-  clickOut(event: any) {
-    if (this.txt?.nativeElement.contains(event.target)) {
-      // console.log("INSIDE");
-    } else {
-      this.isMobileMenuOpen = false;
-      this.menuService.isMobileMenuOpen = this.isMobileMenuOpen;
-      this.menuService.handleMobileMenuService();
-      // console.log("OUTSIDE");
-    }
-  }
-
-  // SEARCH - BAR -----------------------------------------------------------
+  // SEARCH-BAR -----------------------------------------------------------
   getProduct(searchTerm: string): void {
     if (searchTerm) {
       this.router.navigate(["/search/" + searchTerm]);
     };
   }
 
-  // CART - NAV -----------------------------------------------------------
+  // CART ----------------------------------------------------------------- 
   isCartPage() {
-    return this.currentLink === "/cart";
+    return this.currentLink === "/cart" || this.currentLink === "/cart/order";
   }
 
-  refreshCart() {
-    if (this.isCartPage()) {
-      window.location.reload();
-    }
+  toggleCartNav() {
+    this.handleWindow.isCartNavOpen = !this.handleWindow.isCartNavOpen;
+    // if (this.isCartPage()) {
+    //   window.location.reload();
+    // }
   }
 
   isCartEmpty() {
     return this.cart.items.length === 0;
   }
 
-  // FAVORITES - NAV -----------------------------------------------------
+  // FAVORITES ------------------------------------------------------------
   isFavoritesPage() {
     return this.currentLink === "/favorites";
   }
 
-  refreshFavorites() {
-    if (this.isFavoritesPage()) {
-      window.location.reload();
-    }
+  toggleFavNav() {
+    this.handleWindow.isFavNavOpen = !this.handleWindow.isFavNavOpen;
+    // if (this.isCartPage()) {
+    //   window.location.reload();
+    // }
   }
 
   isFavoritesEmpty() {
     return this.favorites.length === 0;
   }
 
-  // LOGS -------------------------------------------------------------
+  // LOGS -----------------------------------------------------------------
   isAdmin() {
     return this.currentUser?.role === ROLE.ADMIN;
   }

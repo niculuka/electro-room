@@ -6,7 +6,7 @@
     <ul>
 
       <!-- MEGA MENU ---------------------------------------------------------------------- -->
-      <li class="burger">
+      <li #menu class="burger">
 
         <button (click)="toggleDesktopMenu()">
           <div class="inside-btn">
@@ -15,7 +15,7 @@
           </div>
         </button>
 
-        <div class="mega-menu" *ngIf="isDesktopMenuOpen">
+        <div class="mega-menu" *ngIf="handleWindow.isDesktopMenuOpen">
           <app-mega-menu-desktop></app-mega-menu-desktop>
         </div>
       </li>

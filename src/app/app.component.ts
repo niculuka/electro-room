@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuService } from './shared/services/menu.service';
+import { HandleWindow } from './shared/models/handle-window.model';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,13 @@ import { MenuService } from './shared/services/menu.service';
 export class AppComponent {
   title = 'electro-room';
 
-  isMobileMenuOpen = false;
+  handleWindow: HandleWindow = new HandleWindow();
 
   constructor(
     private menuService: MenuService,
   ) {
-    this.menuService.getMobileMenuObservable().subscribe(data => {
-      this.isMobileMenuOpen = data;
+    this.menuService.getHandleWindowObservable().subscribe(data => {
+      this.handleWindow = data;
     });
   }
 
