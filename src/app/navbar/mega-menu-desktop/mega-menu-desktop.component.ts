@@ -17,7 +17,7 @@ export class MegaMenuDesktopComponent {
 
   closeDesktopMenu() {
     this.menuService.handleWindow.isDesktopMenuOpen = false;
-    this.menuService.getHandleWindowObservable();
+    this.menuService.handleWindowService();
   }
 
 }

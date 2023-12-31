@@ -73,26 +73,23 @@ export class NavbarMainComponent implements OnDestroy {
       // console.log("INSIDE - BURGER");
     }
     else {
-      this.handleWindow.isMobileMenuOpen = false;
+      this.menuService.handleWindow.isMobileMenuOpen = false;
       // console.log("OUTSIDE - BURGER");
     }
     if (this.crt?.nativeElement.contains(event.target)) {
       // console.log("INSIDE - CART");
     }
     else {
-      this.handleWindow.isCartNavOpen = false;
+      this.menuService.handleWindow.isCartNavOpen = false;
       // console.log("OUTSIDE - CART");
     }
     if (this.fav?.nativeElement.contains(event.target)) {
       // console.log("INSIDE - FAV");
     }
     else {
-      this.handleWindow.isFavNavOpen = false;
+      this.menuService.handleWindow.isFavNavOpen = false;
       // console.log("OUTSIDE - FAV");
     }
-    this.menuService.handleWindow.isMobileMenuOpen = this.handleWindow.isMobileMenuOpen;
-    this.menuService.handleWindow.isCartNavOpen = this.handleWindow.isCartNavOpen;
-    this.menuService.handleWindow.isFavNavOpen = this.handleWindow.isFavNavOpen;
     this.menuService.handleWindowService();
     // console.log("-------------------------------")
   }
@@ -100,9 +97,8 @@ export class NavbarMainComponent implements OnDestroy {
 
   // MEGA-MENU - MOBILE ---------------------------------------------------
   toggleMobileMenu() {
-    this.handleWindow.isMobileMenuOpen = !this.handleWindow.isMobileMenuOpen;
-    // this.menuService.isMobileMenuOpen = this.isMobileMenuOpen;
-    // this.menuService.handleMobileMenuService();
+    this.menuService.handleWindow.isMobileMenuOpen = !this.menuService.handleWindow.isMobileMenuOpen;
+    this.menuService.handleWindowService();
   }
 
   // SEARCH-BAR -----------------------------------------------------------
