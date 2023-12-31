@@ -1,53 +1,36 @@
 <div class="container-nav">
   <div class="content-nav">
-
-    <!-- LEFT SIDE ======================================================================================= -->
-    <!-- ================================================================================================= -->
     <ul>
-
-      <!-- MEGA MENU ---------------------------------------------------------------------- -->
       <li #menu class="burger">
-
         <button (click)="toggleDesktopMenu()">
           <div class="inside-btn">
             <mat-icon>menu</mat-icon>
             <span>Produse</span>
           </div>
         </button>
-
         <div class="mega-menu" *ngIf="handleWindow.isDesktopMenuOpen">
-          <app-mega-menu-desktop></app-mega-menu-desktop>
+          <app-mega-menu-desktop (childMessageEvent)="closeDesktopMenu($event)"></app-mega-menu-desktop>
         </div>
       </li>
-
-      <!-- ITEMS ------------------------------------------------------------------- -->
       <li class="item-nav">
         <a routerLink="/oferta-speciala" routerLinkActive="active">
           <span>Oferte speciale</span>
         </a>
       </li>
-
       <li class="item-nav">
         <a routerLink="/suport-clienti/magazine" routerLinkActive="active">
           <span>Magazine</span>
         </a>
       </li>
-
     </ul>
 
-    <!-- RIGHT SIDE ====================================================================================== -->
-    <!-- ================================================================================================= -->
     <ul>
-
-      <!-- HELP ------------------------------------------------------------------- -->
       <li class="item-nav">
         <a routerLink="/suport-clienti" routerLinkActive="active">
           <mat-icon>headset_mic</mat-icon>
           <span>Ajutor</span>
         </a>
       </li>
-
     </ul>
-
   </div>
 </div>

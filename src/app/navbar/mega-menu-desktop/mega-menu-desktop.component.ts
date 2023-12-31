@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
-import { MenuService } from 'src/app/shared/services/menu.service';
 
 @Component({
   selector: 'app-mega-menu-desktop',
@@ -11,13 +10,10 @@ export class MegaMenuDesktopComponent {
 
   departments: Array<Department> = DEPARTMENTS;
 
-  constructor(
-    private menuService: MenuService,
-  ) { }
+  closeDeskMenu: boolean = false;
+  @Output() childMessageEvent = new EventEmitter<boolean>();
 
   closeDesktopMenu() {
-    this.menuService.handleWindow.isDesktopMenuOpen = false;
-    this.menuService.handleWindowService();
+    this.childMessageEvent.emit(this.closeDeskMenu);
   }
-
 }
