@@ -9,7 +9,7 @@
           </div>
         </button>
         <div class="mega-menu" *ngIf="handleWindow.isDesktopMenuOpen">
-          <app-mega-menu-desktop (childMessageEvent)="closeDesktopMenu($event)"></app-mega-menu-desktop>
+          <app-mega-menu-desktop (closeDeskMenuEvent)="closeDesktopMenu($event)"></app-mega-menu-desktop>
         </div>
       </li>
       <li class="item-nav">

@@ -20,7 +20,7 @@
             </div>
 
             <div class="departaments">
-              <mega-menu-mobile></mega-menu-mobile>
+              <mega-menu-mobile (closeMobMenuEvent)="closeMobileMenu($event)"></mega-menu-mobile>
             </div>
           </div>
         </li>
@@ -52,13 +52,11 @@
 
         <!-- ADMIN ------------------------------------------------------------------- -->
         <li class="dropdown" *ngIf="isAdmin()">
-          <a>
-            <div class="elements">
-              <!-- <mat-icon class="admin">settings</mat-icon> -->
-              <span><strong>Admin</strong></span>
-            </div>
-          </a>
-          <div class="dropdown-menu list-menu">
+          <div #adm class="elements" (click)="toggleAdmin()">
+            <!-- <mat-icon class="admin">settings</mat-icon> -->
+            <span><strong>Admin</strong></span>
+          </div>
+          <div class="dropdown-menu" *ngIf="isAdminMenuOpen">
             <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
             <a routerLink="/admin/products/laptop-accessory" routerLinkActive="active">Accessories</a>
 
@@ -72,13 +70,11 @@
 
         <!-- ADMIN ------------------------------------------------------------------- -->
         <li class="dropdown" *ngIf="!isAdmin()">
-          <a>
-            <div class="elements">
-              <!-- <mat-icon class="admin">settings</mat-icon> -->
-              <span>Admin</span>
-            </div>
-          </a>
-          <div class="dropdown-menu list-menu">
+          <div #adm class="elements" (click)="toggleAdmin()">
+            <!-- <mat-icon class="admin">settings</mat-icon> -->
+            <span>Admin</span>
+          </div>
+          <div class="dropdown-menu" *ngIf="isAdminMenuOpen">
             <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
             <a routerLink="/admin/demo/products/laptop-accessory" routerLinkActive="active">Accessories</a>
 
@@ -97,8 +93,10 @@
             <span class="hide">&nbsp; Cosul meu</span>
             <mat-icon class="hide">expand_more</mat-icon>
           </div>
+
           <div class="dropdown-menu" *ngIf="handleWindow.isCartNavOpen">
-            <cart-nav [cart]="cart"></cart-nav>
+            <a class="emptyList" *ngIf="isCartEmpty()">Cosul este gol</a>
+            <cart-nav *ngIf="!isCartEmpty()" [cart]="cart"></cart-nav>
           </div>
         </li>
 
@@ -120,14 +118,12 @@
 
         <!-- LOGIN (login, register) -------------------------------------------------- -->
         <li class="dropdown" *ngIf="!currentUser?.userId">
-          <a>
-            <div class="elements">
-              <mat-icon>perm_identity</mat-icon>
-              <span class="hide">Cont</span>
-              <mat-icon class="hide">expand_more</mat-icon>
-            </div>
-          </a>
-          <div class="dropdown-menu list-menu">
+          <div #log class="elements" (click)="toggleLog()">
+            <mat-icon>perm_identity</mat-icon>
+            <span class="hide">Cont</span>
+            <mat-icon class="hide">expand_more</mat-icon>
+          </div>
+          <div class="dropdown-menu" *ngIf="isLogMenuOpen">
             <a routerLink="/auth/login">Intra in cont!</a>
             <a routerLink="/auth/register">Inregistrare!</a>
           </div>
@@ -136,13 +132,11 @@
 
         <!-- LOGOUT (profile, order, logout) ------------------------------------------- -->
         <li class="dropdown" *ngIf="currentUser?.userId">
-          <a>
-            <div class="elements">
-              <span id="username">{{userFirstChar}}</span>
-              <mat-icon class="hide">expand_more</mat-icon>
-            </div>
-          </a>
-          <div class="dropdown-menu list-menu">
+          <div #log class="elements" (click)="toggleLog()">
+            <span id="username">{{userFirstChar}}</span>
+            <mat-icon class="hide">expand_more</mat-icon>
+          </div>
+          <div class="dropdown-menu" *ngIf="isLogMenuOpen">
             <a routerLink="/profile" routerLinkActive="active">Profile</a>
             <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
             <a routerLink="/" (click)="logout()">Logout</a>

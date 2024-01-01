@@ -61,12 +61,12 @@
   /* border: 1px solid rgb(3, 119, 253); */
 }
 
-.row1 ul .burger {
+.burger {
   display: none;
   /* border: 1px solid rgb(236, 217, 1); */
 }
 
-.row1 ul .burger .check-btn {
+.check-btn {
   margin: 0;
   color: rgb(39, 39, 39);
   font-size: 30px;
@@ -74,43 +74,6 @@
   /* border: 1px solid rgb(236, 60, 1); */
 }
 
-.row1 ul .search-bar {
-  width: 450px;
-}
-
-ul .search-bar form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 16px;
-  height: 100%;
-  border: 2px solid rgb(208, 208, 208);
-  border-radius: 4px;
-}
-
-ul .search-bar form input {
-  font-size: 14px;
-  border: none;
-  outline: none;
-  width: 100%;
-  background: none;
-}
-
-ul .search-bar form input::placeholder {
-  color: grey;
-}
-
-ul .search-bar button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-/* M A T - I C O N ----------------------------*/
 mat-icon {
   display: flex;
   flex-direction: row;
@@ -123,21 +86,51 @@ mat-icon {
   /* border: 1px solid rgb(0, 0, 0); */
 }
 
-/* mat-icon => BADGE PROPERTIES */
-.mat-badge-content {
-  width: 22px;
-  height: 22px;
-  line-height: 22px;
-}
 
-.row1 ul .burger mat-icon {
+.burger mat-icon {
   font-size: 34px;
   margin: 0;
   padding: 0;
   /* border: 1px solid rgb(0, 0, 0); */
 }
 
-ul .search-bar button mat-icon {
+.search-bar {
+  width: 450px;
+}
+
+.search-bar form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 16px;
+  height: 100%;
+  border: 2px solid rgb(208, 208, 208);
+  border-radius: 4px;
+}
+
+.search-bar form input {
+  font-size: 14px;
+  border: none;
+  outline: none;
+  width: 100%;
+  background: none;
+}
+
+.search-bar form input::placeholder {
+  color: grey;
+}
+
+.search-bar button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.search-bar button mat-icon {
   color: rgba(220, 20, 110, 0.5);
 }
 
@@ -145,11 +138,11 @@ ul .search-bar button mat-icon {
   display: none;
 }
 
-.row1 ul .burger .mega-menu {
+.mega-menu {
   z-index: 3;
 }
 
-.row1 ul .burger .mega-menu .background-menu {
+.background-menu {
   position: absolute;
   top: 60px;
   left: 0;
@@ -158,7 +151,7 @@ ul .search-bar button mat-icon {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.row1 ul .burger .mega-menu .departaments {
+.departaments {
   position: absolute;
   top: 60px;
   left: 0;
@@ -172,68 +165,56 @@ ul .search-bar button mat-icon {
   /* border: 1px solid rgb(0, 102, 255); */
 }
 
-.row1 ul .logo {
+.logo {
   margin: 0;
   /* border: 1px solid rgb(0, 0, 0); */
 }
 
-.row1 ul .logo a {
+a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.logo a {
   display: flex;
   align-items: center;
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.row1 ul .logo img {
+.logo img {
   width: 210px;
   margin: auto;
   /* border: 2px solid rgb(3, 119, 253); */
 }
 
-.row1 ul .dropdown {
+.dropdown {
   display: inline-block;
   position: relative;
   /* border: 1px solid rgb(3, 74, 255); */
 }
 
-.row1 ul .dropdown .badge {
+.badge {
   margin: 0;
   padding: 0;
   /* border: 1px solid rgb(3, 119, 253); */
 }
 
-.row1 ul .dropdown a {
-  display: block;
-  font-size: 14px;
-  line-height: 14px;
-  font-weight: 500;
-  color: rgb(39, 39, 39);
-  text-decoration: none;
-  cursor: pointer;
-  /* border: 2px solid black; */
-}
-
-.row1 ul .dropdown a.active {
-  color: white;
-  background: rgb(220, 20, 110);
-}
-
-.row1 ul .dropdown a:hover {
-  color: black;  
-}
-
-.row1 ul .dropdown .elements {
+.elements {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  cursor: pointer;
   /* border: 1px solid red; */
 }
 
 /* RIGHT SIDE ------------------------------------------------------------------------------ */
 /* ----------------------------------------------------------------------------------------- */
-.row1 ul .dropdown .dropdown-menu {
+.dropdown-menu {
   position: absolute;
   display: block;
   right: 0;
@@ -248,11 +229,7 @@ ul .search-bar button mat-icon {
   /* border: 1px solid red; */
 }
 
-/* .row1 ul .dropdown:hover .dropdown-menu {
-  display: block;
-} */
-
-.row1 ul .dropdown .dropdown-menu a {
+.dropdown-menu a {
   display: block;
   text-align: left;
   padding: 10px;
@@ -260,33 +237,33 @@ ul .search-bar button mat-icon {
   /* border: 1px solid red; */
 }
 
-.row1 ul .dropdown .dropdown-menu .emptyList {
-  cursor: default;
-}
-
-.row1 ul .dropdown .dropdown-menu .emptyList:hover {
-  background: none;
-}
-
-.row1 ul .dropdown .dropdown-menu a:last-child {
+.dropdown-menu a:last-child {
   border-bottom: none;
 }
 
-.row1 ul .dropdown .dropdown-menu a:hover {
+.dropdown-menu a.active {
+  color: white;
+  background: rgb(220, 20, 110);
+}
+
+.dropdown-menu a:hover {
+  color: black;  
   background: rgba(220, 20, 110, 0.1);
 }
 
-.row1 ul .dropdown .list-menu {
-  display: none;
+.emptyList:hover {
+  background: none;
 }
 
-.row1 ul .dropdown:hover .list-menu {
-  display: block;
+a.active {
+  color: white;
+  background: rgb(220, 20, 110);
 }
 
-/* CART ---------------------------------------------------------------------- */
-
-/* FAVORITES ----------------------------------------------------------------- */
+a:hover {
+  color: black;  
+  background: rgba(220, 20, 110, 0.1);
+}
 
 /* --------------------------------------------------------------------------- */
 #username {

@@ -8,8 +8,8 @@ import { Cart } from 'src/app/shared/models/cart.model';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { Product } from 'src/app/shared/models/product.model';
 import { CurrentUrl } from 'src/app/shared/services/current-url.service';
-import { MenuService } from 'src/app/shared/services/menu.service';
 import { HandleWindow } from 'src/app/shared/models/handle-window.model';
+import { OverflowService } from 'src/app/shared/services/overflow.service';
 
 @Component({
   selector: 'app-navbar-main',
@@ -17,11 +17,16 @@ import { HandleWindow } from 'src/app/shared/models/handle-window.model';
   styleUrls: ['./navbar-main.component.css']
 })
 export class NavbarMainComponent implements OnDestroy {
+  @ViewChild('adm') adm: ElementRef | undefined;
+  isAdminMenuOpen: boolean = false;
 
   @ViewChild('brg') brg: ElementRef | undefined;
   @ViewChild('crt') crt: ElementRef | undefined;
   @ViewChild('fav') fav: ElementRef | undefined;
   handleWindow: HandleWindow = new HandleWindow();
+  
+  @ViewChild('log') log: ElementRef | undefined;
+  isLogMenuOpen: boolean = false;
 
   currentUser: User = new User();
   userFirstChar: string = "";
@@ -36,7 +41,6 @@ export class NavbarMainComponent implements OnDestroy {
   private sub1: any;
   private sub2: any;
   private sub3: any;
-  private sub4: any;
 
   constructor(
     private cartService: CartService,
@@ -44,7 +48,7 @@ export class NavbarMainComponent implements OnDestroy {
     private authService: AuthService,
     private router: Router,
     private currentUrl: CurrentUrl,
-    private menuService: MenuService,
+    private overflowService: OverflowService,
   ) {
     this.sub0 = cartService.getCartObservable().subscribe(data => {
       this.cart = data;
@@ -61,9 +65,6 @@ export class NavbarMainComponent implements OnDestroy {
     this.sub3 = this.currentUrl.getCurrentUrlObservable().subscribe(url => {
       if (url) this.currentLink = url;
     });
-    this.sub4 = this.menuService.getHandleWindowObservable().subscribe((data) => {
-      this.handleWindow = data;
-    });
   }
 
   // C L I C K - O U T ============================================================
@@ -73,32 +74,51 @@ export class NavbarMainComponent implements OnDestroy {
       // console.log("INSIDE - BURGER");
     }
     else {
-      this.menuService.handleWindow.isMobileMenuOpen = false;
+      this.handleWindow.isMobileMenuOpen = false;
       // console.log("OUTSIDE - BURGER");
+    }
+    if (this.adm?.nativeElement.contains(event.target)) {
+      // console.log("INSIDE - ADMIN");
+    }
+    else {
+      this.isAdminMenuOpen = false;
+      // console.log("OUTSIDE - ADMIN");
     }
     if (this.crt?.nativeElement.contains(event.target)) {
       // console.log("INSIDE - CART");
     }
     else {
-      this.menuService.handleWindow.isCartNavOpen = false;
+      this.handleWindow.isCartNavOpen = false;
       // console.log("OUTSIDE - CART");
     }
     if (this.fav?.nativeElement.contains(event.target)) {
       // console.log("INSIDE - FAV");
     }
     else {
-      this.menuService.handleWindow.isFavNavOpen = false;
+      this.handleWindow.isFavNavOpen = false;
       // console.log("OUTSIDE - FAV");
     }
-    this.menuService.handleWindowService();
-    // console.log("-------------------------------")
+    if (this.log?.nativeElement.contains(event.target)) {
+      // console.log("INSIDE - ADMIN");
+    }
+    else {
+      this.isLogMenuOpen = false;
+      // console.log("OUTSIDE - ADMIN");
+    }
   }
   // ===============================================================================
 
   // MEGA-MENU - MOBILE ---------------------------------------------------
   toggleMobileMenu() {
-    this.menuService.handleWindow.isMobileMenuOpen = !this.menuService.handleWindow.isMobileMenuOpen;
-    this.menuService.handleWindowService();
+    this.handleWindow.isMobileMenuOpen = !this.handleWindow.isMobileMenuOpen;
+    this.overflowService.isOverflowHidden = this.handleWindow.isMobileMenuOpen;
+    this.overflowService.handleOverflowService();
+  }
+
+  closeMobileMenu(event: any) {
+    this.handleWindow.isMobileMenuOpen = event;
+    this.overflowService.isOverflowHidden = event;
+    this.overflowService.handleOverflowService();
   }
 
   // SEARCH-BAR -----------------------------------------------------------
@@ -108,16 +128,19 @@ export class NavbarMainComponent implements OnDestroy {
     };
   }
 
+  // ADMIN ----------------------------------------------------------------- 
+  toggleAdmin() {
+    this.isAdminMenuOpen = !this.isAdminMenuOpen;
+  }
+
   // CART ----------------------------------------------------------------- 
   isCartPage() {
     return this.currentLink === "/cart" || this.currentLink === "/cart/order";
   }
 
   toggleCartNav() {
-    this.handleWindow.isCartNavOpen = !this.handleWindow.isCartNavOpen;
-    // if (this.isCartPage()) {
-    //   window.location.reload();
-    // }
+    if (this.isCartPage()) window.location.reload();
+    else this.handleWindow.isCartNavOpen = !this.handleWindow.isCartNavOpen;
   }
 
   isCartEmpty() {
@@ -130,10 +153,8 @@ export class NavbarMainComponent implements OnDestroy {
   }
 
   toggleFavNav() {
-    this.handleWindow.isFavNavOpen = !this.handleWindow.isFavNavOpen;
-    // if (this.isCartPage()) {
-    //   window.location.reload();
-    // }
+    if (this.isFavoritesPage()) window.location.reload();
+    else this.handleWindow.isFavNavOpen = !this.handleWindow.isFavNavOpen;
   }
 
   isFavoritesEmpty() {
@@ -141,6 +162,10 @@ export class NavbarMainComponent implements OnDestroy {
   }
 
   // LOGS -----------------------------------------------------------------
+  toggleLog() {
+    this.isLogMenuOpen = !this.isLogMenuOpen;
+  }
+
   isAdmin() {
     return this.currentUser?.role === ROLE.ADMIN;
   }
@@ -159,6 +184,5 @@ export class NavbarMainComponent implements OnDestroy {
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
     this.sub3?.unsubscribe();
-    this.sub4?.unsubscribe();
   }
 }

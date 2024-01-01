@@ -11,9 +11,9 @@ export class MegaMenuDesktopComponent {
   departments: Array<Department> = DEPARTMENTS;
 
   closeDeskMenu: boolean = false;
-  @Output() childMessageEvent = new EventEmitter<boolean>();
+  @Output() closeDeskMenuEvent = new EventEmitter<boolean>();
 
   closeDesktopMenu() {
-    this.childMessageEvent.emit(this.closeDeskMenu);
+    this.closeDeskMenuEvent.emit(this.closeDeskMenu);
   }
 }

@@ -1,7 +1,6 @@
 import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { HandleWindow } from 'src/app/shared/models/handle-window.model';
 import { CurrentUrl } from 'src/app/shared/services/current-url.service';
-import { MenuService } from 'src/app/shared/services/menu.service';
 
 @Component({
   selector: 'app-navbar-desktop',
@@ -53,8 +52,8 @@ export class NavbarDesktopComponent implements OnDestroy {
     }
   }
 
-  closeDesktopMenu($event: any) {
-    this.handleWindow.isDesktopMenuOpen = $event;
+  closeDesktopMenu(event: any) {
+    this.handleWindow.isDesktopMenuOpen = event;
   }
 
   ngOnDestroy(): void {

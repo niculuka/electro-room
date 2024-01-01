@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuService } from './shared/services/menu.service';
-import { HandleWindow } from './shared/models/handle-window.model';
+import { OverflowService } from './shared/services/overflow.service';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +8,19 @@ import { HandleWindow } from './shared/models/handle-window.model';
 })
 
 export class AppComponent {
+
   title = 'electro-room';
 
-  handleWindow: HandleWindow = new HandleWindow();
+  isOverflowHidden: boolean = false;
+
+  main: boolean = false;
+
 
   constructor(
-    private menuService: MenuService,
+    private overflowService: OverflowService,
   ) {
-    this.menuService.getHandleWindowObservable().subscribe(data => {
-      this.handleWindow = data;
+    this.overflowService.getOverflowObservable().subscribe(data => {
+      this.isOverflowHidden = data;
     });
   }
 
