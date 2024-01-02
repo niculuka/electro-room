@@ -111,7 +111,8 @@
             <mat-icon class="hide">expand_more</mat-icon>
           </div>
           <div class="dropdown-menu" *ngIf="handleWindow.isFavNavOpen">
-            <app-favorite-nav [favorites]="favorites"></app-favorite-nav>
+            <a class="emptyList" *ngIf="isFavoritesEmpty()">Adauga un produs favorit</a>
+            <app-favorite-nav *ngIf="!isFavoritesEmpty()" [favorites]="favorites"></app-favorite-nav>
           </div>
         </li>
 

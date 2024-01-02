@@ -24,7 +24,7 @@ export class NavbarMainComponent implements OnDestroy {
   @ViewChild('crt') crt: ElementRef | undefined;
   @ViewChild('fav') fav: ElementRef | undefined;
   handleWindow: HandleWindow = new HandleWindow();
-  
+
   @ViewChild('log') log: ElementRef | undefined;
   isLogMenuOpen: boolean = false;
 
@@ -75,6 +75,7 @@ export class NavbarMainComponent implements OnDestroy {
     }
     else {
       this.handleWindow.isMobileMenuOpen = false;
+      this.handleOverflow();
       // console.log("OUTSIDE - BURGER");
     }
     if (this.adm?.nativeElement.contains(event.target)) {
@@ -111,13 +112,16 @@ export class NavbarMainComponent implements OnDestroy {
   // MEGA-MENU - MOBILE ---------------------------------------------------
   toggleMobileMenu() {
     this.handleWindow.isMobileMenuOpen = !this.handleWindow.isMobileMenuOpen;
-    this.overflowService.isOverflowHidden = this.handleWindow.isMobileMenuOpen;
-    this.overflowService.handleOverflowService();
+    this.handleOverflow();
   }
 
   closeMobileMenu(event: any) {
     this.handleWindow.isMobileMenuOpen = event;
-    this.overflowService.isOverflowHidden = event;
+    this.handleOverflow();
+  }
+
+  handleOverflow() {
+    this.overflowService.isOverflowHidden = this.handleWindow.isMobileMenuOpen;
     this.overflowService.handleOverflowService();
   }
 

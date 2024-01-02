@@ -13,9 +13,6 @@ export class AppComponent {
 
   isOverflowHidden: boolean = false;
 
-  main: boolean = false;
-
-
   constructor(
     private overflowService: OverflowService,
   ) {

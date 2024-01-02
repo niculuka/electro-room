@@ -47,7 +47,7 @@ ul {
   /* border: 2px solid rgb(0, 199, 13); */
 }
 
-.burger button .inside-btn {
+.inside-btn {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -69,7 +69,7 @@ mat-icon {
   /* border: 2px solid rgb(0, 152, 30); */
 }
 
-.burger button .inside-btn span {
+.inside-btn span {
   font-size: 16px;
   font-weight: 500;
   margin: 0 4px;
@@ -155,20 +155,6 @@ mat-icon {
 
 @media (max-width: 1020px) {
   .container-nav {
-    height: 0;
-  }
-
-  .content-nav {
-    width: 100%;
-  }
-
-  ul .burger button,
-  .item-nav {
     display: none;
   }
-
-  .mega-menu {
-    display: none;
-  }
-
 }

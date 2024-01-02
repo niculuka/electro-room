@@ -5,12 +5,8 @@
         <app-navbar-main></app-navbar-main>
         <app-navbar-desktop></app-navbar-desktop>
 
-        <div class="desktop" [ngStyle]="{position: main?'initial':'relative'}">
-
-            <router-outlet></router-outlet>
-            <div class="background" [ngStyle]="{top: main?'60px':'0'}"></div>
-
-        </div>
+        <router-outlet></router-outlet>
+        <!-- <div class="overlay"></div> -->
 
     </div>
 
