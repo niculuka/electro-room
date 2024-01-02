@@ -16,12 +16,7 @@
           </label>
 
           <div class="mega-menu" *ngIf="handleWindow.isMobileMenuOpen">
-            <div class="background-menu" (click)="toggleMobileMenu()">
-            </div>
-
-            <div class="departaments">
-              <mega-menu-mobile (closeMobMenuEvent)="closeMobileMenu($event)"></mega-menu-mobile>
-            </div>
+            <mega-menu-mobile (closeMobMenuEvent)="closeMobileMenu($event)"></mega-menu-mobile>
           </div>
         </li>
 

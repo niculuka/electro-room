@@ -121,10 +121,10 @@ mat-icon {
 
 .mega-menu {
   position: absolute;
+  z-index: 3;
   top: auto;
   left: 0;
-  width: 301px;
-  z-index: 3;
+  width: 301px;  
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   /* border: 2px solid rgb(0, 0, 0); */
 }

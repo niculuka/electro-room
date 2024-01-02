@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { OverflowService } from './shared/services/overflow.service';
+import { Component, OnDestroy } from '@angular/core';
+import { OverlayerService } from './shared/services/overlayer.service';
+import { Overlayer } from './shared/models/overlayer.model';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +8,24 @@ import { OverflowService } from './shared/services/overflow.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnDestroy {
 
   title = 'electro-room';
 
-  isOverflowHidden: boolean = false;
+  overlayer: Overlayer = new Overlayer();
+
+  private sub0: any;
 
   constructor(
-    private overflowService: OverflowService,
+    private overlayerService: OverlayerService,
   ) {
-    this.overflowService.getOverflowObservable().subscribe(data => {
-      this.isOverflowHidden = data;
+    this.sub0 = this.overlayerService.getOverlayerObservable().subscribe(data => {
+      this.overlayer = data;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub0?.unsubscribe();
   }
 
 }

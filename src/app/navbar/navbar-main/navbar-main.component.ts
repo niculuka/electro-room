@@ -9,7 +9,7 @@ import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { Product } from 'src/app/shared/models/product.model';
 import { CurrentUrl } from 'src/app/shared/services/current-url.service';
 import { HandleWindow } from 'src/app/shared/models/handle-window.model';
-import { OverflowService } from 'src/app/shared/services/overflow.service';
+import { OverlayerService } from 'src/app/shared/services/overlayer.service';
 
 @Component({
   selector: 'app-navbar-main',
@@ -48,7 +48,7 @@ export class NavbarMainComponent implements OnDestroy {
     private authService: AuthService,
     private router: Router,
     private currentUrl: CurrentUrl,
-    private overflowService: OverflowService,
+    private overlayerService: OverlayerService,
   ) {
     this.sub0 = cartService.getCartObservable().subscribe(data => {
       this.cart = data;
@@ -63,7 +63,11 @@ export class NavbarMainComponent implements OnDestroy {
         if (this.currentUser) this.userFirstChar = this.currentUser.username.charAt(0);
       });
     this.sub3 = this.currentUrl.getCurrentUrlObservable().subscribe(url => {
-      if (url) this.currentLink = url;
+      if (url) {
+        this.currentLink = url;
+        this.handleWindow.isMobileMenuOpen = false;
+        this.handleOverlayerWhenLinkChanges();
+      }
     });
   }
 
@@ -75,7 +79,7 @@ export class NavbarMainComponent implements OnDestroy {
     }
     else {
       this.handleWindow.isMobileMenuOpen = false;
-      this.handleOverflow();
+      this.handleOverlayer();
       // console.log("OUTSIDE - BURGER");
     }
     if (this.adm?.nativeElement.contains(event.target)) {
@@ -112,17 +116,22 @@ export class NavbarMainComponent implements OnDestroy {
   // MEGA-MENU - MOBILE ---------------------------------------------------
   toggleMobileMenu() {
     this.handleWindow.isMobileMenuOpen = !this.handleWindow.isMobileMenuOpen;
-    this.handleOverflow();
+    this.handleOverlayer();
   }
 
   closeMobileMenu(event: any) {
     this.handleWindow.isMobileMenuOpen = event;
-    this.handleOverflow();
+    this.handleOverlayer();
   }
 
-  handleOverflow() {
-    this.overflowService.isOverflowHidden = this.handleWindow.isMobileMenuOpen;
-    this.overflowService.handleOverflowService();
+  handleOverlayer() {
+    this.overlayerService.overlayer.overlayerMain = this.handleWindow.isMobileMenuOpen;
+    this.overlayerService.handleOverlayerService();
+  }
+
+  handleOverlayerWhenLinkChanges() {
+    if (this.currentLink) this.overlayerService.overlayer.overlayerMain = false;
+    this.overlayerService.handleOverlayerService();
   }
 
   // SEARCH-BAR -----------------------------------------------------------

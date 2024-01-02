@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { HandleWindow } from 'src/app/shared/models/handle-window.model';
 import { CurrentUrl } from 'src/app/shared/services/current-url.service';
+import { OverlayerService } from 'src/app/shared/services/overlayer.service';
 
 @Component({
   selector: 'app-navbar-desktop',
@@ -17,10 +18,14 @@ export class NavbarDesktopComponent implements OnDestroy {
 
   constructor(
     private currentUrl: CurrentUrl,
+    private overlayerService: OverlayerService,
   ) {
     this.sub0 = this.currentUrl.getCurrentUrlObservable().subscribe(url => {
-      this.currentLink = url;
-      this.handleDesktopMenu();
+      if (url) {
+        this.currentLink = url;
+        this.handleDesktopMenu();
+        this.handleOverlayerWhenLinkChanges();
+      }
     });
   }
 
@@ -32,6 +37,7 @@ export class NavbarDesktopComponent implements OnDestroy {
     }
     else {
       this.handleDesktopMenu();
+      this.handleOverlayer();
       // console.log("OUTSIDE - MENU");
     }
   }
@@ -49,11 +55,24 @@ export class NavbarDesktopComponent implements OnDestroy {
   toggleDesktopMenu() {
     if (!this.isHomePage()) {
       this.handleWindow.isDesktopMenuOpen = !this.handleWindow.isDesktopMenuOpen;
+      this.handleOverlayer();
     }
   }
 
   closeDesktopMenu(event: any) {
     this.handleWindow.isDesktopMenuOpen = event;
+    this.handleOverlayer();
+  }
+
+  handleOverlayer() {
+    if (this.isHomePage()) this.overlayerService.overlayer.overlayerDesktop = false;
+    else this.overlayerService.overlayer.overlayerDesktop = this.handleWindow.isDesktopMenuOpen;
+    this.overlayerService.handleOverlayerService();
+  }
+
+  handleOverlayerWhenLinkChanges() {
+    if (this.currentLink) this.overlayerService.overlayer.overlayerDesktop = false;
+    this.overlayerService.handleOverlayerService();
   }
 
   ngOnDestroy(): void {

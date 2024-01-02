@@ -1,19 +1,38 @@
 .overflow {
     width: 100%;
     height: 100%;
-    /* background: pink; */        
+    /* background: pink; */
 }
 
 .main {
+    position: initial;
+}
+
+.desktop {
     position: relative;
 }
 
 .overlay {
     position: absolute;
-    z-index: 10;
+    display: none;
+    z-index: 2;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1020px) {
+    .main {
+        position: relative;
+    }
+    
+    .desktop {
+        position: initial;
+    }
+    
+    .overlay {
+        top: 60px;
+    }
 }

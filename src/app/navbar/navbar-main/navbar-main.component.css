@@ -138,21 +138,9 @@ mat-icon {
   display: none;
 }
 
-.mega-menu {
+.mega-menu {  
+  position: absolute;
   z-index: 3;
-}
-
-.background-menu {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.departaments {
-  position: absolute;
   top: 60px;
   left: 0;
   float: left;
