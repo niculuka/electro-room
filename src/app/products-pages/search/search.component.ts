@@ -62,16 +62,14 @@ export class SearchComponent implements OnInit {
   over4000_chk: boolean = false;
   protected over4000: Array<Product> = [];
   protected over4000_out: Array<Product> = [];
-  
+
 
   constructor(
     private searchProductService: SearchProductService,
     private cartService: CartService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.searchProductService.getProductsObservable().subscribe(data => {
@@ -85,10 +83,10 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.searchResult = params['searchTerm'];
       this.searchProductService.searchProducts(this.searchResult.toLowerCase());
-    });       
+    });
   }
 
-  isProductsEmpty() {    
+  isProductsEmpty() {
     return this.products.length === 0;
   }
 

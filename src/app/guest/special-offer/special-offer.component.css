@@ -2,72 +2,118 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100vh;
     /* border: 2px solid black; */
 }
 
-.row-offer {
+.content-offer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     width: 1500px;
-    height:fit-content
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background: white;
     /* border: 2px solid black; */
 }
 
-.card-offer {
-    width: 100%;    
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    text-align: center;
-    background: white;
-    box-sizing: border-box;
-    /* border: 1px solid black;*/
+.header {
+    width: 100%;
 }
 
 h1 {
-    margin: 20px;
+    width: 100%;
+    margin: 40px 0;
+    padding: 0 20px;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
 }
 
-@media(max-width: 1600px) {
-    .row-offer {
+.header img {
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 40px;
+    /* border: 2px solid black;  */
+}
+
+.image img {
+    width: 360px;
+    cursor: pointer;
+    /* border: 1px solid black; */
+}
+
+.description {
+    padding: 0 20px;
+    /* border: 1px solid black; */
+}
+
+p {
+    font-size: 15px;
+}
+
+@media(max-width: 1530px) {
+    .content-offer {
         width: 1200px;
-    }
-    
-    .card-offer h1 {
-        font-size: 22px;
+    }      
+}
+
+@media(max-width: 1260px) {
+    .content-offer {
+        width: 990px;
     }
 }
 
-@media(max-width: 1280px) {
-    .row-offer {
-        width: 980px;
+@media(max-width: 1020px) {
+    .container-offer {
+        padding: 0 10px;
     }
-    
-    .card-offer h1 {
-        font-size: 20px;
+
+    .content-offer {
+        width: 100%;
     }
+
+    h1 {
+        margin: 30px 0;
+        font-size: 26px;
+    }
+
+    .image img {
+        width: 300px;
+    } 
 }
 
-@media(max-width: 1040px) {
-    .row-offer {
+@media(max-width: 766px) {
+    .body {
         flex-direction: column;
         align-items: center;
-        width: 100%;
-        margin: 16px;
     }
 
-    .card-offer {
-        width: 100%;
-    } 
-    
-    .card-offer h1 {
-        font-size: 22px;
+    .description {
+        margin-top: 10px;
     }
 }
 
 @media(max-width: 550px) {
-    .card-offer h1 {
-        font-size: 18px;
+    .body {
+        flex-direction: column;
+        padding-bottom: 20px;
     }
+
+    h1 {
+        margin: 20px 0;
+        font-size: 22px;
+    }
+}
+
+@media(max-width: 330px) {
+    .image img {
+        width: 100%;
+    } 
 }

@@ -50,9 +50,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   // { path: "**", component: HomeComponent },
 
-  { path: "test", component: InfoBlockComponent },
-
-  { path: "oferta-speciala", component: SpecialOfferComponent },
+  { path: "test", component: InfoBlockComponent },  
 
   // { path: "card-electro", component: ElectroCardComponent },
   { path: "electro-card", component: UnderConstructionComponent },
@@ -87,6 +85,17 @@ const routes: Routes = [
   { path: "under-construction", component: UnderConstructionComponent },
   { path: "401", component: UnauthComponent },
   { path: "404", component: NotFoundComponent },
+
+  // S P E C I A L   O F F E R -------------------------------------------------------------------------------------
+  { 
+    path: "oferta-speciala", 
+  component: SpecialOfferComponent,
+  data: {
+    breadcrumb: [
+      { label: 'Oferta Speciala', url: '' },
+    ]
+  },
+},
 
   // C U S T O M E R S   S U P P O R T -----------------------------------------------------------------------------
   {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-special-offer',
@@ -7,4 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpecialOfferComponent {
 
+  constructor(private toastrService: ToastrService) {}
+
+  offer() {
+    this.toastrService.success("Oferta valabila in limita stocului disponibil")
+  }
 }

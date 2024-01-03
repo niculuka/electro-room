@@ -1,7 +1,7 @@
 .compare {
     z-index: 5;
-    position: absolute;
-    top: 40%;
+    position: fixed;
+    top: 220px;
     right: 20px;
     display: flex;
     flex-direction: column;
