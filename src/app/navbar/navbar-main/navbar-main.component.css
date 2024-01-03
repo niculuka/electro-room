@@ -3,6 +3,7 @@
   width: 100%;
   /* background: rgb(0, 0, 0, 0.2);
   border: 12px solid rgb(0, 0, 0); */
+  background: rgb(255, 255, 255);
 }
 
 .content-nav {
@@ -13,7 +14,7 @@
   width: 1500px;
   height: 100px;
   margin: auto;
-  background: rgb(242, 242, 247);
+  background: rgb(255, 255, 255);
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
@@ -96,6 +97,7 @@ mat-icon {
 
 .search-bar {
   width: 450px;
+  background: rgb(242, 242, 247);
 }
 
 .search-bar form {
@@ -109,7 +111,7 @@ mat-icon {
 }
 
 .search-bar form input {
-  font-size: 14px;
+  font-size: 15px;
   border: none;
   outline: none;
   width: 100%;
@@ -117,7 +119,7 @@ mat-icon {
 }
 
 .search-bar form input::placeholder {
-  color: grey;
+  color: rgb(0, 0, 0, 0.6);
 }
 
 .search-bar button {
@@ -140,7 +142,7 @@ mat-icon {
 
 .mega-menu {  
   position: absolute;
-  z-index: 3;
+  z-index: 10;
   top: 60px;
   left: 0;
   float: left;
@@ -242,16 +244,6 @@ a {
 
 .emptyList:hover {
   background: none;
-}
-
-a.active {
-  color: white;
-  background: rgb(220, 20, 110);
-}
-
-a:hover {
-  color: black;  
-  background: rgba(220, 20, 110, 0.1);
 }
 
 /* --------------------------------------------------------------------------- */

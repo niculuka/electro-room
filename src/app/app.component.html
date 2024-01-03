@@ -1,11 +1,13 @@
-<div class="overflow" [style]="overlayer.overlayerMain||overlayer.overlayerDesktop?'overflow: hidden':'overflow: scroll'">
+<div class="overflow" [style]="overlayer.overlayerMain?'overflow-y: hidden':'overflow-y: scroll'">
     <div class="main">
         <app-navbar-main></app-navbar-main>
         <app-navbar-desktop></app-navbar-desktop>
 
         <div class="desktop">
             <router-outlet></router-outlet>
-            <div class="overlay" [style]="overlayer.overlayerMain||overlayer.overlayerDesktop?'display: block':'display: none'"></div>
+            <div class="overlay"
+                [style]="overlayer.overlayerMain||overlayer.overlayerDesktop?'display: block':'display: none'">
+            </div>
         </div>
     </div>
 </div>
