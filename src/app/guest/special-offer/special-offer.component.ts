@@ -11,6 +11,6 @@ export class SpecialOfferComponent {
   constructor(private toastrService: ToastrService) {}
 
   offer() {
-    this.toastrService.success("Oferta valabila in limita stocului disponibil")
+    this.toastrService.success("Oferta valabila in limita stocului disponibil");
   }
 }

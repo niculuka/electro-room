@@ -68,6 +68,7 @@ mat-icon {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-weight: 500;
     /* border: 2px solid rgb(255, 136, 0); */
 }
 
@@ -110,10 +111,6 @@ mat-icon {
     cursor: pointer;
     text-decoration: none;
     /* border: 1px solid red; */
-}
-
-.title:hover {    
-    text-decoration: underline;
 }
 
 .subtitle {

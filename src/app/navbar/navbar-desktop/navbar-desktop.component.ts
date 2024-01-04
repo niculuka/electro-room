@@ -1,4 +1,6 @@
 import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 import { HandleWindow } from 'src/app/shared/models/handle-window.model';
 import { CurrentUrl } from 'src/app/shared/services/current-url.service';
 import { OverlayerService } from 'src/app/shared/services/overlayer.service';
@@ -10,9 +12,13 @@ import { OverlayerService } from 'src/app/shared/services/overlayer.service';
 })
 export class NavbarDesktopComponent implements OnDestroy {
 
+  departments: Array<Department> = DEPARTMENTS;  
+
   @ViewChild('menu') menu: ElementRef | undefined;
   handleWindow: HandleWindow = new HandleWindow();
   currentLink: string = "";
+
+  @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
 
   private sub0: any;
 
@@ -43,6 +49,7 @@ export class NavbarDesktopComponent implements OnDestroy {
   }
   // ===============================================================================
 
+  // B u r g e r  M e n u ----------------------------------------------------------
   handleDesktopMenu() {
     if (this.isHomePage()) this.handleWindow.isDesktopMenuOpen = true;
     else this.handleWindow.isDesktopMenuOpen = false;
@@ -73,6 +80,11 @@ export class NavbarDesktopComponent implements OnDestroy {
   handleOverlayerWhenLinkChanges() {
     if (this.currentLink) this.overlayerService.overlayer.overlayerDesktop = false;
     this.overlayerService.handleOverlayerService();
+  }
+
+  // D r o p D o w n  M e n u -------------------------------------------------------
+  closeDropDownMenu() {
+    this.trigger.closeMenu();
   }
 
   ngOnDestroy(): void {

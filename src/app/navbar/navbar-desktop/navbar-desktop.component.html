@@ -8,6 +8,7 @@
             <span>Produse</span>
           </div>
         </button>
+        <!-- mega-menu ----------------------------------------------------------------------------- -->
         <div class="mega-menu" *ngIf="handleWindow.isDesktopMenuOpen">
           <app-mega-menu-desktop (closeDeskMenuEvent)="closeDesktopMenu($event)"></app-mega-menu-desktop>
         </div>
@@ -18,48 +19,35 @@
         </a>
       </li>
       <li class="item-nav">
-        <a [matMenuTriggerFor]="animals">Finantare
+        <a [matMenuTriggerFor]="department">Departamente
           <mat-icon>arrow_drop_down</mat-icon>
         </a>
-        <mat-menu #animals="matMenu">          
-          <button mat-menu-item [matMenuTriggerFor]="onlineRate">Rate OnLine</button>
-          <button mat-menu-item [matMenuTriggerFor]="creditInStore">Credit in magazin</button>
-          <button mat-menu-item>DEMO DROPDOWN</button>
-        </mat-menu>
-        <mat-menu #onlineRate="matMenu">
-          <button mat-menu-item [matMenuTriggerFor]="fixedRate">Rate fixe</button>
-          <button mat-menu-item [matMenuTriggerFor]="smallInterest">Dobanda mica</button>
-          <button mat-menu-item [matMenuTriggerFor]="fastCredit">Credit rapid</button>
-          <button mat-menu-item>Rambursare rapida</button>
-          <button mat-menu-item>24 de ore</button>
-        </mat-menu>
-        <mat-menu #creditInStore="matMenu">
-          <button mat-menu-item>Credit fizic</button>
-          <button mat-menu-item>Credit pe card</button>
-          <button mat-menu-item>Credit in valuta</button>
-          <button mat-menu-item>Schimb valutar</button>
-          <button mat-menu-item>Curs de schimb</button>
-        </mat-menu>
-        <mat-menu #fixedRate="matMenu">
-          <button mat-menu-item>12 luni</button>
-          <button mat-menu-item>24 de luni</button>
-          <button mat-menu-item>3 ani</button>
-          <button mat-menu-item>5 ani</button>
-        </mat-menu>
-        <mat-menu #smallInterest="matMenu">
-          <button mat-menu-item>Sub 5%</button>
-          <button mat-menu-item>5-10%</button>
-          <button mat-menu-item>10-20%</button>
-        </mat-menu>
-        <mat-menu #fastCredit="matMenu">
-          <button mat-menu-item>Credit in 2h</button>
-          <button mat-menu-item>Credit in 24h</button>
-          <button mat-menu-item>Credit in regim strict</button>
-          <button mat-menu-item>Creditare pe loc</button>
+        <!-- dropdown-menu ------------------------------------------------------------------------ -->
+        <mat-menu #department="matMenu">
+          <div *ngFor="let depart of departments">
+            <button mat-menu-item [routerLink]="depart.link" [matMenuTriggerFor]="title"
+              (click)="closeDropDownMenu()" [ngStyle]="{'color': depart.color, 'font-weight': 500}">
+              {{depart.name}}
+            </button>
+            <mat-menu #title="matMenu">
+              <div *ngFor="let title of depart.titles">
+                <button mat-menu-item [routerLink]="title.link" [matMenuTriggerFor]="subtitle"
+                  (click)="closeDropDownMenu()" [ngStyle]="{'color': title.color, 'font-weight': 500}">
+                  {{title.name}}
+                </button>
+                <mat-menu #subtitle="matMenu">
+                  <button mat-menu-item [routerLink]="subtitle.link" *ngFor="let subtitle of title.subtitles"
+                    [ngStyle]="{'color': subtitle.color}">
+                    {{subtitle.name}}
+                  </button>
+                </mat-menu>
+              </div>
+            </mat-menu>
+          </div>
         </mat-menu>
       </li>
     </ul>
-
+    
     <ul>
       <li class="item-nav">
         <a routerLink="/suport-clienti" routerLinkActive="active">

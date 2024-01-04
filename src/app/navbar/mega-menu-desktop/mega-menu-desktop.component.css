@@ -58,6 +58,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-weight: 500;
     /* border: 2px solid rgb(255, 136, 0); */
 }
 

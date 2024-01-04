@@ -5,7 +5,7 @@
         <a (click)="toogleDepartment(department)">
             <span class="icon">
                 <img class="department-icon" src="{{department.icon}}" alt="icon">
-                <span>{{department.name}}</span>
+                <span [ngStyle]="{'color': department.color}">{{department.name}}</span>
             </span>
             <span class="icon">
                 <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">

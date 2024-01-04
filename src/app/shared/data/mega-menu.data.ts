@@ -8,6 +8,7 @@ export interface Department {
     link: string;
     chevron: string;
     showTitle: boolean;
+    color: string;
     titles: Array<Title>;
 }
 
@@ -41,6 +42,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/p/lpt",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#ff4196",
         titles: [
             {
                 name: "Laptopuri",
@@ -49,7 +51,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/departments/lpt/laptops.png",
                 showSubtitle: false,
                 isReady: true,
-                color: "#df0265",
+                color: "#ff4196",
                 subtitles: [
                     {
                         name: "Toate Laptopurile",
@@ -100,7 +102,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/departments/lpt/laptop-accessories.png",
                 showSubtitle: false,
                 isReady: true,
-                color: "#df0265",
+                color: "#ff4196",
                 subtitles: [
                     {
                         name: "Genti laptop",
@@ -148,7 +150,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Stickere pentru ecran",
@@ -156,7 +158,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -167,8 +169,17 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
-                subtitles: []
+                color: "#707070",
+                subtitles: [
+                    {
+                        name: "Tel",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: false,
+                        color: "#999999",
+                    },
+                ]
             },
             {
                 name: "Tablete",
@@ -177,8 +188,17 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
-                subtitles: []
+                color: "#707070",
+                subtitles: [
+                    {
+                        name: "Tab",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: false,
+                        color: "#999999",
+                    },
+                ]
             },
             {
                 name: "Accesorii telefoane",
@@ -187,7 +207,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Huse telefon",
@@ -195,7 +215,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Baterii externe",
@@ -203,7 +223,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Incarcatoare casa/auto",
@@ -211,7 +231,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Suporturi auto",
@@ -219,7 +239,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Cabluri, adaptoare, Reductii",
@@ -227,7 +247,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Folii de protectie pentru ecrane",
@@ -235,7 +255,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Carduri de memorie",
@@ -243,7 +263,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -254,7 +274,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Bratari smart",
@@ -262,7 +282,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Ceasuri smart",
@@ -270,7 +290,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Bratari si ceasuri fitness",
@@ -278,7 +298,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Accesorii Wearables",
@@ -286,7 +306,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
 
                 ]
@@ -298,7 +318,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Casti wireless",
@@ -306,7 +326,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Casti in-ear",
@@ -314,7 +334,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Casti over-ear",
@@ -322,7 +342,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Ochelari audio",
@@ -330,7 +350,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Accesorii pentru casti",
@@ -338,7 +358,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -349,7 +369,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Huse tablete",
@@ -357,7 +377,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Folii de protectie tablete",
@@ -365,7 +385,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Incarcatoare",
@@ -373,7 +393,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Accesorii diverse",
@@ -381,7 +401,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -392,7 +412,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Cartele prepaid",
@@ -400,7 +420,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Pachete cu telefon",
@@ -408,7 +428,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -419,7 +439,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Telefoane cu fise mici",
@@ -427,7 +447,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Telefoane cu disc",
@@ -435,7 +455,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Mini telefoane (digitale)",
@@ -443,7 +463,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Centrale telefonice",
@@ -451,7 +471,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -465,6 +485,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/p/dps",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#ff4196",
         titles: [
             {
                 name: "Sisteme PC",
@@ -473,7 +494,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/departments/dps/pc.png",
                 showSubtitle: false,
                 isReady: true,
-                color: "#df0265",
+                color: "#ff4196",
                 subtitles: [
                     {
                         name: "Gaming PC",
@@ -497,7 +518,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Mini PC",
@@ -505,7 +526,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -516,7 +537,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/departments/dps/monitors.png",
                 showSubtitle: false,
                 isReady: true,
-                color: "#df0265",
+                color: "#ff4196",
                 subtitles: [
                     {
                         name: "Monitoare profesionale",
@@ -532,7 +553,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Monitoare Home",
@@ -540,7 +561,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },                    
                     {
                         name: "Monitoare portabile",
@@ -548,7 +569,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -559,7 +580,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Suport monitor",
@@ -567,7 +588,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -578,7 +599,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Mac",
@@ -586,7 +607,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -597,7 +618,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Hard Disk Drive, HDD",
@@ -605,7 +626,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Solid State Drive, HARD",
@@ -613,7 +634,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Placi de baza",
@@ -621,7 +642,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Placi video",
@@ -629,7 +650,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Procesoare",
@@ -637,7 +658,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Memorii RAM",
@@ -645,7 +666,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Surse de alimentare",
@@ -653,7 +674,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Coolere, Ventilatoare",
@@ -661,7 +682,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Carcase si Rack-uri",
@@ -669,7 +690,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -680,7 +701,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Routere wireless",
@@ -688,7 +709,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Adaptoare wireless",
@@ -696,7 +717,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Adaptoare priza",
@@ -704,7 +725,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Switch / Modem",
@@ -712,7 +733,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -723,7 +744,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Imprimante",
@@ -731,7 +752,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Plottere",
@@ -739,7 +760,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Scannere",
@@ -747,7 +768,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Imprimante termice",
@@ -755,7 +776,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Consumabile",
@@ -763,7 +784,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Imprimante 3D",
@@ -771,7 +792,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Accesorii si consumabile 3D",
@@ -779,7 +800,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -790,7 +811,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Hartie si produse din hartie",
@@ -798,7 +819,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Organizare, Arhivare",
@@ -806,7 +827,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Accesorii de birou",
@@ -814,7 +835,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Tehnica de birou",
@@ -822,7 +843,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Sisteme de prezentare",
@@ -830,7 +851,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -841,7 +862,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "HDD si HARD externe",
@@ -849,7 +870,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Mouse",
@@ -857,7 +878,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Tastaturi",
@@ -865,7 +886,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Casti pentru calculator",
@@ -873,7 +894,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Memorii USB",
@@ -881,7 +902,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Boxe audio pentru calculator",
@@ -889,7 +910,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Camere Web",
@@ -897,7 +918,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Unitati optice externe",
@@ -905,7 +926,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Card reader",
@@ -913,7 +934,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -924,7 +945,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "UPS cu/fara management",
@@ -932,7 +953,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Acumulatori pentru UPS",
@@ -940,7 +961,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -954,6 +975,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -962,7 +984,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Televizoare",
@@ -970,7 +992,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "HD & FullHD",
@@ -978,7 +1000,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -986,7 +1008,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -994,7 +1016,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1005,7 +1027,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Sisteme audio",
@@ -1013,7 +1035,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Soundbar",
@@ -1021,7 +1043,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Boxe portabile",
@@ -1029,7 +1051,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Radio",
@@ -1037,7 +1059,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1051,6 +1073,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1059,7 +1082,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "HD & FullHD",
@@ -1067,7 +1090,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1075,7 +1098,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1083,7 +1106,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare",
@@ -1091,7 +1114,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1105,6 +1128,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1113,7 +1137,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Televizoare",
@@ -1121,7 +1145,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "HD & FullHD",
@@ -1129,7 +1153,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1137,7 +1161,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1145,7 +1169,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1159,6 +1183,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1167,7 +1192,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "HD & FullHD",
@@ -1175,7 +1200,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1183,7 +1208,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1191,7 +1216,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare",
@@ -1199,7 +1224,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1213,6 +1238,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1221,7 +1247,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Televizoare",
@@ -1229,7 +1255,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "HD & FullHD",
@@ -1237,7 +1263,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1245,7 +1271,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1253,7 +1279,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1267,6 +1293,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1275,7 +1302,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "HD & FullHD",
@@ -1283,7 +1310,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1291,7 +1318,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1299,7 +1326,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare",
@@ -1307,7 +1334,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1321,6 +1348,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1329,7 +1357,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Televizoare",
@@ -1337,7 +1365,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "HD & FullHD",
@@ -1345,7 +1373,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1353,7 +1381,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1361,7 +1389,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1375,6 +1403,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1383,7 +1412,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "HD & FullHD",
@@ -1391,7 +1420,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1399,7 +1428,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1407,7 +1436,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare",
@@ -1415,7 +1444,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1429,6 +1458,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1437,7 +1467,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "Televizoare",
@@ -1445,7 +1475,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "HD & FullHD",
@@ -1453,7 +1483,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1461,7 +1491,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1469,7 +1499,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
@@ -1483,6 +1513,7 @@ export const DEPARTMENTS: Department[] = [
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
+        color: "#707070",
         titles: [
             {
                 name: "Televizoare si accesorii",
@@ -1491,7 +1522,7 @@ export const DEPARTMENTS: Department[] = [
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
-                color: "#262626",
+                color: "#707070",
                 subtitles: [
                     {
                         name: "HD & FullHD",
@@ -1499,7 +1530,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "4K Laptop Ultra HD",
@@ -1507,7 +1538,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare OLED",
@@ -1515,7 +1546,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                     {
                         name: "Televizoare",
@@ -1523,7 +1554,7 @@ export const DEPARTMENTS: Department[] = [
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
-                        color: "#676767",
+                        color: "#999999",
                     },
                 ]
             },
