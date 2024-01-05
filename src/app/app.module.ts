@@ -95,7 +95,6 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
-// ------------------------------------------------------------------------------------------------------
 
 
 @NgModule({
@@ -174,7 +173,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     // a d m i n - D E M O
     AdminDemoProductComponent,
     AdminDemoOrderComponent,
-    AdminDemoUserComponent,
+    AdminDemoUserComponent,    
   ],
   imports: [
     BrowserModule,

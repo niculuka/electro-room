@@ -2,126 +2,63 @@
   <div class="content-favorites">
 
     <div class="empty" *ngIf="isFavoritesEmpty()">
-      "Lista produselor favorite este goala !!!"
+      <h1>"Lista produselor favorite este gola"</h1>
+      <mat-icon (click)="goBack()">favorite</mat-icon>
+      <p>Poti adauga produse favorite prin apasarea iconului inimioara din dreptul fiecarui produs dorit.</p>
+      <button class="btn-back" (click)="goBack()">Inapoi</button>
     </div>
 
-    <table class="row-favorites" style="width: 100%;" *ngIf="!isFavoritesEmpty()">
-      <thead>
-        <tr class="back">
-          <td colspan="3">
-            <button class="btn-goBack" (click)="goBack()">BACK</button>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="7">
-            <h3>Favorite: {{favorites.length}} produse</h3>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="7" class="livration">Livrare: 1-5 zile lucratoare</th>
-        </tr>
-      </thead>
+    <div class="header" *ngIf="!isFavoritesEmpty()">
+      <h1>Favorite ({{favorites.length}} {{favorites.length==1?'produs':"produse"}})</h1>
+      <div>
+        <p>Livrare: 1-5 zile lucratoare</p>
+        <p>Transport gratuit pentru comenzi de minim 200 de lei</p>
+      </div>
+    </div>
 
-
-      <tbody>
-        <tr *ngFor="let product of favorites; index as ind">
-
-          <td>{{ind+1}}</td>
-          <td>
-            <a [routerLink]="'/p/'+product.department.toLowerCase()
-                                    +'/'+product.type.toLowerCase()
-                                    +'/'+product.category.toLowerCase()
-                                    +'/'+product.linkName">
-              <img [src]="product.image" [alt]="product.name">
-            </a>
-          </td>
-          <td>
-            <a [routerLink]="'/p/'+product.department.toLowerCase()
-                                    +'/'+product.type.toLowerCase()
-                                    +'/'+product.category.toLowerCase()
-                                    +'/'+product.linkName">
-              {{product.description}}
-            </a>
-          </td>
-          <td>
-            {{product.price | number: '1.2-2'}} Lei
-          </td>
-          <td class="addToCart">
-            <mat-icon (click)="addToCart(product)">shopping_cart</mat-icon>
-          </td>
-          <td>
-            <button class="btn-remove" (click)="removeFromFavorites(product)">
-              Sterge
-            </button>
-          </td>
-
-        </tr>
-      </tbody>
-
-    </table>
-
-
-    <table class="column-favorites" style="width: 100%;" *ngIf="!isFavoritesEmpty()">
-
-      <thead>
-        <tr>
-          <td colspan="2">
-            <h3>Cosul meu de cumparaturi:</h3>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="7" class="livration">Livrare: 1-5 zile lucratoare</th>
-        </tr>
-      </thead>
-
-      <tbody *ngFor="let product of favorites; index as ind">
-        <tr class="index">
-          <th colspan="2">{{ind+1}}</th>
-        </tr>
-        <tr>
-          <th>Imagine</th>
-          <td>
-            <a [routerLink]="'/p/'+product.department.toLowerCase()
+    <div class="main" *ngIf="!isFavoritesEmpty()">
+      <div class="fav-row" *ngFor="let product of favorites; index as ind">
+        <div class="index">
+          <p>{{ind+1}}</p>
+        </div>
+        <div class="image">
+          <a [routerLink]="'/p/'+product.department.toLowerCase()
                             +'/'+product.type.toLowerCase()
                             +'/'+product.category.toLowerCase()
                             +'/'+product.linkName">
-              <img [src]="product.image" [alt]="product.name">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <th>Nume</th>
-          <td><a [routerLink]="'/p/'+product.department.toLowerCase()
+            <img [src]="product.image" [alt]="product.name">
+          </a>
+        </div>
+        <div class="description-price-addToCart">
+          <div class="description">
+            <a [routerLink]="'/p/'+product.department.toLowerCase()
                               +'/'+product.type.toLowerCase()
                               +'/'+product.category.toLowerCase()
                               +'/'+product.linkName">
-              <strong>{{product.name}}</strong>
+              {{product.description}}
             </a>
-          </td>
-        </tr>
-        <tr>
-          <th>Descriere</th>
-          <td>{{product.description}}</td>
-        </tr>
-        <tr>
-          <th>Pret</th>
-          <td>
-            {{product.price | number: '1.2-2'}} Lei
-          </td>
-        </tr>
-        <tr>
-          <th>Sterge</th>
-          <td>
-            <button class="btn-remove" (click)="removeFromFavorites(product)">
-              Sterge
-            </button>
-          </td>
-        </tr>
+          </div>
+          <div class="price-addToCart">
+            <div class="price">
+              <p>{{product.price | number: '1.2-2'}} Lei</p>
+            </div>
+            <div class="addToCart">
+              <button>
+                <mat-icon (click)="addToCart(product)">shopping_cart</mat-icon>
+                <span>Adauga in cos</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
-      </tbody>
-
-    </table>
-
+        <!-- remove - favorites ----------------------------------------------- -->
+        <div class="remove">
+          <mat-icon (click)="removeFromFavorites(product)">close</mat-icon>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
+
+<app-footer></app-footer>

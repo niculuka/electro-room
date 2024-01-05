@@ -19,15 +19,6 @@ export class CartNavComponent {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
-  getProductLinkName(cartItem: CartItem) {
-    this.router.navigate([
-      '/p/' + cartItem.product.department.toLowerCase()
-      + '/' + cartItem.product.type.toLowerCase()
-      + '/' + cartItem.product.category.toLowerCase()
-      + '/' + cartItem.product.linkName
-    ]);
-  }
-
   removeFromCart(cartItem: CartItem) {
     let name: any = cartItem.product.name;
     this.cartService.removeFromCartService(name);

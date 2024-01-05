@@ -12,7 +12,7 @@
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-/* e m p t y - c a r t */
+/* e m p t y - c a r t --------------------------------- */
 .empty {
   display: flex;
   flex-direction: column;
@@ -21,9 +21,10 @@
   color: rgb(220, 20, 110);
 }
 
-.empty h1 {
-  width: fit-content;
-  margin: auto;
+.empty h1,
+.empty p {
+  width: 100%;
+  text-align: center;
 }
 
 mat-icon {
@@ -39,6 +40,12 @@ mat-icon {
   height: 200px;
   font-size: 200px;
   /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.empty mat-icon:hover {
+  transition: 0.2s;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+  color: rgb(189, 1, 85);
 }
 
 button {

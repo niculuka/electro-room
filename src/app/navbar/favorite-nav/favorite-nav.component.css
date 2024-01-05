@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-.favorite .favorite-items {
+.favorite-items {
     max-height: 280px;
     overflow-y: scroll;
 
@@ -17,83 +17,111 @@
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.favorite .favorite-items::-webkit-scrollbar {
+.favorite-items::-webkit-scrollbar {
     display: none;
 }
 
-.favorite .favorite-items table {
+.favorite-items table {
     cursor: default;
     border-collapse: collapse;
     width: 260px;
 }
 
-.favorite .favorite-items table tr {
+.favorite-items table tr {
     border-bottom: 1px solid lightgray;
 }
 
-.favorite .favorite-items table tr:hover {
+.favorite-items table tr:hover {
     background: rgba(220, 20, 110, 0.1);
 }
 
-.favorite .favorite-items table tr:last-child {
+.favorite-items table tr:last-child {
     border-bottom: none;
 }
 
-.favorite .favorite-items table td {
+.favorite-items table td {
     padding: 4px 8px;
     /* border: 1px solid rgb(253, 3, 3); */
 }
 
-.favorite .favorite-items table td a {
-    text-decoration: none;
+a {
+    display: block;
     color: black;
-    /* border: 1px solid black; */
+    text-decoration: none;
+    cursor: pointer;
+    /* border: 1px solid rgb(253, 3, 3); */
 }
 
-.favorite .favorite-items table img {
+.favorite-items table img {
     width: 30px;
     height: 30px;
-    cursor: pointer;
 }
 
-.favorite .favorite-items table .name {
+.favorite-items table .name {
     font-size: 12px;
     line-height: 14px;
-    cursor: pointer;
 }
 
-.favorite .favorite-items table .price {
+.favorite-items table .quantity {
+    font-size: 14px;
+    color: gray;
+}
+
+.favorite-items table .price {
     white-space: nowrap;
     font-size: 14px;
     color: rgb(220, 20, 110);
 }
 
-.favorite .favorite-items table mat-icon {
+.favorite-items table mat-icon {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     font-size: 18px;
     color: gray;
     cursor: pointer;
     /* border: 1px solid black; */
 }
 
-.favorite .favorite-items table mat-icon:hover {
-    color: rgb(0, 0, 0);
+.favorite-items table mat-icon:hover {
+    transform: scale(1.1, 1.1);
+    color: rgb(220, 20, 110);
 }
 
 /* footer -------------------------------------------*/
-.favorite .button-container {
+.total {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 10px;
     box-shadow: 0px -6px 16px 00px rgba(0, 0, 0, 0.3);
     /* border: 1px solid black; */
 }
 
+.total .total-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    /* border: 1px solid black; */
+}
 
-.favorite .button-container button {
+/* .favorite-items .total span {
+    border: 1px solid black;
+  } */
+
+.total .total-items h4 {
+    margin: 0;
+    padding: 0;
+    color: rgb(220, 20, 110);
+    /* border: 1px solid black; */
+}
+
+.total button {
     color: white;
     font-size: 14px;
     width: 100%;
@@ -101,53 +129,63 @@
     border: none;
     border-radius: 4px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    background: #616161;
+    background: rgb(220, 20, 110);
 }
 
-.favorite .button-container button:hover {
-    background: #7e7e7e;
+.total button:hover {
+    background: rgb(210, 0, 94);
 }
 
 @media (max-width: 550px) {
-    .favorite .favorite-items {
-        max-height: 180px;
+    .favorite-items {
+        max-height: 200px;
     }
 
-    .favorite .favorite-items table {
-        border-collapse: collapse;
-        width: 200px;
+    .favorite-items table {
+        width: 240px;
     }
 
-    .favorite .favorite-items table td {
+    .favorite-items table td {
         padding: 2px 4px;
     }
 
-    .favorite .favorite-items table img {
+    .favorite-items table img {
         width: 26px;
         height: 26px;
     }
 
-    .favorite .favorite-items table .name {
+    .favorite-items table .name {
         font-size: 10px;
         line-height: 12px;
     }
 
-    .favorite .favorite-items table .price {
+    .favorite-items table .quantity {
         font-size: 12px;
     }
 
-    .favorite .favorite-items table mat-icon {
+    .favorite-items table .price {
+        font-size: 12px;
+    }
+
+    .favorite-items table mat-icon {
         width: 14px;
         height: 14px;
         font-size: 16px;
     }
 
-    .favorite .button-container {
+    .total {
         padding: 6px;
     }
 
+    .total .total-items {
+        font-size: 12px;
+    }
 
-    .favorite .button-container button {
+    .total .total-items h4 {
+        font-size: 14px;
+    }
+
+    .total button {
         font-size: 12px;
         padding: 6px;
     }

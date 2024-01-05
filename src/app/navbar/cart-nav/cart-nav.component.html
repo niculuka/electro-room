@@ -4,10 +4,20 @@
     <table>
       <tr *ngFor="let item of cart.items">
         <td>
-          <img src={{item.product.image}} alt={{item.product.image}} (click)="getProductLinkName(item)">
+          <a [routerLink]="'/p/' + item.product.department.toLowerCase()
+                          + '/' + item.product.type.toLowerCase()
+                          + '/' + item.product.category.toLowerCase()
+                          + '/' + item.product.linkName">
+            <img src={{item.product.image}} alt={{item.product.image}}>
+          </a>
         </td>
         <td class="name">
-          <span (click)="getProductLinkName(item)">{{item.productName}}</span>
+          <a [routerLink]="'/p/' + item.product.department.toLowerCase()
+                          + '/' + item.product.type.toLowerCase()
+                          + '/' + item.product.category.toLowerCase()
+                          + '/' + item.product.linkName">
+            {{item.productName}}
+          </a>
         </td>
         <td class="quantity">x{{item.quantity}}</td>
         <td class="price">{{item.price}} Lei</td>
@@ -24,7 +34,9 @@
       <h4><strong>{{cart.subtotal | number: '1.2-2'}} Lei</strong></h4>
     </div>
 
-    <button routerLink="/cart">Vezi detalii cos!</button>
+    <a routerLink="/cart">
+      <button>Vezi detalii cos!</button>
+    </a>
   </div>
 
 </div>

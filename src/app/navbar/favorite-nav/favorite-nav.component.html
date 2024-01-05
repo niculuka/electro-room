@@ -8,7 +8,7 @@
                                     +'/'+product.type.toLowerCase()
                                     +'/'+product.category.toLowerCase()
                                     +'/'+product.linkName">
-                        <img src={{product.image}}>
+                        <img src={{product.image}} alt={{product.image}}>
                     </a>
                 </td>
                 <td class="name">
@@ -16,7 +16,7 @@
                                     +'/'+product.type.toLowerCase()
                                     +'/'+product.category.toLowerCase()
                                     +'/'+product.linkName">
-                        <span>{{product.name}}</span>
+                        {{product.name}}
                     </a>
                 </td>
                 <td class="price">{{product.price}} Lei</td>
@@ -27,7 +27,13 @@
         </table>
     </div>
 
-    <div class="button-container">
-        <button routerLink="/favorites">Vezi produsele favorite!</button>
+    <div class="total">
+        <div class="total-items">
+            <span><strong>Total favorite: </strong>{{favorites.length}} {{favorites.length==1 ? 'produs' : 'produse'}}</span>
+        </div>
+
+        <a routerLink="/favorites">
+            <button>Vezi produsele favorite!</button>
+        </a>
     </div>
 </div>
