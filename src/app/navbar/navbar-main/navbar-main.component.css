@@ -361,6 +361,10 @@ a {
   .logo img {
     width: 130px;
   }
+  
+  .search-bar form {
+    padding: 10px 6px;
+  }
 
   #username {
     width: 21px;

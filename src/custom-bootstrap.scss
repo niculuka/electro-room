@@ -36,10 +36,16 @@
 
 @media (max-width: 1020px) {
     .custom-bread-crumb {
-        padding: 10px !important;
+        padding: 10px 30px !important;
     }
 
     .carousel-indicators {
         bottom: -16px;
+    }
+}
+
+@media (max-width: 550px) {
+    .custom-bread-crumb {
+        padding: 10px 20px !important;
     }
 }
