@@ -1,35 +1,68 @@
-.container {
+.container-data {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  width: 100%;
+  /* border: 2px solid black; */
+}
+
+.content-data {
+  display: flex;
+  flex-direction: column;
+  width: 1500px;
+  min-height: 70vh;
+  cursor: default;
+  box-sizing: border-box;
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.content {
+.header {
+  box-shadow: 0px 6px 10px 0px rgba(62, 62, 62, 0.2);
+  border-radius: 8px;
+  background: white;
+}
+
+.header h1 {
+  text-align: left;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  font-size: 28px;
+  border-bottom: 1px solid rgb(220, 20, 110);
+}
+
+.header p {
+  width: fit-content;
+  font-size: 16px;
+  margin: 0;
+  padding: 20px;
+  text-decoration: none;
+  color: rgb(220, 20, 110);
+}
+
+/* ======================================================= */
+.data {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  box-sizing: border-box;
-  margin-top: 40px;
-  width: 1500px;
+  width: 100%;
+  margin-top: 12px;
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-/* BOX =============================================================================================== */
 .box {
   display: none;
-  box-sizing: border-box;
-  justify-content: flex-start;
-  padding: 30px;
-  background: #fff;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  order: 99;
   flex-grow: 1;
+  order: 99;
+  justify-content: flex-start;
   width: 100%;
-  /* border: 2px solid rgb(0, 0, 0); */
+  padding: 20px 0;
+  border-radius: 0 8px 8px 8px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  /* border: 1px solid rgb(0, 0, 0); */
 }
 
-.content>label {
+.data>label {
   display: block;
   color: white;
   text-align: center;
@@ -44,57 +77,71 @@
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
-.content>label:hover {
-  color: black;
+.data>label:hover {
+  background: rgb(199, 0, 90);
 }
 
-.content>input {
+.data>input {
   display: none;
 }
 
-.content>input:checked+label {
+.data>input:checked+label {
   color: black;
-  font-weight: bold;
   background: #fff;
 }
 
-.content>input:checked+label+.box {
+.data>input:checked+label+.box {
   display: flex;
 }
 
-/* TABLE =============================================================================================== */
+/* TABLE ---------------------------------------------  */
 table {
-  width: 400px;
+  width: 100%;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   /* border: 1px solid grey; */
 }
 
 tr {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-td,
+tr:last-child {
+  border-bottom: none;
+}
+
 th {
-  text-align: left;
+  width: 10%;
+  font-weight: 500;
+}
+
+td {
+  width: 90%;
+  color: rgb(220, 20, 110);
+}
+
+th,
+td {
   padding: 20px;
   font-size: 18px;
   line-height: 18px;
+  text-align: left;
+  /* border: 1px solid grey; */
 }
 
-/* FORMS =============================================================================================== */
+/* FORM  ---------------------------------------------  */
 .form-container {
   display: flex;
-  justify-content: center;
   flex-direction: row;
-  width: 400px;
-  border: 1px solid grey;
+  justify-content: center;
+  width: 500px;
+  padding: 20px;
+  /* border: 1px solid grey; */
 }
 
 form {
-  margin-top: 40px;
   display: block;
-  width: 80%;
+  width: 100%;
   /* border: 1px solid grey; */
 }
 
@@ -103,7 +150,6 @@ h2 {
 }
 
 form input {
-  box-sizing: border-box;
   font-size: 16px;
   padding: 10px;
   width: 100%;
@@ -111,7 +157,7 @@ form input {
 }
 
 form input:focus {
-  outline: 2px solid rgb(79, 190, 4);
+  outline: 1.5px solid rgba(0, 0, 0, 0.3);
 }
 
 form input::placeholder {
@@ -135,60 +181,88 @@ form input::placeholder {
 }
 
 button {
-  display: block;
-  cursor: pointer;
+  display: block;  
   color: white;
   text-align: center;
-  font-size: 16px;
-  font-weight: 600;
   width: 100%;
-  margin-bottom: 30px;
   padding: 14px 0;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
   border-radius: 4px;
-  background: rgb(79, 190, 4);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border: none;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);  
+  background: rgb(220, 20, 110);
 }
 
 button:hover {
-  color: black;
+  background: rgb(199, 0, 90);
 }
 
-/* MEDIA =============================================================================================== */
-@media (max-width: 1600px) {
-  .content {
+@media (max-width: 1530px) {
+  .content-data {
     width: 1200px;
   }
 }
 
-@media (max-width: 1280px) {
-  .content {
-    width: 980px;
+@media (max-width: 1260px) {
+  .content-data {
+    width: 990px;
   }
 }
 
-@media (max-width: 1040px) {
-  .content {
-    width: 700px;
+@media (max-width: 1020px) {
+  .content-data {
+    width: 100%;
+    margin: 0 10px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    padding: 10px 14px;
+  }
+
+  .header p {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+
+  th,
+  td {
+    padding: 18px;
+    font-size: 18px;
   }
 }
 
-@media (max-width: 766px) {
-  .content {
-    width: 530px;
-  }
-}
+@media (max-width: 766px) {}
 
 @media (max-width: 550px) {
-  .content {
+  .content-data {
     flex-direction: column;
-    width: 350px;
-    margin-top: 20px;
   }
 
-  .content>label {
+  .header h1 {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .header p {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .data {
+    flex-direction: column;
+  }
+
+  .data>label {
     margin: 0;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+  }
+
+  .form-container {
+    width: 100%;
+    padding: 10px;
   }
 
   form input {
@@ -196,11 +270,10 @@ button:hover {
     padding: 8px;
   }
 
-  td,
-  th {
-    padding: 18px;
+  th,
+  td {
+    padding: 16px 10px;
     font-size: 16px;
-    line-height: 16px;
   }
 
   .alert-container {
@@ -215,41 +288,5 @@ button:hover {
   button {
     font-size: 14px;
     padding: 12px 0;
-  }
-}
-
-@media (max-width: 380px) {
-  .content {
-    width: 300px;
-  }
-
-  .content>label {
-    font-size: 13px;
-  }
-
-  form input {
-    font-size: 12px;
-    padding: 6px;
-  }
-
-  td,
-  th {
-    padding: 16px;
-    font-size: 14px;
-    line-height: 14px;
-  }
-
-  .alert-container {
-    min-height: 20px;
-    line-height: 20px;
-  }
-
-  .alert {
-    font-size: 12px;
-  }
-
-  button {
-    font-size: 12px;
-    padding: 10px 0;
   }
 }
