@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/shared/models/user.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from '../../shared/services/user.service';
 
-const bcrypt = require("bcryptjs");   // add this:  -  "browser": {"crypto": false} -  in package.json 
+// add this:  -  "browser": {"crypto": false} -  in package.json
+const bcrypt = require("bcryptjs");
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
   currentUser: User = new User();
   user: User = new User();
@@ -32,9 +33,6 @@ export class ProfileComponent implements OnInit {
       this.currentUser = data;
       this.user.userId = data.userId;
     })
-  }
-
-  ngOnInit(): void {
   }
 
   differentPassword() {

@@ -79,11 +79,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-
-
-
   // Register cu si FORM-BUIDER ==============================================================================
-
   registerDriven() {
     this.authService.registerService(this.user).subscribe({
       next: () => {

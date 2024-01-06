@@ -25,21 +25,21 @@
         <!-- dropdown-menu ------------------------------------------------------------------------ -->
         <mat-menu #department="matMenu">
           <div class="departments" *ngFor="let depart of departments">
-            <button mat-menu-item [routerLink]="depart.link" [matMenuTriggerFor]="title" (click)="closeDropDownMenu()"
+            <a mat-menu-item [routerLink]="depart.link" [matMenuTriggerFor]="title" (click)="closeDropDownMenu()"
               [ngStyle]="{'color': depart.color, 'font-weight': 500}">
               {{depart.name}}
-            </button>
+          </a>
             <mat-menu #title="matMenu">
               <div class="titles" *ngFor="let title of depart.titles">
-                <button mat-menu-item [routerLink]="title.link" [matMenuTriggerFor]="subtitle"
+                <a mat-menu-item [routerLink]="title.link" [matMenuTriggerFor]="subtitle"
                   (click)="closeDropDownMenu()" [ngStyle]="{'color': title.color, 'font-weight': 500}">
                   {{title.name}}
-                </button>
+              </a>
                 <mat-menu #subtitle="matMenu">
                   <div class="subtitles" *ngFor="let subtitle of title.subtitles">
-                    <button mat-menu-item [routerLink]="subtitle.link" [ngStyle]="{'color': subtitle.color}">
+                    <a mat-menu-item [routerLink]="subtitle.link" [ngStyle]="{'color': subtitle.color}">
                       {{subtitle.name}}
-                    </button>
+                    </a>
                   </div>
                 </mat-menu>
               </div>

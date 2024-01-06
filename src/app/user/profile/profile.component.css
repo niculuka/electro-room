@@ -39,6 +39,91 @@
   color: rgb(220, 20, 110);
 }
 
+
+
+
+
+/* ======================================================= */
+/* .menu-container {
+  width: 100%;
+  margin-top: 12px;
+  padding: 40px 0;
+  box-shadow: 0px 6px 10px 0px rgba(62, 62, 62, 0.2);
+  border-radius: 8px;
+  background: white;
+}
+
+.menu {
+  width: 200px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 15px;
+  position: relative;
+  padding: 0 0 0 4px;
+  margin: 0;
+  background-color: rgb(220, 20, 110);
+}
+
+.menu a,
+.menu a:link,
+.menu a:visited,
+.menu a:focus,
+span {
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid rgb(220, 20, 110);
+}
+
+.menu a:hover {
+  color: rgb(220, 20, 110);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu>li {
+  display: block;
+  text-align: center;
+  margin-left: -4px;
+  border-left: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.menu>li>a {
+  padding: 20px 18px;
+  display: block;
+}
+
+.menu>li:hover {
+  background-color: #fff;
+}
+
+.menu>li>.megadrop {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  list-style: none;
+  top: 0px;
+  left: 203px;
+  width: 800px;
+  min-height: 100%;
+  text-align: left;
+  margin-top: 30px;
+  padding: 0;
+  z-index: 99;
+  overflow: hidden;
+  border: 2px solid rgb(220, 20, 110);
+}
+
+.menu>li:hover .megadrop {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0px;
+} */
+
+
+
+
 /* ======================================================= */
 .data {
   display: flex;
@@ -234,8 +319,6 @@ button:hover {
   }
 }
 
-@media (max-width: 766px) {}
-
 @media (max-width: 550px) {
   .content-data {
     flex-direction: column;
@@ -258,6 +341,10 @@ button:hover {
   .data>label {
     margin: 0;
     margin-bottom: 2px;
+  }
+
+  .box {
+    border-radius: 0 0 8px 8px;
   }
 
   .form-container {

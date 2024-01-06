@@ -11,15 +11,51 @@
     </div>
 
     <!-- SHOW PROFILE ------------------------------------------- -->
+    <!-- <div class="menu-container">
+      <ul class="menu">
+        <li>
+          <a>Profilul meu</a>
+          <div class="megadrop">
+
+            <h1>Profilul meu</h1>
+
+          </div>
+        </li>
+
+        <li>
+          <a>Editeaza profilul</a>
+          <div class="megadrop">
+            <h1>Editeaza profilul</h1>
+          </div>
+        </li>
+
+        <li>
+          <a>Schimba parola</a>
+          <div class="megadrop">
+            <h1>Schimba parola</h1>
+          </div>
+        </li>
+        <li>
+          <a>Sterge contul</a>
+          <div class="megadrop">
+            <h1>Sterge contul</h1>
+          </div>
+        </li>
+
+      </ul>
+    </div> -->
+
+
+    <!-- SHOW PROFILE ------------------------------------------- -->
     <div class="data">
-      <input type="radio" name="box" id="box1">
-      <label for="box1">Profil</label>
+      <input type="radio" name="box" id="box1" checked="checked">
+      <label for="box1">Profilul meu</label>
 
       <div class="box">
         <table>
           <tr>
             <th>Utilizator</th>
-            <td>{{currentUser.username}}</td>            
+            <td>{{currentUser.username}}</td>
           </tr>
           <tr>
             <th>Parola</th>
@@ -49,7 +85,7 @@
       </div>
 
       <!-- EDIT PROFILE ------------------------------------------- -->
-      <input type="radio" name="box" id="box2" checked="checked">
+      <input type="radio" name="box" id="box2">
       <label for="box2">Editeaza profilul</label>
 
       <div class="box">
@@ -91,7 +127,7 @@
               <div class="alert" *ngIf="match && f.submitted">Parola gresita!</div>
             </div>
 
-            <button type="submit">UPDATE</button>
+            <button type="submit">Salveaza</button>
 
           </form>
 
@@ -130,7 +166,7 @@
               <div class="alert" *ngIf="errorMessage">{{errorMessage}}</div>
             </div>
 
-            <button type="submit">CHANGE</button>
+            <button type="submit">Salveaza</button>
 
           </form>
 
@@ -157,7 +193,7 @@
               <div class="alert" *ngIf="match && d.submitted">Parola gresita!</div>
             </div>
 
-            <button type="submit">DELETE</button>
+            <button type="submit">Sterge</button>
 
           </form>
 
