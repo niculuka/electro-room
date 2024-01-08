@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    border-radius: 0 0 0 6px;
     border-right: 1px solid rgb(231, 231, 231);
     background: rgb(251, 245, 245);
     /* border: 1px solid rgb(0, 102, 255); */
@@ -28,6 +29,10 @@
     /* border: 1px solid red; */
 }
 
+.dropdown-nav>li:last-child a {
+    border-radius: 0 0 0 6px;
+}
+
 .dropdown-nav>li>a:hover {
     background: rgba(220, 20, 110, 0.1);
     cursor: pointer;
@@ -44,6 +49,7 @@
     padding: 0;
     height: 100%;
     z-index: 3;
+    border-radius: 0 0 6px 0;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: rgb(255, 255, 255);
     /* border: 1px solid rgb(1, 62, 159); */

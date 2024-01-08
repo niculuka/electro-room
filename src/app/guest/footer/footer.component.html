@@ -6,14 +6,32 @@
       <h3>{{title.name}}</h3>
 
       <div class="line"></div>
-      
+
       <div class="subtitle" *ngFor="let subtitle of title.subtitles">
-        <li>
-          <a (click)="noRoute()">{{subtitle.name}}</a>
-        </li>
+        <a (click)="noRoute()">{{subtitle.name}}</a>
       </div>
 
     </div>
 
   </div>
 </footer>
+
+
+<mat-accordion class="example-headers-align">
+
+  <mat-expansion-panel *ngFor="let title of titles">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{title.name}} </mat-panel-title>
+      <!-- <div class="line"></div> -->
+    </mat-expansion-panel-header>
+
+    <div class="subtitle" *ngFor="let subtitle of title.subtitles">
+      
+        <a (click)="noRoute()">{{subtitle.name}}</a>
+      
+    </div>
+    
+  </mat-expansion-panel>
+
+</mat-accordion>

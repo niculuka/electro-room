@@ -18,6 +18,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion'
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -173,7 +174,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     // a d m i n - D E M O
     AdminDemoProductComponent,
     AdminDemoOrderComponent,
-    AdminDemoUserComponent,    
+    AdminDemoUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -198,6 +199,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     MatIconModule,
     MatButtonToggleModule,
     MatDialogModule,
+    MatExpansionModule,
     NgbModule,
     NgbCarouselModule,
     CarouselModule,

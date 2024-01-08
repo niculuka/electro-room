@@ -4,11 +4,11 @@
 
         <a routerLink={{department.link}} (click)="closeDesktopMenu()">
             <span class="icon">
-                <img class="department-icon" src="{{department.icon}}" alt="icon">
+                <img class="department-icon" [src]="department.icon" alt="icon">
                 <span [ngStyle]="{'color': department.color}">{{department.name}}</span>
             </span>
             <span class="icon">
-                <img class="chevron-icon" src="{{department.chevron}}" alt="chevron-right">
+                <img class="chevron-icon" [src]="department.chevron" alt="chevron-right">
             </span>
         </a>
 

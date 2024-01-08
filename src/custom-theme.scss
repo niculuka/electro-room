@@ -21,6 +21,19 @@ $my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
 
 
 
+/* mat-accordeon ============================================== */
+.mat-expansion-panel-body {
+  padding: 10px 20px !important;
+}
+
+.mat-accordion .mat-expansion-indicator::after {
+  margin: 0 6px;
+  color: rgb(232, 232, 232);
+}
+
+.mat-accordion .mat-expansion-panel {
+  border-radius: 0 !important;
+}
 
 
 

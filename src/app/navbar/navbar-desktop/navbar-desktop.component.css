@@ -83,8 +83,9 @@ mat-icon {
   top: auto;
   left: 0;
   width: 301px;
+  border-radius: 0 0 0 6px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  /* border: 2px solid rgb(0, 0, 0); */
+  /* border: 1px solid rgb(0, 0, 0); */
 }
 
 /* -----------------------------------------------------*/
@@ -131,7 +132,7 @@ mat-icon {
 
 /* -----------------------------------------------------*/
 ::ng-deep .mat-menu-panel {
-  border-radius: 6px !important;
+  border-radius: 0 !important;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
