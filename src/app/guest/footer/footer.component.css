@@ -13,6 +13,7 @@ footer {
     grid: auto / 1fr 1fr 1fr 1fr;
     gap: 10px;
     width: 1500px;
+    cursor: default;
     /* border: 2px solid red; */
 }
 
@@ -70,9 +71,11 @@ footer {
 .example-headers-align .mat-mdc-form-field+.mat-mdc-form-field {
     margin-left: 8px;
 }
+.mat-expansion-panel:first-child {
+    padding-top: 10px;
+}
 
 .mat-expansion-panel {
-    padding-top: 10px;
     background: rgb(40, 40, 40);
 }
 
@@ -81,8 +84,9 @@ footer {
 }
 
 .mat-expansion-panel-header-title {
-    color: white;
+    font-size: 14px;
     padding: 6px 0;
+    color: white;    
     border-bottom: 1px solid rgba(220, 20, 110, 0.5);
 }
 
@@ -93,6 +97,8 @@ footer {
 .mat-expansion-panel-spacing {
     margin: 0 !important;
 }
+
+
 
 
 @media (max-width: 1530px) {

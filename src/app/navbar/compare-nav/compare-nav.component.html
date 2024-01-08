@@ -10,8 +10,11 @@
     </div>
 
     <div class="btn">
-        <!-- <button (click)="clearCompare()">DEL ALL</button> -->        
-        <button (click)="goToCompare()">Compara</button>
+        <!-- <button (click)="clearCompare()">DEL ALL</button> -->
+        <button (click)="goToCompare()" (mouseover)="overButton()" (mouseout)="outButton()"
+            [ngStyle]="{'background': changeBackground}">
+            Compara
+        </button>
     </div>
 
 </div>

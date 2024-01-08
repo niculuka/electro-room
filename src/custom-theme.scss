@@ -35,6 +35,9 @@ $my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
   border-radius: 0 !important;
 }
 
+.mat-expansion-indicator::after {
+  translate: 0 -4px !important; 
+}
 
 
 // colors

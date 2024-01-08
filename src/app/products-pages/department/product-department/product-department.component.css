@@ -9,6 +9,7 @@
     justify-content: center;
     margin: auto;
     width: 1500px;
+    min-height: 70vh;
     /* border: 6px solid red; */
 }
 
