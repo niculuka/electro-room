@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy } from '@angular/core';
+import { SPECIFICATIONS } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { CompareService } from 'src/app/shared/services/compare.service';
@@ -16,6 +17,8 @@ export class ProductDisplayComponent implements OnDestroy {
 
   product: Product = new Product();
   productsOut: Array<Product> = [];
+
+  name = SPECIFICATIONS;
 
   private sub1: any;
   private sub2: any;

@@ -187,7 +187,8 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-center-center',
-      newestOnTop: false
+      newestOnTop: false,
+      preventDuplicates: true,
     }),
     MatMenuModule,
     MatButtonModule,

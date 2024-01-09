@@ -11,10 +11,9 @@
 
     <div class="btn">
         <!-- <button (click)="clearCompare()">DEL ALL</button> -->
-        <button (click)="goToCompare()" (mouseover)="overButton()" (mouseout)="outButton()"
-            [ngStyle]="{'background': changeBackground}">
-            Compara
-        </button>
+        <a routerLink="/compare">
+            <button [disabled]="isDisabled"> Compara </button>
+        </a>
     </div>
 
 </div>

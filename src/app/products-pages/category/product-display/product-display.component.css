@@ -260,7 +260,8 @@ button:hover {
     }
 
     .main-list {
-        padding: 0 10px;
+        width: 100%;
+        padding: 0 30px 0 10px;
     }
 
     .details-list {
