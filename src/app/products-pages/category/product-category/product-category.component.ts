@@ -42,21 +42,21 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     private breadcrumbService: BreadcrumbService,
     private productCategoryService: ProductCategoryService,
   ) {
-    this.sub4 = this.productCategoryService.getDisplayTypeObservable().subscribe(data => {
+    this.sub0 = this.productCategoryService.getDisplayTypeObservable().subscribe(data => {
       if (data || data.length > 0) this.displayType = data;
     });
   }
 
   ngOnInit(): void {
-    this.sub0 = this.favoriteService.getFavoritesObservable().subscribe(() => {
-      this.sub1 = this.compareService.getComparesObservable().subscribe(() => {
-        this.sub2 = this.activatedRoute.paramMap.subscribe((params) => {
+    this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
+      this.sub2 = this.compareService.getComparesObservable().subscribe(() => {
+        this.sub3 = this.activatedRoute.paramMap.subscribe((params) => {
           this.currentDepartment = params.get('department') || "";
           this.currentType = params.get('type') || "";
           this.currentCategory = params.get('category') || "";
           this.createBreadcrumb();
           if (this.currentCategory === CATEGORY.LAPTOP.toLowerCase()) {
-            this.sub3 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
+            this.sub4 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
               if (data.length) {
                 this.products = data;
                 this.productCategoryService.productsFiltersService(this.products);
@@ -67,7 +67,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
               }
             });
           } else {
-            this.sub3 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
+            this.sub4 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
               this.products = data;
               this.productCategoryService.productsFiltersService(this.products);
             });

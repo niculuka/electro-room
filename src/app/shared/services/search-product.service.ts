@@ -3,61 +3,70 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/product.model';
-import { AuthService } from './auth.service';
-import { BearerService } from './bearer.service';
 
 const API_URL = `${environment.BASE_URL}`;
 
 @Injectable({
   providedIn: 'root'
 })
-export class SearchProductService extends BearerService {
-
-  findProduct: string = "gaming";
+export class SearchProductService {
 
   public products: Array<Product> = this.getProductsFromLocalStorage();
   private productsSubject: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.products);
 
-  findAll: Array<any> = [];
-
-
-  constructor(
-    authService: AuthService,
-    http: HttpClient
-  ) {
-    super(authService, http);
-  }
+  constructor(private http: HttpClient) { }
 
   searchProducts(searchTerm: string): void {
-    this.findAll = new Array;
+    this.products = [];
     this.getLaptopsService().subscribe(laptop => {
       laptop.filter((data: Product) => {
         if (data.name.toLowerCase().includes(searchTerm)) {
-          this.findAll.push(data)
+          this.products.push(data);
         }
       });
-      this.getLaptopAccessoryService().subscribe(bag => {
-        bag.filter((data: Product) => {
+      this.getLaptopAccessoryService().subscribe(accessory => {
+        accessory.filter((data: Product) => {
           if (data.name.toLowerCase().includes(searchTerm)) {
-            this.findAll.push(data)
+            this.products.push(data);
           }
         });
+        this.getPcService().subscribe(pc => {
+          pc.filter((data: Product) => {
+            if (data.name.toLowerCase().includes(searchTerm)) {
+              this.products.push(data);
+            }
+          });
+          this.getMonitorService().subscribe(monitor => {
+            monitor.filter((data: Product) => {
+              if (data.name.toLowerCase().includes(searchTerm)) {
+                this.products.push(data);
+              }
+            });
+            this.setProductsFromLocalStorage();
+          });          
+        });
       });
-      this.products = this.findAll;
-      // console.log(this.products)
-      this.setProductsFromLocalStorage();
     });
   }
 
+  // GETS ========================================================
   getLaptopsService(): Observable<any> {
     return this.http.get(API_URL + "/products/type/laptops");
   }
 
   getLaptopAccessoryService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/laptop-accessory");
+    return this.http.get(API_URL + "/products/type/laptop_accessory");
   }
 
-  // ****************************************************
+  getPcService(): Observable<any> {
+    return this.http.get(API_URL + "/products/type/pc");
+  }
+
+  getMonitorService(): Observable<any> {
+    return this.http.get(API_URL + "/products/type/monitor");
+  }
+
+  // Observable --------------------------------------------------
   getProductsObservable(): Observable<Array<Product>> {
     return this.productsSubject.asObservable();
   }

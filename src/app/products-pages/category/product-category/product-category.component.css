@@ -11,6 +11,12 @@
     /* border: 1px solid black; */
 }
 
+h2 {
+    width: 100%;
+    text-align: center;
+    color: rgb(220, 20, 110);
+}
+
 .row-categ {
     display: flex;
     flex-direction: row;

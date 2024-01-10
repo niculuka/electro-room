@@ -135,10 +135,8 @@ export class NavbarMainComponent implements OnDestroy {
   }
 
   // SEARCH-BAR -----------------------------------------------------------
-  getProduct(searchTerm: string): void {
-    if (searchTerm) {
-      this.router.navigate(["/search/" + searchTerm]);
-    };
+  goToSearch(searchTerm: string): void {
+    if (searchTerm) this.router.navigate(["/search/" + searchTerm]);
   }
 
   // ADMIN ----------------------------------------------------------------- 
@@ -187,9 +185,7 @@ export class NavbarMainComponent implements OnDestroy {
     this.authService.logoutService();
     this.cartService.clearCartService();
     this.favoriteService.clearFavoritesService();
-    this.router
-      .navigate(["/"])
-      .then(() => window.location.reload());
+    this.router.navigate(["/"]).then(() => window.location.reload());
   }
 
   ngOnDestroy(): void {

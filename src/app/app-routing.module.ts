@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   // { path: "**", component: HomeComponent },
 
-  { path: "test", component: InfoBlockComponent },  
+  { path: "test", component: InfoBlockComponent },
 
   // { path: "card-electro", component: ElectroCardComponent },
   { path: "electro-card", component: UnderConstructionComponent },
@@ -79,7 +79,6 @@ const routes: Routes = [
   { path: "compare", component: CompareComponent },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
   { path: "my-orders", component: MyOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
-  { path: "search/:searchTerm", component: SearchComponent },
 
   // error
   { path: "under-construction", component: UnderConstructionComponent },
@@ -87,15 +86,15 @@ const routes: Routes = [
   { path: "404", component: NotFoundComponent },
 
   // S P E C I A L   O F F E R -------------------------------------------------------------------------------------
-  { 
-    path: "oferta-speciala", 
-  component: SpecialOfferComponent,
-  data: {
-    breadcrumb: [
-      { label: 'Oferta Speciala', url: '' },
-    ]
+  {
+    path: "oferta-speciala",
+    component: SpecialOfferComponent,
+    data: {
+      breadcrumb: [
+        { label: 'Oferta Speciala', url: '' },
+      ]
+    },
   },
-},
 
   // C U S T O M E R S   S U P P O R T -----------------------------------------------------------------------------
   {
@@ -169,6 +168,15 @@ const routes: Routes = [
         { label: '{{customType}}', url: '/p/:department/:type' },
         { label: '{{customCategory}}', url: '/p/:department/:type/:category' },
         { label: '{{customLinkName}}', url: '' },
+      ]
+    },
+  },
+  {
+    path: "search/:searchTerm",
+    component: SearchComponent,
+    data: {
+      breadcrumb: [
+        { label: 'Rezultate cautare: {{searchTerm}}', url: '' },
       ]
     },
   },

@@ -1,14 +1,16 @@
-.container-not {
-  margin-top: 200px;
+.container-not-found {
+  margin-top: 100px;
   display: flex;
   justify-content: center;
 }
 
-.row-not {
-  padding: 50px;
+.row-not-found {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  margin: 0 10px;
+  padding: 50px 10px;
   border: 3px solid red;
 }
 
@@ -17,8 +19,16 @@ span {
   font-weight: bold;
 }
 
+h1 {
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+  color: red;
+}
+
 a {
-  text-decoration: none;
-  color:rgb(0, 15, 184);
+  display: block;
   font-size: 20px;
+  text-align: center;
+  text-decoration: none;
 }

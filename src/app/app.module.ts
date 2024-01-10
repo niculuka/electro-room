@@ -174,7 +174,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     // a d m i n - D E M O
     AdminDemoProductComponent,
     AdminDemoOrderComponent,
-    AdminDemoUserComponent,
+    AdminDemoUserComponent,    
   ],
   imports: [
     BrowserModule,

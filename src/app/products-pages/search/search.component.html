@@ -1,97 +1,22 @@
-<div class="container-search">
-    <div class="column-search">
+<app-breadcrumb></app-breadcrumb>
 
-        <div class="noResult" *ngIf="isProductsEmpty()">
-            <h1>{{noResult}}</h1>
+<div class="container-categ">
+    <div class="categ">        
+
+        <div style="width: 100%" *ngIf="notFoundProducts">
+            <h2>Nu s-a gasit nici un produs</h2>
         </div>
 
-        <div class="row-search" *ngIf="!isProductsEmpty()">            
+        <div class="row-categ" *ngIf="!notFoundProducts">
 
-            <!-- f i l t e r s ==================================================================================== -->
-            <div class="filters-search">
-                <!-- available filter ----------------------------------------------------------- -->
-                <div class="available">
-                    <h3><strong>Disponibilitate</strong></h3>
-                    <div class="filter-group" *ngIf="stock_out.length!==0">
-                        <input type="checkbox" id="stock" name="stock" [(ngModel)]="stock_chk"
-                            (change)="filter_stock()">
-                        <label for="stock"> In Stoc ({{stock_out.length}})</label>
-                    </div>
-                    <div class="filter-group" *ngIf="deposit_out.length!==0">
-                        <input type="checkbox" id="deposit" name="deposit" [(ngModel)]="deposit_chk"
-                            (change)="filter_deposit()">
-                        <label for="deposit"> In Depozit ({{deposit_out.length}})</label>
-                    </div>
-                </div>
+            <app-product-filter></app-product-filter>
 
-                <!-- price filter ---------------------------------------------------------------- -->
-                <div class="price">
-                    <h3><strong>Pret</strong></h3>
-                    <div class="filter-group" *ngIf="under1000_out.length!==0">
-                        <input type="checkbox" id="under1000" name="under1000" [(ngModel)]="under1000_chk"
-                            (change)="filter_under1000()">
-                        <label for="under1000"> Sub 1000 ({{under1000_out.length}})</label>
-                    </div>
-                    <div class="filter-group" *ngIf="under2000_out.length!==0">
-                        <input type="checkbox" id="under2000" name="under2000" [(ngModel)]="under2000_chk"
-                            (change)="filter_under2000()">
-                        <label for="under2000"> 1000 - 2000 ({{under2000_out.length}})</label>
-                    </div>
-                    <div class="filter-group" *ngIf="under3000_out.length!==0">
-                        <input type="checkbox" id="under3000" name="under3000" [(ngModel)]="under3000_chk"
-                            (change)="filter_under3000()">
-                        <label for="under3000"> 2000 - 3000 ({{under3000_out.length}})</label>
-                    </div>
-                    <div class="filter-group" *ngIf="under4000_out.length!==0">
-                        <input type="checkbox" id="under4000" name="under4000" [(ngModel)]="under4000_chk"
-                            (change)="filter_under4000()">
-                        <label for="under4000"> 3000 - 4000 ({{under4000_out.length}})</label>
-                    </div>
-                    <div class="filter-group" *ngIf="over4000_out.length!==0">
-                        <input type="checkbox" id="over4000" name="over4000" [(ngModel)]="over4000_chk"
-                            (change)="filter_over4000()">
-                        <label for="over4000"> Peste 4000 ({{over4000_out.length}})</label>
-                    </div>
-                </div>
+            <div class="col-categ">
 
-            </div>
+                <app-product-sorter [currentCategory]="currentCategory" [displayType]="displayType">
+                </app-product-sorter>
 
-            <!-- p r o d u c t s ==================================================================================== -->
-            <div class="products">
-
-                <div class="products-header">
-                    <h1>Rezultate cautare: {{searchResult}}</h1>
-
-                    <div class="categorySelect">
-                        <label for="categorySelect">Sorteaza dupa: </label>
-                        <select name="categorySelect" [(ngModel)]="laptops_sorting">
-                            <option value="name" (click)="name_alphabetic()">Nume</option>
-                            <option value="lowToHigh" (click)="price_ascending()">Pret crescator</option>
-                            <option value="highToLow" (click)="price_descending()">Pret descrescator</option>
-                            <option value="bestSold" (click)="sold()">Cele mai vandute</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="cards-container">
-                    <div class="card" *ngFor="let product of products;">
-        
-                        <a (click)="goToProduct(product)">
-                            <img [src]="product.image" [alt]="product.image" />
-                            <span style="background: rgb(0, 154, 230)">
-                                {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : ""}}
-                            </span>
-                            <span style="background: rgb(220, 20, 110)">
-                                {{product.badge === "SUPER_PRICE" ? "Super Pret" : ""}}
-                            </span>
-                            <h4><strong>{{product.description}}</strong></h4>
-                        </a>
-                        <p class="avail stock" *ngIf="product.available==='STOCK'">in stoc</p>
-                        <p class="avail deposit" *ngIf="product.available==='DEPOSIT'">in depozitul central</p>
-                        <p class="val"><strong>{{product.price}} Lei</strong></p>
-                        <button (click)="addToCart(product)">Adauga in cos</button>
-                    </div>
-                </div>
+                <app-product-display [displayType]="displayType"></app-product-display>
 
             </div>
 
@@ -99,3 +24,7 @@
 
     </div>
 </div>
+
+<app-compare-nav></app-compare-nav>
+
+<app-footer></app-footer>
