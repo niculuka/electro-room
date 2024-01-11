@@ -193,6 +193,7 @@ export enum CATEGORY {
     RAM_MEMORY = "RAM_MEMORY",
     DDR3 = "DDR3",
     DDR4 = "DDR4",
+    DDR5 = "DDR5",
 
     // MONITOR ------------------------------------
     MONITOR_FLAT = "MONITOR_FLAT",

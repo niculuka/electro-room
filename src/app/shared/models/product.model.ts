@@ -1,5 +1,3 @@
-import { CATEGORY } from "../enums/electro.enum";
-
 export class ProductGallery {
     id: number | undefined;
     image: string = "";
@@ -79,14 +77,14 @@ export class Product {
     name: string = "";
     linkName: string = "";
     description: string = "";
-    brand: CATEGORY;
-    type: CATEGORY;
-    department: CATEGORY;
-    category: CATEGORY;
-    subcategory: CATEGORY;
+    brand: string = "";
+    type: string = "";
+    department: string = "";
+    category: string = "";
+    subcategory: string = "";
     image: string = "";
-    badge: CATEGORY;
-    available: CATEGORY;
+    badge: string = "";
+    available: string = "";
     favorite: boolean = false;
     compare: boolean = false;
     price: number = 0;
@@ -99,14 +97,14 @@ export class Product {
         name: string = "",
         linkName: string = "",
         description: string = "",
-        brand: CATEGORY = CATEGORY.CATEGORY,
-        department: CATEGORY = CATEGORY.CATEGORY,
-        type: CATEGORY = CATEGORY.CATEGORY,
-        category: CATEGORY = CATEGORY.CATEGORY,
-        subcategory: CATEGORY = CATEGORY.CATEGORY,
+        brand: string = "",
+        department: string = "",
+        type: string = "",
+        category: string = "",
+        subcategory: string = "",
         image: string = "",
-        badge: CATEGORY = CATEGORY.CATEGORY,
-        available: CATEGORY = CATEGORY.CATEGORY,
+        badge: string = "",
+        available: string = "",
         price: number = 0,
         gallery: Array<ProductGallery> = [],
         descriptions: Array<ProductDescription> = [],

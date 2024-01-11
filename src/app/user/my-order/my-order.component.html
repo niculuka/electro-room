@@ -1,11 +1,11 @@
-<div class="container">
-    <div class="content">
+<div class="container-order">
+    <div class="content-order">
         <div class="title">
             <h1><strong>MY ORDERS</strong></h1>
             <h3>Orders number: {{orders.length}}</h3>
         </div>
 
-        <table class="row" *ngIf="orderExist">
+        <table *ngIf="orderExist">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -19,7 +19,7 @@
             </thead>
 
             <tbody *ngFor="let order of orders; index as ind">
-                <tr>
+                <tr class="order-row">
                     <td><strong>{{ind+1}}</strong></td>
                     <td>{{order.createdAt}}</td>
                     <td>{{order.paymentType}}</td>
@@ -30,53 +30,12 @@
                         <button mat-button class="btn-reOrder" (click)="reOrder()">Re Order</button>
                     </td>
                 </tr>
-                <tr *ngFor="let item of order.items">
+                <tr class="order-item" *ngFor="let item of order.items">
                     <td class="items"></td>
                     <td class="items" colspan="2"><strong>{{item.productName}}</strong></td>
                     <td class="items" colspan="2">{{item.quantity}} buc</td>
                     <td class="items" colspan="2">{{item.price}} Lei</td>
                 </tr>
-            </tbody>
-        </table>
-
-
-        <table class="column" *ngFor="let order of orders; index as ind">
-            <tbody>
-                <tr>
-                    <th class="items" colspan="3">{{ind+1}}</th>
-                </tr>
-                <tr>
-                    <th style="width: 60%;">Date</th>
-                    <td colspan="2">{{order.createdAt}}</td>
-                </tr>
-                <tr>
-                    <th>Payment Type</th>
-                    <td colspan="2">{{order.paymentType}}</td>
-                </tr>
-                <tr *ngFor="let item of order.items">
-                    <td class="items"><strong>{{item.productName}}</strong></td>
-                    <td class="items">{{item.quantity}} buc</td>
-                    <td class="items">{{item.price}} Lei</td>
-                </tr>
-                <tr>
-                    <th>Subtotal</th>
-                    <td colspan="2">{{order.subtotal}} Lei</td>
-                </tr>
-                <tr>
-                    <th>Fav Delivery</th>
-                    <td colspan="2">{{order.delivery}} Lei</td>
-                </tr>
-                <tr>
-                    <th>Total Price</th>
-                    <td colspan="2"><strong>{{order.totalPrice}} Lei</strong></td>
-                </tr>
-                <tr>
-                    <th>Action</th>
-                    <td colspan="2">
-                        <button mat-button class="btn-reOrder" (click)="reOrder()">Re Order</button>
-                    </td>
-                </tr>
-
             </tbody>
         </table>
 
