@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { ToastrService } from 'ngx-toastr';
+import { CATEGORY } from '../enums/electro.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -20,21 +21,22 @@ export class CompareService {
       this.addProductToList(product);
     }
     else {
-      if (this.compares.length <= 3) {
-        let type = this.compares.find(item => item.type.toLowerCase() === product.type.toLowerCase());
-        let categ = this.compares.find(item => item.category.toLowerCase() === product.category.toLowerCase());
-
-        if (type || categ) {
-          this.addProductToList(product);
+      if (this.compares.length < 4) {
+        if (this.compares[0].type.toLowerCase() == CATEGORY.LAPTOPS.toLowerCase()) {
+          if (product.type.toLowerCase() == CATEGORY.LAPTOPS.toLowerCase()) {
+            this.addProductToList(product);
+          }
+          else this.toastrService.warning("Selectati produse din aceeasi categorie");
         }
         else {
-          this.toastrService.warning("Selectati produse din aceeasi categorie");
+          if (this.compares[0].category.toLowerCase() == product.category.toLowerCase()) {
+            this.addProductToList(product);
+          }
+          else this.toastrService.warning("Selectati produse din aceeasi categorie");
         }
       }
-      else {
-        this.toastrService.warning("Se pot compara maxim 4 produse");
-      }
-    }
+      else this.toastrService.warning("Se pot compara maxim 4 produse");
+    };
   }
 
   addProductToList(product: Product) {

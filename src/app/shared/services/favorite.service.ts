@@ -16,11 +16,14 @@ export class FavoriteService {
   ) { }
 
   addToFavoritesService(product: Product): void {
-    let fav = this.favorites.find(item => item.id === product.id);
-    if (fav) return;
-    this.favorites.push(product);
-    this.toastrService.success("Produsul a fost adaugat la Favorite")
-    this.setFavoritesToLocalStorage();
+    if (this.favorites.length < 20) {
+      let fav = this.favorites.find(item => item.id === product.id);
+      if (fav) return;
+      this.favorites.push(product);
+      this.toastrService.success("Produsul a fost adaugat la Favorite")
+      this.setFavoritesToLocalStorage();
+    }
+    else this.toastrService.warning("Se pot adauga maxim 20 produse favorite");
   }
 
   removeFromFavoritesService(product: Product): void {

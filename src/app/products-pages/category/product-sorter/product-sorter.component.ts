@@ -15,6 +15,7 @@ import { ProductCategoryService } from 'src/app/shared/services/product-category
 export class ProductSorterComponent implements OnDestroy {
 
   @Input() currentCategory: string = "";
+  @Input() searchResult: string = "";
   totalFoundProducts: number = 0;
 
   productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;

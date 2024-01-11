@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/shared/models/product.model';
 import { CompareService } from 'src/app/shared/services/compare.service';
@@ -15,11 +15,11 @@ import { SearchProductService } from 'src/app/shared/services/search-product.ser
 export class SearchComponent implements OnInit {
 
   searchTerm: string = "";
+  searchResult: string = "";
   notFoundProducts: boolean = false;
 
   protected products: Array<Product> = [];
-
-  currentCategory: string = "";
+  
   displayType: string = "grid";
 
   private sub0: any;
@@ -34,7 +34,6 @@ export class SearchComponent implements OnInit {
     private favoriteService: FavoriteService,
     private compareService: CompareService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private toastrService: ToastrService,
   ) {
     this.sub0 = this.productCategoryService.getDisplayTypeObservable().subscribe(data => {
@@ -52,9 +51,7 @@ export class SearchComponent implements OnInit {
             this.productCategoryService.productsFiltersService(this.products);
             this.notFoundProducts = false;
           }
-          else {
-            this.notFoundProducts = true;
-          }
+          else this.notFoundProducts = true;
         });
       });
     });
@@ -62,11 +59,9 @@ export class SearchComponent implements OnInit {
       this.searchTerm = params['searchTerm'];
       if (this.searchTerm.length >= 3) {
         this.searchProductService.searchProducts(this.searchTerm.toLowerCase());
-        this.currentCategory = "Rezultate cautare: " + this.searchTerm;
+        this.searchResult = "Rezultate cautare: " + this.searchTerm;
       }
-      else {
-        this.toastrService.warning("Introduceti min 3 litere!")
-      }
+      else this.toastrService.warning("Introduceti min 3 litere!")
     });
   }
 
