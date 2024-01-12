@@ -14,12 +14,12 @@ import { SearchProductService } from 'src/app/shared/services/search-product.ser
 })
 export class SearchComponent implements OnInit {
 
+  protected products: Array<Product> = [];
+
   searchTerm: string = "";
   searchResult: string = "";
-  notFoundProducts: boolean = false;
+  foundProducts: boolean = false;  
 
-  protected products: Array<Product> = [];
-  
   displayType: string = "grid";
 
   private sub0: any;
@@ -43,25 +43,30 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
-      this.sub2 = this.compareService.getComparesObservable().subscribe(() => {
-        this.sub3 = this.searchProductService.getProductsObservable().subscribe(data => {
-          if (data.length) {
-            const getProducts = JSON.stringify(data);
-            this.products = JSON.parse(getProducts)
-            this.productCategoryService.productsFiltersService(this.products);
-            this.notFoundProducts = false;
-          }
-          else this.notFoundProducts = true;
-        });
-      });
+      this.getSearchedProducts();
     });
-    this.sub4 = this.activatedRoute.params.subscribe((params) => {
+    this.sub2 = this.compareService.getComparesObservable().subscribe(() => {
+      this.getSearchedProducts();
+    });
+    this.sub3 = this.activatedRoute.params.subscribe((params) => {
       this.searchTerm = params['searchTerm'];
       if (this.searchTerm.length >= 3) {
         this.searchProductService.searchProducts(this.searchTerm.toLowerCase());
         this.searchResult = "Rezultate cautare: " + this.searchTerm;
       }
       else this.toastrService.warning("Introduceti min 3 litere!")
+    });
+  }
+
+  getSearchedProducts() {
+    this.sub4 = this.searchProductService.getSearchedProductsObservable().subscribe(data => {
+      if (data.length) {
+        const getProducts = JSON.stringify(data);
+        this.products = JSON.parse(getProducts);
+        this.productCategoryService.productsFiltersService(this.products);
+        this.foundProducts = true;
+      }
+      else this.foundProducts = false;
     });
   }
 

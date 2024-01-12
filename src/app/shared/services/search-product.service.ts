@@ -11,11 +11,29 @@ const API_URL = `${environment.BASE_URL}`;
 })
 export class SearchProductService {
 
-  public products: Array<Product> = this.getProductsFromLocalStorage();
+  public products: Array<Product> = this.getSearchedProductsFromLocalStorage();
   private productsSubject: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.products);
 
   constructor(private http: HttpClient) { }
 
+  // GETS =============================================================================
+  getLaptopsService(): Observable<any> {
+    return this.http.get(API_URL + "/products/type/laptops");
+  }
+
+  getLaptopAccessoryService(): Observable<any> {
+    return this.http.get(API_URL + "/products/type/laptop_accessory");
+  }
+
+  getPcService(): Observable<any> {
+    return this.http.get(API_URL + "/products/type/pc");
+  }
+
+  getMonitorService(): Observable<any> {
+    return this.http.get(API_URL + "/products/type/monitor");
+  }
+
+  // Observable =======================================================================
   searchProducts(searchTerm: string): void {
     this.products = [];
     this.getLaptopsService().subscribe(laptop => {
@@ -42,47 +60,29 @@ export class SearchProductService {
                 this.products.push(data);
               }
             });
-            this.setProductsFromLocalStorage();
-          });          
+            this.setSearchedProductsFromLocalStorage();
+          });
         });
       });
     });
   }
 
-  // GETS ========================================================
-  getLaptopsService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/laptops");
-  }
-
-  getLaptopAccessoryService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/laptop_accessory");
-  }
-
-  getPcService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/pc");
-  }
-
-  getMonitorService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/monitor");
-  }
-
-  // Observable --------------------------------------------------
-  getProductsObservable(): Observable<Array<Product>> {
+  getSearchedProductsObservable(): Observable<Array<Product>> {
     return this.productsSubject.asObservable();
   }
 
-  getProducts(): Array<Product> {
+  getSearchedProducts(): Array<Product> {
     return this.productsSubject.value;
   }
 
-  setProductsFromLocalStorage(): void {
-    const productsJson = JSON.stringify(this.products);
-    localStorage.setItem('search-ls', productsJson);
+  private setSearchedProductsFromLocalStorage(): void {
+    const searchedProductsJson = JSON.stringify(this.products);
+    localStorage.setItem('searchedProducts-ls', searchedProductsJson);
     this.productsSubject.next(this.products);
   }
 
-  private getProductsFromLocalStorage(): Array<Product> {
-    const productsJson = localStorage.getItem('search-ls');
-    return productsJson ? JSON.parse(productsJson) : new Array<Product>();
+  private getSearchedProductsFromLocalStorage(): Array<Product> {
+    const searchedProductsJson = localStorage.getItem('searchedProducts-ls');
+    return searchedProductsJson ? JSON.parse(searchedProductsJson) : new Array<Product>();
   }
 }

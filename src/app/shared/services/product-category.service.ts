@@ -129,6 +129,8 @@ export class ProductCategoryService implements OnDestroy {
       // -----------------   P   R   O   D   U   C   T   ---   O   U   T   ---------------------
       // -----------------   P   R   O   D   U   C   T   ---   O   U   T   ---------------------
       // -----------------   P   R   O   D   U   C   T   ---   O   U   T   ---------------------
+      // -----------------   P   R   O   D   U   C   T   ---   O   U   T   ---------------------
+      // -----------------   P   R   O   D   U   C   T   ---   O   U   T   ---------------------
       // ---------------------------------------------------------------------------------------
       this.productsOutSubject.next(this.productsOut);
       // console.log(this.productsOut);
@@ -253,6 +255,9 @@ export class ProductCategoryService implements OnDestroy {
   sort_highToLow() {
     this.productsOut = this.productsOut.sort((a, b) => b.price - a.price);
   }
+
+
+
 
   // =============================================================================  D I S P L A Y  -  T Y P E
   // =============================================================================  D I S P L A Y  -  T Y P E

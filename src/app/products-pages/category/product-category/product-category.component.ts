@@ -23,7 +23,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   currentCategory: string = "";
 
   customBreadcrumb: Breadcrumb = new Breadcrumb();
-  notFoundProducts: boolean = false;
+  foundProducts: boolean = false;
 
   displayType: string = "grid";
 
@@ -35,8 +35,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private productService: ProductService,
+    private router: Router,
     private favoriteService: FavoriteService,
     private compareService: CompareService,
     private breadcrumbService: BreadcrumbService,
@@ -48,33 +48,46 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
-      this.sub2 = this.compareService.getComparesObservable().subscribe(() => {
-        this.sub3 = this.activatedRoute.paramMap.subscribe((params) => {
-          this.currentDepartment = params.get('department') || "";
-          this.currentType = params.get('type') || "";
-          this.currentCategory = params.get('category') || "";
-          this.createBreadcrumb();
-          if (this.currentCategory === CATEGORY.LAPTOP.toLowerCase()) {
-            this.sub4 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-              if (data.length) {
-                this.products = data;
-                this.productCategoryService.productsFiltersService(this.products);
-                this.notFoundProducts = false;
-              }
-              else {
-                this.notFoundProducts = true;
-              }
-            });
-          } else {
-            this.sub4 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
-              this.products = data;
-              this.productCategoryService.productsFiltersService(this.products);
-            });
-          }
-          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        });
-      });
+    this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentDepartment = params.get('department') || "";
+      this.currentType = params.get('type') || "";
+      this.currentCategory = params.get('category') || "";
+      this.createBreadcrumb();
+      this.sub2 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
+        if (data) {
+          this.products = data;
+          this.getFavoritesProducts();
+          this.getComparesProducts();
+          this.productCategoryService.productsFiltersService(this.products);
+          this.foundProducts = true;
+        }
+        else this.foundProducts = false;
+      });      
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    });
+  }
+
+  getFavoritesProducts() {
+    this.sub3 = this.favoriteService.getFavoritesObservable().subscribe(favorites => {
+      this.products.filter(prod => {
+        prod.favorite = false;
+        favorites.filter(fav => {
+          if (prod.id == fav.id) prod.favorite = true;
+        })
+      })
+      // console.log(this.products)
+    });
+  }
+
+  getComparesProducts() {
+    this.sub4 = this.compareService.getComparesObservable().subscribe(compares => {
+      this.products.filter(prod => {
+        prod.compare = false;
+        compares.filter(comp => {
+          if (prod.id == comp.id) prod.compare = true;
+        })
+      })
+      // console.log(this.products)
     });
   }
 

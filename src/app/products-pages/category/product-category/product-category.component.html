@@ -3,11 +3,11 @@
 <div class="container-categ">
     <div class="categ">        
 
-        <div style="width: 100%" *ngIf="notFoundProducts">
+        <div style="width: 100%" *ngIf="!foundProducts">
             <h2>Nu s-a gasit nici un produs</h2>
         </div>
 
-        <div class="row-categ" *ngIf="!notFoundProducts">
+        <div class="row-categ" *ngIf="foundProducts">
 
             <app-product-filter></app-product-filter>
 

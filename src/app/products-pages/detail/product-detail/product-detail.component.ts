@@ -14,15 +14,15 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
 
-  product: Product = new Product();
-  notFoundProduct: boolean = true;
+  protected product: Product = new Product();
 
   currentDepartment: string = "";
   currentType: string = "";
   currentCategory: string = "";
   currentLinkName: string = "";
-  
+
   customBreadcrumb: Breadcrumb = new Breadcrumb();
+  foundProduct: boolean = false;
 
   private sub0: any;
   private sub1: any;
@@ -39,38 +39,33 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.sub0 = this.favoriteService.getFavoritesObservable().subscribe(() => {
-      this.sub1 = this.compareService.getComparesObservable().subscribe(() => {
-        this.activatedRoute.paramMap.subscribe((params) => {
-          this.currentDepartment = params.get('department') || "";
-          this.currentType = params.get('type') || "";
-          this.currentCategory = params.get('category') || "";
-          this.currentLinkName = params.get('linkName') || "";
-          this.createBreadcrumb();
-          this.sub2 = this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
-            if (data) {
-              this.notFoundProduct = false;
-              this.product = data;
-              this.getFavoritesProducts();
-              this.getComparesProducts();
-            } else {
-              this.notFoundProduct = true;
-            }
-          });
-        });
+
+
+
+
+
+
+    this.sub0 = this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentDepartment = params.get('department') || "";
+      this.currentType = params.get('type') || "";
+      this.currentCategory = params.get('category') || "";
+      this.currentLinkName = params.get('linkName') || "";
+      this.createBreadcrumb();
+
+      this.sub2 = this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
+        if (data) {
+          this.product = data;
+          this.foundProduct = true;
+
+          this.getFavoritesProducts();
+          this.getComparesProducts();
+
+        }
+        else this.foundProduct = false;
+        
       });
     });
-  }
-
-  createBreadcrumb() {
-    this.customBreadcrumb = {
-      customDepartment: this.currentDepartment,
-      customType: this.currentType,
-      customCategory: this.currentCategory,
-      customLinkName: this.currentLinkName,
-    };
-    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
-  }
+  }  
 
   getFavoritesProducts() {
     this.sub3 = this.favoriteService.getFavoritesObservable().subscribe(fav => {
@@ -90,6 +85,16 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+
+  createBreadcrumb() {
+    this.customBreadcrumb = {
+      customDepartment: this.currentDepartment,
+      customType: this.currentType,
+      customCategory: this.currentCategory,
+      customLinkName: this.currentLinkName,
+    };
+    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
   ngOnDestroy(): void {

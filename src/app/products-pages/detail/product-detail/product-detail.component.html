@@ -3,11 +3,11 @@
 <div class="container-product">
     <div class="column-product">
 
-        <div *ngIf="notFoundProduct">
+        <div *ngIf="!foundProduct">
             <h1>NOT FOUND PRODUCT</h1>
         </div>
 
-        <div *ngIf="!notFoundProduct">
+        <div *ngIf="foundProduct">
 
             <app-product-main [product]="product"></app-product-main>
 
