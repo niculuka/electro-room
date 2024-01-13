@@ -21,7 +21,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   currentType: string = "";
   currentCategory: string = "";
   customBreadcrumb: Breadcrumb = new Breadcrumb();
-  
+
   foundProducts: boolean = false;
 
   displayType: string = "grid";
@@ -55,13 +55,13 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
       this.sub2 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
         if (data) {
           this.products = data;
+          this.foundProducts = true;
           this.getFavoritesProducts();
           this.getComparesProducts();
           this.productCategoryService.productsFiltersService(this.products);
-          this.foundProducts = true;
         }
         else this.foundProducts = false;
-      });      
+      });
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     });
   }
@@ -72,9 +72,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
         prod.favorite = false;
         favorites.filter(fav => {
           if (prod.id == fav.id) prod.favorite = true;
-        })
-      })
-      // console.log(this.products)
+        });
+      });
     });
   }
 
@@ -84,9 +83,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
         prod.compare = false;
         compares.filter(comp => {
           if (prod.id == comp.id) prod.compare = true;
-        })
-      })
-      // console.log(this.products)
+        });
+      });
     });
   }
 

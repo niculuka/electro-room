@@ -24,8 +24,8 @@ export class CartComponent implements OnDestroy {
   ) {
     this.sub0 = this.cartService.getCartObservable().subscribe((data) => {
       this.cart = data;
-    })
-    this.getFavoritesProducts();
+      this.getFavoritesProducts();
+    });
   }
 
   isCartEmpty() {
@@ -58,20 +58,20 @@ export class CartComponent implements OnDestroy {
   }
 
   getFavoritesProducts() {
-    this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(fav => {
-      for (let cp of this.cart.items) {
-        cp.product.favorite = false;
-        for (let fp of fav) {
-          if (fp.id == cp.product.id) cp.product.favorite = true;
-        }
-      }
+    this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(favorites => {
+      this.cart.items.filter(item => {
+        item.product.favorite = false;
+        favorites.filter(fav => {
+          if (item.product.id == fav.id) item.product.favorite = true;
+        });
+      });
     });
   }
 
   handleFavorites(cartItem: CartItem) {
     if (cartItem.product.favorite) this.favoriteService.removeFromFavoritesService(cartItem.product);
     else this.favoriteService.addToFavoritesService(cartItem.product);
-  }  
+  }
 
   goBack() {
     this.location.back();

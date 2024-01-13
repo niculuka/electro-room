@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
 
   searchTerm: string = "";
   searchResult: string = "";
-  foundProducts: boolean = false;  
+  foundProducts: boolean = false;
 
   displayType: string = "grid";
 
@@ -42,31 +42,46 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sub1 = this.favoriteService.getFavoritesObservable().subscribe(() => {
-      this.getSearchedProducts();
-    });
-    this.sub2 = this.compareService.getComparesObservable().subscribe(() => {
-      this.getSearchedProducts();
-    });
-    this.sub3 = this.activatedRoute.params.subscribe((params) => {
+    this.sub1 = this.activatedRoute.params.subscribe((params) => {
       this.searchTerm = params['searchTerm'];
       if (this.searchTerm.length >= 3) {
         this.searchProductService.searchProducts(this.searchTerm.toLowerCase());
         this.searchResult = "Rezultate cautare: " + this.searchTerm;
+        this.sub2 = this.searchProductService.getSearchedProductsObservable().subscribe(data => {
+          if (data) {
+            const getProducts = JSON.stringify(data);
+            this.products = JSON.parse(getProducts);
+            this.foundProducts = true;
+            this.getFavoritesProducts();
+            this.getComparesProducts();
+            this.productCategoryService.productsFiltersService(this.products);            
+          }
+          else this.foundProducts = false;
+        });
       }
       else this.toastrService.warning("Introduceti min 3 litere!")
     });
   }
 
-  getSearchedProducts() {
-    this.sub4 = this.searchProductService.getSearchedProductsObservable().subscribe(data => {
-      if (data.length) {
-        const getProducts = JSON.stringify(data);
-        this.products = JSON.parse(getProducts);
-        this.productCategoryService.productsFiltersService(this.products);
-        this.foundProducts = true;
-      }
-      else this.foundProducts = false;
+  getFavoritesProducts() {
+    this.sub3 = this.favoriteService.getFavoritesObservable().subscribe(favorites => {
+      this.products.filter(prod => {
+        prod.favorite = false;
+        favorites.filter(fav => {
+          if (prod.id == fav.id) prod.favorite = true;
+        });
+      });
+    });
+  }
+
+  getComparesProducts() {
+    this.sub4 = this.compareService.getComparesObservable().subscribe(compares => {
+      this.products.filter(prod => {
+        prod.compare = false;
+        compares.filter(comp => {
+          if (prod.id == comp.id) prod.compare = true;
+        });
+      });
     });
   }
 

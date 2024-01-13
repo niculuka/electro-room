@@ -53,10 +53,10 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
       this.sub2 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
         if (data) {
           this.products = data;
+          this.foundProducts = true;
           this.getFavoritesProducts();
           this.getComparesProducts();
-          this.productCategoryService.productsFiltersService(this.products);
-          this.foundProducts = true;
+          this.productCategoryService.productsFiltersService(this.products);          
         }
         else this.foundProducts = false;
       });
@@ -70,8 +70,8 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
         prod.favorite = false;
         favorites.filter(fav => {
           if (prod.id == fav.id) prod.favorite = true;
-        })
-      })
+        });
+      });
     });
   }
 
@@ -81,8 +81,8 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
         prod.compare = false;
         compares.filter(comp => {
           if (prod.id == comp.id) prod.compare = true;
-        })
-      })
+        });
+      });
     });
   }
 

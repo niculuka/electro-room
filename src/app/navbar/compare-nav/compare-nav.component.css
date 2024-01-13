@@ -2,7 +2,7 @@
     z-index: 5;
     position: fixed;
     top: 220px;
-    right: 20px;
+    right: 30px;
     display: flex;
     flex-direction: column;
     width: 74px;
@@ -95,4 +95,11 @@ button:hover {
 button:disabled {
     cursor: not-allowed;
     background: rgb(220, 20, 110, 0.4);
+}
+
+@media(max-width: 1020px) {
+    .compare {
+        right: 20px;
+        background: rgba(255, 255, 255, 0.5);
+    }
 }

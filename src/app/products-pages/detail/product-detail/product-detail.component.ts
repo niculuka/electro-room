@@ -24,7 +24,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   customBreadcrumb: Breadcrumb = new Breadcrumb();
   foundProduct: boolean = false;
 
-  private sub0: any;
   private sub1: any;
   private sub2: any;
   private sub3: any;
@@ -39,51 +38,39 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-
-
-
-
-
-
-    this.sub0 = this.activatedRoute.paramMap.subscribe((params) => {
+    this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
       this.currentDepartment = params.get('department') || "";
       this.currentType = params.get('type') || "";
       this.currentCategory = params.get('category') || "";
       this.currentLinkName = params.get('linkName') || "";
       this.createBreadcrumb();
-
       this.sub2 = this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
         if (data) {
           this.product = data;
           this.foundProduct = true;
-
           this.getFavoritesProducts();
-          this.getComparesProducts();
-
+          this.getComparesProducts();          
         }
         else this.foundProduct = false;
-        
       });
     });
-  }  
+  }
 
   getFavoritesProducts() {
-    this.sub3 = this.favoriteService.getFavoritesObservable().subscribe(fav => {
-      for (let fp of fav) {
-        if (this.product.id === fp.id) {
-          this.product.favorite = true;
-        }
-      }
+    this.sub3 = this.favoriteService.getFavoritesObservable().subscribe(favorites => {
+      this.product.favorite = false;
+      favorites.filter(fav => {
+        if (this.product.id == fav.id) this.product.favorite = true;
+      });
     });
   }
 
   getComparesProducts() {
-    this.sub4 = this.compareService.getComparesObservable().subscribe(comp => {
-      for (let cp of comp) {
-        if (this.product.id === cp.id) {
-          this.product.compare = true;
-        }
-      }
+    this.sub4 = this.compareService.getComparesObservable().subscribe(compares => {
+      this.product.compare = false;
+      compares.filter(comp => {
+        if (this.product.id == comp.id) this.product.compare = true;
+      });
     });
   }
 
@@ -98,7 +85,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub0?.unsubscribe();
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
     this.sub3?.unsubscribe();
