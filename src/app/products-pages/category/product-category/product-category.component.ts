@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -21,8 +20,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   currentDepartment: string = "";
   currentType: string = "";
   currentCategory: string = "";
-
   customBreadcrumb: Breadcrumb = new Breadcrumb();
+  
   foundProducts: boolean = false;
 
   displayType: string = "grid";

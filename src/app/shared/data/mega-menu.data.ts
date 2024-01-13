@@ -54,14 +54,6 @@ export const DEPARTMENTS: Department[] = [
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: "Toate Laptopurile",
-                        type: CATEGORY.LAPTOP,
-                        link: "/p/lpt/laptops/laptop",
-                        image: "assets/departments/lpt/laptops/all-laptops.png",
-                        isReady: true,
-                        color: "#ff4196",
-                    },
-                    {
                         name: "Gaming",
                         type: CATEGORY.LAPTOP_GAMING,
                         link: "/p/lpt/laptops/laptop_gaming",

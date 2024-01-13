@@ -1,9 +1,26 @@
 <app-breadcrumb></app-breadcrumb>
 
-<div class="container-type">
-    <div class="content-type">
+<div class="container-categ">
+    <div class="categ">        
 
-        <app-type-card [cards]="cards"></app-type-card>        
+        <div style="width: 100%" *ngIf="!foundProducts">
+            <h2>Nu s-a gasit nici un produs</h2>
+        </div>
+
+        <div class="row-categ" *ngIf="foundProducts">
+
+            <app-product-filter></app-product-filter>
+
+            <div class="col-categ">
+
+                <app-product-sorter [currentCategory]="currentType" [displayType]="displayType">
+                </app-product-sorter>
+
+                <app-product-display [displayType]="displayType"></app-product-display>
+
+            </div>
+
+        </div>
 
     </div>
 </div>

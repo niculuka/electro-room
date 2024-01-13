@@ -37,8 +37,9 @@ import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-dem
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
-import { ProductDepartmentComponent } from './products-pages/department/product-department/product-department.component';
+import { DepartmentComponent } from './products-pages/department/department.component';
 import { ProductTypeComponent } from './products-pages/type/product-type/product-type.component';
+import { TypeComponent } from './products-pages/type/type/type.component';
 import { ProductCategoryComponent } from './products-pages/category/product-category/product-category.component';
 import { ProductDetailComponent } from './products-pages/detail/product-detail/product-detail.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
@@ -131,7 +132,7 @@ const routes: Routes = [
   // P R O D U C T S ----------------------------------------------------------------------------------------------
   {
     path: "p/:department",
-    component: ProductDepartmentComponent,
+    component: DepartmentComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '' },
@@ -139,8 +140,18 @@ const routes: Routes = [
     },
   },
   {
-    path: "p/:department/:type",
+    path: "p/:department/laptops",
     component: ProductTypeComponent,
+    data: {
+      breadcrumb: [
+        { label: '{{customDepartment}}', url: '/p/:department' },
+        { label: '{{customType}}', url: '' },
+      ]
+    },
+  },
+  {
+    path: "p/:department/:type",
+    component: TypeComponent,
     data: {
       breadcrumb: [
         { label: '{{customDepartment}}', url: '/p/:department' },

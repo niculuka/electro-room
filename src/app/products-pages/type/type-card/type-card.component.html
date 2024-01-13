@@ -1,8 +1,0 @@
-<div class="cards">
-    <div class="card" *ngFor="let card of cards">
-        <a [routerLink]="card.link" (click)="noRoute(card)">
-            <img [src]="card.image" [alt]="card.image">
-            <h1>{{card.name}}</h1>
-        </a>
-    </div>
-</div>

@@ -1,0 +1,20 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="container-type">
+    <div class="content-type">
+
+        <div class="cards">
+            <div class="card" *ngFor="let card of cards">
+                <a [routerLink]="card.link" (click)="noRoute(card)">
+                    <img [src]="card.image" [alt]="card.image">
+                    <h1>{{card.name}}</h1>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-compare-nav></app-compare-nav>
+
+<app-footer></app-footer>

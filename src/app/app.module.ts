@@ -34,10 +34,9 @@ import { CompareNavComponent } from './navbar/compare-nav/compare-nav.component'
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { FooterComponent } from './guest/footer/footer.component';
 // p r o d u c t s - p a g e s
-import { ProductDepartmentComponent } from './products-pages/department/product-department/product-department.component';
-import { DepartmentCardComponent } from './products-pages/department/department-card/department-card.component';
+import { DepartmentComponent } from './products-pages/department/department.component';
 import { ProductTypeComponent } from './products-pages/type/product-type/product-type.component';
-import { TypeCardComponent } from './products-pages/type/type-card/type-card.component';
+import { TypeComponent } from './products-pages/type/type/type.component';
 import { ProductCategoryComponent } from './products-pages/category/product-category/product-category.component';
 import { ProductFilterComponent } from './products-pages/category/product-filter/product-filter.component';
 import { ProductSorterComponent } from './products-pages/category/product-sorter/product-sorter.component';
@@ -113,10 +112,9 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     BreadcrumbComponent,
     FooterComponent,
     // p r o d u c t s - p a g e s
-    ProductDepartmentComponent,
-    DepartmentCardComponent,
-    ProductTypeComponent,
-    TypeCardComponent,
+    DepartmentComponent,
+    ProductTypeComponent, 
+    TypeComponent,
     ProductCategoryComponent,
     ProductFilterComponent,
     ProductSorterComponent,
@@ -174,7 +172,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     // a d m i n - D E M O
     AdminDemoProductComponent,
     AdminDemoOrderComponent,
-    AdminDemoUserComponent,    
+    AdminDemoUserComponent,       
   ],
   imports: [
     BrowserModule,
