@@ -53,7 +53,7 @@
           </div>
           <div class="dropdown-menu" *ngIf="isAdminMenuOpen">
             <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
-            <a routerLink="/admin/products/laptop-accessory" routerLinkActive="active">Accessories</a>
+            <a routerLink="/admin/products/laptop_accessory" routerLinkActive="active">Accessories</a>
 
             <a routerLink="/admin/electro-orders" routerLinkActive="active">Orders</a>
             <a routerLink="/admin/electro-items" routerLinkActive="active">Items</a>
@@ -69,9 +69,9 @@
             <!-- <mat-icon class="admin">settings</mat-icon> -->
             <span>Admin</span>
           </div>
-          <div class="dropdown-menu" *ngIf="isAdminMenuOpen">
+          <div class="dropdown-menu" *ngIf="isAdminMenuOpen">            
             <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
-            <a routerLink="/admin/demo/products/laptop-accessory" routerLinkActive="active">Accessories</a>
+            <a routerLink="/admin/demo/products/laptop_accessory" routerLinkActive="active">Accessories</a>
 
             <a routerLink="/admin/demo/electro-orders" routerLinkActive="active">Orders</a>
             <a routerLink="/admin/demo/users" routerLinkActive="active">Users</a>
@@ -120,6 +120,7 @@
             <mat-icon class="hide">expand_more</mat-icon>
           </div>
           <div class="dropdown-menu" *ngIf="isLogMenuOpen">
+            <a routerLink="/admin">Admin</a>
             <a routerLink="/auth/login">Intra in cont!</a>
             <a routerLink="/auth/register">Inregistrare!</a>
           </div>
@@ -133,6 +134,7 @@
             <mat-icon class="hide">expand_more</mat-icon>
           </div>
           <div class="dropdown-menu" *ngIf="isLogMenuOpen">
+            <a routerLink="/admin">Admin</a>
             <a routerLink="/profile" routerLinkActive="active">Profile</a>
             <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
             <a routerLink="/" (click)="logout()">Logout</a>

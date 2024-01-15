@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion'
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -84,6 +86,7 @@ import { DialogProductFilterComponent } from './dialogs/dialog-product-filter/di
 import { DialogProductsSorterComponent } from './dialogs/dialog-products-sorter/dialog-products-sorter.component';
 import { DialogCartComponent } from './dialogs/dialog-cart/dialog-cart.component';
 // a d m i n
+import { AdminComponent } from './admin/admin/admin.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
 import { AdminProductUpdateComponent } from './admin/admin-product-update/admin-product-update.component';
@@ -95,6 +98,7 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
+
 
 
 @NgModule({
@@ -113,7 +117,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     FooterComponent,
     // p r o d u c t s - p a g e s
     DepartmentComponent,
-    ProductTypeComponent, 
+    ProductTypeComponent,
     TypeComponent,
     ProductCategoryComponent,
     ProductFilterComponent,
@@ -162,6 +166,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     DialogProductsSorterComponent,
     DialogCartComponent,
     // a d m i n
+    AdminComponent,
     AdminProductComponent,
     AdminProductCreateComponent,
     AdminProductUpdateComponent,
@@ -172,7 +177,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     // a d m i n - D E M O
     AdminDemoProductComponent,
     AdminDemoOrderComponent,
-    AdminDemoUserComponent,       
+    AdminDemoUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -199,6 +204,8 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     MatButtonToggleModule,
     MatDialogModule,
     MatExpansionModule,
+    MatSidenavModule,
+    MatListModule,
     NgbModule,
     NgbCarouselModule,
     CarouselModule,

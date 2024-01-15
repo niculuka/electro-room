@@ -1,0 +1,139 @@
+.container-admin {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 70vh;
+    /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.content-admin {
+    width: 1500px;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
+ul{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    background: white;
+    box-shadow: 0px 6px 10px 0px rgba(62, 62, 62, 0.2);
+    border-radius: 8px;
+}
+
+li {
+    width: 200px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 14px;
+    /* border: 1px solid red; */
+}
+
+.dropdown-nav>li>a:hover {
+    background: rgba(220, 20, 110, 0.1);    
+}
+
+.dropdown-menu-nav {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    text-align: left;    
+    top: 0px;
+    left: 200px;
+    width: 1300px;
+    padding: 0;
+    height: 100%;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid rgb(1, 62, 159);
+}
+
+mat-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    /* border: 1px solid rgb(1, 62, 159); */
+}
+
+.icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    /* border: 2px solid rgb(255, 136, 0); */
+}
+
+.department-icon {
+    width: 18px;
+    margin-right: 14px;
+    /* border: 2px solid rgb(255, 136, 0); */
+}
+
+.chevron-icon {
+    width: 12px;
+    margin-right: 0;
+    /* border: 2px solid rgb(255, 136, 0); */
+}
+
+.department-titles {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    /* border: 2px solid rgb(0, 0, 0); */
+}
+
+.department-titles ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    /* border: 2px solid rgb(10, 10, 10); */
+}
+
+.title {
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    /* border: 1px solid red; */
+}
+
+.subtitle {
+    display: block;
+    margin: 0;
+    padding: 4px 14px 4px 30px;
+    font-size: 14px;
+    line-height: 14px;
+    color: rgb(110, 110, 110);
+    text-decoration: none;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+
+.subtitle:hover {    
+    text-decoration: underline;
+}

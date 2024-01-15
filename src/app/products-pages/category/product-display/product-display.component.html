@@ -43,56 +43,176 @@
 
                 <div class="specifications" *ngIf="displayType==='list'">
                     <div>
-                        <p *ngIf="product.specifications[0].display_size">{{name.DISPLAY_SIZE}}: {{product.specifications[0].display_size}}</p>
-                        <p *ngIf="product.specifications[0].display_frequency">{{name.DISPLAY_FREQUENCY}}: {{product.specifications[0].display_frequency}}</p>
-                        <p *ngIf="product.specifications[0].display_resolution">{{name.DISPLAY_RESOLUTION}}: {{product.specifications[0].display_resolution}}</p>
-
-                        <p *ngIf="product.specifications[0].motherboard_brand">{{name.MOTHERBOARD_BRAND}}: {{product.specifications[0].motherboard_brand}}</p>
-                        <p *ngIf="product.specifications[0].motherboard_chipset">{{name.MOTHERBOARD_CHIPSET}}: {{product.specifications[0].motherboard_chipset}}</p>
-                        <p *ngIf="product.specifications[0].motherboard_slot">{{name.MOTHERBOARD_SLOT}}: {{product.specifications[0].motherboard_slot}}</p>
-                        <p *ngIf="product.specifications[0].motherboard_audio">{{name.MOTHERBOARD_AUDIO}}: {{product.specifications[0].motherboard_audio}}</p>
-
-                        <p *ngIf="product.specifications[0].processor_brand">{{name.PROCESSOR_BRAND}}: {{product.specifications[0].processor_brand}}</p>
-                        <p *ngIf="product.specifications[0].processor_type">{{name.PROCESSOR_TYPE}}: {{product.specifications[0].processor_type}}</p>
-                        <p *ngIf="product.specifications[0].processor_model">{{name.PROCESSOR_MODEL}}: {{product.specifications[0].processor_model}}</p>
-                        <p *ngIf="product.specifications[0].processor_frequency">{{name.PROCESSOR_FREQUENCY}}: {{product.specifications[0].processor_frequency}}</p>
-
-                        <p *ngIf="product.specifications[0].memory_type">{{name.MEMORY_TYPE}}: {{product.specifications[0].memory_type}}</p>
-                        <p *ngIf="product.specifications[0].memory_capacity">{{name.MEMORY_CAPACITY}}: {{product.specifications[0].memory_capacity}}</p>
-                        <p *ngIf="product.specifications[0].memory_frequency">{{name.MEMORY_FREQUENCY}}: {{product.specifications[0].memory_frequency}}</p>
-
-                        <p *ngIf="product.specifications[0].brand">{{name.BRAND}}: {{product.specifications[0].brand}}</p>
-                        <p *ngIf="product.specifications[0].type">{{name.TYPE}}: {{product.specifications[0].type}}</p>
-                        <p *ngIf="product.specifications[0].model">{{name.MODEL}}: {{product.specifications[0].model}}</p>
-                        <p *ngIf="product.specifications[0].capacity">{{name.CAPACITY}}: {{product.specifications[0].capacity}}</p>
-                        <p *ngIf="product.specifications[0].connection">{{name.CONNECTION}}: {{product.specifications[0].connection}}</p>
-                        <p *ngIf="product.specifications[0].output">{{name.OUTPUT}}: {{product.specifications[0].output}}</p>
-                        <p *ngIf="product.specifications[0].compatibility">{{name.COMPATIBILITY}}: {{product.specifications[0].compatibility}}</p>
-                        <p *ngIf="product.specifications[0].screen_size">{{name.SCREEN_SIZE}}: {{product.specifications[0].screen_size}}</p>
-                        <p *ngIf="product.specifications[0].frequency">{{name.FREQUENCY}}: {{product.specifications[0].frequency}}</p>
-                        <p *ngIf="product.specifications[0].power">{{name.POWER}}: {{product.specifications[0].power}}</p>
+                        <p *ngIf="product.specifications[0].display_size">
+                            <b>{{name.DISPLAY_SIZE}}: </b>
+                            {{product.specifications[0].display_size}}
+                        </p>
+                        <p *ngIf="product.specifications[0].display_frequency">
+                            <b>{{name.DISPLAY_FREQUENCY}}: </b>
+                            {{product.specifications[0].display_frequency}}
+                        </p>
+                        <p *ngIf="product.specifications[0].display_resolution">
+                            <b>{{name.DISPLAY_RESOLUTION}}: </b>
+                            {{product.specifications[0].display_resolution}}
+                        </p>
+                        <p *ngIf="product.specifications[0].motherboard_brand">
+                            <b>{{name.MOTHERBOARD_BRAND}}: </b>
+                            {{product.specifications[0].motherboard_brand}}
+                        </p>
+                        <p *ngIf="product.specifications[0].motherboard_chipset">
+                            <b>{{name.MOTHERBOARD_CHIPSET}}: </b>
+                            {{product.specifications[0].motherboard_chipset}}
+                        </p>
+                        <p *ngIf="product.specifications[0].motherboard_slot">
+                            <b>{{name.MOTHERBOARD_SLOT}}: </b>
+                            {{product.specifications[0].motherboard_slot}}
+                        </p>
+                        <p *ngIf="product.specifications[0].motherboard_audio">
+                            <b>{{name.MOTHERBOARD_AUDIO}}: </b>
+                            {{product.specifications[0].motherboard_audio}}
+                        </p>
+                        <p *ngIf="product.specifications[0].processor_brand">
+                            <b>{{name.PROCESSOR_BRAND}}: </b>
+                            {{product.specifications[0].processor_brand}}
+                        </p>
+                        <p *ngIf="product.specifications[0].processor_type">
+                            <b>{{name.PROCESSOR_TYPE}}: </b>
+                            {{product.specifications[0].processor_type}}
+                        </p>
+                        <p *ngIf="product.specifications[0].processor_model">
+                            <b>{{name.PROCESSOR_MODEL}}: </b>
+                            {{product.specifications[0].processor_model}}
+                        </p>
+                        <p *ngIf="product.specifications[0].processor_frequency">
+                            <b>{{name.PROCESSOR_FREQUENCY}}: </b>
+                            {{product.specifications[0].processor_frequency}}
+                        </p>
+                        <p *ngIf="product.specifications[0].memory_type">
+                            <b>{{name.MEMORY_TYPE}}: </b>
+                            {{product.specifications[0].memory_type}}
+                        </p>
+                        <p *ngIf="product.specifications[0].memory_capacity">
+                            <b>{{name.MEMORY_CAPACITY}}: </b>
+                            {{product.specifications[0].memory_capacity}}
+                        </p>
+                        <p *ngIf="product.specifications[0].memory_frequency">
+                            <b>{{name.MEMORY_FREQUENCY}}: </b>
+                            {{product.specifications[0].memory_frequency}}
+                        </p>
+                        <p *ngIf="product.specifications[0].brand">
+                            <b>{{name.BRAND}}: </b>
+                            {{product.specifications[0].brand}}
+                        </p>
+                        <p *ngIf="product.specifications[0].type">
+                            <b>{{name.TYPE}}: </b>
+                            {{product.specifications[0].type}}
+                        </p>
+                        <p *ngIf="product.specifications[0].model">
+                            <b>{{name.MODEL}}: </b>
+                            {{product.specifications[0].model}}
+                        </p>
+                        <p *ngIf="product.specifications[0].capacity">
+                            <b>{{name.CAPACITY}}: </b>
+                            {{product.specifications[0].capacity}}
+                        </p>
+                        <p *ngIf="product.specifications[0].connection">
+                            <b>{{name.CONNECTION}}: </b>
+                            {{product.specifications[0].connection}}
+                        </p>
+                        <p *ngIf="product.specifications[0].output">
+                            <b>{{name.OUTPUT}}: </b>
+                            {{product.specifications[0].output}}
+                        </p>
+                        <p *ngIf="product.specifications[0].compatibility">
+                            <b>{{name.COMPATIBILITY}}: </b>
+                            {{product.specifications[0].compatibility}}
+                        </p>
+                        <p *ngIf="product.specifications[0].screen_size">
+                            <b>{{name.SCREEN_SIZE}}: </b>
+                            {{product.specifications[0].screen_size}}
+                        </p>
+                        <p *ngIf="product.specifications[0].frequency">
+                            <b>{{name.FREQUENCY}}: </b>
+                            {{product.specifications[0].frequency}}
+                        </p>
+                        <p *ngIf="product.specifications[0].power">
+                            <b>{{name.POWER}}: </b>
+                            {{product.specifications[0].power}}
+                        </p>
                     </div>
                     <div>
-                        <p *ngIf="product.specifications[0].hard_type_1">{{name.HARD_TYPE_1}}: {{product.specifications[0].hard_type_1}}</p>
-                        <p *ngIf="product.specifications[0].hard_capacity_1">{{name.HARD_CAPACITY_1}}: {{product.specifications[0].hard_capacity_1}}</p>
-                        <p *ngIf="product.specifications[0].hard_slot_1">{{name.HARD_SLOT_1}}: {{product.specifications[0].hard_slot_1}}</p>
-                        <p *ngIf="product.specifications[0].hard_type_2">{{name.HARD_TYPE_2}}: {{product.specifications[0].hard_type_2}}</p>
-                        <p *ngIf="product.specifications[0].hard_capacity_2">{{name.HARD_CAPACITY_2}}: {{product.specifications[0].hard_capacity_2}}</p>
-                        <p *ngIf="product.specifications[0].hard_slot_2">{{name.HARD_SLOT_2}}: {{product.specifications[0].hard_slot_2}}</p>
-
-                        <p *ngIf="product.specifications[0].connectivity_bluetooth">{{name.CONNECTIVITY_BLUETOOTH}}: {{product.specifications[0].connectivity_bluetooth}}</p>
-                        <p *ngIf="product.specifications[0].connectivity_wireless">{{name.CONNECTIVITY_WIRELESS}}: {{product.specifications[0].connectivity_wireless}}</p>
-
-                        <p *ngIf="product.specifications[0].read_speed">{{name.READ_SPEED}}: {{product.specifications[0].read_speed}}</p>
-                        <p *ngIf="product.specifications[0].write_speed">{{name.WRITE_SPEED}}: {{product.specifications[0].write_speed}}</p>
-                        <p *ngIf="product.specifications[0].material">{{name.MATERIAL}}: {{product.specifications[0].material}}</p>
-                        <p *ngIf="product.specifications[0].color">{{name.COLOR}}: {{product.specifications[0].color}}</p>
-                        <p *ngIf="product.specifications[0].weight">{{name.WEIGHT}}: {{product.specifications[0].weight}}</p>
-                        <p *ngIf="product.specifications[0].speed">{{name.SPEED}}: {{product.specifications[0].speed}}</p>
-                        <p *ngIf="product.specifications[0].hdmi">{{name.HDMI}}: {{product.specifications[0].hdmi}}</p>
-                        <p *ngIf="product.specifications[0].speaker">{{name.SPEAKER}}: {{product.specifications[0].speaker}}</p>
-                        <p *ngIf="product.specifications[0].radiator">{{name.RADIATOR}}: {{product.specifications[0].radiator}}</p>
-                        <p *ngIf="product.specifications[0].voltage">{{name.VOLTAGE}}: {{product.specifications[0].voltage}}</p>
+                        <p *ngIf="product.specifications[0].hard_type_1">
+                            <b>{{name.HARD_TYPE_1}}: </b>
+                            {{product.specifications[0].hard_type_1}}
+                        </p>
+                        <p *ngIf="product.specifications[0].hard_capacity_1">
+                            <b>{{name.HARD_CAPACITY_1}}: </b>
+                            {{product.specifications[0].hard_capacity_1}}
+                        </p>
+                        <p *ngIf="product.specifications[0].hard_slot_1">
+                            <b>{{name.HARD_SLOT_1}}: </b>
+                            {{product.specifications[0].hard_slot_1}}
+                        </p>
+                        <p *ngIf="product.specifications[0].hard_type_2">
+                            <b>{{name.HARD_TYPE_2}}: </b>
+                            {{product.specifications[0].hard_type_2}}
+                        </p>
+                        <p *ngIf="product.specifications[0].hard_capacity_2">
+                            <b>{{name.HARD_CAPACITY_2}}: </b>
+                            {{product.specifications[0].hard_capacity_2}}
+                        </p>
+                        <p *ngIf="product.specifications[0].hard_slot_2">
+                            <b>{{name.HARD_SLOT_2}}: </b>
+                            {{product.specifications[0].hard_slot_2}}
+                        </p>
+                        <p *ngIf="product.specifications[0].connectivity_bluetooth">
+                            <b>{{name.CONNECTIVITY_BLUETOOTH}}: </b>
+                            {{product.specifications[0].connectivity_bluetooth}}
+                        </p>
+                        <p *ngIf="product.specifications[0].connectivity_wireless">
+                            <b>{{name.CONNECTIVITY_WIRELESS}}: </b>
+                            {{product.specifications[0].connectivity_wireless}}
+                        </p>
+                        <p *ngIf="product.specifications[0].read_speed">
+                            <b>{{name.READ_SPEED}}: </b>
+                            {{product.specifications[0].read_speed}}
+                        </p>
+                        <p *ngIf="product.specifications[0].write_speed">
+                            <b>{{name.WRITE_SPEED}}: </b>
+                            {{product.specifications[0].write_speed}}
+                        </p>
+                        <p *ngIf="product.specifications[0].material">
+                            <b>{{name.MATERIAL}}: </b>
+                            {{product.specifications[0].material}}
+                        </p>
+                        <p *ngIf="product.specifications[0].color">
+                            <b>{{name.COLOR}}: </b>
+                            {{product.specifications[0].color}}
+                        </p>
+                        <p *ngIf="product.specifications[0].weight">
+                            <b>{{name.WEIGHT}}: </b>
+                            {{product.specifications[0].weight}}
+                        </p>
+                        <p *ngIf="product.specifications[0].speed">
+                            <b>{{name.SPEED}}: </b>
+                            {{product.specifications[0].speed}}
+                        </p>
+                        <p *ngIf="product.specifications[0].hdmi">
+                            <b>{{name.HDMI}}: </b>
+                            {{product.specifications[0].hdmi}}
+                        </p>
+                        <p *ngIf="product.specifications[0].speaker">
+                            <b>{{name.SPEAKER}}: </b>
+                            {{product.specifications[0].speaker}}
+                        </p>
+                        <p *ngIf="product.specifications[0].radiator">
+                            <b>{{name.RADIATOR}}: </b>
+                            {{product.specifications[0].radiator}}
+                        </p>
+                        <p *ngIf="product.specifications[0].voltage">
+                            <b>{{name.VOLTAGE}}: </b>
+                            {{product.specifications[0].voltage}}
+                        </p>
                     </div>
                 </div>
             </div>

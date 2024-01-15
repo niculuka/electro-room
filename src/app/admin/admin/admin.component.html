@@ -1,0 +1,44 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="container-admin">
+    <div class="content-admin">
+
+        <ul>
+
+            <li *ngFor="let title of sidenavItems">
+
+                <a class="title">
+
+                    <span class="icon">
+                        <mat-icon>{{title.icon}}</mat-icon>
+                        <span>{{title.name}}</span>
+                    </span>
+
+                    <span class="icon">
+                        <mat-icon>expand_less</mat-icon>
+                    </span>
+
+                </a>
+
+                <div class="subtitle" *ngFor="let subtitle of title.subtitles">
+
+
+                    <a class="subtitle" (click)="selectSubtitle(subtitle)">
+                        {{subtitle.name}}
+                    </a>
+
+                    <div class="dropdown-menu-nav">
+
+                        <div *ngIf="currentSubtitle==subtitle.name">
+                            <h1>{{subtitle.name}}</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </li>
+        </ul>
+
+    </div>
+</div>

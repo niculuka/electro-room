@@ -45,6 +45,7 @@ import { ProductDetailComponent } from './products-pages/detail/product-detail/p
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 import { FavoriteComponent } from './guest/favorite/favorite.component';
 import { CompareComponent } from './guest/compare/compare.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 const routes: Routes = [
   // home
@@ -59,20 +60,6 @@ const routes: Routes = [
   { path: "auth/register", component: RegisterComponent },
   { path: "auth/login", component: LoginComponent },
 
-  // admin  
-  { path: "admin/products/:product", component: AdminProductComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/product/create", component: AdminProductCreateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/product/update/:linkname", component: AdminProductUpdateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/electro-orders", component: AdminOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/electro-items", component: AdminItemComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/users", component: AdminUserComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-  { path: "admin/tokens", component: AdminTokenComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
-
-  // admin - D E M O
-  { path: "admin/demo/products/:product", component: AdminDemoProductComponent },
-  { path: "admin/demo/electro-orders", component: AdminDemoOrderComponent },
-  { path: "admin/demo/users", component: AdminDemoUserComponent },
-
   // current user
   { path: "cart", component: CartComponent },
   { path: "cart/order", component: OrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN, ROLE.USER] } },
@@ -86,7 +73,7 @@ const routes: Routes = [
   { path: "401", component: UnauthComponent },
   { path: "404", component: NotFoundComponent },
 
-  // S P E C I A L   O F F E R -------------------------------------------------------------------------------------
+  // S P E C I A L   O F F E R ------------------------------------------------------------
   {
     path: "oferta-speciala",
     component: SpecialOfferComponent,
@@ -97,7 +84,7 @@ const routes: Routes = [
     },
   },
 
-  // C U S T O M E R S   S U P P O R T -----------------------------------------------------------------------------
+  // C U S T O M E R S   S U P P O R T ----------------------------------------------------
   {
     path: "suport-clienti",
     component: CustomerSupportComponent,
@@ -129,7 +116,7 @@ const routes: Routes = [
     },
   },
 
-  // P R O D U C T S ----------------------------------------------------------------------------------------------
+  // P R O D U C T S ----------------------------------------------------------------------
   {
     path: "p/:department",
     component: DepartmentComponent,
@@ -191,6 +178,31 @@ const routes: Routes = [
       ]
     },
   },
+
+  // admin --------------------------------------------------------------------------------
+  {
+    path: "admin",
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [ROLE.ADMIN],
+      breadcrumb: [
+        { label: 'Admin', url: '' },
+      ]
+    }
+  },
+  { path: "admin/products/:product", component: AdminProductComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/product/create", component: AdminProductCreateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/product/update/:linkname", component: AdminProductUpdateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/electro-orders", component: AdminOrderComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/electro-items", component: AdminItemComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/users", component: AdminUserComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+  { path: "admin/tokens", component: AdminTokenComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+
+  // admin - D E M O
+  { path: "admin/demo/products/:product", component: AdminDemoProductComponent },
+  { path: "admin/demo/electro-orders", component: AdminDemoOrderComponent },
+  { path: "admin/demo/users", component: AdminDemoUserComponent },
 ];
 
 @NgModule({
