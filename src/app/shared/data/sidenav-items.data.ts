@@ -6,6 +6,7 @@ export interface AdminSubtitle {
 export interface AdminTitle {
     name: string;
     icon: string;
+    isOpened: boolean;
     subtitles: Array<AdminSubtitle>
 }
 
@@ -13,6 +14,7 @@ export const ADMIN_SIDENAV: Array<AdminTitle> = [
     {
         name: "Produse",
         icon: "library_books",
+        isOpened: true,
         subtitles: [
             {
                 name: "Laptopuri",
@@ -35,9 +37,10 @@ export const ADMIN_SIDENAV: Array<AdminTitle> = [
     {
         name: "Comenzi",
         icon: "add_shopping_cart",
+        isOpened: false,
         subtitles: [
             {
-                name: "Toate comenzile",
+                name: "Comenzi",
                 link: "admin/products/electro-orders",
             },
             {
@@ -49,9 +52,10 @@ export const ADMIN_SIDENAV: Array<AdminTitle> = [
     {
         name: "Utilizatori",
         icon: "supervisor_account",
+        isOpened: false,
         subtitles: [
             {
-                name: "Toti utilizatorii",
+                name: "Utilizatori",
                 link: "admin/products/users",
             },
             {

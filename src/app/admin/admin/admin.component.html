@@ -3,42 +3,49 @@
 <div class="container-admin">
     <div class="content-admin">
 
-        <ul>
+        <mat-drawer-container class="drawer-container" autosize>
+            <mat-drawer #drawer class="drawer-sidenav" [mode]="mode" [opened]="opened">
+                <ul>
+                    <div class="header-left">
+                        <a routerLink="/">PANOU DE COMANDA</a>
+                    </div>
+                    <li class="title" *ngFor="let title of sidenavItems">
+                        <a (click)="selectTitle(title)">
+                            <div>
+                                <mat-icon>{{title.icon}}</mat-icon>
+                                <span>{{title.name}}</span>
+                            </div>
+                            <mat-icon [ngStyle]="{
+                                    rotate: title.isOpened ? '0deg' : '-180deg',
+                                    transition: title.isOpened ? '0.2s' : '0.3s',
+                                    }"> expand_less
+                            </mat-icon>
+                        </a>
+                        <div class="subtitle" *ngFor="let subtitle of title.subtitles">
+                            <a [ngStyle]="{
+                                color: currentSubtitle==subtitle.name ? 'rgb(220, 20, 110)' : 'black',
+                                'font-weight': currentSubtitle==subtitle.name ? 'bold' : 'normal',
+                                }" (click)="selectSubtitle(subtitle)" *ngIf="title.isOpened">
+                                {{subtitle.name}}
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </mat-drawer>
 
-            <li *ngFor="let title of sidenavItems">
-
-                <a class="title">
-
-                    <span class="icon">
-                        <mat-icon>{{title.icon}}</mat-icon>
-                        <span>{{title.name}}</span>
-                    </span>
-
-                    <span class="icon">
-                        <mat-icon>expand_less</mat-icon>
-                    </span>
-
-                </a>
-
-                <div class="subtitle" *ngFor="let subtitle of title.subtitles">
-
-
-                    <a class="subtitle" (click)="selectSubtitle(subtitle)">
-                        {{subtitle.name}}
-                    </a>
-
-                    <div class="dropdown-menu-nav">
-
+            <div class="drawer-sidenav-content">
+                <div class="header-right">
+                    <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+                </div>
+                <div class="menu-content" *ngFor="let title of sidenavItems">
+                    <div *ngFor="let subtitle of title.subtitles">
                         <div *ngIf="currentSubtitle==subtitle.name">
                             <h1>{{subtitle.name}}</h1>
                         </div>
-
                     </div>
-
                 </div>
-
-            </li>
-        </ul>
+            </div>
+        </mat-drawer-container>
 
     </div>
 </div>
