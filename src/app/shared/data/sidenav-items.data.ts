@@ -1,66 +1,72 @@
-export interface AdminSubtitle {
+import { CATEGORY, ORDER, USER } from "../enums/electro.enum";
+
+export interface SidenavSubtitle {
     name: string;
-    link: string;
+    subtitle: CATEGORY | USER | ORDER;
 }
 
-export interface AdminTitle {
+export interface SidenavTitle {
     name: string;
     icon: string;
     isOpened: boolean;
-    subtitles: Array<AdminSubtitle>
+    title: CATEGORY | USER | ORDER;
+    subtitles: Array<SidenavSubtitle>
 }
 
-export const ADMIN_SIDENAV: Array<AdminTitle> = [
+export const SIDENAV_ITEMS: Array<SidenavTitle> = [
     {
         name: "Produse",
         icon: "library_books",
         isOpened: true,
+        title: CATEGORY.PRODUCTS,
         subtitles: [
             {
                 name: "Laptopuri",
-                link: "admin/products/laptops",
+                subtitle: CATEGORY.LAPTOPS,
             },
             {
                 name: "Accesorii laptop",
-                link: "admin/products/laptop_accessory",
+                subtitle: CATEGORY.LAPTOP_ACCESSORY,
             },
             {
                 name: "Sisteme Pc",
-                link: "admin/products/pc",
+                subtitle: CATEGORY.PC,
             },
             {
                 name: "Monitoare",
-                link: "admin/products/monitor",
+                subtitle: CATEGORY.MONITOR,
             },
         ]
     },
     {
         name: "Comenzi",
         icon: "add_shopping_cart",
-        isOpened: false,
+        isOpened: true,
+        title: ORDER.ORDERS,
         subtitles: [
             {
                 name: "Comenzi",
-                link: "admin/products/electro-orders",
+                subtitle: ORDER.ORDERS,
             },
             {
                 name: "Produse comandate",
-                link: "admin/products/electro-items",
+                subtitle: ORDER.ITEMS,
             },
         ]
     },
     {
         name: "Utilizatori",
         icon: "supervisor_account",
-        isOpened: false,
+        isOpened: true,
+        title: USER.USERS,
         subtitles: [
             {
                 name: "Utilizatori",
-                link: "admin/products/users",
+                subtitle: USER.USERS,
             },
             {
                 name: "Activari",
-                link: "admin/products/tokens",
+                subtitle: USER.TOKENS,
             },
         ]
     },

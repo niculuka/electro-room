@@ -12,7 +12,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 1500px;
+  width: 100%;
   /* border: 2px solid rgb(0, 0, 0); */
 }
 
@@ -34,7 +34,7 @@ table {
   font-size: 14px;
   border-collapse: collapse;
   background: white;
-  border: 1px solid rgb(205, 205, 205);
+  /* border: 1px solid rgb(205, 205, 205); */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -45,11 +45,12 @@ th {
 }
 
 tr {
-  border-bottom: 2px solid rgb(186, 184, 184);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 tr:hover {
-  background-color: rgb(255, 228, 240);
+  background-color: rgb(220, 20, 110, 0.1);
 }
 
 .my-fields {
@@ -112,7 +113,7 @@ img:hover {
 
 .btn-edit {
   margin: 2px;
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 16px;
   font-weight: 600;
   color: white;
@@ -130,7 +131,7 @@ img:hover {
 .btn-delete {
   color: white;
   margin: 2px;
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 16px;
   font-weight: 600;
   border-radius: 4px;
@@ -149,9 +150,9 @@ img:hover {
 }
 
 @media (max-width: 1600px) {
-  .content-admin {
+  /* .content-admin {
     width: 1200px;
-  }
+  } */
 
   table {
     font-size: 13px;
@@ -167,18 +168,29 @@ img:hover {
   }
 }
 
-@media (max-width: 1280px) {
-  .content-admin {
-    margin: 0 18px;
-    width: 980px;
+@media (max-width: 1260px) {
+  table {
+    font-size: 12px;
   }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    font-size: 10px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 1020px) {
+  /* .container-admin {
+    min-width: 820px;
+  } */
 
   .title {
     width: 100%;
-  }
-
-  .table-row {
-    display: none;
   }
 
   .table-col {
@@ -186,59 +198,4 @@ img:hover {
     display: block;
     border: none;
   }
-
-  tbody {
-    border: 1px solid rgb(205, 205, 205);
-  }
-
-  th,
-  td {
-    border: 2px solid #dddddd;
-    padding: 10px;
-  }
-
-  th {
-    width: 280px;
-  }
-
-  td {
-    width: 700px;
-  }
-
-  tr {
-    border: none;
-  }
-
-  .btn-new {
-    font-size: 14px;
-    padding: 6px 22px;
-  }
-
-  .btn-edit {
-    font-size: 14px;
-    padding: 6px 16px;
-  }
-
-  .btn-delete {
-    font-size: 14px;
-    padding: 6px 16px;
-  }
-}
-
-@media (max-width: 550px) {
-
-  .title h1 {
-    font-size: 18px;
-    margin: 0;
-  }
-
-  .title h3 {
-    font-size: 14px;
-    margin: 0;
-  }
-
-  th,
-  td {
-    font-size: 14px;
-  }  
 }

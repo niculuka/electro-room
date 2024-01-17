@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -12,30 +12,27 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './admin-product.component.html',
   styleUrls: ['./admin-product.component.css']
 })
-export class AdminProductComponent implements OnInit {
+export class AdminProductComponent implements OnChanges {
 
   protected products: Array<Product> = [];
   protected product: Product = new Product();
 
   errorMessage: string = "";
-  currentType: string = "";
+  @Input() currentType: any = "";
 
   constructor(
     private productService: ProductService,
     private adminProductService: AdminProductService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
     private toastrService: ToastrService,
-    public matDialog: MatDialog
+    public matDialog: MatDialog,
   ) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentType = params.get('product') || "";
-      this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-        this.products = data;
-      });
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    // console.log(changes['currentType'].currentValue);
+    this.productService
+      .getProductsByTypeService(changes['currentType'].currentValue.toLowerCase())
+      .subscribe(data => this.products = data);
   }
 
   viewProduct(product: Product) {

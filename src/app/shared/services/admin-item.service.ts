@@ -21,11 +21,11 @@ export class AdminItemService extends BearerService {
   }
 
   getAllOrdersService(): Observable<any> {
-    return this.http.get(ITEM_URL + "/electro-items", { headers: this.getHeaders })
+    return this.http.get(ITEM_URL + "/items", { headers: this.getHeaders })
   }
 
   deleteItemService(item: CartItem): Observable<any> {
-    return this.http.delete(ITEM_URL + "/electro-items/" + item.itemId, { headers: this.getHeaders });
+    return this.http.delete(ITEM_URL + "/items/" + item.itemId, { headers: this.getHeaders });
   }
 
 }

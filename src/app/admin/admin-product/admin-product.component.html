@@ -12,13 +12,12 @@
         <tr>
           <th>Nr</th>
           <th>Image</th>
-          <th>Name | Description| Id | Brand</th>
+          <th>Name | Id | Brand</th>
           <th>Available</th>
           <th>Type</th>
           <th>Category</th>
           <th>Subcategory</th>
           <th>Price | Badge</th>
-          <th>Others</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -35,7 +34,6 @@
           <td>
             <div class="my-fields">
               <span><strong>{{product.name}}</strong></span>
-              <span>{{product.description}}</span>
               <span><strong>id: {{product.id}} | {{product.brand}}</strong></span>
             </div>
           </td>
@@ -51,96 +49,19 @@
               <span>{{product.badge}}</span>
             </div>
           </td>
-          <td>
+          <!-- <td>
             <div class="my-fields">
-              <!-- <span class="line">Display: <strong>{{product.display ? product.display : " - "}}</strong></span>
+              <span class="line">Display: <strong>{{product.display ? product.display : " - "}}</strong></span>
               <span class="line">Power: <strong>{{product.power ? product.power : " - "}}</strong></span>
               <span class="line">Capacity: <strong>{{product.capacity ? product.capacity : " - "}}</strong></span>
-              <span class="line">Connect: <strong>{{product.connect ? product.connect : " - "}}</strong></span> -->
+              <span class="line">Connect: <strong>{{product.connect ? product.connect : " - "}}</strong></span>
             </div>
+          </td> -->
+          <td>
+            <button class="btn-edit" (click)="updateProduct(product)">E</button>
           </td>
           <td>
-            <button class="btn-edit" (click)="updateProduct(product)">Edit</button>
-          </td>
-          <td>
-            <button class="btn-delete" (click)="deleteProductDialog(product)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <table class="table-col" *ngFor="let product of products; index as ind">
-      <tbody>
-        <tr>
-          <th colspan="2">{{ind+1}}</th>
-        </tr>
-        <tr>
-          <th>Image</th>
-          <td>
-            <a (click)="viewProduct(product)">
-              <img [src]="product.image" [alt]="product.image">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <th>Name</th>
-          <td><strong>{{product.name}}</strong></td>
-        </tr>
-        <tr>
-          <th>Description</th>
-          <td>{{product.description}}</td>
-        </tr>
-        <tr>
-          <th>Id | Brand</th>
-          <td><strong>id: {{product.id}} | <strong>{{product.brand}}</strong></strong></td>
-        </tr>
-        <tr>
-          <th>Available</th>
-          <td [style]="{'color':product.available==='STOCK' ? '#4fbe04' : 'gray'}">
-            <strong>{{product.available}}</strong>
-          </td>
-        </tr>
-        <tr>
-          <th>Type</th>
-          <td>{{product.type}}</td>
-        </tr>
-        <tr>
-          <th>Category</th>
-          <td><strong>{{product.category}}</strong></td>
-        </tr>
-        <tr>
-          <th>Subcategory</th>
-          <td>{{product.subcategory}}</td>
-        </tr>
-        <tr>
-          <th>Price</th>
-          <td class="price"><strong>{{product.price}} Lei</strong></td>
-        </tr>
-        <tr>
-          <th>Badge</th>
-          <td>{{product.badge}}</td>
-        </tr>
-        <!-- <tr>
-          <th>Display</th>
-          <td><strong>{{product.display ? product.display : " - "}}</strong></td>
-        </tr>
-        <tr>
-          <th>Power</th>
-          <td><strong>{{product.power ? product.power : " - "}}</strong></td>
-        </tr>
-        <tr>
-          <th>Capacity</th>
-          <td><strong>{{product.capacity ? product.capacity : " - "}}</strong></td>
-        </tr>
-        <tr>
-          <th>Connect</th>
-          <td><strong>{{product.connect ? product.connect : " - "}}</strong></td>
-        </tr> -->
-        <tr class="action">
-          <th>Action</th>
-          <td>
-            <button class="btn-edit" (click)="updateProduct(product)">Edit</button>
-            <button class="btn-delete" (click)="deleteProductDialog(product)">Delete</button>
+            <button class="btn-delete" (click)="deleteProductDialog(product)">D</button>
           </td>
         </tr>
       </tbody>

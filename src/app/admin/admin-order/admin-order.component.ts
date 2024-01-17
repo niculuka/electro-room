@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DialogOrderDeleteComponent } from '../../dialogs/dialog-order-delete/dialog-order-delete.component';
 import { CartItem } from '../../shared/models/cart-item.model';
-import { ORDER_STATUS } from '../../shared/enums/electro.enum';
+import { ORDER } from '../../shared/enums/electro.enum';
 import { Order } from '../../shared/models/order.model';
 import { AdminOrderService } from '../../shared/services/admin-order.service';
 
@@ -36,17 +36,17 @@ export class AdminOrderComponent implements OnInit {
 
   getStatus(status: any) {
     switch (status) {
-      case ORDER_STATUS.NEW: return "#4fbe04";
-      case ORDER_STATUS.DONE: return "#03b7ce";
-      case ORDER_STATUS.CANCELED: return "#df2177";
+      case ORDER.NEW: return "#4fbe04";
+      case ORDER.DONE: return "#03b7ce";
+      case ORDER.CANCELED: return "#df2177";
       default: return "#4fbe04";
     }
   }
 
   updateStatus(order: Order) {
-    if (order.status === ORDER_STATUS.NEW) this.status = ORDER_STATUS.DONE;
-    if (order.status === ORDER_STATUS.DONE) this.status = ORDER_STATUS.CANCELED;
-    if (order.status === ORDER_STATUS.CANCELED) this.status = ORDER_STATUS.NEW;
+    if (order.status === ORDER.NEW) this.status = ORDER.DONE;
+    if (order.status === ORDER.DONE) this.status = ORDER.CANCELED;
+    if (order.status === ORDER.CANCELED) this.status = ORDER.NEW;
 
     this.adminOrderService.updateStatusService(order.orderId, this.status).subscribe({
       next: () => {

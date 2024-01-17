@@ -4,7 +4,15 @@ export enum ROLE {
     ADMIN = "ADMIN",
 }
 
-export enum ORDER_STATUS {
+export enum USER {
+    USERS = "USERS",
+    TOKENS = "TOKENS",
+}
+
+export enum ORDER {
+    ORDERS = "ORDERS",
+    ORDER = "ORDER",
+    ITEMS = "ITEMS",
     NEW = "NEW",
     DONE = "DONE",
     CANCELED = "CANCELED",
@@ -90,6 +98,8 @@ export enum SPECIFICATIONS {
 export enum CATEGORY {
     CATEGORY = "CATEGORY",
     SUBCATEGORY = "SUBCATEGORY",
+    PRODUCTS = "PRODUCTS",
+    PRODUCT = "PRODUCT",
 
     // B A D G E -----------------------------------------
     TOP_FAVORITE = "TOP_FAVORITE",

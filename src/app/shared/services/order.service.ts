@@ -6,7 +6,7 @@ import { Order } from '../models/order.model';
 import { AuthService } from './auth.service';
 import { BearerService } from './bearer.service';
 
-const ORDER_URL = `${environment.BASE_URL}/electro-order`;
+const ORDER_URL = `${environment.BASE_URL}/order`;
 
 @Injectable({
   providedIn: 'root'

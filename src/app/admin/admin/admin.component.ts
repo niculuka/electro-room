@@ -1,8 +1,9 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { ADMIN_SIDENAV } from 'src/app/shared/data/sidenav-items.data';
+import { SIDENAV_ITEMS } from 'src/app/shared/data/sidenav-items.data';
+import { CATEGORY, ORDER, USER } from 'src/app/shared/enums/electro.enum';
 
-const adminSidenav: Array<any> = ADMIN_SIDENAV;
+const sidenavTitles: Array<any> = SIDENAV_ITEMS;
 
 @Component({
   selector: 'app-admin',
@@ -12,31 +13,53 @@ const adminSidenav: Array<any> = ADMIN_SIDENAV;
 export class AdminComponent implements OnInit {
 
   sidenavItems: Array<any> = this.getSidenavItemsFromLS();
+  activeTitle: string = localStorage.getItem("activeTitle-ls") || sidenavTitles[0].title;
+  activeSubtitle: string = localStorage.getItem("activeSubtitle-ls") || sidenavTitles[0].subtitles[0].subtitle;
 
-  currentScreenWidth: any = 1000000;
   opened: boolean = true;
   mode: any = "side";
 
-  currentSubtitle: string = localStorage.getItem("currentSubtitle-ls") || "Laptopuri";
+  @ViewChild(MatDrawer) myDrawer!: MatDrawer;
 
-  @ViewChild(MatDrawer) drawer!: MatDrawer;
+  currentScreenWidth: any = 1000000;
+
+  subtitles: any = {
+    laptops: CATEGORY.LAPTOPS,
+    laptopAccessory: CATEGORY.LAPTOP_ACCESSORY,
+    pc: CATEGORY.PC,
+    monitor: CATEGORY.MONITOR,
+    orders: ORDER.ORDERS,
+    items: ORDER.ITEMS,
+    users: USER.USERS,
+    tokens: USER.TOKENS,
+  };
 
   ngOnInit(): void {
     this.handleWidth();
+    this.openTitleWhereActiveSubtitle();
   }
 
-  selectTitle(title: any) {
+  openTitleWhereActiveSubtitle() {
+    this.sidenavItems.filter((t: any) => {
+      t.subtitles.filter((sub: any) => {
+        if (sub.subtitle == this.activeSubtitle) t.isOpened = true;
+      });
+    });
+  }
+
+  selectTitle(getTitle: any) {
+    this.activeTitle = getTitle.title;
+    localStorage.setItem('activeTitle-ls', this.activeTitle);
     this.sidenavItems.filter(item => {
-      if (item.name == title.name) item.isOpened = !item.isOpened;
+      if (item.name == getTitle.name) item.isOpened = !item.isOpened;
     });
     this.setSidenavItemsToLS();
   }
 
-  selectSubtitle(subtitle: any) {
-    this.currentSubtitle = subtitle.name;
-    localStorage.setItem('currentSubtitle-ls', this.currentSubtitle);
-    this.setSidenavItemsToLS();
-    if (!this.opened) this.drawer.toggle();
+  selectSubtitle(getSubtitle: any) {
+    this.activeSubtitle = getSubtitle.subtitle;
+    localStorage.setItem('activeSubtitle-ls', this.activeSubtitle);
+    if (!this.opened) this.myDrawer.close();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -59,7 +82,7 @@ export class AdminComponent implements OnInit {
 
   private getSidenavItemsFromLS() {
     const sidenavItemsJson = localStorage.getItem('sidenavItems-ls');
-    return sidenavItemsJson ? JSON.parse(sidenavItemsJson) : adminSidenav;
+    return sidenavItemsJson ? JSON.parse(sidenavItemsJson) : sidenavTitles;
   }
 
 }

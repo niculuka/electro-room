@@ -7,7 +7,7 @@
             <mat-drawer #drawer class="drawer-sidenav" [mode]="mode" [opened]="opened">
                 <ul>
                     <div class="header-left">
-                        <a routerLink="/">PANOU DE COMANDA</a>
+                        <a (click)="drawer.close()">PANOU DE COMANDA</a>
                     </div>
                     <li class="title" *ngFor="let title of sidenavItems">
                         <a (click)="selectTitle(title)">
@@ -21,12 +21,12 @@
                                     }"> expand_less
                             </mat-icon>
                         </a>
-                        <div class="subtitle" *ngFor="let subtitle of title.subtitles">
+                        <div class="subtitle" *ngFor="let sub of title.subtitles">
                             <a [ngStyle]="{
-                                color: currentSubtitle==subtitle.name ? 'rgb(220, 20, 110)' : 'black',
-                                'font-weight': currentSubtitle==subtitle.name ? 'bold' : 'normal',
-                                }" (click)="selectSubtitle(subtitle)" *ngIf="title.isOpened">
-                                {{subtitle.name}}
+                                color: activeSubtitle==sub.subtitle ? 'rgb(220, 20, 110)' : 'black',
+                                'font-weight': activeSubtitle==sub.subtitle ? 'bold' : 'normal',
+                                }" (click)="selectSubtitle(sub)" *ngIf="title.isOpened">
+                                {{sub.name}}
                             </a>
                         </div>
                     </li>
@@ -34,15 +34,31 @@
             </mat-drawer>
 
             <div class="drawer-sidenav-content">
-                <div class="header-right">
+                <div class="header-right" [ngStyle]="{
+                    'border-radius':drawer.opened?'0':'8px 0 0 0',
+                    
+                    }">
                     <mat-icon (click)="drawer.toggle()">menu</mat-icon>
                 </div>
-                <div class="menu-content" *ngFor="let title of sidenavItems">
-                    <div *ngFor="let subtitle of title.subtitles">
-                        <div *ngIf="currentSubtitle==subtitle.name">
-                            <h1>{{subtitle.name}}</h1>
-                        </div>
+                <div class="menu-content">
+
+                    <div class="insert-page">
+                        <app-admin-product *ngIf="activeSubtitle==subtitles.laptops
+                                            ||activeSubtitle==subtitles.laptopAccessory
+                                            ||activeSubtitle==subtitles.pc
+                                            ||activeSubtitle==subtitles.monitor" [currentType]="activeSubtitle">
+                        </app-admin-product>
+
+
+
+                        <app-admin-order *ngIf="activeSubtitle==subtitles.orders"></app-admin-order>
+
+                        <app-admin-item *ngIf="activeSubtitle==subtitles.items"></app-admin-item>
+
+                        <app-admin-user *ngIf="activeSubtitle==subtitles.users"></app-admin-user>
+                        <app-admin-token *ngIf="activeSubtitle==subtitles.tokens"></app-admin-token>
                     </div>
+
                 </div>
             </div>
         </mat-drawer-container>

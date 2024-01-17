@@ -15,7 +15,7 @@ export class AdminDemoService {
     ) { }    
 
     getAllDemoOrdersService(): Observable<any> {
-        return this.http.get(API_URL + "/admin/demo/electro-orders");
+        return this.http.get(API_URL + "/admin/demo/orders");
     }
 
     getAllDemoUsersService(): Observable<any> {
