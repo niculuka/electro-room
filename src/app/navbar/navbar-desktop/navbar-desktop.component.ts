@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
+import { DEPARTMENTS, IDepartment } from 'src/app/shared/data/mega-menu.data';
 import { HandleWindow } from 'src/app/shared/models/handle-window.model';
 import { CurrentUrl } from 'src/app/shared/services/current-url.service';
 import { OverlayerService } from 'src/app/shared/services/overlayer.service';
@@ -12,7 +12,7 @@ import { OverlayerService } from 'src/app/shared/services/overlayer.service';
 })
 export class NavbarDesktopComponent implements OnDestroy {
 
-  departments: Array<Department> = DEPARTMENTS;  
+  departments: Array<IDepartment> = DEPARTMENTS;  
 
   @ViewChild('menu') menu: ElementRef | undefined;
   handleWindow: HandleWindow = new HandleWindow();

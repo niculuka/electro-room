@@ -26,15 +26,15 @@ export const SIDENAV_ITEMS: Array<SidenavTitle> = [
             },
             {
                 name: "Accesorii laptop",
-                subtitle: CATEGORY.LAPTOP_ACCESSORY,
+                subtitle: CATEGORY.LAPTOP_ACCESSORIES,
             },
             {
                 name: "Sisteme Pc",
-                subtitle: CATEGORY.PC,
+                subtitle: CATEGORY.PCS,
             },
             {
                 name: "Monitoare",
-                subtitle: CATEGORY.MONITOR,
+                subtitle: CATEGORY.MONITORS,
             },
         ]
     },

@@ -16,6 +16,7 @@ export class AdminUserComponent implements OnInit {
 
   protected users: Array<User> = [];
   protected user: User = new User();
+  userRole: ROLE = ROLE.USER;
 
   currentUser: User = new User();
   errorMessage: string = "";

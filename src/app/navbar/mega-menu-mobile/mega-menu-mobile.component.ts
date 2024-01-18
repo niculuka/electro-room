@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Department, DEPARTMENTS, Title } from 'src/app/shared/data/mega-menu.data';
+import { IDepartment, DEPARTMENTS, IType } from 'src/app/shared/data/mega-menu.data';
 
 @Component({
   selector: 'mega-menu-mobile',
@@ -8,16 +8,16 @@ import { Department, DEPARTMENTS, Title } from 'src/app/shared/data/mega-menu.da
 })
 export class MegaMenuMobileComponent {
 
-  departments: Array<Department> = DEPARTMENTS;
-  
+  departments: Array<IDepartment> = DEPARTMENTS;
+
   closeMobMenu: boolean = false;
   @Output() closeMobMenuEvent = new EventEmitter<boolean>();
 
-  toogleDepartment(department: Department) {
+  toogleDepartment(department: IDepartment) {
     department.showTitle = !department.showTitle;
   }
 
-  toogleTitle(title: Title) {
+  toogleTitle(title: IType) {
     title.showSubtitle = !title.showSubtitle;
   }
 

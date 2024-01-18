@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -48,7 +49,7 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
       this.currentDepartment = params.get('department') || "";
-      this.currentType = "laptops";
+      this.currentType = CATEGORY.LAPTOPS_PATH;
       this.createBreadcrumb();
       this.sub2 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
         if (data) {
@@ -56,7 +57,7 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
           this.foundProducts = true;
           this.getFavoritesProducts();
           this.getComparesProducts();
-          this.productCategoryService.productsFiltersService(this.products);          
+          this.productCategoryService.productsFiltersService(this.products);
         }
         else this.foundProducts = false;
       });

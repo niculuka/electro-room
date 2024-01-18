@@ -25,9 +25,9 @@ export class AdminComponent implements OnInit {
 
   subtitles: any = {
     laptops: CATEGORY.LAPTOPS,
-    laptopAccessory: CATEGORY.LAPTOP_ACCESSORY,
-    pc: CATEGORY.PC,
-    monitor: CATEGORY.MONITOR,
+    laptopAccessory: CATEGORY.LAPTOP_ACCESSORIES,
+    pc: CATEGORY.PCS,
+    monitor: CATEGORY.MONITORS,
     orders: ORDER.ORDERS,
     items: ORDER.ITEMS,
     users: USER.USERS,

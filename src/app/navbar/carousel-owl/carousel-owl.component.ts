@@ -36,9 +36,7 @@ export class CarouselOwlComponent implements OnInit {
   }
 
   topFavorite: CATEGORY = CATEGORY.TOP_FAVORITE;
-  topFavoriteRo: CATEGORY = CATEGORY.TOP_FAVORITE_RO;
   superPrice: CATEGORY = CATEGORY.SUPER_PRICE;
-  superPriceRo: CATEGORY = CATEGORY.SUPER_PRICE_RO;
 
   isDragging: boolean = false;
   customOptions: OwlOptions = {

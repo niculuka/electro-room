@@ -33,7 +33,7 @@
           <td>{{user.address}}</td>
           <td>{{user.createTime}}</td>
           <td>
-            <button class="btn-role" [ngStyle]="{'background':user.role==='USER' ? '#5ed7ff' : '#079dcf'}"
+            <button class="btn-role" [ngStyle]="{'background':user.role===userRole ? '#5ed7ff' : '#079dcf'}"
               (click)="changeRole(user)">{{user.role}}
             </button>
           </td>
@@ -81,7 +81,7 @@
         <tr class="action">
           <th>Action</th>
           <td>
-            <button class="btn-role" [ngStyle]="{'background':user.role==='USER' ? '#5ed7ff' : '#079dcf'}"
+            <button class="btn-role" [ngStyle]="{'background':user.role===userRole ? '#5ed7ff' : '#079dcf'}"
               (click)="changeRole(user)">{{user.role}}
             </button>
             <button class="btn-active" [ngStyle]="{'background':user.enabled===true ? '#00af00' : '#00af0066'}"

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
+import { DEPARTMENTS, IDepartment } from 'src/app/shared/data/mega-menu.data';
 
 @Component({
   selector: 'app-mega-menu-desktop',
@@ -8,7 +8,7 @@ import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
 })
 export class MegaMenuDesktopComponent {
 
-  departments: Array<Department> = DEPARTMENTS;
+  departments: Array<IDepartment> = DEPARTMENTS;
 
   closeDeskMenu: boolean = false;
   @Output() closeDeskMenuEvent = new EventEmitter<boolean>();

@@ -1,7 +1,7 @@
 // m o d u l e s
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { ROLE } from 'src/app/shared/enums/electro.enum';
+import { CATEGORY, ROLE } from 'src/app/shared/enums/electro.enum';
 
 // p a g e s
 import { LoginComponent } from './guest/login/login.component';
@@ -127,7 +127,7 @@ const routes: Routes = [
     },
   },
   {
-    path: "p/:department/laptops",
+    path: "p/:department/" + CATEGORY.LAPTOPS_PATH,
     component: ProductTypeComponent,
     data: {
       breadcrumb: [

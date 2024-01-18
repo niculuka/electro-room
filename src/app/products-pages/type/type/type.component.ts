@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DEPARTMENTS, Department } from 'src/app/shared/data/mega-menu.data';
+import { DEPARTMENTS, IDepartment,  } from 'src/app/shared/data/mega-menu.data';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 
@@ -12,7 +12,7 @@ import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 })
 export class TypeComponent implements OnInit, OnDestroy {
 
-  departments: Array<Department> = DEPARTMENTS;
+  departments: Array<IDepartment> = DEPARTMENTS;
   cards: Array<any> = [];
 
   currentDepartment: string = "";
@@ -34,7 +34,7 @@ export class TypeComponent implements OnInit, OnDestroy {
       this.currentType = params.get('type') || "";
       this.createBreadcrumb();
       this.departments.filter(data => {
-        let result = data.titles.find(items => items.type.toLowerCase() === this.currentType)
+        let result = data.titles.find(items => items.path === this.currentType)
         if (result) {
           this.cards = result.subtitles;          
         }
