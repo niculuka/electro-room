@@ -21,8 +21,7 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   protected products: Array<Product> = [];
 
   currentDepartment: string = "";
-  currentType: string = "";
-  typePath: string = CATEGORY.LAPTOPS_PATH;  
+  currentType: string = CATEGORY.LAPTOPS_TYPE;
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   foundProducts: boolean = false;
@@ -49,12 +48,11 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.departments.filter(depart => {
-      let getType = depart.titles.find(title => title.path === this.typePath);
-      if (getType) {
+      let type = depart.titles.find(title => title.type === this.currentType);
+      if (type?.type) {
         this.currentDepartment = depart.name;
-        this.currentType = getType.name;
         this.createBreadcrumb();
-        this.sub1 = this.productService.getProductsByTypeService(getType.type).subscribe(data => {
+        this.sub1 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
           if (data.length) {
             this.products = data;
             this.foundProducts = true;

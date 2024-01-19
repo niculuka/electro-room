@@ -155,67 +155,66 @@ export enum CATEGORY {
 
     // D E P A R T M E N T ========================================
     LPT = "Laptopuri, Telefoane, Tablete",
-    LPT_DEPART = "Laptopuri Telefoane Tablete",
-    LPT_PATH = "lpt",
+    LPT_DEPART = "laptopuri-telefoane-tablete",
     DPS = "Desktop, Periferice, Software",
-    DPS_DEPART = "Desktop Periferice Software",
-    DPS_PATH = "dps",
+    DPS_DEPART = "desktop-periferice-software",
 
     // T Y P E ====================================================
-    LAPTOP = "laptop",
+    LAPTOP = "Laptop",
     LAPTOPS = "Laptopuri",
-    LAPTOPS_TYPE = "Laptopuri",
-    LAPTOPS_PATH = "laptopuri",    
-    LAPTOP_ACCESSORIES = "Accesorii Laptop",
-    LAPTOP_ACCESSORIES_TYPE = "Accesorii Laptop",
-    LAPTOP_ACCESSORIES_PATH = "accesorii-laptop",
-    PCS = "Sisteme PC",
-    PCS_TYPE = "PC-uri",
-    PCS_PATH = "pc-uri",
-    MONITORS = "Monitoare",
-    MONITORS_TYPE = "Monitoare",
-    MONITORS_PATH = "monitoare",
+    LAPTOPS_TYPE = "laptopuri",   
+    LAPTOP_ACCESSORIES = "accesorii laptop",
+    LAPTOP_ACCESSORIES_TYPE = "accesorii-laptop",
+    PCS = "sisteme pc",
+    PCS_TYPE = "pc-uri",
+    MONITORS = "monitoare",
+    MONITORS_TYPE = "monitoare",
 
     // C A T E G O R Y ============================================
     LAPTOPS_GAMING = "Laptopuri Gaming",
-    LAPTOPS_GAMING_PATH = "laptopuri-gaming",
+    LAPTOPS_GAMING_CATEG = "laptopuri-gaming",
     LAPTOPS_ULTRA = "Laptopuri Ultra",
-    LAPTOPS_ULTRA_PATH = "laptopuri-ultra",
+    LAPTOPS_ULTRA_CATEG = "laptopuri-ultra",
     LAPTOPS_BUSINESS = "Laptopuri Bussiness",
-    LAPTOPS_BUSINESS_PATH = "laptopuri-bussiness",
+    LAPTOPS_BUSINESS_CATEG = "laptopuri-bussiness",
     LAPTOPS_HOME = "Laptopuri Home",
-    LAPTOPS_HOME_PATH = "laptopuri-home",
+    LAPTOPS_HOME_CATEG = "laptopuri-home",
     PCS_GAMING = "Pc-uri Gaming",
-    PCS_GAMING_PATH = "pc-uri-gaming",
+    PCS_GAMING_CATEG = "pc-uri-gaming",
     ALL_IN_ONE = "All In One",
-    ALL_IN_ONE_PATH = "all-in-one",
-    MONITORS_PRO = "Monitoare Pro",
-    MONITORS_PRO_PATH = "monitoare-pro", 
+    ALL_IN_ONE_CATEG = "all-in-one",
+    MONITORS_PRO = "Monitoare Profesionale",
+    MONITORS_PRO_CATEG = "monitoare-pro",
 
     // S U B = C A T E G O R Y ====================================
     // CHARGER --------------------------------
     LAPTOP_BAGS = "Genti Laptop",
+    LAPTOP_BAGS_CATEG = "genti-laptop",
     BRIEFCASE = "Serviete",
     SLEEVE = "Huse",
     BACKPACK = "Rucsacuri",
 
     // CHARGER --------------------------------
     LAPTOP_CHARGERS = "Incarcatoare Laptop",
+    LAPTOP_CHARGERS_CATEG = "incarcatoare-laptop",
     PLUG_IN = "Priza",
     CAR = "Auto",
 
     // HARD ------------------------------------
     LAPTOP_HARDS = "Harduri Laptop",
+    LAPTOP_HARDS_CATEG = "harduri-laptop",
     HDD = "Hdd",
     SSD = "Ssd",
 
     // EXTERNAL-BATTERY-------------------------    
     EXTERNAL_BATTERIES = "Baterii externe",
+    EXTERNAL_BATTERIES_CATEG = "baterii-externe",
     BATTERY = "Baterii",
 
     // RAM ------------------------------------
     RAM_MEMORIES = "Memorii Ram",
-    RAM = "Ram",    
+    RAM_MEMORIES_CATEG = "memorii-ram",
+    RAM = "Ram",
     DDR3 = "DDR3",
     DDR4 = "DDR4",
     DDR5 = "DDR5",

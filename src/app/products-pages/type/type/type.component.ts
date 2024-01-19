@@ -17,7 +17,6 @@ export class TypeComponent implements OnInit, OnDestroy {
 
   currentDepartment: string = "";
   currentType: string = "";
-  typePath: string = "";  
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   private sub0: any;
@@ -32,13 +31,12 @@ export class TypeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      this.typePath = params.get('typePath') || "";
+      this.currentType = params.get('type') || "";
       this.departments.filter(depart => {
-        let type = depart.titles.find(title => title.path === this.typePath);
-        if (type) {
+        let type = depart.titles.find(title => title.type === this.currentType);
+        if (type?.type) {
           this.cards = type.subtitles;
           this.currentDepartment = depart.name;
-          this.currentType = type.name;
           this.createBreadcrumb();
         }
       });

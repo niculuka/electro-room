@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DEPARTMENTS, IDepartment } from 'src/app/shared/data/mega-menu.data';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -15,6 +16,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductCategoryComponent implements OnInit, OnDestroy {
 
+  departments: Array<IDepartment> = DEPARTMENTS;
   protected products: Array<Product> = [];
 
   currentDepartment: string = "";
@@ -48,22 +50,29 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentDepartment = params.get('department') || "";
-      this.currentType = params.get('type') || "";
-      this.currentCategory = params.get('category') || "";
-      this.createBreadcrumb();
-      this.sub2 = this.productService.getProductsByCategoryService(this.currentCategory).subscribe(data => {
-        if (data) {
-          this.products = data;
-          this.foundProducts = true;
-          this.getFavoritesProducts();
-          this.getComparesProducts();
-          this.productCategoryService.productsFiltersService(this.products);
-        }
-        else this.foundProducts = false;
+      this.currentType = params.get('category') || "";
+      this.departments.filter(depart => {
+        depart.titles.filter(title => {
+          let categ = title.subtitles.find(subtitle => subtitle.category === this.currentType);
+          if (categ?.category) {
+            this.currentDepartment = depart.name;
+            this.currentCategory = categ.name;
+            this.createBreadcrumb();
+            this.sub2 = this.productService.getProductsByCategoryService(categ.category).subscribe(data => {
+              if (data.length) {
+                this.products = data;
+                this.foundProducts = true;
+                this.getFavoritesProducts();
+                this.getComparesProducts();
+                this.productCategoryService.productsFiltersService(this.products);
+              }
+              else this.foundProducts = false;
+            });
+          }
+        });
       });
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     });
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   getFavoritesProducts() {

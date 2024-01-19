@@ -16,7 +16,6 @@ export class DepartmentComponent implements OnDestroy {
   cards: Array<any> = [];
 
   currentDepartment: string = "";
-  departPath: string = "";  
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   private sub: any;
@@ -28,11 +27,10 @@ export class DepartmentComponent implements OnDestroy {
     private toastrService: ToastrService,
   ) {
     this.sub = this.activatedRoute.paramMap.subscribe((params) => {
-      this.departPath = params.get('departPath') || "";
-      let depart: any = this.departments.find(item => item.path === this.departPath);
-      if (depart) {
+      this.currentDepartment = params.get('department') || "";
+      let depart: any = this.departments.find(item => item.department === this.currentDepartment);
+      if (depart.department) {
         this.cards = depart.titles;
-        this.currentDepartment = depart.name;
         this.createBreadcrumb();
       }
     });
