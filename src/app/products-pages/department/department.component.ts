@@ -15,8 +15,8 @@ export class DepartmentComponent implements OnDestroy {
   departments: Array<IDepartment> = DEPARTMENTS;
   cards: Array<any> = [];
 
-  departPath: string = "";
   currentDepartment: string = "";
+  departPath: string = "";  
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   private sub: any;

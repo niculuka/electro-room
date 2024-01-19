@@ -3,7 +3,7 @@ import { CATEGORY } from "../enums/electro.enum";
 export interface IDepartment {
     id: number;
     icon: string;
-    name: string;
+    name: CATEGORY;
     department: CATEGORY;
     path: CATEGORY;
     link: string;
@@ -14,7 +14,7 @@ export interface IDepartment {
 }
 
 export interface IType {
-    name: string;
+    name: CATEGORY;
     type: CATEGORY;
     path: CATEGORY;
     link: string;
@@ -27,7 +27,7 @@ export interface IType {
 
 export interface ICategory {
     name: string;
-    type: CATEGORY;
+    category: CATEGORY;
     link: string;
     image: string;
     isReady: boolean;
@@ -39,8 +39,8 @@ export const DEPARTMENTS: Array<IDepartment> = [
     {   // ================================================================= Laptop, Telefoane, Tablete
         id: 1,
         icon: "assets/svgs/phone.svg",
-        name: "Laptopuri, Telefoane, Tablete",
-        department: CATEGORY.LPT,
+        name: CATEGORY.LPT,
+        department: CATEGORY.LPT_DEPART,
         path: CATEGORY.LPT_PATH,
         link: "/depart/lpt",
         chevron: "assets/svgs/chevron-right.svg",
@@ -48,8 +48,8 @@ export const DEPARTMENTS: Array<IDepartment> = [
         color: "#ff4196",
         titles: [
             {
-                name: "Laptopuri",
-                type: CATEGORY.LAPTOPS,
+                name: CATEGORY.LAPTOPS,
+                type: CATEGORY.LAPTOPS_TYPE,
                 path: CATEGORY.LAPTOPS_PATH,
                 link: "/type/" + CATEGORY.LAPTOPS_PATH,
                 image: "assets/departments/lpt/laptops.png",
@@ -59,7 +59,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 subtitles: [
                     {
                         name: "Gaming",
-                        type: CATEGORY.LAPTOPS_GAMING,
+                        category: CATEGORY.LAPTOPS_GAMING,
                         link: "/p/lpt/" + CATEGORY.LAPTOPS + "/" + CATEGORY.LAPTOPS_GAMING,
                         image: "assets/departments/lpt/laptops/laptop-gaming.png",
                         isReady: true,
@@ -67,7 +67,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Business",
-                        type: CATEGORY.LAPTOPS_BUSINESS,
+                        category: CATEGORY.LAPTOPS_BUSINESS,
                         link: "/p/lpt/laptops/laptop_business",
                         image: "assets/departments/lpt/laptops/laptop-business.png",
                         isReady: true,
@@ -75,7 +75,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Ultraportabile",
-                        type: CATEGORY.LAPTOPS_ULTRA,
+                        category: CATEGORY.LAPTOPS_ULTRA,
                         link: "/p/lpt/laptops/laptop_ultra",
                         image: "assets/departments/lpt/laptops/laptop-ultra.png",
                         isReady: true,
@@ -83,7 +83,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Home",
-                        type: CATEGORY.LAPTOPS_HOME,
+                        category: CATEGORY.LAPTOPS_HOME,
                         link: "/p/lpt/laptops/laptop_home",
                         image: "assets/departments/lpt/laptops/laptop-home.png",
                         isReady: true,
@@ -92,8 +92,8 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 ]
             },
             {
-                name: "Accesorii Laptop",
-                type: CATEGORY.LAPTOP_ACCESSORIES,
+                name: CATEGORY.LAPTOP_ACCESSORIES,
+                type: CATEGORY.LAPTOP_ACCESSORIES_TYPE,
                 path: CATEGORY.LAPTOP_ACCESSORIES_PATH,
                 link: "/type/" + CATEGORY.LAPTOP_ACCESSORIES_PATH,
                 image: "assets/departments/lpt/laptop-accessories.png",
@@ -103,7 +103,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 subtitles: [
                     {
                         name: "Genti laptop",
-                        type: CATEGORY.LAPTOP_BAGS,
+                        category: CATEGORY.LAPTOP_BAGS,
                         link: "/p/lpt/laptop_accessory/laptop_bag",
                         image: "assets/departments/lpt/laptop-accessories/bags.png",
                         isReady: true,
@@ -111,7 +111,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Incarcatoare priza/auto",
-                        type: CATEGORY.LAPTOP_CHARGERS,
+                        category: CATEGORY.LAPTOP_CHARGERS,
                         link: "/p/lpt/laptop_accessory/laptop_charger",
                         image: "assets/departments/lpt/laptop-accessories/chargers.png",
                         isReady: true,
@@ -119,7 +119,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Harduri",
-                        type: CATEGORY.LAPTOP_HARDS,
+                        category: CATEGORY.LAPTOP_HARDS,
                         link: "/p/lpt/laptop_accessory/laptop_hard",
                         image: "assets/departments/lpt/laptop-accessories/hards.png",
                         isReady: true,
@@ -127,7 +127,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Baterii externe",
-                        type: CATEGORY.EXTERNAL_BATTERIES,
+                        category: CATEGORY.EXTERNAL_BATTERIES,
                         link: "/p/lpt/laptop_accessory/external_battery",
                         image: "assets/departments/lpt/laptop-accessories/external-batteries.png",
                         isReady: true,
@@ -135,7 +135,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Memorii RAM",
-                        type: CATEGORY.RAM,
+                        category: CATEGORY.RAM,
                         link: "/p/lpt/laptop_accessory/ram_memory",
                         image: "assets/departments/lpt/laptop-accessories/rams.png",
                         isReady: true,
@@ -143,7 +143,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Suport mobil cu racire",
-                        type: CATEGORY.CATEGORY,
+                        category: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -151,7 +151,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Stickere pentru ecran",
-                        type: CATEGORY.CATEGORY,
+                        category: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -478,8 +478,8 @@ export const DEPARTMENTS: Array<IDepartment> = [
     {   // ===================================================================== Desktop, Periferice, Software
         id: 2,
         icon: "assets/svgs/laptop.svg",
-        name: "Desktop, Periferice, Software",
-        department: CATEGORY.DPS,
+        name: CATEGORY.DPS,
+        department: CATEGORY.DPS_DEPART,
         path: CATEGORY.DPS_PATH,
         link: "/depart/" + CATEGORY.DPS_PATH,
         chevron: "assets/svgs/chevron-right.svg",
@@ -487,8 +487,8 @@ export const DEPARTMENTS: Array<IDepartment> = [
         color: "#ff4196",
         titles: [
             {
-                name: "Sisteme PC",
-                type: CATEGORY.PCS,
+                name: CATEGORY.PCS,
+                type: CATEGORY.PCS_TYPE,
                 path: CATEGORY.PCS_PATH,
                 link: "/type/" + CATEGORY.PCS_PATH,
                 image: "assets/departments/dps/pc.png",
@@ -498,7 +498,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 subtitles: [
                     {
                         name: "Gaming PC",
-                        type: CATEGORY.PCS_GAMING,
+                        category: CATEGORY.PCS_GAMING,
                         link: "/p/dps/pc/pc_gaming",
                         image: "assets/departments/dps/pc/pc-gaming.png",
                         isReady: true,
@@ -506,7 +506,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "All In One",
-                        type: CATEGORY.ALL_IN_ONE,
+                        category: CATEGORY.ALL_IN_ONE,
                         link: "/p/dps/pc/all_in_one",
                         image: "assets/departments/dps/pc/all-in-one.png",
                         isReady: true,
@@ -514,7 +514,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "PC Home",
-                        type: CATEGORY.CATEGORY,
+                        category: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -522,7 +522,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Mini PC",
-                        type: CATEGORY.CATEGORY,
+                        category: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -531,8 +531,8 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 ]
             },
             {
-                name: "Monitoare",
-                type: CATEGORY.MONITORS,
+                name: CATEGORY.MONITORS,
+                type: CATEGORY.MONITORS_TYPE,
                 path: CATEGORY.MONITORS_PATH,
                 link: "/type/" + CATEGORY.MONITORS_PATH,
                 image: "assets/departments/dps/monitors.png",
@@ -542,7 +542,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 subtitles: [
                     {
                         name: "Monitoare profesionale",
-                        type: CATEGORY.MONITORS_PRO,
+                        category: CATEGORY.MONITORS_PRO,
                         link: "/p/dps/monitor/monitor_pro",
                         image: "assets/departments/dps/monitors/pro-monitors.png",
                         isReady: true,
@@ -550,7 +550,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Monitoare Gaming",
-                        type: CATEGORY.CATEGORY,
+                        category: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -558,7 +558,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Monitoare Home",
-                        type: CATEGORY.CATEGORY,
+                        category: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -566,7 +566,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Monitoare portabile",
-                        type: CATEGORY.CATEGORY,
+                        category: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,

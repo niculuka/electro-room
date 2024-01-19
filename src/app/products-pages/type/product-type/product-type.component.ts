@@ -21,8 +21,8 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   protected products: Array<Product> = [];
 
   currentDepartment: string = "";
-  typePath: string = CATEGORY.LAPTOPS_PATH;
   currentType: string = "";
+  typePath: string = CATEGORY.LAPTOPS_PATH;  
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   foundProducts: boolean = false;
@@ -49,13 +49,13 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.departments.filter(depart => {
-      let type = depart.titles.find(title => title.path === this.typePath);
-      if (type) {
+      let getType = depart.titles.find(title => title.path === this.typePath);
+      if (getType) {
         this.currentDepartment = depart.name;
-        this.currentType = type.name;
+        this.currentType = getType.name;
         this.createBreadcrumb();
-        this.sub1 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-          if (data) {
+        this.sub1 = this.productService.getProductsByTypeService(getType.type).subscribe(data => {
+          if (data.length) {
             this.products = data;
             this.foundProducts = true;
             this.getFavoritesProducts();
@@ -67,11 +67,6 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
       }
     });
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-
-
-
-
-
   }
 
   getFavoritesProducts() {

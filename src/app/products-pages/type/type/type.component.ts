@@ -16,8 +16,8 @@ export class TypeComponent implements OnInit, OnDestroy {
   cards: Array<any> = [];
 
   currentDepartment: string = "";
-  typePath: string = "";
   currentType: string = "";
+  typePath: string = "";  
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   private sub0: any;

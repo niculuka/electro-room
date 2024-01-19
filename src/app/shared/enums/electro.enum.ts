@@ -154,20 +154,26 @@ export enum CATEGORY {
     XTORM = "Xtorm",
 
     // D E P A R T M E N T ========================================
-    LPT = "Lpt",
+    LPT = "Laptopuri, Telefoane, Tablete",
+    LPT_DEPART = "Laptopuri Telefoane Tablete",
     LPT_PATH = "lpt",
-    DPS = "Dps",
+    DPS = "Desktop, Periferice, Software",
+    DPS_DEPART = "Desktop Periferice Software",
     DPS_PATH = "dps",
 
     // T Y P E ====================================================
-    LAPTOPS = "Laptopuri",
-    LAPTOPS_PATH = "laptopuri",
     LAPTOP = "laptop",
+    LAPTOPS = "Laptopuri",
+    LAPTOPS_TYPE = "Laptopuri",
+    LAPTOPS_PATH = "laptopuri",    
     LAPTOP_ACCESSORIES = "Accesorii Laptop",
+    LAPTOP_ACCESSORIES_TYPE = "Accesorii Laptop",
     LAPTOP_ACCESSORIES_PATH = "accesorii-laptop",
-    PCS = "Pc-uri",
+    PCS = "Sisteme PC",
+    PCS_TYPE = "PC-uri",
     PCS_PATH = "pc-uri",
     MONITORS = "Monitoare",
+    MONITORS_TYPE = "Monitoare",
     MONITORS_PATH = "monitoare",
 
     // C A T E G O R Y ============================================
