@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { DEPARTMENTS, IDepartment } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
@@ -16,9 +17,11 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductTypeComponent implements OnInit, OnDestroy {
 
+  departments: Array<IDepartment> = DEPARTMENTS;
   protected products: Array<Product> = [];
 
   currentDepartment: string = "";
+  typePath: string = CATEGORY.LAPTOPS_PATH;
   currentType: string = "";
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
@@ -30,10 +33,8 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   private sub1: any;
   private sub2: any;
   private sub3: any;
-  private sub4: any;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private router: Router,
     private favoriteService: FavoriteService,
@@ -47,26 +48,34 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentDepartment = params.get('department') || "";
-      this.currentType = CATEGORY.LAPTOPS_PATH;
-      this.createBreadcrumb();
-      this.sub2 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
-        if (data) {
-          this.products = data;
-          this.foundProducts = true;
-          this.getFavoritesProducts();
-          this.getComparesProducts();
-          this.productCategoryService.productsFiltersService(this.products);
-        }
-        else this.foundProducts = false;
-      });
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.departments.filter(depart => {
+      let type = depart.titles.find(title => title.path === this.typePath);
+      if (type) {
+        this.currentDepartment = depart.name;
+        this.currentType = type.name;
+        this.createBreadcrumb();
+        this.sub1 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
+          if (data) {
+            this.products = data;
+            this.foundProducts = true;
+            this.getFavoritesProducts();
+            this.getComparesProducts();
+            this.productCategoryService.productsFiltersService(this.products);
+          }
+          else this.foundProducts = false;
+        });
+      }
     });
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+
+
+
+
   }
 
   getFavoritesProducts() {
-    this.sub3 = this.favoriteService.getFavoritesObservable().subscribe(favorites => {
+    this.sub2 = this.favoriteService.getFavoritesObservable().subscribe(favorites => {
       this.products.filter(prod => {
         prod.favorite = false;
         favorites.filter(fav => {
@@ -77,7 +86,7 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   }
 
   getComparesProducts() {
-    this.sub4 = this.compareService.getComparesObservable().subscribe(compares => {
+    this.sub3 = this.compareService.getComparesObservable().subscribe(compares => {
       this.products.filter(prod => {
         prod.compare = false;
         compares.filter(comp => {
@@ -102,7 +111,6 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
     this.sub1?.unsubscribe();
     this.sub2?.unsubscribe();
     this.sub3?.unsubscribe();
-    this.sub4?.unsubscribe();
   }
 
 }

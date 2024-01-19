@@ -4,7 +4,8 @@ export interface IDepartment {
     id: number;
     icon: string;
     name: string;
-    department: string;
+    department: CATEGORY;
+    path: CATEGORY;
     link: string;
     chevron: string;
     showTitle: boolean;
@@ -39,8 +40,9 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 1,
         icon: "assets/svgs/phone.svg",
         name: "Laptopuri, Telefoane, Tablete",
-        department: "lpt",
-        link: "/p/lpt",
+        department: CATEGORY.LPT,
+        path: CATEGORY.LPT_PATH,
+        link: "/depart/lpt",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#ff4196",
@@ -49,7 +51,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 name: "Laptopuri",
                 type: CATEGORY.LAPTOPS,
                 path: CATEGORY.LAPTOPS_PATH,
-                link: "/p/lpt/" + CATEGORY.LAPTOPS_PATH,
+                link: "/type/" + CATEGORY.LAPTOPS_PATH,
                 image: "assets/departments/lpt/laptops.png",
                 showSubtitle: false,
                 isReady: true,
@@ -93,7 +95,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 name: "Accesorii Laptop",
                 type: CATEGORY.LAPTOP_ACCESSORIES,
                 path: CATEGORY.LAPTOP_ACCESSORIES_PATH,
-                link: "/p/lpt/" + CATEGORY.LAPTOP_ACCESSORIES_PATH,
+                link: "/type/" + CATEGORY.LAPTOP_ACCESSORIES_PATH,
                 image: "assets/departments/lpt/laptop-accessories.png",
                 showSubtitle: false,
                 isReady: true,
@@ -477,98 +479,101 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 2,
         icon: "assets/svgs/laptop.svg",
         name: "Desktop, Periferice, Software",
-        department: "dps",
-        link: "/p/dps",
+        department: CATEGORY.DPS,
+        path: CATEGORY.DPS_PATH,
+        link: "/depart/" + CATEGORY.DPS_PATH,
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#ff4196",
         titles: [
-            // {
-            //     name: "Sisteme PC",
-            //     type: CATEGORY.PC,
-            //     link: "/p/dps/" + CATEGORY.PC,
-            //     image: "assets/departments/dps/pc.png",
-            //     showSubtitle: false,
-            //     isReady: true,
-            //     color: "#ff4196",
-            //     subtitles: [
-            //         {
-            //             name: "Gaming PC",
-            //             type: CATEGORY.PCS_GAMING,
-            //             link: "/p/dps/pc/pc_gaming",
-            //             image: "assets/departments/dps/pc/pc-gaming.png",
-            //             isReady: true,
-            //             color: "#ff4196",
-            //         },
-            //         {
-            //             name: "All In One",
-            //             type: CATEGORY.ALL_IN_ONE,
-            //             link: "/p/dps/pc/all_in_one",
-            //             image: "assets/departments/dps/pc/all-in-one.png",
-            //             isReady: true,
-            //             color: "#ff4196",
-            //         },
-            //         {
-            //             name: "PC Home",
-            //             type: CATEGORY.CATEGORY,
-            //             link: "/under-construction",
-            //             image: "assets/images/under-construction600-m150.png",
-            //             isReady: false,
-            //             color: "#999999",
-            //         },
-            //         {
-            //             name: "Mini PC",
-            //             type: CATEGORY.CATEGORY,
-            //             link: "/under-construction",
-            //             image: "assets/images/under-construction600-m150.png",
-            //             isReady: false,
-            //             color: "#999999",
-            //         },
-            //     ]
-            // },
-            // {
-            //     name: "Monitoare",
-            //     type: CATEGORY.MONITORS,
-            //     link: "/p/dps/" + CATEGORY.MONITORS,
-            //     image: "assets/departments/dps/monitors.png",
-            //     showSubtitle: false,
-            //     isReady: true,
-            //     color: "#ff4196",
-            //     subtitles: [
-            //         {
-            //             name: "Monitoare profesionale",
-            //             type: CATEGORY.MONITORS_PRO,
-            //             link: "/p/dps/monitor/monitor_pro",
-            //             image: "assets/departments/dps/monitors/pro-monitors.png",
-            //             isReady: true,
-            //             color: "#ff4196",
-            //         },
-            //         {
-            //             name: "Monitoare Gaming",
-            //             type: CATEGORY.CATEGORY,
-            //             link: "/under-construction",
-            //             image: "assets/images/under-construction600-m150.png",
-            //             isReady: false,
-            //             color: "#999999",
-            //         },
-            //         {
-            //             name: "Monitoare Home",
-            //             type: CATEGORY.CATEGORY,
-            //             link: "/under-construction",
-            //             image: "assets/images/under-construction600-m150.png",
-            //             isReady: false,
-            //             color: "#999999",
-            //         },
-            //         {
-            //             name: "Monitoare portabile",
-            //             type: CATEGORY.CATEGORY,
-            //             link: "/under-construction",
-            //             image: "assets/images/under-construction600-m150.png",
-            //             isReady: false,
-            //             color: "#999999",
-            //         },
-            //     ]
-            // },
+            {
+                name: "Sisteme PC",
+                type: CATEGORY.PCS,
+                path: CATEGORY.PCS_PATH,
+                link: "/type/" + CATEGORY.PCS_PATH,
+                image: "assets/departments/dps/pc.png",
+                showSubtitle: false,
+                isReady: true,
+                color: "#ff4196",
+                subtitles: [
+                    {
+                        name: "Gaming PC",
+                        type: CATEGORY.PCS_GAMING,
+                        link: "/p/dps/pc/pc_gaming",
+                        image: "assets/departments/dps/pc/pc-gaming.png",
+                        isReady: true,
+                        color: "#ff4196",
+                    },
+                    {
+                        name: "All In One",
+                        type: CATEGORY.ALL_IN_ONE,
+                        link: "/p/dps/pc/all_in_one",
+                        image: "assets/departments/dps/pc/all-in-one.png",
+                        isReady: true,
+                        color: "#ff4196",
+                    },
+                    {
+                        name: "PC Home",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: false,
+                        color: "#999999",
+                    },
+                    {
+                        name: "Mini PC",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: false,
+                        color: "#999999",
+                    },
+                ]
+            },
+            {
+                name: "Monitoare",
+                type: CATEGORY.MONITORS,
+                path: CATEGORY.MONITORS_PATH,
+                link: "/type/" + CATEGORY.MONITORS_PATH,
+                image: "assets/departments/dps/monitors.png",
+                showSubtitle: false,
+                isReady: true,
+                color: "#ff4196",
+                subtitles: [
+                    {
+                        name: "Monitoare profesionale",
+                        type: CATEGORY.MONITORS_PRO,
+                        link: "/p/dps/monitor/monitor_pro",
+                        image: "assets/departments/dps/monitors/pro-monitors.png",
+                        isReady: true,
+                        color: "#ff4196",
+                    },
+                    {
+                        name: "Monitoare Gaming",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: false,
+                        color: "#999999",
+                    },
+                    {
+                        name: "Monitoare Home",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: false,
+                        color: "#999999",
+                    },
+                    {
+                        name: "Monitoare portabile",
+                        type: CATEGORY.CATEGORY,
+                        link: "/under-construction",
+                        image: "assets/images/under-construction600-m150.png",
+                        isReady: false,
+                        color: "#999999",
+                    },
+                ]
+            },
             // {
             //     name: "Suport pentru monitor",
             //     type: CATEGORY.CATEGORY,
@@ -961,18 +966,18 @@ export const DEPARTMENTS: Array<IDepartment> = [
             //         },
             //     ]
             // },
-        ]
-    },
-    {   // ===================================================================== TV, Audio-Video, Foto
-        id: 3,
-        icon: "assets/svgs/tv.svg",
-        name: "TV, Audio-Video, Foto",
-        department: "tap",
-        link: "/under-construction",
-        chevron: "assets/svgs/chevron-right.svg",
-        showTitle: false,
-        color: "#707070",
-        titles: [
+            //     ]
+            // },
+            // {   // ===================================================================== TV, Audio-Video, Foto
+            //     id: 3,
+            //     icon: "assets/svgs/tv.svg",
+            //     name: "TV, Audio-Video, Foto",
+            //     department: "tap",
+            //     link: "/under-construction",
+            //     chevron: "assets/svgs/chevron-right.svg",
+            //     showTitle: false,
+            //     color: "#707070",
+            //     titles: [
             // {
             //     name: "Televizoare si accesorii",
             //     type: CATEGORY.CATEGORY,
@@ -1059,18 +1064,18 @@ export const DEPARTMENTS: Array<IDepartment> = [
             //         },
             //     ]
             // },
-        ]
-    },
-    {   // ===================================================================== Electrocasnice mari
-        id: 4,
-        icon: "assets/svgs/washing-machine.svg",
-        name: "Electrocasnice mari",
-        department: "be",
-        link: "/under-construction",
-        chevron: "assets/svgs/chevron-right.svg",
-        showTitle: false,
-        color: "#707070",
-        titles: [
+            // ]
+            //     },
+            // {   // ===================================================================== Electrocasnice mari
+            //     id: 4,
+            //         icon: "assets/svgs/washing-machine.svg",
+            //             name: "Electrocasnice mari",
+            //                 department: "be",
+            //                     link: "/under-construction",
+            //                         chevron: "assets/svgs/chevron-right.svg",
+            //                             showTitle: false,
+            //                                 color: "#707070",
+            //                                     titles: [
             // {
             //     name: "Televizoare si accesorii",
             //     type: CATEGORY.CATEGORY,
@@ -1114,18 +1119,18 @@ export const DEPARTMENTS: Array<IDepartment> = [
             //         },
             //     ]
             // },
-        ]
-    },
-    {   // ===================================================================== Electrocasnice mici, Climatizare
-        id: 5,
-        icon: "assets/svgs/iron.svg",
-        name: "Electrocasnice mici, Climatizare",
-        department: "sec",
-        link: "/under-construction",
-        chevron: "assets/svgs/chevron-right.svg",
-        showTitle: false,
-        color: "#707070",
-        titles: [
+            // ]
+            // },
+            // {   // ===================================================================== Electrocasnice mici, Climatizare
+            //     id: 5,
+            //         icon: "assets/svgs/iron.svg",
+            //             name: "Electrocasnice mici, Climatizare",
+            //                 department: "sec",
+            //                     link: "/under-construction",
+            //                         chevron: "assets/svgs/chevron-right.svg",
+            //                             showTitle: false,
+            //                                 color: "#707070",
+            //                                     titles: [
             // {
             //     name: "Televizoare si accesorii",
             //     type: CATEGORY.CATEGORY,
@@ -1169,18 +1174,18 @@ export const DEPARTMENTS: Array<IDepartment> = [
             //         },
             //     ]
             // },
-        ]
-    },
-    {   // ===================================================================== Bacanie
-        id: 6,
-        icon: "assets/svgs/bag.svg",
-        name: "Bacanie",
-        department: "b",
-        link: "/under-construction",
-        chevron: "assets/svgs/chevron-right.svg",
-        showTitle: false,
-        color: "#707070",
-        titles: [
+            // ]
+            // },
+            // {   // ===================================================================== Bacanie
+            //     id: 6,
+            //         icon: "assets/svgs/bag.svg",
+            //             name: "Bacanie",
+            //                 department: "b",
+            //                     link: "/under-construction",
+            //                         chevron: "assets/svgs/chevron-right.svg",
+            //                             showTitle: false,
+            //                                 color: "#707070",
+            //                                     titles: [
             // {
             //     name: "Televizoare si accesorii",
             //     type: CATEGORY.CATEGORY,
@@ -1224,336 +1229,336 @@ export const DEPARTMENTS: Array<IDepartment> = [
             //         },
             //     ]
             // },
+            // ]
+            // },
+            // {   // ===================================================================== Ingrijire personala
+            //     id: 7,
+            //     icon: "assets/svgs/mirror.svg",
+            //     name: "Ingrijire personala",
+            //     department: "psc",
+            //     link: "/under-construction",
+            //     chevron: "assets/svgs/chevron-right.svg",
+            //     showTitle: false,
+            //     color: "#707070",
+            //     titles: [
+            //         {
+            //             name: "Televizoare si accesorii",
+            //             type: CATEGORY.CATEGORY,
+            //             link: "/under-construction",
+            //             image: "assets/images/under-construction600-m150.png",
+            //             showSubtitle: false,
+            //             isReady: false,
+            //             color: "#707070",
+            //             subtitles: [
+            //                 {
+            //                     name: "Televizoare",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "HD & FullHD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "4K Laptop Ultra HD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare OLED",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //             ]
+            //         },
+            //     ]
+            // },
+            // {   // ===================================================================== Sport, Alte activitati
+            //     id: 8,
+            //     icon: "assets/svgs/running.svg",
+            //     name: "Sport, Alte activitati",
+            //     department: "soa",
+            //     link: "/under-construction",
+            //     chevron: "assets/svgs/chevron-right.svg",
+            //     showTitle: false,
+            //     color: "#707070",
+            //     titles: [
+            //         {
+            //             name: "Televizoare si accesorii",
+            //             type: CATEGORY.CATEGORY,
+            //             link: "/under-construction",
+            //             image: "assets/images/under-construction600-m150.png",
+            //             showSubtitle: false,
+            //             isReady: false,
+            //             color: "#707070",
+            //             subtitles: [
+            //                 {
+            //                     name: "HD & FullHD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "4K Laptop Ultra HD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare OLED",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //             ]
+            //         },
+            //     ]
+            // },
+            // {   // ===================================================================== Casa, Gradina, Brico
+            //     id: 9,
+            //     icon: "assets/svgs/house.svg",
+            //     name: "Casa, Gradina, Brico",
+            //     department: "hgb",
+            //     link: "/under-construction",
+            //     chevron: "assets/svgs/chevron-right.svg",
+            //     showTitle: false,
+            //     color: "#707070",
+            //     titles: [
+            //         {
+            //             name: "Televizoare si accesorii",
+            //             type: CATEGORY.CATEGORY,
+            //             link: "/under-construction",
+            //             image: "assets/images/under-construction600-m150.png",
+            //             showSubtitle: false,
+            //             isReady: false,
+            //             color: "#707070",
+            //             subtitles: [
+            //                 {
+            //                     name: "Televizoare",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "HD & FullHD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "4K Laptop Ultra HD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare OLED",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //             ]
+            //         },
+            //     ]
+            // },
+            // {   // ===================================================================== Moda si Cadouri
+            //     id: 10,
+            //     icon: "assets/svgs/t-shirt.svg",
+            //     name: "Moda si Cadouri",
+            //     department: "pg",
+            //     link: "/under-construction",
+            //     chevron: "assets/svgs/chevron-right.svg",
+            //     showTitle: false,
+            //     color: "#707070",
+            //     titles: [
+            //         {
+            //             name: "Televizoare si accesorii",
+            //             type: CATEGORY.CATEGORY,
+            //             link: "/under-construction",
+            //             image: "assets/images/under-construction600-m150.png",
+            //             showSubtitle: false,
+            //             isReady: false,
+            //             color: "#707070",
+            //             subtitles: [
+            //                 {
+            //                     name: "HD & FullHD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "4K Laptop Ultra HD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare OLED",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //             ]
+            //         },
+            //     ]
+            // },
+            // {   // ===================================================================== Auto, Moto, Velo, RCA
+            //     id: 11,
+            //     icon: "assets/svgs/car.svg",
+            //     name: "Auto, Moto, Velo, RCA",
+            //     department: "amvi",
+            //     link: "/under-construction",
+            //     chevron: "assets/svgs/chevron-right.svg",
+            //     showTitle: false,
+            //     color: "#707070",
+            //     titles: [
+            //         {
+            //             name: "Televizoare si accesorii",
+            //             type: CATEGORY.CATEGORY,
+            //             link: "/under-construction",
+            //             image: "assets/images/under-construction600-m150.png",
+            //             showSubtitle: false,
+            //             isReady: false,
+            //             color: "#707070",
+            //             subtitles: [
+            //                 {
+            //                     name: "Televizoare",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "HD & FullHD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "4K Laptop Ultra HD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare OLED",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //             ]
+            //         },
+            //     ]
+            // },
+            // {   // ===================================================================== Jucarii, Copii
+            //     id: 12,
+            //     icon: "assets/svgs/toys.svg",
+            //     name: "Jucarii, Copii",
+            //     department: "tc",
+            //     link: "/under-construction",
+            //     chevron: "assets/svgs/chevron-right.svg",
+            //     showTitle: false,
+            //     color: "#707070",
+            //     titles: [
+            //         {
+            //             name: "Televizoare si accesorii",
+            //             type: CATEGORY.CATEGORY,
+            //             link: "/under-construction",
+            //             image: "assets/images/under-construction600-m150.png",
+            //             showSubtitle: false,
+            //             isReady: false,
+            //             color: "#707070",
+            //             subtitles: [
+            //                 {
+            //                     name: "HD & FullHD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "4K Laptop Ultra HD",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare OLED",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //                 {
+            //                     name: "Televizoare",
+            //                     type: CATEGORY.CATEGORY,
+            //                     link: "/under-construction",
+            //                     image: "assets/images/under-construction600-m150.png",
+            //                     isReady: false,
+            //                     color: "#999999",
+            //                 },
+            //             ]
+            //         },
         ]
     },
-    // {   // ===================================================================== Ingrijire personala
-    //     id: 7,
-    //     icon: "assets/svgs/mirror.svg",
-    //     name: "Ingrijire personala",
-    //     department: "psc",
-    //     link: "/under-construction",
-    //     chevron: "assets/svgs/chevron-right.svg",
-    //     showTitle: false,
-    //     color: "#707070",
-    //     titles: [
-    //         {
-    //             name: "Televizoare si accesorii",
-    //             type: CATEGORY.CATEGORY,
-    //             link: "/under-construction",
-    //             image: "assets/images/under-construction600-m150.png",
-    //             showSubtitle: false,
-    //             isReady: false,
-    //             color: "#707070",
-    //             subtitles: [
-    //                 {
-    //                     name: "Televizoare",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "HD & FullHD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "4K Laptop Ultra HD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare OLED",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //             ]
-    //         },
-    //     ]
-    // },
-    // {   // ===================================================================== Sport, Alte activitati
-    //     id: 8,
-    //     icon: "assets/svgs/running.svg",
-    //     name: "Sport, Alte activitati",
-    //     department: "soa",
-    //     link: "/under-construction",
-    //     chevron: "assets/svgs/chevron-right.svg",
-    //     showTitle: false,
-    //     color: "#707070",
-    //     titles: [
-    //         {
-    //             name: "Televizoare si accesorii",
-    //             type: CATEGORY.CATEGORY,
-    //             link: "/under-construction",
-    //             image: "assets/images/under-construction600-m150.png",
-    //             showSubtitle: false,
-    //             isReady: false,
-    //             color: "#707070",
-    //             subtitles: [
-    //                 {
-    //                     name: "HD & FullHD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "4K Laptop Ultra HD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare OLED",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //             ]
-    //         },
-    //     ]
-    // },
-    // {   // ===================================================================== Casa, Gradina, Brico
-    //     id: 9,
-    //     icon: "assets/svgs/house.svg",
-    //     name: "Casa, Gradina, Brico",
-    //     department: "hgb",
-    //     link: "/under-construction",
-    //     chevron: "assets/svgs/chevron-right.svg",
-    //     showTitle: false,
-    //     color: "#707070",
-    //     titles: [
-    //         {
-    //             name: "Televizoare si accesorii",
-    //             type: CATEGORY.CATEGORY,
-    //             link: "/under-construction",
-    //             image: "assets/images/under-construction600-m150.png",
-    //             showSubtitle: false,
-    //             isReady: false,
-    //             color: "#707070",
-    //             subtitles: [
-    //                 {
-    //                     name: "Televizoare",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "HD & FullHD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "4K Laptop Ultra HD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare OLED",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //             ]
-    //         },
-    //     ]
-    // },
-    // {   // ===================================================================== Moda si Cadouri
-    //     id: 10,
-    //     icon: "assets/svgs/t-shirt.svg",
-    //     name: "Moda si Cadouri",
-    //     department: "pg",
-    //     link: "/under-construction",
-    //     chevron: "assets/svgs/chevron-right.svg",
-    //     showTitle: false,
-    //     color: "#707070",
-    //     titles: [
-    //         {
-    //             name: "Televizoare si accesorii",
-    //             type: CATEGORY.CATEGORY,
-    //             link: "/under-construction",
-    //             image: "assets/images/under-construction600-m150.png",
-    //             showSubtitle: false,
-    //             isReady: false,
-    //             color: "#707070",
-    //             subtitles: [
-    //                 {
-    //                     name: "HD & FullHD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "4K Laptop Ultra HD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare OLED",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //             ]
-    //         },
-    //     ]
-    // },
-    // {   // ===================================================================== Auto, Moto, Velo, RCA
-    //     id: 11,
-    //     icon: "assets/svgs/car.svg",
-    //     name: "Auto, Moto, Velo, RCA",
-    //     department: "amvi",
-    //     link: "/under-construction",
-    //     chevron: "assets/svgs/chevron-right.svg",
-    //     showTitle: false,
-    //     color: "#707070",
-    //     titles: [
-    //         {
-    //             name: "Televizoare si accesorii",
-    //             type: CATEGORY.CATEGORY,
-    //             link: "/under-construction",
-    //             image: "assets/images/under-construction600-m150.png",
-    //             showSubtitle: false,
-    //             isReady: false,
-    //             color: "#707070",
-    //             subtitles: [
-    //                 {
-    //                     name: "Televizoare",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "HD & FullHD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "4K Laptop Ultra HD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare OLED",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //             ]
-    //         },
-    //     ]
-    // },
-    // {   // ===================================================================== Jucarii, Copii
-    //     id: 12,
-    //     icon: "assets/svgs/toys.svg",
-    //     name: "Jucarii, Copii",
-    //     department: "tc",
-    //     link: "/under-construction",
-    //     chevron: "assets/svgs/chevron-right.svg",
-    //     showTitle: false,
-    //     color: "#707070",
-    //     titles: [
-    //         {
-    //             name: "Televizoare si accesorii",
-    //             type: CATEGORY.CATEGORY,
-    //             link: "/under-construction",
-    //             image: "assets/images/under-construction600-m150.png",
-    //             showSubtitle: false,
-    //             isReady: false,
-    //             color: "#707070",
-    //             subtitles: [
-    //                 {
-    //                     name: "HD & FullHD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "4K Laptop Ultra HD",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare OLED",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //                 {
-    //                     name: "Televizoare",
-    //                     type: CATEGORY.CATEGORY,
-    //                     link: "/under-construction",
-    //                     image: "assets/images/under-construction600-m150.png",
-    //                     isReady: false,
-    //                     color: "#999999",
-    //                 },
-    //             ]
-    //         },
-    //     ]
-    // },
 ]

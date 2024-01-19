@@ -116,9 +116,10 @@ const routes: Routes = [
     },
   },
 
-  // P R O D U C T S ----------------------------------------------------------------------
+  // P R O D U C T S ======================================================================
+  // Department ---------------------------------------------------------
   {
-    path: "p/:department",
+    path: "depart/:departPath",
     component: DepartmentComponent,
     data: {
       breadcrumb: [
@@ -126,8 +127,9 @@ const routes: Routes = [
       ]
     },
   },
+  // Type ----------------------------------------------------------------
   {
-    path: "p/:department/" + CATEGORY.LAPTOPS_PATH,
+    path: "type/" + CATEGORY.LAPTOPS_PATH,
     component: ProductTypeComponent,
     data: {
       breadcrumb: [
@@ -137,7 +139,7 @@ const routes: Routes = [
     },
   },
   {
-    path: "p/:department/:type",
+    path: "type/:typePath",
     component: TypeComponent,
     data: {
       breadcrumb: [
@@ -146,6 +148,7 @@ const routes: Routes = [
       ]
     },
   },
+  // Category -------------------------------------------------------------
   {
     path: "p/:department/:type/:category",
     component: ProductCategoryComponent,
@@ -157,6 +160,7 @@ const routes: Routes = [
       ]
     },
   },
+  // Product Detail ---------------------------------------------------------
   {
     path: "p/:department/:type/:category/:linkName",
     component: ProductDetailComponent,
@@ -169,6 +173,7 @@ const routes: Routes = [
       ]
     },
   },
+  // Search -----------------------------------------------------------------
   {
     path: "search/:searchTerm",
     component: SearchComponent,

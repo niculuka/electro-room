@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DEPARTMENTS, IDepartment,  } from 'src/app/shared/data/mega-menu.data';
+import { DEPARTMENTS, IDepartment, } from 'src/app/shared/data/mega-menu.data';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 
@@ -16,27 +16,30 @@ export class TypeComponent implements OnInit, OnDestroy {
   cards: Array<any> = [];
 
   currentDepartment: string = "";
+  typePath: string = "";
   currentType: string = "";
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
-  private sub: any;  
+  private sub0: any;
+  private sub1: any;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private breadcrumbService: BreadcrumbService,
     private toastrService: ToastrService,
-  ) { }  
+  ) { }
 
   ngOnInit(): void {
-    this.sub = this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentDepartment = params.get('department') || "";
-      this.currentType = params.get('type') || "";
-      this.createBreadcrumb();
-      this.departments.filter(data => {
-        let result = data.titles.find(items => items.path === this.currentType)
-        if (result) {
-          this.cards = result.subtitles;          
+    this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
+      this.typePath = params.get('typePath') || "";
+      this.departments.filter(depart => {
+        let type = depart.titles.find(title => title.path === this.typePath);
+        if (type) {
+          this.cards = type.subtitles;
+          this.currentDepartment = depart.name;
+          this.currentType = type.name;
+          this.createBreadcrumb();
         }
       });
     });
@@ -60,7 +63,8 @@ export class TypeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+    this.sub0?.unsubscribe();
+    this.sub1?.unsubscribe();
   }
 
 }

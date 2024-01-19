@@ -6,7 +6,6 @@
 .content-department {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     margin: auto;
     width: 1500px;
     min-height: 70vh;

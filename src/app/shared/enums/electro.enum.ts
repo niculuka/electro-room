@@ -155,7 +155,9 @@ export enum CATEGORY {
 
     // D E P A R T M E N T ========================================
     LPT = "Lpt",
+    LPT_PATH = "lpt",
     DPS = "Dps",
+    DPS_PATH = "dps",
 
     // T Y P E ====================================================
     LAPTOPS = "Laptopuri",
