@@ -24,10 +24,10 @@ export class AdminComponent implements OnInit {
   currentScreenWidth: any = 1000000;
 
   subtitles: any = {
-    laptops: CATEGORY.LAPTOPS,
-    laptopAccessory: CATEGORY.LAPTOP_ACCESSORIES,
-    pc: CATEGORY.PCS,
-    monitor: CATEGORY.MONITORS,
+    laptops: CATEGORY.LAPTOP,
+    laptopAccessory: CATEGORY.LAPTOP_ACCESSORY,
+    pc: CATEGORY.PC,
+    monitor: CATEGORY.MONITOR,
     orders: ORDER.ORDERS,
     items: ORDER.ITEMS,
     users: USER.USERS,

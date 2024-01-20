@@ -119,7 +119,7 @@ const routes: Routes = [
   // P R O D U C T S ======================================================================
   // Department ---------------------------------------------------------
   {
-    path: "depart/:department",
+    path: "depart/:path",
     component: DepartmentComponent,
     data: {
       breadcrumb: [
@@ -129,7 +129,7 @@ const routes: Routes = [
   },
   // Type ----------------------------------------------------------------
   {
-    path: "type/laptopuri",
+    path: "type/" + CATEGORY.LAPTOP,
     component: ProductTypeComponent,
     data: {
       breadcrumb: [
@@ -139,7 +139,7 @@ const routes: Routes = [
     },
   },
   {
-    path: "type/:type",
+    path: "type/:path",
     component: TypeComponent,
     data: {
       breadcrumb: [
@@ -150,7 +150,7 @@ const routes: Routes = [
   },
   // Category -------------------------------------------------------------
   {
-    path: "categ/:category",
+    path: "categ/:path",
     component: ProductCategoryComponent,
     data: {
       breadcrumb: [

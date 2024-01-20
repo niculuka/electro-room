@@ -4,7 +4,7 @@ export interface IDepartment {
     id: number;
     icon: string;
     name: string;
-    department: string;
+    path: string;
     link: string;
     chevron: string;
     showTitle: boolean;
@@ -14,7 +14,7 @@ export interface IDepartment {
 
 export interface IType {
     name: string;
-    type: string;
+    path: string;
     link: string;
     image: string;
     showSubtitle: boolean;
@@ -25,7 +25,7 @@ export interface IType {
 
 export interface ICategory {
     name: string;
-    category: string;
+    path: string;
     link: string;
     image: string;
     isReady: boolean;
@@ -38,49 +38,49 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 1,
         icon: "assets/svgs/phone.svg",
         name: "Laptopuri, Telefoane, Tablete",
-        department: "laptopuri-telefoane-tablete",
-        link: "/depart/laptopuri-telefoane-tablete",
+        path: CATEGORY.LPT,
+        link: "/depart/" + CATEGORY.LPT,
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#ff4196",
         titles: [
             {
-                name: CATEGORY.LAPTOPS,
-                type: CATEGORY.LAPTOPS_TYPE,
-                link: "/type/" + CATEGORY.LAPTOPS_TYPE,
+                name: "Laptopuri",
+                path: CATEGORY.LAPTOP,
+                link: "/type/" + CATEGORY.LAPTOP,
                 image: "assets/departments/lpt/laptops.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: CATEGORY.LAPTOPS_GAMING,
-                        category: CATEGORY.LAPTOPS_GAMING_CATEG,
-                        link: "/categ/" + CATEGORY.LAPTOPS_GAMING_CATEG,
+                        name: "Laptopuri Gaming",
+                        path: CATEGORY.LAPTOP_GAMING,
+                        link: "/categ/" + CATEGORY.LAPTOP_GAMING,
                         image: "assets/departments/lpt/laptops/laptop-gaming.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOPS_BUSINESS,
-                        category: CATEGORY.LAPTOPS_BUSINESS_CATEG,
-                        link: "/categ/" + CATEGORY.LAPTOPS_BUSINESS_CATEG,
+                        name: "Laptopuri Bussiness",
+                        path: CATEGORY.LAPTOP_BUSINESS,
+                        link: "/categ/" + CATEGORY.LAPTOP_BUSINESS,
                         image: "assets/departments/lpt/laptops/laptop-business.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOPS_ULTRA,
-                        category: CATEGORY.LAPTOPS_ULTRA_CATEG,
-                        link: "/categ/" + CATEGORY.LAPTOPS_ULTRA_CATEG,
+                        name: "Laptopuri Ultra",
+                        path: CATEGORY.LAPTOP_ULTRA,
+                        link: "/categ/" + CATEGORY.LAPTOP_ULTRA,
                         image: "assets/departments/lpt/laptops/laptop-ultra.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOPS_HOME,
-                        category: CATEGORY.LAPTOPS_HOME_CATEG,
-                        link: "/categ/" + CATEGORY.LAPTOPS_HOME_CATEG,
+                        name: "Laptopuri Home",
+                        path: CATEGORY.LAPTOP_HOME,
+                        link: "/categ/" + CATEGORY.LAPTOP_HOME,
                         image: "assets/departments/lpt/laptops/laptop-home.png",
                         isReady: true,
                         color: "#ff4196",
@@ -89,64 +89,64 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Accesorii Laptop",
-                type: "accesorii-laptop",
-                link: "/type/accesorii-laptop",
+                path: CATEGORY.LAPTOP_ACCESSORY,
+                link: "/type/" + CATEGORY.LAPTOP_ACCESSORY,
                 image: "assets/departments/lpt/laptop-accessories.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: CATEGORY.LAPTOP_BAGS,
-                        category: CATEGORY.LAPTOP_BAGS_CATEG,
-                        link: "/categ/" + CATEGORY.LAPTOP_BAGS_CATEG,
+                        name: "Genti Laptop",
+                        path: CATEGORY.LAPTOP_BAG,
+                        link: "/categ/" + CATEGORY.LAPTOP_BAG,
                         image: "assets/departments/lpt/laptop-accessories/bags.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOP_CHARGERS,
-                        category: CATEGORY.LAPTOP_CHARGERS_CATEG,
-                        link: "/categ/" + CATEGORY.LAPTOP_CHARGERS_CATEG,
+                        name: "Incarcatoare Laptop",
+                        path: CATEGORY.LAPTOP_CHARGER,
+                        link: "/categ/" + CATEGORY.LAPTOP_CHARGER,
                         image: "assets/departments/lpt/laptop-accessories/chargers.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOP_HARDS,
-                        category: CATEGORY.LAPTOP_HARDS_CATEG,
-                        link: "/categ/" + CATEGORY.LAPTOP_HARDS_CATEG,
+                        name: "Harduri Laptop",
+                        path: CATEGORY.LAPTOP_HARD,
+                        link: "/categ/" + CATEGORY.LAPTOP_HARD,
                         image: "assets/departments/lpt/laptop-accessories/hards.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.EXTERNAL_BATTERIES,
-                        category: CATEGORY.EXTERNAL_BATTERIES_CATEG,
-                        link: "/categ/" + CATEGORY.EXTERNAL_BATTERIES_CATEG,
+                        name: "Baterii Externe",
+                        path: CATEGORY.EXTERNAL_BATTERY,
+                        link: "/categ/" + CATEGORY.EXTERNAL_BATTERY,
                         image: "assets/departments/lpt/laptop-accessories/external-batteries.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.RAM_MEMORIES,
-                        category: CATEGORY.RAM_MEMORIES_CATEG,
-                        link: "/categ/" + CATEGORY.RAM_MEMORIES_CATEG,
+                        name: "Memorii Ram",
+                        path: CATEGORY.RAM_MEMORY,
+                        link: "/categ/" + CATEGORY.RAM_MEMORY,
                         image: "assets/departments/lpt/laptop-accessories/rams.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.CATEGORY,
-                        category: CATEGORY.CATEGORY,
+                        name: "under-construction",
+                        path: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#999999",
                     },
                     {
-                        name: CATEGORY.CATEGORY,
-                        category: CATEGORY.CATEGORY,
+                        name: "under-construction",
+                        path: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -157,7 +157,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
             // {
             //     name: "Telefoane",
             //     type: CATEGORY.CATEGORY,
-            //     type: CATEGORY.CATEGORY_PATH,
+            //     type: CATEGORY.CATEGORY,
             //     link: "/under-construction",
             //     image: "assets/images/under-construction600-m150.png",
             //     showSubtitle: false,
@@ -473,49 +473,49 @@ export const DEPARTMENTS: Array<IDepartment> = [
     {   // ===================================================================== Desktop, Periferice, Software
         id: 2,
         icon: "assets/svgs/laptop.svg",
-        name: CATEGORY.DPS,
-        department: CATEGORY.DPS_DEPART,
-        link: "/depart/" + CATEGORY.DPS_DEPART,
+        name: "Desktop, Periferice, Software",
+        path: CATEGORY.DPS,
+        link: "/depart/" + CATEGORY.DPS,
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#ff4196",
         titles: [
             {
                 name: "PC-uri",
-                type: "pc-uri",
-                link: "/type/pc-uri",
+                path: CATEGORY.PC,
+                link: "/type/" + CATEGORY.PC,
                 image: "assets/departments/dps/pc.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: CATEGORY.PCS_GAMING,
-                        category: CATEGORY.PCS_GAMING_CATEG,
-                        link: "/categ/" + CATEGORY.PCS_GAMING_CATEG,
+                        name: "Calculatoare gaming",
+                        path: CATEGORY.PC_GAMING,
+                        link: "/categ/" + CATEGORY.PC_GAMING,
                         image: "assets/departments/dps/pc/pc-gaming.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.ALL_IN_ONE,
-                        category: CATEGORY.ALL_IN_ONE_CATEG,
-                        link: "/categ/" + CATEGORY.ALL_IN_ONE_CATEG,
+                        name: "Calculatoare gaming",
+                        path: CATEGORY.ALL_IN_ONE,
+                        link: "/categ/" + CATEGORY.ALL_IN_ONE,
                         image: "assets/departments/dps/pc/all-in-one.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.CATEGORY,
-                        category: CATEGORY.CATEGORY,
+                        name: "under-construction",
+                        path: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#999999",
                     },
                     {
-                        name: CATEGORY.CATEGORY,
-                        category: CATEGORY.CATEGORY,
+                        name: "under-construction",
+                        path: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -525,7 +525,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Monitoare",
-                type: "monitoare",
+                path: "monitoare",
                 link: "/type/monitoare",
                 image: "assets/departments/dps/monitors.png",
                 showSubtitle: false,
@@ -533,32 +533,32 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: CATEGORY.MONITORS_PRO,
-                        category: CATEGORY.MONITORS_PRO_CATEG,
-                        link: "/categ/" + CATEGORY.MONITORS_PRO_CATEG,
+                        name: CATEGORY.MONITOR_PRO,
+                        path: CATEGORY.MONITOR_PRO,
+                        link: "/categ/" + CATEGORY.MONITOR_PRO,
                         image: "assets/departments/dps/monitors/pro-monitors.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.CATEGORY,
-                        category: CATEGORY.CATEGORY,
+                        name: "under-construction",
+                        path: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#999999",
                     },
                     {
-                        name: CATEGORY.CATEGORY,
-                        category: CATEGORY.CATEGORY,
+                        name: "under-construction",
+                        path: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
                         color: "#999999",
                     },
                     {
-                        name: CATEGORY.CATEGORY,
-                        category: CATEGORY.CATEGORY,
+                        name: "under-construction",
+                        path: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,

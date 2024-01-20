@@ -8,7 +8,7 @@ import { IDepartment, DEPARTMENTS, IType } from 'src/app/shared/data/mega-menu.d
 })
 export class MegaMenuMobileComponent {
 
-  departments: Array<IDepartment> = DEPARTMENTS;
+  departments = DEPARTMENTS;
 
   closeMobMenu: boolean = false;
   @Output() closeMobMenuEvent = new EventEmitter<boolean>();

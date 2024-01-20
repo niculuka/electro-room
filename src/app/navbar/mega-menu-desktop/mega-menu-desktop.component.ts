@@ -8,7 +8,7 @@ import { DEPARTMENTS, IDepartment } from 'src/app/shared/data/mega-menu.data';
 })
 export class MegaMenuDesktopComponent {
 
-  departments: Array<IDepartment> = DEPARTMENTS;
+  departments = DEPARTMENTS;
 
   closeDeskMenu: boolean = false;
   @Output() closeDeskMenuEvent = new EventEmitter<boolean>();

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DEPARTMENTS, IDepartment } from 'src/app/shared/data/mega-menu.data';
+import { DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
@@ -17,11 +17,12 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductTypeComponent implements OnInit, OnDestroy {
 
-  departments: Array<IDepartment> = DEPARTMENTS;
+  departments = DEPARTMENTS;
   protected products: Array<Product> = [];
 
   currentDepartment: string = "";
-  currentType: string = CATEGORY.LAPTOPS_TYPE;
+  currentType: string = "";
+  path: string = CATEGORY.LAPTOP;
   customBreadcrumb: Breadcrumb = new Breadcrumb();
 
   foundProducts: boolean = false;
@@ -48,11 +49,12 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.departments.filter(depart => {
-      let type = depart.titles.find(title => title.type === this.currentType);
-      if (type?.type) {
+      let type = depart.titles.find(title => title.path === this.path);
+      if (type?.path) {
         this.currentDepartment = depart.name;
+        this.currentType = type.name;
         this.createBreadcrumb();
-        this.sub1 = this.productService.getProductsByTypeService(this.currentType).subscribe(data => {
+        this.sub1 = this.productService.getProductsByTypeService(this.path).subscribe(data => {
           if (data.length) {
             this.products = data;
             this.foundProducts = true;

@@ -50,10 +50,10 @@ export const PRODUCTS_FILTERS: Array<ProductFilter> = [
         name: "Subcategorie",
         value: CATEGORY.SUBCATEGORY,
         filters: [
-            { id: 301, name: CATEGORY.LAPTOPS_BUSINESS, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "BUSINESS", count: 0 },
-            { id: 302, name: CATEGORY.LAPTOPS_GAMING, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "GAMING", count: 0 },
-            { id: 303, name: CATEGORY.LAPTOPS_HOME, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "HOME", count: 0 },
-            { id: 304, name: CATEGORY.LAPTOPS_ULTRA, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "ULTRA", count: 0 },
+            { id: 301, name: CATEGORY.LAPTOP_BUSINESS, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "BUSINESS", count: 0 },
+            { id: 302, name: CATEGORY.LAPTOP_GAMING, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "GAMING", count: 0 },
+            { id: 303, name: CATEGORY.LAPTOP_HOME, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "HOME", count: 0 },
+            { id: 304, name: CATEGORY.LAPTOP_ULTRA, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "ULTRA", count: 0 },
             // { id: 305, name: CATEGORY.ALL_IN_ONE, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: "ALL IN ONE", count: 0 },
 
             { id: 401, name: CATEGORY.BRIEFCASE, value: CATEGORY.SUBCATEGORY, isChecked: false, min: 0, max: 0, labelName: CATEGORY.BRIEFCASE, count: 0 },

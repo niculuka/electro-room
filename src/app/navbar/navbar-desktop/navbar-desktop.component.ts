@@ -12,7 +12,7 @@ import { OverlayerService } from 'src/app/shared/services/overlayer.service';
 })
 export class NavbarDesktopComponent implements OnDestroy {
 
-  departments: Array<IDepartment> = DEPARTMENTS;  
+  departments = DEPARTMENTS;  
 
   @ViewChild('menu') menu: ElementRef | undefined;
   handleWindow: HandleWindow = new HandleWindow();

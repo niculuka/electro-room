@@ -12,7 +12,7 @@ import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 })
 export class DepartmentComponent implements OnDestroy {
 
-  departments: Array<IDepartment> = DEPARTMENTS;
+  departments = DEPARTMENTS;
   cards: Array<any> = [];
 
   currentDepartment: string = "";
@@ -27,10 +27,11 @@ export class DepartmentComponent implements OnDestroy {
     private toastrService: ToastrService,
   ) {
     this.sub = this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentDepartment = params.get('department') || "";
-      let depart: any = this.departments.find(item => item.department === this.currentDepartment);
-      if (depart.department) {
+      let path = params.get('path') || "";
+      let depart: any = this.departments.find(item => item.path === path);
+      if (depart.path) {
         this.cards = depart.titles;
+        this.currentDepartment = depart.name;
         this.createBreadcrumb();
       }
     });

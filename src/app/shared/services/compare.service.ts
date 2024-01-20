@@ -22,8 +22,8 @@ export class CompareService {
     }
     else {
       if (this.compares.length < 4) {
-        if (this.compares[0].type.toLowerCase() == CATEGORY.LAPTOPS.toLowerCase()) {
-          if (product.type.toLowerCase() == CATEGORY.LAPTOPS.toLowerCase()) {
+        if (this.compares[0].type.toLowerCase() == CATEGORY.LAPTOP.toLowerCase()) {
+          if (product.type.toLowerCase() == CATEGORY.LAPTOP.toLowerCase()) {
             this.addProductToList(product);
           }
           else this.toastrService.warning("Selectati produse din aceeasi categorie");

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DEPARTMENTS, IDepartment } from 'src/app/shared/data/mega-menu.data';
+import { DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -16,7 +16,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductCategoryComponent implements OnInit, OnDestroy {
 
-  departments: Array<IDepartment> = DEPARTMENTS;
+  departments = DEPARTMENTS;
   protected products: Array<Product> = [];
 
   currentDepartment: string = "";
@@ -50,15 +50,16 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentType = params.get('category') || "";
+      let path = params.get('path') || "";
       this.departments.filter(depart => {
         depart.titles.filter(title => {
-          let categ = title.subtitles.find(subtitle => subtitle.category === this.currentType);
-          if (categ?.category) {
+          let categ = title.subtitles.find(subtitle => subtitle.path === path);
+          if (categ?.path) {
             this.currentDepartment = depart.name;
+            this.currentType = title.name;
             this.currentCategory = categ.name;
             this.createBreadcrumb();
-            this.sub2 = this.productService.getProductsByCategoryService(categ.category).subscribe(data => {
+            this.sub2 = this.productService.getProductsByCategoryService(path).subscribe(data => {
               if (data.length) {
                 this.products = data;
                 this.foundProducts = true;
