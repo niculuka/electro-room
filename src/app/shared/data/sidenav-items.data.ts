@@ -2,14 +2,14 @@ import { CATEGORY, ORDER, USER } from "../enums/electro.enum";
 
 export interface SidenavSubtitle {
     name: string;
-    subtitle: CATEGORY | USER | ORDER;
+    subtitle: string;
 }
 
 export interface SidenavTitle {
     name: string;
     icon: string;
     isOpened: boolean;
-    title: CATEGORY | USER | ORDER;
+    title: string;
     subtitles: Array<SidenavSubtitle>
 }
 

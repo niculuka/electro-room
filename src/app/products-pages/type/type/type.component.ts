@@ -15,9 +15,9 @@ export class TypeComponent implements OnInit, OnDestroy {
   departments = DEPARTMENTS;
   cards: Array<any> = [];
 
-  currentDepartment: string = "";
-  currentType: string = "";
-  customBreadcrumb: Breadcrumb = new Breadcrumb();
+  breadcrumb: Array<Breadcrumb> = [];
+  crumbDepartment: Breadcrumb = new Breadcrumb();
+  crumbType: Breadcrumb = new Breadcrumb();
 
   private sub0: any;
   private sub1: any;
@@ -31,34 +31,35 @@ export class TypeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      let path = params.get('path') || "";
+      let type = params.get('type') || "";
       this.departments.filter(depart => {
-        let type = depart.titles.find(title => title.path === path);
-        if (type?.path) {
-          this.cards = type.subtitles;
-          this.currentDepartment = depart.name;
-          this.currentType = type.name;          
-          this.createBreadcrumb();
-        }
+        depart.titles.find(title => {
+          if (title.type === type) {
+            this.cards = title.subtitles;
+            this.createBreadcrumb(depart, title);
+          }
+        });
       });
     });
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  }
-
-  createBreadcrumb() {
-    this.customBreadcrumb = {
-      customDepartment: this.currentDepartment,
-      customType: this.currentType,
-      customCategory: "",
-      customLinkName: "",
-    };
-    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
   noRoute(card: any) {
     if (card.isReady === false) {
       this.toastrService.warning("C O N S T R U C T I O N", "U N D E R")
     }
+  }
+
+  createBreadcrumb(depart: any, title: any) {
+    this.crumbDepartment.label = depart.name;
+    this.crumbDepartment.url = "/depart/" + depart.department;
+    this.breadcrumb.push(this.crumbDepartment);
+
+    this.crumbType.label = title.name;
+    this.crumbType.url = "/type/" + title.type;
+    this.breadcrumb.push(this.crumbType);
+
+    this.breadcrumbService.handleBreadcrumbService(this.breadcrumb);
   }
 
   ngOnDestroy(): void {

@@ -74,128 +74,25 @@ const routes: Routes = [
   { path: "404", component: NotFoundComponent },
 
   // S P E C I A L   O F F E R ------------------------------------------------------------
-  {
-    path: "oferta-speciala",
-    component: SpecialOfferComponent,
-    data: {
-      breadcrumb: [
-        { label: 'Oferta Speciala', url: '' },
-      ]
-    },
-  },
+  { path: "oferta-speciala", component: SpecialOfferComponent },
 
   // C U S T O M E R S   S U P P O R T ----------------------------------------------------
-  {
-    path: "suport-clienti",
-    component: CustomerSupportComponent,
-    data: {
-      breadcrumb: [
-        { label: 'Suport Clienti', url: '' },
-      ]
-    },
-  },
-  {
-    path: "suport-clienti/magazine",
-    component: StoreComponent,
-    data: {
-      breadcrumb: [
-        { label: 'Suport Clienti', url: '/suport-clienti' },
-        { label: 'Magazine', url: '' },
-      ]
-    },
-  },
-  {
-    path: "suport-clienti/magazine/:storeName",
-    component: StoreDetailComponent,
-    data: {
-      breadcrumb: [
-        { label: 'Suport Clienti', url: '/suport-clienti' },
-        { label: 'Magazine', url: '/suport-clienti/magazine' },
-        { label: '{{storeName}}', url: '' },
-      ]
-    },
-  },
+  { path: "suport-clienti", component: CustomerSupportComponent },
+  { path: "suport-clienti/magazine", component: StoreComponent },
+  { path: "suport-clienti/magazine/:storeName", component: StoreDetailComponent },
 
   // P R O D U C T S ======================================================================
-  // Department ---------------------------------------------------------
-  {
-    path: "depart/:path",
-    component: DepartmentComponent,
-    data: {
-      breadcrumb: [
-        { label: '{{customDepartment}}', url: '' },
-      ]
-    },
-  },
-  // Type ----------------------------------------------------------------
-  {
-    path: "type/" + CATEGORY.LAPTOP,
-    component: ProductTypeComponent,
-    data: {
-      breadcrumb: [
-        { label: '{{customDepartment}}', url: '/p/:department' },
-        { label: '{{customType}}', url: '' },
-      ]
-    },
-  },
-  {
-    path: "type/:path",
-    component: TypeComponent,
-    data: {
-      breadcrumb: [
-        { label: '{{customDepartment}}', url: '/p/:department' },
-        { label: '{{customType}}', url: '' },
-      ]
-    },
-  },
-  // Category -------------------------------------------------------------
-  {
-    path: "categ/:path",
-    component: ProductCategoryComponent,
-    data: {
-      breadcrumb: [
-        { label: '{{customDepartment}}', url: '/p/:department' },
-        { label: '{{customType}}', url: '/p/:department/:type' },
-        { label: '{{customCategory}}', url: '' },
-      ]
-    },
-  },
-  // Product Detail ---------------------------------------------------------
-  {
-    path: "p/:department/:type/:category/:linkName",
-    component: ProductDetailComponent,
-    data: {
-      breadcrumb: [
-        { label: '{{customDepartment}}', url: '/p/:department' },
-        { label: '{{customType}}', url: '/p/:department/:type' },
-        { label: '{{customCategory}}', url: '/p/:department/:type/:category' },
-        { label: '{{customLinkName}}', url: '' },
-      ]
-    },
-  },
+  { path: "depart/:depart", component: DepartmentComponent },
+  { path: "type/" + CATEGORY.LAPTOP, component: ProductTypeComponent },
+  { path: "type/:type", component: TypeComponent },
+  { path: "categ/:category", component: ProductCategoryComponent },
+  { path: "prod/:linkname", component: ProductDetailComponent },
+
   // Search -----------------------------------------------------------------
-  {
-    path: "search/:searchTerm",
-    component: SearchComponent,
-    data: {
-      breadcrumb: [
-        { label: 'Rezultate cautare: {{searchTerm}}', url: '' },
-      ]
-    },
-  },
+  { path: "search/:searchTerm", component: SearchComponent },
 
   // admin --------------------------------------------------------------------------------
-  {
-    path: "admin",
-    component: AdminComponent,
-    canActivate: [AuthGuard],
-    data: {
-      roles: [ROLE.ADMIN],
-      breadcrumb: [
-        { label: 'Admin', url: '' },
-      ]
-    }
-  },
+  { path: "admin", component: AdminComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/products/:product", component: AdminProductComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/product/create", component: AdminProductCreateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/product/update/:linkname", component: AdminProductUpdateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
@@ -211,7 +108,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

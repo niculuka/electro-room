@@ -99,7 +99,6 @@ export enum CATEGORY {
     CATEGORY = "categorie",
     SUBCATEGORY = "subcategorie",
     PRODUCTS = "produse",
-    PRODUCT = "produs",
 
     // B A D G E -----------------------------------------
     TOP_FAVORITE = "top favorit",
@@ -165,8 +164,8 @@ export enum CATEGORY {
 
     // C A T E G O R Y ============================================
     LAPTOP_GAMING = "laptop-gaming",
-    LAPTOP_ULTRA = "laptop-ultra",
-    LAPTOP_BUSINESS = "laptop-bussiness",
+    LAPTOP_BUSINESS = "laptop-business",
+    LAPTOP_ULTRA = "laptop-ultra",    
     LAPTOP_HOME = "laptop-home",
     LAPTOP_BAG = "laptop-bag",
     LAPTOP_CHARGER = "laptop-charger",
@@ -176,6 +175,47 @@ export enum CATEGORY {
     PC_GAMING = "pc-gaming",
     ALL_IN_ONE = "all-in-one",
     MONITOR_PRO = "monitor-pro",    
+
+    // S U B C A T E G O R Y ======================================    
+    BRIEFCASE = "briefcase",
+    SLEEVE = "sleeve",
+    BACKPACK = "backpack",
+    CAR = "car",
+    PLUG_IN = "plug-in",    
+    HDD = "hdd",
+    SSD = "ssd",   
+    BATTERY = "battery",    
+    DDR3 = "ddr3",
+    DDR4 = "ddr4",
+    DDR5 = "ddr5",
+    MONITORS_FLAT = "monitor-flat",
+    MONITORS_CURVED = "monitor-curved",
+}
+
+export enum MENU {
+    // D E P A R T M E N T ======================================== 
+    LPT = "Laptopuri, Telefoane, Tablete",
+    DPS = "Desktop, Periferice, Software",
+
+    // T Y P E ====================================================
+    LAPTOP = "Laptopuri",
+    LAPTOP_ACCESSORY = "Accesorii Laptop",
+    PC = "PC-uri",
+    MONITOR = "Monitoare",
+
+    // C A T E G O R Y ============================================
+    LAPTOP_GAMING = "Laptopuri Gaming",    
+    LAPTOP_BUSINESS = "Laptopuri Business",
+    LAPTOP_ULTRA = "Laptopuri Ultra",
+    LAPTOP_HOME = "Laptopuri Home",
+    LAPTOP_BAG = "Genti Laptop",
+    LAPTOP_CHARGER = "Incarcatoare Laptop",
+    LAPTOP_HARD = "Harduri Laptop",
+    EXTERNAL_BATTERY = "Baterii Externe",
+    RAM_MEMORY = "Memorii Ram",
+    PC_GAMING = "Calculatoare Gaming",
+    ALL_IN_ONE = "Sisteme All In One",
+    MONITOR_PRO = "Monitoare profesionale",    
 
     // S U B C A T E G O R Y ======================================    
     BRIEFCASE = "briefcase",

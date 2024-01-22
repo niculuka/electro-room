@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -16,12 +16,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   protected product: Product = new Product();
 
-  currentDepartment: string = "";
-  currentType: string = "";
-  currentCategory: string = "";
-  currentLinkName: string = "";
-
-  customBreadcrumb: Breadcrumb = new Breadcrumb();
+  breadcrumb: Array<Breadcrumb> = [];
+  crumbDepartment: Breadcrumb = new Breadcrumb();
+  crumbType: Breadcrumb = new Breadcrumb();
+  crumbCategory: Breadcrumb = new Breadcrumb();
+  crumbLinkname: Breadcrumb = new Breadcrumb();
+  
   foundProduct: boolean = false;
 
   private sub1: any;
@@ -30,6 +30,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   private sub4: any;
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private favoriteService: FavoriteService,
@@ -39,22 +40,20 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      this.currentDepartment = params.get('department') || "";
-      this.currentType = params.get('type') || "";
-      this.currentCategory = params.get('category') || "";
-      this.currentLinkName = params.get('linkName') || "";
-      this.createBreadcrumb();
-      this.sub2 = this.productService.getProductByNameService(this.currentLinkName).subscribe(data => {
+      let linkname = params.get('linkname') || "";
+      this.sub2 = this.productService.getProductByNameService(linkname).subscribe(data => {
         if (data) {
           this.product = data;
           this.foundProduct = true;
+          this.createBreadcrumb();          
           this.getFavoritesProducts();
-          this.getComparesProducts();          
+          this.getComparesProducts();
         }
         else this.foundProduct = false;
       });
     });
-  }
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }  
 
   getFavoritesProducts() {
     this.sub3 = this.favoriteService.getFavoritesObservable().subscribe(favorites => {
@@ -72,16 +71,26 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         if (this.product.id == comp.id) this.product.compare = true;
       });
     });
-  }
+  }  
 
   createBreadcrumb() {
-    this.customBreadcrumb = {
-      customDepartment: this.currentDepartment,
-      customType: this.currentType,
-      customCategory: this.currentCategory,
-      customLinkName: this.currentLinkName,
-    };
-    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
+    this.crumbDepartment.label = this.product.department;
+    this.crumbDepartment.url = "/depart/" + this.product.department;
+    this.breadcrumb.push(this.crumbDepartment);
+
+    this.crumbType.label = this.product.type;
+    this.crumbType.url = "/type/" + this.product.type;
+    this.breadcrumb.push(this.crumbType);
+
+    this.crumbCategory.label = this.product.category;
+    this.crumbCategory.url = "/categ/" + this.product.category;
+    this.breadcrumb.push(this.crumbCategory);
+
+    this.crumbLinkname.label = this.product.linkName;
+    this.crumbLinkname.url = "/prod/" + this.product.linkName;
+    this.breadcrumb.push(this.crumbLinkname);
+
+    this.breadcrumbService.handleBreadcrumbService(this.breadcrumb);
   }
 
   ngOnDestroy(): void {

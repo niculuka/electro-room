@@ -20,10 +20,10 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   departments = DEPARTMENTS;
   protected products: Array<Product> = [];
 
-  currentDepartment: string = "";
-  currentType: string = "";
-  path: string = CATEGORY.LAPTOP;
-  customBreadcrumb: Breadcrumb = new Breadcrumb();
+  breadcrumb: Array<Breadcrumb> = [];
+  crumbDepartment: Breadcrumb = new Breadcrumb();
+  crumbType: Breadcrumb = new Breadcrumb();
+  type: string = CATEGORY.LAPTOP;
 
   foundProducts: boolean = false;
 
@@ -49,22 +49,21 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.departments.filter(depart => {
-      let type = depart.titles.find(title => title.path === this.path);
-      if (type?.path) {
-        this.currentDepartment = depart.name;
-        this.currentType = type.name;
-        this.createBreadcrumb();
-        this.sub1 = this.productService.getProductsByTypeService(this.path).subscribe(data => {
-          if (data.length) {
-            this.products = data;
-            this.foundProducts = true;
-            this.getFavoritesProducts();
-            this.getComparesProducts();
-            this.productCategoryService.productsFiltersService(this.products);
-          }
-          else this.foundProducts = false;
-        });
-      }
+      depart.titles.find(title => {
+        if (title.type === this.type) {
+          this.createBreadcrumb(depart, title);
+          this.sub1 = this.productService.getProductsByTypeService(this.type).subscribe(data => {
+            if (data.length) {
+              this.products = data;
+              this.foundProducts = true;
+              this.getFavoritesProducts();
+              this.getComparesProducts();
+              this.productCategoryService.productsFiltersService(this.products);
+            }
+            else this.foundProducts = false;
+          });
+        }
+      });
     });
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -91,14 +90,16 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
     });
   }
 
-  createBreadcrumb() {
-    this.customBreadcrumb = {
-      customDepartment: this.currentDepartment,
-      customType: this.currentType,
-      customCategory: "",
-      customLinkName: "",
-    };
-    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
+  createBreadcrumb(depart: any, title: any) {
+    this.crumbDepartment.label = depart.name;
+    this.crumbDepartment.url = "/depart/" + depart.department;
+    this.breadcrumb.push(this.crumbDepartment);
+
+    this.crumbType.label = title.name;
+    this.crumbType.url = "/type/" + title.type;
+    this.breadcrumb.push(this.crumbType);
+
+    this.breadcrumbService.handleBreadcrumbService(this.breadcrumb);
   }
 
   ngOnDestroy(): void {

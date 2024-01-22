@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DEPARTMENTS, IDepartment } from 'src/app/shared/data/mega-menu.data';
+import { DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
 import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 
@@ -15,8 +15,8 @@ export class DepartmentComponent implements OnDestroy {
   departments = DEPARTMENTS;
   cards: Array<any> = [];
 
-  currentDepartment: string = "";
-  customBreadcrumb: Breadcrumb = new Breadcrumb();
+  breadcrumb: Array<Breadcrumb> = [];
+  crumb: Breadcrumb = new Breadcrumb();
 
   private sub: any;
 
@@ -27,31 +27,29 @@ export class DepartmentComponent implements OnDestroy {
     private toastrService: ToastrService,
   ) {
     this.sub = this.activatedRoute.paramMap.subscribe((params) => {
-      let path = params.get('path') || "";
-      let depart: any = this.departments.find(item => item.path === path);
-      if (depart.path) {
-        this.cards = depart.titles;
-        this.currentDepartment = depart.name;
-        this.createBreadcrumb();
-      }
+      let department = params.get('depart') || "";
+      this.departments.find(item => {
+        if (item.department === department) {
+          this.cards = item.titles;
+          this.createBreadcrumb(item);
+        }
+      });
     });
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  }
-
-  createBreadcrumb() {
-    this.customBreadcrumb = {
-      customDepartment: this.currentDepartment,
-      customType: "",
-      customCategory: "",
-      customLinkName: "",
-    };
-    this.breadcrumbService.handleBreadcrumbService(this.customBreadcrumb);
   }
 
   noRoute(card: any) {
     if (card.isReady === false) {
       this.toastrService.warning("C O N S T R U C T I O N", "U N D E R")
     }
+  }
+
+  createBreadcrumb(item: any) {
+    this.crumb.label = item.name;
+    this.crumb.url = "/depart/" + item.department;
+    this.breadcrumb.push(this.crumb)
+
+    this.breadcrumbService.handleBreadcrumbService(this.breadcrumb);
   }
 
   ngOnDestroy(): void {
