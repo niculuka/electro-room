@@ -38,7 +38,7 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   updateProduct() {
-    this.product.linkName = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
+    this.product.linkname = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
     this.adminProductService.updateProductService(this.product).subscribe({
       next: () => {
         window.location.reload();

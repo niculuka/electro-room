@@ -1,16 +1,14 @@
 <div class="container-breadcrumb">
   <div class="content-breadcrumb">
 
-    <!-- <p>{{breadcrumb.crumbDepartment}} / {{breadcrumb.crumbType}} / {{breadcrumb.crumbCategory}} / {{breadcrumb.crumbLinkname}}</p> -->
-
-    <!-- <ol class="breadcrumb">
+    <ol class="breadcrumb">
       <li *ngFor="let breadcrumb of breadcrumbs">
-        <span [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
-          {{ breadcrumb.label }}
-        </span>
+        <a [routerLink]="breadcrumb.url">
+          {{breadcrumb.label}}
+        </a>
       </li>
-    </ol> -->
-    
+    </ol>
+
 
   </div>
 </div>

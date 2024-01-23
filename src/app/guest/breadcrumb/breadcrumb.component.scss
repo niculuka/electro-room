@@ -14,39 +14,43 @@
 }
 
 .breadcrumb {
-    background: none;
-    font-size: 0.8em;
     margin: 0;
-
-    a,
-    span {
-        color: darkgrey;
-    }
-
-    a:hover,
-    span:hover {
-        color: dimgrey;
-        text-decoration: none;
-    }
+    padding: 6px 20px;
+    background: none;    
 
     li {
         list-style: none;
         float: left;
-        margin: 5px;
+
+        a {
+            font-size: 14px;
+            color: rgb(220, 20, 110);
+            text-decoration: none;
+            // border: 1px solid black;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     }
 
-    li:last-child {
-        margin-right: 20px;
+    li:last-child a {
+        color: rgb(80, 80, 80);
+    }
+
+    li:last-child a:hover {
+        text-decoration: none;
     }
 
     li::after {
-        content: "->";
+        content: "/";
+        margin-right: 2px;
         color: darkgrey;
     }
 
     li:last-child::after {
         content: "";
-    }
+    }    
 }
 
 
@@ -66,5 +70,15 @@
     .content-breadcrumb {
         width: 100%;
         border-radius: 0;
+    }
+
+    .breadcrumb {
+        padding: 6px 30px;
+    }
+}
+
+@media(max-width: 550px) {
+    .breadcrumb {
+        padding: 6px 20px;
     }
 }

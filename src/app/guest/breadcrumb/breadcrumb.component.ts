@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
+import { IBreadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.css']
+  styleUrls: ['./breadcrumb.component.scss']
 })
 export class BreadcrumbComponent implements OnInit, OnDestroy {
 
-  breadcrumb: Breadcrumb = new Breadcrumb();
+  breadcrumbs: Array<IBreadcrumb> = [];
 
   private sub: any;
 
@@ -18,10 +18,10 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.breadcrumbService.getBreadcrumbObservable().subscribe(data => {
-      if (data) {
-        this.breadcrumb = data;
-        // console.log(this.breadcrumb);
+    this.sub = this.breadcrumbService.getBreadcrumbsObservable().subscribe(data => {
+      if (data.length) {
+        this.breadcrumbs = data;
+        // console.log(this.breadcrumbs)
       }
     })
   }

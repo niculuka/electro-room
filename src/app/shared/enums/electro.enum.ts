@@ -190,9 +190,14 @@ export enum CATEGORY {
     DDR5 = "ddr5",
     MONITORS_FLAT = "monitor-flat",
     MONITORS_CURVED = "monitor-curved",
+
+    // M E N U ======================================   
+    SPECIAL_OFFER = "special-offer",
+    CUSTOMER_SUPORT =  "customer-support",
+    STORES = "stores",
 }
 
-export enum MENU {
+export enum MEGAMENU {
     // D E P A R T M E N T ======================================== 
     LPT = "Laptopuri, Telefoane, Tablete",
     DPS = "Desktop, Periferice, Software",
@@ -215,7 +220,7 @@ export enum MENU {
     RAM_MEMORY = "Memorii Ram",
     PC_GAMING = "Calculatoare Gaming",
     ALL_IN_ONE = "Sisteme All In One",
-    MONITOR_PRO = "Monitoare profesionale",    
+    MONITOR_PRO = "Monitoare Profesionale",    
 
     // S U B C A T E G O R Y ======================================    
     BRIEFCASE = "briefcase",
@@ -231,4 +236,10 @@ export enum MENU {
     DDR5 = "ddr5",
     MONITORS_FLAT = "monitor-flat",
     MONITORS_CURVED = "monitor-curved",
+}
+
+export enum MENU {
+    SPECIAL_OFFER = "Oferte Speciale",
+    CUSTOMER_SUPORT =  "Suport Clienti",
+    STORES = "Magazine",
 }

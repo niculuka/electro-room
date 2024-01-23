@@ -23,7 +23,7 @@
             <a [routerLink]="'/p/'+item.product.department.toLowerCase()
                             +'/'+item.product.type.toLowerCase()
                             +'/'+item.product.category.toLowerCase()
-                            +'/'+item.product.linkName">
+                            +'/'+item.product.linkname">
               <img [src]="item.product.image" [alt]="item.product.name">
             </a>
           </div>
@@ -32,7 +32,7 @@
               <a [routerLink]="'/p/'+item.product.department.toLowerCase()
                               +'/'+item.product.type.toLowerCase()
                               +'/'+item.product.category.toLowerCase()
-                              +'/'+item.product.linkName">
+                              +'/'+item.product.linkname">
                 {{item.product.description}}
               </a>
             </div>

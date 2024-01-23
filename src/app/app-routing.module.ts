@@ -74,12 +74,12 @@ const routes: Routes = [
   { path: "404", component: NotFoundComponent },
 
   // S P E C I A L   O F F E R ------------------------------------------------------------
-  { path: "oferta-speciala", component: SpecialOfferComponent },
+  { path: "special-offer", component: SpecialOfferComponent },
 
   // C U S T O M E R S   S U P P O R T ----------------------------------------------------
-  { path: "suport-clienti", component: CustomerSupportComponent },
-  { path: "suport-clienti/magazine", component: StoreComponent },
-  { path: "suport-clienti/magazine/:storeName", component: StoreDetailComponent },
+  { path: "customer-support", component: CustomerSupportComponent },
+  { path: "customer-support/stores", component: StoreComponent },
+  { path: "customer-support/stores/:storename", component: StoreDetailComponent },
 
   // P R O D U C T S ======================================================================
   { path: "depart/:depart", component: DepartmentComponent },

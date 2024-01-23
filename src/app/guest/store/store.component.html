@@ -5,7 +5,7 @@
 
         <div class="cards">
             <div class="card" *ngFor="let store of stores">
-                <a [routerLink]="'/suport-clienti/magazine/' + store.linkName">
+                <a [routerLink]="'/customer-support/stores/' + store.linkname">
                     <div class="store">
                         <h1><strong>{{store.name}}</strong></h1>
                         <p>{{store.address}}</p>

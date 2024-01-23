@@ -42,7 +42,7 @@ export class AdminProductComponent implements OnChanges {
       + '/'
       + product.category.replace(/_/g, "-").toLowerCase()
       + '/'
-      + product.linkName
+      + product.linkname
     ]);
   }
 
@@ -51,7 +51,7 @@ export class AdminProductComponent implements OnChanges {
   }
 
   updateProduct(product: Product) {
-    this.router.navigate(['/admin/product/update/' + product.linkName]);
+    this.router.navigate(['/admin/product/update/' + product.linkname]);
   }
 
   deleteProductDialog(product: Product) {

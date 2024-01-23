@@ -42,7 +42,7 @@ export class AdminDemoProductComponent implements OnInit {
       + '/'
       + product.category.replace(/_/g, "-").toLowerCase()
       + '/'
-      + product.linkName
+      + product.linkname
     ]);
   }
 }

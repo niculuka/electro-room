@@ -1,7 +1,10 @@
-export interface Stores {
+import { CATEGORY } from "../enums/electro.enum";
+
+export interface StoreDetail {
     id: number;
     name: string;
-    linkName: string;
+    category: string;
+    linkname: string;
     address: string;
     day1: string;
     hour1: string;
@@ -13,11 +16,12 @@ export interface Stores {
 
 }
 
-export const STORES: Stores[] = [
+export const STORES_DETAILS: StoreDetail[] = [
     {
         id: 1,
         name: "Electro-Room Galati Billa",
-        linkName: "electro-room-galati-billa",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-galati-billa",
         address: "Str. Otelarilor, Nr. 13, Cartier Dunarea, Micro 21, Galati, Jud. Galati",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 21.00",
@@ -30,7 +34,8 @@ export const STORES: Stores[] = [
     {
         id: 2,
         name: "Electro-Room Bucuresti Bucur Obor",
-        linkName: "electro-room-bucuresti-bucur-obor",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-bucuresti-bucur-obor",
         address: "Sos. Colentina, Nr. 2, Bl. ALMO, Complex Comercial Bucur Obor, Parter, Sector 2, Bucuresti",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 21.00",
@@ -43,7 +48,8 @@ export const STORES: Stores[] = [
     {
         id: 3,
         name: "Electro-Room Bucuresti Plaza",
-        linkName: "electro-room-bucuresti-plaza",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-bucuresti-plaza",
         address: "Bdul. Timisoara, Nr 26, Plaza Romania, Etaj -1, Sector 6, Bucuresti",
         day1: "Luni-Vineri: ",
         hour1: "10.00 - 22.00",
@@ -56,7 +62,8 @@ export const STORES: Stores[] = [
     {
         id: 4,
         name: "Electro-Room Shopping City Sibiu",
-        linkName: "electro-room-shopping-city-sibiu",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-shopping-city-sibiu",
         address: "DN1, Km. 306, Selimbar, Shopping City Mall, Sibiu, Jud. Sibiu",
         day1: "Luni-Vineri: ",
         hour1: "10.00 - 22.00",
@@ -69,7 +76,8 @@ export const STORES: Stores[] = [
     {
         id: 5,
         name: "Electro-Room Brasov Cometex",
-        linkName: "electro-room-brasov-cometex",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-brasov-cometex",
         address: "Str. Caramidariei, Nr. 1, langa Complex Comercial Auchan, Brasov, Jud. Brasov",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 20.00",
@@ -82,7 +90,8 @@ export const STORES: Stores[] = [
     {
         id: 6,
         name: "Electro-Room Ploiesti",
-        linkName: "electro-room-ploiesti",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-ploiesti",
         address: "Str. Libertatii, Nr. 4, Complex Comercial Billa, Ploiesti, Jud. Prahova",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 21.00",
@@ -95,7 +104,8 @@ export const STORES: Stores[] = [
     {
         id: 7,
         name: "Electro-Room Satu Mare Auchan",
-        linkName: "electro-room-satu-mare-auchan",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-satu-mare-auchan",
         address: "Str. Drumul Careiului, Nr. 77-79, Complex Comercial Auchan, Satu Mare, Jud. Satu Mare",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 21.00",
@@ -108,7 +118,8 @@ export const STORES: Stores[] = [
     {
         id: 8,
         name: "Electro-Room Petrosani Retail Park",
-        linkName: "electro-room-petrosani-retail-park",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-petrosani-retail-park",
         address: "Str. Livezeni, Nr. 12, Petrosani Retail Park, Petrosani, Jud. Hunedoara",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 20.00",
@@ -121,7 +132,8 @@ export const STORES: Stores[] = [
     {
         id: 9,
         name: "Electro-Room Hunedoara",
-        linkName: "electro-room-hunedoara",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-hunedoara",
         address: "Bdul. Dacia, Nr. 11, Hunedoara, Jud. Hunedoara",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 19.00",
@@ -134,7 +146,8 @@ export const STORES: Stores[] = [
     {
         id: 10,
         name: "Electro-Room Timisoara Greenfield",
-        linkName: "electro-room-timisoara-greenfield",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-timisoara-greenfield",
         address: "Calea Aradului, Nr. 58A, Timioara, Jud. Timis",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 21.00",
@@ -147,7 +160,8 @@ export const STORES: Stores[] = [
     {
         id: 11,
         name: "Electro-Room Cluj Iulius Mall",
-        linkName: "electro-room-cluj-iulius-mall",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-cluj-iulius-mall",
         address: "Str. Alexandru Vaida Voievod, Nr. 53-55, Cartier Gheorgheni, Iulius Mall, Cluj-Napoca, Jud. Cluj",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 22.00",
@@ -160,7 +174,8 @@ export const STORES: Stores[] = [
     {
         id: 12,
         name: "Electro-Room Alba Iulia Retail Park",
-        linkName: "electro-room-alba-iulia-retail-park",
+        category: CATEGORY.STORES,
+        linkname: "electro-room-alba-iulia-retail-park",
         address: "Str. Motilor, Nr. 118, Complex Comercial Retail Park, Alba Iulia, Jud. Alba",
         day1: "Luni-Vineri: ",
         hour1: "9.00 - 21.00",

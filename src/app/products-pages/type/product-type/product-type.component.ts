@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { Breadcrumb } from 'src/app/shared/models/breadcrumb.model';
+import { IBreadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { CompareService } from 'src/app/shared/services/compare.service';
@@ -17,12 +17,12 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class ProductTypeComponent implements OnInit, OnDestroy {
 
-  departments = DEPARTMENTS;
+  protected departments = DEPARTMENTS;
   protected products: Array<Product> = [];
 
-  breadcrumb: Array<Breadcrumb> = [];
-  crumbDepartment: Breadcrumb = new Breadcrumb();
-  crumbType: Breadcrumb = new Breadcrumb();
+  breadcrumbs: Array<IBreadcrumb> = [];
+  crumbDepartment: IBreadcrumb = {} as IBreadcrumb;
+  crumbType: IBreadcrumb = {} as IBreadcrumb;
   type: string = CATEGORY.LAPTOP;
 
   foundProducts: boolean = false;
@@ -50,22 +50,31 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.departments.filter(depart => {
       depart.titles.find(title => {
-        if (title.type === this.type) {
-          this.createBreadcrumb(depart, title);
-          this.sub1 = this.productService.getProductsByTypeService(this.type).subscribe(data => {
-            if (data.length) {
-              this.products = data;
-              this.foundProducts = true;
-              this.getFavoritesProducts();
-              this.getComparesProducts();
-              this.productCategoryService.productsFiltersService(this.products);
-            }
-            else this.foundProducts = false;
-          });
-        }
+        if (title.type === this.type) this.createBreadcrumb(depart, title);
       });
     });
+    this.sub1 = this.productService.getProductsByTypeService(this.type).subscribe(data => {
+      if (data.length) {
+        this.products = data;
+        this.foundProducts = true;
+        this.getFavoritesProducts();
+        this.getComparesProducts();
+        this.productCategoryService.productsFiltersService(this.products);
+      }
+      else this.foundProducts = false;
+    });
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
+
+  createBreadcrumb(depart: any, title: any) {
+    this.crumbDepartment.label = depart.name;
+    this.crumbDepartment.url = "/depart/" + depart.department;
+    this.breadcrumbs.push(this.crumbDepartment);
+
+    this.crumbType.label = title.name;
+    this.breadcrumbs.push(this.crumbType);
+
+    this.breadcrumbService.handleBreadcrumbsService(this.breadcrumbs);
   }
 
   getFavoritesProducts() {
@@ -88,18 +97,6 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
         });
       });
     });
-  }
-
-  createBreadcrumb(depart: any, title: any) {
-    this.crumbDepartment.label = depart.name;
-    this.crumbDepartment.url = "/depart/" + depart.department;
-    this.breadcrumb.push(this.crumbDepartment);
-
-    this.crumbType.label = title.name;
-    this.crumbType.url = "/type/" + title.type;
-    this.breadcrumb.push(this.crumbType);
-
-    this.breadcrumbService.handleBreadcrumbService(this.breadcrumb);
   }
 
   ngOnDestroy(): void {

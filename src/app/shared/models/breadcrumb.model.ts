@@ -1,4 +1,4 @@
-export class Breadcrumb {
-    label: string = "";
-    url: string = "";
+export interface IBreadcrumb {
+    label: string;
+    url?: string;
 }

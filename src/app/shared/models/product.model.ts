@@ -75,7 +75,7 @@ export class ProductSpecification {
 export class Product {
     id: number | undefined;
     name: string = "";
-    linkName: string = "";
+    linkname: string = "";
     description: string = "";
     brand: string = "";
     type: string = "";
@@ -95,7 +95,7 @@ export class Product {
     constructor(
         id?: number,
         name: string = "",
-        linkName: string = "",
+        linkname: string = "",
         description: string = "",
         brand: string = "",
         department: string = "",
@@ -112,7 +112,7 @@ export class Product {
     ) {
         this.id = id;
         this.name = name;
-        this.linkName = linkName;
+        this.linkname = linkname;
         this.description = description;
         this.brand = brand;
         this.type = type;
