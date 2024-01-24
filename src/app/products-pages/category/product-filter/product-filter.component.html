@@ -15,7 +15,7 @@
         <div *ngFor="let cf of pf.filters" (change)="changeFilters($event)">
             <div class="filters-group" *ngIf="cf.count">
                 <input type="checkbox" [id]="cf.id" [value]="cf.value" [checked]="cf.isChecked">
-                <label [for]="cf.id"> {{cf.labelName}} ({{cf.count}})</label>
+                <label [for]="cf.id"> {{cf.name}} ({{cf.count}})</label>
             </div>
         </div>
 

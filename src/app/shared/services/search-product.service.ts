@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/product.model';
+import { CATEGORY } from '../enums/electro.enum';
 
 const API_URL = `${environment.BASE_URL}`;
 
@@ -18,19 +19,19 @@ export class SearchProductService {
 
   // GETS =============================================================================
   getLaptopsService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/laptops");
+    return this.http.get(API_URL + "/products/type/" + CATEGORY.LAPTOP);
   }
 
   getLaptopAccessoryService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/laptop_accessory");
+    return this.http.get(API_URL + "/products/type/" + CATEGORY.LAPTOP_ACCESSORY);
   }
 
   getPcService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/pc");
+    return this.http.get(API_URL + "/products/type/" + CATEGORY.PC);
   }
 
   getMonitorService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/monitor");
+    return this.http.get(API_URL + "/products/type/" + CATEGORY.MONITOR);
   }
 
   // Observable =======================================================================

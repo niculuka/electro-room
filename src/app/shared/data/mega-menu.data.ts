@@ -1,4 +1,4 @@
-import { CATEGORY, MEGAMENU } from "../enums/electro.enum";
+import { CATEGORY } from "../enums/electro.enum";
 
 export interface IDepartment {
     id: number;
@@ -37,7 +37,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
     {   // ================================================================= Laptop, Telefoane, Tablete
         id: 1,
         icon: "assets/svgs/phone.svg",
-        name: MEGAMENU.LPT,
+        name: CATEGORY.LPT_RO,
         department: CATEGORY.LPT,
         link: "/depart/" + CATEGORY.LPT,
         chevron: "assets/svgs/chevron-right.svg",
@@ -45,7 +45,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
         color: "#ff4196",
         titles: [
             {
-                name: MEGAMENU.LAPTOP,
+                name: CATEGORY.LAPTOP_RO,
                 type: CATEGORY.LAPTOP,
                 link: "/type/" + CATEGORY.LAPTOP,
                 image: "assets/departments/lpt/laptops.png",
@@ -54,7 +54,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: MEGAMENU.LAPTOP_GAMING,
+                        name: CATEGORY.LAPTOP_GAMING_RO,
                         category: CATEGORY.LAPTOP_GAMING,
                         link: "/categ/" + CATEGORY.LAPTOP_GAMING,
                         image: "assets/departments/lpt/laptops/laptop-gaming.png",
@@ -62,7 +62,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                         color: "#ff4196",
                     },
                     {
-                        name: MEGAMENU.LAPTOP_BUSINESS,
+                        name: CATEGORY.LAPTOP_BUSINESS_RO,
                         category: CATEGORY.LAPTOP_BUSINESS,
                         link: "/categ/" + CATEGORY.LAPTOP_BUSINESS,
                         image: "assets/departments/lpt/laptops/laptop-business.png",
@@ -70,7 +70,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                         color: "#ff4196",
                     },
                     {
-                        name: MEGAMENU.LAPTOP_ULTRA,
+                        name: CATEGORY.LAPTOP_ULTRA_RO,
                         category: CATEGORY.LAPTOP_ULTRA,
                         link: "/categ/" + CATEGORY.LAPTOP_ULTRA,
                         image: "assets/departments/lpt/laptops/laptop-ultra.png",
@@ -78,7 +78,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                         color: "#ff4196",
                     },
                     {
-                        name: MEGAMENU.LAPTOP_HOME,
+                        name: CATEGORY.LAPTOP_HOME_RO,
                         category: CATEGORY.LAPTOP_HOME,
                         link: "/categ/" + CATEGORY.LAPTOP_HOME,
                         image: "assets/departments/lpt/laptops/laptop-home.png",
@@ -88,7 +88,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 ]
             },
             {
-                name: MEGAMENU.LAPTOP_ACCESSORY,
+                name: CATEGORY.LAPTOP_ACCESSORY_RO,
                 type: CATEGORY.LAPTOP_ACCESSORY,
                 link: "/type/" + CATEGORY.LAPTOP_ACCESSORY,
                 image: "assets/departments/lpt/laptop-accessories.png",
@@ -97,7 +97,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: MEGAMENU.LAPTOP_BAG,
+                        name: CATEGORY.LAPTOP_BAG_RO,
                         category: CATEGORY.LAPTOP_BAG,
                         link: "/categ/" + CATEGORY.LAPTOP_BAG,
                         image: "assets/departments/lpt/laptop-accessories/bags.png",
@@ -105,7 +105,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                         color: "#ff4196",
                     },
                     {
-                        name: MEGAMENU.LAPTOP_CHARGER,
+                        name: CATEGORY.LAPTOP_CHARGER_RO,
                         category: CATEGORY.LAPTOP_CHARGER,
                         link: "/categ/" + CATEGORY.LAPTOP_CHARGER,
                         image: "assets/departments/lpt/laptop-accessories/chargers.png",
@@ -113,7 +113,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                         color: "#ff4196",
                     },
                     {
-                        name: MEGAMENU.LAPTOP_HARD,
+                        name: CATEGORY.LAPTOP_HARD_RO,
                         category: CATEGORY.LAPTOP_HARD,
                         link: "/categ/" + CATEGORY.LAPTOP_HARD,
                         image: "assets/departments/lpt/laptop-accessories/hards.png",
@@ -121,7 +121,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                         color: "#ff4196",
                     },
                     {
-                        name: MEGAMENU.EXTERNAL_BATTERY,
+                        name: CATEGORY.EXTERNAL_BATTERY_RO,
                         category: CATEGORY.EXTERNAL_BATTERY,
                         link: "/categ/" + CATEGORY.EXTERNAL_BATTERY,
                         image: "assets/departments/lpt/laptop-accessories/external-batteries.png",
@@ -129,7 +129,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                         color: "#ff4196",
                     },
                     {
-                        name: MEGAMENU.RAM_MEMORY,
+                        name: CATEGORY.RAM_MEMORY_RO,
                         category: CATEGORY.RAM_MEMORY,
                         link: "/categ/" + CATEGORY.RAM_MEMORY,
                         image: "assets/departments/lpt/laptop-accessories/rams.png",
@@ -472,7 +472,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
     {   // ===================================================================== Desktop, Periferice, Software
         id: 2,
         icon: "assets/svgs/laptop.svg",
-        name: MEGAMENU.DPS,
+        name: CATEGORY.DPS_RO,
         department: CATEGORY.DPS,
         link: "/depart/" + CATEGORY.DPS,
         chevron: "assets/svgs/chevron-right.svg",
@@ -480,7 +480,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
         color: "#ff4196",
         titles: [
             {
-                name: MEGAMENU.PC,
+                name: CATEGORY.PC_RO,
                 type: CATEGORY.PC,
                 link: "/type/" + CATEGORY.PC,
                 image: "assets/departments/dps/pc.png",
@@ -489,7 +489,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: MEGAMENU.PC_GAMING,
+                        name: CATEGORY.PC_GAMING_RO,
                         category: CATEGORY.PC_GAMING,
                         link: "/categ/" + CATEGORY.PC_GAMING,
                         image: "assets/departments/dps/pc/pc-gaming.png",
@@ -497,7 +497,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                         color: "#ff4196",
                     },
                     {
-                        name: MEGAMENU.ALL_IN_ONE,
+                        name: CATEGORY.ALL_IN_ONE_RO,
                         category: CATEGORY.ALL_IN_ONE,
                         link: "/categ/" + CATEGORY.ALL_IN_ONE,
                         image: "assets/departments/dps/pc/all-in-one.png",
@@ -523,7 +523,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 ]
             },
             {
-                name: MEGAMENU.MONITOR,
+                name: CATEGORY.MONITOR_RO,
                 type: CATEGORY.MONITOR,
                 link: "/type/" + CATEGORY.MONITOR,
                 image: "assets/departments/dps/monitors.png",
@@ -532,7 +532,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 color: "#ff4196",
                 subtitles: [
                     {
-                        name: MEGAMENU.MONITOR_PRO,
+                        name: CATEGORY.MONITOR_PRO_RO,
                         category: CATEGORY.MONITOR_PRO,
                         link: "/categ/" + CATEGORY.MONITOR_PRO,
                         image: "assets/departments/dps/monitors/pro-monitors.png",

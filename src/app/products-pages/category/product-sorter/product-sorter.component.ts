@@ -2,9 +2,7 @@ import { Component, Input, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogProductFilterComponent } from 'src/app/dialogs/dialog-product-filter/dialog-product-filter.component';
 import { DialogProductsSorterComponent } from 'src/app/dialogs/dialog-products-sorter/dialog-products-sorter.component';
-import { PRODUCTS_FILTERS, SORTERS_OPTIONS } from 'src/app/shared/data/product-category.data';
-import { SORTERS } from 'src/app/shared/enums/electro.enum';
-import { ProductFilter, ProductSorter } from 'src/app/shared/models/product-filter.model';
+import { SORTERS_OPTIONS } from 'src/app/shared/data/product-category.data';
 import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 
 @Component({
@@ -18,12 +16,11 @@ export class ProductSorterComponent implements OnDestroy {
   @Input() searchResult: string = "";
   totalFoundProducts: number = 0;
 
-  productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;
+  productsFilters: any = "";
   activeFilters: Array<string> = [];
 
-  defaultOption: string = SORTERS.BEST_SOLD;
-  currentOption: string = this.defaultOption;
-  productsSorters: Array<ProductSorter> = SORTERS_OPTIONS;
+  productsSorters: any = SORTERS_OPTIONS;
+  currentOption: string = "";
 
   @Input() displayType: string = "";
 
@@ -43,8 +40,7 @@ export class ProductSorterComponent implements OnDestroy {
       }
     });
     this.sub1 = this.productCategoryService.getCurrentSorterObservable().subscribe(data => {
-      if (data || data.length > 0) this.currentOption = data;
-      else this.currentOption = this.defaultOption;
+      if (data.length > 0) this.currentOption = data;
     });
     this.sub2 = this.productCategoryService.getProductsOutObservable().subscribe(data => {
       if (data.length) this.totalFoundProducts = data.length;
@@ -57,7 +53,7 @@ export class ProductSorterComponent implements OnDestroy {
     this.productsFilters
       .filter((item: any) => item.filters
         .filter((res: any) => {
-          if (res.isChecked === true) this.activeFilters.push(res.labelName);
+          if (res.isChecked === true) this.activeFilters.push(res.value);
         })
       );
   }
@@ -66,7 +62,7 @@ export class ProductSorterComponent implements OnDestroy {
     this.productsFilters
       .filter((item: any) => item.filters
         .filter((res: any) => {
-          if (res.labelName === af) res.isChecked = false;
+          if (res.value === af) res.isChecked = false;
         })
       );
     this.productCategoryService.changeFilterService(this.productsFilters);
@@ -103,7 +99,7 @@ export class ProductSorterComponent implements OnDestroy {
     dialogSorter.afterClosed().subscribe(res =>
       this.productCategoryService.changeSorterService(res.data)
     )
-  }  
+  }
 
   ngOnDestroy(): void {
     this.sub0?.unsubscribe();

@@ -7,7 +7,7 @@
         <h2>({{totalFoundProducts}} {{totalFoundProducts==1 ? 'produs' : 'produse'}})</h2>
     </div>
 
-    <!-- filters ---------------------------------------------------------------------- -->
+    <!-- filters array for mobile ----------------------------------------------------------------- -->
     <div class="filters" *ngIf="activeFilters.length">
 
         <div class="active-filters" *ngFor="let af of activeFilters" (click)="closeSelectedFilter(af)">
@@ -22,7 +22,7 @@
 
     </div>
 
-    <!-- category-select filter ------------------------------------------------------ -->
+    <!-- category-select ------------------------------------------------------ -->
     <div class="sorters">
 
         <div class="category-select">

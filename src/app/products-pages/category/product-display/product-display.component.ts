@@ -14,9 +14,9 @@ import { ProductCategoryService } from 'src/app/shared/services/product-category
 export class ProductDisplayComponent implements OnDestroy {
 
   @Input() displayType: string = "";
-
-  product: Product = new Product();
+  
   productsOut: Array<Product> = [];
+  product: Product = new Product();
 
   name = SPECIFICATIONS;
   category = CATEGORY;

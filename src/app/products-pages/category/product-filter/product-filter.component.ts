@@ -1,6 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-category.data';
-import { ProductFilter } from 'src/app/shared/models/product-filter.model';
 import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 
 @Component({
@@ -10,18 +8,15 @@ import { ProductCategoryService } from 'src/app/shared/services/product-category
 })
 export class ProductFilterComponent implements OnDestroy {
 
-  productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;
+  productsFilters: any = "";
   private sub: any;
 
   constructor(
     private productCategoryService: ProductCategoryService,
   ) {
-    this.refreshProductsFilters();
     this.sub = productCategoryService.getProductsFiltersObservable().subscribe(data => {
       if (data.length) this.productsFilters = data;
-      // console.log(this.productsFilters);
     });
-    this.productCategoryService.changeFilterService(this.productsFilters);
   }
 
   isAnyFilterChecked() {
@@ -43,10 +38,6 @@ export class ProductFilterComponent implements OnDestroy {
 
   clearProductsFilters() {
     this.productCategoryService.clearProductsFiltersService();
-  }
-
-  refreshProductsFilters() {
-    this.productCategoryService.refreshProductsFiltersService();
   }
 
   ngOnDestroy(): void {

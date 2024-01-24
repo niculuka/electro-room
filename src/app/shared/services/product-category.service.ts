@@ -3,6 +3,7 @@ import { ProductFilter } from '../models/product-filter.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CATEGORY, SORTERS } from '../enums/electro.enum';
 import { Product } from '../models/product.model';
+import { PRODUCTS_FILTERS } from '../data/product-category.data';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,6 @@ export class ProductCategoryService implements OnDestroy {
     this.setProductsFiltersToLS();
   }
 
-  refreshProductsFiltersService() {
-    localStorage.removeItem('pf-ls');
-  }
-
   getProductsFiltersObservable(): Observable<Array<ProductFilter>> {
     return this.productsFiltersSubject.asObservable();
   }
@@ -43,7 +40,7 @@ export class ProductCategoryService implements OnDestroy {
 
   private getProductsFiltersFromLS(): Array<ProductFilter> {
     const pfJson = localStorage.getItem('pf-ls');
-    return pfJson ? JSON.parse(pfJson) : [];
+    return pfJson ? JSON.parse(pfJson) : PRODUCTS_FILTERS;
   }
 
   // =====================================================================  F  I  L  T  E  R  I  N  G
@@ -68,9 +65,10 @@ export class ProductCategoryService implements OnDestroy {
 
       // A V A I L A B L E S  -  F I L T E R --------------------------------------------------
       for (let pf of productsFilters) {
+        // console.log(pf.filters)
         if (pf.value == CATEGORY.AVAILABLE) {
           for (let f of pf.filters) {
-            let av = products.filter((prod: any) => f.name === prod.available);
+            let av = products.filter((prod: any) => f.value === prod.available);
             f.count = av.length;
             if (f.isChecked == true) this.availablesProducts = this.availablesProducts.concat(av);
           }
@@ -94,7 +92,7 @@ export class ProductCategoryService implements OnDestroy {
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.BRAND) {
           for (let f of pf.filters) {
-            let br = products.filter((prod: any) => f.name === prod.brand);
+            let br = products.filter((prod: any) => f.value === prod.brand);
             f.count = br.length;
             if (f.isChecked == true) this.brandsProducts = this.brandsProducts.concat(br);
           }
@@ -106,7 +104,7 @@ export class ProductCategoryService implements OnDestroy {
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.SUBCATEGORY) {
           for (let f of pf.filters) {
-            let sc = products.filter((prod: any) => f.name === prod.subcategory);
+            let sc = products.filter((prod: any) => f.value === prod.subcategory);
             f.count = sc.length;
             if (f.isChecked == true) this.subcategoriesProducts = this.subcategoriesProducts.concat(sc);
           }
@@ -145,7 +143,7 @@ export class ProductCategoryService implements OnDestroy {
         for (let f of pf.filters) {
           let pr_br = this.pricesProducts.filter((el: any) => this.brandsProducts.includes(el));
           let pr_br_sc = pr_br.filter((el: any) => this.subcategoriesProducts.includes(el));
-          let av = pr_br_sc.filter((prod: any) => f.name === prod.available);
+          let av = pr_br_sc.filter((prod: any) => f.value === prod.available);
           f.count = av.length;
         }
       }
@@ -169,7 +167,7 @@ export class ProductCategoryService implements OnDestroy {
         for (let f of pf.filters) {
           let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
           let av_pr_sc = av_pr.filter((el: any) => this.subcategoriesProducts.includes(el));
-          let br = av_pr_sc.filter((prod: any) => f.name === prod.brand);
+          let br = av_pr_sc.filter((prod: any) => f.value === prod.brand);
           f.count = br.length;
         }
       }
@@ -181,7 +179,7 @@ export class ProductCategoryService implements OnDestroy {
         for (let f of pf.filters) {
           let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
           let av_pr_br = av_pr.filter((el: any) => this.brandsProducts.includes(el));
-          let sc = av_pr_br.filter((prod: any) => f.name === prod.subcategory);
+          let sc = av_pr_br.filter((prod: any) => f.value === prod.subcategory);
           f.count = sc.length;
         }
       }
@@ -216,7 +214,7 @@ export class ProductCategoryService implements OnDestroy {
 
   private getCurrentSorterFromLS(): string {
     const psJson = localStorage.getItem('cs-ls');
-    return psJson ? psJson : "";
+    return psJson ? psJson : SORTERS.BEST_SOLD;
   }
 
   // ===========================================================================  S  O  R  T  I  N  G
@@ -240,8 +238,8 @@ export class ProductCategoryService implements OnDestroy {
 
   sort_name() {
     this.productsOut = this.productsOut.sort((a, b) => {
-      const nameA = a.brand.toUpperCase();
-      const nameB = b.brand.toUpperCase();
+      const nameA = a.brand;
+      const nameB = b.brand;
       if (nameA < nameB) return -1;
       if (nameA > nameB) return 1;
       return 0;

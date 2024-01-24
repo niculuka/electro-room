@@ -12,8 +12,7 @@ import { ProductCategoryService } from 'src/app/shared/services/product-category
 })
 export class DialogProductsSorterComponent implements OnDestroy {
 
-  defaultOption: string = SORTERS.BEST_SOLD;
-  currentOption: string = this.defaultOption;
+  currentOption: string = "";
   productsSorters: Array<ProductSorter> = SORTERS_OPTIONS;
 
   sub: any;
@@ -24,7 +23,6 @@ export class DialogProductsSorterComponent implements OnDestroy {
   ) {
     this.sub = this.productCategoryService.getCurrentSorterObservable().subscribe(data => {
       if (data || data.length > 0) this.currentOption = data;
-      else this.currentOption = this.defaultOption;
     });
   }
 
