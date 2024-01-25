@@ -7,8 +7,8 @@
     <div class="main">
         <div class="images">
             <span
-                [ngStyle]="{'background':product.badge==='TOP_FAVORITE'?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
-                {{product.badge === "TOP_FAVORITE" ? "Top Favorit" : "Super Pret"}}
+                [ngStyle]="{'background':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+                {{product.badge==category.TOP_FAVORITE?category.TOP_FAVORITE_RO:category.SUPER_PRICE_RO}}
             </span>
 
             <div class="fav-comp">

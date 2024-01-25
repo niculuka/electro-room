@@ -29,10 +29,10 @@
 
 
             <!-- m a i n ---------------------------------------------------------------------------- -->
-            <div [ngClass]="{'main-grid':displayType==='grid', 'main-list':displayType==='list'}">
-                <span [ngClass]="{'badge-grid':displayType==='grid', 'badge-list':displayType==='list'}"
-                    [ngStyle]="{'background':product.badge===category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
-                    {{product.badge===category.TOP_FAVORITE ? category.TOP_FAVORITE_RO : category.SUPER_PRICE_RO}}
+            <div [ngClass]="{'main-grid':displayType=='grid', 'main-list':displayType=='list'}">
+                <span [ngClass]="{'badge-grid':displayType=='grid', 'badge-list':displayType=='list'}"
+                    [ngStyle]="{'background':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+                    {{product.badge==category.TOP_FAVORITE?category.TOP_FAVORITE_RO:category.SUPER_PRICE_RO}}
                 </span>
 
                 <a [routerLink]="'/prod/' + product.linkname">

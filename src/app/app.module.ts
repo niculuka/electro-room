@@ -72,8 +72,6 @@ import { StoreDetailComponent } from './guest/store-detail/store-detail.componen
 import { CustomerSupportComponent } from './guest/customer-support/customer-support.component';
 import { CarouselComponent } from './navbar/carousel/carousel.component';
 import { CarouselOwlComponent } from './navbar/carousel-owl/carousel-owl.component';
-import { CarouselOwlLptLaptopComponent } from './navbar/carousel-owl-lpt/carousel-owl-lpt.component';
-import { CarouselOwlDpsComponent } from './navbar/carousel-owl-dps/carousel-owl-dps.component';
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
 // dialog interogation
@@ -152,8 +150,6 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     CustomerSupportComponent,
     CarouselComponent,
     CarouselOwlComponent,
-    CarouselOwlLptLaptopComponent,
-    CarouselOwlDpsComponent,
     UnderConstructionComponent,
     InfoBlockComponent,
     // dialog interogation

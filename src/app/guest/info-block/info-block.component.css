@@ -1,7 +1,7 @@
 .cards {
     display: grid;
     grid: auto / 1fr 1fr 1fr 1fr;
-    gap: 16px;
+    gap: 16px;    
 }
 
 .card {
@@ -51,10 +51,15 @@
     text-align: center;
 }
 
+@media(max-width: 1020px) {
+    .cards {
+        gap: 8px;
+    }
+}
+
 @media(max-width: 766px) {
     .cards {
         grid: auto / 1fr 1fr;
-        gap: 8px;
     }
 
     .card-icon mat-icon {
@@ -72,9 +77,9 @@
     }
 }
 
-@media(max-width: 390px) {
+@media(max-width: 550px) {
     .cards {
-        gap: 0px;
+        gap: 0;
     }
 
     .card {

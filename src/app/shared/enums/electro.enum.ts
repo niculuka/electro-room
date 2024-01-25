@@ -150,6 +150,10 @@ export enum CATEGORY {
     WD = "wd", WD_RO = "Wd",
     XTORM = "xtorm", XTORM_RO = "Xtorm",
 
+    // Carousel Owl ===============================================
+    CAROUSEL_OWL_1 = "Laptopuri si Accesorii",
+    CAROUSEL_OWL_2 = "PC-uri si Monitoare",
+
     // D E P A R T M E N T ======================================== 
     LPT = "laptop-phone-tablet", LPT_RO = "Laptopuri, Telefoane, Tablete",
     DPS = "desktop-peripheral-software", DPS_RO = "Desktop, Periferice, Software",

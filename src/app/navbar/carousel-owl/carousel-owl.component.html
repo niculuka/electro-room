@@ -1,37 +1,29 @@
-<h1>{{carouselTitle}}</h1>
-<div>
+<div class="carousel-home">
+
+    <h1>{{title}}</h1>
+
     <owl-carousel-o [options]="customOptions" (dragging)="isDragging = $event.dragging">
-
-        <ng-container *ngFor="let product of carousel">
-
+        <ng-container *ngFor="let product of products">
             <ng-template carouselSlide>
 
                 <div class="card">
-
-                    <a [owlRouterLink]="'/p/'+product.department.toLowerCase()
-                                        +'/'+product.type.toLowerCase()
-                                        +'/'+product.category.toLowerCase()
-                                        +'/'+product.linkname" [stopLink]="isDragging">
+                    <a [owlRouterLink]="'/prod/' + product.linkname" [stopLink]="isDragging">
 
                         <img class="image" [src]="product.image">
 
-                        <span style="background: rgb(0, 154, 230)">
-                            {{product.badge === topFavorite ? topFavorite : ""}}
+                        <span
+                            [ngStyle]="{'background':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+                            {{product.badge==category.TOP_FAVORITE?category.TOP_FAVORITE_RO:category.SUPER_PRICE_RO}}
                         </span>
 
-                        <span style="background: rgb(220, 20, 110)">
-                            {{product.badge === superPrice ? superPrice : ""}}
-                        </span>
+                        <p>{{product.description}}</p>
 
-                        <h3>{{product.description}}</h3>
-
-                        <p>{{product.price}} Lei</p>
+                        <h2>{{product.price}} Lei</h2>
                     </a>
                 </div>
 
             </ng-template>
-
         </ng-container>
-
     </owl-carousel-o>
+
 </div>

@@ -1,13 +1,21 @@
+.carousel-home {
+    min-width: 380px;
+}
+
 .card {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 6px 6px 10px 6px;
-    cursor: pointer;
+    margin: 4px 6px 10px 2px;
     z-index: 1;
+    transition: 0.3s;
+    cursor: pointer;
     background: white;
-    box-shadow: 4px 6px 10px 0px rgba(62, 62, 62, 0.2);
-    /* border: 2px solid rgb(162, 165, 2); */
+    box-shadow: 2px 2px 6px 0px rgba(62, 62, 62, 0.2);
+}
+
+.card:hover {
+    box-shadow: 2px 2px 6px 0px rgba(62, 62, 62, 0.6);
 }
 
 .card a {
@@ -16,7 +24,8 @@
     justify-content: space-between;
     text-decoration: none;
     color: black;
-    margin: 8px;
+    padding: 10px;
+    /* border: 1px solid rgb(0, 0, 0); */
 }
 
 .image {
@@ -24,10 +33,10 @@
     /* border: 2px solid red; */
 }
 
-.card span {
+span {
     position: absolute;
     left: 0;
-    top: 56%;
+    top: 52%;
     width: 80px;
     border-radius: 0 4px 4px 0;
     font-size: 12px;
@@ -36,18 +45,30 @@
     text-align: center;
 }
 
-.card>a>h3 {
-    overflow-y: hidden;
+p {
+    margin-top: 20px;
     font-size: 16px;
     line-height: 20px;
     height: 62px;
-    margin: 20px 4px;
+    overflow: hidden;
     /* border: 1px solid red; */
 }
 
-.card>a>p {
+h2 {
     font-size: 22px;
     font-weight: bold;
     color: rgb(220, 20, 110);
-    margin: 4px;
+    /* border: 1px solid red; */
+}
+
+@media (max-width: 550px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 18px;
+        height: 56px;
+    }
 }

@@ -11,32 +11,27 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class CarouselOwlComponent implements OnInit {
 
-  carousel: Array<Product> = [];
-  carouselArray: Array<any> = [];
+  @Input() title: string = "";
+  @Input() type1: string = "";
+  @Input() type2: string = "";
+  @Input() ids: Array<number> = [];
 
-  @Input() carouselTitle: string = "";
-  @Input() productType1: string = "";
-  @Input() productType2: string = "";
-  @Input() productIds: Array<number> = [];
+  products: Array<Product> = [];
+  category = CATEGORY;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.getProductsByTypeService(this.productType1).subscribe(data1 => {
-      this.productService.getProductsByTypeService(this.productType2).subscribe(data2 => {
+    this.productService.getProductsByTypeService(this.type1).subscribe(data1 => {
+      this.productService.getProductsByTypeService(this.type2).subscribe(data2 => {
         const data = data1.concat(data2);
-        for (let productId of this.productIds) {
-          let foundProduct = data.find((product: any) => product.id === productId);
-          this.carouselArray.push(foundProduct);
+        for (let id of this.ids) {
+          let foundProduct = data.find((prod: any) => prod.id === id);
+          this.products.push(foundProduct);
         }
-        this.carousel = this.carouselArray;
-        // console.log(this.carousel)
       });
     });
   }
-
-  topFavorite: CATEGORY = CATEGORY.TOP_FAVORITE;
-  superPrice: CATEGORY = CATEGORY.SUPER_PRICE;
 
   isDragging: boolean = false;
   customOptions: OwlOptions = {
@@ -44,13 +39,11 @@ export class CarouselOwlComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
+    // margin: 6,
     navSpeed: 700,
     navText: ['《', '》'],
     responsive: {
       0: {
-        items: 1
-      },
-      316: {
         items: 2
       },
       616: {
@@ -69,7 +62,4 @@ export class CarouselOwlComponent implements OnInit {
     dots: true,
     nav: false
   }
-
-
-
 }
