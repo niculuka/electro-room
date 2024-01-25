@@ -1,14 +1,14 @@
 
 export class ProductFilter {
     name: string = "";
-    value: string = "";    
+    value: string = "";
+    count: number = 0;
     filters: Array<ProdFilter> = [];
 }
 
 export class ProdFilter {
     id: number = 0;
     name: string = "";
-    category: string = "";
     value: string = "";
     isChecked: boolean = false;
     min: number = 0;

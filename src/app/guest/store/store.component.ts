@@ -13,9 +13,8 @@ import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 export class StoreComponent {
 
   protected stores = STORES_DETAILS;
-
   protected navs = NAV_ITEMS;
-  store: string = CATEGORY.STORES;
+  store: string = CATEGORY.STORES_PATH;
 
   breadcrumbs: Array<IBreadcrumb> = [];
   crumbNav: IBreadcrumb = {} as IBreadcrumb;

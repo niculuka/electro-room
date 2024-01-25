@@ -67,11 +67,14 @@ export class ProductCategoryService implements OnDestroy {
       for (let pf of productsFilters) {
         // console.log(pf.filters)
         if (pf.value == CATEGORY.AVAILABLE) {
+          pf.count = 0;
           for (let f of pf.filters) {
             let av = products.filter((prod: any) => f.value === prod.available);
             f.count = av.length;
+            pf.count = pf.count + av.length;
             if (f.isChecked == true) this.availablesProducts = this.availablesProducts.concat(av);
           }
+          // console.log(pf.count)
         }
       }
       if (!this.availablesProducts.length) this.availablesProducts = products;
@@ -79,9 +82,11 @@ export class ProductCategoryService implements OnDestroy {
       // P R I C E S  -  F I L T E R  ---------------------------------------------------------
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.PRICE) {
+          pf.count = 0;
           for (let f of pf.filters) {
             let pr = products.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
             f.count = pr.length;
+            pf.count = pf.count + pr.length;
             if (f.isChecked == true) this.pricesProducts = this.pricesProducts.concat(pr);
           }
         }
@@ -91,9 +96,11 @@ export class ProductCategoryService implements OnDestroy {
       // B R A N D S  -  F I L T E R  ----------------------------------------------------------
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.BRAND) {
+          pf.count = 0;
           for (let f of pf.filters) {
             let br = products.filter((prod: any) => f.value === prod.brand);
             f.count = br.length;
+            pf.count = pf.count + br.length;
             if (f.isChecked == true) this.brandsProducts = this.brandsProducts.concat(br);
           }
         }
@@ -103,9 +110,11 @@ export class ProductCategoryService implements OnDestroy {
       // S U B C A T E G O R I E S  -  F I L T E R  --------------------------------------------
       for (let pf of productsFilters) {
         if (pf.value == CATEGORY.SUBCATEGORY) {
+          pf.count = 0;
           for (let f of pf.filters) {
             let sc = products.filter((prod: any) => f.value === prod.subcategory);
             f.count = sc.length;
+            pf.count = pf.count + sc.length;
             if (f.isChecked == true) this.subcategoriesProducts = this.subcategoriesProducts.concat(sc);
           }
         }

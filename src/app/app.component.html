@@ -3,15 +3,15 @@
 
         <app-navbar-main></app-navbar-main>
 
-        <app-navbar-desktop></app-navbar-desktop>
-
-        <app-breadcrumb *ngIf="isPageWithBreadcrumb()"></app-breadcrumb>
+        <app-navbar-desktop></app-navbar-desktop>        
 
         <div class="desktop">
 
             <div class="overlay"
                 [style]="overlayer.overlayerMain||overlayer.overlayerDesktop?'display: block':'display: none'">
             </div>
+
+            <app-breadcrumb *ngIf="isPageWithBreadcrumb()"></app-breadcrumb>
 
             <router-outlet></router-outlet>
 

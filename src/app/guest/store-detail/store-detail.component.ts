@@ -13,9 +13,8 @@ import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 export class StoreDetailComponent implements OnDestroy {
 
   protected stores = STORES_DETAILS;
-  currentStore: any;
-
-  navs = NAV_ITEMS;
+  protected navs = NAV_ITEMS;
+  currentStore: any;  
 
   breadcrumbs: Array<IBreadcrumb> = [];
   crumbNav: IBreadcrumb = {} as IBreadcrumb;

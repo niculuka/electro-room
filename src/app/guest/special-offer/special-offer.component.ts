@@ -14,7 +14,7 @@ export class SpecialOfferComponent {
 
   navs = NAV_ITEMS;
 
-  specialOffer: string = CATEGORY.SPECIAL_OFFER;
+  specialOffer: string = CATEGORY.SPECIAL_OFFER_PATH;
 
   breadcrumbs: Array<IBreadcrumb> = [];
   crumb: IBreadcrumb = {} as IBreadcrumb;

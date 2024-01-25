@@ -8,7 +8,7 @@
         <div class="images">
             <span
                 [ngStyle]="{'background':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
-                {{product.badge==category.TOP_FAVORITE?category.TOP_FAVORITE_RO:category.SUPER_PRICE_RO}}
+                {{product.badge==category.TOP_FAVORITE?category.TOP_FAVORITE:category.SUPER_PRICE}}
             </span>
 
             <div class="fav-comp">
@@ -59,8 +59,8 @@
                 <h1><strong>{{product.price}} Lei</strong></h1>
                 <p class="tax">Include taxa verde.</p>
 
-                <p [ngStyle]="{color: product.available==='STOCK' ? 'rgb(0, 184, 0)' : 'grey'}">
-                    {{product.available==='STOCK'? '- in stoc' : '- in depozitul central'}}
+                <p [ngStyle]="{color: product.available==category.STOCK ? 'rgb(0, 184, 0)' : 'grey'}">
+                    {{product.available}}
                 </p>
 
                 <div class="guaranty">

@@ -12,7 +12,7 @@ import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 export class CustomerSupportComponent {
 
   protected navs = NAV_ITEMS;
-  customerSupport: string = CATEGORY.CUSTOMER_SUPORT;
+  customerSupport: string = CATEGORY.CUSTOMER_SUPORT_PATH;
 
   breadcrumbs: Array<IBreadcrumb> = [];
   crumb: IBreadcrumb = {} as IBreadcrumb;

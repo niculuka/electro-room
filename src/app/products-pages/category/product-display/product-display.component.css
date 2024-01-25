@@ -1,7 +1,7 @@
 .cards-container {
     display: grid;
     margin-top: 12px;
-    gap: 10px;
+    gap: 10px;    
     cursor: default;
     /* border: 1px solid black; */
 }
@@ -20,19 +20,19 @@
     justify-content: center;
     align-items: flex-start;
     padding: 14px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.2);
     background: white;
     /* border: 1px solid black;*/
 }
 
 .card-grid {
     flex-direction: column;
-    min-width: 150px;
+    min-width: 170px;
 }
 
 .card-list {
     flex-direction: row;
-    min-width: 300px;
+    min-width: 356px;
 }
 
 .fav-comp {
@@ -247,6 +247,9 @@ button:hover {
 }
 
 @media(max-width: 550px) {
+    .cards-container {
+        overflow: scroll;
+    }
     .cards-container-grid {
         grid-template-columns: 1fr 1fr;
     }
