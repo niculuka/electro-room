@@ -1,9 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { ProductFilter } from '../models/product-filter.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CATEGORY, SORTERS } from '../enums/electro.enum';
 import { Product } from '../models/product.model';
-import { PRODUCTS_FILTERS } from '../data/product-category.data';
+import { PRODUCTS_FILTERS, ProductFilter } from '../data/product-category.data';
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +64,6 @@ export class ProductCategoryService implements OnDestroy {
 
       // A V A I L A B L E S  -  F I L T E R --------------------------------------------------
       for (let pf of productsFilters) {
-        // console.log(pf.filters)
         if (pf.value == CATEGORY.AVAILABLE) {
           pf.count = 0;
           for (let f of pf.filters) {
@@ -74,7 +72,6 @@ export class ProductCategoryService implements OnDestroy {
             pf.count = pf.count + av.length;
             if (f.isChecked == true) this.availablesProducts = this.availablesProducts.concat(av);
           }
-          // console.log(pf.count)
         }
       }
       if (!this.availablesProducts.length) this.availablesProducts = products;

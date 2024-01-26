@@ -58,19 +58,19 @@ export class AdminProductCreateComponent implements OnInit {
 
   setImageGallery() {
     switch (this.newProduct.type) {
-      case CATEGORY.LAPTOP_GAMING: { this.productImages = LAPTOP_IMAGES };
+      case CATEGORY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
         break;
-      case CATEGORY.LAPTOP_BUSINESS: { this.productImages = LAPTOP_IMAGES };
+      case CATEGORY.LAPTOP_BUSINESS_URL_KEY: { this.productImages = LAPTOP_IMAGES };
         break;
-      case CATEGORY.LAPTOP_GAMING: { this.productImages = LAPTOP_IMAGES };
+      case CATEGORY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
         break;
-      case CATEGORY.LAPTOP_ULTRA: { this.productImages = LAPTOP_IMAGES };
+      case CATEGORY.LAPTOP_ULTRA_URL_KEY: { this.productImages = LAPTOP_IMAGES };
         break;
-      case CATEGORY.LAPTOP_BAG: { this.productImages = LAPTOP_BAG_IMAGES };
+      case CATEGORY.LAPTOP_BAG_URL_KEY: { this.productImages = LAPTOP_BAG_IMAGES };
         break;
-      case CATEGORY.LAPTOP_CHARGER: { this.productImages = LAPTOP_CHARGER_IMAGES };
+      case CATEGORY.LAPTOP_CHARGER_URL_KEY: { this.productImages = LAPTOP_CHARGER_IMAGES };
         break;
-      case CATEGORY.LAPTOP_HARD: { this.productImages = LAPTOP_HARD_IMAGES };
+      case CATEGORY.LAPTOP_HARD_URL_KEY: { this.productImages = LAPTOP_HARD_IMAGES };
         break;
       default: this.productImages = LAPTOP_IMAGES; 
     }

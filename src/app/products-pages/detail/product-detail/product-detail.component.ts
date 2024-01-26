@@ -42,8 +42,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      let linkname = params.get('linkname') || "";
-      this.sub2 = this.productService.getProductByNameService(linkname).subscribe(data => {
+      let urlKey = params.get('urlKey') || "";
+      this.sub2 = this.productService.getProductByNameService(urlKey).subscribe(data => {
         if (data) {
           this.product = data;
           this.foundProduct = true;
@@ -59,20 +59,20 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   createBreadcrumb() {
     this.departments.filter(depart => {
-      depart.titles.filter(title => {
-        title.subtitles.find(subtitle => {
-          if (subtitle.category === this.product.category) {
+      depart.types.filter(type => {
+        type.categories.find(category => {
+          if (category.urlKey === this.product.categoryUrlKey) {
 
             this.crumbDepartment.label = depart.name;
-            this.crumbDepartment.url = "/depart/" + depart.department;
+            this.crumbDepartment.url = "/depart/" + depart.urlKey;
             this.breadcrumbs.push(this.crumbDepartment);
 
-            this.crumbType.label = title.name;
-            this.crumbType.url = "/type/" + title.type;
+            this.crumbType.label = type.name;
+            this.crumbType.url = "/type/" + type.urlKey;
             this.breadcrumbs.push(this.crumbType);
 
-            this.crumbCategory.label = subtitle.name;
-            this.crumbCategory.url = "/categ/" + subtitle.category;
+            this.crumbCategory.label = category.name;
+            this.crumbCategory.url = "/categ/" + category.urlKey;
             this.breadcrumbs.push(this.crumbCategory);
 
             this.crumbLinkname.label

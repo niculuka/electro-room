@@ -50,17 +50,17 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      let category = params.get('category') || "";
+      let urlKey = params.get('urlKey') || "";
       this.departments.filter(depart => {
-        depart.titles.filter(title => {
-          title.subtitles.find(subtitle => {
-            if (subtitle.category === category) {
-              this.createBreadcrumb(depart, title, subtitle);
+        depart.types.filter(type => {
+          type.categories.find(category => {
+            if (category.urlKey === urlKey) {
+              this.createBreadcrumb(depart, type, category);
             }
           });
         });
       });
-      this.sub2 = this.productService.getProductsByCategoryService(category).subscribe(data => {
+      this.sub2 = this.productService.getProductsByCategoryService(urlKey).subscribe(data => {
         if (data.length) {
           this.products = data;
           this.foundProducts = true;
@@ -74,16 +74,16 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
-  createBreadcrumb(depart: any, title: any, subtitle: any) {
+  createBreadcrumb(depart: any, type: any, category: any) {
     this.crumbDepartment.label = depart.name;
-    this.crumbDepartment.url = "/depart/" + depart.department;
+    this.crumbDepartment.url = "/depart/" + depart.urlKey;
     this.breadcrumbs.push(this.crumbDepartment);
 
-    this.crumbType.label = title.name;
-    this.crumbType.url = "/type/" + title.type;
+    this.crumbType.label = type.name;
+    this.crumbType.url = "/type/" + type.urlKey;
     this.breadcrumbs.push(this.crumbType);
 
-    this.crumbCategory.label = subtitle.name;
+    this.crumbCategory.label = category.name;
     this.breadcrumbs.push(this.crumbCategory);
 
     this.breadcrumbService.handleBreadcrumbsService(this.breadcrumbs);

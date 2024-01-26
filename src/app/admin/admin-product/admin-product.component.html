@@ -1,55 +1,54 @@
 <div class="container-admin">
-  <div class="content-admin">
 
-    <div class="title">
-      <h1><strong>{{currentType}}</strong></h1>
-      <h3>Products number: {{products.length}}</h3>
-      <button class="btn-new" type="button" (click)="createProduct()">NEW</button>
-    </div>
+  <div class="title">
+    <h1><strong>{{currentType}}</strong></h1>
+    <h3>Products number: {{products.length}}</h3>
+    <button class="btn-new" type="button" (click)="createProduct()">NEW</button>
+  </div>
 
-    <table class="table-row">
-      <thead>
-        <tr>
-          <th>Nr</th>
-          <th>Image</th>
-          <th>Name | Id | Brand</th>
-          <th>Available</th>
-          <th>Type</th>
-          <th>Category</th>
-          <th>Subcategory</th>
-          <th>Price | Badge</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
+  <table class="table-row">
+    <thead>
+      <tr>
+        <th>Nr</th>
+        <th>Image</th>
+        <th>Name | Id | Brand</th>
+        <th>Available</th>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Subcategory</th>
+        <th>Price | Badge</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
 
-      <tbody>
-        <tr *ngFor="let product of products; index as ind">
-          <td><strong>{{ind+1}}</strong></td>
-          <td>
-            <a (click)="viewProduct(product)">
-              <img [src]="product.image" [alt]="product.image">
-            </a>
-          </td>
-          <td>
-            <div class="my-fields">
-              <span><strong>{{product.name}}</strong></span>
-              <span><strong>id: {{product.id}} | {{product.brand}}</strong></span>
-            </div>
-          </td>
-          <td [style]="{'color':product.available==='STOCK' ? '#4fbe04' : 'gray'}">
-            <strong>{{product.available}}</strong>
-          </td>
-          <td>{{product.type}}</td>
-          <td><strong>{{product.category}}</strong></td>
-          <td>{{product.subcategory}}</td>
-          <td>
-            <div class="my-fields">
-              <span class="price"><strong>{{product.price}} Lei</strong></span>
-              <span>{{product.badge}}</span>
-            </div>
-          </td>
-          <!-- <td>
+    <tbody>
+      <tr *ngFor="let product of products; index as ind">
+        <td><strong>{{ind+1}}</strong></td>
+        <td>
+          <a (click)="viewProduct(product)">
+            <img [src]="product.image" [alt]="product.image">
+          </a>
+        </td>
+        <td>
+          <div class="my-fields">
+            <span><strong>{{product.name}}</strong></span>
+            <span><strong>id: {{product.id}} | {{product.brand}}</strong></span>
+          </div>
+        </td>
+        <td [style]="{'color':product.available==='STOCK' ? '#4fbe04' : 'gray'}">
+          <strong>{{product.available}}</strong>
+        </td>
+        <td>{{product.type}}</td>
+        <td><strong>{{product.category}}</strong></td>
+        <td>{{product.subcategory}}</td>
+        <td>
+          <div class="my-fields">
+            <span class="price"><strong>{{product.price}} Lei</strong></span>
+            <span>{{product.badge}}</span>
+          </div>
+        </td>
+        <!-- <td>
             <div class="my-fields">
               <span class="line">Display: <strong>{{product.display ? product.display : " - "}}</strong></span>
               <span class="line">Power: <strong>{{product.power ? product.power : " - "}}</strong></span>
@@ -57,15 +56,14 @@
               <span class="line">Connect: <strong>{{product.connect ? product.connect : " - "}}</strong></span>
             </div>
           </td> -->
-          <td>
-            <button class="btn-edit" (click)="updateProduct(product)">E</button>
-          </td>
-          <td>
-            <button class="btn-delete" (click)="deleteProductDialog(product)">D</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        <td>
+          <button class="btn-edit" (click)="updateProduct(product)">E</button>
+        </td>
+        <td>
+          <button class="btn-delete" (click)="deleteProductDialog(product)">D</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  </div>
 </div>

@@ -22,19 +22,19 @@ export const SIDENAV_ITEMS: Array<SidenavTitle> = [
         subtitles: [
             {
                 name: "Laptopuri",
-                subtitle: CATEGORY.LAPTOP,
+                subtitle: CATEGORY.LAPTOP_URL_KEY,
             },
             {
                 name: "Accesorii laptop",
-                subtitle: CATEGORY.LAPTOP_ACCESSORY,
+                subtitle: CATEGORY.LAPTOP_ACCESSORY_URL_KEY,
             },
             {
                 name: "Sisteme Pc",
-                subtitle: CATEGORY.PC,
+                subtitle: CATEGORY.PC_URL_KEY,
             },
             {
                 name: "Monitoare",
-                subtitle: CATEGORY.MONITOR,
+                subtitle: CATEGORY.MONITOR_URL_KEY,
             },
         ]
     },

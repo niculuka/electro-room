@@ -1,9 +1,9 @@
-<div class="overflow" [style]="overlayer.overlayerMain?'overflow: hidden':'overflow: scroll'">
+<div class="overflow" [style]="overlayer.overlayerMain?'overflow: hidden':'overflow-y: scroll'">
     <div class="main">
 
-        <app-navbar-main></app-navbar-main>
+        <app-navbar-main *ngIf="!isPageWithNavbar()"></app-navbar-main>
 
-        <app-navbar-desktop></app-navbar-desktop>        
+        <app-navbar-desktop *ngIf="!isPageWithNavbar()"></app-navbar-desktop>        
 
         <div class="desktop">
 

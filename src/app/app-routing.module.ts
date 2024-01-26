@@ -79,14 +79,14 @@ const routes: Routes = [
   // C U S T O M E R S   S U P P O R T ----------------------------------------------------
   { path: "customer-support", component: CustomerSupportComponent },
   { path: "customer-support/stores", component: StoreComponent },
-  { path: "customer-support/stores/:storename", component: StoreDetailComponent },
+  { path: "customer-support/stores/:urlKey", component: StoreDetailComponent },
 
   // P R O D U C T S ======================================================================
-  { path: "depart/:depart", component: DepartmentComponent },
-  { path: "type/" + CATEGORY.LAPTOP, component: ProductTypeComponent },
-  { path: "type/:type", component: TypeComponent },
-  { path: "categ/:category", component: ProductCategoryComponent },
-  { path: "prod/:linkname", component: ProductDetailComponent },
+  { path: "depart/:urlKey", component: DepartmentComponent },
+  { path: "type/" + CATEGORY.LAPTOP_URL_KEY, component: ProductTypeComponent },
+  { path: "type/:urlKey", component: TypeComponent },
+  { path: "categ/:urlKey", component: ProductCategoryComponent },
+  { path: "prod/:urlKey", component: ProductDetailComponent },
 
   // Search -----------------------------------------------------------------
   { path: "search/:searchTerm", component: SearchComponent },

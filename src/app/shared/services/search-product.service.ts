@@ -19,19 +19,19 @@ export class SearchProductService {
 
   // GETS =============================================================================
   getLaptopsService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/" + CATEGORY.LAPTOP);
+    return this.http.get(API_URL + "/products/type/" + CATEGORY.LAPTOP_URL_KEY);
   }
 
   getLaptopAccessoryService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/" + CATEGORY.LAPTOP_ACCESSORY);
+    return this.http.get(API_URL + "/products/type/" + CATEGORY.LAPTOP_ACCESSORY_URL_KEY);
   }
 
   getPcService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/" + CATEGORY.PC);
+    return this.http.get(API_URL + "/products/type/" + CATEGORY.PC_URL_KEY);
   }
 
   getMonitorService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/" + CATEGORY.MONITOR);
+    return this.http.get(API_URL + "/products/type/" + CATEGORY.MONITOR_URL_KEY);
   }
 
   // Observable =======================================================================

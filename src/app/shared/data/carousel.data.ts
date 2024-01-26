@@ -1,13 +1,13 @@
-export class Carousel {
-    id!: number;
-    src!: string;
-    alt!: string;
-    link!: string;
-    isChecked!: boolean;
-    slide!: string;
+export interface CarouselMain {
+    id: number;
+    src: string;
+    alt: string;
+    link: string;
+    isChecked: boolean;
+    slide: string;
 }
 
-export const CAROUSEL: Carousel[] = [
+export const CAROUSEL_MAIN: CarouselMain[] = [
     {
         id: 0,
         src: "assets/carousel/stock_busters.png",
@@ -28,7 +28,7 @@ export const CAROUSEL: Carousel[] = [
         id: 2,
         src: "assets/carousel/hards.png",
         alt: "hards.png",
-        link: "/laptop-auxs/hards",        
+        link: "/laptop-auxs/hards",
         isChecked: false,
         slide: "left: -200%",
     },

@@ -4,28 +4,28 @@ export interface IDepartment {
     id: number;
     icon: string;
     name: string;
-    department: string;
+    urlKey: string;
     link: string;
     chevron: string;
     showTitle: boolean;
     color: string;
-    titles: Array<IType>;
+    types: Array<IType>;
 }
 
 export interface IType {
     name: string;
-    type: string;
+    urlKey: string;
     link: string;
     image: string;
     showSubtitle: boolean;
     isReady: boolean;
     color: string;
-    subtitles: Array<ICategory>;
+    categories: Array<ICategory>;
 }
 
 export interface ICategory {
     name: string;
-    category: string;
+    urlKey: string;
     link: string;
     image: string;
     isReady: boolean;
@@ -37,50 +37,50 @@ export const DEPARTMENTS: Array<IDepartment> = [
     {   // ================================================================= Laptop, Telefoane, Tablete
         id: 1,
         icon: "assets/svgs/phone.svg",
-        name: CATEGORY.LPT_RO,
-        department: CATEGORY.LPT,
-        link: "/depart/" + CATEGORY.LPT,
+        name: CATEGORY.LPT,
+        urlKey: CATEGORY.LPT_URL_KEY,
+        link: "/depart/" + CATEGORY.LPT_URL_KEY,
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#ff4196",
-        titles: [
+        types: [
             {
-                name: CATEGORY.LAPTOP_RO,
-                type: CATEGORY.LAPTOP,
-                link: "/type/" + CATEGORY.LAPTOP,
+                name: CATEGORY.LAPTOP,
+                urlKey: CATEGORY.LAPTOP_URL_KEY,
+                link: "/type/" + CATEGORY.LAPTOP_URL_KEY,
                 image: "assets/departments/lpt/laptops.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#ff4196",
-                subtitles: [
+                categories: [
                     {
-                        name: CATEGORY.LAPTOP_GAMING_RO,
-                        category: CATEGORY.LAPTOP_GAMING,
-                        link: "/categ/" + CATEGORY.LAPTOP_GAMING,
+                        name: CATEGORY.LAPTOP_GAMING,
+                        urlKey: CATEGORY.LAPTOP_GAMING_URL_KEY,
+                        link: "/categ/" + CATEGORY.LAPTOP_GAMING_URL_KEY,
                         image: "assets/departments/lpt/laptops/laptop-gaming.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOP_BUSINESS_RO,
-                        category: CATEGORY.LAPTOP_BUSINESS,
-                        link: "/categ/" + CATEGORY.LAPTOP_BUSINESS,
+                        name: CATEGORY.LAPTOP_BUSINESS,
+                        urlKey: CATEGORY.LAPTOP_BUSINESS_URL_KEY,
+                        link: "/categ/" + CATEGORY.LAPTOP_BUSINESS_URL_KEY,
                         image: "assets/departments/lpt/laptops/laptop-business.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOP_ULTRA_RO,
-                        category: CATEGORY.LAPTOP_ULTRA,
-                        link: "/categ/" + CATEGORY.LAPTOP_ULTRA,
+                        name: CATEGORY.LAPTOP_ULTRA,
+                        urlKey: CATEGORY.LAPTOP_ULTRA_URL_KEY,
+                        link: "/categ/" + CATEGORY.LAPTOP_ULTRA_URL_KEY,
                         image: "assets/departments/lpt/laptops/laptop-ultra.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOP_HOME_RO,
-                        category: CATEGORY.LAPTOP_HOME,
-                        link: "/categ/" + CATEGORY.LAPTOP_HOME,
+                        name: CATEGORY.LAPTOP_HOME,
+                        urlKey: CATEGORY.LAPTOP_HOME_URL_KEY,
+                        link: "/categ/" + CATEGORY.LAPTOP_HOME_URL_KEY,
                         image: "assets/departments/lpt/laptops/laptop-home.png",
                         isReady: true,
                         color: "#ff4196",
@@ -88,57 +88,57 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 ]
             },
             {
-                name: CATEGORY.LAPTOP_ACCESSORY_RO,
-                type: CATEGORY.LAPTOP_ACCESSORY,
-                link: "/type/" + CATEGORY.LAPTOP_ACCESSORY,
+                name: CATEGORY.LAPTOP_ACCESSORY,
+                urlKey: CATEGORY.LAPTOP_ACCESSORY_URL_KEY,
+                link: "/type/" + CATEGORY.LAPTOP_ACCESSORY_URL_KEY,
                 image: "assets/departments/lpt/laptop-accessories.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#ff4196",
-                subtitles: [
+                categories: [
                     {
-                        name: CATEGORY.LAPTOP_BAG_RO,
-                        category: CATEGORY.LAPTOP_BAG,
-                        link: "/categ/" + CATEGORY.LAPTOP_BAG,
+                        name: CATEGORY.LAPTOP_BAG,
+                        urlKey: CATEGORY.LAPTOP_BAG_URL_KEY,
+                        link: "/categ/" + CATEGORY.LAPTOP_BAG_URL_KEY,
                         image: "assets/departments/lpt/laptop-accessories/bags.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOP_CHARGER_RO,
-                        category: CATEGORY.LAPTOP_CHARGER,
-                        link: "/categ/" + CATEGORY.LAPTOP_CHARGER,
+                        name: CATEGORY.LAPTOP_CHARGER,
+                        urlKey: CATEGORY.LAPTOP_CHARGER_URL_KEY,
+                        link: "/categ/" + CATEGORY.LAPTOP_CHARGER_URL_KEY,
                         image: "assets/departments/lpt/laptop-accessories/chargers.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.LAPTOP_HARD_RO,
-                        category: CATEGORY.LAPTOP_HARD,
-                        link: "/categ/" + CATEGORY.LAPTOP_HARD,
+                        name: CATEGORY.LAPTOP_HARD,
+                        urlKey: CATEGORY.LAPTOP_HARD_URL_KEY,
+                        link: "/categ/" + CATEGORY.LAPTOP_HARD_URL_KEY,
                         image: "assets/departments/lpt/laptop-accessories/hards.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.EXTERNAL_BATTERY_RO,
-                        category: CATEGORY.EXTERNAL_BATTERY,
-                        link: "/categ/" + CATEGORY.EXTERNAL_BATTERY,
+                        name: CATEGORY.EXTERNAL_BATTERY,
+                        urlKey: CATEGORY.EXTERNAL_BATTERY_URL_KEY,
+                        link: "/categ/" + CATEGORY.EXTERNAL_BATTERY_URL_KEY,
                         image: "assets/departments/lpt/laptop-accessories/external-batteries.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.RAM_MEMORY_RO,
-                        category: CATEGORY.RAM_MEMORY,
-                        link: "/categ/" + CATEGORY.RAM_MEMORY,
+                        name: CATEGORY.RAM_MEMORY,
+                        urlKey: CATEGORY.RAM_MEMORY_URL_KEY,
+                        link: "/categ/" + CATEGORY.RAM_MEMORY_URL_KEY,
                         image: "assets/departments/lpt/laptop-accessories/rams.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
                         name: "Suport mobil cu racire",
-                        category: "under-construction",
+                        urlKey: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -146,7 +146,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Stickere pentru ecran",
-                        category: "under-construction",
+                        urlKey: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -156,16 +156,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Telefoane",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Tel",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -175,16 +175,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Tablete",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Tab",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -194,16 +194,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Accesorii telefoane",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Huse telefon",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -211,7 +211,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Baterii externe",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -219,7 +219,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Incarcatoare casa/auto",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -227,7 +227,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Suporturi auto",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -235,7 +235,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Cabluri, adaptoare, Reductii",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -243,7 +243,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Folii de protectie pentru ecrane",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -251,7 +251,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Carduri de memorie",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -261,16 +261,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Bratari si ceasuri electronice",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Bratari smart",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -278,7 +278,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Ceasuri smart",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -286,7 +286,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Bratari si ceasuri fitness",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -294,7 +294,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Accesorii Wearables",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -305,16 +305,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Casti pentru telefon",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Casti wireless",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -322,7 +322,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Casti in-ear",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -330,7 +330,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Casti over-ear",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -338,7 +338,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Ochelari audio",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -346,7 +346,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Accesorii pentru casti",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -356,16 +356,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Accesorii tablete",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Huse tablete",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -373,7 +373,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Folii de protectie tablete",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -381,7 +381,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Incarcatoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -389,7 +389,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Accesorii diverse",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -399,16 +399,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Cartele si pachete cu telefon",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Cartele prepaid",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -416,7 +416,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Pachete cu telefon",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -426,16 +426,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Telefoane fixe",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Telefoane cu fise mici",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -443,7 +443,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Telefoane cu disc",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -451,7 +451,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Mini telefoane (digitale)",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -459,7 +459,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Centrale telefonice",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -472,41 +472,41 @@ export const DEPARTMENTS: Array<IDepartment> = [
     {   // ===================================================================== Desktop, Periferice, Software
         id: 2,
         icon: "assets/svgs/laptop.svg",
-        name: CATEGORY.DPS_RO,
-        department: CATEGORY.DPS,
-        link: "/depart/" + CATEGORY.DPS,
+        name: CATEGORY.DPS,
+        urlKey: CATEGORY.DPS_URL_KEY,
+        link: "/depart/" + CATEGORY.DPS_URL_KEY,
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#ff4196",
-        titles: [
+        types: [
             {
-                name: CATEGORY.PC_RO,
-                type: CATEGORY.PC,
-                link: "/type/" + CATEGORY.PC,
+                name: CATEGORY.PC,
+                urlKey: CATEGORY.PC_URL_KEY,
+                link: "/type/" + CATEGORY.PC_URL_KEY,
                 image: "assets/departments/dps/pc.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#ff4196",
-                subtitles: [
+                categories: [
                     {
-                        name: CATEGORY.PC_GAMING_RO,
-                        category: CATEGORY.PC_GAMING,
-                        link: "/categ/" + CATEGORY.PC_GAMING,
+                        name: CATEGORY.PC_GAMING,
+                        urlKey: CATEGORY.PC_GAMING_URL_KEY,
+                        link: "/categ/" + CATEGORY.PC_GAMING_URL_KEY,
                         image: "assets/departments/dps/pc/pc-gaming.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
-                        name: CATEGORY.ALL_IN_ONE_RO,
-                        category: CATEGORY.ALL_IN_ONE,
-                        link: "/categ/" + CATEGORY.ALL_IN_ONE,
+                        name: CATEGORY.ALL_IN_ONE,
+                        urlKey: CATEGORY.ALL_IN_ONE_URL_KEY,
+                        link: "/categ/" + CATEGORY.ALL_IN_ONE_URL_KEY,
                         image: "assets/departments/dps/pc/all-in-one.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
                         name: "PC Home",
-                        category: "under-construction",
+                        urlKey: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -514,7 +514,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Mini PC",
-                        category: "under-construction",
+                        urlKey: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -523,25 +523,25 @@ export const DEPARTMENTS: Array<IDepartment> = [
                 ]
             },
             {
-                name: CATEGORY.MONITOR_RO,
-                type: CATEGORY.MONITOR,
-                link: "/type/" + CATEGORY.MONITOR,
+                name: CATEGORY.MONITOR,
+                urlKey: CATEGORY.MONITOR_URL_KEY,
+                link: "/type/" + CATEGORY.MONITOR_URL_KEY,
                 image: "assets/departments/dps/monitors.png",
                 showSubtitle: false,
                 isReady: true,
                 color: "#ff4196",
-                subtitles: [
+                categories: [
                     {
-                        name: CATEGORY.MONITOR_PRO_RO,
-                        category: CATEGORY.MONITOR_PRO,
-                        link: "/categ/" + CATEGORY.MONITOR_PRO,
+                        name: CATEGORY.MONITOR_PRO,
+                        urlKey: CATEGORY.MONITOR_PRO_URL_KEY,
+                        link: "/categ/" + CATEGORY.MONITOR_PRO_URL_KEY,
                         image: "assets/departments/dps/monitors/pro-monitors.png",
                         isReady: true,
                         color: "#ff4196",
                     },
                     {
                         name: "Monitoare Gaming",
-                        category: "under-construction",
+                        urlKey: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -549,7 +549,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Monitoare Home",
-                        category: "under-construction",
+                        urlKey: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -557,7 +557,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Monitoare portabile",
-                        category: "under-construction",
+                        urlKey: "under-construction",
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -567,16 +567,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Suport pentru monitor",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Suport monitor",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -586,16 +586,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Mac-uri",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Mac",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -605,16 +605,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Componente calculator",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Hard Disk Drive, HDD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -622,7 +622,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Solid State Drive, HARD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -630,7 +630,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Placi de baza",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -638,7 +638,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Placi video",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -646,7 +646,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Procesoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -654,7 +654,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Memorii RAM",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -662,7 +662,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Surse de alimentare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -670,7 +670,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Coolere, Ventilatoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -678,7 +678,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Carcase si Rack-uri",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -688,16 +688,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Retelistica calculatoare",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Routere wireless",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -705,7 +705,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Adaptoare wireless",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -713,7 +713,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Adaptoare priza",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -721,7 +721,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Switch / Modem",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -731,16 +731,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Imprimante si multifunctionale",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Imprimante",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -748,7 +748,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Plottere",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -756,7 +756,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Scannere",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -764,7 +764,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Imprimante termice",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -772,7 +772,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Consumabile",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -780,7 +780,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Imprimante 3D",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -788,7 +788,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Accesorii si consumabile 3D",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -798,16 +798,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Birotica",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Hartie si produse din hartie",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -815,7 +815,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Organizare, Arhivare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -823,7 +823,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Accesorii de birou",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -831,7 +831,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Tehnica de birou",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -839,7 +839,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Sisteme de prezentare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -849,16 +849,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Periferice si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "HDD si HARD externe",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -866,7 +866,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Mouse",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -874,7 +874,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Tastaturi",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -882,7 +882,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Casti pentru calculator",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -890,7 +890,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Memorii USB",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -898,7 +898,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Boxe audio pentru calculator",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -906,7 +906,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Camere Web",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -914,7 +914,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Unitati optice externe",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -922,7 +922,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Card reader",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -932,16 +932,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "UPS-uri si surse externe ",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "UPS cu/fara management",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -949,7 +949,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Acumulatori pentru UPS",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -963,24 +963,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 3,
         icon: "assets/svgs/tv.svg",
         name: "TV, Audio-Video, Foto",
-        department: "tap",
+        urlKey: "tap",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -988,7 +988,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -996,7 +996,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1004,7 +1004,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1014,16 +1014,16 @@ export const DEPARTMENTS: Array<IDepartment> = [
             },
             {
                 name: "Audio-Video",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Sisteme audio",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1031,7 +1031,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Soundbar",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1039,7 +1039,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Boxe portabile",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1047,7 +1047,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Radio",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1061,24 +1061,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 4,
         icon: "assets/svgs/washing-machine.svg",
         name: "Electrocasnice mari",
-        department: "be",
+        urlKey: "be",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1086,7 +1086,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1094,7 +1094,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1102,7 +1102,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1116,24 +1116,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 5,
         icon: "assets/svgs/iron.svg",
         name: "Electrocasnice mici, Climatizare",
-        department: "sec",
+        urlKey: "sec",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1141,7 +1141,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1149,7 +1149,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1157,7 +1157,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1171,24 +1171,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 6,
         icon: "assets/svgs/bag.svg",
         name: "Bacanie",
-        department: "b",
+        urlKey: "b",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1196,7 +1196,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1204,7 +1204,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1212,7 +1212,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1226,24 +1226,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 7,
         icon: "assets/svgs/mirror.svg",
         name: "Ingrijire personala",
-        department: "psc",
+        urlKey: "psc",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1251,7 +1251,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1259,7 +1259,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1267,7 +1267,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1281,24 +1281,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 8,
         icon: "assets/svgs/running.svg",
         name: "Sport, Alte activitati",
-        department: "soa",
+        urlKey: "soa",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1306,7 +1306,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1314,7 +1314,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1322,7 +1322,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1336,24 +1336,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 9,
         icon: "assets/svgs/house.svg",
         name: "Casa, Gradina, Brico",
-        department: "hgb",
+        urlKey: "hgb",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1361,7 +1361,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1369,7 +1369,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1377,7 +1377,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1391,24 +1391,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 10,
         icon: "assets/svgs/t-shirt.svg",
         name: "Moda si Cadouri",
-        department: "pg",
+        urlKey: "pg",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1416,7 +1416,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1424,7 +1424,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1432,7 +1432,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1446,24 +1446,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 11,
         icon: "assets/svgs/car.svg",
         name: "Auto, Moto, Velo, RCA",
-        department: "amvi",
+        urlKey: "amvi",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1471,7 +1471,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1479,7 +1479,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1487,7 +1487,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1501,24 +1501,24 @@ export const DEPARTMENTS: Array<IDepartment> = [
         id: 12,
         icon: "assets/svgs/toys.svg",
         name: "Jucarii, Copii",
-        department: "tc",
+        urlKey: "tc",
         link: "/under-construction",
         chevron: "assets/svgs/chevron-right.svg",
         showTitle: false,
         color: "#707070",
-        titles: [
+        types: [
             {
                 name: "Televizoare si accesorii",
-                type: CATEGORY.CATEGORY,
+                urlKey: CATEGORY.CATEGORY,
                 link: "/under-construction",
                 image: "assets/images/under-construction600-m150.png",
                 showSubtitle: false,
                 isReady: false,
                 color: "#707070",
-                subtitles: [
+                categories: [
                     {
                         name: "HD & FullHD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1526,7 +1526,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "4K Laptop Ultra HD",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1534,7 +1534,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare OLED",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,
@@ -1542,7 +1542,7 @@ export const DEPARTMENTS: Array<IDepartment> = [
                     },
                     {
                         name: "Televizoare",
-                        category: CATEGORY.CATEGORY,
+                        urlKey: CATEGORY.CATEGORY,
                         link: "/under-construction",
                         image: "assets/images/under-construction600-m150.png",
                         isReady: false,

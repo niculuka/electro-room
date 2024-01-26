@@ -14,18 +14,18 @@
 
         <div class="dropdown-menu-nav">
             <div class="column-nav">
-                <div class="department-titles" *ngFor="let title of department.titles">
+                <div class="department-titles" *ngFor="let title of department.types">
 
                     <a class="title" routerLink={{title.link}} [ngStyle]="{'color': title.color}"
                         (click)="closeDesktopMenu()">
                         {{title.name}}
                     </a>
 
-                    <ul *ngFor="let subtitle of title.subtitles">
+                    <ul *ngFor="let category of title.categories">
                         <li>
-                            <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
+                            <a class="subtitle" routerLink={{category.link}} [ngStyle]="{'color': category.color}"
                                 (click)="closeDesktopMenu()">
-                                {{subtitle.name}}
+                                {{category.name}}
                             </a>
                         </li>
                     </ul>

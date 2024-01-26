@@ -32,6 +32,10 @@ export class AppComponent implements OnDestroy {
     });
   }
 
+  isPageWithNavbar() {
+    return this.currentLink.startsWith("/admin")
+  }
+
   isPageWithBreadcrumb() {
     return this.currentLink.startsWith("/depart")
       || this.currentLink.startsWith("/type")
@@ -43,6 +47,7 @@ export class AppComponent implements OnDestroy {
 
   isPageWithFooter() {
     return this.currentLink.startsWith("/auth")
+      || this.currentLink.startsWith("/admin")
       || this.currentLink === "/401"
       || this.currentLink === "/404";
   }

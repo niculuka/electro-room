@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
-import { CAROUSEL, Carousel } from 'src/app/shared/data/carousel.data';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+import { CAROUSEL_MAIN, CarouselMain } from 'src/app/shared/data/carousel.data';
 
 @Component({
   selector: 'app-carousel',
@@ -13,7 +13,7 @@ export class CarouselComponent {
 
   // images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  images: Array<Carousel> = CAROUSEL;
+  images: Array<CarouselMain> = CAROUSEL_MAIN;
 
   images2 = [
     '/assets/carousel/romb1.png',

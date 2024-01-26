@@ -12,22 +12,22 @@
             </span>
         </a>
 
-        <div class="dropdown-menu-nav" *ngFor="let title of department.titles">
+        <div class="dropdown-menu-nav" *ngFor="let type of department.types">
             <div class="department-titles" *ngIf="department.showTitle">
 
-                <a class="title" [ngStyle]="{'color': title.color}" (click)="toogleTitle(title)">
-                    {{title.name}}
+                <a class="title" [ngStyle]="{'color': type.color}" (click)="toogleTitle(type)">
+                    {{type.name}}
                     <img class="chevron-icon" [src]="department.chevron" [alt]="department.chevron">
                 </a>
-                <a class="subtitle" *ngIf="title.showSubtitle" routerLink={{title.link}}
-                    [ngStyle]="{'color': title.color}" (click)="closeMobileMenu()"><strong>{{title.name}}</strong>
+                <a class="subtitle" *ngIf="type.showSubtitle" routerLink={{type.link}}
+                    [ngStyle]="{'color': type.color}" (click)="closeMobileMenu()"><strong>{{type.name}}</strong>
                 </a>
 
-                <ul *ngFor="let subtitle of title.subtitles">
-                    <li *ngIf="title.showSubtitle">
-                        <a class="subtitle" routerLink={{subtitle.link}} [ngStyle]="{'color': subtitle.color}"
+                <ul *ngFor="let category of type.categories">
+                    <li *ngIf="type.showSubtitle">
+                        <a class="subtitle" routerLink={{category.link}} [ngStyle]="{'color': category.color}"
                             (click)="closeMobileMenu()">
-                            {{subtitle.name}}
+                            {{category.name}}
                         </a>
                     </li>
                 </ul>

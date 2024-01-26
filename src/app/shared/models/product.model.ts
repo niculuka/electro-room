@@ -78,9 +78,11 @@ export class Product {
     linkname: string = "";
     description: string = "";
     brand: string = "";
-    type: string = "";
     department: string = "";
+    type: string = "";
+    typeUrlKey: string = "";
     category: string = "";
+    categoryUrlKey: string = "";
     subcategory: string = "";
     image: string = "";
     badge: string = "";
@@ -100,7 +102,9 @@ export class Product {
         brand: string = "",
         department: string = "",
         type: string = "",
+        typeUrlKey: string = "",
         category: string = "",
+        categoryUrlKey: string = "",
         subcategory: string = "",
         image: string = "",
         badge: string = "",
@@ -115,9 +119,11 @@ export class Product {
         this.linkname = linkname;
         this.description = description;
         this.brand = brand;
-        this.type = type;
         this.department = department;
+        this.type = type;
+        this.typeUrlKey = typeUrlKey;
         this.category = category;
+        this.categoryUrlKey = categoryUrlKey;
         this.subcategory = subcategory;
         this.image = image;
         this.badge = badge;

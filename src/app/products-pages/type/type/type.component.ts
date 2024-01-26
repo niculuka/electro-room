@@ -31,12 +31,12 @@ export class TypeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.activatedRoute.paramMap.subscribe((params) => {
-      let type = params.get('type') || "";
+      let urlKey = params.get('urlKey') || "";
       this.departments.filter(depart => {
-        depart.titles.find(title => {
-          if (title.type === type) {
-            this.cards = title.subtitles;
-            this.createBreadcrumb(depart, title);
+        depart.types.find(type => {
+          if (type.urlKey === urlKey) {
+            this.cards = type.categories;
+            this.createBreadcrumb(depart, type);
           }
         });
       });
@@ -44,12 +44,12 @@ export class TypeComponent implements OnInit, OnDestroy {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
-  createBreadcrumb(depart: any, title: any) {
+  createBreadcrumb(depart: any, type: any) {
     this.crumbDepartment.label = depart.name;
-    this.crumbDepartment.url = "/depart/" + depart.department;
+    this.crumbDepartment.url = "/depart/" + depart.urlKey;
     this.breadcrumbs.push(this.crumbDepartment);
 
-    this.crumbType.label = title.name;
+    this.crumbType.label = type.name;
     this.breadcrumbs.push(this.crumbType);
 
     this.breadcrumbService.handleBreadcrumbsService(this.breadcrumbs);

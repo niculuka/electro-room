@@ -28,9 +28,9 @@ export class StoreDetailComponent implements OnDestroy {
     private breadcrumbService: BreadcrumbService,
   ) {
     this.sub = this.activatedRoute.paramMap.subscribe((params) => {
-      let storename = params.get('storename') || "";
+      let urlKey = params.get('urlKey') || "";
       this.stores.find(store => {
-        if (store.linkname == storename) {
+        if (store.linkname == urlKey) {
           this.currentStore = store;
           this.createBreadcrumb();
         }

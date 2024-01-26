@@ -25,20 +25,20 @@
         <!-- dropdown-menu ------------------------------------------------------------------------ -->
         <mat-menu #department="matMenu">
           <div class="departments" *ngFor="let depart of departments">
-            <a mat-menu-item [routerLink]="depart.link" [matMenuTriggerFor]="title" (click)="closeDropDownMenu()"
+            <a mat-menu-item [routerLink]="depart.link" [matMenuTriggerFor]="type" (click)="closeDropDownMenu()"
               [ngStyle]="{'color': depart.color, 'font-weight': 500}">
               {{depart.name}}
           </a>
-            <mat-menu #title="matMenu">
-              <div class="titles" *ngFor="let title of depart.titles">
-                <a mat-menu-item [routerLink]="title.link" [matMenuTriggerFor]="subtitle"
-                  (click)="closeDropDownMenu()" [ngStyle]="{'color': title.color, 'font-weight': 500}">
-                  {{title.name}}
+            <mat-menu #type="matMenu">
+              <div class="titles" *ngFor="let ty of depart.types">
+                <a mat-menu-item [routerLink]="ty.link" [matMenuTriggerFor]="category"
+                  (click)="closeDropDownMenu()" [ngStyle]="{'color': ty.color, 'font-weight': 500}">
+                  {{ty.name}}
               </a>
-                <mat-menu #subtitle="matMenu">
-                  <div class="subtitles" *ngFor="let subtitle of title.subtitles">
-                    <a mat-menu-item [routerLink]="subtitle.link" [ngStyle]="{'color': subtitle.color}">
-                      {{subtitle.name}}
+                <mat-menu #category="matMenu">
+                  <div class="subtitles" *ngFor="let category of ty.categories">
+                    <a mat-menu-item [routerLink]="category.link" [ngStyle]="{'color': category.color}">
+                      {{category.name}}
                     </a>
                   </div>
                 </mat-menu>

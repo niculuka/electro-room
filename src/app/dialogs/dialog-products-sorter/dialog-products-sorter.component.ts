@@ -1,8 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SORTERS_OPTIONS } from 'src/app/shared/data/product-category.data';
-import { SORTERS } from 'src/app/shared/enums/electro.enum';
-import { ProductSorter } from 'src/app/shared/models/product-filter.model';
 import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 
 @Component({
@@ -13,7 +11,7 @@ import { ProductCategoryService } from 'src/app/shared/services/product-category
 export class DialogProductsSorterComponent implements OnDestroy {
 
   currentOption: string = "";
-  productsSorters: Array<ProductSorter> = SORTERS_OPTIONS;
+  productsSorters = SORTERS_OPTIONS;
 
   sub: any;
 

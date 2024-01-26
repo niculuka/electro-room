@@ -30,6 +30,11 @@ export enum SORTERS {
     HIGH_TO_LOW = "Pret Descrescator",
 }
 
+export enum CAROUSEL {
+    CAROUSEL_OWL_1 = "Laptopuri si Accesorii",
+    CAROUSEL_OWL_2 = "PC-uri si Monitoare",
+}
+
 export enum FINANCE {
     PROMO = "Promo",
 }
@@ -149,33 +154,47 @@ export enum CATEGORY {
     WD = "Wd",
     XTORM = "Xtorm",
 
-    // Carousel Owl ===============================================
-    CAROUSEL_OWL_1 = "Laptopuri si Accesorii",
-    CAROUSEL_OWL_2 = "PC-uri si Monitoare",
-
     // D E P A R T M E N T ======================================== 
-    LPT = "laptop-phone-tablet", LPT_RO = "Laptopuri, Telefoane, Tablete",
-    DPS = "desktop-peripheral-software", DPS_RO = "Desktop, Periferice, Software",
+    LPT = "Laptopuri, Telefoane, Tablete",
+    LPT_URL_KEY = "laptop-phone-tablet",
+    DPS = "Desktop, Periferice, Software",
+    DPS_URL_KEY = "desktop-peripheral-software",
 
     // T Y P E ====================================================
-    LAPTOP = "laptop", LAPTOP_RO = "Laptopuri",
-    LAPTOP_ACCESSORY = "laptop-accessory", LAPTOP_ACCESSORY_RO = "Accesorii Laptop",
-    PC = "pc", PC_RO = "PC-uri",
-    MONITOR = "monitor", MONITOR_RO = "Monitoare",
+    LAPTOP = "Laptopuri",
+    LAPTOP_URL_KEY = "laptop",
+    LAPTOP_ACCESSORY = "Accesorii Laptop",
+    LAPTOP_ACCESSORY_URL_KEY = "laptop-accessory",
+    PC = "PC-uri",
+    PC_URL_KEY = "pc",
+    MONITOR = "Monitoare",
+    MONITOR_URL_KEY = "monitor",
 
     // C A T E G O R Y ============================================
-    LAPTOP_GAMING = "laptop-gaming", LAPTOP_GAMING_RO = "Laptopuri Gaming",
-    LAPTOP_BUSINESS = "laptop-business", LAPTOP_BUSINESS_RO = "Laptopuri Business",
-    LAPTOP_ULTRA = "laptop-ultra", LAPTOP_ULTRA_RO = "Laptopuri Ultra",
-    LAPTOP_HOME = "laptop-home", LAPTOP_HOME_RO = "Laptopuri Home",
-    LAPTOP_BAG = "laptop-bag", LAPTOP_BAG_RO = "Genti Laptop",
-    LAPTOP_CHARGER = "laptop-charger", LAPTOP_CHARGER_RO = "Incarcatoare Laptop",
-    LAPTOP_HARD = "laptop-hard", LAPTOP_HARD_RO = "Harduri Laptop",
-    EXTERNAL_BATTERY = "external-battery", EXTERNAL_BATTERY_RO = "Baterii Externe",
-    RAM_MEMORY = "ram-memory", RAM_MEMORY_RO = "Memorii Ram",
-    PC_GAMING = "pc-gaming", PC_GAMING_RO = "Calculatoare Gaming",
-    ALL_IN_ONE = "all-in-one", ALL_IN_ONE_RO = "Sisteme All In One",
-    MONITOR_PRO = "monitor-pro", MONITOR_PRO_RO = "Monitoare Profesionale",
+    LAPTOP_GAMING = "Laptopuri Gaming",
+    LAPTOP_GAMING_URL_KEY = "laptop-gaming",
+    LAPTOP_BUSINESS = "Laptopuri Business",
+    LAPTOP_BUSINESS_URL_KEY = "laptop-business",
+    LAPTOP_ULTRA = "Laptopuri Ultra",
+    LAPTOP_ULTRA_URL_KEY = "laptop-ultra",
+    LAPTOP_HOME = "Laptopuri Home",
+    LAPTOP_HOME_URL_KEY = "laptop-home",
+    LAPTOP_BAG = "Genti Laptop",
+    LAPTOP_BAG_URL_KEY = "laptop-bag",
+    LAPTOP_CHARGER = "Incarcatoare Laptop",
+    LAPTOP_CHARGER_URL_KEY = "laptop-charger",
+    LAPTOP_HARD = "Harduri Laptop",
+    LAPTOP_HARD_URL_KEY = "laptop-hard",
+    EXTERNAL_BATTERY = "Baterii Externe",
+    EXTERNAL_BATTERY_URL_KEY = "external-battery",
+    RAM_MEMORY = "Memorii Ram",
+    RAM_MEMORY_URL_KEY = "ram-memory",
+    PC_GAMING = "Calculatoare Gaming",
+    PC_GAMING_URL_KEY = "pc-gaming",
+    ALL_IN_ONE = "All In One",
+    ALL_IN_ONE_URL_KEY = "all-in-one",
+    MONITOR_PRO = "Monitoare Profesionale",
+    MONITOR_PRO_URL_KEY = "monitor-pro",
 
     // S U B C A T E G O R Y ======================================    
     BRIEFCASE = "Serviete",

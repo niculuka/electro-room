@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { PRODUCTS_FILTERS } from 'src/app/shared/data/product-category.data';
-import { ProductFilter } from 'src/app/shared/models/product-filter.model';
 import { ProductCategoryService } from 'src/app/shared/services/product-category.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { ProductCategoryService } from 'src/app/shared/services/product-category
 })
 export class DialogProductFilterComponent {
 
-  productsFilters: Array<ProductFilter> = PRODUCTS_FILTERS;
+  productsFilters = PRODUCTS_FILTERS;
   private sub: any;
 
   constructor(

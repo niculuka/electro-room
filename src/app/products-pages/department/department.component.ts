@@ -27,10 +27,10 @@ export class DepartmentComponent implements OnDestroy {
     private toastrService: ToastrService,
   ) {
     this.sub = this.activatedRoute.paramMap.subscribe((params) => {
-      let department = params.get('depart') || "";
+      let urlKey = params.get('urlKey') || "";
       this.departments.find(item => {
-        if (item.department === department) {
-          this.cards = item.titles;
+        if (item.urlKey === urlKey) {
+          this.cards = item.types;
           this.createBreadcrumb(item);
         }
       });

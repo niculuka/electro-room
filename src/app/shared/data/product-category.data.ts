@@ -1,5 +1,21 @@
 import { CATEGORY, SORTERS } from "../enums/electro.enum";
-import { ProductFilter, ProductSorter } from "../models/product-filter.model";
+
+export class ProductFilter {
+    name: string = "";
+    value: string = "";
+    count: number = 0;
+    filters: Array<ProdFilter> = [];
+}
+
+export class ProdFilter {
+    id: number = 0;
+    name: string = "";
+    value: string = "";
+    isChecked: boolean = false;
+    min: number = 0;
+    max: number = 0;
+    count: number = 0;
+}
 
 export const PRODUCTS_FILTERS: Array<ProductFilter> = [
     {
@@ -56,10 +72,10 @@ export const PRODUCTS_FILTERS: Array<ProductFilter> = [
         value: CATEGORY.SUBCATEGORY,
         count: 0,
         filters: [
-            { id: 301, name: CATEGORY.LAPTOP_BUSINESS_RO, value: CATEGORY.LAPTOP_BUSINESS, isChecked: false, min: 0, max: 0, count: 0 },
-            { id: 302, name: CATEGORY.LAPTOP_GAMING_RO, value: CATEGORY.LAPTOP_GAMING, isChecked: false, min: 0, max: 0, count: 0 },
-            { id: 303, name: CATEGORY.LAPTOP_HOME_RO, value: CATEGORY.LAPTOP_HOME, isChecked: false, min: 0, max: 0, count: 0 },
-            { id: 304, name: CATEGORY.LAPTOP_ULTRA_RO, value: CATEGORY.LAPTOP_ULTRA, isChecked: false, min: 0, max: 0, count: 0 },
+            { id: 301, name: CATEGORY.LAPTOP_BUSINESS, value: CATEGORY.LAPTOP_BUSINESS, isChecked: false, min: 0, max: 0, count: 0 },
+            { id: 302, name: CATEGORY.LAPTOP_GAMING, value: CATEGORY.LAPTOP_GAMING, isChecked: false, min: 0, max: 0, count: 0 },
+            { id: 303, name: CATEGORY.LAPTOP_HOME, value: CATEGORY.LAPTOP_HOME, isChecked: false, min: 0, max: 0, count: 0 },
+            { id: 304, name: CATEGORY.LAPTOP_ULTRA, value: CATEGORY.LAPTOP_ULTRA, isChecked: false, min: 0, max: 0, count: 0 },
 
             { id: 401, name: CATEGORY.BRIEFCASE, value: CATEGORY.BRIEFCASE, isChecked: false, min: 0, max: 0, count: 0 },
             { id: 402, name: CATEGORY.SLEEVE, value: CATEGORY.SLEEVE, isChecked: false, min: 0, max: 0, count: 0 },
@@ -82,6 +98,12 @@ export const PRODUCTS_FILTERS: Array<ProductFilter> = [
         ]
     },
 ]
+
+// ProductSorter ==================================================================================================
+export interface ProductSorter {
+    name: string;
+    value: string;
+}
 
 export const SORTERS_OPTIONS: Array<ProductSorter> = [
     { name: SORTERS.BEST_SOLD, value: SORTERS.BEST_SOLD },
