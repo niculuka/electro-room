@@ -117,8 +117,8 @@ export enum CATEGORY {
 
     // A V A I L A B L E -----------------------------------------
     AVAILABLE = "Disponibilitate",
-    STOCK = "In Stoc",
-    DEPOSIT = "In Depozit",
+    STOCK = "Stoc",
+    DEPOSIT = "Depozit",
     ONLINE = "Online",
 
     // P R I C E  -  H I G H -------------------------------------

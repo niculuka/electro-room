@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DialogProductDeleteComponent } from 'src/app/dialogs/dialog-product-delete/dialog-product-delete.component';
+import { CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -17,34 +17,24 @@ export class AdminProductComponent implements OnChanges {
   protected products: Array<Product> = [];
   protected product: Product = new Product();
 
+  category = CATEGORY;
+
   errorMessage: string = "";
-  @Input() currentType: any = "";
+  @Input() activeSubtitleName: any;
+  @Input() activeSubtitleUrlKey: any;
 
   constructor(
     private productService: ProductService,
     private adminProductService: AdminProductService,
-    private router: Router,
     private toastrService: ToastrService,
     public matDialog: MatDialog,
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // console.log(changes['currentType'].currentValue);
+    const urlKey = changes['activeSubtitleUrlKey'].currentValue;
     this.productService
-      .getProductsByTypeService(changes['currentType'].currentValue.toLowerCase())
+      .getProductsByTypeService(urlKey)
       .subscribe(data => this.products = data);
-  }
-
-  viewProduct(product: Product) {
-    this.router.navigate(['/prod/' + product.urlKey]);
-  }
-
-  createProduct() {
-    this.router.navigate(['/admin/product/create']);
-  }
-
-  updateProduct(product: Product) {
-    this.router.navigate(['/admin/product/update/' + product.urlKey]);
   }
 
   deleteProductDialog(product: Product) {
