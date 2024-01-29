@@ -3,7 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { SIDENAV_ITEMS } from 'src/app/shared/data/sidenav-items.data';
 import { CATEGORY, ORDER, USER } from 'src/app/shared/enums/electro.enum';
 
-const sidenavTitles: Array<any> = SIDENAV_ITEMS;
+const SIDENAV = SIDENAV_ITEMS;
 
 @Component({
   selector: 'app-admin',
@@ -13,53 +13,63 @@ const sidenavTitles: Array<any> = SIDENAV_ITEMS;
 export class AdminComponent implements OnInit {
 
   sidenavItems: Array<any> = this.getSidenavItemsFromLS();
-  activeTitle: string = localStorage.getItem("activeTitle-ls") || sidenavTitles[0].title;
-  activeSubtitle: string = localStorage.getItem("activeSubtitle-ls") || sidenavTitles[0].subtitles[0].subtitle;
+  activeTitle: any = { name: "", }
+  activeSubtitle: any = { name: "", urlKey: "", }
 
+  @ViewChild(MatDrawer) myDrawer!: MatDrawer;
   opened: boolean = true;
   mode: any = "side";
 
-  @ViewChild(MatDrawer) myDrawer!: MatDrawer;
-
   currentScreenWidth: any = 1000000;
 
-  subtitles: any = {
-    laptops: CATEGORY.LAPTOP_URL_KEY,
-    laptopAccessory: CATEGORY.LAPTOP_ACCESSORY_URL_KEY,
-    pc: CATEGORY.PC_URL_KEY,
-    monitor: CATEGORY.MONITOR_URL_KEY,
-    orders: ORDER.ORDERS,
-    items: ORDER.ITEMS,
-    users: USER.USERS,
-    tokens: USER.TOKENS,
-  };
+  category = CATEGORY;
+  order = ORDER;
+  user = USER;
+
+  constructor() {
+    const at = localStorage.getItem("activeTitle-ls");
+    if (at) this.activeTitle = JSON.parse(at);
+    else this.activeTitle.name = SIDENAV[0].name;
+
+    const as = localStorage.getItem("activeSubtitle-ls");
+    if (as) this.activeSubtitle = JSON.parse(as);
+    else {
+      this.activeSubtitle.name = SIDENAV[0].subtitles[0].name;
+      this.activeSubtitle.urlKey = SIDENAV[0].subtitles[0].urlKey;
+    }
+  }
 
   ngOnInit(): void {
     this.handleWidth();
     this.openTitleWhereActiveSubtitle();
   }
 
-  openTitleWhereActiveSubtitle() {
-    this.sidenavItems.filter((t: any) => {
-      t.subtitles.filter((sub: any) => {
-        if (sub.subtitle == this.activeSubtitle) t.isOpened = true;
-      });
-    });
-  }
-
-  selectTitle(getTitle: any) {
-    this.activeTitle = getTitle.title;
-    localStorage.setItem('activeTitle-ls', this.activeTitle);
+  selectTitle(selectedTitle: any) {
+    this.activeTitle.name = selectedTitle.name;
+    const activeTitleJSON = JSON.stringify(this.activeTitle);
+    localStorage.setItem('activeTitle-ls', activeTitleJSON);
     this.sidenavItems.filter(item => {
-      if (item.name == getTitle.name) item.isOpened = !item.isOpened;
+      if (item.name == this.activeTitle.name) item.isOpened = !item.isOpened;
     });
     this.setSidenavItemsToLS();
   }
 
-  selectSubtitle(getSubtitle: any) {
-    this.activeSubtitle = getSubtitle.subtitle;
-    localStorage.setItem('activeSubtitle-ls', this.activeSubtitle);
+  selectSubtitle(selectedSubtitle: any) {
+    this.activeSubtitle.name = selectedSubtitle.name;
+    this.activeSubtitle.urlKey = selectedSubtitle.urlKey;
+    const activeSubtitleJSON = JSON.stringify(this.activeSubtitle);
+    localStorage.setItem('activeSubtitle-ls', activeSubtitleJSON);
     if (!this.opened) this.myDrawer.close();
+  }
+
+  private setSidenavItemsToLS() {
+    const sidenavItemsJson = JSON.stringify(this.sidenavItems);
+    localStorage.setItem('sidenavItems-ls', sidenavItemsJson);
+  }
+
+  private getSidenavItemsFromLS() {
+    const sidenavItemsJson = localStorage.getItem('sidenavItems-ls');
+    return sidenavItemsJson ? JSON.parse(sidenavItemsJson) : SIDENAV;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -75,14 +85,11 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  private setSidenavItemsToLS() {
-    const sidenavItemsJson = JSON.stringify(this.sidenavItems);
-    localStorage.setItem('sidenavItems-ls', sidenavItemsJson);
+  openTitleWhereActiveSubtitle() {
+    this.sidenavItems.filter((t: any) => {
+      t.subtitles.filter((sub: any) => {
+        if (sub.name == this.activeSubtitle.name) t.isOpened = true;
+      });
+    });
   }
-
-  private getSidenavItemsFromLS() {
-    const sidenavItemsJson = localStorage.getItem('sidenavItems-ls');
-    return sidenavItemsJson ? JSON.parse(sidenavItemsJson) : sidenavTitles;
-  }
-
 }

@@ -20,19 +20,13 @@
       <div class="cart">
         <div class="cart-row" *ngFor="let item of cart.items;">
           <div class="image">
-            <a [routerLink]="'/p/'+item.product.department.toLowerCase()
-                            +'/'+item.product.type.toLowerCase()
-                            +'/'+item.product.category.toLowerCase()
-                            +'/'+item.product.linkname">
+            <a [routerLink]="'/prod/'+item.product.urlKey">
               <img [src]="item.product.image" [alt]="item.product.name">
             </a>
           </div>
           <div class="description-quantity-price">
             <div class="description">
-              <a [routerLink]="'/p/'+item.product.department.toLowerCase()
-                              +'/'+item.product.type.toLowerCase()
-                              +'/'+item.product.category.toLowerCase()
-                              +'/'+item.product.linkname">
+              <a [routerLink]="'/prod/'+item.product.urlKey">
                 {{item.product.description}}
               </a>
             </div>

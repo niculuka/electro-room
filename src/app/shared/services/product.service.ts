@@ -32,8 +32,8 @@ export class ProductService extends BearerService {
         return this.http.get<Product>(API_URL + "/products/subcategory/" + subcategory);
     }
 
-    getProductByNameService(linkname: string): Observable<any> {
-        return this.http.get<Product>(API_URL + "/product/linkname/" + linkname);
+    getProductByNameService(urlKey: string): Observable<any> {
+        return this.http.get<Product>(API_URL + "/product/urlKey/" + urlKey);
     }
 
 }

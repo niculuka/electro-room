@@ -6,13 +6,19 @@ export enum ROLE {
 
 export enum USER {
     USERS = "Utilizatori",
-    TOKENS = "Tokens",
+    USERS_LIST = "Lista Utilizatori",
+    USERS_LIST_URL_KEY = "users",
+    TOKENS = "Tokenuri",
+    TOKENS_URL_KEY = "tokens",
 }
 
-export enum ORDER {
+export enum ORDER {    
     ORDERS = "Comenzi",
-    ORDER = "Comanda",
-    ITEMS = "Itemuri",
+    ORDERS_LIST = "Lista Comenzi",
+    ORDERS_LIST_URL_KEY = "orders",
+    ORDED_PRODUCTS = "Produse Comandate",
+    ORDED_PRODUCTS_URL_KEY = "items",
+    
     NEW = "Nou",
     DONE = "Facut",
     CANCELED = "Anulat",
@@ -101,9 +107,9 @@ export enum SPECIFICATIONS {
 }
 
 export enum CATEGORY {
-    CATEGORY = "Categorie",
-    SUBCATEGORY = "Subcategorie",
     PRODUCTS = "Produse",
+    CATEGORY = "Categorie",
+    SUBCATEGORY = "Subcategorie",    
 
     // B A D G E -----------------------------------------
     TOP_FAVORITE = "Top Favorit",

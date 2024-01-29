@@ -30,7 +30,7 @@ export class StoreDetailComponent implements OnDestroy {
     this.sub = this.activatedRoute.paramMap.subscribe((params) => {
       let urlKey = params.get('urlKey') || "";
       this.stores.find(store => {
-        if (store.linkname == urlKey) {
+        if (store.urlKey == urlKey) {
           this.currentStore = store;
           this.createBreadcrumb();
         }

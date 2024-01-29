@@ -21,6 +21,7 @@ export class OrderComponent implements OnInit {
   order: Order = new Order();
 
   message: string = "";
+  paymentType = PAYMENT_TYPE;
 
   constructor(
     private cartService: CartService,

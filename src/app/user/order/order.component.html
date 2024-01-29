@@ -35,11 +35,11 @@
 
       <div class="money">
         <div class="radio">
-          <input type="radio" id="cash" value="CASH" [(ngModel)]="order.paymentType" (change)="paymentMethod()">
+          <input type="radio" id="cash" [value]="paymentType.CASH" [(ngModel)]="order.paymentType" (change)="paymentMethod()">
           <label for="cash">Cash</label>
         </div>
         <div class="radio">
-          <input type="radio" id="card" value="CARD" [(ngModel)]="order.paymentType" (change)="paymentMethod()">
+          <input type="radio" id="card" [value]="paymentType.CARD"  [(ngModel)]="order.paymentType" (change)="paymentMethod()">
           <label for="card">Card</label>
         </div>
       </div>

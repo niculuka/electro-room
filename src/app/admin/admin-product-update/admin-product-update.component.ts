@@ -29,8 +29,8 @@ export class AdminProductUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
-      let linkname = params.get('linkname') || "";
-      this.productService.getProductByNameService(linkname).subscribe(data => {
+      let urlKey = params.get('urlKey') || "";
+      this.productService.getProductByNameService(urlKey).subscribe(data => {
         this.product = data;
         this.setImageGallery();
       });
@@ -38,7 +38,7 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   updateProduct() {
-    this.product.linkname = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
+    this.product.urlKey = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
     this.adminProductService.updateProductService(this.product).subscribe({
       next: () => {
         window.location.reload();

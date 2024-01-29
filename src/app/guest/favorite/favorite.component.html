@@ -19,19 +19,13 @@
     <div class="main" *ngIf="!isFavoritesEmpty()">
       <div class="fav-row" *ngFor="let product of favorites; index as ind">
         <div class="image">
-          <a [routerLink]="'/p/'+product.department.toLowerCase()
-                            +'/'+product.type.toLowerCase()
-                            +'/'+product.category.toLowerCase()
-                            +'/'+product.linkname">
+          <a [routerLink]="'/prod/'+product.urlKey">
             <img [src]="product.image" [alt]="product.name">
           </a>
         </div>
         <div class="description-price-addToCart">
           <div class="description">
-            <a [routerLink]="'/p/'+product.department.toLowerCase()
-                              +'/'+product.type.toLowerCase()
-                              +'/'+product.category.toLowerCase()
-                              +'/'+product.linkname">
+            <a [routerLink]="'/prod/'+product.urlKey">
               {{product.description}}
             </a>
           </div>

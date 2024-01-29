@@ -31,7 +31,7 @@ export class AdminProductCreateComponent implements OnInit {
   }
 
   createProduct() {
-    this.newProduct.linkname = this.newProduct.name
+    this.newProduct.urlKey = this.newProduct.name
       .replace(/\\|`+|~+|'+|,+|\/+|\?/g, "")
       .replace(/\s+/g, "-")
       .toLowerCase();

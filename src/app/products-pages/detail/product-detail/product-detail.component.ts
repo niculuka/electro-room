@@ -76,8 +76,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
             this.breadcrumbs.push(this.crumbCategory);
 
             this.crumbLinkname.label
-              = this.product.linkname.charAt(0).toUpperCase()
-              + this.product.linkname.slice(1).replace(/-/g, " ");
+              = this.product.urlKey.charAt(0).toUpperCase()
+              + this.product.urlKey.slice(1).replace(/-/g, " ");
             this.breadcrumbs.push(this.crumbLinkname);
 
             this.breadcrumbService.handleBreadcrumbsService(this.breadcrumbs);

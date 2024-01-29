@@ -18,7 +18,7 @@
 
         <!-- I M A G E ===================================================================================== -->
         <div [ngClass]="{'image-grid':displayType==='grid','image-list':displayType==='list'}">
-            <a [routerLink]="'/prod/' + product.linkname">
+            <a [routerLink]="'/prod/' + product.urlKey">
                 <img [src]="product.image" />
             </a>
         </div>
@@ -35,7 +35,7 @@
                     {{product.badge==category.TOP_FAVORITE?category.TOP_FAVORITE:category.SUPER_PRICE}}
                 </span>
 
-                <a [routerLink]="'/prod/' + product.linkname">
+                <a [routerLink]="'/prod/' + product.urlKey">
                     <p>{{product.description}}</p>
                 </a>
 

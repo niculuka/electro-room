@@ -36,14 +36,7 @@ export class AdminProductComponent implements OnChanges {
   }
 
   viewProduct(product: Product) {
-    this.router.navigate([
-      '/lpt/'
-      + product.type.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + product.category.replace(/_/g, "-").toLowerCase()
-      + '/'
-      + product.linkname
-    ]);
+    this.router.navigate(['/prod/' + product.urlKey]);
   }
 
   createProduct() {
@@ -51,7 +44,7 @@ export class AdminProductComponent implements OnChanges {
   }
 
   updateProduct(product: Product) {
-    this.router.navigate(['/admin/product/update/' + product.linkname]);
+    this.router.navigate(['/admin/product/update/' + product.urlKey]);
   }
 
   deleteProductDialog(product: Product) {

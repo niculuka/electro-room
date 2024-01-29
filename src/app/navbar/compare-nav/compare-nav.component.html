@@ -3,7 +3,7 @@
     <div class="products">
         <div class="product" *ngFor="let product of compares">
 
-            <img src={{product.image}}>
+            <img [src]="product.image">
             <mat-icon (click)="removeFromCompare(product)">close</mat-icon>
 
         </div>

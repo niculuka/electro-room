@@ -1,5 +1,11 @@
 <div class="container-admin">
 
+    <div class="logo">
+        <a routerLink="/">
+            <img src="assets/logo/electro-room-red-small.png" alt="logo">
+        </a>
+    </div>
+
     <mat-drawer-container class="drawer-container" autosize>
         <mat-drawer #drawer class="drawer-sidenav" [mode]="mode" [opened]="opened">
             <ul>
@@ -12,18 +18,16 @@
                             <mat-icon>{{title.icon}}</mat-icon>
                             <span>{{title.name}}</span>
                         </div>
-                        <mat-icon [ngStyle]="{
-                                    rotate: title.isOpened ? '0deg' : '-180deg',
-                                    transition: title.isOpened ? '0.2s' : '0.3s',
-                                    }"> expand_less
+                        <mat-icon [ngStyle]="{rotate: title.isOpened ? '0deg' : '-180deg',
+                                    transition: title.isOpened ? '0.2s' : '0.3s'}">
+                            expand_less
                         </mat-icon>
                     </a>
-                    <div class="subtitle" *ngFor="let sub of title.subtitles">
-                        <a [ngStyle]="{
-                                color: activeSubtitle==sub.subtitle ? 'rgb(220, 20, 110)' : 'black',
-                                'font-weight': activeSubtitle==sub.subtitle ? 'bold' : 'normal',
-                                }" (click)="selectSubtitle(sub)" *ngIf="title.isOpened">
-                            {{sub.name}}
+                    <div class="subtitle" *ngFor="let subtitle of title.subtitles">
+                        <a [ngStyle]="{ color: activeSubtitle.name==subtitle.name ? 'rgb(220, 20, 110)' : 'black',
+                                'font-weight': activeSubtitle.name==subtitle.name ? 'bold' : 'normal' }"
+                            (click)="selectSubtitle(subtitle)" *ngIf="title.isOpened">
+                            {{subtitle.name}}
                         </a>
                     </div>
                 </li>
@@ -37,20 +41,16 @@
             <div class="menu-content">
 
                 <div class="insert-page">
-                    <app-admin-product *ngIf="activeSubtitle==subtitles.laptops
-                                            ||activeSubtitle==subtitles.laptopAccessory
-                                            ||activeSubtitle==subtitles.pc
-                                            ||activeSubtitle==subtitles.monitor" [currentType]="activeSubtitle">
+                    <app-admin-product *ngIf="activeSubtitle.name==category.LAPTOP
+                                            ||activeSubtitle.name==category.LAPTOP_ACCESSORY
+                                            ||activeSubtitle.name==category.PC
+                                            ||activeSubtitle.name==category.MONITOR"
+                        [currentType]="activeSubtitle.urlKey">
                     </app-admin-product>
-
-
-
-                    <app-admin-order *ngIf="activeSubtitle==subtitles.orders"></app-admin-order>
-
-                    <app-admin-item *ngIf="activeSubtitle==subtitles.items"></app-admin-item>
-
-                    <app-admin-user *ngIf="activeSubtitle==subtitles.users"></app-admin-user>
-                    <app-admin-token *ngIf="activeSubtitle==subtitles.tokens"></app-admin-token>
+                    <app-admin-order *ngIf="activeSubtitle.name==order.ORDERS_LIST"></app-admin-order>
+                    <app-admin-item *ngIf="activeSubtitle.name==order.ORDED_PRODUCTS"></app-admin-item>
+                    <app-admin-user *ngIf="activeSubtitle.name==user.USERS_LIST"></app-admin-user>
+                    <app-admin-token *ngIf="activeSubtitle.name==user.TOKENS"></app-admin-token>
                 </div>
 
             </div>
