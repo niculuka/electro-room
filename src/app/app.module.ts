@@ -21,6 +21,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -192,6 +195,9 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     MatMenuModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     MatInputModule,
     MatSelectModule,
     MatChipsModule,

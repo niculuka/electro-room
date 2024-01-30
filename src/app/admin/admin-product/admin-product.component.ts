@@ -1,9 +1,12 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { DialogProductDeleteComponent } from 'src/app/dialogs/dialog-product-delete/dialog-product-delete.component';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { Product } from 'src/app/shared/models/product.model';
+import { IProduct, Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -14,7 +17,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class AdminProductComponent implements OnChanges {
 
-  protected products: Array<Product> = [];
+  protected products: Array<IProduct> = [];
   protected product: Product = new Product();
 
   category = CATEGORY;
@@ -22,6 +25,12 @@ export class AdminProductComponent implements OnChanges {
   errorMessage: string = "";
   @Input() activeSubtitleName: any;
   @Input() activeSubtitleUrlKey: any;
+
+  displayedColumns: string[] = ['index', 'image', 'brand', 'available', 'category', 'subcategory', 'price', 'action'];
+  dataSource!: MatTableDataSource<IProduct>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private productService: ProductService,
@@ -32,9 +41,21 @@ export class AdminProductComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     const urlKey = changes['activeSubtitleUrlKey'].currentValue;
-    this.productService
-      .getProductsByTypeService(urlKey)
-      .subscribe(data => this.products = data);
+    this.productService.getProductsByTypeService(urlKey).subscribe(data => {
+      this.products = data;
+      this.dataSource = new MatTableDataSource(this.products);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   deleteProductDialog(product: Product) {
@@ -63,5 +84,4 @@ export class AdminProductComponent implements OnChanges {
       }
     })
   }
-
 }

@@ -2,78 +2,111 @@
 
   <div class="title">
     <h1><strong>{{activeSubtitleName}}</strong></h1>
-    <h3>Products number: {{products.length}}</h3>
+    <h3>Numarul produselor: {{products.length}}</h3>
 
-    <a [routerLink]="'/admin/product/create'">
-      <button class="btn-new" type="button">NEW</button>
-    </a>
+    <div>
+      <a [routerLink]="'/admin/product/create'">
+        <button class="btn-new" type="button">NEW</button>
+      </a>
+    </div>
 
+    <mat-form-field>
+      <mat-label>Cautare</mat-label>
+      <input matInput placeholder="Cauta produsul aici!" (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
   </div>
 
-  <table class="table-row">
-    <thead>
-      <tr>
-        <th>Nr</th>
-        <th>Image</th>
-        <th>Brand</th>
-        <th>Available</th>
-        <th>Category</th>
-        <th>Subcateg</th>
-        <th>Pret (Lei)</th>
-        <th>Action</th>
-      </tr>
-    </thead>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
 
-    <tbody>
-      <tr *ngFor="let product of products; index as ind">
-        <td><strong>{{ind+1}}</strong></td>
-        <td>
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef> Nr </th>
+        <td mat-cell *matCellDef="let product; index as ind"> {{ind+1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> Imagine </th>
+        <td mat-cell *matCellDef="let product">
           <a [routerLink]="'/prod/' + product.urlKey">
             <img [src]="product.image" [alt]="product.image">
           </a>
         </td>
-        <td>
-          <a [routerLink]="'/prod/' + product.urlKey">
-            <div class="my-fields">
-              <span><strong>{{product.name}}</strong></span>
-              <span><strong>id: {{product.id}} | {{product.brand}}</strong></span>
-            </div>
-          </a>
+      </ng-container>
+
+      <ng-container matColumnDef="brand">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name | Brand </th>
+        <td mat-cell *matCellDef="let product">
+          <table>
+            <tr>
+              <td> <strong> {{product.name}} </strong> </td>
+            </tr>
+            <tr>
+              <td [style]="{color: 'grey'}"> id: {{product.id}} | <strong>{{product.brand}}</strong></td>
+            </tr>
+          </table>
         </td>
-        <td [style]="{'color':product.available===category.STOCK ? '#4fbe04' : 'gray'}">
-          <strong>{{product.available}}</strong>
+      </ng-container>
+
+      <ng-container matColumnDef="available">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Disponibil </th>
+        <td mat-cell *matCellDef="let product"
+          [style]="{'color':product.available===category.STOCK ? '#4fbe04' : 'gray'}">
+          {{product.available}}
         </td>
-        <td><strong>{{product.category}}</strong></td>
-        <td>{{product.subcategory}}</td>
-        <td>
-          <div class="my-fields">
-            <span class="price"><strong>{{product.price | number: '1.2-2'}}</strong></span>
-            <span [ngStyle]="{'color':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
-              {{product.badge}}
-            </span>
-          </div>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Categorie </th>
+        <td mat-cell *matCellDef="let product"> {{product.category}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="subcategory">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Subcategorie </th>
+        <td mat-cell *matCellDef="let product"> {{product.subcategory}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+        <td mat-cell *matCellDef="let product">
+          <table>
+            <tr>
+              <td> <strong> {{product.price | number: '1.2-2'}} </strong> </td>
+            </tr>
+            <tr>
+              <td [ngStyle]="{'color':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+                {{product.badge}}
+              </td>
+            </tr>
+          </table>
         </td>
-        <!-- <td>
-            <div class="my-fields">
-              <span class="line">Display: <strong>{{product.display ? product.display : " - "}}</strong></span>
-              <span class="line">Power: <strong>{{product.power ? product.power : " - "}}</strong></span>
-              <span class="line">Capacity: <strong>{{product.capacity ? product.capacity : " - "}}</strong></span>
-              <span class="line">Connect: <strong>{{product.connect ? product.connect : " - "}}</strong></span>
-            </div>
-          </td> -->
-        <td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> ACTION </th>
+        <td mat-cell *matCellDef="let product">
           <a [routerLink]="'/admin/product/update/' + product.urlKey">
-            <button class="btn-edit">
+            <button mat-icon-button color="accent">
               <mat-icon>edit</mat-icon>
             </button>
           </a>
-
-          <button class="btn-delete" (click)="deleteProductDialog(product)">
+          <button mat-icon-button color="warn" (click)="deleteProductDialog(product)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="14">Nu s-a gasit nimic dupa cuvantul: "{{input.value}}"</td>
       </tr>
-    </tbody>
-  </table>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[50, 100]" aria-label="Select page of products">
+    </mat-paginator>
+
+  </div>
 
 </div>

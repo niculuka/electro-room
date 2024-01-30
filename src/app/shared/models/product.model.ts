@@ -134,3 +134,26 @@ export class Product {
         this.specifications = specifications;
     }
 }
+
+export interface IProduct {
+    id: number;
+    name: string;
+    urlKey: string;
+    description: string;
+    brand: string;
+    department: string;
+    type: string;
+    typeUrlKey: string;
+    category: string;
+    categoryUrlKey: string;
+    subcategory: string;
+    image: string;
+    badge: string;
+    available: string;
+    favorite: boolean;
+    compare: boolean;
+    price: number;
+    gallery: Array<ProductGallery>;
+    descriptions: Array<ProductDescription>;
+    specifications: Array<ProductSpecification>;
+  }
