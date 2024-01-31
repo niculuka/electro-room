@@ -27,7 +27,7 @@ export class MyOrderComponent implements OnInit {
     private toastrService: ToastrService
   ) {
     this.authService.currentUser.subscribe(data => {
-      this.id = data.userId;
+      this.id = data.id;
     })
   }
 

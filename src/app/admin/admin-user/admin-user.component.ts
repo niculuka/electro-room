@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { DialogUserDeleteComponent } from 'src/app/dialogs/dialog-user-delete/dialog-user-delete.component';
 import { ROLE } from 'src/app/shared/enums/electro.enum';
-import { User } from 'src/app/shared/models/user.model';
+import { IUser, User } from 'src/app/shared/models/user.model';
 import { AdminUserService } from 'src/app/shared/services/admin-user.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -12,14 +15,25 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   templateUrl: './admin-user.component.html',
   styleUrls: ['./admin-user.component.css']
 })
-export class AdminUserComponent implements OnInit {
+export class AdminUserComponent implements OnInit, OnDestroy {
 
-  protected users: Array<User> = [];
+  protected users: Array<IUser> = [];
   protected user: User = new User();
   userRole: ROLE = ROLE.USER;
 
   currentUser: User = new User();
   errorMessage: string = "";
+
+  @Input() activeSubtitleName: any;
+  @Input() activeSubtitleUrlKey: any;
+
+  displayedColumns: string[] = ['index', 'name', 'username', 'phone', 'address', 'date', 'role', 'active', 'delete'];
+  dataSource!: MatTableDataSource<IUser>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  private sub0: any;
+  private sub1: any;
 
   constructor(
     private adminUserService: AdminUserService,
@@ -27,20 +41,28 @@ export class AdminUserComponent implements OnInit {
     private toastrService: ToastrService,
     public matDialog: MatDialog
   ) {
-    this.authService.currentUser.subscribe(data => {
+    this.sub0 = this.authService.currentUser.subscribe(data => {
       this.currentUser = data;
     });
   }
 
   ngOnInit(): void {
-    this.adminUserService.findAllUsersService().subscribe(data => {
+    this.sub1 = this.adminUserService.findAllUsersService().subscribe(data => {
       this.users = data;
+      this.dataSource = new MatTableDataSource(this.users);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) this.dataSource.paginator.firstPage();
   }
 
   changeRole(user: User) {
     this.user = user;
-
     if (this.currentUser.username === this.user.username) {
       this.toastrService.warning("Cannot change this role!", this.currentUser.username)
       this.errorMessage = "Cannot change this role!";
@@ -78,7 +100,7 @@ export class AdminUserComponent implements OnInit {
 
     let enabled = this.user.enabled === false ? true : false;
 
-    this.adminUserService.changeEnabledService(this.user.userId, enabled).subscribe({
+    this.adminUserService.changeEnabledService(this.user.id, enabled).subscribe({
       next: () => {
         window.location.reload();
       },
@@ -123,4 +145,8 @@ export class AdminUserComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.sub0?.unsubscribe();
+    this.sub1?.unsubscribe();
+  }
 }

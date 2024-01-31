@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
   ) {
-    if (this.authService.currentUserValue?.userId) {
+    if (this.authService.currentUserValue?.id) {
       this.router.navigate(["/profile"])
       return;
     }

@@ -49,7 +49,7 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let userId: any = this.authService.currentUserValue.userId;
+    let userId: any = this.authService.currentUserValue.id;
     this.order.userIdGet = userId;
     this.order.nameGet = this.authService.currentUserValue.name;
     this.order.emailGet = this.authService.currentUserValue.email;
@@ -81,10 +81,10 @@ export class OrderComponent implements OnInit {
 
   createOrder() {
     if (this.order.conditions) {
-      if (!this.authService.currentUserValue.userId) {
+      if (!this.authService.currentUserValue.id) {
         return;
       }
-      this.order.userIdGet = this.authService.currentUserValue.userId;
+      this.order.userIdGet = this.authService.currentUserValue.id;
 
       if (this.order.paymentType === PAYMENT_TYPE.CASH) {
         this.creatingMethod();

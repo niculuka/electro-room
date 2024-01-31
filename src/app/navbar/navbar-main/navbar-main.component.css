@@ -146,7 +146,6 @@ mat-icon {
   top: 60px;
   left: 0;
   float: left;
-  overflow-y: scroll;
   margin: 0;
   width: 80vw;
   max-height: 80vh;

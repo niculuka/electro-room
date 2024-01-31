@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder
   ) {
-    if (this.authService.currentUserValue?.userId) {
+    if (this.authService.currentUserValue?.id) {
       this.router.navigate(["/profile"])
       return;
     }

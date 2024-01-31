@@ -39,7 +39,6 @@
                 <mat-icon (click)="drawer.toggle()">menu</mat-icon>
             </div>
             <div class="menu-content">
-
                 <div class="insert-page">
                     <app-admin-product *ngIf="activeSubtitle.name==category.LAPTOP
                                             ||activeSubtitle.name==category.LAPTOP_ACCESSORY
@@ -49,10 +48,11 @@
                     </app-admin-product>
                     <app-admin-order *ngIf="activeSubtitle.name==order.ORDERS_LIST"></app-admin-order>
                     <app-admin-item *ngIf="activeSubtitle.name==order.ORDED_PRODUCTS"></app-admin-item>
-                    <app-admin-user *ngIf="activeSubtitle.name==user.USERS_LIST"></app-admin-user>
+                    <app-admin-user *ngIf="activeSubtitle.name==user.USERS_LIST"
+                        [activeSubtitleName]="activeSubtitle.name" [activeSubtitleUrlKey]="activeSubtitle.urlKey">
+                    </app-admin-user>
                     <app-admin-token *ngIf="activeSubtitle.name==user.TOKENS"></app-admin-token>
                 </div>
-
             </div>
         </div>
     </mat-drawer-container>

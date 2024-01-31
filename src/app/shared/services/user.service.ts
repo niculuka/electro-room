@@ -29,7 +29,7 @@ export class UserService extends BearerService {
   }
 
   deleteUserProfileService(user: User): Observable<any> {
-    return this.http.delete(API_URL + "/profile/" + user.userId, { headers: this.getHeaders });
+    return this.http.delete(API_URL + "/profile/" + user.id, { headers: this.getHeaders });
   }
 
   

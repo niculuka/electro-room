@@ -37,7 +37,7 @@ export class AdminUserService extends BearerService {
   }
 
   deleteUserService(user: User): Observable<any> {
-    return this.http.delete(`${API_URL}/users/${user.userId}`, { headers: this.getHeaders });
+    return this.http.delete(`${API_URL}/users/${user.id}`, { headers: this.getHeaders });
   }
 
 }

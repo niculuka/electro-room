@@ -31,7 +31,7 @@ export class ProfileComponent {
   ) {
     this.authService.currentUser.subscribe(data => {
       this.currentUser = data;
-      this.user.userId = data.userId;
+      this.user.id = data.id;
     })
   }
 
@@ -80,7 +80,7 @@ export class ProfileComponent {
   }
 
   deleteAccount(user: User) {
-    if (this.currentUser.userId !== user.userId) return;
+    if (this.currentUser.id !== user.id) return;
 
     bcrypt.compare(this.currentUser.oldPassword, this.currentUser.password, (err: any, isMatch: any) => {
       if (err) { console.log(err); return; }

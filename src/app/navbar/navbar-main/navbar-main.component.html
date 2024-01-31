@@ -113,7 +113,7 @@
 
 
         <!-- LOGIN (login, register) -------------------------------------------------- -->
-        <li class="dropdown" *ngIf="!currentUser?.userId">
+        <li class="dropdown" *ngIf="!currentUser?.id">
           <div #log class="elements" (click)="toggleLog()">
             <mat-icon>perm_identity</mat-icon>
             <span class="hide">Cont</span>
@@ -128,7 +128,7 @@
 
 
         <!-- LOGOUT (profile, order, logout) ------------------------------------------- -->
-        <li class="dropdown" *ngIf="currentUser?.userId">
+        <li class="dropdown" *ngIf="currentUser?.id">
           <div #log class="elements" (click)="toggleLog()">
             <span id="username">{{userFirstChar}}</span>
             <mat-icon class="hide">expand_more</mat-icon>
