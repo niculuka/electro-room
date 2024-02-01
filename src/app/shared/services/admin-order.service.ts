@@ -24,12 +24,12 @@ export class AdminOrderService extends BearerService{
     return this.http.get(ORDER_URL + "/orders", { headers: this.getHeaders })
   }
 
-  updateStatusService(orderId: number, status: string): Observable<any> {
-    return this.http.put(ORDER_URL + "/status/" + status, orderId, { headers: this.getHeaders });
+  updateStatusService(id: number, status: string): Observable<any> {
+    return this.http.put(ORDER_URL + "/status/" + status, id, { headers: this.getHeaders });
   }
 
   deleteOrderService(order: Order): Observable<any> {
-    return this.http.delete(ORDER_URL + "/orders/" + order.orderId, { headers: this.getHeaders });
+    return this.http.delete(ORDER_URL + "/orders/" + order.id, { headers: this.getHeaders });
   }
 
 }

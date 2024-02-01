@@ -2,7 +2,7 @@
     <div class="content-admin">
 
         <div class="title">
-            <h1><strong>ORDERS {{order.orderId}}</strong></h1>
+            <h1><strong>ORDERS {{order.id}}</strong></h1>
             <h3>Orders number: {{orders.length}}</h3>
         </div>
 
@@ -24,7 +24,7 @@
 
             <tbody class="bottom-line" *ngFor="let order of orders">
                 <tr class="client">
-                    <td><strong>{{order.orderId}}</strong></td>
+                    <td><strong>{{order.id}}</strong></td>
                     <td>{{order.createdAt}}</td>
                     <td>{{order.paymentType}}</td>
                     <td>{{order.delivery}} Lei</td>
@@ -48,7 +48,7 @@
                     <td colspan="4">{{order.phoneGet}}</td>
                 </tr>
                 <tr *ngFor="let item of order.items">
-                    <td>{{item.itemId}}</td>
+                    <td>{{item.id}}</td>
                     <td colspan="1"><strong>{{item.productName}}</strong></td>
                     <td>{{item.quantity}} buc</td>
                     <td colspan="5">{{item.price}} Lei</td>
@@ -60,7 +60,7 @@
         <table class="table-col" *ngFor="let order of orders">
             <tbody>
                 <tr>
-                    <th colspan="3">{{order.orderId}}</th>
+                    <th colspan="3">{{order.id}}</th>
                 </tr>
                 <tr>
                     <th>Date</th>

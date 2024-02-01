@@ -25,7 +25,7 @@ export class AdminItemService extends BearerService {
   }
 
   deleteItemService(item: CartItem): Observable<any> {
-    return this.http.delete(ITEM_URL + "/items/" + item.itemId, { headers: this.getHeaders });
+    return this.http.delete(ITEM_URL + "/items/" + item.id, { headers: this.getHeaders });
   }
 
 }

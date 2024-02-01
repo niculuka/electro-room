@@ -43,7 +43,7 @@ table {
 
 .mat-row:hover {
     background: rgb(220, 20, 110, 0.1);
-  }
+}
 
 th,
 td {
@@ -89,6 +89,10 @@ mat-icon {
 
     h1 {
         font-size: 22px;
+    }
+
+    .mat-row:hover {
+        background: none;
     }
 
     th,

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DialogOrderDeleteComponent } from '../../dialogs/dialog-order-delete/dialog-order-delete.component';
 import { CartItem } from '../../shared/models/cart-item.model';
-import { ORDER } from '../../shared/enums/electro.enum';
+import { ORDER, PAYMENT_TYPE } from '../../shared/enums/electro.enum';
 import { IOrder, Order } from '../../shared/models/order.model';
 import { AdminOrderService } from '../../shared/services/admin-order.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,18 +22,21 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
 
   items: Array<CartItem> = [];
   item!: CartItem;
-  status: string = "";
+  currentStatus: string = "";
+  paymentType = PAYMENT_TYPE;
 
   @Input() activeSubtitleName: any;
   @Input() activeSubtitleUrlKey: any;
 
-  displayedColumns: string[] = ['index', 'date', 'paymentType', 'status', 'totalPrice', 'delete',];
+  displayedColumns: string[] = ['index', 'nameGet', 'usernameGet', 'date', 'paymentType', 'status', 'totalPrice', 'delete',];
   dataSource!: MatTableDataSource<IOrder>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   private sub0: any;
   private sub1: any;
+  private sub2: any;
+  private sub3: any;
 
   constructor(
     private adminOrderService: AdminOrderService,
@@ -66,11 +69,11 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
   }
 
   updateStatus(order: Order) {
-    if (order.status === ORDER.NEW) this.status = ORDER.DONE;
-    if (order.status === ORDER.DONE) this.status = ORDER.CANCELED;
-    if (order.status === ORDER.CANCELED) this.status = ORDER.NEW;
+    if (order.status === ORDER.NEW) this.currentStatus = ORDER.DONE;
+    if (order.status === ORDER.DONE) this.currentStatus = ORDER.CANCELED;
+    if (order.status === ORDER.CANCELED) this.currentStatus = ORDER.NEW;
 
-    this.sub1 = this.adminOrderService.updateStatusService(order.orderId, this.status).subscribe({
+    this.sub1 = this.adminOrderService.updateStatusService(order.id, this.currentStatus).subscribe({
       next: () => {
         window.location.reload();
       },
@@ -83,7 +86,7 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
 
   deleteOrderDialog(order: Order) {
     const dialogRef = this.matDialog.open(DialogOrderDeleteComponent, { data: order });
-    dialogRef.afterClosed().subscribe({
+    this.sub2 = dialogRef.afterClosed().subscribe({
       next: result => {
         if (result === "true") {
           this.deleteOrder(order);
@@ -96,7 +99,7 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
   }
 
   deleteOrder(order: Order) {
-    this.adminOrderService.deleteOrderService(order).subscribe({
+    this.sub3 = this.adminOrderService.deleteOrderService(order).subscribe({
       next: () => {
         window.location.reload();
       },
@@ -110,5 +113,7 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub0?.unsubscribe();
     this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe();
+    this.sub3?.unsubscribe();
   }
 }

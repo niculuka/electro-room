@@ -96,6 +96,10 @@ mat-icon {
     font-size: 22px;
   }
 
+  .mat-row:hover {
+    background: none;
+  }
+
   th,
   td {
     font-size: 12px;

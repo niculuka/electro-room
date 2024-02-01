@@ -3,7 +3,7 @@ import { CartItem } from "./cart-item.model";
 import { ORDER, PAYMENT_TYPE } from "../enums/electro.enum";
 
 export class Order {
-  orderId!: number;
+  id!: number;
   items!: CartItem[];
 
   subtotal!: number;
@@ -17,7 +17,8 @@ export class Order {
   status: string = ORDER.NEW;
 
   userIdGet!: number;
-  nameGet!: string;
+  usernameGet!: string;
+  nameGet!: string;  
   emailGet!: string;
   addressGet!: string;  
   phoneGet!: string;
@@ -39,6 +40,7 @@ export interface IOrder {
   status: string;
 
   userIdGet: number;
+  usernameGet: string;
   nameGet: string;
   emailGet: string;
   addressGet: string;  

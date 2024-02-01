@@ -4,7 +4,8 @@ export class CartItem {
 
   constructor(public product: Product) { }
 
-  itemId: number | undefined;
+  id?: number;
+  productId?: number = this.product.id;
   productName: string = this.product.name;
   quantity: number = 1;
   price: number = this.product.price;

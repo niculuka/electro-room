@@ -51,7 +51,8 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     let userId: any = this.authService.currentUserValue.id;
     this.order.userIdGet = userId;
-    this.order.nameGet = this.authService.currentUserValue.name;
+    this.order.usernameGet = this.authService.currentUserValue.username;
+    this.order.nameGet = this.authService.currentUserValue.name;    
     this.order.emailGet = this.authService.currentUserValue.email;
     this.order.addressGet = this.authService.currentUserValue.address;
     this.order.phoneGet = this.authService.currentUserValue.phone;
