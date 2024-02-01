@@ -19,9 +19,9 @@ export enum ORDER {
     ORDED_PRODUCTS = "Produse Comandate",
     ORDED_PRODUCTS_URL_KEY = "items",
     
-    NEW = "Nou",
-    DONE = "Facut",
-    CANCELED = "Anulat",
+    NEW = "Noua",
+    DONE = "Livrata",
+    CANCELED = "Anulata",
 }
 
 export enum PAYMENT_TYPE {

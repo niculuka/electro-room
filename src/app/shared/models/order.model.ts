@@ -23,3 +23,25 @@ export class Order {
   phoneGet!: string;
 
 }
+
+export interface IOrder {
+  id: number;
+  items: CartItem[];
+
+  subtotal: number;
+  delivery: number;
+  totalPrice: number;
+
+  paymentType: string;
+  conditions: boolean;
+
+  createdAt: string;
+  status: string;
+
+  userIdGet: number;
+  nameGet: string;
+  emailGet: string;
+  addressGet: string;  
+  phoneGet: string;
+
+}

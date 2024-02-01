@@ -46,7 +46,9 @@
                                             ||activeSubtitle.name==category.MONITOR"
                         [activeSubtitleName]="activeSubtitle.name" [activeSubtitleUrlKey]="activeSubtitle.urlKey">
                     </app-admin-product>
-                    <app-admin-order *ngIf="activeSubtitle.name==order.ORDERS_LIST"></app-admin-order>
+                    <app-admin-order *ngIf="activeSubtitle.name==order.ORDERS_LIST"
+                        [activeSubtitleName]="activeSubtitle.name" [activeSubtitleUrlKey]="activeSubtitle.urlKey">
+                    </app-admin-order>
                     <app-admin-item *ngIf="activeSubtitle.name==order.ORDED_PRODUCTS"></app-admin-item>
                     <app-admin-user *ngIf="activeSubtitle.name==user.USERS_LIST"
                         [activeSubtitleName]="activeSubtitle.name" [activeSubtitleUrlKey]="activeSubtitle.urlKey">

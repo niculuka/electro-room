@@ -1,6 +1,7 @@
 .container-admin {
   display: block;
   width: 100%;
+  cursor: default;
   /* border: 1px solid black; */
 }
 
@@ -40,9 +41,10 @@ table {
   /* border: 2px solid rgb(0, 42, 255); */
 }
 
-/* tr {
-  padding: 10px !important;
-} */
+/* tr  */
+.mat-row:hover {
+  background: rgb(220, 20, 110, 0.1);
+}
 
 th,
 td {
@@ -88,7 +90,7 @@ mat-icon {
   /* border: 1px solid rgb(255, 0, 0); */
 }
 
-@media(max-width: 866px) {
+@media(max-width: 1020px) {
 
   h1 {
     font-size: 22px;

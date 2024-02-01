@@ -27,7 +27,7 @@ export class AdminUserComponent implements OnInit, OnDestroy {
   @Input() activeSubtitleName: any;
   @Input() activeSubtitleUrlKey: any;
 
-  displayedColumns: string[] = ['index', 'name', 'username', 'phone', 'address', 'date', 'role', 'active', 'delete'];
+  displayedColumns: string[] = ['index', 'name', 'username', 'email', 'phone', 'date', 'role', 'active', 'delete'];
   dataSource!: MatTableDataSource<IUser>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
