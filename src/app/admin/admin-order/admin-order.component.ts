@@ -28,7 +28,7 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
   @Input() activeSubtitleName: any;
   @Input() activeSubtitleUrlKey: any;
 
-  displayedColumns: string[] = ['index', 'nameGet', 'usernameGet', 'date', 'paymentType', 'status', 'totalPrice', 'delete',];
+  displayedColumns: string[] = ['index', 'id', 'nameGet', 'usernameGet', 'date', 'paymentType', 'status', 'totalPrice', 'delete',];
   dataSource!: MatTableDataSource<IOrder>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

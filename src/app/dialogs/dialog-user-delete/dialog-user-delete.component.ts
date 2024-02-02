@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminUserComponent } from '../../admin/admin-user/admin-user.component';
 
@@ -7,15 +7,12 @@ import { AdminUserComponent } from '../../admin/admin-user/admin-user.component'
   templateUrl: './dialog-user-delete.component.html',
   styleUrls: ['./dialog-user-delete.component.css']
 })
-export class DialogUserDeleteComponent implements OnInit {
+export class DialogUserDeleteComponent {
 
-  username: any;
+  user: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: AdminUserComponent) {
-    this.username = data;
-  }
-
-  ngOnInit(): void {
+    this.user = data;
   }
 
 }

@@ -1,66 +1,73 @@
 <div class="container-admin">
-  <div class="content-admin">
 
-    <div class="title">
-      <h1><strong>ITEMS</strong></h1>
-      <h3>Items number: {{items.length}}</h3>
-    </div>
+  <div class="title">
+    <h1><strong>{{activeSubtitleName}}</strong> ({{items.length}}  {{items.length==1?'produs':'produse'}})</h1>
 
-    <table class="table-row">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Order Id</th>
-          <th>Action</th>
-        </tr>
-      </thead>
+    <mat-form-field>
+      <mat-label>Cauta</mat-label>
+      <input matInput placeholder="Cauta comanda aici!" (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+  </div>
 
-      <tbody>
-        <tr *ngFor="let item of items">
-          <th>{{item.id}}</th>
-          <td><strong>{{item.productName}}</strong></td>
-          <td>{{item.quantity}} buc</td>
-          <td>{{item.price}} Lei</td>
-          <td>{{item.orderIdFk}}</td>
-          <td>
-            <button class="btn-delete" (click)="deleteItemDialog(item)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
+  <div class="container-table">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef> Nr </th>
+        <td mat-cell *matCellDef="let item; index as ind"> {{ind+1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nume</th>
+        <td mat-cell *matCellDef="let item"> Item {{item.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Produs</strong> </th>
+        <td mat-cell *matCellDef="let item"> <strong>{{item.productName}}</strong> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="productId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong> Numar Produs </strong> </th>
+        <td mat-cell *matCellDef="let item"> sku: <strong>{{item.productId}}</strong></td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantitate</th>
+        <td mat-cell *matCellDef="let item"> {{item.quantity}} buc</td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderIdFk">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Numar Comanda</strong></th>
+        <td mat-cell *matCellDef="let item"> id:  <strong>{{item.orderIdFk}}</strong> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Pret</strong> </th>
+        <td mat-cell *matCellDef="let item"> <strong>{{item.price | number: '1.2-2'}}</strong> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Sterge </th>
+        <td mat-cell *matCellDef="let item">
+          <a (click)="deleteItemDialog(item)">
+            <mat-icon color="warn">delete</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="14">Nu s-a gasit nici un rezultat dupa: <strong>"{{input.value}}"</strong></td>
+      </tr>
+
     </table>
 
-    <table class="table-col"  *ngFor="let item of items">
-      <tbody>
-        <tr>
-          <th colspan="2">{{item.id}}</th>
-        </tr>
-        <tr>
-          <th>Product Name</th>
-          <td>{{item.productName}}</td>
-        </tr>
-        <tr>
-          <th>Quantity</th>
-          <td>{{item.quantity}} buc</td>
-        </tr>
-        <tr>
-          <th>Price</th>
-          <td>{{item.price}} Lei</td>
-        </tr>
-        <tr>
-          <th>Order Id</th>
-          <td>{{item.orderIdFk}}</td>
-        </tr>
-        <tr>
-          <th>Action</th>
-          <td>
-            <button class="btn-delete" (click)="deleteItemDialog(item)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <mat-paginator [pageSizeOptions]="[25, 10, 5]" aria-label="Select page of products">
+    </mat-paginator>
 
   </div>
+
 </div>

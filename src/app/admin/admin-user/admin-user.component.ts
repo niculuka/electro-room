@@ -112,7 +112,7 @@ export class AdminUserComponent implements OnInit, OnDestroy {
   }
 
   deleteUserDialog(user: User) {
-    const dialogRef = this.matDialog.open(DialogUserDeleteComponent, { data: user.name });
+    const dialogRef = this.matDialog.open(DialogUserDeleteComponent, { data: { name: user.name, id: user.id } });
     dialogRef.afterClosed().subscribe({
       next: result => {
         if (result === "true") {

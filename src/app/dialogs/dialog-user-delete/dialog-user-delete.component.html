@@ -1,8 +1,10 @@
 <div class="delete">
-    <h2>Delete this user ?</h2>
-    <p><strong>{{username}}</strong></p>
+    <h2>Stergeti acest utilizator ?</h2>
+
+    <p><strong>{{user.id}}. {{user.name}}</strong></p>
+
     <div class="buttons">
-        <button class="btn-cancel" mat-dialog-close="false">Cancel</button>
-        <button class="btn-delete" mat-dialog-close="true" cdkFocusInitial>Delete</button>
+        <button mat-raised-button mat-dialog-close="false">Anuleaza</button>
+        <button mat-raised-button color="warn" mat-dialog-close="true">Sterge</button>
     </div>
 </div>

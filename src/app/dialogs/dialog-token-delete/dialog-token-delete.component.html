@@ -1,8 +1,10 @@
 <div class="delete">
-    <h2>Delete this token ?</h2>
-    <p><strong>{{tokenId}}</strong></p>
+    <h2>Stergeti acest token ?</h2>
+
+    <p><strong>{{token.id}}. {{token.token}}</strong></p>
+
     <div class="buttons">
-        <button class="btn-cancel" mat-dialog-close="false">Cancel</button>
-        <button class="btn-delete" mat-dialog-close="true" cdkFocusInitial>Delete</button>
+        <button mat-raised-button mat-dialog-close="false">Anuleaza</button>
+        <button mat-raised-button color="warn" mat-dialog-close="true" >Sterge</button>
     </div>
 </div>

@@ -25,6 +25,6 @@ export class AdminTokenService extends BearerService{
   }
 
   deleteTokenService(token: Token): Observable<any> {
-    return this.http.delete(TOKEN_URL + "/tokens/" + token.tokenId, { headers: this.getHeaders });
+    return this.http.delete(TOKEN_URL + "/tokens/" + token.id, { headers: this.getHeaders });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminTokenComponent } from '../../admin/admin-token/admin-token.component';
 
@@ -7,15 +7,12 @@ import { AdminTokenComponent } from '../../admin/admin-token/admin-token.compone
   templateUrl: './dialog-token-delete.component.html',
   styleUrls: ['./dialog-token-delete.component.css']
 })
-export class DialogTokenDeleteComponent implements OnInit {
+export class DialogTokenDeleteComponent {
 
-  tokenId: any;
+  token: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: AdminTokenComponent) {
-    this.tokenId = data;
-  }
-
-  ngOnInit(): void {
+    this.token = data;
   }
 
 }

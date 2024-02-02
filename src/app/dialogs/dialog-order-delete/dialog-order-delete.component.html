@@ -1,8 +1,18 @@
 <div class="delete">
-    <h2>Delete this order ?</h2>
-    <p><strong>{{order.id}}. of "{{order.nameGet}}"?</strong></p>
+    <h2>Stergeti aceasta comanda ?</h2>
+
+    <p><strong>sku: {{order.id}}. {{order.nameGet}} </strong></p>
+    <div *ngFor="let item of order.items">
+        <table>
+            <tr>
+                <td>{{item.productId}}.</td>
+                <td>{{item.productName}}</td>
+            </tr>
+        </table>
+    </div>
+
     <div class="buttons">
-        <button class="btn-cancel" mat-dialog-close="false">Cancel</button>
-        <button class="btn-delete" mat-dialog-close="true" cdkFocusInitial>Delete</button>
+        <button mat-raised-button mat-dialog-close="false">Anuleaza</button>
+        <button mat-raised-button color="warn" mat-dialog-close="true" >Sterge</button>
     </div>
 </div>
