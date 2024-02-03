@@ -17,6 +17,7 @@ export class AdminProductUpdateComponent implements OnInit {
   protected productImages: Array<ProductImages> = LAPTOP_IMAGES;
 
   errorMessage: string = "";
+  category = CATEGORY;
 
   handleDropdownMenu = false;
   isDropdownMenuOpen: string = "display: none;";
@@ -32,6 +33,7 @@ export class AdminProductUpdateComponent implements OnInit {
       let urlKey = params.get('urlKey') || "";
       this.productService.getProductByNameService(urlKey).subscribe(data => {
         this.product = data;
+        console.log(this.product)
         this.setImageGallery();
       });
     });    

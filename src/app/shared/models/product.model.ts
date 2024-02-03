@@ -77,16 +77,15 @@ export class Product {
     name: string = "";
     urlKey: string = "";
     description: string = "";
-    brand: string = "";
-    department: string = "";
     type: string = "";
     typeUrlKey: string = "";
     category: string = "";
     categoryUrlKey: string = "";
     subcategory: string = "";
+    brand: string = "";
     image: string = "";
-    badge: string = "";
     available: string = "";
+    badge: string = "";
     favorite: boolean = false;
     compare: boolean = false;
     price: number = 0;
@@ -99,16 +98,15 @@ export class Product {
         name: string = "",
         urlKey: string = "",
         description: string = "",
-        brand: string = "",
-        department: string = "",
         type: string = "",
         typeUrlKey: string = "",
         category: string = "",
         categoryUrlKey: string = "",
         subcategory: string = "",
+        brand: string = "",
         image: string = "",
-        badge: string = "",
         available: string = "",
+        badge: string = "",
         price: number = 0,
         gallery: Array<ProductGallery> = [],
         descriptions: Array<ProductDescription> = [],
@@ -118,16 +116,15 @@ export class Product {
         this.name = name;
         this.urlKey = urlKey;
         this.description = description;
-        this.brand = brand;
-        this.department = department;
         this.type = type;
         this.typeUrlKey = typeUrlKey;
         this.category = category;
         this.categoryUrlKey = categoryUrlKey;
         this.subcategory = subcategory;
+        this.brand = brand;
         this.image = image;
-        this.badge = badge;
         this.available = available;
+        this.badge = badge;
         this.price = price;
         this.gallery = gallery;
         this.descriptions = descriptions;
@@ -140,20 +137,12 @@ export interface IProduct {
     name: string;
     urlKey: string;
     description: string;
-    brand: string;
-    department: string;
     type: string;
-    typeUrlKey: string;
     category: string;
-    categoryUrlKey: string;
     subcategory: string;
+    brand: string;
     image: string;
-    badge: string;
     available: string;
-    favorite: boolean;
-    compare: boolean;
+    badge: string;
     price: number;
-    gallery: Array<ProductGallery>;
-    descriptions: Array<ProductDescription>;
-    specifications: Array<ProductSpecification>;
-  }
+}

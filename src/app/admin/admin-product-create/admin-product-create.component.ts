@@ -27,7 +27,7 @@ export class AdminProductCreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.newProduct.image = "assets/images/blank600.png";
+    this.newProduct.image = "assets/images/main/blank600.png";
   }
 
   createProduct() {

@@ -10,7 +10,7 @@ export interface CarouselMain {
 export const CAROUSEL_MAIN: CarouselMain[] = [
     {
         id: 0,
-        src: "assets/carousel/stock_busters.png",
+        src: "assets/images/carousel/stock_busters.png",
         alt: "laptops.png",
         link: "/laptops",
         isChecked: true,
@@ -18,7 +18,7 @@ export const CAROUSEL_MAIN: CarouselMain[] = [
     },
     {
         id: 1,
-        src: "assets/carousel/bags.png",
+        src: "assets/images/carousel/bags.png",
         alt: "bags.png",
         link: "/laptop-auxs/bags",
         isChecked: false,
@@ -26,7 +26,7 @@ export const CAROUSEL_MAIN: CarouselMain[] = [
     },
     {
         id: 2,
-        src: "assets/carousel/hards.png",
+        src: "assets/images/carousel/hards.png",
         alt: "hards.png",
         link: "/laptop-auxs/hards",
         isChecked: false,

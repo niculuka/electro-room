@@ -16,9 +16,9 @@ export class CarouselComponent {
   images: Array<CarouselMain> = CAROUSEL_MAIN;
 
   images2 = [
-    '/assets/carousel/romb1.png',
-    '/assets/carousel/romb2.png',
-    '/assets/carousel/romb3.png'
+    '/assets/images/carousel/romb1.png',
+    '/assets/images/carousel/romb2.png',
+    '/assets/images/carousel/romb3.png'
   ];
 
   paused = false;

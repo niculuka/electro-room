@@ -4,10 +4,7 @@
         <h1><strong>UPDATE PRODUCT</strong></h1>
 
         <div class="form-group-dialog">
-            <label for="id">Id: {{product.id}}</label>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
-            </div>
+            <label>Id: {{product.id}}</label>
         </div>
 
         <div class="form-group-dialog">
@@ -29,40 +26,10 @@
         </div>
 
         <div class="form-group-dialog">
-            <label for="brand">Brand</label>
-            <select name="brand" #brandSelect [(ngModel)]="product.brand">
-                <option value="ACER">ACER</option>
-                <option value="ADATA">ADATA</option>
-                <option value="ALLVIEW">ALLVIEW</option>
-                <option value="APPLE">APPLE</option>
-                <option value="ASUS">ASUS</option>
-                <option value="DELL">DELL</option>
-                <option value="HAMA">HAMA</option>
-                <option value="HP">HP</option>
-                <option value="IPHONE">IPHONE</option>
-                <option value="LENOVO">LENOVO</option>
-                <option value="KINGSTON">KINGSTON</option>
-                <option value="PROMATE">PROMATE</option>
-                <option value="RIVACASE">RIVACASE</option>
-                <option value="SAMSONITE">SAMSONITE</option>
-                <option value="SAMSUNG">SAMSUNG</option>
-                <option value="SANDISK">SANDISK</option>
-                <option value="SEAGATE">SEAGATE</option>
-                <option value="TUMI">TUMI</option>
-                <option value="WD">WD</option>
-                <option value="XTORM">XTORM</option>
-
-            </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
-            </div>
-        </div>
-
-        <div class="form-group-dialog">
             <label for="type">Type</label>
             <select name="type" #typeSelect [(ngModel)]="product.type">
-                <option value="LAPTOPS">LAPTOPS</option>
-                <option value="LAPTOP_ACCESSORY">LAPTOP_ACCESSORY</option>
+                <option [value]="category.LAPTOP">{{category.LAPTOP}}</option>
+                <option [value]="category.LAPTOP_ACCESSORY">{{category.LAPTOP_ACCESSORY}}</option>
             </select>
             <div class="alert-container-dialog">
                 <div class="alert-dialog"></div>
@@ -71,15 +38,18 @@
 
         <div class="form-group-dialog">
             <label for="category">Category</label>
-            <select name="category" value="{{product.category}}" #categorySelect [(ngModel)]="product.category"
-                (click)="setImageGallery()">
-                <option value="LAPTOP_BUSINESS">LAPTOP_BUSINESS</option>
-                <option value="LAPTOP_GAMING">LAPTOP_GAMING</option>
-                <option value="LAPTOP_HOME">LAPTOP_HOME</option>
-                <option value="LAPTOP_ULTRA">LAPTOP_ULTRA</option>
-                <option value="LAPTOP_BAG">LAPTOP_BAG</option>
-                <option value="LAPTOP_CHARGER">LAPTOP_CHARGER</option>
-                <option value="LAPTOP_HARD">LAPTOP_HARD</option>
+            <select name="category" #categorySelect [(ngModel)]="product.category" (click)="setImageGallery()">
+                <option [value]="category.LAPTOP_GAMING">{{category.LAPTOP_GAMING}}</option>
+                <option [value]="category.LAPTOP_BUSINESS">{{category.LAPTOP_BUSINESS}}</option>
+                <option [value]="category.LAPTOP_ULTRA">{{category.LAPTOP_ULTRA}}</option>
+                <option [value]="category.LAPTOP_HOME">{{category.LAPTOP_HOME}}</option>
+                <option [value]="category.LAPTOP_BAG">{{category.LAPTOP_BAG}}</option>
+                <option [value]="category.LAPTOP_CHARGER">{{category.LAPTOP_CHARGER}}</option>
+                <option [value]="category.EXTERNAL_BATTERY">{{category.EXTERNAL_BATTERY}}</option>
+                <option [value]="category.RAM_MEMORY">{{category.RAM_MEMORY}}</option>
+                <option [value]="category.PC_GAMING">{{category.PC_GAMING}}</option>
+                <option [value]="category.ALL_IN_ONE">{{category.ALL_IN_ONE}}</option>
+                <option [value]="category.MONITOR_PRO">{{category.MONITOR_PRO}}</option>
             </select>
             <div class="alert-container-dialog">
                 <div class="alert-dialog"></div>
@@ -88,18 +58,23 @@
 
         <div class="form-group-dialog">
             <label for="subcategory">Subcategory</label>
-            <select class="select-box" name="subcategory" #subcategorySelect [(ngModel)]="product.subcategory">
-                <option value="LAPTOP_BUSINESS">LAPTOP_BUSINESS</option>
-                <option value="LAPTOP_GAMING">LAPTOP_GAMING</option>
-                <option value="LAPTOP_HOME">LAPTOP_HOME</option>
-                <option value="LAPTOP_ULTRA">LAPTOP_ULTRA</option>
-                <option value="BRIEFCASE">BRIEFCASE</option>
-                <option value="SLEEVE">SLEEVE</option>
-                <option value="BACKPACK">BACKPACK</option>
-                <option value="CAR">CAR</option>
-                <option value="PLUG_IN">PLUG_IN</option>
-                <option value="HDD">HDD</option>
-                <option value="SSD">SSD</option>
+            <select name="subcategory" #subcategorySelect [(ngModel)]="product.subcategory">
+                <option [value]="category.LAPTOP_GAMING">{{category.LAPTOP_GAMING}}</option>
+                <option [value]="category.LAPTOP_BUSINESS">{{category.LAPTOP_BUSINESS}}</option>
+                <option [value]="category.LAPTOP_ULTRA">{{category.LAPTOP_ULTRA}}</option>
+                <option [value]="category.LAPTOP_HOME">{{category.LAPTOP_HOME}}</option>
+                <option [value]="category.BRIEFCASE">{{category.BRIEFCASE}}</option>
+                <option [value]="category.SLEEVE">{{category.SLEEVE}}</option>
+                <option [value]="category.BACKPACK">{{category.BACKPACK}}</option>
+                <option [value]="category.CAR">{{category.CAR}}</option>
+                <option [value]="category.PLUG_IN">{{category.PLUG_IN}}</option>
+                <option [value]="category.HDD">{{category.HDD}}</option>
+                <option [value]="category.SSD">{{category.SSD}}</option>
+                <option [value]="category.DDR3">{{category.DDR3}}</option>
+                <option [value]="category.DDR4">{{category.DDR4}}</option>
+                <option [value]="category.DDR5">{{category.DDR5}}</option>
+                <option [value]="category.MONITORS_FLAT">{{category.MONITORS_FLAT}}</option>
+                <option [value]="category.MONITORS_CURVED">{{category.MONITORS_CURVED}}</option>
             </select>
             <div class="alert-container-dialog">
                 <div class="alert-dialog"></div>
@@ -107,7 +82,40 @@
         </div>
 
         <div class="form-group-dialog">
+            <label for="brand">Brand</label>
+            <select name="brand" #brandSelect [(ngModel)]="product.brand">
+                <option [value]="category.ACER">{{category.ACER}}</option>
+                <option [value]="category.ADATA">{{category.ADATA}}</option>
+                <option [value]="category.ALLVIEW">{{category.ALLVIEW}}</option>
+                <option [value]="category.AMD">{{category.AMD}}</option>
+                <option [value]="category.APPLE">{{category.APPLE}}</option>
+                <option [value]="category.ASUS">{{category.ASUS}}</option>
+                <option [value]="category.DELL">{{category.DELL}}</option>
+                <option [value]="category.HAMA">{{category.HAMA}}</option>
+                <option [value]="category.HP">{{category.HP}}</option>
+                <option [value]="category.INTEL">{{category.INTEL}}</option>
+                <option [value]="category.IPHONE">{{category.IPHONE}}</option>
+                <option [value]="category.LENOVO">{{category.LENOVO}}</option>
+                <option [value]="category.KINGSTON">{{category.KINGSTON}}</option>
+                <option [value]="category.MYRIA">{{category.MYRIA}}</option>
+                <option [value]="category.MSI">{{category.MSI}}</option>
+                <option [value]="category.PHILIPS">{{category.PHILIPS}}</option>
+                <option [value]="category.PROMATE">{{category.PROMATE}}</option>
+                <option [value]="category.RIVACASE">{{category.RIVACASE}}</option>
+                <option [value]="category.SAMSONITE">{{category.SAMSONITE}}</option>
+                <option [value]="category.SAMSUNG">{{category.SAMSUNG}}</option>
+                <option [value]="category.SANDISK">{{category.SANDISK}}</option>
+                <option [value]="category.SEAGATE">{{category.SEAGATE}}</option>
+                <option [value]="category.TUMI">{{category.TUMI}}</option>
+                <option [value]="category.WD">{{category.WD}}</option>
+                <option [value]="category.XTORM">{{category.XTORM}}</option>
+            </select>
+            <div class="alert-container-dialog">
+                <div class="alert-dialog"></div>
+            </div>
+        </div>
 
+        <div class="form-group-dialog">
             <li class="dropdown">
                 <label for="image">Image: </label>
 
@@ -140,8 +148,8 @@
         <div class="form-group-dialog">
             <label for="available">Available</label>
             <select name="available" #availableSelect [(ngModel)]="product.available">
-                <option value="STOCK">STOCK</option>
-                <option value="DEPOSIT">DEPOSIT</option>
+                <option [value]="category.STOCK">{{category.STOCK}}</option>
+                <option [value]="category.DEPOSIT">{{category.DEPOSIT}}</option>
             </select>
             <div class="alert-container-dialog">
                 <div class="alert-dialog"></div>
@@ -151,8 +159,8 @@
         <div class="form-group-dialog">
             <label for="badge">Badge</label>
             <select name="badge" #alertSelect [(ngModel)]="product.badge">
-                <option value="TOP_FAVORITE">TOP_FAVORITE</option>
-                <option value="SUPER_PRICE">SUPER_PRICE</option>
+                <option [value]="category.TOP_FAVORITE">{{category.TOP_FAVORITE}}</option>
+                <option [value]="category.SUPER_PRICE">{{category.SUPER_PRICE}}</option>
             </select>
             <div class="alert-container-dialog">
                 <div class="alert-dialog"></div>
@@ -167,6 +175,15 @@
                 <div class="alert-dialog" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
             </div>
         </div>
+
+        <!-- <div class="form-group-dialog">
+            <label for="price">Price</label>
+            <input type="number" name="price" [(ngModel)]="product.price" #price="ngModel" min="0.1" max="1000000"
+                required>
+            <div class="alert-container-dialog">
+                <div class="alert-dialog" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
+            </div>
+        </div> -->
 
         <!-- <div class="form-group-dialog">
             <label for="power">Power</label>
