@@ -9,7 +9,7 @@ export class ProductDescription {
     title: string = "";
     text: string = "";
     image: string = "";
-    productId: number | undefined;
+    product_id_fk: number | undefined;
 }
 
 export class ProductSpecification {

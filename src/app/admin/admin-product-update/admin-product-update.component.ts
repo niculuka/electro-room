@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LAPTOP_BAG_IMAGES, LAPTOP_CHARGER_IMAGES, LAPTOP_HARD_IMAGES, LAPTOP_IMAGES, ProductImages } from 'src/app/shared/data/product-images.data';
 import { CATEGORY } from 'src/app/shared/enums/electro.enum';
-import { Product } from 'src/app/shared/models/product.model';
+import { Product, ProductDescription } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -14,6 +14,8 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class AdminProductUpdateComponent implements OnInit {
 
   protected product: Product = new Product();
+  protected descriptions: Array<ProductDescription> = [];
+  description: ProductDescription = new ProductDescription();
   protected productImages: Array<ProductImages> = LAPTOP_IMAGES;
 
   errorMessage: string = "";
@@ -33,23 +35,32 @@ export class AdminProductUpdateComponent implements OnInit {
       let urlKey = params.get('urlKey') || "";
       this.productService.getProductByNameService(urlKey).subscribe(data => {
         this.product = data;
-        console.log(this.product)
+        this.descriptions = this.product.descriptions;
+        // console.log(this.descriptions)
         this.setImageGallery();
       });
-    });    
+    });
   }
 
+  addDescription() {
+    this.descriptions.push(new ProductDescription());
+  }
+
+
+  
+
   updateProduct() {
-    this.product.urlKey = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
-    this.adminProductService.updateProductService(this.product).subscribe({
-      next: () => {
-        window.location.reload();
-      },
-      error: err => {
-        this.errorMessage = "Could not update product!";
-        console.log(err);
-      }
-    })
+    // this.product.urlKey = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
+    console.log(this.product.descriptions)
+    // this.adminProductService.updateProductService(this.product).subscribe({
+    //   next: () => {
+    //     window.location.reload();
+    //   },
+    //   error: err => {
+    //     this.errorMessage = "Could not update product!";
+    //     console.log(err);
+    //   }
+    // })
   }
 
   toggleDropdownMenu() {

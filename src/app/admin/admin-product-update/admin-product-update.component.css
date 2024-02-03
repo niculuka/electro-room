@@ -23,6 +23,12 @@ form {
     width: 100%;
 }
 
+.descriptions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 h1 {
     width: 100%;
     /* border: 2px solid black; */

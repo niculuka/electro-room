@@ -176,59 +176,44 @@
             </div>
         </div>
 
-        <!-- <div class="form-group-dialog">
-            <label for="price">Price</label>
-            <input type="number" name="price" [(ngModel)]="product.price" #price="ngModel" min="0.1" max="1000000"
-                required>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
-            </div>
-        </div> -->
 
-        <!-- <div class="form-group-dialog">
-            <label for="power">Power</label>
-            <select name="power" #powerSelect [(ngModel)]="product.power">
-                <option value="W45">W45</option>
-                <option value="W60">W60</option>
-                <option value="W65">W65</option>
-                <option value="W70">W70</option>
-                <option value="W85">W85</option>
-                <option value="W90">W90</option>
-                <option value="W120">W120</option>
-            </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
-            </div>
-        </div>
 
         <div class="form-group-dialog">
-            <label for="capacity">Capacity</label>
-            <select name="capacity" #capacitySelect [(ngModel)]="product.capacity">
-                <option value="GB120">GB120</option>
-                <option value="GB240">GB240</option>
-                <option value="GB256">GB256</option>
-                <option value="GB480">GB480</option>
-                <option value="GB500">GB500</option>
-                <option value="GB512">GB512</option>
-                <option value="T1">T1</option>
-                <option value="T2">T2</option>
-            </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
+
+            <label>Descriere</label>
+
+            <div class="descriptions" *ngFor="let description of product.descriptions">
+
+                <h1></h1>
+
+                <label>Id: {{description.id}}</label>
+
+                <input type="text" [name]="description.title" [(ngModel)]="description.title" maxlength="200">
+
+                <textarea [name]="description.text" [(ngModel)]="description.text" maxlength="1000">
+                </textarea>
+
+
+
+                <input type="text" [name]="description.image"  [(ngModel)]="description.image">
+
+
+                <div class="image-display">
+                    <img class="image" [src]="description.image">
+                </div>
+
+                <label>product_id_fk: {{description.product_id_fk}}</label>
+
+
             </div>
+
+            <!-- <mat-icon style="background: yellowgreen;" (click)="addDescription()">add</mat-icon> -->
+
         </div>
 
-        <div class="form-group-dialog">
-            <label for="connect">Connect</label>
-            <select name="connect" #connectSelect [(ngModel)]="product.connect">
-                <option value="PCI_EXPRESS">PCI_EXPRESS</option>
-                <option value="M_SATA3">M_SATA3</option>
-                <option value="SATA3">SATA3</option>
-            </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
-            </div>
-        </div> -->
+
+
+        
 
         <div class="form-group-dialog">
             <button class="btn-submit" type="submit">Submit</button>
