@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { SIDENAV_ITEMS } from 'src/app/shared/data/sidenav-items.data';
-import { CATEGORY, ORDER, USER } from 'src/app/shared/enums/electro.enum';
+import { CATEGORY, ORDER, TYPE, USER } from 'src/app/shared/enums/electro.enum';
 
 const SIDENAV = SIDENAV_ITEMS;
 
@@ -22,6 +22,7 @@ export class AdminComponent implements OnInit {
 
   currentScreenWidth: any = 1000000;
 
+  type = TYPE;
   category = CATEGORY;
   order = ORDER;
   user = USER;

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { CATEGORY, TYPE, TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
 import { IBreadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -23,7 +23,7 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
   breadcrumbs: Array<IBreadcrumb> = [];
   crumbDepartment: IBreadcrumb = {} as IBreadcrumb;
   crumbType: IBreadcrumb = {} as IBreadcrumb;
-  urlKey: string = CATEGORY.LAPTOP_URL_KEY;
+  urlKey: string = TYPE_URL_KEY.LAPTOP_URL_KEY;
 
   foundProducts: boolean = false;
 

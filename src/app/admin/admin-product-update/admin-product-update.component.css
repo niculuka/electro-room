@@ -11,7 +11,7 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1500px;
+    width: 700px;
     padding: 20px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: white;
@@ -23,6 +23,7 @@ form {
     width: 100%;
 }
 
+.main,
 .descriptions {
     display: flex;
     flex-direction: column;

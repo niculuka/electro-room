@@ -12,8 +12,8 @@
                         <img class="image" [src]="product.image">
 
                         <span
-                            [ngStyle]="{'background':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
-                            {{product.badge==category.TOP_FAVORITE?category.TOP_FAVORITE:category.SUPER_PRICE}}
+                            [ngStyle]="{'background':product.badge==badge.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+                            {{product.badge==badge.TOP_FAVORITE?badge.TOP_FAVORITE:badge.SUPER_PRICE}}
                         </span>
 
                         <p>{{product.description}}</p>

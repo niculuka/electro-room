@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { CATEGORY, SPECIFICATIONS } from 'src/app/shared/enums/electro.enum';
+import { AVAILABLE, BADGE, CATEGORY, SPECIFICATIONS } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { CompareService } from 'src/app/shared/services/compare.service';
@@ -19,6 +19,8 @@ export class ProductDisplayComponent implements OnDestroy {
   product: Product = new Product();
 
   name = SPECIFICATIONS;
+  available = AVAILABLE;
+  badge = BADGE;
   category = CATEGORY;
 
   private sub1: any;

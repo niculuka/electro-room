@@ -5,7 +5,7 @@ export class ProductGallery {
 }
 
 export class ProductDescription {
-    id: number | undefined;
+    id?: number;
     title: string = "";
     text: string = "";
     image: string = "";

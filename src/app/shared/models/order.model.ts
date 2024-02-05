@@ -1,6 +1,6 @@
 import { DELIVERY } from "../constants/const";
 import { CartItem } from "./cart-item.model";
-import { ORDER, PAYMENT_TYPE } from "../enums/electro.enum";
+import { ORDER, ORDER_STATUS, PAYMENT_TYPE } from "../enums/electro.enum";
 
 export class Order {
   id!: number;
@@ -14,7 +14,7 @@ export class Order {
   conditions: boolean = false;
 
   createdAt!: string;
-  status: string = ORDER.NEW;
+  status: string = ORDER_STATUS.NEW;
 
   userIdGet!: number;
   usernameGet!: string;

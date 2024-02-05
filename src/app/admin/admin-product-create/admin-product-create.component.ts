@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { LAPTOP_BAG_IMAGES, LAPTOP_CHARGER_IMAGES, LAPTOP_HARD_IMAGES, LAPTOP_IMAGES, ProductImages } from 'src/app/shared/data/product-images.data';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { CATEGORY, CATEGORY_URL_KEY } from 'src/app/shared/enums/electro.enum';
 import { Product, ProductGallery } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 
@@ -58,19 +58,19 @@ export class AdminProductCreateComponent implements OnInit {
 
   setImageGallery() {
     switch (this.newProduct.type) {
-      case CATEGORY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
+      case CATEGORY_URL_KEY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
         break;
-      case CATEGORY.LAPTOP_BUSINESS_URL_KEY: { this.productImages = LAPTOP_IMAGES };
+      case CATEGORY_URL_KEY.LAPTOP_BUSINESS_URL_KEY: { this.productImages = LAPTOP_IMAGES };
         break;
-      case CATEGORY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
+      case CATEGORY_URL_KEY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
         break;
-      case CATEGORY.LAPTOP_ULTRA_URL_KEY: { this.productImages = LAPTOP_IMAGES };
+      case CATEGORY_URL_KEY.LAPTOP_ULTRA_URL_KEY: { this.productImages = LAPTOP_IMAGES };
         break;
-      case CATEGORY.LAPTOP_BAG_URL_KEY: { this.productImages = LAPTOP_BAG_IMAGES };
+      case CATEGORY_URL_KEY.LAPTOP_BAG_URL_KEY: { this.productImages = LAPTOP_BAG_IMAGES };
         break;
-      case CATEGORY.LAPTOP_CHARGER_URL_KEY: { this.productImages = LAPTOP_CHARGER_IMAGES };
+      case CATEGORY_URL_KEY.LAPTOP_CHARGER_URL_KEY: { this.productImages = LAPTOP_CHARGER_IMAGES };
         break;
-      case CATEGORY.LAPTOP_HARD_URL_KEY: { this.productImages = LAPTOP_HARD_IMAGES };
+      case CATEGORY_URL_KEY.LAPTOP_HARD_URL_KEY: { this.productImages = LAPTOP_HARD_IMAGES };
         break;
       default: this.productImages = LAPTOP_IMAGES; 
     }

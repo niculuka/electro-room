@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { AVAILABLE, BADGE, CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { CompareService } from 'src/app/shared/services/compare.service';
@@ -16,6 +16,8 @@ export class ProductMainComponent implements OnInit {
   productImages: Array<any> = [];
   currentImage: string = "";
 
+  available = AVAILABLE;
+  badge = BADGE;
   category = CATEGORY;
 
   constructor(

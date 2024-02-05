@@ -6,6 +6,7 @@ export const PICK_UP = 0;
 export const FREE = 0;
 
 export const FREE_DELIVERY_FROM = 200;
+export const BLANK_PHOTO = "assets/images/main/blank600.png";
 
 // export const IS_SCREEN_BLOCK = false;
 

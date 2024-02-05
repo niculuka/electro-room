@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { BADGE, CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -18,6 +18,7 @@ export class CarouselOwlComponent implements OnInit {
 
   products: Array<Product> = [];
   category = CATEGORY;
+  badge = BADGE;
 
   constructor(private productService: ProductService) { }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CartItem } from '../../shared/models/cart-item.model';
-import { ORDER } from '../../shared/enums/electro.enum';
+import { ORDER, ORDER_STATUS } from '../../shared/enums/electro.enum';
 import { Order } from '../../shared/models/order.model';
 import { AdminDemoService } from 'src/app/shared/services/admin-demo.service';
 
@@ -33,9 +33,9 @@ export class AdminDemoOrderComponent implements OnInit {
 
   getStatus(status: any) {
     switch (status) {
-      case ORDER.NEW: return "#4fbe04";
-      case ORDER.DONE: return "#03b7ce";
-      case ORDER.CANCELED: return "#df2177";
+      case ORDER_STATUS.NEW: return "#4fbe04";
+      case ORDER_STATUS.DONE: return "#03b7ce";
+      case ORDER_STATUS.CANCELED: return "#df2177";
       default: return "#4fbe04";
     }
   }

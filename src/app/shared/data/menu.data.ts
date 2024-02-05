@@ -1,4 +1,4 @@
-import { CATEGORY } from "../enums/electro.enum";
+import { CATEGORY, MENU, MENU_URL_KEY } from "../enums/electro.enum";
 
 export interface IMenu {
     name: string;
@@ -15,20 +15,20 @@ export interface ISubMenu {
 
 export const NAV_ITEMS: Array<IMenu> = [
     {
-        name: CATEGORY.SPECIAL_OFFER,
-        category: CATEGORY.SPECIAL_OFFER_PATH,
-        link: "/" + CATEGORY.SPECIAL_OFFER_PATH,
+        name: MENU.SPECIAL_OFFER,
+        category: MENU_URL_KEY.SPECIAL_OFFER_URL_KEY,
+        link: "/" + MENU_URL_KEY.SPECIAL_OFFER_URL_KEY,
         subMenus: [],
     },
     {
-        name: CATEGORY.CUSTOMER_SUPORT,
-        category: CATEGORY.CUSTOMER_SUPORT_PATH,
-        link: "/" + CATEGORY.CUSTOMER_SUPORT_PATH,
+        name: MENU.CUSTOMER_SUPORT,
+        category: MENU_URL_KEY.CUSTOMER_SUPORT_URL_KEY,
+        link: "/" + MENU_URL_KEY.CUSTOMER_SUPORT_URL_KEY,
         subMenus: [
             {
-                name: CATEGORY.STORES,
-                category: CATEGORY.STORES_PATH,
-                link: "/" + CATEGORY.CUSTOMER_SUPORT_PATH + "/" + CATEGORY.STORES_PATH,
+                name: MENU.STORES,
+                category: MENU_URL_KEY.STORES_URL_KEY,
+                link: "/" + MENU_URL_KEY.CUSTOMER_SUPORT_URL_KEY + "/" + MENU_URL_KEY.STORES_URL_KEY,
             }
         ],
     },

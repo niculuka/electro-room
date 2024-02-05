@@ -1,4 +1,4 @@
-import { CATEGORY, ORDER, USER } from "../enums/electro.enum";
+import { CATEGORY, GENERAL, ORDER, ORDER_URL_KEY, TYPE, TYPE_URL_KEY, USER, USER_URL_KEY } from "../enums/electro.enum";
 
 export interface SidenavTitle {
     name: string;
@@ -14,55 +14,55 @@ export interface SidenavSubtitle {
 
 export const SIDENAV_ITEMS: Array<SidenavTitle> = [
     {
-        name: CATEGORY.PRODUCTS,
+        name: GENERAL.PRODUCTS,
         icon: "library_books",
         isOpened: true,
         subtitles: [
             {
-                name: CATEGORY.LAPTOP,
-                urlKey: CATEGORY.LAPTOP_URL_KEY,
+                name: TYPE.LAPTOP,
+                urlKey: TYPE_URL_KEY.LAPTOP_URL_KEY,
             },
             {
-                name: CATEGORY.LAPTOP_ACCESSORY,
-                urlKey: CATEGORY.LAPTOP_ACCESSORY_URL_KEY,
+                name: TYPE.LAPTOP_ACCESSORY,
+                urlKey: TYPE_URL_KEY.LAPTOP_ACCESSORY_URL_KEY,
             },
             {
-                name: CATEGORY.PC,
-                urlKey: CATEGORY.PC_URL_KEY,
+                name: TYPE.PC,
+                urlKey: TYPE_URL_KEY.PC_URL_KEY,
             },
             {
-                name: CATEGORY.MONITOR,
-                urlKey: CATEGORY.MONITOR_URL_KEY,
+                name: TYPE.MONITOR,
+                urlKey: TYPE_URL_KEY.MONITOR_URL_KEY,
             },
         ]
     },
     {
-        name: ORDER.ORDERS,
+        name: GENERAL.ORDERS,
         icon: "add_shopping_cart",
         isOpened: true,
         subtitles: [
             {
                 name: ORDER.ORDERS_LIST,
-                urlKey: ORDER.ORDERS_LIST_URL_KEY,
+                urlKey: ORDER_URL_KEY.ORDERS_LIST_URL_KEY,
             },
             {
                 name: ORDER.ORDED_PRODUCTS,
-                urlKey: ORDER.ORDED_PRODUCTS_URL_KEY,
+                urlKey: ORDER_URL_KEY.ORDED_PRODUCTS_URL_KEY,
             },
         ]
     },
     {
-        name: USER.USERS,
+        name: GENERAL.USERS,
         icon: "supervisor_account",
         isOpened: true,
         subtitles: [
             {
                 name: USER.USERS_LIST,
-                urlKey: USER.USERS_LIST_URL_KEY,
+                urlKey: USER_URL_KEY.USERS_LIST_URL_KEY,
             },
             {
                 name: USER.TOKENS,
-                urlKey: USER.TOKENS_URL_KEY,
+                urlKey: USER_URL_KEY.TOKENS_URL_KEY,
             },
         ]
     },

@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CATEGORY, SORTERS } from '../enums/electro.enum';
+import { GENERAL, SORTER_TYPE } from '../enums/electro.enum';
 import { Product } from '../models/product.model';
 import { PRODUCTS_FILTERS, ProductFilter } from '../data/product-category.data';
 
@@ -64,7 +64,7 @@ export class ProductCategoryService implements OnDestroy {
 
       // A V A I L A B L E S  -  F I L T E R --------------------------------------------------
       for (let pf of productsFilters) {
-        if (pf.value == CATEGORY.AVAILABLE) {
+        if (pf.value == GENERAL.AVAILABLE) {
           pf.count = 0;
           for (let f of pf.filters) {
             let av = products.filter((prod: any) => f.value === prod.available);
@@ -78,7 +78,7 @@ export class ProductCategoryService implements OnDestroy {
 
       // P R I C E S  -  F I L T E R  ---------------------------------------------------------
       for (let pf of productsFilters) {
-        if (pf.value == CATEGORY.PRICE) {
+        if (pf.value == GENERAL.PRICE) {
           pf.count = 0;
           for (let f of pf.filters) {
             let pr = products.filter((prod: any) => prod.price >= f.min && prod.price < f.max);
@@ -92,7 +92,7 @@ export class ProductCategoryService implements OnDestroy {
 
       // B R A N D S  -  F I L T E R  ----------------------------------------------------------
       for (let pf of productsFilters) {
-        if (pf.value == CATEGORY.BRAND) {
+        if (pf.value == GENERAL.BRAND) {
           pf.count = 0;
           for (let f of pf.filters) {
             let br = products.filter((prod: any) => f.value === prod.brand);
@@ -106,7 +106,7 @@ export class ProductCategoryService implements OnDestroy {
 
       // S U B C A T E G O R I E S  -  F I L T E R  --------------------------------------------
       for (let pf of productsFilters) {
-        if (pf.value == CATEGORY.SUBCATEGORY) {
+        if (pf.value == GENERAL.SUBCATEGORY) {
           pf.count = 0;
           for (let f of pf.filters) {
             let sc = products.filter((prod: any) => f.value === prod.subcategory);
@@ -145,7 +145,7 @@ export class ProductCategoryService implements OnDestroy {
   productsCountersService(productsFilters: Array<ProductFilter>) {
     // A V A I L A B L E S  -  C O U N T  ----------------------------------------------------
     for (let pf of productsFilters) {
-      if (pf.value == CATEGORY.AVAILABLE) {
+      if (pf.value == GENERAL.AVAILABLE) {
         for (let f of pf.filters) {
           let pr_br = this.pricesProducts.filter((el: any) => this.brandsProducts.includes(el));
           let pr_br_sc = pr_br.filter((el: any) => this.subcategoriesProducts.includes(el));
@@ -157,7 +157,7 @@ export class ProductCategoryService implements OnDestroy {
 
     // P R I C E S -  C O U N T  -------------------------------------------------------------
     for (let pf of productsFilters) {
-      if (pf.value == CATEGORY.PRICE) {
+      if (pf.value == GENERAL.PRICE) {
         for (let f of pf.filters) {
           let av_br = this.availablesProducts.filter((el: any) => this.brandsProducts.includes(el));
           let av_br_sc = av_br.filter((el: any) => this.subcategoriesProducts.includes(el));
@@ -169,7 +169,7 @@ export class ProductCategoryService implements OnDestroy {
 
     // B R A N D S  -  C O U N T  -------------------------------------------------------------
     for (let pf of productsFilters) {
-      if (pf.value == CATEGORY.BRAND) {
+      if (pf.value == GENERAL.BRAND) {
         for (let f of pf.filters) {
           let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
           let av_pr_sc = av_pr.filter((el: any) => this.subcategoriesProducts.includes(el));
@@ -181,7 +181,7 @@ export class ProductCategoryService implements OnDestroy {
 
     // S U B C A T E G O R I E S  -  C O U N T  -----------------------------------------------
     for (let pf of productsFilters) {
-      if (pf.value == CATEGORY.SUBCATEGORY) {
+      if (pf.value == GENERAL.SUBCATEGORY) {
         for (let f of pf.filters) {
           let av_pr = this.availablesProducts.filter((el: any) => this.pricesProducts.includes(el));
           let av_pr_br = av_pr.filter((el: any) => this.brandsProducts.includes(el));
@@ -220,19 +220,19 @@ export class ProductCategoryService implements OnDestroy {
 
   private getCurrentSorterFromLS(): string {
     const psJson = localStorage.getItem('cs-ls');
-    return psJson ? psJson : SORTERS.BEST_SOLD;
+    return psJson ? psJson : SORTER_TYPE.BEST_SOLD;
   }
 
   // ===========================================================================  S  O  R  T  I  N  G
   productsSortersService() {
     switch (this.currentSorter) {
-      case SORTERS.BEST_SOLD: this.sort_bestSold();
+      case SORTER_TYPE.BEST_SOLD: this.sort_bestSold();
         break;
-      case SORTERS.NAME: this.sort_name();
+      case SORTER_TYPE.NAME: this.sort_name();
         break;
-      case SORTERS.LOW_TO_HIGH: this.sort_lowToHigh();
+      case SORTER_TYPE.LOW_TO_HIGH: this.sort_lowToHigh();
         break;
-      case SORTERS.HIGH_TO_LOW: this.sort_highToLow();
+      case SORTER_TYPE.HIGH_TO_LOW: this.sort_highToLow();
         break;
       default: this.sort_bestSold();
     }

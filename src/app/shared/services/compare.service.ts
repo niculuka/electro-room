@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { ToastrService } from 'ngx-toastr';
-import { CATEGORY } from '../enums/electro.enum';
+import { CATEGORY, TYPE, TYPE_URL_KEY } from '../enums/electro.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,8 @@ export class CompareService {
     }
     else {
       if (this.compares.length < 4) {
-        if (this.compares[0].type.toLowerCase() == CATEGORY.LAPTOP_URL_KEY) {
-          if (product.type.toLowerCase() == CATEGORY.LAPTOP_URL_KEY) {
+        if (this.compares[0].type.toLowerCase() == TYPE_URL_KEY.LAPTOP_URL_KEY) {
+          if (product.type.toLowerCase() == TYPE_URL_KEY.LAPTOP_URL_KEY) {
             this.addProductToList(product);
           }
           else this.toastrService.warning("Selectati produse din aceeasi categorie");

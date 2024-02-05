@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { DialogProductDeleteComponent } from 'src/app/dialogs/dialog-product-delete/dialog-product-delete.component';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { AVAILABLE, BADGE, CATEGORY } from 'src/app/shared/enums/electro.enum';
 import { IProduct, Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -20,6 +20,8 @@ export class AdminProductComponent implements OnChanges, OnDestroy {
   protected products: Array<IProduct> = [];
   protected product: Product = new Product();
 
+  available = AVAILABLE;
+  badge = BADGE;
   category = CATEGORY;
   errorMessage: string = "";
 

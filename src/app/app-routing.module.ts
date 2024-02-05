@@ -1,7 +1,7 @@
 // m o d u l e s
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { CATEGORY, ROLE } from 'src/app/shared/enums/electro.enum';
+import { CATEGORY, ROLE, TYPE, TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
 
 // p a g e s
 import { LoginComponent } from './guest/login/login.component';
@@ -83,7 +83,7 @@ const routes: Routes = [
 
   // P R O D U C T S ======================================================================
   { path: "depart/:urlKey", component: DepartmentComponent },
-  { path: "type/" + CATEGORY.LAPTOP_URL_KEY, component: ProductTypeComponent },
+  { path: "type/" + TYPE_URL_KEY.LAPTOP_URL_KEY, component: ProductTypeComponent },
   { path: "type/:urlKey", component: TypeComponent },
   { path: "categ/:urlKey", component: ProductCategoryComponent },
   { path: "prod/:urlKey", component: ProductDetailComponent },

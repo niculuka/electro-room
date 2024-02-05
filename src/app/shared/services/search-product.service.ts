@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/product.model';
-import { CATEGORY } from '../enums/electro.enum';
+import { CATEGORY, TYPE, TYPE_URL_KEY } from '../enums/electro.enum';
 
 const API_URL = `${environment.BASE_URL}`;
 
@@ -19,19 +19,19 @@ export class SearchProductService {
 
   // GETS =============================================================================
   getLaptopsService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/" + CATEGORY.LAPTOP_URL_KEY);
+    return this.http.get(API_URL + "/products/type/" + TYPE_URL_KEY.LAPTOP_URL_KEY);
   }
 
   getLaptopAccessoryService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/" + CATEGORY.LAPTOP_ACCESSORY_URL_KEY);
+    return this.http.get(API_URL + "/products/type/" + TYPE_URL_KEY.LAPTOP_ACCESSORY_URL_KEY);
   }
 
   getPcService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/" + CATEGORY.PC_URL_KEY);
+    return this.http.get(API_URL + "/products/type/" + TYPE_URL_KEY.PC_URL_KEY);
   }
 
   getMonitorService(): Observable<any> {
-    return this.http.get(API_URL + "/products/type/" + CATEGORY.MONITOR_URL_KEY);
+    return this.http.get(API_URL + "/products/type/" + TYPE_URL_KEY.MONITOR_URL_KEY);
   }
 
   // Observable =======================================================================

@@ -49,8 +49,8 @@
       <ng-container matColumnDef="available">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Disponibil </th>
         <td mat-cell *matCellDef="let product" [style]="{
-            'color':product.available==category.STOCK?'#4fbe04':'gray',
-            'font-weight':product.available==category.STOCK?'bold':'normal'}">
+            'color':product.available==available.STOCK?'#4fbe04':'gray',
+            'font-weight':product.available==available.STOCK?'bold':'normal'}">
           {{product.available}}
         </td>
       </ng-container>
@@ -73,7 +73,7 @@
               <td> <strong> {{product.price | number: '1.2-2'}} </strong> </td>
             </tr>
             <tr>
-              <td [ngStyle]="{'color':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+              <td [ngStyle]="{'color':product.badge==badge.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
                 {{product.badge}}
               </td>
             </tr>

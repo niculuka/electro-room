@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NAV_ITEMS } from 'src/app/shared/data/menu.data';
 import { STORES_DETAILS } from 'src/app/shared/data/store.data';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { CATEGORY, MENU_URL_KEY } from 'src/app/shared/enums/electro.enum';
 import { IBreadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 
@@ -14,7 +14,7 @@ export class StoreComponent {
 
   protected stores = STORES_DETAILS;
   protected navs = NAV_ITEMS;
-  store: string = CATEGORY.STORES_PATH;
+  store: string = MENU_URL_KEY.STORES_URL_KEY;
 
   breadcrumbs: Array<IBreadcrumb> = [];
   crumbNav: IBreadcrumb = {} as IBreadcrumb;

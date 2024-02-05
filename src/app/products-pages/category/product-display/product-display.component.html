@@ -31,8 +31,8 @@
             <!-- m a i n ---------------------------------------------------------------------------- -->
             <div [ngClass]="{'main-grid':displayType=='grid', 'main-list':displayType=='list'}">
                 <span [ngClass]="{'badge-grid':displayType=='grid', 'badge-list':displayType=='list'}"
-                    [ngStyle]="{'background':product.badge==category.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
-                    {{product.badge==category.TOP_FAVORITE?category.TOP_FAVORITE:category.SUPER_PRICE}}
+                    [ngStyle]="{'background':product.badge==badge.TOP_FAVORITE ?'rgb(0, 154, 230)':'rgb(220, 20, 110)'}">
+                    {{product.badge==badge.TOP_FAVORITE?badge.TOP_FAVORITE:badge.SUPER_PRICE}}
                 </span>
 
                 <a [routerLink]="'/prod/' + product.urlKey">
@@ -219,7 +219,7 @@
             <!-- d e t a i l s------------------------------------------------------------------------ -->
             <div [ngClass]="{'details-grid':displayType==='grid', 'details-list':displayType==='list'}">
                 <p [ngClass]="{'available-grid':displayType==='grid', 'available-list':displayType==='list'}"
-                    [ngStyle]="{color: product.available==category.STOCK ? 'rgb(0, 184, 0)' : 'grey'}">
+                    [ngStyle]="{color: product.available==available.STOCK ? 'rgb(0, 184, 0)' : 'grey'}">
                     {{product.available}}
                 </p>
 

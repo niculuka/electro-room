@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NAV_ITEMS } from 'src/app/shared/data/menu.data';
-import { CATEGORY } from 'src/app/shared/enums/electro.enum';
+import { CATEGORY, MENU_URL_KEY } from 'src/app/shared/enums/electro.enum';
 import { IBreadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 
@@ -12,7 +12,7 @@ import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
 export class CustomerSupportComponent {
 
   protected navs = NAV_ITEMS;
-  customerSupport: string = CATEGORY.CUSTOMER_SUPORT_PATH;
+  customerSupport: string = MENU_URL_KEY.CUSTOMER_SUPORT_URL_KEY;
 
   breadcrumbs: Array<IBreadcrumb> = [];
   crumb: IBreadcrumb = {} as IBreadcrumb;
