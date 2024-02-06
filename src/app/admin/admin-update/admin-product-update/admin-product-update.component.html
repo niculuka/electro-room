@@ -1,0 +1,27 @@
+<div class="my-container">
+    <div class="my-content">
+
+        <h1><strong>ACTUALIZARE PRODUS</strong></h1>
+
+        <mat-tab-group animationDuration="200ms" [selectedIndex]="currentIndexTab" (selectedIndexChange)="setCurrentIndex($event)">
+
+            <mat-tab label="Caracteristici principale">
+                <div class="main">
+                    <app-admin-update-main [product]="product"></app-admin-update-main>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Descrieri">
+                <div class="descriptions">
+                    <app-admin-update-description [product]="product"></app-admin-update-description>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Specificatii">
+                <div class="specification"> </div>
+            </mat-tab>
+
+        </mat-tab-group>
+
+    </div>
+</div>

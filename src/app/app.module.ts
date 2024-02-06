@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -90,7 +91,9 @@ import { DialogCartComponent } from './dialogs/dialog-cart/dialog-cart.component
 import { AdminComponent } from './admin/admin/admin.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
-import { AdminProductUpdateComponent } from './admin/admin-product-update/admin-product-update.component';
+import { AdminProductUpdateComponent } from './admin/admin-update/admin-product-update/admin-product-update.component';
+import { AdminUpdateMainComponent } from './admin/admin-update/admin-update-main/admin-update-main.component';
+import { AdminUpdateDescriptionComponent } from './admin/admin-update/admin-update-description/admin-update-description.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
 import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
@@ -99,8 +102,6 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
-
-
 
 @NgModule({
   declarations: [
@@ -169,6 +170,8 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     AdminProductComponent,
     AdminProductCreateComponent,
     AdminProductUpdateComponent,
+    AdminUpdateMainComponent,
+    AdminUpdateDescriptionComponent,
     AdminItemComponent,
     AdminTokenComponent,
     AdminOrderComponent,
@@ -208,6 +211,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     MatExpansionModule,
     MatSidenavModule,
     MatListModule,
+    MatTabsModule,
     NgbModule,
     NgbCarouselModule,
     CarouselModule,

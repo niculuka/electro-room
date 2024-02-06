@@ -1,0 +1,33 @@
+h2 {
+    width: 100%;
+    padding: 0 4px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+label {
+    padding: 4px;
+}
+
+.form-group-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* border: 2px solid black; */
+}
+
+.alert-dialog {
+    display: block;
+    text-align: center;
+    color: red;
+    font-size: 14px;
+}
+
+img {
+    width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    width: 100%;
+    margin: 10px 0;
+}

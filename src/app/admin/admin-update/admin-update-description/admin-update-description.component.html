@@ -1,0 +1,66 @@
+<form #d="ngForm" (ngSubmit)="d.form.valid && updateDescription()">
+
+    <h2>2. DESCRIERE</h2>
+
+    <h1 *ngIf="!descriptions.length" style="color: red;">Nu exista nici o descriere...</h1>
+
+    <div *ngFor="let description of descriptions; index as i">
+
+        <!-- Id ------------------------------------------------------------------------------------- -->
+        <div class="form-group-dialog">
+            <label>Id: {{description.id}}</label>
+        </div>
+
+        <!-- Title ---------------------------------------------------------------------------------- -->
+        <div class="form-group-dialog">
+            <label>Title {{i+1}}: </label>
+            <input type="text" [name]="description.title" [(ngModel)]="description.title" #title="ngModel" minlength="4"
+                maxlength="200" required>
+
+            <div class="alert-container-dialog">
+                <div class="alert-dialog" *ngIf="!title.valid && d.submitted">Camp gol!</div>
+            </div>
+        </div>
+
+        <!-- Text ----------------------------------------------------------------------------------- -->
+        <div class="form-group-dialog">
+            <label>Description {{i+1}}: </label>
+            <textarea cols="30" rows="7" type="text" [name]="description.text" [(ngModel)]="description.text"
+                #text="ngModel" minlength="4" maxlength="1000" required>
+            </textarea>
+            <div class="alert-container-dialog">
+                <div class="alert-dialog" *ngIf="!text.valid && d.submitted">Camp gol!</div>
+            </div>
+        </div>
+
+        <!-- Image ---------------------------------------------------------------------------------- -->
+        <div class="form-group-dialog">
+            <input type="text" [name]="description.image" [(ngModel)]="description.image" #image="ngModel" minlength="4"
+                maxlength="200" required>
+            <div class="alert-container-dialog">
+                <div class="alert-dialog" *ngIf="!image.valid && d.submitted">Camp gol!</div>
+            </div>
+
+            <div class="image-display">
+                <img class="image" [src]="description.image" [alt]="description.image">
+            </div>
+
+        </div>
+
+        <label>id_fk_get: {{description.product_id_fk}}</label>
+
+        <button mat-raised-button color="warn" type="button" (click)="removeDescription(description)">Sterge</button>
+
+    </div>
+
+    <!-- <pre>Value : {{descriptions | json}} </pre> -->
+
+    <button mat-raised-button color="accent" type="button" (click)="addDescription()">Adauga Descriere</button>
+
+
+    <!-- S U B M I T  =============================================== -->
+    <div class="form-group-dialog">
+        <button mat-raised-button color="primary" type="submit">Salveaza Descrierile</button>
+    </div>
+
+</form>

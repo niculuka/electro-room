@@ -1,7 +1,7 @@
 // m o d u l e s
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { CATEGORY, ROLE, TYPE, TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
+import { ROLE, TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
 
 // p a g e s
 import { LoginComponent } from './guest/login/login.component';
@@ -25,7 +25,7 @@ import { UnderConstructionComponent } from './guest/under-construction/under-con
 // a d m i n
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
-import { AdminProductUpdateComponent } from './admin/admin-product-update/admin-product-update.component';
+import { AdminProductUpdateComponent } from './admin/admin-update/admin-product-update/admin-product-update.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';

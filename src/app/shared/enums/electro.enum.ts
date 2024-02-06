@@ -51,13 +51,13 @@ export enum ADVERTISE {
     PROMO = "Promo",
 }
 
-export enum GENERAL {
-    AVAILABLE = "Disponibilitate",
+export enum GENERAL {    
     PRODUCTS = "Produse",
     CATEGORY = "Categorie",
     SUBCATEGORY = "Subcategorie",
     PRICE = "Pret",
     BRAND = "Brand",
+    AVAILABLE = "Disponibilitate",
     USERS = "Utilizatori",
     ORDERS = "Comenzi",
 }
