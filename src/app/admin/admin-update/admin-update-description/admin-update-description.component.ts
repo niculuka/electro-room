@@ -21,9 +21,9 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
   constructor(private adminProductService: AdminProductService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const getDescriptions = changes['product'].currentValue;
-    if (getDescriptions.id) {
-      const descriptionsAsString = JSON.stringify(getDescriptions.descriptions)
+    const product = changes['product'].currentValue;
+    if (product.id) {
+      const descriptionsAsString = JSON.stringify(product.descriptions)
       this.descriptions = JSON.parse(descriptionsAsString);
     }
   }
@@ -42,12 +42,7 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
   }
 
   updateDescription() {
-    // console.log(this.product)
-    // console.log(this.descriptions)
-    // console.log(this.form)
-
     this.product.descriptions = this.descriptions;
-
     this.adminProductService.updateProductService(this.product).subscribe({
       next: () => {
         window.location.reload();

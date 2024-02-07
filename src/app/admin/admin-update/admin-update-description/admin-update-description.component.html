@@ -1,6 +1,6 @@
 <form #d="ngForm" (ngSubmit)="d.form.valid && updateDescription()">
 
-    <h2>2. DESCRIERE</h2>
+    <h2>2. DESCRIERILE PRODUSULUI</h2>
 
     <h1 *ngIf="!descriptions.length" style="color: red;">Nu exista nici o descriere...</h1>
 
@@ -16,7 +16,6 @@
             <label>Title {{i+1}}: </label>
             <input type="text" [name]="description.title" [(ngModel)]="description.title" #title="ngModel" minlength="4"
                 maxlength="200" required>
-
             <div class="alert-container-dialog">
                 <div class="alert-dialog" *ngIf="!title.valid && d.submitted">Camp gol!</div>
             </div>
@@ -40,14 +39,11 @@
             <div class="alert-container-dialog">
                 <div class="alert-dialog" *ngIf="!image.valid && d.submitted">Camp gol!</div>
             </div>
-
             <div class="image-display">
                 <img class="image" [src]="description.image" [alt]="description.image">
             </div>
 
         </div>
-
-        <label>id_fk_get: {{description.product_id_fk}}</label>
 
         <button mat-raised-button color="warn" type="button" (click)="removeDescription(description)">Sterge</button>
 

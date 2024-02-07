@@ -3,9 +3,10 @@
 
         <h1><strong>ACTUALIZARE PRODUS</strong></h1>
 
-        <mat-tab-group animationDuration="200ms" [selectedIndex]="currentIndexTab" (selectedIndexChange)="setCurrentIndex($event)">
+        <mat-tab-group animationDuration="200ms" [selectedIndex]="currentIndexTab"
+            (selectedIndexChange)="setCurrentIndex($event)">
 
-            <mat-tab label="Caracteristici principale">
+            <mat-tab label="Produs">
                 <div class="main">
                     <app-admin-update-main [product]="product"></app-admin-update-main>
                 </div>
@@ -18,7 +19,9 @@
             </mat-tab>
 
             <mat-tab label="Specificatii">
-                <div class="specification"> </div>
+                <div class="specifications">
+                    <app-admin-update-specification [product]="product"></app-admin-update-specification>
+                </div>
             </mat-tab>
 
         </mat-tab-group>

@@ -67,7 +67,6 @@ export class CompareComponent {
             // FILL ARRAY WITH VALUES
             // D I S P L A Y ---------------------------------------------------------------------------------------
             if (sub.subtitle == SPECIFICATIONS.DISPLAY_SIZE) sub.specifications.push(ps.display_size);
-            if (sub.subtitle == SPECIFICATIONS.DISPLAY_RESOLUTION) sub.specifications.push(ps.display_resolution);
             if (sub.subtitle == SPECIFICATIONS.DISPLAY_FREQUENCY) sub.specifications.push(ps.display_frequency);
             if (sub.subtitle == SPECIFICATIONS.DISPLAY_TOUCH) sub.specifications.push(ps.display_touch);
 

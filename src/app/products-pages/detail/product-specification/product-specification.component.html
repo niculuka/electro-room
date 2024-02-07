@@ -15,6 +15,10 @@
                         <th>{{name.DISPLAY_SIZE}}</th>
                         <td>{{ps.display_size}}</td>
                     </tr>
+                    <tr *ngIf="ps.display_resolution">
+                        <th>{{name.DISPLAY_RESOLUTION}}</th>
+                        <td>{{ps.display_resolution}}</td>
+                    </tr>
                     <tr *ngIf="ps.display_frequency">
                         <th>{{name.DISPLAY_FREQUENCY}}</th>
                         <td>{{ps.display_frequency}}</td>

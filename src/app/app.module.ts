@@ -102,6 +102,7 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
+import { AdminUpdateSpecificationComponent } from './admin/admin-update/admin-update-specification/admin-update-specification.component';
 
 @NgModule({
   declarations: [
@@ -180,6 +181,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     AdminDemoProductComponent,
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
+    AdminUpdateSpecificationComponent,
   ],
   imports: [
     BrowserModule,

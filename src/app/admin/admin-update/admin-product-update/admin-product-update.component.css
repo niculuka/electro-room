@@ -32,7 +32,8 @@ h1 {
 }
 
 .main,
-.descriptions {
+.descriptions,
+.specifications {
     display: block;
     width: 100%;
     padding-top: 20px;
