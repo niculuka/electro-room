@@ -51,8 +51,7 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
         this.errorMessage = "Could not update product!";
         console.log(err);
       }
-    })
-
+    });
   }
 
 }

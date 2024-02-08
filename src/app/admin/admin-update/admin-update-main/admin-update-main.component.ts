@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LAPTOP_IMAGES, ProductImages } from 'src/app/shared/data/product-images.data';
+import { LAPTOP_BUSINESS_IMAGES, LAPTOP_GAMING_IMAGES, LAPTOP_HOME_IMAGES, LAPTOP_ULTRA_IMAGES } from 'src/app/shared/data/product-images.data';
 import { AVAILABLE, BADGE, BRAND, CATEGORY, SUBCATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
@@ -14,10 +14,8 @@ export class AdminUpdateMainComponent {
 
   @Input() product: Product = new Product();
 
-  protected productImages: Array<ProductImages> = LAPTOP_IMAGES;
-
+  protected productImages = LAPTOP_GAMING_IMAGES;
   handleDropdownMenu = false;
-  isDropdownMenuOpen: string = "display: none;";
 
   @ViewChild('f') form!: NgForm;
   errorMessage: string = "";
@@ -49,14 +47,20 @@ export class AdminUpdateMainComponent {
     this.brands = Object.values(this.brandsEnums);
     this.availables = Object.values(this.availablesEnums);
     this.badges = Object.values(this.badgesEnums);
+    this.getImagesByCategories();
+  }
+
+  toggleDropdownMenu() {
+    this.handleDropdownMenu = !this.handleDropdownMenu;
+  }
+
+  getImage(image: any) {
+    this.product.image = image;
+    this.handleDropdownMenu = false;
   }
 
   updateProduct() {
     this.product.urlKey = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
-    // console.log(this.form)
-    console.log(this.product.descriptions)
-
-
     this.adminProductService.updateProductService(this.product).subscribe({
       next: () => {
         window.location.reload();
@@ -68,43 +72,17 @@ export class AdminUpdateMainComponent {
     })
   }
 
-  toggleDropdownMenu() {
-    //   this.handleDropdownMenu = !this.handleDropdownMenu;
-    //   this.checkConditions();
-  }
-
-  setImageGallery() {
-    //   switch (this.product.type) {
-    //     case CATEGORY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
-    //       break;
-    //     case CATEGORY.LAPTOP_BUSINESS_URL_KEY: { this.productImages = LAPTOP_IMAGES };
-    //       break;
-    //     case CATEGORY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
-    //       break;
-    //     case CATEGORY.LAPTOP_ULTRA_URL_KEY: { this.productImages = LAPTOP_IMAGES };
-    //       break;
-    //     case CATEGORY.LAPTOP_BAG_URL_KEY: { this.productImages = LAPTOP_BAG_IMAGES };
-    //       break;
-    //     case CATEGORY.LAPTOP_CHARGER_URL_KEY: { this.productImages = LAPTOP_CHARGER_IMAGES };
-    //       break;
-    //     case CATEGORY.LAPTOP_HARD_URL_KEY: { this.productImages = LAPTOP_HARD_IMAGES };
-    //       break;
-    //     default: this.productImages = LAPTOP_IMAGES;
-    //   }
-  }
-
-  getImage(image: ProductImages) {
-    //   this.product.image = image.image;
-    //   this.handleDropdownMenu = false;
-    //   this.checkConditions();
-  }
-
-  checkConditions() {
-    //   if (this.handleDropdownMenu == true) {
-    //     this.isDropdownMenuOpen = "display: block;"
-    //   } else {
-    //     this.isDropdownMenuOpen = "display: none;"
-    //   }
+  getImagesByCategories() {
+    switch (this.product.category) {
+      case CATEGORY.LAPTOP_GAMING: { this.productImages = LAPTOP_GAMING_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_BUSINESS: { this.productImages = LAPTOP_BUSINESS_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_ULTRA: { this.productImages = LAPTOP_ULTRA_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_HOME: { this.productImages = LAPTOP_HOME_IMAGES };
+        break;
+    }
   }
 
 }

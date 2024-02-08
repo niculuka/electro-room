@@ -106,8 +106,8 @@
                 </div>
                 <div class="dropdown-menu-dialog" [style]="isDropdownMenuOpen">
                     <div class="list-option" *ngFor="let image of productImages;" (click)="getImage(image)">
-                        <img [src]="image.image" [alt]="image.alt">
-                        <span>{{image.alt}}</span>
+                        <img [src]="image" [alt]="image">
+                        <span>{{image}}</span>
                     </div>
                 </div>
             </li>

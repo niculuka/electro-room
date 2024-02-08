@@ -46,7 +46,6 @@ export class AdminUpdateSpecificationComponent {
         this.errorMessage = "Could not update product!";
         console.log(err);
       }
-    })
-
+    });
   }
 }

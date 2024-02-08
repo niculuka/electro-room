@@ -1,7 +1,7 @@
 <form #f="ngForm" (ngSubmit)="f.form.valid && updateProduct()">
 
     <h2>1. PROPRIETATI PRINCIPALE</h2>
-    
+
     <div class="main">
         <!-- Id ---------------------------------------------------------------------------------- -->
         <div class="form-group-dialog">
@@ -45,7 +45,7 @@
         <!-- Category --------------------------------------------------------------------------- -->
         <div class="form-group-dialog">
             <label for="category">Category</label>
-            <select name="category" #categorySelect [(ngModel)]="product.category" (click)="setImageGallery()">
+            <select name="category" #categorySelect [(ngModel)]="product.category" (click)="getImagesByCategories()">
                 <option *ngFor="let categ of categories " [value]="categ">
                     {{categ}}
                 </option>
@@ -71,46 +71,40 @@
         <!-- Brand ------------------------------------------------------------------------------ -->
         <div class="form-group-dialog">
             <label for="brand">Brand</label>
-            <select name="brand" #brandSelect [(ngModel)]="product.brand">
+            <select name="brand" [(ngModel)]="product.brand">
                 <option *ngFor="let br of brands " [value]="br">
                     {{br}}
                 </option>
             </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
-            </div>
         </div>
+
+
+
+
 
         <!-- Image ------------------------------------------------------------------------------ -->
         <div class="form-group-dialog">
             <li class="dropdown">
                 <label for="image">Image: </label>
-
-                <!-- SELECT image -->
                 <div class="select-line" (click)="toggleDropdownMenu()">
-                    <input type="text" name="src" [(ngModel)]="product.image">
+                    <input type="text" name="image" [value]="product.image">
                     <mat-icon>expand_more</mat-icon>
                 </div>
-
-                <!-- VIEW gallery -->
-                <div class="dropdown-menu" [style]="isDropdownMenuOpen">
-                    <div class="list-option" *ngFor="let image of productImages;" (click)="getImage(image)">
-                        <img [src]="image.image" [alt]="image.alt">
-                        <span>{{image.alt}}</span>
+                <div class="dropdown-menu" *ngIf="handleDropdownMenu">
+                    <div class="list-option" *ngFor="let img of productImages;" (click)="getImage(img)">
+                        <img [src]="img" [alt]="img">
+                        <span>{{img}}</span>
                     </div>
                 </div>
             </li>
 
-            <!-- DISPLAY image -->
             <div class="image-display">
                 <img class="image" [src]="product.image" [alt]="product.image">
             </div>
-
-            <!--  -->
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
-            </div>
         </div>
+
+
+
 
         <!-- Available ------------------------------------------------------------------------------ -->
         <div class="form-group-dialog">
@@ -153,7 +147,9 @@
 
     <!-- S U B M I T  =============================================== -->
     <div class="form-group-dialog">
-        <button mat-raised-button color="primary" type="submit">Salvare Produs</button>
+        <button mat-raised-button color="primary" type="submit">
+            Salvare Produs
+        </button>
     </div>
 
 </form>
