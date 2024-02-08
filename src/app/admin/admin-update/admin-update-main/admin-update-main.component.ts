@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LAPTOP_BUSINESS_IMAGES, LAPTOP_GAMING_IMAGES, LAPTOP_HOME_IMAGES, LAPTOP_ULTRA_IMAGES } from 'src/app/shared/data/product-images.data';
+import { ALL_IN_ONE_IMAGES, EXTERNAL_BATTERY_IMAGES, LAPTOP_BAG_IMAGES, LAPTOP_BUSINESS_IMAGES, LAPTOP_CHARGER_IMAGES, LAPTOP_GAMING_IMAGES, LAPTOP_HARD_IMAGES, LAPTOP_HOME_IMAGES, LAPTOP_ULTRA_IMAGES, MONITOR_PRO_IMAGES, PC_GAMING_IMAGES, RAM_MEMORY_IMAGES } from 'src/app/shared/data/product-images.data';
 import { AVAILABLE, BADGE, BRAND, CATEGORY, SUBCATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
@@ -81,6 +81,22 @@ export class AdminUpdateMainComponent {
       case CATEGORY.LAPTOP_ULTRA: { this.productImages = LAPTOP_ULTRA_IMAGES };
         break;
       case CATEGORY.LAPTOP_HOME: { this.productImages = LAPTOP_HOME_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_BAG: { this.productImages = LAPTOP_BAG_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_CHARGER: { this.productImages = LAPTOP_CHARGER_IMAGES };
+        break;
+      case CATEGORY.LAPTOP_HARD: { this.productImages = LAPTOP_HARD_IMAGES };
+        break;
+      case CATEGORY.EXTERNAL_BATTERY: { this.productImages = EXTERNAL_BATTERY_IMAGES };
+        break;
+      case CATEGORY.RAM_MEMORY: { this.productImages = RAM_MEMORY_IMAGES };
+        break;
+      case CATEGORY.PC_GAMING: { this.productImages = PC_GAMING_IMAGES };
+        break;
+      case CATEGORY.ALL_IN_ONE: { this.productImages = ALL_IN_ONE_IMAGES };
+        break;
+      case CATEGORY.MONITOR_PRO: { this.productImages = MONITOR_PRO_IMAGES };
         break;
     }
   }

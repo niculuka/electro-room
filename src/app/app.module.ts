@@ -93,7 +93,9 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
 import { AdminProductUpdateComponent } from './admin/admin-update/admin-product-update/admin-product-update.component';
 import { AdminUpdateMainComponent } from './admin/admin-update/admin-update-main/admin-update-main.component';
+import { AdminUpdateGalleryComponent } from './admin/admin-update/admin-update-gallery/admin-update-gallery.component';
 import { AdminUpdateDescriptionComponent } from './admin/admin-update/admin-update-description/admin-update-description.component';
+import { AdminUpdateSpecificationComponent } from './admin/admin-update/admin-update-specification/admin-update-specification.component';
 import { AdminItemComponent } from './admin/admin-item/admin-item.component';
 import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
@@ -102,7 +104,6 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
-import { AdminUpdateSpecificationComponent } from './admin/admin-update/admin-update-specification/admin-update-specification.component';
 
 @NgModule({
   declarations: [
@@ -172,7 +173,9 @@ import { AdminUpdateSpecificationComponent } from './admin/admin-update/admin-up
     AdminProductCreateComponent,
     AdminProductUpdateComponent,
     AdminUpdateMainComponent,
+    AdminUpdateGalleryComponent,
     AdminUpdateDescriptionComponent,
+    AdminUpdateSpecificationComponent,
     AdminItemComponent,
     AdminTokenComponent,
     AdminOrderComponent,
@@ -181,7 +184,6 @@ import { AdminUpdateSpecificationComponent } from './admin/admin-update/admin-up
     AdminDemoProductComponent,
     AdminDemoOrderComponent,
     AdminDemoUserComponent,
-    AdminUpdateSpecificationComponent,
   ],
   imports: [
     BrowserModule,
