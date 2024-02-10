@@ -43,7 +43,7 @@ export class AdminUpdateSpecificationComponent {
         window.location.reload();
       },
       error: err => {
-        this.errorMessage = "Could not update product!";
+        this.errorMessage = "Nu s-au putut salva specificatiile!";
         console.log(err);
       }
     });

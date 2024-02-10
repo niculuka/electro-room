@@ -1,19 +1,48 @@
-<div class="form-group-dialog">
-    <li class="dropdown">
-        <label for="image">Image: </label>
-        <div class="select-line" (click)="toggleDropdownMenu()">
-            <input type="text" name="image" [value]="product.image">
-            <mat-icon>expand_more</mat-icon>
-        </div>
-        <div class="dropdown-menu" *ngIf="handleDropdownMenu">
-            <div class="list-option" *ngFor="let img of productImages;" (click)="getImage(img)">
-                <img [src]="img" [alt]="img">
-                <span>{{img}}</span>
-            </div>
-        </div>
-    </li>
+<form #i="ngForm" (ngSubmit)="updateImaged()">
 
-    <div class="image-display">
-        <img class="image" [src]="product.image" [alt]="product.image">
+    <h2>2. GALERIE IMAGINI</h2>
+
+    <h1 *ngIf="!gallery.length" style="color: red;">Nu exista nici o imagine...</h1>
+
+    <div *ngIf="gallery.length">
+        <div *ngFor="let gall of gallery; index as ind">
+
+            <div class="form-group-dialog">
+                <li class="dropdown">
+                    <label for="image">Image: {{ind+1}}</label>
+
+                    <div #select class="select-line" (click)="openDropdownMenu(ind)">
+                        <input type="text" name="image" [value]="gall.image">
+                        <mat-icon>expand_more</mat-icon>
+                    </div>
+
+                    <div class="dropdown-menu" *ngIf="currentInd==ind">
+                        <div class="list-option" *ngFor="let img of productImages;" (click)="selectImage(img)">
+                            <img [src]="img" [alt]="img">
+                            <span>{{img}}</span>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="image-display">
+                    <img class="image" [src]="gall.image" [alt]="gall.image">
+                </div>
+
+                <button mat-raised-button color="warn" type="button" (click)="removeImage(ind)">
+                    Sterge
+                </button>
+            </div>
+
+        </div>
     </div>
-</div>
+
+    <button mat-raised-button color="accent" type="button" (click)="addImage()">Adauga Imagine</button>
+
+    <!-- S U B M I T  =============================================== -->
+    <div class="form-group-dialog">
+        <button mat-raised-button color="primary" type="submit">
+            Salveaza
+        </button>
+    </div>
+
+</form>

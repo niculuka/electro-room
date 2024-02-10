@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
+import { CarousselGallery } from 'src/app/shared/models/caroussel-gallery.model';
 
 @Component({
   selector: 'app-carousel-gallery',
@@ -10,7 +10,7 @@ import { ImagesGallery } from 'src/app/shared/models/images-gallery.model';
 export class CarouselGalleryComponent implements OnInit {  
   
   // productImages2: Array<CarouselLaptopData> = CAROUSEL_LAPTOP;
-  @Input() productImages: Array<ImagesGallery> = [];
+  @Input() productImages: Array<CarousselGallery> = [];
   @Output() indexEvent = new EventEmitter<number>();
 
   currentSelectedObject: any;

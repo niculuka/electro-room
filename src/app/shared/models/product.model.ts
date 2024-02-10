@@ -1,7 +1,8 @@
 export class ProductGallery {
-    id: number | undefined;
+    id?: number | undefined;
     image: string = "";
-    productId: number | undefined;
+    selectedImage: boolean = false;
+    product_id_fk: number | undefined;
 }
 
 export class ProductDescription {

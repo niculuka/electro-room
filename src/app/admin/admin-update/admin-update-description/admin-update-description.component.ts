@@ -12,7 +12,7 @@ import { AdminProductService } from 'src/app/shared/services/admin-product.servi
 export class AdminUpdateDescriptionComponent implements OnChanges {
 
   @Input() product: Product = new Product();
-  descriptions: Array<any> = [];
+  descriptions: Array<ProductDescription> = [];
   description: ProductDescription = new ProductDescription();
 
   @ViewChild('d') form!: NgForm;
@@ -22,10 +22,7 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     const product = changes['product'].currentValue;
-    if (product.id) {
-      const descriptionsAsString = JSON.stringify(product.descriptions)
-      this.descriptions = JSON.parse(descriptionsAsString);
-    }
+    if (product.id) this.descriptions = product.descriptions;
   }
 
   addDescription() {
@@ -33,7 +30,7 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
     this.description.title = "Titlu";
     this.description.text = "Text";
     this.description.image = BLANK_PHOTO;
-    this.description.product_id_fk = this.product.descriptions[0].product_id_fk;
+    this.description.product_id_fk = this.product.id;
     this.descriptions.push(this.description);
   }
 
@@ -48,7 +45,7 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
         window.location.reload();
       },
       error: err => {
-        this.errorMessage = "Could not update product!";
+        this.errorMessage = "Nu s-au putut salva descrierile!";
         console.log(err);
       }
     });

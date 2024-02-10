@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ALL_IN_ONE_IMAGES, EXTERNAL_BATTERY_IMAGES, LAPTOP_BAG_IMAGES, LAPTOP_BUSINESS_IMAGES, LAPTOP_CHARGER_IMAGES, LAPTOP_GAMING_IMAGES, LAPTOP_HARD_IMAGES, LAPTOP_HOME_IMAGES, LAPTOP_ULTRA_IMAGES, MONITOR_PRO_IMAGES, PC_GAMING_IMAGES, RAM_MEMORY_IMAGES } from 'src/app/shared/data/product-images.data';
 import { AVAILABLE, BADGE, BRAND, CATEGORY, SUBCATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
@@ -16,6 +16,9 @@ export class AdminUpdateMainComponent {
 
   protected productImages = LAPTOP_GAMING_IMAGES;
   handleDropdownMenu = false;
+
+  @ViewChild('select') select: ElementRef | undefined;
+  isSelectOpen: boolean = false;
 
   @ViewChild('f') form!: NgForm;
   errorMessage: string = "";
@@ -50,13 +53,18 @@ export class AdminUpdateMainComponent {
     this.getImagesByCategories();
   }
 
-  toggleDropdownMenu() {
-    this.handleDropdownMenu = !this.handleDropdownMenu;
+  @HostListener('document:click', ['$event'])
+  clickOut(event: any) {
+    if (this.select?.nativeElement.contains(event.target)) { }
+    else this.isSelectOpen = false;
   }
 
-  getImage(image: any) {
+  toggleSelect() {
+    this.isSelectOpen = !this.isSelectOpen;
+  }
+
+  selectImage(image: any) {
     this.product.image = image;
-    this.handleDropdownMenu = false;
   }
 
   updateProduct() {
@@ -66,10 +74,10 @@ export class AdminUpdateMainComponent {
         window.location.reload();
       },
       error: err => {
-        this.errorMessage = "Could not update product!";
+        this.errorMessage = "Nu s-a putut salva produsul!";
         console.log(err);
       }
-    })
+    });
   }
 
   getImagesByCategories() {

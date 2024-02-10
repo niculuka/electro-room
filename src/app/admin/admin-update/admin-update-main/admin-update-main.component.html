@@ -82,18 +82,17 @@
         <div class="form-group-dialog">
             <li class="dropdown">
                 <label for="image">Image: </label>
-                <div class="select-line" (click)="toggleDropdownMenu()">
+                <div #select class="select-line" (click)="toggleSelect()">
                     <input type="text" name="image" [value]="product.image">
                     <mat-icon>expand_more</mat-icon>
                 </div>
-                <div class="dropdown-menu" *ngIf="handleDropdownMenu">
-                    <div class="list-option" *ngFor="let img of productImages;" (click)="getImage(img)">
+                <div class="dropdown-menu" *ngIf="isSelectOpen">
+                    <div class="list-option" *ngFor="let img of productImages;" (click)="selectImage(img)">
                         <img [src]="img" [alt]="img">
                         <span>{{img}}</span>
                     </div>
                 </div>
             </li>
-
             <div class="image-display">
                 <img class="image" [src]="product.image" [alt]="product.image">
             </div>
@@ -141,7 +140,7 @@
     <!-- S U B M I T  =============================================== -->
     <div class="form-group-dialog">
         <button mat-raised-button color="primary" type="submit">
-            Salvare Produs
+            Salveaza
         </button>
     </div>
 

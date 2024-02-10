@@ -1,6 +1,6 @@
 <form #d="ngForm" (ngSubmit)="d.form.valid && updateDescription()">
 
-    <h2>2. DESCRIERILE PRODUSULUI</h2>
+    <h2>3. DESCRIERILE PRODUSULUI</h2>
 
     <h1 *ngIf="!descriptions.length" style="color: red;">Nu exista nici o descriere...</h1>
 
@@ -60,7 +60,9 @@
 
     <!-- S U B M I T  =============================================== -->
     <div *ngIf="descriptions.length" class="form-group-dialog">
-        <button mat-raised-button color="primary" type="submit">Salveaza Descrierile</button>
+        <button mat-raised-button color="primary" type="submit">
+            Salveaza
+        </button>
     </div>
 
 </form>
