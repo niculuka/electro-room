@@ -26,7 +26,6 @@ export class AdminProductUpdateComponent implements OnInit, OnDestroy {
       let urlKey = params.get('urlKey') || "";
       this.sub1 = this.productService.getProductByNameService(urlKey).subscribe(data => {
         this.product = data;
-        // this.setImageGallery();
       });
     });
   }

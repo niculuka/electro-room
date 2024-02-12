@@ -1,9 +1,9 @@
-import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ALL_IN_ONE_IMAGES, EXTERNAL_BATTERY_IMAGES, LAPTOP_BAG_IMAGES, LAPTOP_BUSINESS_IMAGES, LAPTOP_CHARGER_IMAGES, LAPTOP_GAMING_IMAGES, LAPTOP_HARD_IMAGES, LAPTOP_HOME_IMAGES, LAPTOP_ULTRA_IMAGES, MONITOR_PRO_IMAGES, PC_GAMING_IMAGES, RAM_MEMORY_IMAGES } from 'src/app/shared/data/product-images.data';
 import { AVAILABLE, BADGE, BRAND, CATEGORY, SUBCATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
+import { AdminUpdateCategImgService } from 'src/app/shared/services/admin-update-categ-img.service';
 
 @Component({
   selector: 'app-admin-update-main',
@@ -13,8 +13,8 @@ import { AdminProductService } from 'src/app/shared/services/admin-product.servi
 export class AdminUpdateMainComponent {
 
   @Input() product: Product = new Product();
+  protected productImages = "";
 
-  protected productImages = LAPTOP_GAMING_IMAGES;
   handleDropdownMenu = false;
 
   @ViewChild('select') select: ElementRef | undefined;
@@ -43,6 +43,7 @@ export class AdminUpdateMainComponent {
 
   constructor(
     private adminProductService: AdminProductService,
+    private adminUpdateCategImgService: AdminUpdateCategImgService,
   ) {
     this.types = Object.values(this.typesEnums);
     this.categories = Object.values(this.categoriesEnums);
@@ -50,7 +51,19 @@ export class AdminUpdateMainComponent {
     this.brands = Object.values(this.brandsEnums);
     this.availables = Object.values(this.availablesEnums);
     this.badges = Object.values(this.badgesEnums);
-    this.getImagesByCategories();
+    this.adminUpdateCategImgService.getCartObservable().subscribe(data => {
+      this.product.typeUrlKey = data.currentTypeUrlKey;
+      this.product.categoryUrlKey = data.currentCategUrlKey;
+      this.productImages = data.currentImages;
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const product = changes['product'].currentValue;
+    if (product.id) {
+      this.product = product;
+      this.getImagesByCategories();
+    }
   }
 
   @HostListener('document:click', ['$event'])
@@ -81,32 +94,7 @@ export class AdminUpdateMainComponent {
   }
 
   getImagesByCategories() {
-    switch (this.product.category) {
-      case CATEGORY.LAPTOP_GAMING: { this.productImages = LAPTOP_GAMING_IMAGES };
-        break;
-      case CATEGORY.LAPTOP_BUSINESS: { this.productImages = LAPTOP_BUSINESS_IMAGES };
-        break;
-      case CATEGORY.LAPTOP_ULTRA: { this.productImages = LAPTOP_ULTRA_IMAGES };
-        break;
-      case CATEGORY.LAPTOP_HOME: { this.productImages = LAPTOP_HOME_IMAGES };
-        break;
-      case CATEGORY.LAPTOP_BAG: { this.productImages = LAPTOP_BAG_IMAGES };
-        break;
-      case CATEGORY.LAPTOP_CHARGER: { this.productImages = LAPTOP_CHARGER_IMAGES };
-        break;
-      case CATEGORY.LAPTOP_HARD: { this.productImages = LAPTOP_HARD_IMAGES };
-        break;
-      case CATEGORY.EXTERNAL_BATTERY: { this.productImages = EXTERNAL_BATTERY_IMAGES };
-        break;
-      case CATEGORY.RAM_MEMORY: { this.productImages = RAM_MEMORY_IMAGES };
-        break;
-      case CATEGORY.PC_GAMING: { this.productImages = PC_GAMING_IMAGES };
-        break;
-      case CATEGORY.ALL_IN_ONE: { this.productImages = ALL_IN_ONE_IMAGES };
-        break;
-      case CATEGORY.MONITOR_PRO: { this.productImages = MONITOR_PRO_IMAGES };
-        break;
-    }
+    this.adminUpdateCategImgService.changeCurrentCategoryService(this.product.category)
   }
 
 }

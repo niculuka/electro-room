@@ -1,9 +1,10 @@
-import { Component, ElementRef, HostListener, Input, OnChanges, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnChanges, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { BLANK_PHOTO } from 'src/app/shared/constants/const';
-import { LAPTOP_GAMING_IMAGES, LAPTOP_ULTRA_IMAGES } from 'src/app/shared/data/product-images.data';
 import { Product, ProductGallery } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
+import { AdminUpdateCategImgService } from 'src/app/shared/services/admin-update-categ-img.service';
 
 @Component({
   selector: 'app-admin-update-gallery',
@@ -15,58 +16,92 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   @Input() product: Product = new Product();
   gallery: Array<ProductGallery> = [];
   newImage: ProductGallery = new ProductGallery();
+  protected productImages = "";
 
-  protected productImages = LAPTOP_GAMING_IMAGES;
   currentInd: number = -1;
-  isDropMenuOpen = false;
+  nextInd: any;
+  isInsideInputs = false;
 
-  @ViewChildren('select') select: ElementRef | undefined;
+  @ViewChildren('selects') selects: QueryList<ElementRef> | undefined;
   isSelectOpen: boolean = false;
 
   @ViewChild('i') form!: NgForm;
   errorMessage: string = "";
 
-  constructor(private adminProductService: AdminProductService) { }
+  constructor(
+    private adminProductService: AdminProductService,
+    private toastrService: ToastrService,
+    private adminUpdateCategImgService: AdminUpdateCategImgService,
+  ) {
+    this.adminUpdateCategImgService.getCartObservable().subscribe(data => {
+      this.productImages = data;
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     const product = changes['product'].currentValue;
-    if (product.id) this.gallery = product.gallery;
+    if (product.id) {
+      this.product = product;
+      this.gallery = product.gallery;
+      this.getImagesByCategories();
+    }
   }
 
+  // QueryList<ElementRef> =======================================================================
+  // Select IN/OUT Multiple Inputs ===============================================================
+  // SHOW / HIDE - O P T I O N   BY   I N D E X VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
   @HostListener('document:click', ['$event'])
   clickOut(event: any) {
-    console.log(event.target.value)
-    // if (this.select?.nativeElement.contains(event.target)) { }
-    // else this.currentInd = -1;
+    this.isInsideInputs = false;
+    this.selects?.forEach(input => {
+      if (input.nativeElement.contains(event.target)) {
+        this.isInsideInputs = true;
+        if (this.currentInd == this.nextInd) this.currentInd = -1;
+        // console.log("INSIDE: ", input.nativeElement.value)
+      }
+      // else {
+      //   console.log("OUTSIDE: ", input.nativeElement.value)
+      // }
+    })
+    if (this.isInsideInputs) {
+      // console.log("INSIDE")
+    }
+    else {
+      this.currentInd = -1;
+      // console.log("OUTSIDE")
+    }
+    this.nextInd = this.currentInd;
+    // console.log(this.isInsideInputs)
   }
+  // QueryList<ElementRef> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  // Select IN/OUT Multiple Inputs ===============================================================
+  // SHOW / HIDE - O P T I O N   BY   I N D E X ==================================================
 
   openDropdownMenu(ind: any) {
-    // this.select?.forEach(item => console.log(item.nativeElement.children.image.value ))
-    this.isDropMenuOpen = !this.isDropMenuOpen;
-    if (this.isDropMenuOpen) this.currentInd = ind;
-    else this.currentInd = -1;
+    this.currentInd = ind;
   }
 
   selectImage(img: any) {
     this.gallery[this.currentInd].image = img;
-    this.isDropMenuOpen = false;
-    this.currentInd = -1;
   }
 
   addImage() {
-    this.newImage = new ProductGallery();
-    this.newImage.image = BLANK_PHOTO;
-    this.newImage.product_id_fk = this.product.id;
-    this.gallery.push(this.newImage);
+    if (this.gallery.length < 12) {
+      this.newImage = new ProductGallery();
+      this.newImage.image = BLANK_PHOTO;
+      this.newImage.product_id_fk = this.product.id;
+      this.gallery.push(this.newImage);
+    }
+    else this.toastrService.warning("Se permit maxim 12 imagini");
   }
 
   removeImage(ind: any) {
     this.gallery.splice(ind, 1)
   }
 
-  updateImaged() {
+  updateImages() {
     this.product.gallery = this.gallery;
-    console.log(this.product.gallery)
+    // console.log(this.product.gallery)
     this.adminProductService.updateProductService(this.product).subscribe({
       next: () => {
         window.location.reload();
@@ -78,4 +113,7 @@ export class AdminUpdateGalleryComponent implements OnChanges {
     });
   }
 
+  getImagesByCategories() {
+    this.adminUpdateCategImgService.changeCurrentCategoryService(this.product.category)
+  }
 }

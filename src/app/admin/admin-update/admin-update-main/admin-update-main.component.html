@@ -45,7 +45,7 @@
         <!-- Category --------------------------------------------------------------------------- -->
         <div class="form-group-dialog">
             <label for="category">Category</label>
-            <select name="category" #categorySelect [(ngModel)]="product.category" (click)="getImagesByCategories()">
+            <select name="category" #categorySelect [(ngModel)]="product.category" (change)="getImagesByCategories()">
                 <option *ngFor="let categ of categories " [value]="categ">
                     {{categ}}
                 </option>

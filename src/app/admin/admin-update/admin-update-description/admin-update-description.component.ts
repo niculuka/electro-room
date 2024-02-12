@@ -3,6 +3,7 @@ import { Product, ProductDescription } from 'src/app/shared/models/product.model
 import { BLANK_PHOTO } from 'src/app/shared/constants/const';
 import { NgForm } from '@angular/forms';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-update-description',
@@ -18,7 +19,10 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
   @ViewChild('d') form!: NgForm;
   errorMessage: string = "";
 
-  constructor(private adminProductService: AdminProductService) { }
+  constructor(
+    private adminProductService: AdminProductService,
+    private toastrService: ToastrService,
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     const product = changes['product'].currentValue;
@@ -26,12 +30,15 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
   }
 
   addDescription() {
-    this.description = new ProductDescription();
-    this.description.title = "Titlu";
-    this.description.text = "Text";
-    this.description.image = BLANK_PHOTO;
-    this.description.product_id_fk = this.product.id;
-    this.descriptions.push(this.description);
+    if (this.descriptions.length < 6) {
+      this.description = new ProductDescription();
+      this.description.title = "Titlu";
+      this.description.text = "Text";
+      this.description.image = BLANK_PHOTO;
+      this.description.product_id_fk = this.product.id;
+      this.descriptions.push(this.description);
+    }
+    else this.toastrService.warning("Se permit maxim 6 descrieri");
   }
 
   removeDescription(description: any) {
