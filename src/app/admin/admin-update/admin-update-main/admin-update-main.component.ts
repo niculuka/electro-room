@@ -51,7 +51,7 @@ export class AdminUpdateMainComponent {
     this.brands = Object.values(this.brandsEnums);
     this.availables = Object.values(this.availablesEnums);
     this.badges = Object.values(this.badgesEnums);
-    this.adminUpdateCategImgService.getCartObservable().subscribe(data => {
+    this.adminUpdateCategImgService.getChangeCategoryObservable().subscribe(data => {
       this.product.typeUrlKey = data.currentTypeUrlKey;
       this.product.categoryUrlKey = data.currentCategUrlKey;
       this.productImages = data.currentImages;

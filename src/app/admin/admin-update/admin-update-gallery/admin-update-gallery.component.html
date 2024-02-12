@@ -16,7 +16,7 @@
                         <mat-icon>expand_more</mat-icon>
                     </div>
 
-                    <div class="dropdown-menu" *ngIf="currentInd==ind">
+                    <div class="dropdown-menu" *ngIf="currentIndex==ind">
                         <div class="list-option" *ngFor="let img of productImages;" (click)="selectImage(img)">
                             <img [src]="img" [alt]="img">
                             <span>{{img}}</span>

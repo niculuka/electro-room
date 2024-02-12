@@ -109,7 +109,7 @@ export class AdminUpdateCategImgService {
     this.changeCategorySubject.next(this.changeCategory);
   }
 
-  getCartObservable(): Observable<any> {
+  getChangeCategoryObservable(): Observable<any> {
     return this.changeCategorySubject.asObservable();
   }
 }

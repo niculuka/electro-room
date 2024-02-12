@@ -18,8 +18,8 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   newImage: ProductGallery = new ProductGallery();
   protected productImages = "";
 
-  currentInd: number = -1;
-  nextInd: any;
+  currentIndex: number = -1;
+  nextIndex: any;
   isInsideInputs = false;
 
   @ViewChildren('selects') selects: QueryList<ElementRef> | undefined;
@@ -33,8 +33,8 @@ export class AdminUpdateGalleryComponent implements OnChanges {
     private toastrService: ToastrService,
     private adminUpdateCategImgService: AdminUpdateCategImgService,
   ) {
-    this.adminUpdateCategImgService.getCartObservable().subscribe(data => {
-      this.productImages = data;
+    this.adminUpdateCategImgService.getChangeCategoryObservable().subscribe(data => {
+      this.productImages = data.currentImages;
     });
   }
 
@@ -56,21 +56,19 @@ export class AdminUpdateGalleryComponent implements OnChanges {
     this.selects?.forEach(input => {
       if (input.nativeElement.contains(event.target)) {
         this.isInsideInputs = true;
-        if (this.currentInd == this.nextInd) this.currentInd = -1;
+        if (this.currentIndex == this.nextIndex) this.currentIndex = -1;
         // console.log("INSIDE: ", input.nativeElement.value)
       }
-      // else {
-      //   console.log("OUTSIDE: ", input.nativeElement.value)
-      // }
+      // else { console.log("OUTSIDE: ", input.nativeElement.value) }
     })
     if (this.isInsideInputs) {
       // console.log("INSIDE")
     }
     else {
-      this.currentInd = -1;
+      this.currentIndex = -1;
       // console.log("OUTSIDE")
     }
-    this.nextInd = this.currentInd;
+    this.nextIndex = this.currentIndex;
     // console.log(this.isInsideInputs)
   }
   // QueryList<ElementRef> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -78,11 +76,11 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   // SHOW / HIDE - O P T I O N   BY   I N D E X ==================================================
 
   openDropdownMenu(ind: any) {
-    this.currentInd = ind;
+    this.currentIndex = ind;
   }
 
   selectImage(img: any) {
-    this.gallery[this.currentInd].image = img;
+    this.gallery[this.currentIndex].image = img;
   }
 
   addImage() {
@@ -100,8 +98,8 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   }
 
   updateImages() {
-    this.product.gallery = this.gallery;
-    // console.log(this.product.gallery)
+    // console.log("gallery", this.gallery)
+    // console.log("product.gallery", this.product.gallery)    
     this.adminProductService.updateProductService(this.product).subscribe({
       next: () => {
         window.location.reload();
