@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BLANK_PHOTO } from 'src/app/shared/constants/const';
 import { Product, ProductGallery } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
-import { AdminUpdateCategImgService } from 'src/app/shared/services/admin-update-categ-img.service';
+import { AdminHandleFormFiledService } from 'src/app/shared/services/admin-handle-form-field.service';
 
 @Component({
   selector: 'app-admin-update-gallery',
@@ -15,25 +15,23 @@ export class AdminUpdateGalleryComponent implements OnChanges {
 
   @Input() product: Product = new Product();
   gallery: Array<ProductGallery> = [];
-  newImage: ProductGallery = new ProductGallery();
+  imageGallery: ProductGallery = new ProductGallery();
   protected productImages = "";
 
-  currentIndex: number = -1;
-  nextIndex: any;
-  isInsideInputs = false;
-
   @ViewChildren('selects') selects: QueryList<ElementRef> | undefined;
-  isSelectOpen: boolean = false;
+  currentIndex: number = -1;
+  lastIndex: any;
+  isInsideInputs = false;  
 
-  @ViewChild('i') form!: NgForm;
+  @ViewChild('g') form!: NgForm;
   errorMessage: string = "";
 
   constructor(
     private adminProductService: AdminProductService,
     private toastrService: ToastrService,
-    private adminUpdateCategImgService: AdminUpdateCategImgService,
+    private formFiledService: AdminHandleFormFiledService,
   ) {
-    this.adminUpdateCategImgService.getChangeCategoryObservable().subscribe(data => {
+    this.formFiledService.getChangeCategoryObservable().subscribe(data => {
       this.productImages = data.currentImages;
     });
   }
@@ -56,7 +54,7 @@ export class AdminUpdateGalleryComponent implements OnChanges {
     this.selects?.forEach(input => {
       if (input.nativeElement.contains(event.target)) {
         this.isInsideInputs = true;
-        if (this.currentIndex == this.nextIndex) this.currentIndex = -1;
+        if (this.currentIndex == this.lastIndex) this.currentIndex = -1;
         // console.log("INSIDE: ", input.nativeElement.value)
       }
       // else { console.log("OUTSIDE: ", input.nativeElement.value) }
@@ -68,7 +66,7 @@ export class AdminUpdateGalleryComponent implements OnChanges {
       this.currentIndex = -1;
       // console.log("OUTSIDE")
     }
-    this.nextIndex = this.currentIndex;
+    this.lastIndex = this.currentIndex;
     // console.log(this.isInsideInputs)
   }
   // QueryList<ElementRef> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -85,10 +83,10 @@ export class AdminUpdateGalleryComponent implements OnChanges {
 
   addImage() {
     if (this.gallery.length < 12) {
-      this.newImage = new ProductGallery();
-      this.newImage.image = BLANK_PHOTO;
-      this.newImage.product_id_fk = this.product.id;
-      this.gallery.push(this.newImage);
+      this.imageGallery = new ProductGallery();
+      this.imageGallery.image = BLANK_PHOTO;
+      this.imageGallery.product_id_fk = this.product.id;
+      this.gallery.push(this.imageGallery);
     }
     else this.toastrService.warning("Se permit maxim 12 imagini");
   }
@@ -112,6 +110,6 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   }
 
   getImagesByCategories() {
-    this.adminUpdateCategImgService.changeCurrentCategoryService(this.product.category)
+    this.formFiledService.changeCurrentCategoryService(this.product.category)
   }
 }

@@ -152,6 +152,8 @@ export enum SUBCATEGORY {
     DDR3 = "DDR3",
     DDR4 = "DDR4",
     DDR5 = "DDR5",
+    INTEL = "INTEL",
+    AMD = "AMD",
     MONITORS_FLAT = "Monitoare Plate",
     MONITORS_CURVED = "Monitoare Curbate",
 }

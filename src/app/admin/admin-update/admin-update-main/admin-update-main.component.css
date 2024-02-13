@@ -23,13 +23,17 @@ input {
     width: 100%;
     font-size: 14px;
     line-height: 14px;
-    padding: 6px;
+    padding: 4px;
     cursor: default;
     /* border: 1px solid grey; */
 }
 
 input:focus {
     outline: 1px solid black;
+}
+
+textarea {
+    padding: 4px;
 }
 
 textarea:focus {

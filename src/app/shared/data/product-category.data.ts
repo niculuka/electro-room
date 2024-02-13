@@ -90,8 +90,8 @@ export const PRODUCTS_FILTERS: Array<ProductFilter> = [
             { id: 701, name: SUBCATEGORY.DDR4, value: SUBCATEGORY.DDR4, isChecked: false, min: 0, max: 0, count: 0 },
             { id: 702, name: SUBCATEGORY.DDR5, value: SUBCATEGORY.DDR5, isChecked: false, min: 0, max: 0, count: 0 },
 
-            { id: 801, name: BRAND.INTEL, value: BRAND.INTEL, isChecked: false, min: 0, max: 0, count: 0 },
-            { id: 802, name: BRAND.AMD, value: BRAND.AMD, isChecked: false, min: 0, max: 0, count: 0 },
+            { id: 801, name: SUBCATEGORY.INTEL, value: SUBCATEGORY.INTEL, isChecked: false, min: 0, max: 0, count: 0 },
+            { id: 802, name: SUBCATEGORY.AMD, value: SUBCATEGORY.AMD, isChecked: false, min: 0, max: 0, count: 0 },
 
             { id: 901, name: SUBCATEGORY.MONITORS_FLAT, value: SUBCATEGORY.MONITORS_FLAT, isChecked: false, min: 0, max: 0, count: 0 },
             { id: 902, name: SUBCATEGORY.MONITORS_CURVED, value: SUBCATEGORY.MONITORS_CURVED, isChecked: false, min: 0, max: 0, count: 0 },

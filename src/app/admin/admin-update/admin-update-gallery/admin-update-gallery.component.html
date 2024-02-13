@@ -1,4 +1,4 @@
-<form #i="ngForm" (ngSubmit)="updateImages()">
+<form #g="ngForm" (ngSubmit)="updateImages()">
 
     <h2>2. GALERIE IMAGINI</h2>
 
@@ -8,9 +8,9 @@
         <div *ngFor="let gall of gallery; index as ind">
 
             <div class="form-group-dialog">
-                <li class="dropdown">
-                    <label for="image">Image: {{ind+1}}</label>
+                <label for="image">Image: {{ind+1}}</label>
 
+                <div class="dropdown">
                     <div class="select-line" (click)="openDropdownMenu(ind)">
                         <input #selects type="text" name="image" [value]="gall.image">
                         <mat-icon>expand_more</mat-icon>
@@ -22,16 +22,16 @@
                             <span>{{img}}</span>
                         </div>
                     </div>
-                </li>
+                </div>
 
                 <div class="image-display">
                     <img class="image" [src]="gall.image" [alt]="gall.image">
                 </div>
-
-                <button mat-raised-button color="warn" type="button" (click)="removeImage(ind)">
-                    Sterge
-                </button>
             </div>
+
+            <button mat-raised-button color="warn" type="button" (click)="removeImage(ind)">
+                Sterge
+            </button>
 
         </div>
     </div>

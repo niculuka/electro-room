@@ -1,3 +1,60 @@
+import { SUBCATEGORY } from "../enums/electro.enum"
+
+export const LAPTOP_BUSINESS_SUBCATEGORY = [
+    SUBCATEGORY.LAPTOP_BUSINESS,
+]
+
+export const LAPTOP_GAMING_SUBCATEGORY = [
+    SUBCATEGORY.LAPTOP_GAMING,
+]
+
+export const LAPTOP_HOME_SUBCATEGORY = [
+    SUBCATEGORY.LAPTOP_HOME,
+]
+
+export const LAPTOP_ULTRA_SUBCATEGORY = [
+    SUBCATEGORY.LAPTOP_ULTRA,
+]
+
+export const LAPTOP_BAG_SUBCATEGORY = [
+    SUBCATEGORY.BRIEFCASE,
+    SUBCATEGORY.SLEEVE,
+    SUBCATEGORY.BACKPACK,
+]
+
+export const LAPTOP_CHARGER_SUBCATEGORY = [
+    SUBCATEGORY.CAR,
+    SUBCATEGORY.PLUG_IN,
+]
+
+export const LAPTOP_HARD_SUBCATEGORY = [
+    SUBCATEGORY.HDD,
+    SUBCATEGORY.SSD,
+]
+
+export const RAM_MEMORY_SUBCATEGORY = [
+    SUBCATEGORY.DDR4,
+    SUBCATEGORY.DDR5,
+]
+
+export const EXTERNAL_BATTERY_SUBCATEGORY = []
+
+export const PC_GAMING_SUBCATEGORY = [
+    SUBCATEGORY.INTEL,
+    SUBCATEGORY.AMD,
+]
+
+export const ALL_IN_ONE_SUBCATEGORY = [
+    SUBCATEGORY.INTEL,
+    SUBCATEGORY.AMD,
+]
+
+export const MONITOR_PRO_SUBCATEGORY = [
+    SUBCATEGORY.MONITORS_FLAT,
+    SUBCATEGORY.MONITORS_CURVED,
+]
+
+
 export const LAPTOP_GAMING_IMAGES = [
     "assets/images/laptops/laptop-gaming/asus-g15_1.png",
     "assets/images/laptops/laptop-gaming/asus-g15_2.png",

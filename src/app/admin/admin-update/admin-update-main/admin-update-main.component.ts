@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AVAILABLE, BADGE, BRAND, CATEGORY, SUBCATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
+import { AVAILABLE, BADGE, BRAND, CATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
-import { AdminUpdateCategImgService } from 'src/app/shared/services/admin-update-categ-img.service';
+import { AdminHandleFormFiledService } from 'src/app/shared/services/admin-handle-form-field.service';
 
 @Component({
   selector: 'app-admin-update-main',
@@ -13,6 +13,7 @@ import { AdminUpdateCategImgService } from 'src/app/shared/services/admin-update
 export class AdminUpdateMainComponent {
 
   @Input() product: Product = new Product();
+  protected selectedSubcategories = "";
   protected productImages = "";
 
   handleDropdownMenu = false;
@@ -29,9 +30,6 @@ export class AdminUpdateMainComponent {
   categoriesEnums = CATEGORY;
   categories: Array<any> = [];
 
-  subcategoriesEnums = SUBCATEGORY;
-  subcategories: Array<any> = [];
-
   brandsEnums = BRAND;
   brands: Array<any> = [];
 
@@ -43,17 +41,18 @@ export class AdminUpdateMainComponent {
 
   constructor(
     private adminProductService: AdminProductService,
-    private adminUpdateCategImgService: AdminUpdateCategImgService,
+    private formFiledService: AdminHandleFormFiledService,
   ) {
     this.types = Object.values(this.typesEnums);
     this.categories = Object.values(this.categoriesEnums);
-    this.subcategories = Object.values(this.subcategoriesEnums)
     this.brands = Object.values(this.brandsEnums);
     this.availables = Object.values(this.availablesEnums);
     this.badges = Object.values(this.badgesEnums);
-    this.adminUpdateCategImgService.getChangeCategoryObservable().subscribe(data => {
+    this.formFiledService.getChangeCategoryObservable().subscribe(data => {
+      this.product.type = data.currentType;
       this.product.typeUrlKey = data.currentTypeUrlKey;
       this.product.categoryUrlKey = data.currentCategUrlKey;
+      this.selectedSubcategories = data.selectedSubcategories;
       this.productImages = data.currentImages;
     });
   }
@@ -82,6 +81,7 @@ export class AdminUpdateMainComponent {
 
   updateProduct() {
     this.product.urlKey = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
+    // console.log(this.product)
     this.adminProductService.updateProductService(this.product).subscribe({
       next: () => {
         window.location.reload();
@@ -94,7 +94,7 @@ export class AdminUpdateMainComponent {
   }
 
   getImagesByCategories() {
-    this.adminUpdateCategImgService.changeCurrentCategoryService(this.product.category)
+    this.formFiledService.changeCurrentCategoryService(this.product.category)
   }
 
 }

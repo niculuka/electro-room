@@ -5,17 +5,17 @@
     <h1 *ngIf="!descriptions.length" style="color: red;">Nu exista nici o descriere...</h1>
 
     <div *ngIf="descriptions.length">
-        <div *ngFor="let description of descriptions; index as i">
+        <div *ngFor="let descr of descriptions; index as ind">
 
             <!-- Id ------------------------------------------------------------------------------------- -->
             <div class="form-group-dialog">
-                <label>Id: {{description.id}}</label>
+                <label>Id: {{descr.id}}</label>
             </div>
 
             <!-- Title ---------------------------------------------------------------------------------- -->
             <div class="form-group-dialog">
-                <label>Title {{i+1}}: </label>
-                <input type="text" [name]="description.title" [(ngModel)]="description.title" #title="ngModel"
+                <label>Title {{ind+1}}: </label>
+                <input type="text" [name]="descr.title" [(ngModel)]="descr.title" #title="ngModel"
                     minlength="4" maxlength="200" required>
                 <div class="alert-container-dialog">
                     <div class="alert-dialog" *ngIf="!title.valid && d.submitted">Camp gol!</div>
@@ -24,8 +24,8 @@
 
             <!-- Text ----------------------------------------------------------------------------------- -->
             <div class="form-group-dialog">
-                <label>Description {{i+1}}: </label>
-                <textarea cols="30" rows="7" type="text" [name]="description.text" [(ngModel)]="description.text"
+                <label>Description {{ind+1}}: </label>
+                <textarea cols="30" rows="7" type="text" [name]="descr.text" [(ngModel)]="descr.text"
                     #text="ngModel" minlength="10" maxlength="1000" required>
                 </textarea>
                 <div class="alert-container-dialog">
@@ -35,18 +35,28 @@
 
             <!-- Image ---------------------------------------------------------------------------------- -->
             <div class="form-group-dialog">
-                <input type="text" [name]="description.image" [(ngModel)]="description.image" #image="ngModel"
-                    minlength="4" maxlength="200" required>
-                <div class="alert-container-dialog">
-                    <div class="alert-dialog" *ngIf="!image.valid && d.submitted">Camp gol!</div>
-                </div>
-                <div class="image-display">
-                    <img class="image" [src]="description.image" [alt]="description.image">
+                <label for="image">Image: {{ind+1}}</label>
+
+                <div class="dropdown">
+                    <div class="select-line" (click)="openDropdownMenu(ind)">
+                        <input #selects type="text" name="image" [value]="descr.image">
+                        <mat-icon>expand_more</mat-icon>
+                    </div>
+
+                    <div class="dropdown-menu" *ngIf="currentIndex==ind">
+                        <div class="list-option" *ngFor="let img of productImages;" (click)="selectImage(img)">
+                            <img [src]="img" [alt]="img">
+                            <span>{{img}}</span>
+                        </div>
+                    </div>
                 </div>
 
+                <div class="image-display">
+                    <img class="image" [src]="descr.image" [alt]="descr.image">
+                </div>
             </div>
 
-            <button mat-raised-button color="warn" type="button" (click)="removeDescription(description)">
+            <button mat-raised-button color="warn" type="button" (click)="removeDescription(ind)">
                 Sterge
             </button>
 

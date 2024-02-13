@@ -29,17 +29,21 @@
             </div>
         </div>
 
-        <!-- Type ------------------------------------------------------------------------------- -->
+        <!-- Brand ------------------------------------------------------------------------------ -->
         <div class="form-group-dialog">
-            <label for="type">Type</label>
-            <select name="type" #typeSelect [(ngModel)]="product.type">
-                <option *ngFor="let ty of types " [value]="ty">
-                    {{ty}}
+            <label for="brand">Brand</label>
+            <select name="brand" [(ngModel)]="product.brand">
+                <option *ngFor="let br of brands " [value]="br">
+                    {{br}}
                 </option>
             </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
-            </div>
+        </div>
+
+
+        <!-- Type ------------------------------------------------------------------------------- -->
+        <div class="form-group-dialog">
+            <label for="type">Type: </label>
+            <input type="text" name="type" [value]="product.type">
         </div>
 
         <!-- Category --------------------------------------------------------------------------- -->
@@ -59,7 +63,7 @@
         <div class="form-group-dialog">
             <label for="subcategory">Subcategory</label>
             <select name="subcategory" #subcategorySelect [(ngModel)]="product.subcategory">
-                <option *ngFor="let subcateg of subcategories " [value]="subcateg">
+                <option *ngFor="let subcateg of selectedSubcategories " [value]="subcateg">
                     {{subcateg}}
                 </option>
             </select>
@@ -67,17 +71,7 @@
                 <div class="alert-dialog"></div>
             </div>
         </div>
-
-        <!-- Brand ------------------------------------------------------------------------------ -->
-        <div class="form-group-dialog">
-            <label for="brand">Brand</label>
-            <select name="brand" [(ngModel)]="product.brand">
-                <option *ngFor="let br of brands " [value]="br">
-                    {{br}}
-                </option>
-            </select>
-        </div>
-
+        
         <!-- Image ------------------------------------------------------------------------------ -->
         <div class="form-group-dialog">
             <li class="dropdown">
