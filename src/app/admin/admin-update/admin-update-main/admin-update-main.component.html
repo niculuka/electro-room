@@ -4,33 +4,33 @@
 
     <div class="main">
         <!-- Id ---------------------------------------------------------------------------------- -->
-        <div class="form-group-dialog">
-            <label>Id: {{product.id}}</label>
+        <div class="my-form-field">
+            <label class="title">Id: {{product.id}}</label>
         </div>
 
         <!-- Nume -------------------------------------------------------------------------------- -->
-        <div class="form-group-dialog">
+        <div class="my-form-field">
             <label for="name">Nume</label>
             <input type="text" name="name" [(ngModel)]="product.name" #name="ngModel" minlength="1" maxlength="100"
                 required>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog" *ngIf="!name.valid && f.submitted">Camp gol!</div>
+            <div class="my-alert-container">
+                <div class="my-alert" *ngIf="!name.valid && f.submitted">Camp gol!</div>
             </div>
         </div>
 
         <!-- Description ------------------------------------------------------------------------- -->
-        <div class="form-group-dialog">
+        <div class="my-form-field">
             <label for="description">Description</label>
             <textarea cols="30" rows="4" name="description" [(ngModel)]="product.description" #description="ngModel"
                 minlength="1" maxlength="200" required>
         </textarea>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog" *ngIf="!description.valid && f.submitted">Camp gol!</div>
+            <div class="my-alert-container">
+                <div class="my-alert" *ngIf="!description.valid && f.submitted">Camp gol!</div>
             </div>
         </div>
 
         <!-- Brand ------------------------------------------------------------------------------ -->
-        <div class="form-group-dialog">
+        <div class="my-form-field">
             <label for="brand">Brand</label>
             <select name="brand" [(ngModel)]="product.brand">
                 <option *ngFor="let br of brands " [value]="br">
@@ -41,46 +41,45 @@
 
 
         <!-- Type ------------------------------------------------------------------------------- -->
-        <div class="form-group-dialog">
-            <label for="type">Type: </label>
-            <input type="text" name="type" [value]="product.type">
+        <div class="my-form-field">
+            <label class="title" for="type">Type: {{product.type}}</label>
         </div>
 
         <!-- Category --------------------------------------------------------------------------- -->
-        <div class="form-group-dialog">
+        <div class="my-form-field">
             <label for="category">Category</label>
             <select name="category" #categorySelect [(ngModel)]="product.category" (change)="getImagesByCategories()">
                 <option *ngFor="let categ of categories " [value]="categ">
                     {{categ}}
                 </option>
             </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
+            <div class="my-alert-container">
+                <div class="my-alert"></div>
             </div>
         </div>
 
         <!-- Subcategory ------------------------------------------------------------------------ -->
-        <div class="form-group-dialog">
+        <div class="my-form-field">
             <label for="subcategory">Subcategory</label>
             <select name="subcategory" #subcategorySelect [(ngModel)]="product.subcategory">
                 <option *ngFor="let subcateg of selectedSubcategories " [value]="subcateg">
                     {{subcateg}}
                 </option>
             </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
+            <div class="my-alert-container">
+                <div class="my-alert"></div>
             </div>
         </div>
-        
+
         <!-- Image ------------------------------------------------------------------------------ -->
-        <div class="form-group-dialog">
-            <li class="dropdown">
+        <div class="my-form-field">
+            <li class="my-dropdown">
                 <label for="image">Image: </label>
                 <div #select class="select-line" (click)="toggleSelect()">
                     <input type="text" name="image" [value]="product.image">
                     <mat-icon>expand_more</mat-icon>
                 </div>
-                <div class="dropdown-menu" *ngIf="isSelectOpen">
+                <div class="my-dropdown-menu" *ngIf="isSelectOpen">
                     <div class="list-option" *ngFor="let img of productImages;" (click)="selectImage(img)">
                         <img [src]="img" [alt]="img">
                         <span>{{img}}</span>
@@ -88,43 +87,43 @@
                 </div>
             </li>
             <div class="image-display">
-                <img class="image" [src]="product.image" [alt]="product.image">
+                <img [src]="product.image" [alt]="product.image">
             </div>
         </div>
 
         <!-- Available ------------------------------------------------------------------------------ -->
-        <div class="form-group-dialog">
+        <div class="my-form-field">
             <label for="available">Available</label>
             <select name="available" #availableSelect [(ngModel)]="product.available">
                 <option *ngFor="let av of availables " [value]="av">
                     {{av}}
                 </option>
             </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
+            <div class="my-alert-container">
+                <div class="my-alert"></div>
             </div>
         </div>
 
         <!-- Badge ---------------------------------------------------------------------------------- -->
-        <div class="form-group-dialog">
+        <div class="my-form-field">
             <label for="badge">Badge</label>
             <select name="badge" #alertSelect [(ngModel)]="product.badge">
                 <option *ngFor="let bd of badges " [value]="bd">
                     {{bd}}
                 </option>
             </select>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog"></div>
+            <div class="my-alert-container">
+                <div class="my-alert"></div>
             </div>
         </div>
 
         <!-- Price ---------------------------------------------------------------------------------- -->
-        <div class="form-group-dialog">
+        <div class="my-form-field">
             <label for="price">Price</label>
             <input type="number" name="price" [(ngModel)]="product.price" #price="ngModel" min="0.1" max="1000000"
                 required>
-            <div class="alert-container-dialog">
-                <div class="alert-dialog" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
+            <div class="my-alert-container">
+                <div class="my-alert" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>
             </div>
         </div>
     </div>
@@ -132,7 +131,7 @@
     <!-- <pre>Value : {{descriptions | json}} </pre> -->
 
     <!-- S U B M I T  =============================================== -->
-    <div class="form-group-dialog">
+    <div class="my-form-field">
         <button mat-raised-button color="primary" type="submit">
             Salveaza
         </button>

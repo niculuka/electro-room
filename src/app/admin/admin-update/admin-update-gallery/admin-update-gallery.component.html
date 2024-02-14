@@ -7,16 +7,16 @@
     <div *ngIf="gallery.length">
         <div *ngFor="let gall of gallery; index as ind">
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label for="image">Image: {{ind+1}}</label>
 
-                <div class="dropdown">
+                <div class="my-dropdown">
                     <div class="select-line" (click)="openDropdownMenu(ind)">
                         <input #selects type="text" name="image" [value]="gall.image">
                         <mat-icon>expand_more</mat-icon>
                     </div>
 
-                    <div class="dropdown-menu" *ngIf="currentIndex==ind">
+                    <div class="my-dropdown-menu" *ngIf="currentIndex==ind">
                         <div class="list-option" *ngFor="let img of productImages;" (click)="selectImage(img)">
                             <img [src]="img" [alt]="img">
                             <span>{{img}}</span>
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="image-display">
-                    <img class="image" [src]="gall.image" [alt]="gall.image">
+                    <img [src]="gall.image" [alt]="gall.image">
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
     <button mat-raised-button color="accent" type="button" (click)="addImage()">Adauga Imagine</button>
 
     <!-- S U B M I T  =============================================== -->
-    <div class="form-group-dialog">
+    <div class="my-form-field">
         <button mat-raised-button color="primary" type="submit">
             Salveaza
         </button>

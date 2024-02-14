@@ -5,31 +5,31 @@
     <div>
 
         <!-- Id ------------------------------------------------------------------------------------- -->
-        <div class="form-group-dialog">
-            <label>Id: {{specification.id}}</label>
+        <div class="my-form-field">
+            <label class="title">Id: {{specification.id}}</label>
         </div>
 
         <!-- Display  ---------------------------------------------------------------------------------- -->
         <div class="display" *ngIf="currentType==type.LAPTOP||currentType==type.PC">
             <h3>{{specificEnum.TITLE_DISPLAY | uppercase}} </h3>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.DISPLAY_SIZE}} </label>
                 <input type="text" name="display_size" [(ngModel)]="specification.display_size" maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.DISPLAY_RESOLUTION}} </label>
                 <input type="text" name="display_resolution" [(ngModel)]="specification.display_resolution"
                     maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.DISPLAY_FREQUENCY}} </label>
                 <input type="text" name="display_frequency" [(ngModel)]="specification.display_frequency"
                     maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.DISPLAY_TOUCH}} </label>
                 <input type="text" name="display_touch" [(ngModel)]="specification.display_touch" maxlength="100">
             </div>
@@ -38,24 +38,24 @@
         <!-- Motherboard -------------------------------------------------------------------------------- -->
         <div class="motherboard" *ngIf="currentType==type.LAPTOP||currentType==type.PC">
             <h3>{{specificEnum.TITLE_MOTHERBOARD | uppercase}} </h3>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MOTHERBOARD_BRAND}} </label>
                 <input type="text" name="motherboard_brand" [(ngModel)]="specification.motherboard_brand"
                     maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MOTHERBOARD_CHIPSET}} </label>
                 <input type="text" name="motherboard_chipset" [(ngModel)]="specification.motherboard_chipset"
                     maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MOTHERBOARD_SLOT}} </label>
                 <input type="text" name="motherboard_slot" [(ngModel)]="specification.motherboard_slot" maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MOTHERBOARD_AUDIO}} </label>
                 <input type="text" name="motherboard_audio" [(ngModel)]="specification.motherboard_audio"
                     maxlength="100">
@@ -65,22 +65,22 @@
         <!-- Processor ---------------------------------------------------------------------------------- -->
         <div class="processor" *ngIf="currentType==type.LAPTOP||currentType==type.PC">
             <h3>{{specificEnum.TITLE_PROCESSOR | uppercase}} </h3>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.PROCESSOR_BRAND}} </label>
                 <input type="text" name="processor_brand" [(ngModel)]="specification.processor_brand" maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.PROCESSOR_TYPE}} </label>
                 <input type="text" name="processor_type" [(ngModel)]="specification.processor_type" maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.PROCESSOR_MODEL}} </label>
                 <input type="text" name="processor_model" [(ngModel)]="specification.processor_model" maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.PROCESSOR_FREQUENCY}} </label>
                 <input type="text" name="processor_frequency" [(ngModel)]="specification.processor_frequency"
                     maxlength="100">
@@ -90,17 +90,17 @@
         <!-- Memory ------------------------------------------------------------------------------------- -->
         <div class="memory" *ngIf="currentType==type.LAPTOP||currentType==type.PC">
             <h3>{{specificEnum.TITLE_MEMORY | uppercase}} </h3>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MEMORY_TYPE}} </label>
                 <input type="text" name="memory_type" [(ngModel)]="specification.memory_type" maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MEMORY_CAPACITY}} </label>
                 <input type="text" name="memory_capacity" [(ngModel)]="specification.memory_capacity" maxlength="100">
             </div>
 
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MEMORY_FREQUENCY}} </label>
                 <input type="text" name="memory_frequency" [(ngModel)]="specification.memory_frequency" maxlength="100">
             </div>
@@ -109,27 +109,27 @@
         <!-- Hard --------------------------------------------------------------------------------------- -->
         <div class="hard" *ngIf="currentType==type.LAPTOP||currentType==type.PC">
             <h3>{{specificEnum.TITLE_HARD | uppercase}} </h3>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.HARD_TYPE_1}} </label>
                 <input type="text" name="hard_type_1" [(ngModel)]="specification.hard_type_1" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.HARD_CAPACITY_1}} </label>
                 <input type="text" name="hard_capacity_1" [(ngModel)]="specification.hard_capacity_1" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.HARD_SLOT_1}} </label>
                 <input type="text" name="hard_slot_1" [(ngModel)]="specification.hard_slot_1" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.HARD_TYPE_2}} </label>
                 <input type="text" name="hard_type_2" [(ngModel)]="specification.hard_type_2" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.HARD_CAPACITY_2}} </label>
                 <input type="text" name="hard_capacity_2" [(ngModel)]="specification.hard_capacity_2" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.HARD_SLOT_2}} </label>
                 <input type="text" name="hard_slot_2" [(ngModel)]="specification.hard_slot_2" maxlength="100">
             </div>
@@ -138,12 +138,12 @@
         <!-- Connectivity ------------------------------------------------------------------------------- -->
         <div class="connectivity" *ngIf="currentType==type.LAPTOP||currentType==type.PC">
             <h3>{{specificEnum.TITLE_CONNECTIVITY | uppercase}} </h3>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.CONNECTIVITY_BLUETOOTH}} </label>
                 <input type="text" name="connectivity_bluetooth" [(ngModel)]="specification.connectivity_bluetooth"
                     maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.CONNECTIVITY_WIRELESS}} </label>
                 <input type="text" name="connectivity_wireless" [(ngModel)]="specification.connectivity_wireless"
                     maxlength="100">
@@ -153,43 +153,43 @@
         <!-- Generals ----------------------------------------------------------------------------------- -->
         <div class="generals" *ngIf="currentType==type.LAPTOP_ACCESSORY||currentType==type.MONITOR">
             <h3>{{specificEnum.TITLE_GENERAL | uppercase}} </h3>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.BRAND}} </label>
                 <input type="text" name="brand" [(ngModel)]="specification.brand" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.TYPE}} </label>
                 <input type="text" name="type" [(ngModel)]="specification.type" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MODEL}} </label>
                 <input type="text" name="model" [(ngModel)]="specification.model" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.CAPACITY}} </label>
                 <input type="text" name="capacity" [(ngModel)]="specification.capacity" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.CONNECTION}} </label>
                 <input type="text" name="connection" [(ngModel)]="specification.connection" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.OUTPUT}} </label>
                 <input type="text" name="output" [(ngModel)]="specification.output" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.COMPATIBILITY}} </label>
                 <input type="text" name="compatibility" [(ngModel)]="specification.compatibility" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.SCREEN_SIZE}} </label>
                 <input type="text" name="screen_size" [(ngModel)]="specification.screen_size" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.FREQUENCY}} </label>
                 <input type="text" name="frequency" [(ngModel)]="specification.frequency" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.POWER}} </label>
                 <input type="text" name="power" [(ngModel)]="specification.power" maxlength="100">
             </div>
@@ -198,43 +198,43 @@
         <!-- Others ------------------------------------------------------------------------------------- -->
         <div class="others" *ngIf="currentType==type.LAPTOP_ACCESSORY||currentType==type.MONITOR">
             <h3>{{specificEnum.TITLE_OTHER | uppercase}} </h3>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.MATERIAL}} </label>
                 <input type="text" name="material" [(ngModel)]="specification.material" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.COLOR}} </label>
                 <input type="text" name="color" [(ngModel)]="specification.color" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.WEIGHT}} </label>
                 <input type="text" name="weight" [(ngModel)]="specification.weight" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.SPEED}} </label>
                 <input type="text" name="speed" [(ngModel)]="specification.speed" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.READ_SPEED}} </label>
                 <input type="text" name="read_speed" [(ngModel)]="specification.read_speed" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.WRITE_SPEED}} </label>
                 <input type="text" name="write_speed" [(ngModel)]="specification.write_speed" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.HDMI}} </label>
                 <input type="text" name="hdmi" [(ngModel)]="specification.hdmi" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.SPEAKER}} </label>
                 <input type="text" name="speaker" [(ngModel)]="specification.speaker" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.RADIATOR}} </label>
                 <input type="text" name="radiator" [(ngModel)]="specification.radiator" maxlength="100">
             </div>
-            <div class="form-group-dialog">
+            <div class="my-form-field">
                 <label>{{specificEnum.VOLTAGE}} </label>
                 <input type="text" name="voltage" [(ngModel)]="specification.voltage" maxlength="100">
             </div>
@@ -242,7 +242,7 @@
     </div>
 
     <!-- S U B M I T  =============================================== -->
-    <div class="form-group-dialog">
+    <div class="my-form-field">
         <button mat-raised-button color="primary" type="submit">
             Salveaza
         </button>
