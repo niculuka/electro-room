@@ -5,37 +5,25 @@
     <h1 *ngIf="!descriptions.length" style="color: red;">Nu exista nici o descriere...</h1>
 
     <div *ngIf="descriptions.length">
-        <div *ngFor="let descr of descriptions; index as ind">
+        <div class="fields-container" *ngFor="let descr of descriptions; index as ind">
 
             <!-- Id ------------------------------------------------------------------------------------- -->
             <div class="my-form-field">
-                <label>Id: {{descr.id}}</label>
+                <label class="title">Id: {{descr.id}}</label>
             </div>
 
-            <!-- Title ---------------------------------------------------------------------------------- -->
-            <div class="my-form-field">
-                <label>Title {{ind+1}}: </label>
-                <input type="text" [name]="descr.title" [(ngModel)]="descr.title" #title="ngModel"
-                    minlength="4" maxlength="200" required>
-                <div class="my-alert-container">
-                    <div class="my-alert" *ngIf="!title.valid && d.submitted">Camp gol!</div>
-                </div>
-            </div>
-
-            <!-- Text ----------------------------------------------------------------------------------- -->
-            <div class="my-form-field">
-                <label>Description {{ind+1}}: </label>
-                <textarea cols="30" rows="7" type="text" [name]="descr.text" [(ngModel)]="descr.text"
-                    #text="ngModel" minlength="10" maxlength="1000" required>
-                </textarea>
-                <div class="my-alert-container">
-                    <div class="my-alert" *ngIf="!text.valid && d.submitted">Camp gol!</div>
-                </div>
-            </div>
+            <!-- Close ----------------------------------------------------------------------------------- -->
+            <button class="close-btn" type="button" (click)="removeDescription(ind)">
+                <mat-icon>close</mat-icon>
+            </button>
 
             <!-- Image ---------------------------------------------------------------------------------- -->
             <div class="my-form-field">
                 <label for="image">Image: {{ind+1}}</label>
+
+                <div class="image-display">
+                    <img [src]="descr.image" [alt]="descr.image">
+                </div>
 
                 <div class="my-dropdown">
                     <div class="select-line" (click)="openDropdownMenu(ind)">
@@ -50,27 +38,39 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="image-display">
-                    <img [src]="descr.image" [alt]="descr.image">
+            <!-- Title ---------------------------------------------------------------------------------- -->
+            <div class="my-form-field">
+                <label>Title {{ind+1}}: </label>
+                <input type="text" [name]="descr.title" [(ngModel)]="descr.title" #title="ngModel" minlength="4"
+                    maxlength="200" required>
+                <div class="my-alert-container">
+                    <div class="my-alert" *ngIf="!title.valid && d.submitted">Camp gol!</div>
                 </div>
             </div>
 
-            <button mat-raised-button color="warn" type="button" (click)="removeDescription(ind)">
-                Sterge
-            </button>
+            <!-- Text ----------------------------------------------------------------------------------- -->
+            <div class="my-form-field">
+                <label>Description {{ind+1}}: </label>
+                <textarea cols="30" rows="7" type="text" [name]="descr.text" [(ngModel)]="descr.text" #text="ngModel"
+                    minlength="10" maxlength="1000" required>
+                </textarea>
+                <div class="my-alert-container">
+                    <div class="my-alert" *ngIf="!text.valid && d.submitted">Camp gol!</div>
+                </div>
+            </div>       
 
         </div>
     </div>
 
-    <!-- <pre>Value : {{descriptions | json}} </pre> -->
-
-    <button mat-raised-button color="accent" type="button" (click)="addDescription()">Adauga Descriere</button>
-
+    <button class="add-btn" type="button" (click)="addDescription()">
+        <mat-icon>add</mat-icon>
+    </button>
 
     <!-- S U B M I T  =============================================== -->
     <div class="my-form-field">
-        <button mat-raised-button color="primary" type="submit">
+        <button class="submit-btn" mat-raised-button color="primary" type="submit">
             Salveaza
         </button>
     </div>

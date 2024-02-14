@@ -5,10 +5,25 @@
     <h1 *ngIf="!gallery.length" style="color: red;">Nu exista nici o imagine...</h1>
 
     <div *ngIf="gallery.length">
-        <div *ngFor="let gall of gallery; index as ind">
+        <div class="fields-container" *ngFor="let gall of gallery; index as ind">
 
+            <!-- Id ------------------------------------------------------------------------------------- -->
+            <div class="my-form-field">
+                <label class="title">Id: {{gall.id}}</label>
+            </div>
+
+            <!-- Close button ------------------------------------------------------------------------- -->
+            <button class="close-btn" type="button" (click)="removeImage(ind)">
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <!-- Image -------------------------------------------------------------------------------- -->
             <div class="my-form-field">
                 <label for="image">Image: {{ind+1}}</label>
+
+                <div class="image-display">
+                    <img [src]="gall.image" [alt]="gall.image">
+                </div>
 
                 <div class="my-dropdown">
                     <div class="select-line" (click)="openDropdownMenu(ind)">
@@ -22,25 +37,19 @@
                             <span>{{img}}</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="image-display">
-                    <img [src]="gall.image" [alt]="gall.image">
-                </div>
-            </div>
-
-            <button mat-raised-button color="warn" type="button" (click)="removeImage(ind)">
-                Sterge
-            </button>
+                </div>                
+            </div>           
 
         </div>
     </div>
 
-    <button mat-raised-button color="accent" type="button" (click)="addImage()">Adauga Imagine</button>
-
+    <button class="add-btn" type="button" (click)="addImage()">
+        <mat-icon>add</mat-icon>
+    </button>
+    
     <!-- S U B M I T  =============================================== -->
     <div class="my-form-field">
-        <button mat-raised-button color="primary" type="submit">
+        <button class="submit-btn" mat-raised-button color="primary" type="submit">
             Salveaza
         </button>
     </div>
