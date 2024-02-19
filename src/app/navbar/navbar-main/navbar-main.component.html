@@ -31,9 +31,7 @@
         <li class="search-bar">
           <form>
             <input #left type="text" placeholder="Cauta produsul aici!" (keyup.enter)="goToSearch(left.value)">
-            <button (click)="goToSearch(left.value)">
-              <mat-icon>search</mat-icon>
-            </button>
+            <mat-icon (click)="goToSearch(left.value)">search</mat-icon>
           </form>
         </li>
 
@@ -69,7 +67,7 @@
             <!-- <mat-icon class="admin">settings</mat-icon> -->
             <span>Admin</span>
           </div>
-          <div class="dropdown-menu" *ngIf="isAdminMenuOpen">            
+          <div class="dropdown-menu" *ngIf="isAdminMenuOpen">
             <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
             <a routerLink="/admin/demo/products/laptop_accessory" routerLinkActive="active">Accessories</a>
 
@@ -151,9 +149,7 @@
         <li class="search-bar">
           <form>
             <input #right type="text" placeholder="Cauta produsul aici!" (keyup.enter)="goToSearch(right.value)">
-            <button (click)="goToSearch(right.value)">
-              <mat-icon>search</mat-icon>
-            </button>
+            <mat-icon (click)="goToSearch(right.value)">search</mat-icon>
           </form>
         </li>
       </ul>

@@ -132,8 +132,9 @@ mat-icon {
   cursor: pointer;
 }
 
-.search-bar button mat-icon {
+.search-bar mat-icon {
   color: rgba(220, 20, 110, 0.5);
+  cursor: pointer;
 }
 
 .row2 ul .search-bar {
