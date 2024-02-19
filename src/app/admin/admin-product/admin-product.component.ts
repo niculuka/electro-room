@@ -19,6 +19,7 @@ export class AdminProductComponent implements OnChanges, OnDestroy {
 
   protected products: Array<IProduct> = [];
   protected product: Product = new Product();
+  foundProducts: boolean = false;
 
   available = AVAILABLE;
   badge = BADGE;
@@ -45,10 +46,14 @@ export class AdminProductComponent implements OnChanges, OnDestroy {
   ngOnChanges(changes: SimpleChanges): void {
     const urlKey = changes['activeSubtitleUrlKey'].currentValue;
     this.sub = this.productService.getProductsByTypeService(urlKey).subscribe(data => {
-      this.products = data;
-      this.dataSource = new MatTableDataSource(this.products);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      if (data) {
+        this.products = data;
+        this.foundProducts = true;
+        this.dataSource = new MatTableDataSource(this.products);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+      else this.foundProducts = false;
     });
   }
 

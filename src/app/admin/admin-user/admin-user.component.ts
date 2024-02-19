@@ -19,6 +19,7 @@ export class AdminUserComponent implements OnInit, OnDestroy {
 
   protected users: Array<IUser> = [];
   protected user: User = new User();
+  foundUsers: boolean = false;
   userRole: ROLE = ROLE.USER;
 
   currentUser: User = new User();
@@ -48,10 +49,14 @@ export class AdminUserComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1 = this.adminUserService.findAllUsersService().subscribe(data => {
-      this.users = data;
-      this.dataSource = new MatTableDataSource(this.users);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      if (data) {
+        this.users = data;
+        this.foundUsers = true;
+        this.dataSource = new MatTableDataSource(this.users);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+      else this.foundUsers = false;
     })
   }
 

@@ -17,6 +17,7 @@ export class AdminTokenComponent implements OnInit, OnDestroy {
 
   protected tokens: Array<IToken> = [];
   protected token!: Token;
+  foundTokens: boolean = false;
 
   @Input() activeSubtitleName: any;
   @Input() activeSubtitleUrlKey: any;
@@ -38,10 +39,14 @@ export class AdminTokenComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.adminTokenService.getAllTokensService().subscribe(data => {
-      this.tokens = data;
-      this.dataSource = new MatTableDataSource(this.tokens);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      if (data) {
+        this.tokens = data;
+        this.foundTokens = true;
+        this.dataSource = new MatTableDataSource(this.tokens);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+      else this.foundTokens = false;
     })
   }
 

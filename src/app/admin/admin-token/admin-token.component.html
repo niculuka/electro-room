@@ -1,4 +1,12 @@
-<div class="container-admin">
+<div class="container-admin progress-bar" *ngIf="!foundTokens">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  
+  <div class="container-admin" *ngIf="foundTokens && !tokens.length">
+    <h2>Nu s-a gasit nici un token</h2>
+  </div>
+
+<div class="container-admin" *ngIf="foundTokens && tokens.length">
 
     <div class="title">
         <h1><strong>{{activeSubtitleName}}</strong> ({{tokens.length}} {{tokens.length==1?'token':'tokenuri'}})</h1>

@@ -1,11 +1,15 @@
 <div class="container-categ">
-    <div class="categ">        
+    <div class="categ">
 
-        <div style="width: 100%" *ngIf="!foundProducts">
+        <div class="progress-bar" *ngIf="!foundProducts">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <div style="width: 100%" *ngIf="foundProducts && !products.length">
             <h2>Nu s-a gasit nici un produs</h2>
         </div>
 
-        <div class="row-categ" *ngIf="foundProducts">
+        <div class="row-categ" *ngIf="foundProducts && products.length">
 
             <app-product-filter></app-product-filter>
 

@@ -19,6 +19,7 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
 
   orders: Array<IOrder> = [];
   order: Order = new Order();
+  foundOrders: boolean = false;
 
   items: Array<CartItem> = [];
   item!: CartItem;
@@ -46,10 +47,14 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub0 = this.adminOrderService.getAllOrdersService().subscribe(data => {
-      this.orders = data;
-      this.dataSource = new MatTableDataSource(this.orders);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      if (data) {
+        this.orders = data;
+        this.foundOrders = true;
+        this.dataSource = new MatTableDataSource(this.orders);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+      else this.foundOrders = false;
     });
   }
 

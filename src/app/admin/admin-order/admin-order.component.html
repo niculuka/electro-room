@@ -1,4 +1,12 @@
-<div class="container-admin">
+<div class="container-admin progress-bar" *ngIf="!foundOrders">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div class="container-admin" *ngIf="foundOrders && !orders.length">
+  <h2>Nu s-a gasit nici o comanda</h2>
+</div>
+
+<div class="container-admin" *ngIf="foundOrders && orders.length">
 
   <div class="title">
     <h1><strong>{{activeSubtitleName}}</strong> ({{orders.length}} {{orders.length==1?'comanda':'comenzi'}})</h1>

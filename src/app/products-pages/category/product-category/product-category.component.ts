@@ -61,7 +61,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
         });
       });
       this.sub2 = this.productService.getProductsByCategoryService(urlKey).subscribe(data => {
-        if (data.length) {
+        if (data) {
           this.products = data;
           this.foundProducts = true;
           this.getFavoritesProducts();

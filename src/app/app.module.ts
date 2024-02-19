@@ -26,6 +26,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 // n p m  -  b o o t s t r a p -----------------------------------------------------------------------
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
@@ -213,6 +214,7 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatProgressBarModule,
     // n p m  -  b o o t s t r a p    
     CarouselModule,
     NgDynamicBreadcrumbModule,

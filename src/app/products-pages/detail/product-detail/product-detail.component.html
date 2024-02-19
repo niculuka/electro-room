@@ -1,11 +1,15 @@
 <div class="container-product">
     <div class="column-product">
 
-        <div *ngIf="!foundProduct">
+        <div class="progress-bar" *ngIf="!foundProduct">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <div style="width: 100%" *ngIf="foundProduct && !product.id">
             <h1>Nu s-a gasit produsul</h1>
         </div>
 
-        <div *ngIf="foundProduct">
+        <div *ngIf="foundProduct && product.id">
 
             <app-product-main [product]="product"></app-product-main>
 

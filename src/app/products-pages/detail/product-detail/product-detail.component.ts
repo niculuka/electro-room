@@ -17,14 +17,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   protected departments = DEPARTMENTS;
   protected product: Product = new Product();
+  foundProduct: boolean = false;
 
   breadcrumbs: Array<IBreadcrumb> = [];
   crumbDepartment: IBreadcrumb = {} as IBreadcrumb;
   crumbType: IBreadcrumb = {} as IBreadcrumb;
   crumbCategory: IBreadcrumb = {} as IBreadcrumb;
-  crumbLinkname: IBreadcrumb = {} as IBreadcrumb;
-
-  foundProduct: boolean = false;
+  crumbLinkname: IBreadcrumb = {} as IBreadcrumb;  
 
   private sub1: any;
   private sub2: any;

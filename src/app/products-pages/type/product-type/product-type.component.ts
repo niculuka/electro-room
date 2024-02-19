@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DEPARTMENTS } from 'src/app/shared/data/mega-menu.data';
-import { CATEGORY, TYPE, TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
+import { TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
 import { IBreadcrumb } from 'src/app/shared/models/breadcrumb.model';
 import { Product } from 'src/app/shared/models/product.model';
 import { BreadcrumbService } from 'src/app/shared/services/breadcrumb.service';
@@ -54,7 +54,7 @@ export class ProductTypeComponent implements OnInit, OnDestroy {
       });
     });
     this.sub1 = this.productService.getProductsByTypeService(this.urlKey).subscribe(data => {
-      if (data.length) {
+      if (data) {
         this.products = data;
         this.foundProducts = true;
         this.getFavoritesProducts();

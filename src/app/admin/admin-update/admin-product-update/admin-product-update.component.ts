@@ -11,6 +11,8 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class AdminProductUpdateComponent implements OnInit, OnDestroy {
 
   protected product: Product = new Product();
+  foundProduct: boolean = false;
+
   currentIndexTab: number = this.getCurrentIndex();
 
   private sub0: any;
@@ -25,7 +27,11 @@ export class AdminProductUpdateComponent implements OnInit, OnDestroy {
     this.sub0 = this.activatedRoute.paramMap.subscribe((params) => {
       let urlKey = params.get('urlKey') || "";
       this.sub1 = this.productService.getProductByNameService(urlKey).subscribe(data => {
-        this.product = data;
+        if (data) {
+          this.product = data;
+          this.foundProduct = true;
+        }
+        else this.foundProduct = false;
       });
     });
   }

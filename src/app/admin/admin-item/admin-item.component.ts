@@ -17,6 +17,7 @@ export class AdminItemComponent implements OnInit, OnDestroy {
 
   protected items: Array<CartItem> = [];
   protected item!: CartItem;
+  foundItems: boolean = false;
 
   @Input() activeSubtitleName: any;
   @Input() activeSubtitleUrlKey: any;
@@ -38,10 +39,14 @@ export class AdminItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub0 = this.adminItemService.getAllOrdersService().subscribe(data => {
-      this.items = data;
-      this.dataSource = new MatTableDataSource(this.items);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      if (data) {
+        this.items = data;
+        this.foundItems = true;
+        this.dataSource = new MatTableDataSource(this.items);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+      else this.foundItems = false;
     })
   }
 

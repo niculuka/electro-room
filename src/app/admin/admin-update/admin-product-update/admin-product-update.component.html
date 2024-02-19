@@ -3,34 +3,44 @@
 
         <h1><strong>ACTUALIZARE PRODUS</strong></h1>
 
-        <mat-tab-group animationDuration="200ms" [selectedIndex]="currentIndexTab"
-            (selectedIndexChange)="setCurrentIndex($event)">
+        <div class="progress-bar" *ngIf="!foundProduct">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
 
-            <mat-tab label="Produs">
-                <div class="main">
-                    <app-admin-update-main [product]="product"></app-admin-update-main>
-                </div>
-            </mat-tab>
+        <div style="width: 100%" *ngIf="foundProduct && !product.id">
+            <h1>Nu s-a gasit produsul</h1>
+        </div>
 
-            <mat-tab label="Imagini">
-                <div class="images">
-                    <app-admin-update-gallery [product]="product"></app-admin-update-gallery>
-                </div>
-            </mat-tab>
+        <div *ngIf="foundProduct && product.id">
+            <mat-tab-group animationDuration="200ms" [selectedIndex]="currentIndexTab"
+                (selectedIndexChange)="setCurrentIndex($event)">
 
-            <mat-tab label="Descrieri">
-                <div class="descriptions">
-                    <app-admin-update-description [product]="product"></app-admin-update-description>
-                </div>
-            </mat-tab>
+                <mat-tab label="Produs">
+                    <div class="main">
+                        <app-admin-update-main [product]="product"></app-admin-update-main>
+                    </div>
+                </mat-tab>
 
-            <mat-tab label="Specificatii">
-                <div class="specifications">
-                    <app-admin-update-specification [product]="product"></app-admin-update-specification>
-                </div>
-            </mat-tab>
+                <mat-tab label="Imagini">
+                    <div class="images">
+                        <app-admin-update-gallery [product]="product"></app-admin-update-gallery>
+                    </div>
+                </mat-tab>
 
-        </mat-tab-group>
+                <mat-tab label="Descrieri">
+                    <div class="descriptions">
+                        <app-admin-update-description [product]="product"></app-admin-update-description>
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Specificatii">
+                    <div class="specifications">
+                        <app-admin-update-specification [product]="product"></app-admin-update-specification>
+                    </div>
+                </mat-tab>
+
+            </mat-tab-group>
+        </div>
 
     </div>
 </div>

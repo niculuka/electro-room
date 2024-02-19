@@ -15,10 +15,10 @@ import { SearchProductService } from 'src/app/shared/services/search-product.ser
 export class SearchComponent implements OnInit {
 
   protected products: Array<Product> = [];
+  foundProducts: boolean = false;
 
   searchTerm: string = "";
-  searchResult: string = "";
-  foundProducts: boolean = false;
+  searchResult: string = "";  
 
   displayType: string = "grid";
 
@@ -48,7 +48,6 @@ export class SearchComponent implements OnInit {
         this.searchProductService.searchProducts(this.searchTerm.toLowerCase());
         this.searchResult = "Rezultate cautare: " + this.searchTerm;
         this.sub2 = this.searchProductService.getSearchedProductsObservable().subscribe(data => {
-          console.log(data)
           if (data) {
             const getProducts = JSON.stringify(data);
             this.products = JSON.parse(getProducts);
