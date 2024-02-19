@@ -2,7 +2,6 @@
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { ROLE, TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
-
 // p a g e s
 import { LoginComponent } from './guest/login/login.component';
 import { RegisterComponent } from './guest/register/register.component';
@@ -23,18 +22,11 @@ import { CustomerSupportComponent } from './guest/customer-support/customer-supp
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 
 // a d m i n
-import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
 import { AdminProductUpdateComponent } from './admin/admin-update/admin-product-update/admin-product-update.component';
-import { AdminUserComponent } from './admin/admin-user/admin-user.component';
-import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
-import { AdminItemComponent } from './admin/admin-item/admin-item.component';
-import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 
 // a d m i n - D E M O
 import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
-import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
-import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 // products-pages
 import { DepartmentComponent } from './products-pages/department/department.component';

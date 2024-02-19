@@ -1,13 +1,14 @@
-// i m p o r t s   -   principal modules
+// m a i n
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// m a t ------------------------------------------------------------------------------
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,11 +26,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+// n p m  -  b o o t s t r a p -----------------------------------------------------------------------
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// n a v b a r
+import { ToastrModule } from 'ngx-toastr';
+// n a v b a r ------------------------------------------------------------------------------
 import { NavbarMainComponent } from './navbar/navbar-main/navbar-main.component';
 import { NavbarDesktopComponent } from './navbar/navbar-desktop/navbar-desktop.component';
 import { MegaMenuMobileComponent } from './navbar/mega-menu-mobile/mega-menu-mobile.component';
@@ -39,7 +41,7 @@ import { FavoriteNavComponent } from './navbar/favorite-nav/favorite-nav.compone
 import { CompareNavComponent } from './navbar/compare-nav/compare-nav.component';
 import { BreadcrumbComponent } from './guest/breadcrumb/breadcrumb.component';
 import { FooterComponent } from './guest/footer/footer.component';
-// p r o d u c t s - p a g e s
+// p r o d u c t s - p a g e s ------------------------------------------------------------------------------
 import { DepartmentComponent } from './products-pages/department/department.component';
 import { ProductTypeComponent } from './products-pages/type/product-type/product-type.component';
 import { TypeComponent } from './products-pages/type/type/type.component';
@@ -53,7 +55,7 @@ import { CarouselGalleryComponent } from './products-pages/detail/carousel-galle
 import { ProductDescriptionComponent } from './products-pages/detail/product-description/product-description.component';
 import { ProductSpecificationComponent } from './products-pages/detail/product-specification/product-specification.component';
 import { SearchComponent } from './products-pages/search/search.component';
-// p a g e s
+// p a g e s ------------------------------------------------------------------------------
 import { RegisterComponent } from './guest/register/register.component';
 import { LoginComponent } from './guest/login/login.component';
 import { HomeComponent } from './guest/home/home.component';
@@ -65,10 +67,10 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { NotFoundComponent } from './guest/not-found/not-found.component';
 import { UnauthComponent } from './guest/unauth/unauth.component';
 import { OrderComponent } from './user/order/order.component';
-import { PaymentFormComponent } from './user/payment-form/payment-form.component';
 import { OrderUserDetailComponent } from './user/order-user-detail/order-user-detail.component';
 import { OrderAgreementComponent } from './user/order-agreement/order-agreement.component';
 import { MyOrderComponent } from './user/my-order/my-order.component';
+import { PaymentFormComponent } from './user/payment-form/payment-form.component';
 import { SpecialOfferComponent } from './guest/special-offer/special-offer.component';
 import { ElectroCardComponent } from './guest/electro-card/electro-card.component';
 import { StoreComponent } from './guest/store/store.component';
@@ -78,7 +80,7 @@ import { CarouselComponent } from './navbar/carousel/carousel.component';
 import { CarouselOwlComponent } from './navbar/carousel-owl/carousel-owl.component';
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
-// dialog interogation
+// dialog interogation ------------------------------------------------------------------------------
 import { DialogOrderDeleteComponent } from './dialogs/dialog-order-delete/dialog-order-delete.component';
 import { DialogItemDeleteComponent } from './dialogs/dialog-item-delete/dialog-item-delete.component';
 import { DialogUserDeleteComponent } from './dialogs/dialog-user-delete/dialog-user-delete.component';
@@ -87,7 +89,7 @@ import { DialogProductDeleteComponent } from './dialogs/dialog-product-delete/di
 import { DialogProductFilterComponent } from './dialogs/dialog-product-filter/dialog-product-filter.component';
 import { DialogProductsSorterComponent } from './dialogs/dialog-products-sorter/dialog-products-sorter.component';
 import { DialogCartComponent } from './dialogs/dialog-cart/dialog-cart.component';
-// a d m i n
+// a d m i n ------------------------------------------------------------------------------
 import { AdminComponent } from './admin/admin/admin.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
@@ -100,14 +102,13 @@ import { AdminItemComponent } from './admin/admin-item/admin-item.component';
 import { AdminTokenComponent } from './admin/admin-token/admin-token.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
-// a d m i n - D E M O
+// a d m i n - D E M O ------------------------------------------------------------------------------
 import { AdminDemoProductComponent } from './admin-demo/admin-demo-product/admin-demo-product.component';
 import { AdminDemoOrderComponent } from './admin-demo/admin-demo-order/admin-demo-order.component';
 import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-user.component';
 
 @NgModule({
   declarations: [
-    // i m p o r t s   -   principal modules
     AppComponent,
     // n a v b a r
     NavbarMainComponent,
@@ -145,10 +146,10 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     NotFoundComponent,
     UnauthComponent,
     OrderComponent,
-    PaymentFormComponent,
     OrderUserDetailComponent,
     OrderAgreementComponent,
     MyOrderComponent,
+    PaymentFormComponent,
     SpecialOfferComponent,
     ElectroCardComponent,
     StoreComponent,
@@ -186,25 +187,18 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     AdminDemoUserComponent,
   ],
   imports: [
-    BrowserModule,
+    // m a i n    
     AppRoutingModule,
-    HttpClientModule,
-    LayoutModule,
+    BrowserModule,
     FormsModule,
+    LayoutModule,
     ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-center-center',
-      newestOnTop: false,
-      preventDuplicates: true,
-    }),
+    // m a t
     MatMenuModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
     MatInputModule,
     MatSelectModule,
     MatChipsModule,
@@ -216,10 +210,20 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     MatSidenavModule,
     MatListModule,
     MatTabsModule,
-    NgbModule,
-    NgbCarouselModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    // n p m  -  b o o t s t r a p    
     CarouselModule,
     NgDynamicBreadcrumbModule,
+    NgbCarouselModule,
+    NgbModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-center-center',
+      newestOnTop: false,
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

@@ -1,199 +1,200 @@
-form {
+.admin-form {
     cursor: default;
     // border: 2px solid rgb(255, 0, 0); 
-}
 
-h2 {
-    width: 100%;
-    padding: 0 4px;
-    background: rgba(0, 0, 0, 0.1);
-}
+    h2 {
+        width: 100%;
+        padding: 0 4px;
+        background: rgba(0, 0, 0, 0.1);
+    }
 
-h3 {
-    margin: 20px 0 0 0 !important;
-    color: rgb(220, 20, 110);
-    border-bottom: 2px solid rgb(220, 20, 110);
-}
+    h3 {
+        margin: 20px 0 0 0 !important;
+        color: rgb(220, 20, 110);
+        border-bottom: 2px solid rgb(220, 20, 110);
+    }
 
-.fields-container {
-    position: relative;
-}
+    .fields-container {
+        position: relative;
+    }
 
-.my-form-field {    
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 20px;
-    // border: 1px solid black;
-}
+    .my-form-field {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+        // border: 1px solid black;
+    }
 
-label {
-    margin-bottom: 6px;
-}
+    label {
+        margin-bottom: 6px;
+    }
 
-.title {
-    font-weight: bold;
+    .title {
+        font-weight: bold;
 
-}
+    }
 
-input {
-    width: 100%;
-    font-size: 14px;
-    line-height: 14px;
-    padding: 4px;
-    cursor: default;
-}
+    input {
+        width: 100%;
+        font-size: 14px;
+        line-height: 14px;
+        padding: 4px;
+        cursor: default;
+    }
 
-input:focus {
-    outline: 1px solid black;
-}
+    input:focus {
+        outline: 1px solid black;
+    }
 
-textarea {
-    padding: 4px;
-}
+    textarea {
+        padding: 4px;
+    }
 
-textarea:focus {
-    outline: 1px solid black;
-}
+    textarea:focus {
+        outline: 1px solid black;
+    }
 
-select {
-    width: 100%;
-    padding: 4px;
-    border-radius: 0;
-    border: 1px solid black;
-    background: white;
-}
+    select {
+        width: 100%;
+        padding: 4px;
+        border-radius: 0;
+        border: 1px solid black;
+        background: white;
+    }
 
-select:focus {
-    outline: 1px solid black;
-}
+    select:focus {
+        outline: 1px solid black;
+    }
 
-// Dopdown ---------------------------------------------------------------
-.my-dropdown {
-    display: inline-block;
-    position: relative;
-}
+    // Dopdown ---------------------------------------------------------------
+    .my-dropdown {
+        display: inline-block;
+        position: relative;
+    }
 
-.select-line {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid grey;
-}
+    .select-line {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid grey;
+    }
 
-.select-line:focus-within {
-    outline: 1px solid black;
-}
+    .select-line:focus-within {
+        outline: 1px solid black;
+    }
 
-.select-line>input {
-    border: none;
-}
+    .select-line>input {
+        border: none;
+    }
 
-.select-line>input:focus {
-    border: none;
-    outline: none;
-}
+    .select-line>input:focus {
+        border: none;
+        outline: none;
+    }
 
-mat-icon {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 18px !important;
-    width: 18px !important;
-    height: 18px !important;
+    mat-icon {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 18px !important;
+        width: 18px !important;
+        height: 18px !important;
 
-    // border: 1px solid black;
-}
+        // border: 1px solid black;
+    }
 
-// Dopdown Menu ---------------------------------------------------------------
-.my-dropdown-menu {
-    z-index: 2;
-    display: block;
-    position: absolute;
-    width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    background: white;
-    border: 1px solid rgb(204, 204, 204);
-}
+    // Dopdown Menu ---------------------------------------------------------------
+    .my-dropdown-menu {
+        z-index: 2;
+        display: block;
+        position: absolute;
+        width: 100%;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        background: white;
+        border: 1px solid rgb(204, 204, 204);
+    }
 
-.my-dropdown-menu img {
-    width: 30px;
-    height: 30px;
-    margin: 2px 10px 2px 6px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
+    .my-dropdown-menu img {
+        width: 30px;
+        height: 30px;
+        margin: 2px 10px 2px 6px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    }
 
-.my-dropdown-menu a:hover {
-    background: rgb(232, 232, 232);
-}
+    .my-dropdown-menu a:hover {
+        background: rgb(232, 232, 232);
+    }
 
-.list-option {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+    .list-option {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 
-.list-option:hover {
-    background: rgb(230, 230, 230);
-}
+    .list-option:hover {
+        background: rgb(230, 230, 230);
+    }
 
-.list-option span {
-    font-size: 14px;
-    line-height: 14px;
-}
+    .list-option span {
+        font-size: 14px;
+        line-height: 14px;
+    }
 
-.image-display img {
-    width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    .image-display img {
+        width: 120px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 
-}
+    }
 
-// Alert ---------------------------------------------------------------
-.my-alert-container {
-    display: block;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: none;
-    // border: 1px solid rgb(151, 150, 150);
-}
 
-.my-alert {
-    display: block;
-    text-align: center;
-    color: red;
-    font-size: 14px;
-    // border: 1px solid rgb(151, 150, 150);
-}
+    // Alert ---------------------------------------------------------------
+    .my-alert-container {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: none;
+        // border: 1px solid rgb(151, 150, 150);
+    }
 
-// Buttons --------------------------------------------------------------
-.add-btn {
-    float: right;
-    margin: 20px 0 !important;
-    padding: 10px;
-    border-radius: 4px;
-    background: none;    
-}
+    .my-alert {
+        display: block;
+        text-align: center;
+        color: red;
+        font-size: 14px;
+        // border: 1px solid rgb(151, 150, 150);
+    }
 
-.add-btn mat-icon {
-    font-size: 30px !important;
-}
+    // Buttons --------------------------------------------------------------
+    .add-btn {
+        float: right;
+        margin: 20px 0 !important;
+        padding: 10px;
+        border-radius: 4px;
+        background: none;
+    }
 
-.close-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: block;
-    margin: 0;
-    padding: 4px;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    background: rgb(220, 20, 110);
-}
+    .add-btn mat-icon {
+        font-size: 30px !important;
+    }
 
-.submit-btn {
-    margin-top: 10px !important;
+    .close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        margin: 0;
+        padding: 4px;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        background: rgb(220, 20, 110);
+    }
+
+    .submit-btn {
+        margin-top: 10px !important;
+    }
 }

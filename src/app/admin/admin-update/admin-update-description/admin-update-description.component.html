@@ -1,4 +1,4 @@
-<form #d="ngForm" (ngSubmit)="d.form.valid && updateDescription()">
+<form class="admin-form" #d="ngForm" (ngSubmit)="d.form.valid && updateDescription()">
 
     <h2>3. DESCRIERILE PRODUSULUI</h2>
 
@@ -19,11 +19,7 @@
 
             <!-- Image ---------------------------------------------------------------------------------- -->
             <div class="my-form-field">
-                <label for="image">Image: {{ind+1}}</label>
-
-                <div class="image-display">
-                    <img [src]="descr.image" [alt]="descr.image">
-                </div>
+                <label for="image">Image: {{ind+1}}</label>                
 
                 <div class="my-dropdown">
                     <div class="select-line" (click)="openDropdownMenu(ind)">
@@ -37,6 +33,10 @@
                             <span>{{img}}</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="image-display">
+                    <img [src]="descr.image" [alt]="descr.image">
                 </div>
             </div>
 
