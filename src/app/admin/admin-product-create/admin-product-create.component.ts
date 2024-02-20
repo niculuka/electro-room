@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { CATEGORY, CATEGORY_URL_KEY } from 'src/app/shared/enums/electro.enum';
-import { Product, ProductGallery } from 'src/app/shared/models/product.model';
+import { AVAILABLE, BADGE, BRAND, CATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
+import { Product } from 'src/app/shared/models/product.model';
+import { AdminHandleFormFieldService } from 'src/app/shared/services/admin-handle-form-field.service';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 
 @Component({
@@ -9,24 +11,78 @@ import { AdminProductService } from 'src/app/shared/services/admin-product.servi
   templateUrl: './admin-product-create.component.html',
   styleUrls: ['./admin-product-create.component.css']
 })
-export class AdminProductCreateComponent implements OnInit {
+export class AdminProductCreateComponent {
 
-  protected productImages = [];
-  productGallery: ProductGallery = new ProductGallery();
   newProduct: Product = new Product();
+  protected selectedSubcategories = "";
+  protected productImages = "";
 
+  @ViewChild('select') select: ElementRef | undefined;
+  isSelectOpen: boolean = false;
+
+  @ViewChild('c') form!: NgForm;
   errorMessage: string = "";
 
-  handleDropdownMenu = false;
-  isDropdownMenuOpen: string = "display: none;";
+  typesEnums = TYPE;
+  types: Array<any> = [];
+
+  categoriesEnums = CATEGORY;
+  categories: Array<any> = [];
+
+  brandsEnums = BRAND;
+  brands: Array<any> = [];
+
+  availablesEnums = AVAILABLE;
+  availables: Array<any> = [];
+
+  badgesEnums = BADGE;
+  badges: Array<any> = [];
 
   constructor(
     private adminProductService: AdminProductService,
+    private formFieldService: AdminHandleFormFieldService,
     private toastrService: ToastrService,
-  ) { }
+  ) {
+    this.types = Object.values(this.typesEnums);
+    this.categories = Object.values(this.categoriesEnums);
+    this.brands = Object.values(this.brandsEnums);
+    this.availables = Object.values(this.availablesEnums);
+    this.badges = Object.values(this.badgesEnums);
 
-  ngOnInit(): void {
-    this.newProduct.image = "assets/images/main/blank600.png";
+    this.newProduct.brand = this.brands[0];
+    this.newProduct.category = this.categories[0];
+    this.newProduct.image = "assets/images/main/blank600.png"
+    this.newProduct.available = this.availables[0];
+    this.newProduct.badge = this.badges[0];
+    this.getFieldsByCategories();
+
+    this.formFieldService.getChangeCategoryObservable().subscribe(data => {      
+      this.newProduct.type = data.currentType;
+      this.newProduct.typeUrlKey = data.currentTypeUrlKey;
+      this.newProduct.categoryUrlKey = data.currentCategUrlKey;
+      this.selectedSubcategories = data.selectedSubcategories;
+      this.newProduct.subcategory = this.selectedSubcategories[0];
+      this.productImages = data.currentImages;
+      console.log(this.productImages)
+    });
+  }  
+
+  @HostListener('document:click', ['$event'])
+  clickOut(event: any) {
+    if (this.select?.nativeElement.contains(event.target)) { }
+    else this.isSelectOpen = false;
+  }
+
+  toggleSelect() {
+    this.isSelectOpen = !this.isSelectOpen;
+  }
+
+  selectImage(image: any) {
+    this.newProduct.image = image;
+  }
+
+  getFieldsByCategories() {
+    this.formFieldService.changeCurrentCategoryService(this.newProduct.category)
   }
 
   createProduct() {
@@ -34,54 +90,19 @@ export class AdminProductCreateComponent implements OnInit {
       .replace(/\\|`+|~+|'+|,+|\/+|\?/g, "")
       .replace(/\s+/g, "-")
       .toLowerCase();
-
-    this.productGallery.image = this.newProduct.image;
-    this.newProduct.gallery = [this.productGallery];
     // console.log(this.newProduct)
 
     this.adminProductService.createProductService(this.newProduct).subscribe({
       next: () => {
         window.location.reload();
+        
+        this.toastrService.success();
+
       },
       error: error => {
-        this.errorMessage = "Could not create the product!";
+        this.errorMessage = "Nu s-a putut salva produsul!";
         console.log(error);
       }
-    })
+    });
   }
-
-  toggleDropdownMenu() {
-    this.handleDropdownMenu = !this.handleDropdownMenu;
-    this.checkConditions();
-  }
-
-  setImageGallery() {
-    // switch (this.newProduct.type) {
-    //   case CATEGORY_URL_KEY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
-    //     break;
-    //   case CATEGORY_URL_KEY.LAPTOP_BUSINESS_URL_KEY: { this.productImages = LAPTOP_IMAGES };
-    //     break;
-    //   case CATEGORY_URL_KEY.LAPTOP_GAMING_URL_KEY: { this.productImages = LAPTOP_IMAGES };
-    //     break;
-    //   case CATEGORY_URL_KEY.LAPTOP_ULTRA_URL_KEY: { this.productImages = LAPTOP_IMAGES };
-    //     break;
-      
-    //   default: this.productImages = LAPTOP_IMAGES; 
-    // }
-  }
-
-  getImage(image: any) {    
-    this.newProduct.image = image.image;
-    this.handleDropdownMenu = false;
-    this.checkConditions();
-  }
-
-  checkConditions() {
-    if (this.handleDropdownMenu == true) {
-      this.isDropdownMenuOpen = "display: block;"
-    } else {
-      this.isDropdownMenuOpen = "display: none;"
-    }
-  }
-
 }

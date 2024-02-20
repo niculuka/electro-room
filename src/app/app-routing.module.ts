@@ -87,8 +87,9 @@ const routes: Routes = [
   { path: "admin", component: AdminComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/product/create", component: AdminProductCreateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
   { path: "admin/product/update/:urlKey", component: AdminProductUpdateComponent, canActivate: [AuthGuard], data: { roles: [ROLE.ADMIN] } },
+
   // admin - D E M O
-  { path: "demo/admin/products/:product", component: AdminDemoProductComponent },
+  { path: "admin/demo", component: AdminDemoProductComponent },
 ];
 
 @NgModule({

@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BLANK_PHOTO } from 'src/app/shared/constants/const';
 import { Product, ProductGallery } from 'src/app/shared/models/product.model';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
-import { AdminHandleFormFiledService } from 'src/app/shared/services/admin-handle-form-field.service';
+import { AdminHandleFormFieldService } from 'src/app/shared/services/admin-handle-form-field.service';
 
 @Component({
   selector: 'app-admin-update-gallery',
@@ -21,7 +21,7 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   @ViewChildren('selects') selects: QueryList<ElementRef> | undefined;
   currentIndex: number = -1;
   lastIndex: any;
-  isInsideInputs = false;  
+  isInsideInputs = false;
 
   @ViewChild('g') form!: NgForm;
   errorMessage: string = "";
@@ -29,9 +29,9 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   constructor(
     private adminProductService: AdminProductService,
     private toastrService: ToastrService,
-    private formFiledService: AdminHandleFormFiledService,
+    private formFieldService: AdminHandleFormFieldService,
   ) {
-    this.formFiledService.getChangeCategoryObservable().subscribe(data => {
+    this.formFieldService.getChangeCategoryObservable().subscribe(data => {
       this.productImages = data.currentImages;
     });
   }
@@ -41,7 +41,7 @@ export class AdminUpdateGalleryComponent implements OnChanges {
     if (product.id) {
       this.product = product;
       this.gallery = product.gallery;
-      this.getImagesByCategories();
+      this.getFieldsByCategories();
     }
   }
 
@@ -109,7 +109,7 @@ export class AdminUpdateGalleryComponent implements OnChanges {
     });
   }
 
-  getImagesByCategories() {
-    this.formFiledService.changeCurrentCategoryService(this.product.category)
+  getFieldsByCategories() {
+    this.formFieldService.changeCurrentCategoryService(this.product.category)
   }
 }

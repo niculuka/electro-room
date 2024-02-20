@@ -17,9 +17,6 @@ import { OverlayerService } from 'src/app/shared/services/overlayer.service';
   styleUrls: ['./navbar-main.component.css']
 })
 export class NavbarMainComponent implements OnDestroy {
-  @ViewChild('adm') adm: ElementRef | undefined;
-  isAdminMenuOpen: boolean = false;
-
   @ViewChild('brg') brg: ElementRef | undefined;
   @ViewChild('crt') crt: ElementRef | undefined;
   @ViewChild('fav') fav: ElementRef | undefined;
@@ -82,13 +79,6 @@ export class NavbarMainComponent implements OnDestroy {
       this.handleOverlayer();
       // console.log("OUTSIDE - BURGER");
     }
-    if (this.adm?.nativeElement.contains(event.target)) {
-      // console.log("INSIDE - ADMIN");
-    }
-    else {
-      this.isAdminMenuOpen = false;
-      // console.log("OUTSIDE - ADMIN");
-    }
     if (this.crt?.nativeElement.contains(event.target)) {
       // console.log("INSIDE - CART");
     }
@@ -137,11 +127,6 @@ export class NavbarMainComponent implements OnDestroy {
   // SEARCH-BAR -----------------------------------------------------------
   goToSearch(searchTerm: string): void {
     if (searchTerm) this.router.navigate(["/search/" + searchTerm]);
-  }
-
-  // ADMIN ----------------------------------------------------------------- 
-  toggleAdmin() {
-    this.isAdminMenuOpen = !this.isAdminMenuOpen;
   }
 
   // CART ----------------------------------------------------------------- 

@@ -21,10 +21,6 @@
             <div class="my-form-field">
                 <label for="image">Image: {{ind+1}}</label>
 
-                <div class="image-display">
-                    <img [src]="gall.image" [alt]="gall.image">
-                </div>
-
                 <div class="my-dropdown">
                     <div class="select-line" (click)="openDropdownMenu(ind)">
                         <input #selects type="text" name="image" [value]="gall.image">
@@ -37,6 +33,10 @@
                             <span>{{img}}</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="image-display">
+                    <img [src]="gall.image" [alt]="gall.image">
                 </div>
 
                 <hr>

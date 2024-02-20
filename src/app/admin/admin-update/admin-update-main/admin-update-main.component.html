@@ -11,7 +11,7 @@
         <!-- Nume -------------------------------------------------------------------------------- -->
         <div class="my-form-field">
             <label for="name">Nume</label>
-            <input type="text" name="name" [(ngModel)]="product.name" #name="ngModel" minlength="1" maxlength="100"
+            <input type="text" name="name" [(ngModel)]="product.name" #name="ngModel" minlength="4" maxlength="100"
                 required>
             <div class="my-alert-container">
                 <div class="my-alert" *ngIf="!name.valid && f.submitted">Camp gol!</div>
@@ -22,7 +22,7 @@
         <div class="my-form-field">
             <label for="description">Description</label>
             <textarea cols="30" rows="4" name="description" [(ngModel)]="product.description" #description="ngModel"
-                minlength="1" maxlength="200" required>
+                minlength="10" maxlength="200" required>
         </textarea>
             <div class="my-alert-container">
                 <div class="my-alert" *ngIf="!description.valid && f.submitted">Camp gol!</div>
@@ -48,7 +48,7 @@
         <!-- Category --------------------------------------------------------------------------- -->
         <div class="my-form-field">
             <label for="category">Category</label>
-            <select name="category" #categorySelect [(ngModel)]="product.category" (change)="getImagesByCategories()">
+            <select name="category" #categorySelect [(ngModel)]="product.category" (change)="getFieldsByCategories()">
                 <option *ngFor="let categ of categories " [value]="categ">
                     {{categ}}
                 </option>
@@ -120,7 +120,7 @@
         <!-- Price ---------------------------------------------------------------------------------- -->
         <div class="my-form-field">
             <label for="price">Price</label>
-            <input type="number" name="price" [(ngModel)]="product.price" #price="ngModel" min="0.1" max="1000000"
+            <input type="number" name="price" [(ngModel)]="product.price" #price="ngModel" min="1" max="1000000"
                 required>
             <div class="my-alert-container">
                 <div class="my-alert" *ngIf="!price.valid && f.submitted">Valuare: 1 - 1.000.000!</div>

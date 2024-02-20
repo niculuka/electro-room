@@ -36,11 +36,6 @@ export class AdminProductUpdateComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.sub0?.unsubscribe();
-    this.sub1?.unsubscribe();
-  }
-
   setCurrentIndex(event: any) {
     localStorage.setItem("currentIndexTab", event);
   }
@@ -48,5 +43,10 @@ export class AdminProductUpdateComponent implements OnInit, OnDestroy {
   private getCurrentIndex() {
     const currIndex = localStorage.getItem("currentIndexTab");
     return currIndex ? JSON.parse(currIndex) : 0;
+  }
+
+  ngOnDestroy(): void {
+    this.sub0?.unsubscribe();
+    this.sub1?.unsubscribe();
   }
 }

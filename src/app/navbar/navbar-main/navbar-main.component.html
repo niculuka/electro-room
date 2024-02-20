@@ -42,41 +42,7 @@
       <!-- RIGHT SIDE ---------------------------------------------------------------------------------------- -->
       <!-- ------------------------------------------------------------------------------------------------------>
       <ul>
-
-        <!-- ADMIN ------------------------------------------------------------------- -->
-        <li class="dropdown" *ngIf="isAdmin()">
-          <div #adm class="elements" (click)="toggleAdmin()">
-            <!-- <mat-icon class="admin">settings</mat-icon> -->
-            <span><strong>Admin</strong></span>
-          </div>
-          <div class="dropdown-menu" *ngIf="isAdminMenuOpen">
-            <a routerLink="/admin/products/laptops" routerLinkActive="active">Laptops</a>
-            <a routerLink="/admin/products/laptop_accessory" routerLinkActive="active">Accessories</a>
-
-            <a routerLink="/admin/orders" routerLinkActive="active">Orders</a>
-            <a routerLink="/admin/items" routerLinkActive="active">Items</a>
-            <a routerLink="/admin/users" routerLinkActive="active">Users</a>
-            <a routerLink="/admin/tokens" routerLinkActive="active">Tokens</a>
-          </div>
-        </li>
-
-
-        <!-- ADMIN ------------------------------------------------------------------- -->
-        <li class="dropdown" *ngIf="!isAdmin()">
-          <div #adm class="elements" (click)="toggleAdmin()">
-            <!-- <mat-icon class="admin">settings</mat-icon> -->
-            <span>Admin</span>
-          </div>
-          <div class="dropdown-menu" *ngIf="isAdminMenuOpen">
-            <a routerLink="/admin/demo/products/laptops" routerLinkActive="active">Laptops</a>
-            <a routerLink="/admin/demo/products/laptop_accessory" routerLinkActive="active">Accessories</a>
-
-            <a routerLink="/admin/demo/orders" routerLinkActive="active">Orders</a>
-            <a routerLink="/admin/demo/users" routerLinkActive="active">Users</a>
-          </div>
-        </li>
-
-
+        
         <!-- CART -------------------------------------------------------------------- -->
         <li class="dropdown">
           <div #crt class="elements" (click)="toggleCartNav()">
@@ -118,7 +84,7 @@
             <mat-icon class="hide">expand_more</mat-icon>
           </div>
           <div class="dropdown-menu" *ngIf="isLogMenuOpen">
-            <a routerLink="/admin">Admin</a>
+            <a routerLink="/admin/demo" *ngIf="!isAdmin()">Admin(Demo)</a>
             <a routerLink="/auth/login">Intra in cont!</a>
             <a routerLink="/auth/register">Inregistrare!</a>
           </div>
@@ -132,7 +98,8 @@
             <mat-icon class="hide">expand_more</mat-icon>
           </div>
           <div class="dropdown-menu" *ngIf="isLogMenuOpen">
-            <a routerLink="/admin">Admin</a>
+            <a routerLink="/admin" *ngIf="isAdmin()">Admin</a>
+            <a routerLink="/admin/demo" *ngIf="!isAdmin()">Admin-Demo</a>
             <a routerLink="/profile" routerLinkActive="active">Profile</a>
             <a routerLink="/my-orders" routerLinkActive="active">My Orders</a>
             <a routerLink="/" (click)="logout()">Logout</a>

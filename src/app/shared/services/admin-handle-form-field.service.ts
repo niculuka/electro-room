@@ -20,7 +20,7 @@ class ChangeCategory {
 @Injectable({
   providedIn: 'root'
 })
-export class AdminHandleFormFiledService {
+export class AdminHandleFormFieldService {
 
   currentCategory: string = "";
   private currentCategorySubject: BehaviorSubject<any> = new BehaviorSubject(this.currentCategory)
@@ -32,10 +32,10 @@ export class AdminHandleFormFiledService {
   changeCurrentCategoryService(currentCategory: string) {
     this.currentCategory = currentCategory;
     this.currentCategorySubject.next(this.currentCategory);
-    this.getImagesByCategoriesService();
+    this.getFieldsByCategoriesService();
   }
 
-  getImagesByCategoriesService() {
+  getFieldsByCategoriesService() {
     this.changeCategory = new ChangeCategory();
     switch (this.currentCategory) {
       case CATEGORY.LAPTOP_GAMING: {

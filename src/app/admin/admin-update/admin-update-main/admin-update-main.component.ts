@@ -1,16 +1,16 @@
-import { Component, ElementRef, HostListener, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AVAILABLE, BADGE, BRAND, CATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
+import { AdminHandleFormFieldService } from 'src/app/shared/services/admin-handle-form-field.service';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
-import { AdminHandleFormFiledService } from 'src/app/shared/services/admin-handle-form-field.service';
 
 @Component({
   selector: 'app-admin-update-main',
   templateUrl: './admin-update-main.component.html',
   styleUrls: ['./admin-update-main.component.css']
 })
-export class AdminUpdateMainComponent {
+export class AdminUpdateMainComponent implements OnChanges {
 
   @Input() product: Product = new Product();
   protected selectedSubcategories = "";
@@ -41,14 +41,14 @@ export class AdminUpdateMainComponent {
 
   constructor(
     private adminProductService: AdminProductService,
-    private formFiledService: AdminHandleFormFiledService,
+    private formFieldService: AdminHandleFormFieldService,
   ) {
     this.types = Object.values(this.typesEnums);
     this.categories = Object.values(this.categoriesEnums);
     this.brands = Object.values(this.brandsEnums);
     this.availables = Object.values(this.availablesEnums);
     this.badges = Object.values(this.badgesEnums);
-    this.formFiledService.getChangeCategoryObservable().subscribe(data => {
+    this.formFieldService.getChangeCategoryObservable().subscribe(data => {
       this.product.type = data.currentType;
       this.product.typeUrlKey = data.currentTypeUrlKey;
       this.product.categoryUrlKey = data.currentCategUrlKey;
@@ -61,7 +61,7 @@ export class AdminUpdateMainComponent {
     const product = changes['product'].currentValue;
     if (product.id) {
       this.product = product;
-      this.getImagesByCategories();
+      this.getFieldsByCategories();
     }
   }
 
@@ -77,6 +77,10 @@ export class AdminUpdateMainComponent {
 
   selectImage(image: any) {
     this.product.image = image;
+  }  
+
+  getFieldsByCategories() {
+    this.formFieldService.changeCurrentCategoryService(this.product.category)
   }
 
   updateProduct() {
@@ -92,9 +96,4 @@ export class AdminUpdateMainComponent {
       }
     });
   }
-
-  getImagesByCategories() {
-    this.formFiledService.changeCurrentCategoryService(this.product.category)
-  }
-
 }
