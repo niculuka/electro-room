@@ -1,12 +1,12 @@
-<div class="container-admin progress-bar" *ngIf="!foundProducts">
+<div class="my-container progress-bar" *ngIf="!foundProducts">
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
 
-<div class="container-admin" *ngIf="foundProducts && !products.length">
+<div class="my-container" *ngIf="foundProducts && !products.length">
   <h2>Nu s-a gasit nici un produs</h2>
 </div>
 
-<div class="container-admin" *ngIf="foundProducts && products.length">
+<div class="my-container" *ngIf="foundProducts && products.length">
 
   <div class="title">
     <h1><strong>{{activeSubtitleName}}</strong> ({{products.length}} {{products.length==1?'produs':'produse'}})</h1>

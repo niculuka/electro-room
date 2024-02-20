@@ -1,9 +1,3 @@
-.content-home {
-  width: 1500px;
-  margin: auto;
-  /* border: 2px solid black; */
-}
-
 .carousel-container {
   display: flex;
   justify-content: right;
@@ -34,20 +28,12 @@
 }
 
 @media (max-width: 1530px) {
-  .content-home {
-    width: 1200px;
-  }
-
   .carousel-slider {
     width: 900px;
   }
 }
 
 @media (max-width: 1260px) {
-  .content-home {
-    width: 990px;
-  }
-
   .carousel-slider {
     width: 690px;
     height: 414px;
@@ -55,9 +41,9 @@
 }
 
 @media (max-width: 1020px) {
-  .content-home {
-    width: 100%;
-  }
+  .my-content {
+    padding: 0;
+}
 
   .carousel-container {
     margin-top: 10px;

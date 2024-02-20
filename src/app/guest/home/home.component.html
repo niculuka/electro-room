@@ -1,25 +1,27 @@
-<div class="content-home">
+<div class="my-container">
+  <div class="my-content">
 
-  <div class="carousel-container">
-    <div class="carousel-slider">
-      <app-carousel></app-carousel>
+    <div class="carousel-container">
+      <div class="carousel-slider">
+        <app-carousel></app-carousel>
+      </div>
     </div>
-  </div>
 
-  <div class="info-blocks">
-    <app-info-block></app-info-block>
-  </div>
+    <div class="info-blocks">
+      <app-info-block></app-info-block>
+    </div>
 
-  <div class="carousel-owl-1">
-    <app-carousel-owl [title]="carousel1.title" [type1]="carousel1.products1" [type2]="carousel1.products2"
-      [ids]="carousel1.ids">
-    </app-carousel-owl>
-  </div>
+    <div class="carousel-owl-1">
+      <app-carousel-owl [title]="carousel1.title" [type1]="carousel1.products1" [type2]="carousel1.products2"
+        [ids]="carousel1.ids">
+      </app-carousel-owl>
+    </div>
 
-  <div class="carousel-owl-2">
-    <app-carousel-owl [title]="carousel2.title" [type1]="carousel2.products1" [type2]="carousel2.products2"
-      [ids]="carousel2.ids">
-    </app-carousel-owl>
-  </div>
+    <div class="carousel-owl-2">
+      <app-carousel-owl [title]="carousel2.title" [type1]="carousel2.products1" [type2]="carousel2.products2"
+        [ids]="carousel2.ids">
+      </app-carousel-owl>
+    </div>
 
+  </div>
 </div>

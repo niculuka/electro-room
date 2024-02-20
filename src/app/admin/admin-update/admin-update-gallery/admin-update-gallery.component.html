@@ -18,8 +18,12 @@
             </button>
 
             <!-- Image -------------------------------------------------------------------------------- -->
-            <div class="my-form-field"> 
-                <label for="image">Image: {{ind+1}}</label>                
+            <div class="my-form-field">
+                <label for="image">Image: {{ind+1}}</label>
+
+                <div class="image-display">
+                    <img [src]="gall.image" [alt]="gall.image">
+                </div>
 
                 <div class="my-dropdown">
                     <div class="select-line" (click)="openDropdownMenu(ind)">
@@ -33,12 +37,10 @@
                             <span>{{img}}</span>
                         </div>
                     </div>
-                </div> 
-                
-                <div class="image-display">
-                    <img [src]="gall.image" [alt]="gall.image">
                 </div>
-            </div>           
+
+                <hr>
+            </div>
 
         </div>
     </div>
@@ -46,7 +48,7 @@
     <button class="add-btn" type="button" (click)="addImage()">
         <mat-icon>add</mat-icon>
     </button>
-    
+
     <!-- S U B M I T  =============================================== -->
     <div class="my-form-field">
         <button class="submit-btn" mat-raised-button color="primary" type="submit">

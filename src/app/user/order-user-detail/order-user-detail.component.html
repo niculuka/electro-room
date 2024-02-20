@@ -1,28 +1,29 @@
-<div class="container">    
+<div class="my-container">
+
     <table class="row">
         <thead>
             <tr class="title">
-                <th colspan="5">Items</th> 
+                <th colspan="5">Items</th>
             </tr>
             <tr class="subtitle">
-                <th>Id</th>               
+                <th>Id</th>
                 <th>Product Name</th>
                 <th colspan="2">Quantity</th>
                 <th>Price</th>
-                
+
             </tr>
             <tr *ngFor="let item of items;">
-                <td>{{item.id}}</td>               
+                <td>{{item.id}}</td>
                 <td>{{item.productName}}</td>
                 <td colspan="2">{{item.quantity}}</td>
                 <td>{{item.price}} Lei</td>
-                
+
             </tr>
         </thead>
 
         <tbody>
             <tr class="title">
-                <th colspan="5">User Details:</th> 
+                <th colspan="5">User Details:</th>
             </tr>
             <tr class="subtitle">
                 <th>Name</th>
@@ -44,14 +45,14 @@
     <table class="column">
         <thead>
             <tr class="title">
-                <th colspan="2">Order: {{order.id}}</th> 
+                <th colspan="2">Order: {{order.id}}</th>
             </tr>
         </thead>
 
         <tbody *ngFor="let item of items;">
             <tr class="subtitle">
                 <th colspan="2">{{item.id}}</th>
-            </tr>            
+            </tr>
             <tr>
                 <td>Product Name</td>
                 <td>{{item.productName}}</td>
@@ -92,4 +93,5 @@
             </tr>
         </tfoot>
     </table>
+
 </div>

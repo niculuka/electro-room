@@ -1,11 +1,11 @@
-<div class="container-order">
-  <div class="content-order">
+<div class="my-container">
+  <div class="my-content">
 
     <div class="address">
       <h1>Date de contact:</h1>
       <div class="line">
         <div>
-          <h3>Nume: </h3> 
+          <h3>Nume: </h3>
           <label> {{order.nameGet}} </label>
         </div>
         <div>
@@ -35,11 +35,13 @@
 
       <div class="money">
         <div class="radio">
-          <input type="radio" id="cash" [value]="paymentType.CASH" [(ngModel)]="order.paymentType" (change)="paymentMethod()">
+          <input type="radio" id="cash" [value]="paymentType.CASH" [(ngModel)]="order.paymentType"
+            (change)="paymentMethod()">
           <label for="cash">Cash</label>
         </div>
         <div class="radio">
-          <input type="radio" id="card" [value]="paymentType.CARD"  [(ngModel)]="order.paymentType" (change)="paymentMethod()">
+          <input type="radio" id="card" [value]="paymentType.CARD" [(ngModel)]="order.paymentType"
+            (change)="paymentMethod()">
           <label for="card">Card</label>
         </div>
       </div>

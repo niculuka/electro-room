@@ -1,14 +1,16 @@
 .my-container {
     width: 100%;
+    cursor: default;
     // border: 2px solid black;
 }
 
 .my-content {
     display: flex;
     flex-direction: column;
+    margin: auto;
     width: 1500px;
     min-height: 70vh;
-    // border: 2px solid red;
+    // border: 2px solid black;
 }
 
 a {

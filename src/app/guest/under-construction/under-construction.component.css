@@ -1,17 +1,7 @@
-.container-under {
-    width: 100vw;
-    height: 100vh;    
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background: white;
-}
-
-.content-under {
-    margin-top: 30px;
-}
-
 h1 {
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
     font-size: 40px;
 }
 

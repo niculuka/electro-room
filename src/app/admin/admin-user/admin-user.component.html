@@ -1,12 +1,12 @@
-<div class="container-admin progress-bar" *ngIf="!foundUsers">
+<div class="my-container progress-bar" *ngIf="!foundUsers">
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
 
-<div class="container-admin" *ngIf="foundUsers && !users.length">
+<div class="my-container" *ngIf="foundUsers && !users.length">
   <h2>Nu s-a gasit nici un utilizator</h2>
 </div>
 
-<div class="container-admin" *ngIf="foundUsers && users.length">
+<div class="my-container" *ngIf="foundUsers && users.length">
 
   <div class="title">
     <h1><strong>{{activeSubtitleName}}</strong> ({{users.length}} {{users.length==1?'utilizator':'utilizatori'}})</h1>

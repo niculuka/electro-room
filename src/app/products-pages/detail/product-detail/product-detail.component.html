@@ -1,5 +1,5 @@
-<div class="container-product">
-    <div class="column-product">
+<div class="my-container">
+    <div class="my-content">
 
         <div class="progress-bar" *ngIf="!foundProduct">
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
@@ -14,7 +14,7 @@
             <app-product-main [product]="product"></app-product-main>
 
             <app-product-description [product]="product"></app-product-description>
-            
+
             <app-product-specification [product]="product"></app-product-specification>
 
         </div>
