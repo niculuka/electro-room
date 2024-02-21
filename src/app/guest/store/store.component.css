@@ -126,6 +126,7 @@
 
 @media(max-width: 450px) {
     .cards {
+        overflow-y: scroll;
         gap: 6px;
     }
 

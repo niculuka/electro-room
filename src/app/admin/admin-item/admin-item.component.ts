@@ -43,8 +43,10 @@ export class AdminItemComponent implements OnInit, OnDestroy {
         this.items = data;
         this.foundItems = true;
         this.dataSource = new MatTableDataSource(this.items);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
       }
       else this.foundItems = false;
     })

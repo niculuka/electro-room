@@ -250,6 +250,7 @@ button:hover {
     .cards-container {
         overflow: scroll;
     }
+    
     .cards-container-grid {
         grid-template-columns: 1fr 1fr;
     }

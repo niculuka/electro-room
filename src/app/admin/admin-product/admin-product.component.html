@@ -8,6 +8,7 @@
 
 <div class="my-container" *ngIf="foundProducts && products.length">
 
+  <!-- T I T L E =============================================================================================== -->
   <div class="title">
     <h1><strong>{{activeSubtitleName}}</strong> ({{products.length}} {{products.length==1?'produs':'produse'}})</h1>
 
@@ -23,14 +24,17 @@
     </mat-form-field>
   </div>
 
+  <!-- T A B L E =============================================================================================== -->
   <div class="container-table">
     <table mat-table [dataSource]="dataSource" matSort>
 
+      <!-- Number ------------------------------------------------------------------------------- -->
       <ng-container matColumnDef="index">
         <th mat-header-cell *matHeaderCellDef> Nr </th>
         <td mat-cell *matCellDef="let product; index as ind"> {{ind+1}} </td>
       </ng-container>
 
+      <!-- Image -------------------------------------------------------------------------------- -->
       <ng-container matColumnDef="image">
         <th mat-header-cell *matHeaderCellDef> Imagine </th>
         <td mat-cell *matCellDef="let product">
@@ -40,6 +44,7 @@
         </td>
       </ng-container>
 
+      <!-- brand -------------------------------------------------------------------------------- -->
       <ng-container matColumnDef="brand">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Name </strong> &nbsp;| Brand </th>
         <td mat-cell *matCellDef="let product">
@@ -54,6 +59,7 @@
         </td>
       </ng-container>
 
+      <!-- available ---------------------------------------------------------------------------- -->
       <ng-container matColumnDef="available">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Disponibil </th>
         <td mat-cell *matCellDef="let product" [style]="{
@@ -63,16 +69,19 @@
         </td>
       </ng-container>
 
+      <!-- category ----------------------------------------------------------------------------- -->
       <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Categorie</strong> </th>
         <td mat-cell *matCellDef="let product"> <strong>{{product.category}}</strong> </td>
       </ng-container>
 
+      <!-- subcategory -------------------------------------------------------------------------- -->
       <ng-container matColumnDef="subcategory">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Subcategorie </th>
         <td mat-cell *matCellDef="let product"> {{product.subcategory}} </td>
       </ng-container>
 
+      <!-- price -------------------------------------------------------------------------------- -->
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Price</strong> </th>
         <td mat-cell *matCellDef="let product">
@@ -89,6 +98,7 @@
         </td>
       </ng-container>
 
+      <!-- action ------------------------------------------------------------------------------- -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let product">
@@ -103,15 +113,18 @@
         </td>
       </ng-container>
 
+      <!-- ================================================================================================== -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
+      <!-- not found result --------------------------------------------------------------------- -->
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="14">Nu s-a gasit nici un rezultat dupa: <strong>"{{input.value}}"</strong></td>
       </tr>
 
     </table>
 
+    <!-- paginator ------------------------------------------------------------------------------ -->
     <mat-paginator [pageSizeOptions]="[50, 25, 10]" aria-label="Select page of products">
     </mat-paginator>
 

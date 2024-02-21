@@ -84,7 +84,7 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
     if (this.descriptions.length < 6) {
       this.description = new ProductDescription();
       this.description.title = "Titlu";
-      this.description.text = "Text";
+      this.description.text = "Scrie textul aici!";
       this.description.image = BLANK_PHOTO;
       this.description.product_id_fk = this.product.id;
       this.descriptions.push(this.description);

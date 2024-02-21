@@ -43,8 +43,10 @@ export class AdminTokenComponent implements OnInit, OnDestroy {
         this.tokens = data;
         this.foundTokens = true;
         this.dataSource = new MatTableDataSource(this.tokens);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
       }
       else this.foundTokens = false;
     })

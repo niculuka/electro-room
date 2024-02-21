@@ -53,8 +53,10 @@ export class AdminUserComponent implements OnInit, OnDestroy {
         this.users = data;
         this.foundUsers = true;
         this.dataSource = new MatTableDataSource(this.users);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
       }
       else this.foundUsers = false;
     })

@@ -1,8 +1,9 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AVAILABLE, BADGE, BRAND, CATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
-import { Product } from 'src/app/shared/models/product.model';
+import { Product, ProductSpecification } from 'src/app/shared/models/product.model';
 import { AdminHandleFormFieldService } from 'src/app/shared/services/admin-handle-form-field.service';
 import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 
@@ -41,6 +42,7 @@ export class AdminProductCreateComponent {
   constructor(
     private adminProductService: AdminProductService,
     private formFieldService: AdminHandleFormFieldService,
+    private router: Router,
     private toastrService: ToastrService,
   ) {
     this.types = Object.values(this.typesEnums);
@@ -51,21 +53,23 @@ export class AdminProductCreateComponent {
 
     this.newProduct.brand = this.brands[0];
     this.newProduct.category = this.categories[0];
-    this.newProduct.image = "assets/images/main/blank600.png"
+    this.newProduct.image = "assets/images/main/blank600.png";
     this.newProduct.available = this.availables[0];
     this.newProduct.badge = this.badges[0];
+    this.newProduct.gallery = []; 
+    this.newProduct.descriptions = [];
+    this.newProduct.specifications = [new ProductSpecification()];
     this.getFieldsByCategories();
 
-    this.formFieldService.getChangeCategoryObservable().subscribe(data => {      
+    this.formFieldService.getChangeCategoryObservable().subscribe(data => {
       this.newProduct.type = data.currentType;
       this.newProduct.typeUrlKey = data.currentTypeUrlKey;
       this.newProduct.categoryUrlKey = data.currentCategUrlKey;
       this.selectedSubcategories = data.selectedSubcategories;
       this.newProduct.subcategory = this.selectedSubcategories[0];
       this.productImages = data.currentImages;
-      console.log(this.productImages)
     });
-  }  
+  }
 
   @HostListener('document:click', ['$event'])
   clickOut(event: any) {
@@ -91,13 +95,10 @@ export class AdminProductCreateComponent {
       .replace(/\s+/g, "-")
       .toLowerCase();
     // console.log(this.newProduct)
-
     this.adminProductService.createProductService(this.newProduct).subscribe({
       next: () => {
-        window.location.reload();
-        
-        this.toastrService.success();
-
+        this.router.navigate(["/admin/product/update/" + this.newProduct.urlKey]);
+        this.toastrService.success("Produsul a fost salvat");
       },
       error: error => {
         this.errorMessage = "Nu s-a putut salva produsul!";

@@ -4,6 +4,7 @@ import { CartItem } from '../../shared/models/cart-item.model';
 import { Order } from '../../shared/models/order.model';
 import { AuthService } from '../../shared/services/auth.service';
 import { OrderService } from '../../shared/services/order.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-my-order',
@@ -19,12 +20,13 @@ export class MyOrderComponent implements OnInit {
   item!: CartItem;
 
   id!: any;
-  orderExist: boolean = false;
+  foundOrders: boolean = false;
 
   constructor(
     private orderService: OrderService,
     private authService: AuthService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private location: Location,
   ) {
     this.authService.currentUser.subscribe(data => {
       this.id = data.id;
@@ -33,13 +35,16 @@ export class MyOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderService.getMyOrdersService(this.id).subscribe(data => {
-      this.orders = data;
-      if (this.orders.length === 0) {
-        this.toastrService.warning("NO ORDER YET!")
-        return;
+      if (data) {
+        this.orders = data;
+        this.foundOrders = true;
       }
-      this.orderExist = true;
+      else this.foundOrders = false;
     })
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   reOrder() {

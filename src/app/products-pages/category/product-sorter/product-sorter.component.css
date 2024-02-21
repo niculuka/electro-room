@@ -169,6 +169,10 @@
 }
 
 @media(max-width: 1020px) {
+    .categ-count h1 {
+        font-size: 24px;
+    }
+
     .filters {
         display: flex;
     }
@@ -187,6 +191,14 @@
 }
 
 @media(max-width: 550px) {
+    .categ-count h1 {
+        font-size: 20px;
+    }
+
+    .col-sorters {
+        padding: 12px 10px;
+    }
+
     .row-buttons {
         gap: 6px;
     }

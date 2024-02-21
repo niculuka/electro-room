@@ -26,7 +26,7 @@ export class FavoriteComponent {
   }
 
   isFavoritesEmpty() {
-    return this.favorites.length === 0;
+    return this.favorites.length == 0;
   }
 
   addToCart(product: Product) {

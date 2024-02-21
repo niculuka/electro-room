@@ -50,8 +50,10 @@ export class AdminProductComponent implements OnChanges, OnDestroy {
         this.products = data;
         this.foundProducts = true;
         this.dataSource = new MatTableDataSource(this.products);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
       }
       else this.foundProducts = false;
     });
