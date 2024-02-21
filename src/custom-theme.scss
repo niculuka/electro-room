@@ -6,38 +6,24 @@ $my-accent: mat-palette($mat-grey, 700);
 $my-warn: mat-palette($mat-red, A700);
 
 $my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
-
 @include angular-material-theme($my-theme);
 
 
 
 
 .alternative {
-  $my-primary: mat-palette($mat-amber, 800);
-  $my-accent: mat-palette($mat-light-green, 800);
-  $my-theme: mat-light-theme($my-primary, $my-accent);
-  @include angular-material-theme($my-theme);
+    $my-primary: mat-palette($mat-amber, 800);
+    $my-accent: mat-palette($mat-light-green, 800);
+
+    $my-theme: mat-light-theme($my-primary, $my-accent);
+    @include angular-material-theme($my-theme);
 }
 
-
-
-/* mat-accordeon ============================================== */
-.mat-expansion-panel-body {
-  padding: 10px 20px !important;
+html,
+body {
+    background: mat-color(map-get($my-theme, primary), lighter);   
 }
 
-.mat-accordion .mat-expansion-indicator::after {
-  margin: 0 6px;
-  color: rgb(232, 232, 232);
-}
-
-.mat-accordion .mat-expansion-panel {
-  border-radius: 0 !important;
-}
-
-.mat-expansion-indicator::after {
-  translate: 0 -4px !important; 
-}
 
 
 // colors
