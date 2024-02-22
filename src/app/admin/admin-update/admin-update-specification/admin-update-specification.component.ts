@@ -28,24 +28,27 @@ export class AdminUpdateSpecificationComponent {
   ngOnChanges(changes: SimpleChanges): void {
     const product = changes['product'].currentValue;
     if (product.id) {
-      this.specification = product.specifications[0];
+      this.specification = product.specifications;
       this.currentType = product.type;
     }
   }
 
   updateSpecification() {
+    console.log("BEFORE", this.specification)
+
     this.specification = JSON.parse(JSON.stringify(this.specification), (key, value) => {
       return value === '' ? null : value;
     });
-    this.product.specifications[0] = this.specification;
-    this.adminProductService.updateProductService(this.product).subscribe({
-      next: () => {
-        window.location.reload();
-      },
-      error: err => {
-        this.errorMessage = "Nu s-au putut salva specificatiile!";
-        console.log(err);
-      }
-    });
+
+    console.log("AFTER", this.specification)
+
+    this.product.specification = this.specification;
+    
+
+
+
+
+
+    // this.adminProductService.updateProdServ(this.product);
   }
 }

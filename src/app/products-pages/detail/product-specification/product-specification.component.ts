@@ -15,7 +15,7 @@ export class ProductSpecificationComponent implements OnInit {
   name = SPECIFICATIONS;
 
   ngOnInit(): void {
-    this.ps = this.product.specifications[0];
+    this.ps = this.product.specification;
     // console.log (this.product);
   }
 

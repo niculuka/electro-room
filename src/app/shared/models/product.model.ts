@@ -92,7 +92,7 @@ export class Product {
     price: number = 0;
     gallery: Array<ProductGallery> = [];
     descriptions: Array<ProductDescription> = [];
-    specifications: Array<ProductSpecification> = [];
+    specification: ProductSpecification;
 
     constructor(
         id?: number,
@@ -111,7 +111,7 @@ export class Product {
         price: number = 0,
         gallery: Array<ProductGallery> = [],
         descriptions: Array<ProductDescription> = [],
-        specifications: Array<ProductSpecification> = [],
+        specification: ProductSpecification = new ProductSpecification(),
     ) {
         this.id = id;
         this.name = name;
@@ -129,7 +129,7 @@ export class Product {
         this.price = price;
         this.gallery = gallery;
         this.descriptions = descriptions;
-        this.specifications = specifications;
+        this.specification = specification;
     }
 }
 

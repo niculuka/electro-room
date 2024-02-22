@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { BearerService } from './bearer.service';
 import { Product } from '../models/product.model';
+import { Router } from '@angular/router';
 
 const ADMIN_URL = `${environment.BASE_URL}/admin/products`;
 
@@ -15,7 +16,8 @@ export class AdminProductService extends BearerService {
 
   constructor(
     authService: AuthService,
-    http: HttpClient
+    http: HttpClient,
+    private router: Router,
   ) {
     super(authService, http);
   }  
@@ -33,4 +35,17 @@ export class AdminProductService extends BearerService {
     return this.http.delete(`${ADMIN_URL}/${product.id}`, { headers: this.getHeaders });
   }
 
+  updateProdServ(product: Product) {
+    product.urlKey = product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
+    this.updateProductService(product).subscribe({
+      next: () => {
+        this.router
+          .navigate(['/admin/product/update/' + product.urlKey])
+          .then(() => window.location.reload());
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
 }

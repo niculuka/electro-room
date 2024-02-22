@@ -58,7 +58,7 @@ export class AdminProductCreateComponent {
     this.newProduct.badge = this.badges[0];
     this.newProduct.gallery = []; 
     this.newProduct.descriptions = [];
-    this.newProduct.specifications = [new ProductSpecification()];
+    this.newProduct.specification = new ProductSpecification();
     this.getFieldsByCategories();
 
     this.formFieldService.getChangeCategoryObservable().subscribe(data => {

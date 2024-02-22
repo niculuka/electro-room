@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AVAILABLE, BADGE, BRAND, CATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { AdminHandleFormFieldService } from 'src/app/shared/services/admin-handle-form-field.service';
@@ -22,7 +23,6 @@ export class AdminUpdateMainComponent implements OnChanges {
   isSelectOpen: boolean = false;
 
   @ViewChild('f') form!: NgForm;
-  errorMessage: string = "";
 
   typesEnums = TYPE;
   types: Array<any> = [];
@@ -42,6 +42,7 @@ export class AdminUpdateMainComponent implements OnChanges {
   constructor(
     private adminProductService: AdminProductService,
     private formFieldService: AdminHandleFormFieldService,
+    private router: Router,
   ) {
     this.types = Object.values(this.typesEnums);
     this.categories = Object.values(this.categoriesEnums);
@@ -77,23 +78,14 @@ export class AdminUpdateMainComponent implements OnChanges {
 
   selectImage(image: any) {
     this.product.image = image;
-  }  
+  }
 
   getFieldsByCategories() {
     this.formFieldService.changeCurrentCategoryService(this.product.category)
   }
 
-  updateProduct() {
-    this.product.urlKey = this.product.name.replace(/\\|`+|~+|'+|,+|\/+|\?/g, "").replace(/\s+/g, "-").toLowerCase();
+  updateProduct() {    
     // console.log(this.product)
-    this.adminProductService.updateProductService(this.product).subscribe({
-      next: () => {
-        window.location.reload();
-      },
-      error: err => {
-        this.errorMessage = "Nu s-a putut salva produsul!";
-        console.log(err);
-      }
-    });
+    this.adminProductService.updateProdServ(this.product);
   }
 }

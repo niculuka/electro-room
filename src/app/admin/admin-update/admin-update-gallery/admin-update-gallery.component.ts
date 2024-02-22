@@ -24,7 +24,6 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   isInsideInputs = false;
 
   @ViewChild('g') form!: NgForm;
-  errorMessage: string = "";
 
   constructor(
     private adminProductService: AdminProductService,
@@ -96,17 +95,8 @@ export class AdminUpdateGalleryComponent implements OnChanges {
   }
 
   updateImages() {
-    // console.log("gallery", this.gallery)
-    // console.log("product.gallery", this.product.gallery)    
-    this.adminProductService.updateProductService(this.product).subscribe({
-      next: () => {
-        window.location.reload();
-      },
-      error: err => {
-        this.errorMessage = "Nu s-au putut salva imaginile!";
-        console.log(err);
-      }
-    });
+    // console.log("gallery", this.gallery)  
+    this.adminProductService.updateProdServ(this.product);
   }
 
   getFieldsByCategories() {

@@ -24,7 +24,6 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
   isInsideInputs = false;
 
   @ViewChild('d') form!: NgForm;
-  errorMessage: string = "";
 
   constructor(
     private adminProductService: AdminProductService,
@@ -98,16 +97,7 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
 
   updateDescription() {
     // console.log("description", this.descriptions)  
-    // console.log("product.gallery", this.product.descriptions)  
-    this.adminProductService.updateProductService(this.product).subscribe({
-      next: () => {
-        window.location.reload();
-      },
-      error: err => {
-        this.errorMessage = "Nu s-au putut salva descrierile!";
-        console.log(err);
-      }
-    });
+    this.adminProductService.updateProdServ(this.product);
   }
 
 }
