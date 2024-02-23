@@ -22,7 +22,7 @@ export class AdminItemComponent implements OnInit, OnDestroy {
   @Input() activeSubtitleName: any;
   @Input() activeSubtitleUrlKey: any;
 
-  displayedColumns: string[] = ['index', 'id', 'productName', 'productId', 'quantity', 'orderIdFk', 'price', 'delete'];
+  displayedColumns: string[] = ['index', 'id', 'productName', 'productId', 'quantity', 'orderId', 'price', 'delete'];
   dataSource!: MatTableDataSource<CartItem>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

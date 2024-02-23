@@ -22,7 +22,7 @@ export class AdminTokenComponent implements OnInit, OnDestroy {
   @Input() activeSubtitleName: any;
   @Input() activeSubtitleUrlKey: any;
 
-  displayedColumns: string[] = ['index', 'id', 'createdAt', 'expiresAt', 'confirmedAt', 'token', 'userIdFk', 'delete'];
+  displayedColumns: string[] = ['index', 'id', 'createdAt', 'expiresAt', 'confirmedAt', 'token', 'user_id', 'delete'];
   dataSource!: MatTableDataSource<IToken>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

@@ -9,6 +9,6 @@ export class CartItem {
   productName: string = this.product.name;
   quantity: number = 1;
   price: number = this.product.price;
-  orderIdFk: number | undefined;
+  orderId: number | undefined;
 
 }

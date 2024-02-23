@@ -84,7 +84,6 @@ export class AdminUpdateGalleryComponent implements OnChanges {
     if (this.gallery.length < 12) {
       this.imageGallery = new ProductGallery();
       this.imageGallery.image = BLANK_PHOTO;
-      this.imageGallery.product_id_fk = this.product.id;
       this.gallery.push(this.imageGallery);
     }
     else this.toastrService.warning("Se permit maxim 12 imagini");
@@ -92,14 +91,13 @@ export class AdminUpdateGalleryComponent implements OnChanges {
 
   removeImage(ind: any) {
     this.gallery.splice(ind, 1)
-  }
-
-  updateImages() {
-    // console.log("gallery", this.gallery)  
-    this.adminProductService.updateProdServ(this.product);
-  }
+  }  
 
   getFieldsByCategories() {
     this.formFieldService.changeCurrentCategoryService(this.product.category)
+  }
+
+  updateGallery() {
+    this.adminProductService.updateGalleryService(this.gallery);
   }
 }

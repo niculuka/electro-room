@@ -85,7 +85,6 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
       this.description.title = "Titlu";
       this.description.text = "Scrie textul aici!";
       this.description.image = BLANK_PHOTO;
-      this.description.product_id_fk = this.product.id;
       this.descriptions.push(this.description);
     }
     else this.toastrService.warning("Se permit maxim 6 descrieri");
@@ -95,9 +94,8 @@ export class AdminUpdateDescriptionComponent implements OnChanges {
     this.descriptions.splice(ind, 1)
   }
 
-  updateDescription() {
-    // console.log("description", this.descriptions)  
-    this.adminProductService.updateProdServ(this.product);
+  updateDescription() { 
+    this.adminProductService.updateDescriptionService(this.descriptions);
   }
 
 }

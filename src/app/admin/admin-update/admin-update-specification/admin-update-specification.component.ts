@@ -13,7 +13,6 @@ export class AdminUpdateSpecificationComponent {
 
   @Input() product: Product = new Product();
   specification: ProductSpecification = new ProductSpecification();
-  newSpecification: ProductSpecification = new ProductSpecification();
 
   @ViewChild('s') form!: NgForm;
   errorMessage: string = "";
@@ -28,27 +27,16 @@ export class AdminUpdateSpecificationComponent {
   ngOnChanges(changes: SimpleChanges): void {
     const product = changes['product'].currentValue;
     if (product.id) {
-      this.specification = product.specifications;
+      this.specification = product.specification;
       this.currentType = product.type;
+      // console.log( this.product)
     }
   }
 
   updateSpecification() {
-    console.log("BEFORE", this.specification)
-
     this.specification = JSON.parse(JSON.stringify(this.specification), (key, value) => {
       return value === '' ? null : value;
     });
-
-    console.log("AFTER", this.specification)
-
-    this.product.specification = this.specification;
-    
-
-
-
-
-
-    // this.adminProductService.updateProdServ(this.product);
+    this.adminProductService.updateSpecificationService(this.specification);
   }
 }

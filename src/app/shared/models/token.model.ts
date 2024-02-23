@@ -6,7 +6,7 @@ export class Token {
     expiresAt!: Date;
     
     token!: string;
-    userIdFk!: number;
+    userId!: number;
 }
 
 export interface IToken {
@@ -17,5 +17,5 @@ export interface IToken {
     expiresAt: Date;
     
     token: string;
-    userIdFk: number;
+    userId: number;
 }

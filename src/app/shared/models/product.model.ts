@@ -2,7 +2,6 @@ export class ProductGallery {
     id?: number | undefined;
     image: string = "";
     selectedImage: boolean = false;
-    product_id_fk: number | undefined;
 }
 
 export class ProductDescription {
@@ -10,7 +9,6 @@ export class ProductDescription {
     title: string = "";
     text: string = "";
     image: string = "";
-    product_id_fk: number | undefined;
 }
 
 export class ProductSpecification {
@@ -68,8 +66,24 @@ export class ProductSpecification {
     speaker?: string;
     radiator?: string;
     voltage?: string;
+}
 
-    product_id_fk: number | undefined;
+export class ProductMain {
+    name: string = "";
+    urlKey: string = "";
+    description: string = "";
+    type: string = "";
+    typeUrlKey: string = "";
+    category: string = "";
+    categoryUrlKey: string = "";
+    subcategory: string = "";
+    brand: string = "";
+    image: string = "";
+    available: string = "";
+    badge: string = "";
+    favorite: boolean = false;
+    compare: boolean = false;
+    price: number = 0;
 }
 
 // P R O D U C T  = = = = = = = = = = = = = = = = = = = = = = = = = = 
@@ -92,7 +106,7 @@ export class Product {
     price: number = 0;
     gallery: Array<ProductGallery> = [];
     descriptions: Array<ProductDescription> = [];
-    specification: ProductSpecification;
+    specification: ProductSpecification = new ProductSpecification();
 
     constructor(
         id?: number,

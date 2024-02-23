@@ -62,6 +62,7 @@ export class AdminUpdateMainComponent implements OnChanges {
     const product = changes['product'].currentValue;
     if (product.id) {
       this.product = product;
+      this.adminProductService.setProductService(product)
       this.getFieldsByCategories();
     }
   }
@@ -84,8 +85,10 @@ export class AdminUpdateMainComponent implements OnChanges {
     this.formFieldService.changeCurrentCategoryService(this.product.category)
   }
 
-  updateProduct() {    
-    // console.log(this.product)
-    this.adminProductService.updateProdServ(this.product);
+  updateMain() {
+    this.product.urlKey = this.product.name
+      .replace(/\\|`+|~+|'+|,+|\/+|\?/g, "")
+      .replace(/\s+/g, "-").toLowerCase();
+    this.adminProductService.updateMainService(this.product)
   }
 }
