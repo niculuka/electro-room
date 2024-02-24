@@ -50,7 +50,7 @@ export class AdminProductCreateComponent {
     this.brands = Object.values(this.brandsEnums);
     this.availables = Object.values(this.availablesEnums);
     this.badges = Object.values(this.badgesEnums);
-
+    // first element of array is displayed
     this.newProduct.brand = this.brands[0];
     this.newProduct.category = this.categories[0];
     this.newProduct.image = "assets/images/main/blank600.png";

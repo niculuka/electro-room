@@ -8,9 +8,9 @@
         <div class="fields-container" *ngFor="let gall of gallery; index as ind">
 
             <!-- Id ------------------------------------------------------------------------------------- -->
-            <div class="my-form-field">
+            <!-- <div class="my-form-field">
                 <label class="title">Id: {{gall.id}}</label>
-            </div>
+            </div> -->
 
             <!-- Close button ------------------------------------------------------------------------- -->
             <button class="close-btn" type="button" (click)="removeImage(ind)">
@@ -20,6 +20,10 @@
             <!-- Image -------------------------------------------------------------------------------- -->
             <div class="my-form-field">
                 <label for="image">Image: {{ind+1}}</label>
+
+                <div class="image-display">
+                    <img [src]="gall.image" [alt]="gall.image">
+                </div>
 
                 <div class="my-dropdown">
                     <div class="select-line" (click)="openDropdownMenu(ind)">
@@ -34,11 +38,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="image-display">
-                    <img [src]="gall.image" [alt]="gall.image">
-                </div>
-
                 <hr>
             </div>
 

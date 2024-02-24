@@ -74,7 +74,10 @@
         <!-- Image ------------------------------------------------------------------------------ -->
         <div class="my-form-field">
             <div class="my-dropdown">
-                <label for="image"> Image </label>                
+                <label for="image"> Image </label>  
+                <div class="image-display">
+                    <img [src]="product.image" [alt]="product.image">
+                </div>              
                 <div #select class="select-line" (click)="toggleSelect()">
                     <input type="text" name="image" [value]="product.image">
                     <mat-icon>expand_more</mat-icon>
@@ -84,10 +87,7 @@
                         <img [src]="img" [alt]="img">
                         <span>{{img}}</span>
                     </div>
-                </div>
-                <div class="image-display">
-                    <img [src]="product.image" [alt]="product.image">
-                </div>
+                </div>                
             </div>            
         </div>
 

@@ -32,7 +32,7 @@
               "src/custom-elements.scss",
               "src/custom-mat.scss",
               "src/custom-theme.scss",
-              "src/admin-update.scss",
+              "src/custom-admin.scss",
               "src/styles.css"
             ],
             "scripts": []

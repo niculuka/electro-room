@@ -68,24 +68,6 @@ export class ProductSpecification {
     voltage?: string;
 }
 
-export class ProductMain {
-    name: string = "";
-    urlKey: string = "";
-    description: string = "";
-    type: string = "";
-    typeUrlKey: string = "";
-    category: string = "";
-    categoryUrlKey: string = "";
-    subcategory: string = "";
-    brand: string = "";
-    image: string = "";
-    available: string = "";
-    badge: string = "";
-    favorite: boolean = false;
-    compare: boolean = false;
-    price: number = 0;
-}
-
 // P R O D U C T  = = = = = = = = = = = = = = = = = = = = = = = = = = 
 export class Product {
     id: number | undefined;
