@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Poppins:wght@100;200;300;400&display=swap');
+
+
+/* * {
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Arimo', sans-serif;
+} */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    /* background: rgb(242, 242, 247); */
+    /* border: 2px solid red; */
+}
+
+.my-container {
+    width: 100%;
+    cursor: default;
+    /* border: 2px solid black; */
+}
+
+.my-content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 1500px;
+    min-height: 80vh;
+    box-sizing: border-box;
+    cursor: default;
+    /* border: 2px solid black; */
+}
+
+a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px 10px;
+}
+
+@media(max-width: 1530px) {
+    .my-content {
+        width: 1200px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .my-content {
+        width: 990px;
+    }
+}
+
+@media(max-width: 1020px) {
+    .my-content {
+        width: 100%;
+        /* padding: 0 10px; */
+    }
+}

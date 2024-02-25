@@ -1,17 +1,19 @@
 /* mat-accordeon ============================================== */
-.mat-expansion-panel-body {
-    padding: 10px 20px !important;
-}
-
-.mat-accordion .mat-expansion-indicator::after {
-    margin: 0 6px;
-    color: rgb(232, 232, 232);
-}
-
-.mat-accordion .mat-expansion-panel {
+.mat-expansion-panel {
     border-radius: 0 !important;
+    // border: 2px solid rgb(255, 0, 0) !important;
 }
 
-.mat-expansion-indicator::after {
-    translate: 0 -4px !important;
+.mat-expansion-panel-body {
+    padding: 10px !important;
+    // border: 2px solid rgb(255, 0, 0) !important;
+}
+
+.mat-expansion-indicator {
+    margin-right: 4px;
+}
+
+.mat-expansion-indicator::after{
+    color: rgb(255, 255, 255) !important;
+    translate: 0 -2px !important;
 }

@@ -1,37 +1,38 @@
-<footer>
-  <div class="content-footer">
+<footer class="my-container">
+  <div class="my-content">
 
-    <div class="title" *ngFor="let title of titles">
+    <div class="footer-wide">
+      <div class="title" *ngFor="let title of titles">
 
-      <h3>{{title.name}}</h3>
+        <h3>{{title.name}}</h3>
 
-      <div class="line"></div>
+        <div class="underline"></div>
 
-      <div class="subtitle" *ngFor="let subtitle of title.subtitles">
-        <a (click)="noRoute()">{{subtitle.name}}</a>
+        <div class="subtitle" *ngFor="let subtitle of title.subtitles">
+          <a (click)="noRoute()">{{subtitle.name}}</a>
+        </div>
+
       </div>
-
     </div>
+
+    <mat-accordion class="footer-accordion">
+
+      <mat-expansion-panel *ngFor="let title of titles">
+
+        <mat-expansion-panel-header>
+
+          <mat-panel-title> {{title.name}} </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <div class="subtitle" *ngFor="let subtitle of title.subtitles">
+
+          <a (click)="noRoute()">{{subtitle.name}}</a>
+
+        </div>
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
 
   </div>
-</footer>
-
-
-<mat-accordion class="example-headers-align">
-
-  <mat-expansion-panel *ngFor="let title of titles">
-
-    <mat-expansion-panel-header>
-      <mat-panel-title> {{title.name}} </mat-panel-title>
-      <!-- <div class="line"></div> -->
-    </mat-expansion-panel-header>
-
-    <div class="subtitle" *ngFor="let subtitle of title.subtitles">
-      
-        <a (click)="noRoute()">{{subtitle.name}}</a>
-      
-    </div>
-    
-  </mat-expansion-panel>
-
-</mat-accordion>

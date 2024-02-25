@@ -57,21 +57,22 @@ import { ProductDescriptionComponent } from './products-pages/detail/product-des
 import { ProductSpecificationComponent } from './products-pages/detail/product-specification/product-specification.component';
 import { SearchComponent } from './products-pages/search/search.component';
 // p a g e s ------------------------------------------------------------------------------
-import { RegisterComponent } from './guest/register/register.component';
-import { LoginComponent } from './guest/login/login.component';
-import { HomeComponent } from './guest/home/home.component';
 import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
-import { FavoriteComponent } from './guest/favorite/favorite.component';
-import { CompareComponent } from './guest/compare/compare.component';
 import { ProfileComponent } from './user/profile/profile.component';
-import { NotFoundComponent } from './guest/not-found/not-found.component';
-import { UnauthComponent } from './guest/unauth/unauth.component';
 import { OrderComponent } from './user/order/order.component';
 import { OrderUserDetailComponent } from './user/order-user-detail/order-user-detail.component';
 import { OrderAgreementComponent } from './user/order-agreement/order-agreement.component';
 import { MyOrderComponent } from './user/my-order/my-order.component';
 import { PaymentFormComponent } from './user/payment-form/payment-form.component';
+// g u e s t ------------------------------------------------------------------------------
+import { RegisterComponent } from './guest/register/register.component';
+import { LoginComponent } from './guest/login/login.component';
+import { HomeComponent } from './guest/home/home.component';
+import { FavoriteComponent } from './guest/favorite/favorite.component';
+import { CompareComponent } from './guest/compare/compare.component';
+import { NotFoundComponent } from './guest/not-found/not-found.component';
+import { UnauthComponent } from './guest/unauth/unauth.component';
 import { SpecialOfferComponent } from './guest/special-offer/special-offer.component';
 import { ElectroCardComponent } from './guest/electro-card/electro-card.component';
 import { StoreComponent } from './guest/store/store.component';
@@ -81,7 +82,7 @@ import { CarouselComponent } from './navbar/carousel/carousel.component';
 import { CarouselOwlComponent } from './navbar/carousel-owl/carousel-owl.component';
 import { UnderConstructionComponent } from './guest/under-construction/under-construction.component';
 import { InfoBlockComponent } from './guest/info-block/info-block.component';
-// dialog interogation ------------------------------------------------------------------------------
+// d i a l o g  ------------------------------------------------------------------------------
 import { DialogOrderDeleteComponent } from './dialogs/dialog-order-delete/dialog-order-delete.component';
 import { DialogItemDeleteComponent } from './dialogs/dialog-item-delete/dialog-item-delete.component';
 import { DialogUserDeleteComponent } from './dialogs/dialog-user-delete/dialog-user-delete.component';
@@ -135,22 +136,23 @@ import { AdminDemoUserComponent } from './admin-demo/admin-demo-user/admin-demo-
     ProductDescriptionComponent,
     ProductSpecificationComponent,
     SearchComponent,
-    // p a g e s
-    RegisterComponent,
-    LoginComponent,
-    HomeComponent,
+    // u s e r
     CartComponent,
     CartItemComponent,
-    FavoriteComponent,
-    CompareComponent,
     ProfileComponent,
-    NotFoundComponent,
-    UnauthComponent,
     OrderComponent,
     OrderUserDetailComponent,
     OrderAgreementComponent,
     MyOrderComponent,
     PaymentFormComponent,
+    // g u e s t
+    RegisterComponent,
+    LoginComponent,
+    HomeComponent,    
+    FavoriteComponent,
+    CompareComponent,    
+    NotFoundComponent,
+    UnauthComponent,    
     SpecialOfferComponent,
     ElectroCardComponent,
     StoreComponent,
