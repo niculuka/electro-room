@@ -2,26 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arimo&family=Poppins:wght@100;200;300;400&display=swap');
 
-
-/* * {
-    font-family: 'Poppins', sans-serif;
-    font-family: 'Arimo', sans-serif;
-} */
+* {
+    // font-family: 'Poppins', sans-serif;
+    // font-family: 'Arimo', sans-serif;
+    box-sizing: border-box;
+}
 
 html,
 body {
     width: 100%;
     height: 100%;
     margin: 0;
-    box-sizing: border-box;
-    /* background: rgb(242, 242, 247); */
-    /* border: 2px solid red; */
+    // background: rgb(242, 242, 247);
+    // border: 2px solid red;
 }
 
 .my-container {
     width: 100%;
     cursor: default;
-    /* border: 2px solid black; */
+    // border: 2px solid black;
 }
 
 .my-content {
@@ -30,9 +29,8 @@ body {
     margin: auto;
     width: 1500px;
     min-height: 80vh;
-    box-sizing: border-box;
     cursor: default;
-    /* border: 2px solid black; */
+    // border: 2px solid black;
 }
 
 a {
@@ -40,7 +38,7 @@ a {
     color: black;
     text-decoration: none;
     cursor: pointer;
-    /* border: 1px solid red; */
+    // border: 1px solid red;
 }
 
 button {
@@ -73,6 +71,6 @@ button {
 @media(max-width: 1020px) {
     .my-content {
         width: 100%;
-        /* padding: 0 10px; */
+        padding: 0 10px;
     }
 }

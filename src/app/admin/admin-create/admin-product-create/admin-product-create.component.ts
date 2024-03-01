@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BLANK_PHOTO } from 'src/app/shared/constants/const';
 import { AVAILABLE, BADGE, BRAND, CATEGORY, TYPE } from 'src/app/shared/enums/electro.enum';
 import { Product, ProductSpecification } from 'src/app/shared/models/product.model';
 import { AdminHandleFormFieldService } from 'src/app/shared/services/admin-handle-form-field.service';
@@ -53,10 +54,10 @@ export class AdminProductCreateComponent {
     // first element of array is displayed
     this.newProduct.brand = this.brands[0];
     this.newProduct.category = this.categories[0];
-    this.newProduct.image = "assets/images/main/blank600.png";
+    this.newProduct.image = BLANK_PHOTO;
     this.newProduct.available = this.availables[0];
     this.newProduct.badge = this.badges[0];
-    this.newProduct.gallery = []; 
+    this.newProduct.gallery = [];
     this.newProduct.descriptions = [];
     this.newProduct.specification = new ProductSpecification();
     this.getFieldsByCategories();
