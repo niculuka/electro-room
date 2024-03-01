@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/shared/models/product.model';
+import { AdminProductService } from 'src/app/shared/services/admin-product.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class AdminProductUpdateComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
+    private adminProductService: AdminProductService,
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class AdminProductUpdateComponent implements OnInit, OnDestroy {
       this.sub1 = this.productService.getProductByNameService(urlKey).subscribe(data => {
         if (data) {
           this.product = data;
+          this.adminProductService.setProductService(this.product)
           this.foundProduct = true;
         }
         else this.foundProduct = false;

@@ -1,6 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CarousselGallery } from 'src/app/shared/models/caroussel-gallery.model';
+
+export class CarousselGallery {
+  imageId: number | undefined;
+  image: string = "";
+  idGet: number = 0;
+}
 
 @Component({
   selector: 'app-carousel-gallery',

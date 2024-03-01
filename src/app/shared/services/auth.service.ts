@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../models/iuser.model';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 const API_URL = `${environment.BASE_URL}/auth`
 
@@ -19,6 +20,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
     private toastrService: ToastrService
   ) {
     let storageUser;
@@ -65,6 +67,11 @@ export class AuthService {
   logoutService() {
     localStorage.clear();
     this.currentUserSubject.next(new User);
+    this.toastrService.success('Logout Successful');
+    setTimeout(() => {
+      this.router.navigate(["/"])
+        .then(() => window.location.reload())
+    }, 2000);
   }
 
 }

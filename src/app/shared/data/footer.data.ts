@@ -119,7 +119,7 @@ export const footTitle: FootTitle[] = [
             {
                 name: "Reteaua de magazine",
                 link: "/under-construction",
-            },                       
+            },       
         ],
     },
 ]

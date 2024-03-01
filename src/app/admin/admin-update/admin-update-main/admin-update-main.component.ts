@@ -61,8 +61,7 @@ export class AdminUpdateMainComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const product = changes['product'].currentValue;
     if (product.id) {
-      this.product = product;
-      this.adminProductService.setProductService(product)
+      this.product = product;      
       this.getFieldsByCategories();
     }
   }

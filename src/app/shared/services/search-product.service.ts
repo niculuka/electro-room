@@ -18,6 +18,7 @@ export class SearchProductService {
   constructor(private http: HttpClient) { }
 
   // GETS =============================================================================
+  // switch with getAllProducts(1 get instead of 4)
   getLaptopsService(): Observable<any> {
     return this.http.get(API_URL + "/products/type/" + TYPE_URL_KEY.LAPTOP_URL_KEY);
   }

@@ -13,11 +13,11 @@
 
     <form #f="ngForm" (ngSubmit)="login()">
 
-      <div class="input-container" [style]="emptyUsername" (keyup)="getUsername(username.value)">
+      <div class="input-container" [ngClass]="{'invalid': isUsernameEmpty}" (keyup)="getUsername()">
         <input type="text" name="username" [(ngModel)]="user.username" #username="ngModel" placeholder="utilizator">
       </div>
 
-      <div class="input-container" [style]="emptyPassword" (keyup)="getPassword(password.value)">
+      <div class="input-container" [ngClass]="{'invalid': isPasswordEmpty}" (keyup)="getPassword()">
         <input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" placeholder="parola">
       </div>
 

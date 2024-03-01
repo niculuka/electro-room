@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -9,15 +9,13 @@ import { AuthService } from '../../shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   user: User = new User();
   message: string = "";
 
-  emptyUsername: string = "border: 1px solid grey";
-  emptyPassword: string = "border: 1px solid grey";
-  isUsernameEmpty = false;
-  isPasswordEmpty = false;
+  isUsernameEmpty: boolean = false;
+  isPasswordEmpty: boolean = false;
 
   constructor(
     private cartService: CartService,
@@ -30,39 +28,20 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  getUsername() {
+    if (this.user.username.length > 0) this.isUsernameEmpty = false;
+    else this.isUsernameEmpty = true;
   }
 
-  getUsername(username: string) {
-    if (username.length <= 0) {
-      this.emptyUsername = "border: 2px solid red";
-      this.isUsernameEmpty = false;
-    }
-    else {
-      this.emptyUsername = "border: 1px solid grey";
-      this.isUsernameEmpty = true;
-    }
-  }
-
-  getPassword(password: string) {
-    if (password.length <= 0) {
-      this.emptyPassword = "border: 2px solid red";
-      this.isPasswordEmpty = false;
-    }
-    else {
-      this.emptyPassword = "border: 1px solid grey";
-      this.isPasswordEmpty = true;
-    }
+  getPassword() {
+    if (this.user.password.length > 0) this.isPasswordEmpty = false;
+    else this.isPasswordEmpty = true;
   }
 
   login() {
-    if (this.isUsernameEmpty === false) {
-      this.emptyUsername = "border: 2px solid red";
-    }
-    if (this.isPasswordEmpty === false) {
-      this.emptyPassword = "border: 2px solid red";
-    }
-    if (this.isUsernameEmpty === true && this.isPasswordEmpty === true) {
+    this.getUsername();
+    this.getPassword();
+    if (this.isUsernameEmpty === false && this.isPasswordEmpty === false) {
       this.authService.loginService(this.user).subscribe({
         next: () => {
           if (this.cartService.cart.totalCount > 0) {

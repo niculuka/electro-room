@@ -10,6 +10,7 @@ import { Product } from 'src/app/shared/models/product.model';
 import { CurrentUrl } from 'src/app/shared/services/current-url.service';
 import { HandleWindow } from 'src/app/shared/models/handle-window.model';
 import { OverlayerService } from 'src/app/shared/services/overlayer.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar-main',
@@ -46,6 +47,7 @@ export class NavbarMainComponent implements OnDestroy {
     private router: Router,
     private currentUrl: CurrentUrl,
     private overlayerService: OverlayerService,
+    private toastr: ToastrService,
   ) {
     this.sub0 = cartService.getCartObservable().subscribe(data => {
       this.cart = data;
@@ -127,6 +129,7 @@ export class NavbarMainComponent implements OnDestroy {
   // SEARCH-BAR -----------------------------------------------------------
   goToSearch(searchTerm: string): void {
     if (searchTerm) this.router.navigate(["/search/" + searchTerm]);
+    else this.toastr.warning("Introduceti un cuvant pentru cautare");
   }
 
   // CART ----------------------------------------------------------------- 
@@ -166,11 +169,10 @@ export class NavbarMainComponent implements OnDestroy {
     return this.currentUser?.role === ROLE.ADMIN;
   }
 
-  logout() {
-    this.authService.logoutService();
+  logout() {    
     this.cartService.clearCartService();
     this.favoriteService.clearFavoritesService();
-    this.router.navigate(["/"]).then(() => window.location.reload());
+    this.authService.logoutService();
   }
 
   ngOnDestroy(): void {
