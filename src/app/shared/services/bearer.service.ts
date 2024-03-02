@@ -20,7 +20,6 @@ export abstract class BearerService {
       })
   }
 
-
   get getHeaders(): HttpHeaders {
     return new HttpHeaders({
       authorization: "Bearer " + this.currentUser?.token,

@@ -7,6 +7,7 @@ import { UserService } from '../../shared/services/user.service';
 
 // add this:  -  "browser": {"crypto": false} -  in package.json
 const bcrypt = require("bcryptjs");
+// add this:  -  "browser": {"crypto": false} -  in package.json
 
 @Component({
   selector: 'app-profile',
@@ -49,15 +50,15 @@ export class ProfileComponent {
       next: () => {
         this.authService.logoutService();
         this.router.navigate(['auth/login']);
-        this.toastrService.info("Password updated!");
+        this.toastrService.info("Parola Actualizata!");
       },
       error: err => {
-        this.toastrService.warning("Wrong password", "Password not updated!")
-        this.errorMessage = "Nu s-a putut actualiza!";
+        this.toastrService.warning("Parola Gresita", "Parola nu a fost actualizata!")
+        this.errorMessage = "Nu s-a putut actualiza parola!";
         console.log(err);
       }
     })
-  }  
+  }
 
   updateProfile() {
     bcrypt.compare(this.currentUser.oldPassword, this.currentUser.password, (err: any, isMatch: any) => {
@@ -68,11 +69,11 @@ export class ProfileComponent {
         next: () => {
           this.authService.logoutService();
           this.router.navigate(['auth/login']);
-          this.toastrService.info("User updated!");
+          this.toastrService.info("Profil actualizat!");
         },
         error: err => {
-          this.toastrService.warning("Could not update the profile!", this.currentUser.username);
-          this.errorMessage = "Nu s-a putut actualiza!";
+          this.toastrService.warning("Profile nu a fost actualizat!", this.currentUser.username);
+          this.errorMessage = "Nu s-a putut actualiza profilul!";
           console.log(err);
         }
       })
@@ -91,11 +92,11 @@ export class ProfileComponent {
         next: () => {
           this.authService.logoutService();
           this.router.navigate(["/"]);
-          this.toastrService.info("Account deleted!");
+          this.toastrService.info("Countul a fost sters!");
         },
         error: err => {
-          this.errorMessage = "Nu s-a putut sterge account-ul!";
-          this.toastrService.warning("Could not delete this account!")
+          this.errorMessage = "Cont-ul nu s-a putut sterge!";
+          this.toastrService.warning("Nu s-a putut sterge cont-ul!")
           console.log(err);
         }
       })

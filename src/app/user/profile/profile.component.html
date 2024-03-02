@@ -10,7 +10,7 @@
 
     <!-- SHOW PROFILE ------------------------------------------- -->
     <div class="data">
-      <input type="radio" name="box" id="box1" checked="checked">
+      <input type="radio" name="box" id="box1" checked>
       <label for="box1">Profilul meu</label>
 
       <div class="box">
@@ -47,53 +47,37 @@
       </div>
 
       <!-- EDIT PROFILE ------------------------------------------- -->
-      <input type="radio" name="box" id="box2">
+      <input type="radio" name="box" id="box2" >
       <label for="box2">Editeaza profilul</label>
 
       <div class="box">
-        <div class="form-container">
+        <form #f="ngForm" (ngSubmit)="f.form.valid && updateProfile()">
 
-          <form #f="ngForm" (ngSubmit)="f.form.valid && updateProfile()">
+          <input type="text" placeholder="Nume" id="name" name="name" [(ngModel)]="currentUser.name" #name="ngModel"
+            minlength="4" maxlength="30" required>
+          <div class="alert" *ngIf="!name.valid && f.submitted">Minim 4 caractere!</div>
 
-            <input type="text" placeholder="Nume" id="name" name="name" [(ngModel)]="currentUser.name" #name="ngModel"
-              minlength="4" maxlength="30" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!name.valid && f.submitted">Minim 4 caractere!</div>
-            </div>
+          <input type="email" placeholder="Email" id="email" name="email" [(ngModel)]="currentUser.email"
+            #email="ngModel" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+          <div class="alert" *ngIf="!email.valid && f.submitted">Invalid email!</div>
 
-            <input type="email" placeholder="Email" id="email" name="email" [(ngModel)]="currentUser.email"
-              #email="ngModel" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!email.valid && f.submitted">Invalid email!</div>
-            </div>
+          <input type="text" placeholder="Telefon" id="phone" name="phone" [(ngModel)]="currentUser.phone"
+            #phone="ngModel" minlength="9" maxlength="13" pattern="^[0-9]*$" required>
+          <div class="alert" *ngIf="!phone.valid && f.submitted">Minim 9 cifre!</div>
 
-            <input type="text" placeholder="Telefon" id="phone" name="phone" [(ngModel)]="currentUser.phone"
-              #phone="ngModel" minlength="9" maxlength="13" pattern="^[0-9]*$" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!phone.valid && f.submitted">Minim 9 cifre!</div>
-            </div>
+          <input id="address" placeholder="Adresa" name="address" cols="30" rows="3" [(ngModel)]="currentUser.address"
+            #address="ngModel" minlength="10" maxlength="100" required>
+          <div class="alert" *ngIf="!address.valid && f.submitted">Minim 10 caractere!</div>
 
-            <input id="address" placeholder="Adresa" name="address" cols="30" rows="3" [(ngModel)]="currentUser.address"
-              #address="ngModel" minlength="10" maxlength="100" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!address.valid && f.submitted">Minim 10 caractere!</div>
-            </div>
+          <input type="password" placeholder="Parola" name="oldPassword" [(ngModel)]="currentUser.oldPassword"
+            minlength="4" maxlength="30" #oldpassword="ngModel" required>
+          <div class="alert" *ngIf="!oldpassword.valid && f.submitted">Minim 4 caractere!</div>
 
-            <input type="password" placeholder="Parola" name="oldPassword" [(ngModel)]="currentUser.oldPassword"
-              minlength="4" maxlength="30" #oldpassword="ngModel" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!oldpassword.valid && f.submitted">Minim 4 caractere!</div>
-            </div>
+          <div class="alert" *ngIf="match && f.submitted">Parola gresita!</div>
 
-            <div class="alert-container">
-              <div class="alert" *ngIf="match && f.submitted">Parola gresita!</div>
-            </div>
+          <button type="submit">Salveaza</button>
 
-            <button type="submit">Salveaza</button>
-
-          </form>
-
-        </div>
+        </form>
       </div>
 
       <!-- CHANGE PASSWORD  ------------------------------------------- -->
@@ -101,38 +85,26 @@
       <label for="box3">Schimba parola</label>
 
       <div class="box">
-        <div class="form-container">
+        <form #p="ngForm" (ngSubmit)="p.form.valid && updatePassword()">
 
-          <form #p="ngForm" (ngSubmit)="p.form.valid && updatePassword()">
+          <input type="password" placeholder="Parola actuala" name="oldPassword" [(ngModel)]="currentUser.oldPassword"
+            minlength="4" maxlength="30" #oldpassword="ngModel" required>
+          <div class="alert" *ngIf="!oldpassword.valid && p.submitted">Minim 4 caractere!</div>
 
-            <input type="password" placeholder="Parola actuala" name="oldPassword" [(ngModel)]="currentUser.oldPassword"
-              minlength="4" maxlength="30" #oldpassword="ngModel" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!oldpassword.valid && p.submitted">Minim 4 caractere!</div>
-            </div>
+          <input type="password" placeholder="Parola noua" name="newpassword" [(ngModel)]="currentUser.newPassword"
+            minlength="4" maxlength="30" #newpassword="ngModel" required>
+          <div class="alert" *ngIf="!newpassword.valid && p.submitted">Minim 4 caractere!</div>
+          <div class="alert" *ngIf="differentPassword() && p.submitted">Parola trebuie sa fie diferita!</div>
 
-            <input type="password" placeholder="Parola noua" name="newpassword" [(ngModel)]="currentUser.newPassword"
-              minlength="4" maxlength="30" #newpassword="ngModel" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!newpassword.valid && p.submitted">Minim 4 caractere!</div>
-              <div class="alert" *ngIf="differentPassword() && p.submitted">Parola trebuie sa fie diferita!</div>
-            </div>
+          <input type="password" placeholder="Parola noua" name="repeatPassword" [(ngModel)]="repeatPassword"
+            minlength="4" maxlength="30" #repeatpassword="ngModel" required>
+          <div class="alert" *ngIf="!repeatpassword.valid && p.submitted">Minim 4 caractere!</div>
+          <div class="alert" *ngIf="confirmPassword() && p.submitted">Confirmare gresita!</div>
+          <div class="alert" *ngIf="errorMessage">{{errorMessage}}</div>
 
-            <input type="password" placeholder="Parola noua" name="repeatPassword" [(ngModel)]="repeatPassword"
-              minlength="4" maxlength="30" #repeatpassword="ngModel" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!repeatpassword.valid && p.submitted">Minim 4 caractere!</div>
-              <div class="alert" *ngIf="confirmPassword() && p.submitted">Confirmare gresita!</div>
-            </div>
-            <div class="alert-container">
-              <div class="alert" *ngIf="errorMessage">{{errorMessage}}</div>
-            </div>
+          <button type="submit">Salveaza</button>
 
-            <button type="submit">Salveaza</button>
-
-          </form>
-
-        </div>
+        </form>
       </div>
 
       <!-- DELETE ACCOUNT ------------------------------------------- -->
@@ -140,26 +112,20 @@
       <label for="box4">Sterge contul</label>
 
       <div class="box">
-        <div class="form-container">
+        <form #d="ngForm" (ngSubmit)="d.form.valid && deleteAccount(currentUser)">
 
-          <form #d="ngForm" (ngSubmit)="d.form.valid && deleteAccount(currentUser)">
+          <h2>Doresti sa stergi contul, {{currentUser.username}}?</h2>
 
-            <h2>Doresti sa stergi contul, {{currentUser.username}}?</h2>
+          <input type="password" placeholder="Password" name="oldPassword" [(ngModel)]="currentUser.oldPassword"
+            minlength="4" maxlength="30" #oldpassword="ngModel" required>
+          <div class="alert" *ngIf="!oldpassword.valid && d.submitted">Minim 4 caractere!</div>
+          <div class="alert" *ngIf="match && d.submitted">Parola gresita!</div>
 
-            <input type="password" placeholder="Password" name="oldPassword" [(ngModel)]="currentUser.oldPassword"
-              minlength="4" maxlength="30" #oldpassword="ngModel" required>
-            <div class="alert-container">
-              <div class="alert" *ngIf="!oldpassword.valid && d.submitted">Minim 4 caractere!</div>
-            </div>
-            <div class="alert-container">
-              <div class="alert" *ngIf="match && d.submitted">Parola gresita!</div>
-            </div>
+          <!-- S U B M I T ------------------------------------------- -->
+          <button type="submit">Sterge</button>
 
-            <button type="submit">Sterge</button>
+        </form>
 
-          </form>
-
-        </div>
       </div>
     </div>
 

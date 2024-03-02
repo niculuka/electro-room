@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IUser } from '../models/iuser.model';
-import { User } from '../models/user.model';
+import { IUser, User } from '../models/user.model';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 const API_URL = `${environment.BASE_URL}/auth`
@@ -45,17 +44,17 @@ export class AuthService {
   // LOGIN ===================================================================================================
   loginService(user: IUser): Observable<any> {
     return this.http.post<any>(API_URL + "/login", user).pipe(tap({
-          next: data => {
-            if (data) {
-              this.setSessionUser(data);
-              this.toastrService.success(`Welcome ${data.name}!`, 'Login Successful');
-            }
-          },
-          error: (err) => {
-            this.toastrService.error(err.error, 'Login Failed');
-          }
-        })
-      )
+      next: data => {
+        if (data) {
+          this.setSessionUser(data);
+          this.toastrService.success(`Welcome ${data.name}!`, 'Login Successful');
+        }
+      },
+      error: (err) => {
+        this.toastrService.error(err.error, 'Login Failed');
+      }
+    })
+    )
   }
 
   setSessionUser(user: User) {
@@ -67,11 +66,8 @@ export class AuthService {
   logoutService() {
     localStorage.clear();
     this.currentUserSubject.next(new User);
+    this.router.navigate(["/"]);
     this.toastrService.success('Logout Successful');
-    setTimeout(() => {
-      this.router.navigate(["/"])
-        .then(() => window.location.reload())
-    }, 2000);
   }
 
 }
