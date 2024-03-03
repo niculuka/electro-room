@@ -51,7 +51,7 @@ export class AuthService {
         }
       },
       error: (err) => {
-        this.toastrService.error(err.error, 'Login Failed');
+        console.log(err.error);
       }
     })
     )
@@ -66,8 +66,8 @@ export class AuthService {
   logoutService() {
     localStorage.clear();
     this.currentUserSubject.next(new User);
-    this.router.navigate(["/"]);
-    this.toastrService.success('Logout Successful');
+    this.router.navigate(["/"])
+      .then(() => window.location.reload());
   }
 
 }

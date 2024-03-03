@@ -169,7 +169,7 @@ export class NavbarMainComponent implements OnDestroy {
     return this.currentUser?.role === ROLE.ADMIN;
   }
 
-  logout() {    
+  logout() {
     this.cartService.clearCartService();
     this.favoriteService.clearFavoritesService();
     this.authService.logoutService();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/shared/models/user.model';
@@ -14,7 +14,7 @@ const bcrypt = require("bcryptjs");
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnDestroy {
 
   currentUser: User = new User();
   user: User = new User();
@@ -24,16 +24,18 @@ export class ProfileComponent {
 
   match: boolean = false;
 
+  private sub0: any;
+
   constructor(
     private authService: AuthService,
     private userService: UserService,
     private toastrService: ToastrService,
     private router: Router,
   ) {
-    this.authService.currentUser.subscribe(data => {
+    this.sub0 = this.authService.currentUser.subscribe(data => {
       this.currentUser = data;
       this.user.id = data.id;
-    })
+    });
   }
 
   differentPassword() {
@@ -103,4 +105,7 @@ export class ProfileComponent {
     })
   }
 
+  ngOnDestroy(): void {
+    this.sub0?.unsubscribe();
+  }
 }
