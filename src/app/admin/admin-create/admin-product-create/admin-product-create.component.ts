@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -13,7 +13,7 @@ import { AdminProductService } from 'src/app/shared/services/admin-product.servi
   templateUrl: './admin-product-create.component.html',
   styleUrls: ['./admin-product-create.component.css']
 })
-export class AdminProductCreateComponent {
+export class AdminProductCreateComponent implements OnDestroy {
 
   newProduct: Product = new Product();
   protected selectedSubcategories = "";
@@ -40,6 +40,8 @@ export class AdminProductCreateComponent {
   badgesEnums = BADGE;
   badges: Array<any> = [];
 
+  private sub0: any;
+
   constructor(
     private adminProductService: AdminProductService,
     private formFieldService: AdminHandleFormFieldService,
@@ -62,7 +64,7 @@ export class AdminProductCreateComponent {
     this.newProduct.specification = new ProductSpecification();
     this.getFieldsByCategories();
 
-    this.formFieldService.getChangeCategoryObservable().subscribe(data => {
+    this.sub0 = this.formFieldService.getChangeCategoryObservable().subscribe(data => {
       this.newProduct.type = data.currentType;
       this.newProduct.typeUrlKey = data.currentTypeUrlKey;
       this.newProduct.categoryUrlKey = data.currentCategUrlKey;
@@ -106,5 +108,9 @@ export class AdminProductCreateComponent {
         console.log(error);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub0?.unsubscribe();
   }
 }

@@ -62,7 +62,7 @@
           <div class="alert" *ngIf="!email.valid && f.submitted">Invalid email!</div>
 
           <input type="text" placeholder="Telefon" id="phone" name="phone" [(ngModel)]="currentUser.phone"
-            #phone="ngModel" minlength="9" maxlength="13" pattern="^[0-9]*$" required>
+            #phone="ngModel" minlength="9" maxlength="13" pattern="^[0-9+]*$" required>
           <div class="alert" *ngIf="!phone.valid && f.submitted">Minim 9 cifre!</div>
 
           <input id="address" placeholder="Adresa" name="address" cols="30" rows="3" [(ngModel)]="currentUser.address"
