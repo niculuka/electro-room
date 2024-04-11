@@ -23,12 +23,17 @@ export class CurrentUrl implements OnDestroy {
         });
     }
 
+    setHomePage() {
+        this.currentLink = "/";
+        this.currentLinkSubject.next(this.currentLink);
+    }
+
     getCurrentUrlObservable(): Observable<any> {
         return this.currentLinkSubject.asObservable();
     }
 
     ngOnDestroy() {
-        this.event$.unsubscribe();
+        this.event$?.unsubscribe();
     }
 
 }

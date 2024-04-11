@@ -64,12 +64,7 @@ export class NavbarDesktopComponent implements OnDestroy {
       this.handleWindow.isDesktopMenuOpen = !this.handleWindow.isDesktopMenuOpen;
       this.handleOverlayer();
     }
-  }
-
-  closeDesktopMenu(event: any) {
-    this.handleWindow.isDesktopMenuOpen = event;
-    this.handleOverlayer();
-  }
+  }  
 
   handleOverlayer() {
     if (this.isHomePage()) this.overlayerService.overlayer.overlayerDesktop = false;
@@ -80,6 +75,11 @@ export class NavbarDesktopComponent implements OnDestroy {
   handleOverlayerWhenLinkChanges() {
     if (this.currentLink) this.overlayerService.overlayer.overlayerDesktop = false;
     this.overlayerService.handleOverlayerService();
+  }
+
+  closeDesktopMenu(event: any) {
+    this.handleWindow.isDesktopMenuOpen = event;
+    this.handleOverlayer();
   }
 
   // D r o p D o w n  M e n u -------------------------------------------------------

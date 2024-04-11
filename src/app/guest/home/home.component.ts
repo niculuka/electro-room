@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CAROUSEL, CATEGORY, TYPE, TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
+import { CAROUSEL, TYPE_URL_KEY } from 'src/app/shared/enums/electro.enum';
+import { CurrentUrl } from 'src/app/shared/services/current-url.service';
 
 @Component({
   selector: 'app-home',
@@ -22,4 +23,7 @@ export class HomeComponent {
     ids: [72, 84, 74, 80, 76, 81, 75, 78, 82, 73, 83, 85, 71],
   }
 
+  constructor(private currentUrl: CurrentUrl) {
+    this.currentUrl.setHomePage();
+  }
 }

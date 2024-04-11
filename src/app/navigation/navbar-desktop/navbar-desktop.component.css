@@ -30,6 +30,7 @@ ul {
 }
 
 .burger {
+  z-index: 10;
   position: relative;
   display: block;
   /* border: 2px solid rgb(0, 0, 0); */

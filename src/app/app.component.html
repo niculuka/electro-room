@@ -1,9 +1,5 @@
 <div class="overflow" [style]="overlayer.overlayerMain?'overflow: hidden':'overflow-y: scroll'">
-    <div class="main">
-
-        <app-navbar-main *ngIf="!isPageWithNavbar()"></app-navbar-main>
-
-        <app-navbar-desktop *ngIf="!isPageWithNavbar()"></app-navbar-desktop>        
+    <div class="main">              
 
         <div class="desktop">
 
@@ -11,11 +7,7 @@
                 [style]="overlayer.overlayerMain||overlayer.overlayerDesktop?'display: block':'display: none'">
             </div>
 
-            <app-breadcrumb *ngIf="isPageWithBreadcrumb()"></app-breadcrumb>
-
-            <router-outlet></router-outlet>
-
-            <app-footer *ngIf="!isPageWithFooter()"></app-footer>
+            <router-outlet></router-outlet>            
 
         </div>
     </div>

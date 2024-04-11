@@ -19,10 +19,10 @@ $my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
     @include angular-material-theme($my-theme);
 }
 
-html,
-body {
-    background: mat-color(map-get($my-theme, primary), lighter);   
-}
+// html,
+// body {
+//     background: mat-color(map-get($my-theme, primary), lighter);   
+// }
 
 
 
