@@ -24,6 +24,6 @@ export class HomeComponent {
   }
 
   constructor(private currentUrl: CurrentUrl) {
-    this.currentUrl.setHomePage();
+    this.currentUrl.reloadHomePage();
   }
 }

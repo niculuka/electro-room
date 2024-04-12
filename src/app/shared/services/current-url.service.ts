@@ -23,7 +23,7 @@ export class CurrentUrl implements OnDestroy {
         });
     }
 
-    setHomePage() {
+    reloadHomePage() {
         this.currentLink = "/";
         this.currentLinkSubject.next(this.currentLink);
     }
